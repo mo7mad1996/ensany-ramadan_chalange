@@ -1,0 +1,60 @@
+/* @import "./base.css"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+htm,
+body {
+  width: 100%;
+  overflow: hidden;
+}
+
+.v-toolbar__content {
+  overflow: visible !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.v-progress-linear__determinate {
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+
+/* .carousel__viewport {
+  overflow: visible !important;
+} */
+
+.carousel__pagination-button::after {
+  display: block;
+  content: "";
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #c0bfbf !important;
+}
+
+.carousel__pagination-button--active::after {
+  background-color: #3e7e41 !important;
+  width: 20px !important;
+  border-radius: 10px !important;
+}
+
+.carousel__pagination {
+  bottom: -35px !important;
+}
+
+@media (min-width: 992px) {
+  .carousel__prev {
+    left: -54px !important;
+  }
+
+  .carousel__next {
+    right: -54px !important;
+  }
+}
+/* * {
+  font-family: IBM Plex Sans;
+} */
