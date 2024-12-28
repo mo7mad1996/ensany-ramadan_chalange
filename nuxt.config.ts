@@ -1,18 +1,27 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+
 export default defineNuxtConfig({
+  compatibilityDate: "2024-11-01",
+  devtools: { enabled: true },
+
+  // main directory
   srcDir: "src/",
 
+  // favicon
+  app: {
+    head: {
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
+
+  // custom components prefixes
   components: [
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
   ],
 
-  build: {
-    transpile: ["vuetify"],
-  },
-
+  // main style & tailwid config
   css: ["./src/assets/main.css"],
-
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -20,10 +29,9 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: "2024-11-01",
-  devtools: { enabled: true },
-
-  plugins: ["~/plugins/i18n.ts"],
+  build: {
+    transpile: ["vuetify"],
+  },
 
   modules: [
     (_options, nuxt) => {
@@ -33,17 +41,22 @@ export default defineNuxtConfig({
       });
     },
     "./src/router/index",
+    "@nuxtjs/i18n",
   ],
 
-  alias: {
-    "@": "/<absolute-path-to-your-project>",
-  },
-
-  vite: {
-    resolve: {
-      alias: {
-        "@": "/<absolute-path-to-your-project>",
+  // localization
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        language: "en-US",
       },
-    },
+      {
+        code: "ar",
+        language: "ar",
+      },
+    ],
+    defaultLocale: "en", // Resolve absolute path
+    vueI18n: "./src/helpers/i18n.config.ts",
   },
 });

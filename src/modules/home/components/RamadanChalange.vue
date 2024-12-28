@@ -1,7 +1,11 @@
 <template>
   <section aria-label="ramadan chalenges" class="pt-[2rem] pb-[2rem]">
     <Container>
-      <h1 class="text-black">Ramadan Chalenges</h1>
+      <h1
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        Ramadan Chalenges
+      </h1>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints1" class="mt-4">
         <Slide v-for="(item, index) in 5" :key="index">
@@ -47,9 +51,4 @@ import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 </script>
 
-<style scoped>
-h1 {
-  font-weight: 700;
-  font-size: 36px;
-}
-</style>
+<style scoped></style>

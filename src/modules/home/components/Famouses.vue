@@ -2,7 +2,11 @@
   <section aria-label="famouses section" class="pt-[2rem] pb-[2rem]">
     <Container>
       <!-- title -->
-      <h2 class="text-[36px] font-bold mb-8">Trusted by those you trust</h2>
+      <h2
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        Trusted by those you trust
+      </h2>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints3" class="mt-4">
         <Slide>

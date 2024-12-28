@@ -1,4 +1,45 @@
 <template>
+  <v-navigation-drawer
+    class="v-navigation-drawer--mobile p-[2rem]"
+    v-model="isOpen"
+    location="right"
+    temporary
+    color="#F6FFF6"
+  >
+    <div class="card flex flex-col gap-y-[1.5rem] items-center" v-if="isOpen">
+      <router-link to="/" class="text-black">Campaigns</router-link>
+
+      <router-link to="/" class="text-black">About Us</router-link>
+
+      <router-link to="/" class="d-flex ga-2 text-black">
+        <img src="../assets/images/search.svg" width="15" alt="" />
+        <span>Search...</span>
+      </router-link>
+
+      <div class="flex flex-col gap-y-[1.5rem]">
+        <v-btn
+          class="text-capitalize text-red-500"
+          variant="flat"
+          size="default"
+          color="#3E7E41"
+          >Sign in</v-btn
+        >
+
+        <v-btn
+          class="text-capitalize"
+          variant="outlined"
+          size="default"
+          color="#3E7E41"
+          >Contact Us</v-btn
+        >
+      </div>
+
+      <router-link to="/" class="text-black">
+        <SwitchLang />
+      </router-link>
+    </div>
+  </v-navigation-drawer>
+
   <v-app-bar elevation="0" color="#F6FFF6">
     <Container class="w-100">
       <div class="d-flex justify-space-between align-center w-100">
@@ -16,42 +57,6 @@
             alt=""
             @click="openMenue"
           />
-
-          <div
-            class="card d-flex flex-column align-center ga-3 text-center"
-            v-if="isOpen"
-          >
-            <router-link to="/" class="text-black">Campaigns</router-link>
-
-            <router-link to="/" class="text-black">About Us</router-link>
-
-            <router-link to="/" class="d-flex ga-2 text-black">
-              <img src="../assets/images/search.svg" width="15" alt="" />
-              <span>Search...</span>
-            </router-link>
-
-            <div class="d-flex flex-column ga-3">
-              <v-btn
-                class="text-capitalize"
-                variant="flat"
-                size="default"
-                color="#3E7E41"
-                >Sign in</v-btn
-              >
-
-              <v-btn
-                class="text-capitalize"
-                variant="outlined"
-                size="default"
-                color="#3E7E41"
-                >Contact Us</v-btn
-              >
-            </div>
-
-            <router-link to="/" class="text-black">
-              <SwitchLang />
-            </router-link>
-          </div>
         </div>
 
         <!-- links and searchbar -->

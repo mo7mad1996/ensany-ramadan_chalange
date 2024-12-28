@@ -1,7 +1,11 @@
 <template>
   <section aria-label="partiners section" class="parteners pb-10">
     <Container>
-      <h1>Trusted by our partners</h1>
+      <h1
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        Trusted by our partners
+      </h1>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints2" class="mt-4">
         <Slide>
@@ -45,9 +49,4 @@ const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
 // ]);
 </script>
 
-<style scoped>
-h1 {
-  font-weight: 700;
-  font-size: 36px;
-}
-</style>
+<style scoped></style>

@@ -33,7 +33,7 @@
         </div>
 
         <div
-          class="statistics grid gap-x-[2rem] grid-cols-2 lg:grid-cols-4 md:grid-cols-4"
+          class="statistics grid gap-y-[2rem] grid-cols-2 lg:grid-cols-4 md:grid-cols-4"
         >
           <div class="statistic_item flex justify-center">
             <div>
@@ -106,30 +106,6 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import { ref } from "vue";
-
-const statistics = ref([
-  {
-    number: "$3,085",
-    name: "Raised",
-    icon: "../../..//assets/images/statistics1.svg",
-  },
-  {
-    number: "$3,085",
-    name: "Doners",
-    icon: "../../../src/assets/images/doners.svg",
-  },
-  {
-    number: "$60 M",
-    name: "Funded",
-    icon: "../../../src/assets/images/funded.svg",
-  },
-  {
-    number: "110k",
-    name: "Campaign",
-    icon: "../../../src/assets/images/campaigns.svg",
-  },
-]);
 </script>
 
 <style scoped>
@@ -184,7 +160,7 @@ const statistics = ref([
 
   .donate_button {
     position: fixed;
-    bottom: 0;
+    bottom: 50%;
     z-index: 100000000;
     left: 0;
     color: #fff;

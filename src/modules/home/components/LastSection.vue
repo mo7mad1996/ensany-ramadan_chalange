@@ -1,11 +1,15 @@
 <template>
   <Container>
     <section class="ready mt-[3rem] mb-[3rem]">
-      <div class="content relative text-white px-[5rem] py-[5rem]">
-        <h1 class="font-bold text-[36px] leading-[54px]">
+      <div
+        class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
+      >
+        <h2
+          class="font-bold lg:text-[36px] md:text-[36px] text-[28px] lg:leading-[54px] md:leading-[46px] xl:leading-[54px] leading-[46px]"
+        >
           Ready to Make a <br />
           Difference This Ramadan.
-        </h1>
+        </h2>
 
         <p class="text-[14px] pt-[2rem]">
           Your contributions create change. Let’s reach our goals together .
