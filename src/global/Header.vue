@@ -7,7 +7,9 @@
     color="#F6FFF6"
   >
     <div class="card flex flex-col gap-y-[1.5rem] items-center" v-if="isOpen">
-      <router-link to="/" class="text-black">Campaigns</router-link>
+      <nuxt-link :to="localePath('/about')" class="text-black">{{
+        $t("global.campaigns")
+      }}</nuxt-link>
 
       <router-link to="/" class="text-black">About Us</router-link>
 
@@ -65,18 +67,22 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center"
         >
           <li>
-            <router-link to="/">Campaigns</router-link>
+            <nuxt-link :to="localePath('/')" class="text-black">{{
+              $t("global.campaigns")
+            }}</nuxt-link>
           </li>
 
           <li>
-            <router-link to="/">About us</router-link>
+            <nuxt-link :to="localePath('/')" class="text-black">{{
+              $t("global.about_us")
+            }}</nuxt-link>
           </li>
 
           <li>
-            <router-link to="/" class="d-flex ga-2">
+            <nuxt-link :to="localePath('/')" class="d-flex ga-2">
               <img src="../assets/images/search.svg" width="15" alt="" />
-              <span>Search...</span>
-            </router-link>
+              <span>{{ $t("global.search") }}...</span>
+            </nuxt-link>
           </li>
         </ul>
 
@@ -89,7 +95,7 @@
             variant="flat"
             size="default"
             color="#3E7E41"
-            >Sign in</v-btn
+            >{{ $t("global.signin") }}</v-btn
           >
 
           <v-btn
@@ -97,7 +103,7 @@
             variant="outlined"
             size="default"
             color="#3E7E41"
-            >Contact Us</v-btn
+            >{{ $t("global.contact_us") }}</v-btn
           >
 
           <div class="lang-switcher">
@@ -113,7 +119,7 @@
 import Container from "./Container.vue";
 import SwitchLang from "./SwitchLang.vue";
 import { ref } from "vue";
-
+const localePath = useLocalePath();
 const isOpen = ref(false);
 
 const openMenue = (): void => {

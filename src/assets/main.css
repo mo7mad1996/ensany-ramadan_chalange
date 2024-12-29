@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+body {
+  font-family: "Cairo", serif;
+  font-weight: 400;
+}
+
 htm,
 body {
   width: 100%;

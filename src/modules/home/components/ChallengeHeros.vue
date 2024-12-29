@@ -5,7 +5,7 @@
       <h1
         class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
       >
-        Meet Our Ramadan Challenge Heroes
+        {{ $t("home.heroes") }}
       </h1>
 
       <!-- Heros cards -->
@@ -19,7 +19,9 @@
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number1.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">Second Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.second_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -28,8 +30,7 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
 
@@ -40,7 +41,9 @@
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number2.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">First Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.first_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -49,8 +52,7 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
 
@@ -61,7 +63,9 @@
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number3.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">Third Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.third_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -70,8 +74,7 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
       </div>
@@ -84,10 +87,5 @@ import Container from "../../../global/Container.vue";
 </script>
 
 <style scoped>
-@media (min-width: 992px) {
-  .card-one,
-  .card-three {
-    margin-top: 5rem;
-  }
-}
+@import "../style/challenge-heros.css";
 </style>

@@ -4,10 +4,15 @@
       <h1
         class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
       >
-        Other Platform Campaigns
+        {{ $t("home.campaigns") }}
       </h1>
 
-      <Carousel v-bind="settings" :breakpoints="breakpoints1" class="mt-4">
+      <Carousel
+        v-bind="settings"
+        :breakpoints="breakpoints1"
+        class="mt-4"
+        :dir="locale == 'ar' ? 'rtl' : 'ltr'"
+      >
         <Slide v-for="(item, index) in 5" :key="index">
           <Card :rate="20">
             <template #image>
@@ -18,14 +23,11 @@
               />
             </template>
 
-            <template #company> Honor Company </template>
+            <template #company> {{ $t("home.honor_company") }}</template>
 
-            <template #title>Feed a Family for Iftar</template>
+            <template #title>{{ $t("home.feed_familly") }}</template>
 
-            <template #desc>
-              Join our Ramadan challenge to provide iftar meals for families in
-              need. Every $50 feeds a family for a day.</template
-            >
+            <template #desc> {{ $t("home.card_desc") }}</template>
 
             <template #subscribers>150</template>
 
@@ -47,8 +49,7 @@
 import Container from "../../../global/Container.vue";
 import Card from "../../../global/Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
-
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
-</script>
 
-<style scoped></style>
+const { locale } = useI18n();
+</script>

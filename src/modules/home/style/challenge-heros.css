@@ -1,0 +1,6 @@
+@media (min-width: 992px) {
+  .card-one,
+  .card-three {
+    margin-top: 5rem;
+  }
+}

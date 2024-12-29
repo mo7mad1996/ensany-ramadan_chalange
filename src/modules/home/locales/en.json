@@ -1,3 +1,37 @@
 {
-  "campaigns": "Campaigns"
+  "banner_title": "Your donations make a difference. Participate in our challenge today!",
+  "banner_desc": "Create your fundraising page, set your goal, and inspire others to donate!",
+  "start_campaign": "Start A Campaign",
+  "join_challenge": "Join Challenge",
+  "campaign": "Campaign",
+  "funded": "Funded",
+  "doners": "Doners",
+  "raised": "Raised",
+
+  "ramadan_challenge": "Ramadan Chalenges",
+  "feed_familly": "Feed A Family For Iftar",
+  "card_desc": "Join our Ramadan challenge to provide iftar meals for families in need. Every $50 feeds a family for a day.",
+  "honor_company": "Honor company",
+
+  "contributing": "Contributing with Ramadan Challenge!",
+  "contributing_desc": "Help families in need experience a blessed Ramadan.",
+
+  "partners": "Trusted by our partners",
+
+  "heroes": "Meet Our Ramadan Challenge Heroes",
+  "first_donor": "First Doner",
+  "second_donor": "Second Doner",
+  "third_donor": "Third Doner",
+  "heros_desc": "Thank you for your extraordinary generosity and commitment to making a difference.",
+
+  "campaigns": "Other Platform Campaigns",
+
+  "famouses": "Trusted by those you trust",
+
+  "success_stories": "Success Stories",
+  "stories_title": "Your Contribution, Real Impact",
+  "stories_desc": "Our heroes join hands to fund meals, build shelters, and support education, driven by the shared goal of spreading kindness. This year, we invite you to be part of this journey, turning small gestures into impactful change. By supporting a Ramadan challenge, you’re not only helping achieve a community goal but also creating lasting memories of giving during this blessed month  See more.",
+
+  "ready": "Ready to Make a Difference This Ramadan.",
+  "ready_desc": "Your contributions create change. Let’s reach our goals together."
 }

@@ -4,7 +4,7 @@
       <h1
         class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
       >
-        Trusted by our partners
+        {{ $t("home.partners") }}
       </h1>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints2" class="mt-4">
@@ -38,15 +38,5 @@
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
-import { ref } from "vue";
-
 const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
-// const images = ref([
-//   "../../../src/assets/images/islamic-institute-logo.png",
-//   "../../../src/assets/images/islamic-institutes-logos.png",
-//   "../../../src/assets/images/islamic-logos.png",
-//   "../../../src/assets/images/logo-islamic.png",
-// ]);
 </script>
-
-<style scoped></style>
