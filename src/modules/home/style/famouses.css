@@ -1,0 +1,18 @@
+.image {
+  .hover_name {
+    bottom: -100%;
+    transition: all 0.3s ease;
+    background: rgb(223, 255, 230);
+    background: linear-gradient(
+      6deg,
+      rgba(223, 255, 230, 0.7175682773109244) 26%,
+      rgba(217, 217, 217, 0.6363357843137255) 99%
+    );
+  }
+
+  &:hover {
+    .hover_name {
+      bottom: 0;
+    }
+  }
+}

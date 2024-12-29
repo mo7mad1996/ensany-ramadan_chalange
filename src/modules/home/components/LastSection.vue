@@ -1,14 +1,17 @@
 <template>
   <Container>
     <section class="ready mt-[3rem] mb-[3rem]">
-      <div class="content relative text-white px-[5rem] py-[5rem]">
-        <h1 class="font-bold text-[36px] leading-[54px]">
-          Ready to Make a <br />
-          Difference This Ramadan.
-        </h1>
+      <div
+        class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
+      >
+        <h2
+          class="font-bold lg:text-[36px] md:text-[36px] text-[28px] lg:leading-[54px] md:leading-[46px] xl:leading-[54px] leading-[46px]"
+        >
+          {{ $t("home.ready") }}
+        </h2>
 
         <p class="text-[14px] pt-[2rem]">
-          Your contributions create change. Let’s reach our goals together .
+          {{ $t("home.ready_desc") }}
         </p>
 
         <v-btn
@@ -16,7 +19,7 @@
           variant="flat"
           size="default"
           color="#3E7E41"
-          >Join the Challenge</v-btn
+          >{{ $t("home.join_challenge") }}</v-btn
         >
       </div>
     </section>
@@ -28,24 +31,5 @@ import Container from "../../../global/Container.vue";
 </script>
 
 <style scoped>
-.ready {
-  background: url(../../../assets/images/ready-img.png) no-repeat;
-  background-size: cover;
-  height: 400px;
-  border-radius: 10px;
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.916448) 41%,
-      rgba(255, 255, 255, 0) 95%
-    );
-  }
-}
+@import "../style/last-section.css";
 </style>

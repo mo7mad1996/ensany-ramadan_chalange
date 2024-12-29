@@ -1,8 +1,17 @@
-/* @import "./base.css"; */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+body {
+  font-family: "Cairo", serif;
+  font-weight: 400;
+}
 
 htm,
 body {
@@ -22,10 +31,6 @@ a {
   border-top-right-radius: 6px !important;
   border-bottom-right-radius: 6px !important;
 }
-
-/* .carousel__viewport {
-  overflow: visible !important;
-} */
 
 .carousel__pagination-button::after {
   display: block;
@@ -55,6 +60,13 @@ a {
     right: -54px !important;
   }
 }
-/* * {
-  font-family: IBM Plex Sans;
-} */
+
+.v-navigation-drawer__scrim {
+  position: fixed !important;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    text-align: center;
+  }
+}

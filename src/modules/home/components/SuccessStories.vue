@@ -2,39 +2,50 @@
   <section aria-label="success stories section" class="success_stories">
     <Container>
       <!-- title -->
-      <h2 class="text-[36px] font-bold mb-8">Success Stories</h2>
+      <h1
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        {{ $t("home.success_stories") }}
+      </h1>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints4" class="mt-4">
         <Slide v-for="(item, index) in 4" :key="index">
-          <div class="grid gap-4 grid-cols-1 lg:grid-cols-2 md:grid-cols-1">
+          <div
+            class="grid gap-4 grid-cols-1 lg:grid-cols-2 md:grid-cols-1 m-[10px]"
+          >
             <div class="image">
               <img
                 src="../../../assets/images/success-stories.jpeg"
-                class="rounded-tr-[60px] rounded-ee-[60px]"
+                class="rounded-tr-[60px] rounded-ee-[60px] shadow-xl"
                 alt=""
               />
             </div>
 
-            <div class="content text-start">
-              <h1 class="font-bold mb-[2rem] text-[36px]">
-                Your Contribution, Real Impact
-              </h1>
+            <div
+              class="content text-start"
+              :dir="locale == 'ar' ? 'rtl' : 'ltr'"
+            >
+              <h2
+                class="font-bold mb-[2rem] lg:text-[36px] md:text-[36px] text-[24px]"
+              >
+                {{ $t("home.stories_title") }}
+              </h2>
 
               <p class="text-[14px] leading-[20px]">
-                Our heroes join hands to fund meals, build shelters, and support
-                education, driven by the shared goal of spreading kindness. This
-                year, we invite you to be part of this journey, turning small
-                gestures into impactful change. By supporting a Ramadan
-                challenge, you’re not only helping achieve a community goal but
-                also creating lasting memories of giving during this blessed
-                month See more.
+                {{ $t("home.stories_desc") }}
               </p>
             </div>
           </div>
         </Slide>
 
         <template #addons>
-          <Navigation />
+          <div class="lg:block md:hidden xl:block hidden">
+            <Navigation />
+          </div>
+
+          <div class="lg:hidden md:block xl:hidden block">
+            <Pagination />
+          </div>
         </template>
       </Carousel>
     </Container>
@@ -44,24 +55,12 @@
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
+const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } =
+  useCarousel();
 
-const { settings, breakpoints4, Navigation, Carousel, Slide } = useCarousel();
+const { locale } = useI18n();
 </script>
 
 <style>
-.success_stories .carousel__prev {
-  left: 92% !important;
-  transform: translateY(5rem) !important;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  color: #3e7e41;
-}
-
-.success_stories .carousel__next {
-  right: 0 !important;
-  transform: translateY(5rem) !important;
-  color: #3e7e41;
-  background-color: #e0e0e0;
-  border-radius: 3px;
-}
+@import "../style/success-sories.css";
 </style>

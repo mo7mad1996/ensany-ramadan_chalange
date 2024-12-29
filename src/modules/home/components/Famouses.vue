@@ -2,7 +2,11 @@
   <section aria-label="famouses section" class="pt-[2rem] pb-[2rem]">
     <Container>
       <!-- title -->
-      <h2 class="text-[36px] font-bold mb-8">Trusted by those you trust</h2>
+      <h2
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        {{ $t("home.famouses") }}
+      </h2>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints3" class="mt-4">
         <Slide>
@@ -117,62 +121,10 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import { ref } from "vue";
 import { useCarousel } from "../../../helpers/carousel";
-
 const { settings, breakpoints3, Navigation, Carousel, Slide } = useCarousel();
-
-const famouses = ref([
-  {
-    image: "/images/scholar1.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-  {
-    image: "../../../src/assets/images/scholar2.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-  {
-    image: "../../../src/assets/images/scholar3.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-  {
-    image: "../../../src/assets/images/scholar4.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-  {
-    image: "../../../src/assets/images/scholar5.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-  {
-    image: "../../../src/assets/images/scholar6.png",
-    name: "Ali Omar",
-    desc: "Head of Bayinah Institute",
-  },
-]);
 </script>
 
 <style scoped>
-.image {
-  .hover_name {
-    bottom: -100%;
-    transition: all 0.3s ease;
-    background: rgb(223, 255, 230);
-    background: linear-gradient(
-      6deg,
-      rgba(223, 255, 230, 0.7175682773109244) 26%,
-      rgba(217, 217, 217, 0.6363357843137255) 99%
-    );
-  }
-
-  &:hover {
-    .hover_name {
-      bottom: 0;
-    }
-  }
-}
+@import "../style/famouses.css";
 </style>

@@ -1,7 +1,11 @@
 <template>
   <section aria-label="partiners section" class="parteners pb-10">
     <Container>
-      <h1>Trusted by our partners</h1>
+      <h1
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        {{ $t("home.partners") }}
+      </h1>
 
       <Carousel v-bind="settings" :breakpoints="breakpoints2" class="mt-4">
         <Slide>
@@ -34,20 +38,5 @@
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
-import { ref } from "vue";
-
 const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
-// const images = ref([
-//   "../../../src/assets/images/islamic-institute-logo.png",
-//   "../../../src/assets/images/islamic-institutes-logos.png",
-//   "../../../src/assets/images/islamic-logos.png",
-//   "../../../src/assets/images/logo-islamic.png",
-// ]);
 </script>
-
-<style scoped>
-h1 {
-  font-weight: 700;
-  font-size: 36px;
-}
-</style>

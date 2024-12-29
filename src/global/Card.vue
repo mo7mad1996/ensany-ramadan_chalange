@@ -28,8 +28,9 @@
       </div>
 
       <v-progress-linear
+        v-observe-visibility="onEnterViewport"
         color="#3E7E41"
-        :model-value="props.rate"
+        :model-value="animatedRate"
         class="rounded mt-2"
         :height="10"
       ></v-progress-linear>
@@ -38,7 +39,7 @@
     <!-- donation amount -->
     <div class="donation mt-4 d-flex align-center justify-space-between">
       <p>
-        <span><slot name="donation"></slot></span> raised of
+        <span><slot name="donation"></slot></span> {{ $t("global.raised_of") }}
         <slot name="total_donation"></slot>
       </p>
 
@@ -47,21 +48,47 @@
         variant="flat"
         size="default"
         color="#3E7E41"
-        >Donate Now</v-btn
+        >{{ $t("global.donate_now") }}</v-btn
       >
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
 const props = defineProps({
   rate: {
     type: Number,
     required: true,
   },
 });
+
+import { ref } from "vue";
+
+const animatedRate = ref(0);
+const targetRate = props.rate; // Replace with the actual value
+
+const onEnterViewport = (isVisible: boolean) => {
+  if (isVisible) {
+    animateProgressBar(targetRate);
+  }
+};
+
+const animateProgressBar = (target: number) => {
+  const duration = 1000; // Animation duration in ms
+  const increment = target / (duration / 16); // Assuming ~60fps
+
+  let current = 0;
+  const update = () => {
+    current += increment;
+    if (current < target) {
+      animatedRate.value = Math.round(current);
+      requestAnimationFrame(update);
+    } else {
+      animatedRate.value = target;
+    }
+  };
+  requestAnimationFrame(update);
+};
 </script>
 
 <style scoped>

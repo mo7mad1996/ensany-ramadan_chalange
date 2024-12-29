@@ -2,20 +2,26 @@
   <section aria-label="ramadan heros" class="pt-[2rem] pb-[2rem]">
     <Container>
       <!-- Title -->
-      <h2 class="text-[36px] font-bold mb-8 text-center">
-        Meet Our Ramadan Challenge Heroes
-      </h2>
+      <h1
+        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
+      >
+        {{ $t("home.heroes") }}
+      </h1>
 
       <!-- Heros cards -->
-      <div class="cards grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+      <div
+        class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
+      >
         <!-- card one -->
         <div
-          class="card p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100 mt-[5rem]"
+          class="card card-one p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number1.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">Second Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.second_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -24,8 +30,7 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
 
@@ -36,7 +41,9 @@
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number2.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">First Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.first_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -45,19 +52,20 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
 
         <!-- card three -->
         <div
-          class="card p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100 mt-[5rem]"
+          class="card card-three p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number3.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">Third Donor</h5>
+            <h5 class="font-bold text-[28px] text-black">
+              {{ $t("home.third_donor") }}
+            </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
@@ -66,8 +74,7 @@
           </div>
 
           <p class="text-[14px] leading-[20px] pt-[1rem]">
-            Thank you for your extraordinary generosity and commitment to making
-            a difference.
+            {{ $t("home.heros_desc") }}
           </p>
         </div>
       </div>
@@ -77,29 +84,8 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import { ref } from "vue";
-
-const donors = ref([
-  {
-    image: "../../assets/images/number1.svg",
-    title: "Second Donor",
-    name: "Aliyah M.",
-    amount: "$29k",
-    desc: "Thank you for your extraordinary generosity and commitment to making a difference.",
-  },
-  {
-    image: "../../../src/assets/images/number2.svg",
-    title: "First Donor",
-    name: "Mohammed M.",
-    amount: "$30k",
-    desc: "Thank you for your extraordinary generosity and commitment to making a difference.",
-  },
-  {
-    image: "../../../src/assets/images/number3.svg",
-    title: "Third Donor",
-    name: "Aref M.",
-    amount: "$26k",
-    desc: "Thank you for your extraordinary generosity and commitment to making a difference.",
-  },
-]);
 </script>
+
+<style scoped>
+@import "../style/challenge-heros.css";
+</style>

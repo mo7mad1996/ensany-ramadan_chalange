@@ -10,14 +10,26 @@
   </v-layout>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
-import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
-const router = useRouter();
+const { locale } = useI18n();
 
-console.log(router);
+useHead({
+  htmlAttrs: {
+    dir: locale.value === "ar" ? "rtl" : "ltr",
+  },
+});
 
-console.log("layout start");
+watch(locale, (newLocale) => {
+  const isArabic = newLocale === "ar";
+
+  useHead({
+    htmlAttrs: {
+      dir: isArabic ? "rtl" : "ltr",
+    },
+  });
+});
 </script>
