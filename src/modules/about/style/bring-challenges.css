@@ -1,0 +1,11 @@
+.text {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #3e7e41;
+    height: 100%;
+    left: -19px;
+    width: 1px;
+  }
+}

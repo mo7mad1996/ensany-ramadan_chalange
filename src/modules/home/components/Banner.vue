@@ -19,7 +19,7 @@
             variant="flat"
             size="default"
             color="#3E7E41"
-            >{{ $t("home.join_challenge") }}</v-btn
+            >{{ $t("global.join_challenge") }}</v-btn
           >
 
           <v-btn
@@ -27,7 +27,7 @@
             variant="outlined"
             size="default"
             color="#fff"
-            >{{ $t("home.start_campaign") }}</v-btn
+            >{{ $t("global.start_campaign") }}</v-btn
           >
         </div>
 

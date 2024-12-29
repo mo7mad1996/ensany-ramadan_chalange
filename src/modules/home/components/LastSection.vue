@@ -19,7 +19,7 @@
           variant="flat"
           size="default"
           color="#3E7E41"
-          >{{ $t("home.join_challenge") }}</v-btn
+          >{{ $t("global.join_challenge") }}</v-btn
         >
       </div>
     </section>
