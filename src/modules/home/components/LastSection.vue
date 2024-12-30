@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <section class="ready mt-[3rem] mb-[3rem]">
+    <section class="ready mt-[3rem] mb-[3rem] flex place-items-center">
       <div
         class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
       >

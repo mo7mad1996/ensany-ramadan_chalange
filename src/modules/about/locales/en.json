@@ -1,4 +1,27 @@
 {
   "why_ramadan": "Why Ramadan?",
-  "why_desc": "Ramadan is a time of reflection, compassion, and generosity. It’s the perfect season to channel the spirit of giving into tangible action. Our platform enables you to harness this energy and turn your charitable intentions into real impact."
+  "why_desc": "Ramadan is a time of reflection, compassion, and generosity. It’s the perfect season to channel the spirit of giving into tangible action. Our platform enables you to harness this energy and turn your charitable intentions into real impact.",
+
+  "guided": "Guided by purpose, driven by impact",
+  "guided_sories": "Our Story",
+  "guided_desc": "Founded in 2010, our organization grew from a small group of passionate volunteers to a dedicated team of professionals committed to making a difference. What started as a local initiative has now expanded to support communities across multiple regions.",
+
+  "missions": "Our Mission & Vision",
+  "mission_desc": "To create a world where generosity knows no bounds, empowering communities to thrive through innovative campaigns that inspire, connect, and transform lives.At Ramadan Challenge, we believe that giving back is more than an act; it’s a way to inspire hope and build a better future. Our platform connects individuals and nonprofits to unite for impactful causes. Whether you’re starting a challenge or supporting one, every action matters.",
+
+  "steps_challenges": "How We Bring Challenges to Life",
+
+  "step1_tite": "Start Your Challenge",
+  "step1_desc": "Log in and Create a unique campaign tailored to your goals and share it with your network.",
+  "step1_small_text": "Start a Campaign ",
+
+  "step2_tite": "Contribute to Causes",
+  "step2_desc": "Support challenges that align with your values by donating or spreading the word.",
+  "step2_small_text": "Find purpose ",
+
+  "step3_tite": "Track and Celebrate Success",
+  "step3_desc": "See the tangible difference your efforts make in real lives and communities.",
+  "step3_small_text": "Celebrate together",
+
+  "impact": "Our Impact So Far"
 }

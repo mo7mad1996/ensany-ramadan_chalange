@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <section class="ready mt-[2rem] mb-[2rem]">
+    <section class="ready mt-[2rem] mb-[2rem] flex items-center">
       <div
         class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
       >
@@ -11,7 +11,7 @@
         </h2>
 
         <p
-          class="text-[14px] pt-[1.5rem] text-[#F6FFF6] w-[400px] leading-[20px]"
+          class="text-[14px] pt-[1.5rem] text-[#F6FFF6] lg:w-[400px] xl:w-[400px] md:w-[322px] w-[322px] leading-[20px]"
         >
           {{ $t("about.why_desc") }}
         </p>
