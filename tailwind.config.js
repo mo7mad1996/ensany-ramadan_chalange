@@ -12,31 +12,58 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        xs: "1rem",
+        sm: "2rem",
+        xm: "3rem",
+        md: "4rem",
+        xd: "5rem",
+        lg: "6rem",
+        xl: "8rem",
+      },
+
+      lineHeight: {
+        20: "20px",
+        24: "24px",
+        28: "28px",
+        54: "54px",
+        46: "46px",
+      },
+
       container: {
         padding: {
           DEFAULT: "1rem",
           sm: "2rem",
+          md: "3rem",
           lg: "4rem",
-          xl: "2rem",
+          xl: "5rem",
           "2xl": "6rem",
         },
       },
 
-      colors: {
-        red: {
-          50: "#fef2f2",
-          100: "#fde8e8",
-          200: "#fbd5d5",
-          300: "#f8b4b4",
-          400: "#f98080",
-          500: "#C54442",
-          600: "#e02424",
-          700: "#c81e1e",
-          800: "#9b1c1c",
-          900: "#771d1d",
-        },
+      fontSize: {
+        xs: "0.75rem", // 12px
+        sm: "0.875rem", // 14px
+        base: "1rem", // 16px
+        lg: "1.125rem", // 18px
+        xl: "1.25rem", // 20px
+        "2xl": "1.5rem", // 24px
+        "3xl": "1.75rem", // 28px
+        "4xl": "2.25rem", // 36px
+        "5xl": "3rem", // 48px
+        "6xl": "4rem", // 64px
+        "7xl": "5rem", // 80px
+      },
 
-        move: "#23282D",
+      colors: {
+        customwhite: "#FAFAFA",
+        customwhite2: "#f7f7f7",
+
+        primary: {
+          light: "#f6fff6",
+          DEFAULT: "#3E7E41",
+          dark: "#065F46",
+        },
       },
     },
   },

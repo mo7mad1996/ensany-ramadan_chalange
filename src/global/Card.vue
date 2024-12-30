@@ -11,12 +11,12 @@
     </div>
 
     <!-- chalenge title -->
-    <h2 class="font-bold text-[26px] leading-[39px] pt-1">
+    <h2 class="font-bold text-2xl leading-[39px] pt-1">
       <slot name="title"></slot>
     </h2>
 
     <!-- chalenge desc -->
-    <p class="text-[14px]">
+    <p class="text-sm">
       <slot name="desc"></slot>
     </p>
 
@@ -29,7 +29,7 @@
 
       <v-progress-linear
         v-observe-visibility="onEnterViewport"
-        color="#3E7E41"
+        color="primary"
         :model-value="animatedRate"
         class="rounded mt-2"
         :height="10"
@@ -39,7 +39,8 @@
     <!-- donation amount -->
     <div class="donation mt-4 d-flex align-center justify-space-between">
       <p>
-        <span><slot name="donation"></slot></span> {{ $t("global.raised_of") }}
+        <span class="font-bold"><slot name="donation"></slot></span>
+        {{ $t("global.raised_of") }}
         <slot name="total_donation"></slot>
       </p>
 
@@ -47,7 +48,7 @@
         class="text-capitalize rounded-lg"
         variant="flat"
         size="default"
-        color="#3E7E41"
+        color="primary"
         >{{ $t("global.donate_now") }}</v-btn
       >
     </div>
@@ -62,10 +63,8 @@ const props = defineProps({
   },
 });
 
-import { ref } from "vue";
-
 const animatedRate = ref(0);
-const targetRate = props.rate; // Replace with the actual value
+const targetRate = props.rate;
 
 const onEnterViewport = (isVisible: boolean) => {
   if (isVisible) {
@@ -74,8 +73,8 @@ const onEnterViewport = (isVisible: boolean) => {
 };
 
 const animateProgressBar = (target: number) => {
-  const duration = 1000; // Animation duration in ms
-  const increment = target / (duration / 16); // Assuming ~60fps
+  const duration = 1000;
+  const increment = target / (duration / 16);
 
   let current = 0;
   const update = () => {
@@ -90,21 +89,3 @@ const animateProgressBar = (target: number) => {
   requestAnimationFrame(update);
 };
 </script>
-
-<style scoped>
-h2 {
-  font-weight: bold;
-}
-
-.donation {
-  span {
-    font-weight: bold;
-  }
-}
-
-.honor-company {
-  p {
-    color: #12121299;
-  }
-}
-</style>

@@ -18,8 +18,8 @@
             class="text-capitalize rounded-lg"
             variant="flat"
             size="default"
-            color="#3E7E41"
-            >{{ $t("home.join_challenge") }}</v-btn
+            color="primary"
+            >{{ $t("global.join_challenge") }}</v-btn
           >
 
           <v-btn
@@ -27,12 +27,12 @@
             variant="outlined"
             size="default"
             color="#fff"
-            >{{ $t("home.start_campaign") }}</v-btn
+            >{{ $t("global.start_campaign") }}</v-btn
           >
         </div>
 
         <div
-          class="statistics grid gap-y-[2rem] grid-cols-2 lg:grid-cols-4 md:grid-cols-4"
+          class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-4 md:grid-cols-4"
           v-observe-visibility="onEnterViewport"
         >
           <div
@@ -42,7 +42,9 @@
           >
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount">{{ animatedValues[index] }}</span>
+                <span class="amount text-2xl font-bold">{{
+                  animatedValues[index]
+                }}</span>
                 <span>
                   <img :src="stat.imgSrc" :alt="stat.alt" />
                 </span>
@@ -54,18 +56,6 @@
         </div>
       </div>
     </Container>
-
-    <div class="donate_button flex justify-center">
-      <v-btn
-        class="text-capitalize custom-border-radius"
-        stacked
-        size="x-small"
-        color="#3E7E41"
-      >
-        <img src="../../../assets/images/statistics1.svg" alt="" />
-        <p>{{ $t("global.donation") }}</p>
-      </v-btn>
-    </div>
   </section>
 </template>
 
@@ -77,9 +67,4 @@ const { onEnterViewport, stats, animatedValues } = useBanner();
 
 <style scoped>
 @import "../style/banner.css";
-
-.amount {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
 </style>

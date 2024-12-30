@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   components: [
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
+    { path: "~/modules/about/components", prefix: "About" },
   ],
 
   // main style & tailwid config

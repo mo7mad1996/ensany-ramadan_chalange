@@ -1,0 +1,23 @@
+[dir="ltr"] .text {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #3e7e41;
+    height: 100%;
+    left: -19px;
+    width: 1px;
+  }
+}
+
+[dir="rtl"] .text {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #3e7e41;
+    height: 100%;
+    right: -19px;
+    width: 1px;
+  }
+}

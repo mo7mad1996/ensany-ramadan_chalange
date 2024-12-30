@@ -1,10 +1,8 @@
 <template>
-  <section aria-label="famouses section" class="pt-[2rem] pb-[2rem]">
+  <section aria-label="famouses section" class="pt-sm pb-sm">
     <Container>
       <!-- title -->
-      <h2
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.famouses") }}
       </h2>
 
@@ -21,7 +19,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>
@@ -38,7 +36,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>
@@ -55,7 +53,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>
@@ -72,7 +70,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>
@@ -89,7 +87,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>
@@ -106,7 +104,7 @@
               class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">Ali Omar</span>
-              <p class="text-[14px]">Head of Bayinah Institute</p>
+              <p class="text-sm">Head of Bayinah Institute</p>
             </div>
           </div>
         </Slide>

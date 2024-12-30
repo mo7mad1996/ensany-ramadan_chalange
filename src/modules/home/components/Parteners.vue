@@ -1,9 +1,7 @@
 <template>
   <section aria-label="partiners section" class="parteners pb-10">
     <Container>
-      <h1
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.partners") }}
       </h1>
 

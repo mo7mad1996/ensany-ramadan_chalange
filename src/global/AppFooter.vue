@@ -1,5 +1,5 @@
 <template>
-  <footer class="px-[.5rem] py-[2rem] bg-[#f6fff6]">
+  <footer class="px-[.5rem] py-[2rem] bg-primary-light">
     <Container>
       <v-row class="row ga-4" no-gutters>
         <v-col lg="3" xl="4" md="12" cols="12" offset-lg="0">
@@ -32,7 +32,7 @@
         </v-col>
       </v-row>
 
-      <p class="text-center text-[14px] pt-[2.5rem]">
+      <p class="text-center text-sm pt-xm">
         {{ $t("global.copy_right") }}
       </p>
     </Container>
