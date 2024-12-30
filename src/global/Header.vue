@@ -2,43 +2,43 @@
   <v-navigation-drawer
     class="v-navigation-drawer--mobile p-[2rem]"
     v-model="isOpen"
-    location="right"
+    :location="locale === 'ar' ? 'left' : 'right'"
     temporary
     color="#F6FFF6"
   >
     <div class="card flex flex-col gap-y-[1.5rem] items-center" v-if="isOpen">
-      <nuxt-link :to="localePath('/about')" class="text-black">{{
+      <nuxt-link :to="localePath('/')" class="text-black">{{
         $t("global.campaigns")
       }}</nuxt-link>
 
-      <router-link to="/" class="text-black">About Us</router-link>
+      <nuxt-link :to="localePath('/about')" class="text-black">{{
+        $t("global.about_us")
+      }}</nuxt-link>
 
-      <router-link to="/" class="d-flex ga-2 text-black">
+      <nuxt-link :to="localePath('/')" class="d-flex ga-2 text-black">
         <img src="../assets/images/search.svg" width="15" alt="" />
-        <span>Search...</span>
-      </router-link>
+        <span>{{ $t("global.search") }}</span>
+      </nuxt-link>
 
       <div class="flex flex-col gap-y-[1.5rem]">
         <v-btn
-          class="text-capitalize text-red-500"
+          class="text-capitalize"
           variant="flat"
           size="default"
-          color="#3E7E41"
-          >Sign in</v-btn
+          color="primary"
+          >{{ $t("global.signin") }}</v-btn
         >
 
         <v-btn
           class="text-capitalize"
           variant="outlined"
           size="default"
-          color="#3E7E41"
-          >Contact Us</v-btn
+          color="primary"
+          >{{ $t("global.contact_us") }}</v-btn
         >
       </div>
 
-      <router-link to="/" class="text-black">
-        <SwitchLang />
-      </router-link>
+      <SwitchLang />
     </div>
   </v-navigation-drawer>
 
@@ -46,7 +46,7 @@
     <Container class="w-100">
       <div class="d-flex justify-space-between align-center w-100">
         <!-- logo -->
-        <div class="logo">
+        <div class="logo cursor-pointer" @click="$router.push(localePath('/'))">
           <img src="../assets/images/logo.svg" width="136" height="48" alt="" />
         </div>
 
@@ -94,7 +94,7 @@
             class="text-capitalize rounded-lg"
             variant="flat"
             size="default"
-            color="#3E7E41"
+            color="primary"
             >{{ $t("global.signin") }}</v-btn
           >
 
@@ -102,7 +102,7 @@
             class="text-capitalize rounded-lg"
             variant="outlined"
             size="default"
-            color="#3E7E41"
+            color="primary"
             >{{ $t("global.contact_us") }}</v-btn
           >
 
@@ -118,8 +118,9 @@
 <script setup lang="ts">
 import Container from "./Container.vue";
 import SwitchLang from "./SwitchLang.vue";
-import { ref } from "vue";
 const localePath = useLocalePath();
+const { locale } = useI18n();
+
 const isOpen = ref(false);
 
 const openMenue = (): void => {

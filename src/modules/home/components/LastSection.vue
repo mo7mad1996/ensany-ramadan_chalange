@@ -1,24 +1,24 @@
 <template>
   <Container>
-    <section class="ready mt-[3rem] mb-[3rem] flex place-items-center">
+    <section class="ready mt-md mb-md flex place-items-center">
       <div
-        class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
+        class="content relative text-white px-sm py-sm lg:px-xd md:px-md xl:px-xd lg:py-xd xl:py-xd md:py-md"
       >
         <h2
-          class="font-bold lg:text-[36px] md:text-[36px] text-[28px] lg:leading-[54px] md:leading-[46px] xl:leading-[54px] leading-[46px]"
+          class="font-bold lg:text-4xl md:text-4xl text-3xl lg:leading-54 md:leading-46 xl:leading-54 leading-46"
         >
           {{ $t("home.ready") }}
         </h2>
 
-        <p class="text-[14px] pt-[2rem]">
+        <p class="text-sm pt-sm">
           {{ $t("home.ready_desc") }}
         </p>
 
         <v-btn
-          class="text-capitalize rounded-lg mt-[2rem]"
+          class="text-capitalize rounded-lg mt-sm"
           variant="flat"
           size="default"
-          color="#3E7E41"
+          color="primary"
           >{{ $t("global.join_challenge") }}</v-btn
         >
       </div>

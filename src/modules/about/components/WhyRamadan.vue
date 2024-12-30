@@ -1,17 +1,17 @@
 <template>
   <Container>
-    <section class="ready mt-[2rem] mb-[2rem] flex items-center">
+    <section class="ready mt-sm mb-sm flex items-center">
       <div
-        class="content relative text-white px-[2rem] py-[2rem] lg:px-[5rem] md:px-[4rem] xl:px-[5rem] lg:py-[5rem] xl:py-[5rem] md:py-[4rem]"
+        class="content relative text-white px-sm py-sm lg:px-xd md:px-md xl:px-xd lg:py-xd xl:py-xd md:py-md"
       >
         <h2
-          class="font-bold mb-0 lg:text-[36px] md:text-[36px] text-[28px] lg:leading-[54px] md:leading-[46px] xl:leading-[54px] leading-[46px]"
+          class="font-bold mb-0 lg:text-4xl md:text-4xl text-2xl lg:leading-[54px] md:leading-[46px] xl:leading-[54px] leading-[46px]"
         >
           {{ $t("about.why_ramadan") }}
         </h2>
 
         <p
-          class="text-[14px] pt-[1.5rem] text-[#F6FFF6] lg:w-[400px] xl:w-[400px] md:w-[322px] w-[322px] leading-[20px]"
+          class="text-sm pt-[1.5rem] text-[#F6FFF6] lg:w-[400px] xl:w-[400px] md:w-[322px] w-[322px] leading-[20px]"
         >
           {{ $t("about.why_desc") }}
         </p>
@@ -21,7 +21,7 @@
             class="text-capitalize rounded-lg"
             variant="flat"
             size="default"
-            color="#3E7E41"
+            color="primary"
             >{{ $t("global.join_challenge") }}</v-btn
           >
 

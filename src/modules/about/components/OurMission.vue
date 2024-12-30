@@ -1,7 +1,7 @@
 <template>
-  <section aria-label="our story section" class="pt-[2rem] pb-[2rem]">
+  <section aria-label="our story section" class="pt-sm pb-sm">
     <Container
-      class="grid gap-y-[2rem] grid-cols-1 lg:grid-cols-2 md:grid-cols-1 items-center gap-x-[3rem]"
+      class="grid gap-y-sm grid-cols-1 lg:grid-cols-2 md:grid-cols-1 items-center gap-x-xm"
     >
       <div class="image">
         <img

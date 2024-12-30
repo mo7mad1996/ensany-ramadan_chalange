@@ -1,10 +1,8 @@
 <template>
-  <section aria-label="ramadan heros" class="pt-[2rem] pb-[2rem]">
+  <section aria-label="ramadan heros" class="pt-sm pb-sm">
     <Container>
       <!-- Title -->
-      <h1
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.heroes") }}
       </h1>
 
@@ -14,66 +12,66 @@
       >
         <!-- card one -->
         <div
-          class="card card-one p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100"
+          class="card card-one p-[1rem] bg-customwhite rounded-md border-[1px] border-gray-100 border-solid"
         >
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number1.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">
+            <h5 class="font-bold text-3xl text-black">
               {{ $t("home.second_donor") }}
             </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-[18px]">Aliyah M.</span>
-            <span class="font-bold text-[18px]">$29k</span>
+            <span class="font-bold text-lg">Aliyah M.</span>
+            <span class="font-bold text-lg">$29k</span>
           </div>
 
-          <p class="text-[14px] leading-[20px] pt-[1rem]">
+          <p class="text-sm leading-20 pt-[1rem]">
             {{ $t("home.heros_desc") }}
           </p>
         </div>
 
         <!-- card two -->
         <div
-          class="card p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100 h-fit"
+          class="card p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100 h-fit"
         >
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number2.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">
+            <h5 class="font-bold text-3xl text-black">
               {{ $t("home.first_donor") }}
             </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-[18px]">Mohammed M.</span>
-            <span class="font-bold text-[18px]">$30k</span>
+            <span class="font-bold text-lg">Mohammed M.</span>
+            <span class="font-bold text-lg">$30k</span>
           </div>
 
-          <p class="text-[14px] leading-[20px] pt-[1rem]">
+          <p class="text-sm leading-20 pt-[1rem]">
             {{ $t("home.heros_desc") }}
           </p>
         </div>
 
         <!-- card three -->
         <div
-          class="card card-three p-[1rem] bg-[#FAFAFA] rounded-md border-[1px] border-solid border-gray-100"
+          class="card card-three p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
             <img src="../../../assets/images/number3.svg" alt="..." />
 
-            <h5 class="font-bold text-[28px] text-black">
+            <h5 class="font-bold text-3xl text-black">
               {{ $t("home.third_donor") }}
             </h5>
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-[18px]">Aref M.</span>
-            <span class="font-bold text-[18px]">$26k</span>
+            <span class="font-bold text-lg">Aref M.</span>
+            <span class="font-bold text-lg">$26k</span>
           </div>
 
-          <p class="text-[14px] leading-[20px] pt-[1rem]">
+          <p class="text-sm leading-20 pt-xs">
             {{ $t("home.heros_desc") }}
           </p>
         </div>

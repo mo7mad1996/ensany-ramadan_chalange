@@ -2,9 +2,7 @@
   <section aria-label="success stories section" class="success_stories">
     <Container>
       <!-- title -->
-      <h1
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.success_stories") }}
       </h1>
 
@@ -25,13 +23,11 @@
               class="content text-start"
               :dir="locale == 'ar' ? 'rtl' : 'ltr'"
             >
-              <h2
-                class="font-bold mb-[2rem] lg:text-[36px] md:text-[36px] text-[24px]"
-              >
+              <h2 class="font-bold mb-sm lg:text-4xl md:text-4xl text-2xl">
                 {{ $t("home.stories_title") }}
               </h2>
 
-              <p class="text-[14px] leading-[20px]">
+              <p class="text-sm leading-20">
                 {{ $t("home.stories_desc") }}
               </p>
             </div>
@@ -57,7 +53,6 @@ import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } =
   useCarousel();
-
 const { locale } = useI18n();
 </script>
 

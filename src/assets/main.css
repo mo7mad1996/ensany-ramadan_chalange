@@ -70,3 +70,15 @@ a {
     text-align: center;
   }
 }
+
+.donate_button {
+  img {
+    filter: brightness(4);
+  }
+  .custom-border-radius {
+    border-top-left-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 6px;
+  }
+}

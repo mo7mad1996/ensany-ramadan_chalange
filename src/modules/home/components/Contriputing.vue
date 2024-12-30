@@ -1,13 +1,13 @@
 <template>
   <section aria-label="contributing section" class="contributing pb-10">
     <Container>
-      <div class="card bg-[#f7f7f7] p-[3rem] rounded-md">
+      <div class="card bg-customwhite2 p-md rounded-md">
         <v-row
           class="align-center lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse"
         >
           <v-col lg="6" xl="6" md="12" cols="12">
             <h2
-              class="mb-2 font-bold text-[24px] lg:text-[36px] md:text-[36px] xl:text-[36px]"
+              class="mb-2 font-bold text-2xl lg:text-4xl md:text-4xl xl:text-4xl"
             >
               {{ $t("home.contributing") }}
             </h2>

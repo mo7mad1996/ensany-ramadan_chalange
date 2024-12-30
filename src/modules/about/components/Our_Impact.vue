@@ -1,14 +1,12 @@
 <template>
-  <section aria-label="our impact section" class="pt-[2rem] pb-[2rem]">
+  <section aria-label="our impact section" class="pt-sm pb-sm">
     <Container>
-      <h1
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("about.impact") }}
       </h1>
 
       <div
-        class="content pt-[2rem] grid gap-y-[2rem] lg:grid-cols-2 md:grid-cols-1 grid-cols-1"
+        class="content pt-sm grid gap-y-sm lg:grid-cols-2 md:grid-cols-1 grid-cols-1"
       >
         <video
           class="rounded-md cursor-pointer"
@@ -28,7 +26,7 @@
           >
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-black font-bold text-[26px]">{{
+                <span class="amount text-black font-bold text-2xl">{{
                   animatedValues[index]
                 }}</span>
                 <span>
@@ -36,7 +34,7 @@
                 </span>
               </div>
 
-              <h5 class="text-[#12121299] text-[26px] font-bold">
+              <h5 class="text-[#12121299] text-2xl font-bold">
                 {{ stat.label }}
               </h5>
             </div>

@@ -8,6 +8,22 @@ export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
     directives,
+    theme: {
+      defaultTheme: "myCustomTheme",
+      themes: {
+        myCustomTheme: {
+          dark: false,
+          colors: {
+            primary: "#3E7E41",
+          },
+        },
+      },
+    },
+    defaults: {
+      VBtn: {
+        color: "primary",
+      },
+    },
   });
 
   nuxtApp.vueApp.use(vuetify);

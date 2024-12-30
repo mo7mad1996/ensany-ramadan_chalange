@@ -1,9 +1,7 @@
 <template>
-  <section aria-label="ramadan chalenges" class="pt-[2rem] pb-[2rem]">
+  <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
-      <h1
-        class="text-black font-bold lg:text-[36px] md:text-[36px] text-[28px]"
-      >
+      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.ramadan_challenge") }}
       </h1>
 
@@ -50,6 +48,5 @@ import Container from "../../../global/Container.vue";
 import Card from "../../../global/Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
-
 const { locale } = useI18n();
 </script>

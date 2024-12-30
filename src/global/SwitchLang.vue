@@ -14,10 +14,3 @@ import { useI18n } from "vue-i18n";
 const { locale, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 </script>
-
-<style>
-.active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-</style>
