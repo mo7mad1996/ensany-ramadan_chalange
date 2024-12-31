@@ -60,13 +60,13 @@ export default defineNuxtConfig({
     },
     "./src/router/index",
     "@nuxtjs/i18n",
-    "@nuxt/ui",
   ],
 
   plugins: ["./src/plugins/observe-visibility.ts"],
 
   // localization
   i18n: {
+    strategy: "no_prefix",
     locales: [
       {
         code: "en",
@@ -77,7 +77,7 @@ export default defineNuxtConfig({
         language: "ar",
       },
     ],
-    defaultLocale: "en", // Resolve absolute path
+    defaultLocale: "ar", // Resolve absolute path
     vueI18n: "./src/helpers/i18n.config.ts",
   },
 });

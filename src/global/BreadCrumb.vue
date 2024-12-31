@@ -4,7 +4,8 @@
       <span class="text-sm leading-20 font-semibold text-[#12121299]">
         <slot name="first_page"></slot>
       </span>
-      <UIcon name="ep:arrow-left-bold" class="w-3 h-3"></UIcon>
+      <v-icon v-if="locale === 'ar'">mdi-chevron-left</v-icon>
+      <v-icon v-else>mdi-chevron-right</v-icon>
       <span class="text-sm leading-20 font-semibold">
         <slot name="second_page"></slot>
       </span>
@@ -14,4 +15,5 @@
 
 <script setup>
 import Container from "./Container.vue";
+const { locale } = useI18n();
 </script>

@@ -1,11 +1,11 @@
 import { resolve } from "pathe";
 
-const contactRoutes = [
+const campaignsRoutes = [
   {
-    name: "contact",
-    path: "/contact",
-    file: resolve(__dirname, "../pages/ContactPage.vue"), // Adjusted path
+    name: "campaigns",
+    path: "/campaigns",
+    file: resolve(__dirname, "../pages/AllCampaigns.vue"), // Adjusted path
   },
 ];
 
-export default contactRoutes;
+export default campaignsRoutes;
