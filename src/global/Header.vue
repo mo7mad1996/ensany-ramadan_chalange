@@ -103,6 +103,7 @@
             variant="outlined"
             size="default"
             color="primary"
+            @click="$router.push(localePath('/contact'))"
             >{{ $t("global.contact_us") }}</v-btn
           >
 

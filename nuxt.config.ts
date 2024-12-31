@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
+    { path: "~/modules/contact/components", prefix: "Contact" },
   ],
 
   // main style & tailwid config
@@ -59,6 +60,7 @@ export default defineNuxtConfig({
     },
     "./src/router/index",
     "@nuxtjs/i18n",
+    "@nuxt/ui",
   ],
 
   plugins: ["./src/plugins/observe-visibility.ts"],

@@ -1,4 +1,8 @@
 <template>
+  <BreadCrumb>
+    <template #first_page> {{ $t("global.home") }} </template>
+    <template #second_page> {{ $t("global.about_us") }} </template>
+  </BreadCrumb>
   <AboutWhyRamadan />
   <AboutOurStory />
   <AboutOurMission />
@@ -9,6 +13,7 @@
 </template>
 
 <script setup>
+import BreadCrumb from "~/global/BreadCrumb.vue";
 useSeoMeta({
   title: "Ramadan | About",
   ogTitle: "My Amazing Site",
