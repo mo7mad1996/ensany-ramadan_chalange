@@ -10,11 +10,10 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt --host ramadanchallenges.com --port 3000",
+    "dev": "nuxt",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "/opt/cpanel/ea-nodejs22/bin/pm2 start /opt/cpanel/ea-nodejs22/bin/npm --name rmc -- start"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
