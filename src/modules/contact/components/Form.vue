@@ -1,9 +1,9 @@
 <template>
-  <div class="contact_form w-[402px]">
+  <div class="contact_form lg:w-[402px] xl:w-[402px] md:w-full w-full">
     <div class="heading mb-5">
-      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
+      <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         Get in Touch
-      </h1>
+      </h2>
 
       <p class="w-[400px] text-sm text-[#12121299]">
         We’re here to help! Reach out with any questions or feedback, and we’ll
