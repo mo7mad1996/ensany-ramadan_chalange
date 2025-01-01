@@ -199,7 +199,7 @@ export const useCarousel = () => {
     1024: {
       itemsToShow: 1,
       itemsToScroll: 1,
-      snapAlign: "center",
+      snapAlign: "right",
       autoplay: false,
       transition: 200,
       loop: true,

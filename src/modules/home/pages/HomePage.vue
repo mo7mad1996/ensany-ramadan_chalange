@@ -11,12 +11,21 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
+
 useSeoMeta({
-  title: "Ramadan Challeng",
+  title: "التحدى الرمضانى",
   ogTitle: "My Amazing Site",
   description: "This is my amazing site, let me tell you all about it.",
   ogDescription: "This is my amazing site, let me tell you all about it.",
   ogImage: "https://example.com/image.png",
   twitterCard: "summary_large_image",
+});
+
+watch(locale, (newLocale) => {
+  const isArabic = newLocale === "ar";
+  useSeoMeta({
+    title: isArabic ? "التحدى الرمضانى" : "Ramadan Challenge",
+  });
 });
 </script>

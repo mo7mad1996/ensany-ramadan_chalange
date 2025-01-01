@@ -1,7 +1,7 @@
 <template>
   <section aria-label="donation form for campaign" class="pt-sm pb-sm">
     <Container>
-      <div class="w-[466px]">
+      <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
         <div class="flex gap-x-2">
           <img
             src="../../../assets/images/campaign/dolar.svg"

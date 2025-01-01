@@ -81,6 +81,11 @@ a {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 6px;
   }
+
+  .v-btn--stacked.v-btn--size-x-small {
+    max-width: 54px;
+    min-width: 54px;
+  }
 }
 
 .all-campaigns {
