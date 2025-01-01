@@ -1,7 +1,7 @@
 <template>
   <section aria-label="overview section" class="pt-sm pb-sm">
     <Container
-      class="grid gap-sm pt-sm pb-sm grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 md:grid-cols-1 items-center"
+      class="gap-sm pt-sm pb-sm flex justify-between lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse items-center"
     >
       <div class="w-[386px]">
         <!-- honor company  -->
@@ -48,14 +48,35 @@
       <div class="image rounded-md">
         <img
           src="../../../assets/images/banner.png"
-          class="rounded-lg"
+          class="rounded-lg w-[600px]"
           alt=""
         />
       </div>
+
+      <!-- <Carousel
+        v-bind="settings"
+        :breakpoints="breakpoints4"
+        class="mt-4"
+        :dir="locale == 'ar' ? 'rtl' : 'ltr'"
+      >
+        <Slide v-for="(item, index) in 5" :key="index" class="w-fit">
+          <img
+            src="../../../assets/images/banner.png"
+            class="rounded-lg w-[600px]"
+            alt=""
+          />
+        </Slide>
+
+        <template #addons>
+          <pagination />
+        </template>
+      </Carousel> -->
     </Container>
   </section>
 </template>
 
 <script setup>
 import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
+const { breakpoints4, settings, Carousel, Slide, Pagination } = useCarousel();
 </script>
