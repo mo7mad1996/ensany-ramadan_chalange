@@ -6,7 +6,7 @@
       </span>
       <v-icon v-if="locale === 'ar'">mdi-chevron-left</v-icon>
       <v-icon v-else>mdi-chevron-right</v-icon>
-      <span class="text-sm leading-20 font-semibold">
+      <span class="text-sm leading-20 font-semibold text-primary">
         <slot name="second_page"></slot>
       </span>
     </div>

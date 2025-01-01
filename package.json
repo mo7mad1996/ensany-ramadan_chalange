@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxtjs/i18n": "^9.1.1",
+    "@stripe/stripe-js": "^5.4.0",
     "axios": "^1.7.9",
     "nuxt": "^3.14.1592",
     "vite-plugin-vuetify": "^2.0.4",

@@ -12,7 +12,12 @@
     <div
       class="campaigns grid gap-6 pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
-      <Card :rate="20" v-for="(item, index) in 12" :key="index">
+      <Card
+        v-for="(item, index) in 12"
+        :key="index"
+        :rate="20"
+        :route="`/campaigns/${index + 1}`"
+      >
         <template #image>
           <img
             src="../../../assets/images/chalenge-img.png"
@@ -51,4 +56,13 @@ import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 
 const page = ref(2);
+
+useSeoMeta({
+  title: "Ramadan | Campaigns",
+  ogTitle: "My Amazing Site",
+  description: "This is my amazing site, let me tell you all about it.",
+  ogDescription: "This is my amazing site, let me tell you all about it.",
+  ogImage: "https://example.com/image.png",
+  twitterCard: "summary_large_image",
+});
 </script>
