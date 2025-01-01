@@ -1,7 +1,7 @@
 export default {
     apps: [
       {
-        name: "nuxt-app",
+        name: "rmc",
         script: ".output/server/index.mjs",
         instances: "max",
         exec_mode: "cluster",
