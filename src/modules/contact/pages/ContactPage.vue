@@ -1,7 +1,13 @@
 <template>
   <section aria-label="contact us page" class="pt-sm pb-sm">
-    <Container class="grid gap-y-sm grid-cols-1 lg:grid-cols-2 md:grid-cols-1">
-      <ContactForm />
+    <Container>
+      <div
+        class="flex lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse justify-between items-center lg:gap-xl xl:gap-xl md:gap-md gap-sm"
+      >
+        <ContactForm />
+
+        <ContactVideo />
+      </div>
     </Container>
   </section>
 </template>
