@@ -2,7 +2,7 @@ export default {
     apps: [
       {
         name: "rmc",
-        script: ".output/server/index.mjs",
+        script: "/home/ramadanchallenge/ramadan_vuejs/.output/server/index.mjs",
         instances: "max",
         exec_mode: "cluster",
         env: {
