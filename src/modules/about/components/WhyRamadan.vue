@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <section class="ready mt-sm mb-sm flex items-center">
+    <section class="ready mb-sm flex items-center">
       <div
         class="content relative text-white px-sm py-sm lg:px-xd md:px-md xl:px-xd lg:py-xd xl:py-xd md:py-md"
       >

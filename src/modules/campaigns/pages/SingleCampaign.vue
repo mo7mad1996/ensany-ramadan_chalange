@@ -1,21 +1,20 @@
 <template>
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ $t("global.about_us") }} </template>
+    <template #second_page> {{ $t("campaigns.donate") }} </template>
   </BreadCrumb>
-  <AboutWhyRamadan />
-  <AboutOurStory />
-  <AboutOurMission />
-  <AboutBringChallenges />
-  <AboutOurImpact />
-  <HomeSuccessStories />
-  <HomeLastSection />
+
+  <CampaignsOverView />
+
+  <CampaignsDonationForm />
+
+  <CampaignsSimilarCampaigns />
 </template>
 
 <script setup>
 import BreadCrumb from "~/global/BreadCrumb.vue";
 useSeoMeta({
-  title: "Ramadan | About",
+  title: "Ramadan | Campain",
   ogTitle: "My Amazing Site",
   description: "This is my amazing site, let me tell you all about it.",
   ogDescription: "This is my amazing site, let me tell you all about it.",

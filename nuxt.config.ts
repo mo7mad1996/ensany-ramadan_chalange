@@ -35,6 +35,8 @@ export default defineNuxtConfig({
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
+    { path: "~/modules/contact/components", prefix: "Contact" },
+    { path: "~/modules/campaigns/components", prefix: "Campaigns" },
   ],
 
   // main style & tailwid config
@@ -65,6 +67,7 @@ export default defineNuxtConfig({
 
   // localization
   i18n: {
+    strategy: "no_prefix",
     locales: [
       {
         code: "en",
@@ -75,7 +78,7 @@ export default defineNuxtConfig({
         language: "ar",
       },
     ],
-    defaultLocale: "en", // Resolve absolute path
+    defaultLocale: "ar", // Resolve absolute path
     vueI18n: "./src/helpers/i18n.config.ts",
   },
 });

@@ -49,6 +49,7 @@
         variant="flat"
         size="default"
         color="primary"
+        @click="$router.push(route)"
         >{{ $t("global.donate_now") }}</v-btn
       >
     </div>
@@ -59,6 +60,10 @@
 const props = defineProps({
   rate: {
     type: Number,
+    required: true,
+  },
+  route: {
+    type: String,
     required: true,
   },
 });

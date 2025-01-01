@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 export const useCarousel = () => {
   const settings = ref({
-    itemsToShow: 1,
+    itemsToShow: 3,
     snapAlign: "center",
   });
 

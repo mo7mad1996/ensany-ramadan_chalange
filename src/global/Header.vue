@@ -67,7 +67,7 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center"
         >
           <li>
-            <nuxt-link :to="localePath('/')" class="text-black">{{
+            <nuxt-link :to="localePath('/campaigns')" class="text-black">{{
               $t("global.campaigns")
             }}</nuxt-link>
           </li>
@@ -103,6 +103,7 @@
             variant="outlined"
             size="default"
             color="primary"
+            @click="$router.push(localePath('/contact'))"
             >{{ $t("global.contact_us") }}</v-btn
           >
 
