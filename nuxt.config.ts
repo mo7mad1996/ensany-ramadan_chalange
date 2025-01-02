@@ -30,13 +30,14 @@ export default defineNuxtConfig({
     },
   },
 
-  // custom components prefixes
+  // custom components prefixes for auto importing
   components: [
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
     { path: "~/modules/contact/components", prefix: "Contact" },
     { path: "~/modules/campaigns/components", prefix: "Campaigns" },
+    { path: "~/modules/auth/components", prefix: "Auth" },
   ],
 
   // main style & tailwid config
@@ -78,7 +79,7 @@ export default defineNuxtConfig({
         language: "ar",
       },
     ],
-    defaultLocale: "ar", // Resolve absolute path
+    defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
   },
 });
