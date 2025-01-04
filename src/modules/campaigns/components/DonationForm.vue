@@ -286,9 +286,3 @@ onMounted(() => {
   setupStripe();
 });
 </script>
-
-<style scoped>
-[dir="rtl"] .checkbox {
-  direction: rtl;
-}
-</style>

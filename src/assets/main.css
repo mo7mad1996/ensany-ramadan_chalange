@@ -131,3 +131,7 @@ a {
     border-bottom-right-radius: 6px;
   }
 }
+
+[dir="rtl"] .checkbox {
+  direction: rtl;
+}

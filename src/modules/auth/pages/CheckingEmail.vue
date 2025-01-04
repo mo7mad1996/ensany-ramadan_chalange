@@ -6,9 +6,9 @@
     <Container class="flex justify-center items-center">
       <div class="card bg-white rounded-xl w-[494px] p-sm">
         <h2
-          class="text-black mb-5 text-center font-bold lg:text-4xl md:text-4xl text-3xl"
+          class="text-black mb-5 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
         >
-          Checking Email
+          {{ $t("auth.check_email") }}
         </h2>
 
         <div class="image flex justify-center">
@@ -21,11 +21,10 @@
 
         <div class="text-center">
           <h6 class="font-bold text-lg">
-            Waiting for you to verify your email...
+            {{ $t("auth.waiting_verify") }}
           </h6>
           <p class="text-sm text-[#12121299]">
-            We've sent a reset link to your email address. Click the link in the
-            email to reset your password.
+            {{ $t("auth.waiting_desc") }}
           </p>
         </div>
 
@@ -38,7 +37,7 @@
             width="22px"
             alt="..."
           />
-          <span class="text-primary text-sm">Resend</span>
+          <span class="text-primary text-sm">{{ $t("auth.resend") }}</span>
         </div>
       </div>
     </Container>

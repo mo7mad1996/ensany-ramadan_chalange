@@ -8,21 +8,23 @@
         <h2
           class="text-black mb-5 text-center font-bold lg:text-4xl md:text-4xl text-3xl"
         >
-          Reset password
+          {{ $t("auth.reset_password") }}
         </h2>
 
         <form action="">
           <!-- email input -->
           <div class="relative mt-4">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <div
+              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+            >
               <img src="../../../assets/images/contact/email.svg" alt="" />
             </div>
 
             <input
               type="email"
               id="custom-input"
-              placeholder="Email"
-              class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              :placeholder="$t('auth.email')"
+              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
 
@@ -34,14 +36,14 @@
             size="large"
             color="primary"
             @click="$router.push('/checkemail')"
-            >Reset password</v-btn
+            >{{ $t("auth.reset_password") }}</v-btn
           >
         </form>
 
         <!-- back to login -->
         <nuxt-link to="/login">
           <p class="text-sm underline text-center mt-sm cursor-pointer">
-            Back to Login
+            {{ $t("auth.back_login") }}
           </p>
         </nuxt-link>
       </div>

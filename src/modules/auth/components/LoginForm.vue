@@ -1,28 +1,30 @@
 <template>
   <div class="login_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <h2 class="text-black mb-5 font-bold lg:text-4xl md:text-4xl text-3xl">
-      Log In
+      {{ $t("auth.login") }}
     </h2>
 
     <form action="">
       <!-- name input -->
       <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <div
+          class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+        >
           <img src="../../../assets/images/contact/name.svg" alt="" />
         </div>
 
         <input
           type="text"
           id="custom-input"
-          placeholder="Enyer your name"
-          class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+          :placeholder="$t('auth.name')"
+          class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
       </div>
 
       <!-- password input -->
       <div class="relative mt-4">
         <div
-          class="absolute right-0 inset-y-0 flex items-center pr-3 cursor-pointer"
+          class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
           @click="showPassword"
         >
           <v-icon v-if="show" size="small">mdi-eye-outline</v-icon>
@@ -32,7 +34,7 @@
         <input
           :type="show ? 'text' : 'password'"
           id="custom-input"
-          placeholder="Password"
+          :placeholder="$t('auth.password')"
           class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           required
         />
@@ -41,14 +43,19 @@
       <!-- forget password link -->
       <nuxt-link to="/forgetpassword">
         <p class="underline text-primary cursor-pointer text-sm pt-2 text-end">
-          Forget Password ?
+          {{ $t("auth.forget_password") }}
         </p>
       </nuxt-link>
 
       <!-- remember me checkbox -->
-      <v-checkbox v-model="isRemember" color="primary" :ripple="false">
+      <v-checkbox
+        v-model="isRemember"
+        class="checkbox"
+        color="primary"
+        :ripple="false"
+      >
         <template v-slot:label>
-          <p class="text-sm">Remember Me</p>
+          <p class="text-sm">{{ $t("auth.remember_me") }}</p>
         </template>
       </v-checkbox>
 
@@ -59,15 +66,15 @@
         variant="flat"
         size="large"
         color="primary"
-        >Log in</v-btn
+        >{{ $t("auth.login") }}</v-btn
       >
 
       <!-- do not have account option -->
       <p class="text-sm pt-sm text-center">
-        Do not have an account? go to
-        <nuxt-link to="/signup" class="text-primary underline cursor-pointer"
-          >Sign Up</nuxt-link
-        >
+        {{ $t("auth.do_not_have_account") }}
+        <nuxt-link to="/signup" class="text-primary underline cursor-pointer">{{
+          $t("auth.signup")
+        }}</nuxt-link>
       </p>
     </form>
   </div>
