@@ -52,8 +52,4 @@ watch(locale, (newLocale) => {
     },
   });
 });
-
-// if (process.client) {
-//   locale.value = localStorage.getItem("lang") || "ar";
-// }
 </script>

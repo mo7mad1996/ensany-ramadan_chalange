@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   ],
 
   // main style & tailwid config
-  css: ["./src/assets/main.css"],
+  css: ["./src/assets/main.css", "./src/modules/home/style/banner.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -71,15 +71,20 @@ export default defineNuxtConfig({
     strategy: "no_prefix",
     locales: [
       {
-        code: "en",
-        language: "en-US",
-      },
-      {
         code: "ar",
         language: "ar",
+      },
+      {
+        code: "en",
+        language: "en-US",
       },
     ],
     defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: true,
+      fallbackLocale: "ar",
+    },
   },
 });

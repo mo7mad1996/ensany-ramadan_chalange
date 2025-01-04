@@ -8,7 +8,9 @@
             width="22"
             alt="..."
           />
-          <h1 class="font-semibold text-2xl">Donation amount</h1>
+          <h1 class="font-semibold text-2xl">
+            {{ $t("global.donation_amount") }}
+          </h1>
         </div>
 
         <!-- avilable amounts to select  -->
@@ -25,7 +27,9 @@
 
         <!-- custom amount input -->
         <div class="relative mt-5">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <div
+            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+          >
             <img
               src="../../../assets/images/campaign/custom-amount.svg"
               alt=""
@@ -36,16 +40,18 @@
             type="text"
             id="custom-input"
             v-model="customAmount"
-            placeholder="Enter custom amount"
-            class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            :placeholder="$t('global.custom_amount')"
+            class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
         <!-- isMonthly checkbox -->
+
         <v-checkbox
           v-model="isMonthly"
-          label="Make this a monthly donation(optional)."
+          :label="$t('global.monthly_dontion')"
           color="primary"
+          class="checkbox"
         ></v-checkbox>
 
         <!-- choose payment method -->
@@ -56,10 +62,12 @@
               width="22"
               alt="..."
             />
-            <h1 class="font-semibold text-2xl">Choose Payment Methos</h1>
+            <h1 class="font-semibold text-2xl">
+              {{ $t("global.payment_method") }}
+            </h1>
           </div>
 
-          <v-radio-group v-model="paymentMethod" class="mt-5" inline>
+          <v-radio-group v-model="paymentMethod" class="mt-5 checkbox" inline>
             <!-- visa & master card checkbox -->
             <v-radio
               value="visa"
@@ -108,8 +116,11 @@
             </v-radio>
           </v-radio-group>
 
+          <!-- stripe form -->
           <div id="payment-form" class="mb-5">
-            <label for="card-number-element">Card number</label>
+            <label for="card-number-element">{{
+              $t("global.card_number")
+            }}</label>
             <div
               id="card-number-element"
               class="block mb-4 mt-1 w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -117,18 +128,22 @@
 
             <div class="flex items-center justify-between gap-x-4">
               <div class="w-full">
-                <label for="card-number-element">Expires</label>
+                <label for="card-number-element">{{
+                  $t("global.expires")
+                }}</label>
                 <div
                   id="card-expiry-element"
-                  class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                 ></div>
               </div>
 
               <div class="w-full">
-                <label for="card-number-element">Security code</label>
+                <label for="card-number-element">{{
+                  $t("global.security_code")
+                }}</label>
                 <div
                   id="card-cvc-element"
-                  class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                 ></div>
               </div>
             </div>
@@ -143,62 +158,72 @@
               width="22"
               alt="..."
             />
-            <h1 class="font-semibold text-2xl">Personal Info</h1>
+            <h1 class="font-semibold text-2xl">
+              {{ $t("global.personal_info") }}
+            </h1>
           </div>
 
           <form action="">
             <!-- name -->
             <div class="relative mt-5">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
                 <img src="../../../assets/images/contact/name.svg" alt="" />
               </div>
 
               <input
                 type="text"
                 id="custom-input"
-                placeholder="Enter your full name"
-                class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                :placeholder="$t('global.name')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
 
             <!-- email -->
             <div class="relative mt-5">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
                 <img src="../../../assets/images/contact/email.svg" alt="" />
               </div>
 
               <input
                 type="email"
                 id="custom-input"
-                placeholder="Enter your full email"
-                class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                :placeholder="$t('global.email')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
 
             <!-- phone -->
             <div class="relative mt-5">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
                 <img src="../../../assets/images/contact/phone.svg" alt="" />
               </div>
 
               <input
                 type="text"
                 id="custom-input"
-                placeholder="Enter your full phone"
-                class="block w-full pl-10 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                :placeholder="$t('global.phone')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
 
             <!-- comment -->
             <div class="relative mt-5">
-              <div class="absolute right-0 top-3 flex items-center pr-3">
+              <div
+                class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
+              >
                 <img src="../../../assets/images/campaign/edit.svg" alt="" />
               </div>
 
               <textarea
                 type="text"
                 id="custom-input"
-                placeholder="Enter your full phone"
+                :placeholder="$t('global.comment')"
                 class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -212,30 +237,30 @@
           variant="flat"
           size="large"
           color="primary"
-          >Donate Now</v-btn
+          >{{ $t("global.donate_now") }}</v-btn
         >
 
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
             <img src="../../../assets/images/campaign/icon2.svg" alt="" />
-            <span class="text-sm leading-20 text-[#12121299]"
-              >Secure payment</span
-            >
+            <span class="text-sm leading-20 text-[#12121299]">{{
+              $t("global.secure_payment")
+            }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
             <img src="../../../assets/images/campaign/icon3.svg" alt="" />
-            <span class="text-sm leading-20 text-[#12121299]"
-              >100% transparent</span
-            >
+            <span class="text-sm leading-20 text-[#12121299]">{{
+              $t("global.transparent")
+            }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
             <img src="../../../assets/images/campaign/icon1.svg" alt="" />
-            <span class="text-sm leading-20 text-[#12121299]"
-              >Verified charity</span
-            >
+            <span class="text-sm leading-20 text-[#12121299]">{{
+              $t("global.charity")
+            }}</span>
           </div>
         </div>
       </div>
@@ -247,6 +272,7 @@
 import Container from "~/global/Container.vue";
 import setupStripe from "../typescript/stripe";
 
+const { locale } = useI18n();
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
 const customAmount = ref<number | null>(null);
 const isMonthly = ref<boolean>(true);
@@ -260,3 +286,9 @@ onMounted(() => {
   setupStripe();
 });
 </script>
+
+<style scoped>
+[dir="rtl"] .checkbox {
+  direction: rtl;
+}
+</style>

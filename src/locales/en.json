@@ -14,5 +14,23 @@
   "copy_right": "Copyright © 2024 Ramadan Challenge. All Rights Reserved",
   "start_campaign": "Start A Campaign",
   "join_challenge": "Join Challenge",
-  "home": "Home"
+  "home": "Home",
+
+  "donation_amount": "Donation amount",
+  "custom_amount": "Enter Custom Amount",
+  "monthly_dontion": "Make this a monthly donation(optional).",
+  "payment_method": "Choose Payment Method",
+  "card_number": "Card number",
+  "expires": "Expires",
+  "security_code": "Security code",
+  "fees": "Pay additional fees 20% to the organization (optional).",
+  "terms": "Acceptance of all terms and conditions",
+  "personal_info": "Personal info",
+  "name": "Enter your full name",
+  "email": "Enter your email address",
+  "phone": "Enter your phone number",
+  "comment": "Add a comment",
+  "secure_payment": "Secure payment",
+  "transparent": "100% transparent",
+  "charity": "Verified charity"
 }

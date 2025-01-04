@@ -6,7 +6,7 @@ import image4 from "../../../assets/images/campaigns.svg";
 
 export const useBanner = () => {
   const { t } = useI18n();
-  const stats = ref([
+  const stats = computed(() => [
     {
       amount: 3085,
       imgSrc: image1,

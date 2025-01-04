@@ -2,7 +2,7 @@
   <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        Similar Campaigns
+        {{ $t("campaigns.similar_campaigns") }}
       </h1>
 
       <Carousel
