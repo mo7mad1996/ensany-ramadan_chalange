@@ -95,6 +95,7 @@
             variant="flat"
             size="default"
             color="primary"
+            @click="$router.push(localePath('/login'))"
             >{{ $t("global.signin") }}</v-btn
           >
 

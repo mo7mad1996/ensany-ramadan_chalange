@@ -13,6 +13,8 @@
 <script setup>
 const { locale } = useI18n();
 
+console.log("currant language", locale.value);
+
 useSeoMeta({
   title: "التحدى الرمضانى",
   ogTitle: "My Amazing Site",

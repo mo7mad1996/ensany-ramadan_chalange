@@ -1,19 +1,21 @@
 <template>
-  <section aria-label="banner section" class="banner">
-    <Container class="h-100">
-      <div class="content">
+  <section aria-label="banner section" class="banner bg-cover relative">
+    <Container class="h-100 relative text-white grid items-center">
+      <div class="content pt-xd">
         <!-- large text -->
-        <h2 class="mb-0">
+        <h2
+          class="mb-0 font-bold lg:text-5xl xl:text-5xl md:text-[30px] text-[30px] lg:leading-[64.4px] xl:leading-[64.4px] md:leading-[44.4px] leading-[44.4px] lg:w-[520px] xl:w-[520px] md:w-[326px] w-[326px]"
+        >
           {{ $t("home.banner_title") }}
         </h2>
 
         <!-- small text -->
-        <p class="mb-0 mt-5">
+        <p class="mb-0 mt-5 font-thin text-sm leading-20">
           {{ $t("home.banner_desc") }}
         </p>
 
         <!-- banner buttons -->
-        <div class="banner_buttons d-flex ga-3 align-center mt-5">
+        <div class="banner_buttons flex gap-3 items-center mt-5">
           <v-btn
             class="text-capitalize rounded-lg"
             variant="flat"
@@ -32,7 +34,7 @@
         </div>
 
         <div
-          class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-4 md:grid-cols-4"
+          class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-4 md:grid-cols-4 py-xd px-0"
           v-observe-visibility="onEnterViewport"
         >
           <div
@@ -50,7 +52,9 @@
                 </span>
               </div>
 
-              <h5>{{ stat.label }}</h5>
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ stat.label }}
+              </h5>
             </div>
           </div>
         </div>
@@ -66,5 +70,5 @@ const { onEnterViewport, stats, animatedValues } = useBanner();
 </script>
 
 <style scoped>
-@import "../style/banner.css";
+/* @import "../style/banner.css"; */
 </style>

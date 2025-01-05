@@ -1,13 +1,9 @@
 <template>
-  <section aria-label="donation form for campaign" class="pt-sm pb-sm">
+  <section aria-label="donation form for campaign" class="">
     <Container>
-      <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
+      <div class="w-[100%]">
         <div class="flex gap-x-2">
-          <img
-            src="../../../assets/images/campaign/dolar.svg"
-            width="22"
-            alt="..."
-          />
+          <img src="../assets/images/campaign/dolar.svg" width="22" alt="..." />
           <h1 class="font-semibold text-2xl">
             {{ $t("global.donation_amount") }}
           </h1>
@@ -30,10 +26,7 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img
-              src="../../../assets/images/campaign/custom-amount.svg"
-              alt=""
-            />
+            <img src="../assets/images/campaign/custom-amount.svg" alt="" />
           </div>
 
           <input
@@ -58,7 +51,7 @@
         <div class="payment_methods">
           <div class="flex gap-x-2">
             <img
-              src="../../../assets/images/campaign/payment-method.svg"
+              src="../assets/images/campaign/payment-method.svg"
               width="22"
               alt="..."
             />
@@ -83,14 +76,11 @@
                   }"
                 >
                   <img
-                    src="../../../assets/images/campaign/master-card.svg"
+                    src="../assets/images/campaign/master-card.svg"
                     alt="..."
                   />
                   <span>Master Card or</span>
-                  <img
-                    src="../../../assets/images/campaign/visa.svg"
-                    alt="..."
-                  />
+                  <img src="../assets/images/campaign/visa.svg" alt="..." />
                   <span>Visa</span>
                 </div>
               </template>
@@ -105,10 +95,7 @@
                     'bg-primary-light rounded-md': paymentMethod == 'paypal',
                   }"
                 >
-                  <img
-                    src="../../../assets/images/campaign/paypal.svg"
-                    alt="..."
-                  />
+                  <img src="../assets/images/campaign/paypal.svg" alt="..." />
 
                   <span>Pypal</span>
                 </div>
@@ -154,7 +141,7 @@
         <div class="personal-info">
           <div class="flex gap-x-2 items-center">
             <img
-              src="../../../assets/images/campaign/personal-info.svg"
+              src="../assets/images/campaign/personal-info.svg"
               width="22"
               alt="..."
             />
@@ -169,7 +156,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/name.svg" alt="" />
+                <img src="../assets/images/contact/name.svg" alt="" />
               </div>
 
               <input
@@ -185,7 +172,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/email.svg" alt="" />
+                <img src="../assets/images/contact/email.svg" alt="" />
               </div>
 
               <input
@@ -201,7 +188,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
+                <img src="../assets/images/contact/phone.svg" alt="" />
               </div>
 
               <input
@@ -217,7 +204,7 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img src="../assets/images/campaign/edit.svg" alt="" />
               </div>
 
               <textarea
@@ -243,21 +230,21 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon2.svg" alt="" />
+            <img src="../assets/images/campaign/icon2.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon3.svg" alt="" />
+            <img src="../assets/images/campaign/icon3.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon1.svg" alt="" />
+            <img src="../assets/images/campaign/icon1.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>
@@ -270,7 +257,7 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
-import setupStripe from "../typescript/stripe";
+import setupStripe from "~/modules/campaigns/typescript/stripe";
 
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
 const customAmount = ref<number | null>(null);

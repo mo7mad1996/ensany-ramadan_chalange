@@ -19,6 +19,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         },
       },
     },
+
     defaults: {
       VBtn: {
         color: "primary",

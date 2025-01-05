@@ -1,12 +1,18 @@
 <template>
-  <section aria-label="contact us page" class="pt-sm pb-sm">
+  <section aria-label="login page" class="">
     <Container>
       <div
-        class="flex lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse justify-between items-center lg:gap-xl xl:gap-xl md:gap-md gap-sm"
+        class="flex lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse justify-between items-center lg:gap-md xl:gap-md md:gap-md gap-sm"
       >
-        <ContactForm />
+        <AuthRegisterForm />
 
-        <ContactVideo />
+        <div class="image">
+          <img
+            src="../../../assets/images/auth/login-img.svg"
+            class="lg:h-[702px] xl:h-[702px] md:h-full h-full"
+            alt=""
+          />
+        </div>
       </div>
     </Container>
   </section>
@@ -18,7 +24,7 @@ import Container from "~/global/Container.vue";
 const { locale } = useI18n();
 
 useSeoMeta({
-  title: "رمضان | اتصل بنا",
+  title: "رمضان | انشاء حساب",
   ogTitle: "My Amazing Site",
   description: "This is my amazing site, let me tell you all about it.",
   ogDescription: "This is my amazing site, let me tell you all about it.",
@@ -29,7 +35,7 @@ useSeoMeta({
 watch(locale, (newLocale) => {
   const isArabic = newLocale === "ar";
   useSeoMeta({
-    title: isArabic ? "رمضان | اتصل بنا" : "Ramadan | Contact Us",
+    title: isArabic ? "رمضان | انشاء حساب" : "Ramadan | Sign Up",
   });
 });
 </script>

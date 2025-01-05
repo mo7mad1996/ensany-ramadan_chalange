@@ -30,17 +30,18 @@ export default defineNuxtConfig({
     },
   },
 
-  // custom components prefixes
+  // custom components prefixes for auto importing
   components: [
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
     { path: "~/modules/contact/components", prefix: "Contact" },
     { path: "~/modules/campaigns/components", prefix: "Campaigns" },
+    { path: "~/modules/auth/components", prefix: "Auth" },
   ],
 
   // main style & tailwid config
-  css: ["./src/assets/main.css"],
+  css: ["./src/assets/main.css", "./src/modules/home/style/banner.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -70,15 +71,20 @@ export default defineNuxtConfig({
     strategy: "no_prefix",
     locales: [
       {
-        code: "en",
-        language: "en-US",
-      },
-      {
         code: "ar",
         language: "ar",
       },
+      {
+        code: "en",
+        language: "en-US",
+      },
     ],
-    defaultLocale: "ar", // Resolve absolute path
+    defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: true,
+      fallbackLocale: "ar",
+    },
   },
 });

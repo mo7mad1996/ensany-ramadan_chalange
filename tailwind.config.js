@@ -10,6 +10,7 @@ export default {
     "./src/plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
     "./src/modules/**/*.{vue,js,ts}",
+    "./src/*.vue",
   ],
   theme: {
     extend: {

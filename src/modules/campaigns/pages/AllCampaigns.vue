@@ -10,6 +10,36 @@
     </h1>
 
     <div
+      class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
+      v-if="isLoading"
+    >
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+
+      <v-card class="rounded-lg elevation-0">
+        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      </v-card>
+    </div>
+
+    <div
+      v-if="!isLoading"
       class="campaigns grid gap-6 pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
       <Card
@@ -57,6 +87,7 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 const { locale } = useI18n();
 
 const page = ref(2);
+const isLoading = ref(true);
 
 useSeoMeta({
   title: "رمضان | حملات",
@@ -73,4 +104,9 @@ watch(locale, (newLocale) => {
     title: isArabic ? "رمضان | حملات" : "Ramadan | Campaigns",
   });
 });
+
+// only simulation for test skeleton loader
+setTimeout(() => {
+  isLoading.value = false;
+}, 3000);
 </script>

@@ -1,51 +1,5 @@
 .banner {
   background: url(../../../assets/images/banner.png) no-repeat;
-  background-size: cover;
-  position: relative;
-  /* height: 100vh; */
-
-  .content {
-    padding-top: 3rem;
-  }
-
-  .v-container {
-    position: relative;
-    color: #fff;
-    display: grid;
-    align-items: center;
-  }
-
-  h2 {
-    font-weight: 700;
-    font-size: 46px;
-    line-height: 64.4px;
-    width: 520px;
-  }
-
-  p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  .statistics {
-    padding: 5rem 0;
-    .v-col-lg-3 {
-      justify-items: center;
-    }
-    .statistic_item {
-      .amount,
-      h5 {
-        font-weight: 700;
-        font-size: 26px;
-        line-height: 39px;
-      }
-
-      h5 {
-        color: #ffffff9e;
-      }
-    }
-  }
 
   .donate_button {
     position: fixed;
@@ -57,19 +11,6 @@
     img {
       filter: brightness(4.5);
     }
-  }
-
-  [dir="rtl"] &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.9164478291316527) 11%,
-      rgba(255, 255, 255, 0) 95%
-    );
   }
 }
 
@@ -105,13 +46,6 @@
 
 @media (max-width: 767px) {
   .banner {
-    h2 {
-      font-weight: 700;
-      font-size: 30px;
-      line-height: 44.4px;
-      width: 326px;
-    }
-
     &::before {
       background: rgb(0, 0, 0);
       background: linear-gradient(
@@ -126,10 +60,3 @@
     }
   }
 }
-
-/* .custom-border-radius {
-  border-top-left-radius: 0;
-  border-top-right-radius: 6px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 6px;
-} */

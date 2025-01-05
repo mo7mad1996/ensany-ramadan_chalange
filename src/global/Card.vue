@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-start ma-2 w-100">
+  <div class="card p-2 cursor-pointer rounded-lg text-start ma-2 w-100">
     <div class="image">
       <slot name="image"></slot>
     </div>
@@ -94,3 +94,12 @@ const animateProgressBar = (target: number) => {
   requestAnimationFrame(update);
 };
 </script>
+
+<style scoped>
+.card {
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+  }
+}
+</style>

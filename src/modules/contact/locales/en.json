@@ -1,3 +1,10 @@
 {
-  "contact": "contact"
+  "get_touch": "Get in Touch",
+  "contact_desc": "We’re here to help! Reach out with any questions or feedback, and we’ll get back to you soon.",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "subject": "Subject",
+  "comment": "Please descripe how we can help you",
+  "submit": "Submit"
 }

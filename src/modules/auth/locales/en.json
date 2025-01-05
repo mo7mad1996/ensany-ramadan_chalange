@@ -1,0 +1,23 @@
+{
+  "login": "Log In",
+  "name": "Enter your name",
+  "password": "Password",
+  "forget_password": "Forget Password ?",
+  "remember_me": "Remember Me",
+  "do_not_have_account": "Do not have an account? go to",
+  "signup": "Sign Up",
+
+  "email": "Email",
+  "phone": "phone number",
+  "confirm_password": "Confirm Password",
+  "terms": "Acceptance of all terms and conditions",
+  "have_account": "Are you already have an account? go to",
+
+  "reset_password": "Reset password",
+  "back_login": "Back to login",
+
+  "check_email": "Checking Email",
+  "waiting_verify": "Waiting for you to verify your email...",
+  "waiting_desc": "We've sent a reset link to your email address. Click the link in the email to reset your password.",
+  "resend": "Resend"
+}
