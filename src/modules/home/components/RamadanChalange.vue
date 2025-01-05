@@ -5,7 +5,25 @@
         {{ $t("home.ramadan_challenge") }}
       </h1>
 
+      <div
+        class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
+        v-if="isLoading"
+      >
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+      </div>
+
       <Carousel
+        v-if="!isLoading"
         v-bind="settings"
         :breakpoints="breakpoints1"
         class="mt-4"
@@ -49,4 +67,10 @@ import Card from "../../../global/Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
+const isLoading = ref(true);
+
+// only simulation for test skeleton loader
+setTimeout(() => {
+  isLoading.value = false;
+}, 3000);
 </script>

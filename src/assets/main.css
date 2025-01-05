@@ -135,3 +135,10 @@ a {
 [dir="rtl"] .checkbox {
   direction: rtl;
 }
+
+.dialog {
+  &::backdrop {
+    background-color: #dadada17;
+    backdrop-filter: blur(2px);
+  }
+}
