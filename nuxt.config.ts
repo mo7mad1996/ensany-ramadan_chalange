@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     { path: "~/modules/contact/components", prefix: "Contact" },
     { path: "~/modules/campaigns/components", prefix: "Campaigns" },
     { path: "~/modules/auth/components", prefix: "Auth" },
+    { path: "~/modules/blogs/components", prefix: "Blog" },
   ],
 
   // main style & tailwid config

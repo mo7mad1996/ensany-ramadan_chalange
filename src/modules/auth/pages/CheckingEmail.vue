@@ -6,27 +6,28 @@
     <Container class="flex justify-center items-center">
       <div class="card bg-white rounded-xl w-[494px] p-sm">
         <h2
-          class="text-black mb-5 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
+          class="text-black mb-2 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
         >
           {{ $t("auth.check_email") }}
         </h2>
 
-        <div class="image flex justify-center">
-          <img src="../../../assets/images/auth/email.svg" alt="" />
+        <p class="text-sm text-[#12121299]">
+          We've sent a 4-digit code to your Email. Enter it below to Reset your
+          password and continue.
+        </p>
+
+        <div class="otp-input">
+          <v-otp-input length="6" model-value=""></v-otp-input>
         </div>
 
-        <!-- <div class="otp-input">
-          <v-otp-input length="7" model-value="3214214"></v-otp-input>
-        </div> -->
-
-        <div class="text-center">
-          <h6 class="font-bold text-lg">
-            {{ $t("auth.waiting_verify") }}
-          </h6>
-          <p class="text-sm text-[#12121299]">
-            {{ $t("auth.waiting_desc") }}
-          </p>
-        </div>
+        <v-btn
+          class="text-capitalize rounded-lg w-100 mt-2"
+          :ripple="false"
+          variant="flat"
+          size="large"
+          color="primary"
+          >Reset Password</v-btn
+        >
 
         <!-- Recend code -->
         <div

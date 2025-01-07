@@ -7,6 +7,7 @@
   <HomeCampaigns />
   <HomeFamouses />
   <HomeSuccessStories />
+  <HomeLatestBlogs />
   <HomeLastSection />
 </template>
 
