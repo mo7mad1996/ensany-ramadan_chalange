@@ -1,5 +1,3 @@
-import { type DirectiveBinding } from "vue";
-
 const observeVisibilityDirective = {
   mounted(el: HTMLElement, binding: any) {
     const callback = (entries: IntersectionObserverEntry[]) => {

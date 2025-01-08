@@ -91,7 +91,7 @@
         />
       </div>
 
-      <!-- accept all terms checkbox -->
+      <!-- terms and conditions -->
       <v-checkbox
         v-model="isRemember"
         class="checkbox"
@@ -99,7 +99,10 @@
         :ripple="false"
       >
         <template v-slot:label>
-          <p class="text-sm">{{ $t("auth.terms") }}</p>
+          <!-- <p class="text-sm">{{ $t("auth.terms") }}</p> -->
+          <nuxt-link to="/terms" class="hover:underline">{{
+            $t("auth.terms")
+          }}</nuxt-link>
         </template>
       </v-checkbox>
 

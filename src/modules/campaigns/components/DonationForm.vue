@@ -20,14 +20,32 @@
               v-for="(item, index) in avilableAmounts"
               :key="index"
               class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
-              :class="{ 'bg-[#e8fde8]': amout == item }"
+              :class="{ 'bg-[#e8fde8]': amount == item }"
               @click="selectAmount(item)"
               >${{ item }}</span
             >
+
+            <div
+              @click="showCustomInput"
+              class="custom_donation cursor-pointer py-[5px] px-[15px] rounded-[5px] hover:bg-[#e8fde8]"
+            >
+              <img
+                src="../../../assets/images/campaign/custom-amount.svg"
+                alt=""
+              />
+
+              <v-tooltip
+                v-if="showTooltip"
+                activator="parent"
+                location="top"
+                class="custom-tooltip"
+                >{{ $t("global.custom_amount") }}</v-tooltip
+              >
+            </div>
           </div>
 
           <!-- custom amount input -->
-          <div class="relative mt-5">
+          <div class="relative mt-5" v-if="customInput">
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
@@ -40,7 +58,7 @@
             <input
               type="text"
               id="custom-input"
-              v-model="customAmount"
+              v-model="amount"
               :placeholder="$t('global.custom_amount')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -98,102 +116,6 @@
             </v-radio-group>
           </div>
 
-          <!-- choose payment method -->
-          <div class="payment_methods">
-            <div class="flex gap-x-2">
-              <img
-                src="../../../assets/images/campaign/payment-method.svg"
-                width="22"
-                alt="..."
-              />
-              <h1 class="font-semibold text-2xl">
-                {{ $t("global.payment_method") }}
-              </h1>
-            </div>
-
-            <v-radio-group v-model="paymentMethod" class="mt-4 checkbox" inline>
-              <!-- visa & master card checkbox -->
-              <v-radio
-                value="visa"
-                color="primary"
-                class="me-[3rem]"
-                :ripple="false"
-              >
-                <template v-slot:label>
-                  <div
-                    class="flex gap-x-1 items-center p-2"
-                    :class="{
-                      'bg-primary-light rounded-md': paymentMethod == 'visa',
-                    }"
-                  >
-                    <img
-                      src="../../../assets/images/campaign/master-card.svg"
-                      alt="..."
-                    />
-                    <span>Master Card or</span>
-                    <img
-                      src="../../../assets/images/campaign/visa.svg"
-                      alt="..."
-                    />
-                    <span>Visa</span>
-                  </div>
-                </template>
-              </v-radio>
-
-              <!-- paybal checkbox -->
-              <v-radio value="paypal" color="primary" :ripple="false">
-                <template v-slot:label>
-                  <div
-                    class="flex gap-x-1 items-center p-2"
-                    :class="{
-                      'bg-primary-light rounded-md': paymentMethod == 'paypal',
-                    }"
-                  >
-                    <img
-                      src="../../../assets/images/campaign/paypal.svg"
-                      alt="..."
-                    />
-
-                    <span>Pypal</span>
-                  </div>
-                </template>
-              </v-radio>
-            </v-radio-group>
-
-            <!-- stripe form -->
-            <!-- <div id="payment-form" class="mb-5">
-            <label for="card-number-element">{{
-              $t("global.card_number")
-            }}</label>
-            <div
-              id="card-number-element"
-              class="block mb-4 mt-1 w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            ></div>
-
-            <div class="flex items-center justify-between gap-x-4">
-              <div class="w-full">
-                <label for="card-number-element">{{
-                  $t("global.expires")
-                }}</label>
-                <div
-                  id="card-expiry-element"
-                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                ></div>
-              </div>
-
-              <div class="w-full">
-                <label for="card-number-element">{{
-                  $t("global.security_code")
-                }}</label>
-                <div
-                  id="card-cvc-element"
-                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                ></div>
-              </div>
-            </div>
-          </div> -->
-          </div>
-
           <!-- personal info -->
           <div class="personal-info pt-5">
             <div class="flex gap-x-2 items-center">
@@ -223,8 +145,20 @@
               />
             </div>
 
+            <!-- name hidden checkbox -->
+            <v-checkbox
+              v-model="isHidden"
+              class="checkbox"
+              color="primary"
+              :ripple="false"
+            >
+              <template v-slot:label>
+                <p class="text-sm">{{ $t("global.name_hidden") }}</p>
+              </template>
+            </v-checkbox>
+
             <!-- email -->
-            <div class="relative mt-5">
+            <div class="relative">
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
@@ -365,7 +299,7 @@
             variant="flat"
             size="large"
             color="primary"
-            >{{ $t("global.donate_now") }} - ${{ amout }}</v-btn
+            >{{ $t("global.donate_now") }} - ${{ amount }}</v-btn
           >
         </form>
 
@@ -399,25 +333,25 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
-// import setupStripe from "../typescript/stripe";
 
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
-const customAmount = ref<number | null>(null);
 const donationType = ref<string>("onetime");
-const paymentMethod = ref<string>("visa");
-const amout = ref<number>(25);
-const gift = ref<boolean>(true);
+const amount = ref<number>(25);
+const gift = ref<boolean>(false);
+const isHidden = ref<boolean>(false);
+const showTooltip = ref<boolean>(false);
+const customInput = ref<boolean>(false);
 const selectAmount = (item: number): void => {
-  amout.value = item;
+  amount.value = item;
 };
 
-const makeDonation = (): void => {
-  gift.value = !gift.value;
+const showCustomInput = (): void => {
+  customInput.value = !customInput.value;
 };
 
-// onMounted(() => {
-//   setupStripe();
-// });
+onMounted(() => {
+  showTooltip.value = true;
+});
 </script>
 
 <style scoped>

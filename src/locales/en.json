@@ -44,5 +44,6 @@
   "monthly": "Monthly",
   "weekly": "Weekly",
   "dialy": "Dialy",
-  "onetime": "One time"
+  "onetime": "One time",
+  "name_hidden": "keep your name hidden"
 }

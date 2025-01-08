@@ -30,6 +30,12 @@ const authRoutes = [
     path: "/resetpassword",
     file: resolve(__dirname, "../pages/ResetPassword.vue"),
   },
+
+  {
+    name: "terms",
+    path: "/terms",
+    file: resolve(__dirname, "../pages/Terms.vue"),
+  },
 ];
 
 export default authRoutes;

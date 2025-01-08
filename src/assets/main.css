@@ -146,3 +146,8 @@ a {
 .v-input__details {
   display: none !important;
 }
+
+.custom-tooltip .v-overlay__content {
+  background-color: #e8fde8 !important;
+  color: #000 !important;
+}

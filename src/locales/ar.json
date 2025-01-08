@@ -44,5 +44,6 @@
   "monthly": "شهرى",
   "weekly": "اسبوعى",
   "dialy": "يومى",
-  "onetime": "مره واحده"
+  "onetime": "مره واحده",
+  "name_hidden": "إخفاء الاسم"
 }
