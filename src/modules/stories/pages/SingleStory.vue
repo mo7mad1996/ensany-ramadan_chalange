@@ -2,21 +2,21 @@
   <Container>
     <BreadCrumb>
       <template #first_page> Home </template>
-      <template #second_page> Blog </template>
+      <template #second_page> Stories </template>
     </BreadCrumb>
 
-    <div class="content">
-      <div class="video">
-        <video
-          class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
-          src="../../../assets/videos/contribution-vid.mp4"
-          poster="../../../assets/videos/contribution-poster.svg"
-          controls
-        ></video>
-      </div>
+    <div class="content flex justify-center">
+      <div class="w-[792px]">
+        <div class="video">
+          <video
+            class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
+            src="../../../assets/videos/contribution-vid.mp4"
+            poster="../../../assets/videos/contribution-poster.svg"
+            controls
+          ></video>
+        </div>
 
-      <div class="flex justify-center">
-        <div class="content_text py-5 w-[792px]">
+        <div class="content_text py-5">
           <!-- title -->
           <h1
             class="lg:text-4xl text-start xl:text-4xl md:text-3xl text-3xl font-bold leading-[54px]"
@@ -24,18 +24,10 @@
             Your Contribution, Real Impact
           </h1>
 
-          <div class="flex items-center pt-2 justify-between">
-            <!-- writer -->
-            <div class="flex items-center gap-x-2">
-              <img src="../../../assets/images/honor-company.svg " alt="" />
-              <span>OrphanSociety</span>
-            </div>
-
-            <!-- reading time and date -->
-            <div class="flex items-center gap-x-sm">
-              <span>3 min read</span>
-              <span>Aug 9, 2024</span>
-            </div>
+          <!-- reading time and date -->
+          <div class="flex items-center justify-end gap-x-sm">
+            <span>3 min read</span>
+            <span>Aug 9, 2024</span>
           </div>
 
           <!-- first text -->
@@ -89,7 +81,7 @@
       </div>
     </div>
 
-    <BlogSimilarBlogs />
+    <StorySimilarStories />
   </Container>
 </template>
 

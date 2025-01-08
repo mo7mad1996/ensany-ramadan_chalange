@@ -33,5 +33,16 @@
   "comment": "Add a comment",
   "secure_payment": "Secure payment",
   "transparent": "100% transparent",
-  "charity": "Verified charity"
+  "charity": "Verified charity",
+
+  "make_donation": "Make donation to someone you love",
+  "some_name": "Enter someone's name",
+  "gift_email": "Gifted mail",
+  "some_number": "Enter someone's phone number",
+  "add_comment": "Add a comment on your donation",
+  "donation_type": "Donation Type",
+  "monthly": "Monthly",
+  "weekly": "Weekly",
+  "dialy": "Dialy",
+  "onetime": "One time"
 }

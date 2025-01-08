@@ -46,6 +46,8 @@
         v-for="(item, index) in 12"
         :key="index"
         :rate="20"
+        :shadow="true"
+        :donatebtn="true"
         :route="`/campaigns/${index + 1}`"
       >
         <template #image>

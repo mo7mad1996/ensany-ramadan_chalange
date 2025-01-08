@@ -4,9 +4,13 @@
     <template #second_page> {{ $t("campaigns.donate") }} </template>
   </BreadCrumb>
 
-  <CampaignsOverView />
+  <div class="flex justify-center">
+    <div class="flex xl:flex-row lg:flex-row md:flex-col flex-col gap-3">
+      <CampaignsOverView />
 
-  <CampaignsDonationForm />
+      <CampaignsDonationForm />
+    </div>
+  </div>
 
   <CampaignsSimilarCampaigns />
 </template>

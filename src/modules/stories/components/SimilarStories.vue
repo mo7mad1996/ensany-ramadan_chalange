@@ -2,7 +2,7 @@
   <section aria-label="similar blogs" class="pt-sm pb-sm">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        Latest Blogs
+        Similar Stories
       </h1>
 
       <Carousel
@@ -12,7 +12,7 @@
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
         <Slide v-for="(item, index) in 5" :key="index">
-          <BlogCard :route="`/blogs/${index + 1}`" class="text-start m-4">
+          <StoryCard :route="`/stories/${index + 1}`" class="text-start m-1">
             <template #video>
               <video
                 class="rounded-md object-cover cursor-pointer"
@@ -30,7 +30,7 @@
               more about the ripple effects of giving and how your contribution
               plays a vital role See more .</template
             >
-          </BlogCard>
+          </StoryCard>
         </Slide>
 
         <template #addons>
@@ -43,6 +43,7 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
+import Card from "./Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();

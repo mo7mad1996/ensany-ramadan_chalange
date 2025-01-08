@@ -42,7 +42,7 @@
       v-if="!isLoading"
       class="campaigns grid gap-sm pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
-      <Card
+      <BlogCard
         v-for="(item, index) in 12"
         :key="index"
         :route="`/blogs/${index + 1}`"
@@ -64,7 +64,7 @@
           ripple effects of giving and how your contribution plays a vital role
           See more .</template
         >
-      </Card>
+      </BlogCard>
     </div>
 
     <div class="pagination items-center justify-center pb-sm">
@@ -79,8 +79,6 @@
 
 <script setup>
 import Container from "~/global/Container.vue";
-// import Card from "~/global/Card.vue";
-import Card from "../components/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 const { locale } = useI18n();
 

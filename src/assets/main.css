@@ -142,3 +142,7 @@ a {
     backdrop-filter: blur(2px);
   }
 }
+
+.v-input__details {
+  display: none !important;
+}
