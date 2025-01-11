@@ -66,7 +66,10 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
-  plugins: ["./src/plugins/observe-visibility.ts"],
+  plugins: [
+    "./src/plugins/observe-visibility.ts",
+    "./src/plugins/vee-validate.ts",
+  ],
 
   // localization
   i18n: {

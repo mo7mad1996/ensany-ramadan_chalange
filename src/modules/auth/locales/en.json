@@ -20,6 +20,7 @@
   "waiting_verify": "Waiting for you to verify your email...",
   "waiting_desc": "We've sent a reset link to your email address. Click the link in the email to reset your password.",
   "resend": "Resend",
+  "six_digits": "We've sent a 6-digit code to your Email.",
 
   "terms_condetions": "Terms & Conditions",
   "terms_desc": "These terms govern your use of our platform and services.",
