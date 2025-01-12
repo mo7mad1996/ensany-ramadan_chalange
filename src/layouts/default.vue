@@ -44,6 +44,11 @@ import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
 import QuickDonation from "~/global/QuickDonation.vue";
 import { useI18n } from "vue-i18n";
+import { setLocale } from "@vee-validate/i18n";
+
+const { locale } = useI18n();
+
+// setLocale(locale.value == "ar" ? "ar" : "en");
 
 const donate = ref("");
 
@@ -55,8 +60,6 @@ const closeDialog = () => {
   donate.value.close();
 };
 
-const { locale } = useI18n();
-
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
@@ -65,6 +68,8 @@ useHead({
 
 watch(locale, (newLocale) => {
   const isArabic = newLocale === "ar";
+
+  // setLocale(isArabic ? "ar" : "en");
 
   useHead({
     htmlAttrs: {

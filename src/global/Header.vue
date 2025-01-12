@@ -73,6 +73,12 @@
           </li>
 
           <li>
+            <nuxt-link :to="localePath('/blogs')" class="text-black">{{
+              $t("global.blogs")
+            }}</nuxt-link>
+          </li>
+
+          <li>
             <nuxt-link :to="localePath('/about')" class="text-black">{{
               $t("global.about_us")
             }}</nuxt-link>

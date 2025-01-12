@@ -1,5 +1,8 @@
 <template>
-  <div class="card p-2 cursor-pointer rounded-lg text-start ma-2 w-100">
+  <div
+    :class="{ card: shadow }"
+    class="p-2 cursor-pointer rounded-lg text-start ma-2 w-100"
+  >
     <div class="image">
       <slot name="image"></slot>
     </div>
@@ -45,6 +48,7 @@
       </p>
 
       <v-btn
+        v-if="donatebtn"
         class="text-capitalize rounded-lg"
         variant="flat"
         size="default"
@@ -64,6 +68,14 @@ const props = defineProps({
   },
   route: {
     type: String,
+    required: true,
+  },
+  shadow: {
+    type: Boolean,
+    required: true,
+  },
+  donatebtn: {
+    type: Boolean,
     required: true,
   },
 });

@@ -42,6 +42,7 @@
           required
         />
       </div>
+
       <!-- confirm new password -->
       <v-btn
         class="text-capitalize rounded-lg w-100 mt-5"

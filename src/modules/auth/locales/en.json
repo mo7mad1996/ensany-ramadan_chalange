@@ -19,5 +19,23 @@
   "check_email": "Checking Email",
   "waiting_verify": "Waiting for you to verify your email...",
   "waiting_desc": "We've sent a reset link to your email address. Click the link in the email to reset your password.",
-  "resend": "Resend"
+  "resend": "Resend",
+  "six_digits": "We've sent a 6-digit code to your Email.",
+
+  "terms_condetions": "Terms & Conditions",
+  "terms_desc": "These terms govern your use of our platform and services.",
+  "terms_glance": "Welcome to Our Community: Terms at a Glance",
+  "glance_sub": "Here’s everything you need to know about using our platform.",
+  "glance_desc": "At Ramadan Challenge, we aim to connect individuals and organizations for meaningful contributions. Our guidelines ensure fairness, safety, and transparency for all users. Your Experience, These terms help create a secure and efficient environment. By continuing to use our platform, you agree to these terms, designed to prioritize your success. We’re here to help! If you have any questions, our support team is just a click away.",
+  "safe_respectfull": "Your Role in Keeping Our Platform Safe and Respectful",
+  "safe_sub": "Guidelines to ensure a positive experience for everyone.",
+  "safe_desc": "Treat all users with courtesy and respect. Harassment, discrimination, or offensive content is strictly prohibited. Use Responsibly, Ensure all shared content aligns with our community guidelines. Avoid spreading misinformation or engaging in fraudulent activities. Protect Data, Keep your account information private and secure. Report suspicious activities immediately. Collaborate Actively, Communicate effectively with donors, campaign creators, and team members for smooth operations.",
+  "payment_refunds": "Understanding Payments and Refunds",
+  "payment_sub": "Clear policies for hassle-free transactions.",
+  "payment_desc": "We accept major credit/debit cards and bank transfers. All transactions are encrypted for security. Fees, A small processing fee supports platform maintenance and operational costs. You’ll see this clearly outlined before confirming your payment. Refunds, If you encounter an issue, refunds may be issued based on our policy. Refund requests must be submitted within 14 days of the transaction. Contact our support team to initiate the process.",
+  "account": "Account Suspension or Termination",
+  "account_sub": "Ensuring compliance for a better community.",
+  "account_desc": "Accounts may be suspended or terminated due to violations such as fraudulent activities, harassment, or repeated breaches of terms. Permanent Termination, Severe violations may result in permanent account closure. We reserve this action for cases impacting user safety or platform integrity. Account Recovery,  For suspended accounts, you may need to complete specific actions to regain access. Appealing a Suspension, Think we made a mistake? Submit an appeal through our contact form, and our team will review it promptly.",
+  "decline": "Decline",
+  "accept": "Accept"
 }

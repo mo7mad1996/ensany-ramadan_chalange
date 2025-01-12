@@ -31,7 +31,7 @@
 
           <input
             type="text"
-            id="custom-input"
+            id="quick1"
             v-model="customAmount"
             :placeholder="$t('global.custom_amount')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -102,39 +102,6 @@
               </template>
             </v-radio>
           </v-radio-group>
-
-          <!-- stripe form -->
-          <div id="payment-form" class="mb-5">
-            <label for="card-number-element">{{
-              $t("global.card_number")
-            }}</label>
-            <div
-              id="card-number-element"
-              class="block mb-4 mt-1 w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            ></div>
-
-            <div class="flex items-center justify-between gap-x-4">
-              <div class="w-full">
-                <label for="card-number-element">{{
-                  $t("global.expires")
-                }}</label>
-                <div
-                  id="card-expiry-element"
-                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                ></div>
-              </div>
-
-              <div class="w-full">
-                <label for="card-number-element">{{
-                  $t("global.security_code")
-                }}</label>
-                <div
-                  id="card-cvc-element"
-                  class="block w-full mt-1 px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                ></div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- personal info -->
@@ -161,7 +128,7 @@
 
               <input
                 type="text"
-                id="custom-input"
+                id="quick4"
                 :placeholder="$t('global.name')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -177,7 +144,7 @@
 
               <input
                 type="email"
-                id="custom-input"
+                id="quick3"
                 :placeholder="$t('global.email')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -193,7 +160,7 @@
 
               <input
                 type="text"
-                id="custom-input"
+                id="quick2"
                 :placeholder="$t('global.phone')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -209,7 +176,7 @@
 
               <textarea
                 type="text"
-                id="custom-input"
+                id="quick5"
                 :placeholder="$t('global.comment')"
                 class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -257,7 +224,6 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
-import setupStripe from "~/modules/campaigns/typescript/stripe";
 
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
 const customAmount = ref<number | null>(null);
@@ -267,8 +233,4 @@ const amout = ref<number>(25);
 const selectAmount = (item: number): void => {
   amout.value = item;
 };
-
-onMounted(() => {
-  setupStripe();
-});
 </script>

@@ -38,6 +38,8 @@ export default defineNuxtConfig({
     { path: "~/modules/contact/components", prefix: "Contact" },
     { path: "~/modules/campaigns/components", prefix: "Campaigns" },
     { path: "~/modules/auth/components", prefix: "Auth" },
+    { path: "~/modules/blogs/components", prefix: "Blog" },
+    { path: "~/modules/stories/components", prefix: "story" },
   ],
 
   // main style & tailwid config
@@ -64,7 +66,10 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
-  plugins: ["./src/plugins/observe-visibility.ts"],
+  plugins: [
+    "./src/plugins/observe-visibility.ts",
+    "./src/plugins/vee-validate.ts",
+  ],
 
   // localization
   i18n: {

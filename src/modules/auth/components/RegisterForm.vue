@@ -15,7 +15,7 @@
 
         <input
           type="text"
-          id="custom-input"
+          id="custom-input1"
           :placeholder="$t('auth.name')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
@@ -31,7 +31,7 @@
 
         <input
           type="email"
-          id="custom-input"
+          id="custom-input2"
           :placeholder="$t('auth.email')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
@@ -47,7 +47,7 @@
 
         <input
           type="text"
-          id="custom-input"
+          id="custom-input3"
           :placeholder="$t('auth.phone')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
@@ -65,7 +65,7 @@
 
         <input
           :type="show1 ? 'text' : 'password'"
-          id="custom-input"
+          id="custom-input4"
           :placeholder="$t('auth.password')"
           class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           required
@@ -84,14 +84,14 @@
 
         <input
           :type="show2 ? 'text' : 'password'"
-          id="custom-input"
+          id="custom-input5"
           :placeholder="$t('auth.confirm_password')"
           class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           required
         />
       </div>
 
-      <!-- accept all terms checkbox -->
+      <!-- terms and conditions -->
       <v-checkbox
         v-model="isRemember"
         class="checkbox"
@@ -99,7 +99,10 @@
         :ripple="false"
       >
         <template v-slot:label>
-          <p class="text-sm">{{ $t("auth.terms") }}</p>
+          <!-- <p class="text-sm">{{ $t("auth.terms") }}</p> -->
+          <nuxt-link to="/terms-conditions" class="hover:underline">{{
+            $t("auth.terms")
+          }}</nuxt-link>
         </template>
       </v-checkbox>
 
@@ -125,6 +128,7 @@
 </template>
 
 <script setup lang="ts">
+import { Form, Field, ErrorMessage } from "vee-validate";
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);

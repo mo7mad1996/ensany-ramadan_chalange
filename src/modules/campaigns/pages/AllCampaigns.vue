@@ -9,34 +9,7 @@
       {{ $t("campaigns.all_campaigns") }}
     </h1>
 
-    <div
-      class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
-      v-if="isLoading"
-    >
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-    </div>
+    <SkeletonLoader :loading="isLoading" />
 
     <div
       v-if="!isLoading"
@@ -46,6 +19,8 @@
         v-for="(item, index) in 12"
         :key="index"
         :rate="20"
+        :shadow="true"
+        :donatebtn="true"
         :route="`/campaigns/${index + 1}`"
       >
         <template #image>
@@ -84,6 +59,7 @@
 import Container from "~/global/Container.vue";
 import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import SkeletonLoader from "~/global/SkeletonLoader.vue";
 const { locale } = useI18n();
 
 const page = ref(2);

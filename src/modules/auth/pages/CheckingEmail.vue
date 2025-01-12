@@ -6,27 +6,70 @@
     <Container class="flex justify-center items-center">
       <div class="card bg-white rounded-xl w-[494px] p-sm">
         <h2
-          class="text-black mb-5 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
+          class="text-black mb-2 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
         >
-          {{ $t("auth.check_email") }}
+          {{ $t("auth.reset_password") }}
         </h2>
 
-        <div class="image flex justify-center">
-          <img src="../../../assets/images/auth/email.svg" alt="" />
+        <p class="text-sm text-[#12121299] text-center">
+          {{ $t("auth.six_digits") }}
+        </p>
+
+        <div class="otp-input">
+          <v-otp-input length="6" model-value=""></v-otp-input>
         </div>
 
-        <!-- <div class="otp-input">
-          <v-otp-input length="7" model-value="3214214"></v-otp-input>
-        </div> -->
-
+        <!-- timer for resend code  -->
         <div class="text-center">
-          <h6 class="font-bold text-lg">
-            {{ $t("auth.waiting_verify") }}
-          </h6>
-          <p class="text-sm text-[#12121299]">
-            {{ $t("auth.waiting_desc") }}
-          </p>
+          <span>{{ formattedTime }}</span>
         </div>
+
+        <!-- password input -->
+        <div class="relative mt-4">
+          <div
+            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
+            @click="showPassword"
+          >
+            <v-icon v-if="show1" size="small">mdi-eye-outline</v-icon>
+            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+          </div>
+
+          <input
+            :type="show1 ? 'text' : 'password'"
+            id="custom-input"
+            :placeholder="$t('auth.password')"
+            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            required
+          />
+        </div>
+
+        <!-- confirm password  -->
+        <div class="relative mt-4">
+          <div
+            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
+            @click="showConfPassword"
+          >
+            <v-icon v-if="show2" size="small">mdi-eye-outline</v-icon>
+            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+          </div>
+
+          <input
+            :type="show2 ? 'text' : 'password'"
+            id="custom-input"
+            :placeholder="$t('auth.confirm_password')"
+            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            required
+          />
+        </div>
+
+        <v-btn
+          class="text-capitalize rounded-lg w-100 mt-5"
+          :ripple="false"
+          variant="flat"
+          size="large"
+          color="primary"
+          >{{ $t("auth.reset_password") }}</v-btn
+        >
 
         <!-- Recend code -->
         <div
@@ -37,17 +80,36 @@
             width="22px"
             alt="..."
           />
-          <span class="text-primary text-sm">{{ $t("auth.resend") }}</span>
+          <button :disabled="timeLeft !== 0" @click="resendCode">
+            <span
+              :class="{
+                'text-[#ddd]': timeLeft !== 0,
+                'text-primary': timeLeft === 0,
+              }"
+              class="text-sm"
+              >{{ $t("auth.resend") }}</span
+            >
+          </button>
         </div>
       </div>
     </Container>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Container from "~/global/Container.vue";
-
+import { useResetPassword } from "../typescript/reset";
 const { locale } = useI18n();
+
+const {
+  show1,
+  show2,
+  showPassword,
+  showConfPassword,
+  resendCode,
+  formattedTime,
+  timeLeft,
+} = useResetPassword();
 
 useSeoMeta({
   title: "رمضان |  كود التأكيد",

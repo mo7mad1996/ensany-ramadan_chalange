@@ -2,6 +2,7 @@
   "campaigns": "الحملات",
   "search": "بحث",
   "about_us": "معلومات عنا",
+  "blogs": "المدونات",
   "signin": "تسجيل الدخول",
   "contact_us": "اتصل بنا",
   "donation": "تبرع",
@@ -32,5 +33,17 @@
   "comment": "أضف تعليقًا",
   "secure_payment": "دفع آمن",
   "transparent": "شفافية 100%",
-  "charity": "جمعية خيرية موثوقة"
+  "charity": "جمعية خيرية موثوقة",
+
+  "make_donation": "قم بالتبرع لشخص تحبه",
+  "some_name": "ادخل اسم شخص",
+  "gift_email": "البريد الالكترونى للشخص",
+  "some_number": "رقم هاتف الشخص",
+  "add_comment": "أضف تعليقًا على تبرعك",
+  "donation_type": "نوع التبرع",
+  "monthly": "شهرى",
+  "weekly": "اسبوعى",
+  "dialy": "يومى",
+  "onetime": "مره واحده",
+  "name_hidden": "إخفاء الاسم"
 }

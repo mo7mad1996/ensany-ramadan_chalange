@@ -16,6 +16,12 @@ import arCampaigns from "../modules/campaigns/locales/ar.json";
 import enAuth from "../modules/auth/locales/en.json";
 import arAuth from "../modules/auth/locales/ar.json";
 
+import enBlogs from "../modules/blogs/locales/en.json";
+import arBlogs from "../modules/blogs/locales/ar.json";
+
+import enStories from "../modules/stories/locales/en.json";
+import arStories from "../modules/stories/locales/ar.json";
+
 export default {
   legacy: false,
   locale: "ar",
@@ -27,6 +33,8 @@ export default {
       contact: enContact,
       campaigns: enCampaigns,
       auth: enAuth,
+      blogs: enBlogs,
+      story: enStories,
     },
     ar: {
       home: arHome,
@@ -35,6 +43,8 @@ export default {
       contact: arContact,
       campaigns: arCampaigns,
       auth: arAuth,
+      blogs: arBlogs,
+      story: arStories,
     },
   },
 };
