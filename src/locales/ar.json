@@ -19,6 +19,7 @@
 
   "donation_amount": "مبلغ التبرع",
   "custom_amount": "أدخل مبلغًا مخصصًا",
+  "custom": "تحديد مبلغ",
   "monthly_dontion": "اجعل هذا تبرعًا شهريًا (اختياري).",
   "payment_method": "اختر وسيلة الدفع",
   "card_number": "رقم البطاقة",
@@ -34,6 +35,7 @@
   "secure_payment": "دفع آمن",
   "transparent": "شفافية 100%",
   "charity": "جمعية خيرية موثوقة",
+  "dolar": "دولار",
 
   "make_donation": "قم بالتبرع لشخص تحبه",
   "some_name": "ادخل اسم شخص",

@@ -1,5 +1,6 @@
 .banner {
   background: url(../../../assets/images/banner.png) no-repeat;
+  background-size: cover;
 
   .donate_button {
     position: fixed;

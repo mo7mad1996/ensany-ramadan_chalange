@@ -13,13 +13,12 @@
       >
         <Slide v-for="(item, index) in 5" :key="index">
           <BlogCard :route="`/blogs/${index + 1}`" class="text-start m-4">
-            <template #video>
-              <video
-                class="rounded-md object-cover cursor-pointer"
-                src="../../../assets/videos/contribution-vid.mp4"
-                poster="../../../assets/videos/contribution-poster.svg"
-                controls
-              ></video>
+            <template #image>
+              <img
+                src="../../../assets/images/blogs-img.png"
+                class="w-full"
+                alt=""
+              />
             </template>
 
             <template #title>{{ $t("blogs.blog_title") }}</template>

@@ -21,7 +21,7 @@
         :rate="20"
         :shadow="true"
         :donatebtn="true"
-        :route="`/campaigns/${index + 1}`"
+        :route="`/campaigns/donate/${index + 1}`"
       >
         <template #image>
           <img

@@ -26,15 +26,15 @@ const authRoutes = [
   },
 
   {
-    name: "resetpassword",
-    path: "/resetpassword",
-    file: resolve(__dirname, "../pages/ResetPassword.vue"),
-  },
-
-  {
     name: "terms",
     path: "/terms-conditions",
     file: resolve(__dirname, "../pages/Terms.vue"),
+  },
+
+  {
+    name: "faqs",
+    path: "/faqs",
+    file: resolve(__dirname, "../pages/Faqs.vue"),
   },
 ];
 

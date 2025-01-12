@@ -1,7 +1,7 @@
 <template>
-  <div class="blog_card">
-    <div class="video">
-      <slot name="video"></slot>
+  <div class="blog_card cursor-pointer">
+    <div class="image">
+      <slot name="image"></slot>
     </div>
 
     <h3
@@ -25,3 +25,54 @@ const props = defineProps({
   },
 });
 </script>
+
+<style scoped>
+.image {
+  position: relative;
+}
+
+[dir="ltr"] .image {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+[dir="rtl"] .image {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+@media (max-width: 767px) {
+  .image {
+    &::before {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8324142156862745) 43%,
+        rgba(255, 255, 255, 0) 95%
+      );
+    }
+  }
+}
+</style>

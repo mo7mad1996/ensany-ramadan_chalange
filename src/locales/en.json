@@ -19,6 +19,7 @@
 
   "donation_amount": "Donation amount",
   "custom_amount": "Enter Custom Amount",
+  "custom": "Custom",
   "monthly_dontion": "Make this a monthly donation(optional).",
   "payment_method": "Choose Payment Method",
   "card_number": "Card number",
@@ -34,6 +35,7 @@
   "secure_payment": "Secure payment",
   "transparent": "100% transparent",
   "charity": "Verified charity",
+  "dolar": "$",
 
   "make_donation": "Make donation to someone you love",
   "some_name": "Enter someone's name",

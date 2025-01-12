@@ -9,8 +9,8 @@ const campaignsRoutes = [
 
   {
     name: "campaign",
-    path: "/campaigns/:id",
-    file: resolve(__dirname, "../pages/SingleCampaign.vue"), // Adjusted path
+    path: "/campaigns/donate/:id",
+    file: resolve(__dirname, "../pages/SingleCampaignDonate.vue"), // Adjusted path
   },
 ];
 

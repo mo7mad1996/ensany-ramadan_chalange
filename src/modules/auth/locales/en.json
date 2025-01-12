@@ -37,5 +37,12 @@
   "account_sub": "Ensuring compliance for a better community.",
   "account_desc": "Accounts may be suspended or terminated due to violations such as fraudulent activities, harassment, or repeated breaches of terms. Permanent Termination, Severe violations may result in permanent account closure. We reserve this action for cases impacting user safety or platform integrity. Account Recovery,  For suspended accounts, you may need to complete specific actions to regain access. Appealing a Suspension, Think we made a mistake? Submit an appeal through our contact form, and our team will review it promptly.",
   "decline": "Decline",
-  "accept": "Accept"
+  "accept": "Accept",
+
+  "fq_title": "Frequently Asked Questions",
+  "fq_desc": "Find quick answers to your questions about Ramadan Challenge.",
+  "q1": "How do I start a campaign?",
+  "q2": "What payment methods are accepted?",
+  "q3": "How can I track donations for my campaign?",
+  "q4": "What happens if my campaign goal isn’t met?"
 }

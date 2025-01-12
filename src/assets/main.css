@@ -138,7 +138,7 @@ a {
 
 .dialog {
   &::backdrop {
-    background-color: #dadada17;
+    background-color: #0a0a0a67;
     backdrop-filter: blur(2px);
   }
 }
@@ -150,4 +150,15 @@ a {
 .custom-tooltip .v-overlay__content {
   background-color: #e8fde8 !important;
   color: #000 !important;
+}
+
+.faqs {
+  .v-expansion-panels {
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+  }
+
+  .v-expansion-panel {
+    border-radius: 8px !important;
+  }
 }

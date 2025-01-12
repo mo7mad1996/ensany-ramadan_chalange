@@ -22,25 +22,15 @@
               class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
               :class="{ 'bg-[#e8fde8]': amount == item }"
               @click="selectAmount(item)"
-              >${{ item }}</span
+            >
+              ${{ item }}</span
             >
 
             <div
               @click="showCustomInput"
               class="custom_donation cursor-pointer py-[5px] px-[15px] rounded-[5px] hover:bg-[#e8fde8]"
             >
-              <img
-                src="../../../assets/images/campaign/custom-amount.svg"
-                alt=""
-              />
-
-              <v-tooltip
-                v-if="showTooltip"
-                activator="parent"
-                location="top"
-                class="custom-tooltip"
-                >{{ $t("global.custom_amount") }}</v-tooltip
-              >
+              <span>{{ $t("global.custom") }}</span>
             </div>
           </div>
 

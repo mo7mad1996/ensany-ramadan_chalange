@@ -12,7 +12,12 @@
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
         <Slide v-for="(item, index) in 5" :key="index">
-          <Card :rate="20" :route="`/campaigns/${index + 1}`">
+          <Card
+            :shadow="true"
+            :donatebtn="true"
+            :rate="20"
+            :route="`/campaigns/donate/${index + 1}`"
+          >
             <template #image>
               <img
                 src="../../../assets/images/chalenge-img.png"

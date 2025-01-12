@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ card: shadow }"
-    class="p-2 cursor-pointer rounded-lg text-start ma-2 w-100"
+    class="p-2 cursor-pointer rounded-lg text-start w-100"
   >
     <div class="image">
       <slot name="image"></slot>

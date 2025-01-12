@@ -1,11 +1,11 @@
 <template>
   <section aria-label="contributing section" class="contributing pb-10">
     <Container>
-      <div class="card bg-customwhite2 p-md rounded-md">
-        <v-row
-          class="align-center lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse"
+      <div class="card bg-customwhite2 xl:p-md lg:p-md md:p-sm p-sm rounded-md">
+        <div
+          class="gap-sm flex items-center justify-between lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse"
         >
-          <v-col lg="6" xl="6" md="12" cols="12">
+          <div>
             <h2
               class="mb-2 font-bold text-2xl lg:text-4xl md:text-4xl xl:text-4xl"
             >
@@ -21,17 +21,17 @@
               color="#3E7E41"
               >{{ $t("global.donate_now") }}</v-btn
             >
-          </v-col>
+          </div>
 
-          <v-col lg="6" xl="6" md="12" cols="12">
+          <div class="video">
             <video
-              class="rounded-md object-cover cursor-pointer"
+              class="rounded-md object-cover cursor-pointer w-full"
               src="../../../assets/videos/contribution-vid.mp4"
               poster="../../../assets/videos/contribution-poster.svg"
               controls
             ></video>
-          </v-col>
-        </v-row>
+          </div>
+        </div>
       </div>
     </Container>
   </section>
