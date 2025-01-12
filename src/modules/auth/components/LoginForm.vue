@@ -5,7 +5,7 @@
     </h2>
 
     <Form v-slot="{ meta }" @submit="onSubmit">
-      <!-- Name Input -->
+      <!--email Input -->
       <div>
         <div class="relative">
           <div
@@ -17,8 +17,8 @@
           <Field
             type="text"
             name="name"
-            rules="required"
-            :placeholder="$t('auth.name')"
+            rules="required|email"
+            :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>

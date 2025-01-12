@@ -15,11 +15,7 @@
 
     <div class="questions w-[808px]">
       <v-expansion-panels class="mb-6 mt-6" elevation="0">
-        <v-expansion-panel
-          v-for="(item, index) in faqs"
-          :key="index"
-          class="mb-3"
-        >
+        <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
               <img :src="item.icon" alt="" />
