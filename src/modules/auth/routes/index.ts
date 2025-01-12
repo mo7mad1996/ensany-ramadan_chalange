@@ -33,7 +33,7 @@ const authRoutes = [
 
   {
     name: "terms",
-    path: "/terms",
+    path: "/terms-conditions",
     file: resolve(__dirname, "../pages/Terms.vue"),
   },
 ];

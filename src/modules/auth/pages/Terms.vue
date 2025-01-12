@@ -65,25 +65,6 @@
           {{ $t("auth.account_desc") }}
         </p>
       </div>
-
-      <!-- accept & descline -->
-      <div class="banner_buttons flex gap-3 items-center mt-sm">
-        <v-btn
-          class="text-capitalize rounded-lg w-[10rem]"
-          variant="flat"
-          size="default"
-          color="primary"
-          >{{ $t("auth.accept") }}</v-btn
-        >
-
-        <v-btn
-          class="text-capitalize rounded-lg border-primary w-[10rem]"
-          variant="outlined"
-          size="default"
-          color="primary"
-          >{{ $t("auth.decline") }}</v-btn
-        >
-      </div>
     </div>
   </div>
 </template>

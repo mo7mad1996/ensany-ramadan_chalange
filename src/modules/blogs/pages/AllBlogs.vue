@@ -1,42 +1,15 @@
 <template>
   <BreadCrumb>
-    <template #first_page> Home </template>
-    <template #second_page> All Blogs </template>
+    <template #first_page> {{ $t("global.home") }} </template>
+    <template #second_page> {{ $t("blogs.blogs") }} </template>
   </BreadCrumb>
 
   <Container class="all-campaigns">
     <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-      All Blogs
+      {{ $t("blogs.blogs") }}
     </h1>
 
-    <div
-      class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
-      v-if="isLoading"
-    >
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-
-      <v-card class="rounded-lg elevation-0">
-        <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
-      </v-card>
-    </div>
+    <SkeletonLoader :loading="isLoading" />
 
     <div
       v-if="!isLoading"
@@ -56,14 +29,9 @@
           ></video>
         </template>
 
-        <template #title>The Power of Collective Giving</template>
+        <template #title>{{ $t("blogs.blog_title") }}</template>
 
-        <template #desc
-          >Discover how a community-driven approach turns individual donations
-          into transformative outcomes for those in need Learn more about the
-          ripple effects of giving and how your contribution plays a vital role
-          See more .</template
-        >
+        <template #desc>{{ $t("blogs.blog_desc") }}</template>
       </BlogCard>
     </div>
 
@@ -80,6 +48,7 @@
 <script setup>
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import SkeletonLoader from "~/global/SkeletonLoader.vue";
 const { locale } = useI18n();
 
 const page = ref(2);

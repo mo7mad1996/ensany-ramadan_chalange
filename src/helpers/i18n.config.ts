@@ -16,8 +16,8 @@ import arCampaigns from "../modules/campaigns/locales/ar.json";
 import enAuth from "../modules/auth/locales/en.json";
 import arAuth from "../modules/auth/locales/ar.json";
 
-import enBlogs from "../modules/auth/locales/en.json";
-import arBlogs from "../modules/auth/locales/ar.json";
+import enBlogs from "../modules/blogs/locales/en.json";
+import arBlogs from "../modules/blogs/locales/ar.json";
 
 import enStories from "../modules/stories/locales/en.json";
 import arStories from "../modules/stories/locales/ar.json";

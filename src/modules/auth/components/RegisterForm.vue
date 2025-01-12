@@ -100,7 +100,7 @@
       >
         <template v-slot:label>
           <!-- <p class="text-sm">{{ $t("auth.terms") }}</p> -->
-          <nuxt-link to="/terms" class="hover:underline">{{
+          <nuxt-link to="/terms-conditions" class="hover:underline">{{
             $t("auth.terms")
           }}</nuxt-link>
         </template>

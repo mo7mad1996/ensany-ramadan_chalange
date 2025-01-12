@@ -22,14 +22,9 @@
               ></video>
             </template>
 
-            <template #title>The Power of Collective Giving</template>
+            <template #title>{{ $t("blogs.blog_title") }}</template>
 
-            <template #desc
-              >Discover how a community-driven approach turns individual
-              donations into transformative outcomes for those in need Learn
-              more about the ripple effects of giving and how your contribution
-              plays a vital role See more .</template
-            >
+            <template #desc>{{ $t("blogs.blog_desc") }}</template>
           </BlogCard>
         </Slide>
 

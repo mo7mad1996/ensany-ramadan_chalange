@@ -4,10 +4,10 @@
       {{ $t("auth.login") }}
     </h2>
 
-    <Form @submit.preventDefault="">
+    <Form v-slot="{ meta }" @submit="onSubmit">
       <!-- Name Input -->
       <div>
-        <div class="relative mb-4">
+        <div class="relative">
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
@@ -17,18 +17,18 @@
           <Field
             type="text"
             name="name"
-            :rules="{ required: true }"
+            rules="required"
             :placeholder="$t('auth.name')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
-        <ErrorMessage class="text-red-500 text-sm" name="name" />
+        <ErrorMessage class="text-red-500 text-sm" name="name" as="span" />
       </div>
 
       <!-- Password Input -->
       <div>
-        <div class="relative mt-4 mb-4">
+        <div class="relative mt-4 mb-1">
           <div
             class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
             @click="showPassword"
@@ -63,6 +63,7 @@
       <!-- Submit Button -->
       <v-btn
         type="submit"
+        :disabled="!meta.valid"
         class="text-capitalize rounded-lg w-full mt-2"
         :ripple="false"
         variant="flat"
@@ -100,5 +101,10 @@ const isRemember = ref(true);
 
 const showPassword = (): void => {
   show.value = !show.value;
+};
+
+// test form values
+const onSubmit = (values: any) => {
+  console.log("form submitted", values);
 };
 </script>

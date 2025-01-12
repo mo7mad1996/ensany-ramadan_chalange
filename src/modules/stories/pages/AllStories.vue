@@ -1,12 +1,12 @@
 <template>
   <BreadCrumb>
-    <template #first_page> Home </template>
-    <template #second_page> Success Stories </template>
+    <template #first_page> {{ $t("global.home") }}</template>
+    <template #second_page> {{ $t("story.stories") }} </template>
   </BreadCrumb>
 
   <Container class="all-campaigns">
     <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-      Success Stories
+      {{ $t("story.stories") }}
     </h1>
 
     <SkeletonLoader :loading="isLoading" />
@@ -29,13 +29,9 @@
           ></video>
         </template>
 
-        <template #title>Your Contribution, Real Impact</template>
+        <template #title>{{ $t("story.title") }}</template>
 
-        <template #desc
-          >Our heroes join hands to fund meals, build shelters, and support
-          education, driven by the shared goal of spreading kindness. This year,
-          we invite you to be part of this journey</template
-        >
+        <template #desc>{{ $t("story.desc") }}</template>
       </StoryCard>
     </div>
 

@@ -2,7 +2,7 @@
   <section aria-label="similar blogs" class="pt-sm pb-sm">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        Similar Blogs
+        {{ $t("blogs.similar_blogs") }}
       </h1>
 
       <Carousel
@@ -12,7 +12,7 @@
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
         <Slide v-for="(item, index) in 5" :key="index">
-          <Card class="text-start m-4">
+          <BlogCard :route="`/blogs/${index + 1}`" class="text-start m-4">
             <template #video>
               <video
                 class="rounded-md object-cover cursor-pointer"
@@ -22,15 +22,10 @@
               ></video>
             </template>
 
-            <template #title>The Power of Collective Giving</template>
+            <template #title>{{ $t("blogs.blog_title") }}</template>
 
-            <template #desc
-              >Discover how a community-driven approach turns individual
-              donations into transformative outcomes for those in need Learn
-              more about the ripple effects of giving and how your contribution
-              plays a vital role See more .</template
-            >
-          </Card>
+            <template #desc>{{ $t("blogs.blog_desc") }}</template>
+          </BlogCard>
         </Slide>
 
         <template #addons>
@@ -43,7 +38,6 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import Card from "./Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();

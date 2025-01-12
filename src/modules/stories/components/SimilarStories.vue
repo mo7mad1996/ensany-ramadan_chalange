@@ -2,7 +2,7 @@
   <section aria-label="similar blogs" class="pt-sm pb-sm">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        Similar Stories
+        {{ $t("story.similar_blogs") }}
       </h1>
 
       <Carousel
@@ -22,14 +22,9 @@
               ></video>
             </template>
 
-            <template #title>The Power of Collective Giving</template>
+            <template #title>{{ $t("story.title") }}</template>
 
-            <template #desc
-              >Discover how a community-driven approach turns individual
-              donations into transformative outcomes for those in need Learn
-              more about the ripple effects of giving and how your contribution
-              plays a vital role See more .</template
-            >
+            <template #desc>{{ $t("story.desc") }}</template>
           </StoryCard>
         </Slide>
 
