@@ -2,7 +2,7 @@
   <section aria-label="donation form for campaign" class="pb-sm">
     <Container>
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
-        <Form v-slot="{ meta, values }" @submit="onSubmit">
+        <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
             <img
               src="../../../assets/images/campaign/dolar.svg"
@@ -346,6 +346,7 @@
           <!-- confirm donation -->
           <v-btn
             :disabled="!meta.valid"
+            type="submit"
             class="text-capitalize rounded-lg w-100 mt-5"
             :ripple="false"
             variant="flat"

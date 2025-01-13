@@ -29,6 +29,7 @@
             variant="outlined"
             size="default"
             color="#fff"
+            @click="$router.push('/start-campaign')"
             >{{ $t("global.start_campaign") }}</v-btn
           >
         </div>

@@ -1,0 +1,49 @@
+.start_campaign_banner {
+  background: url(../../../assets/images/campaign/start-campaign.png) no-repeat;
+  background-size: cover;
+  height: 60vh;
+  position: relative;
+}
+
+[dir="ltr"] .start_campaign_banner {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+[dir="rtl"] .start_campaign_banner {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    &::before {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8324142156862745) 43%,
+        rgba(255, 255, 255, 0) 95%
+      );
+    }
+  }
+}
