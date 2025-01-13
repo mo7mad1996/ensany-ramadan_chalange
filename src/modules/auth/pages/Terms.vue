@@ -5,7 +5,7 @@
   </BreadCrumb>
 
   <div class="flex justify-center pb-lg">
-    <div class="content w-[626px]">
+    <div class="content xl:w-[626px] lg:w-[626px] md:w-[90%] w-[90%]">
       <!-- terms & conditions -->
       <div>
         <h1 class="font-bold text-[32px] leading-[48px]">

@@ -44,5 +44,8 @@
   "q1": "How do I start a campaign?",
   "q2": "What payment methods are accepted?",
   "q3": "How can I track donations for my campaign?",
-  "q4": "What happens if my campaign goal isn’t met?"
+  "q4": "What happens if my campaign goal isn’t met?",
+  "answer1": "We accept all major credit cards, bank transfers, and digital wallets.",
+  "answer2": "You can view real-time donation details in your campaign dashboard under the 'Donations' tab.",
+  "answer3": "If the goal isn’t met, the funds raised will still be transferred to the campaign unless otherwise stated."
 }

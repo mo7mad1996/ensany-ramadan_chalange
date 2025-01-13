@@ -2,7 +2,7 @@
   <section aria-label="donation form for campaign" class="pb-sm">
     <Container>
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
-        <form action="">
+        <Form v-slot="{ meta, values }" @submit="onSubmit">
           <div class="flex gap-x-2">
             <img
               src="../../../assets/images/campaign/dolar.svg"
@@ -15,16 +15,20 @@
           </div>
 
           <!-- avilable amounts to select  -->
-          <div class="amounts flex gap-x-3 items-center mt-5">
-            <span
-              v-for="(item, index) in avilableAmounts"
-              :key="index"
-              class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
-              :class="{ 'bg-[#e8fde8]': amount == item }"
-              @click="selectAmount(item)"
-            >
-              ${{ item }}</span
-            >
+          <div
+            class="amounts flex xl:flex-row lg:flex-row md:flex-row flex-col gap-3 mt-5"
+          >
+            <div class="flex gap-x-3 items-center">
+              <span
+                v-for="(item, index) in avilableAmounts"
+                :key="index"
+                class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
+                :class="{ 'bg-[#e8fde8]': amount == item }"
+                @click="selectAmount(item)"
+              >
+                ${{ item }}</span
+              >
+            </div>
 
             <div
               @click="showCustomInput"
@@ -35,22 +39,31 @@
           </div>
 
           <!-- custom amount input -->
-          <div class="relative mt-5" v-if="customInput">
-            <div
-              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-            >
-              <img
-                src="../../../assets/images/campaign/custom-amount.svg"
-                alt=""
+          <div>
+            <div class="relative mt-5" v-if="customInput">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img
+                  src="../../../assets/images/campaign/custom-amount.svg"
+                  alt=""
+                />
+              </div>
+
+              <Field
+                name="custom_amount"
+                rules="required|englishNumbersOnly"
+                type="text"
+                id="custom-input"
+                v-model="amount"
+                :placeholder="$t('global.custom_amount')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
-
-            <input
-              type="text"
-              id="custom-input"
-              v-model="amount"
-              :placeholder="$t('global.custom_amount')"
-              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            <ErrorMessage
+              name="custom_amount"
+              class="pt-2 text-red-500 text-sm"
+              as="span"
             />
           </div>
 
@@ -120,19 +133,25 @@
             </div>
 
             <!-- name -->
-            <div class="relative mt-5">
-              <div
-                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-              >
-                <img src="../../../assets/images/contact/name.svg" alt="" />
+            <div>
+              <div class="relative mt-5">
+                <div
+                  class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                >
+                  <img src="../../../assets/images/contact/name.svg" alt="" />
+                </div>
+
+                <Field
+                  name="name"
+                  rules="required"
+                  type="text"
+                  id="custom-input"
+                  :placeholder="$t('global.name')"
+                  class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                />
               </div>
 
-              <input
-                type="text"
-                id="custom-input"
-                :placeholder="$t('global.name')"
-                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
+              <ErrorMessage name="name" class="text-sm text-red-500 mt-2" />
             </div>
 
             <!-- name hidden checkbox -->
@@ -148,35 +167,47 @@
             </v-checkbox>
 
             <!-- email -->
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-              >
-                <img src="../../../assets/images/contact/email.svg" alt="" />
+            <div>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                >
+                  <img src="../../../assets/images/contact/email.svg" alt="" />
+                </div>
+
+                <Field
+                  name="email"
+                  type="email"
+                  rules="required|email"
+                  id="custom-input"
+                  :placeholder="$t('global.email')"
+                  class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                />
               </div>
 
-              <input
-                type="email"
-                id="custom-input"
-                :placeholder="$t('global.email')"
-                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
+              <ErrorMessage name="email" class="text-sm text-red-500 mt-2" />
             </div>
 
             <!-- phone -->
-            <div class="relative mt-5">
-              <div
-                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-              >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
+            <div>
+              <div class="relative mt-5">
+                <div
+                  class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                >
+                  <img src="../../../assets/images/contact/phone.svg" alt="" />
+                </div>
+
+                <Field
+                  name="phone"
+                  rules="required"
+                  type="text"
+                  id="custom-input"
+                  :placeholder="$t('global.phone')"
+                  class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                />
               </div>
 
-              <input
-                type="text"
-                id="custom-input"
-                :placeholder="$t('global.phone')"
-                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
+              <ErrorMessage name="phone" class="text-sm text-red-500 mt-2" />
             </div>
           </div>
 
@@ -196,56 +227,86 @@
             <Transition>
               <div class="form" v-if="gift">
                 <!-- someone name -->
-                <div class="relative">
-                  <div
-                    class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                  >
-                    <img src="../../../assets/images/contact/name.svg" alt="" />
+                <div>
+                  <div class="relative">
+                    <div
+                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                    >
+                      <img
+                        src="../../../assets/images/contact/name.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      name="some_name"
+                      rules="required"
+                      type="text"
+                      id="custom-input"
+                      :placeholder="$t('global.some_name')"
+                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    />
                   </div>
 
-                  <input
-                    type="text"
-                    id="custom-input"
-                    :placeholder="$t('global.some_name')"
-                    class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                  <ErrorMessage
+                    name="some_name"
+                    class="text-sm text-red-500 mt-2"
                   />
                 </div>
 
                 <!--someone email -->
-                <div class="relative mt-5">
-                  <div
-                    class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                  >
-                    <img
-                      src="../../../assets/images/contact/email.svg"
-                      alt=""
+                <div>
+                  <div class="relative mt-5">
+                    <div
+                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                    >
+                      <img
+                        src="../../../assets/images/contact/email.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      name="some_email"
+                      type="email"
+                      rules="required|email"
+                      id="custom-input"
+                      :placeholder="$t('global.gift_email')"
+                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
                   </div>
 
-                  <input
-                    type="email"
-                    id="custom-input"
-                    :placeholder="$t('global.gift_email')"
-                    class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                  <ErrorMessage
+                    name="some_email"
+                    class="text-sm text-red-500 mt-2"
                   />
                 </div>
 
                 <!--someone phone -->
-                <div class="relative mt-5">
-                  <div
-                    class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                  >
-                    <img
-                      src="../../../assets/images/contact/phone.svg"
-                      alt=""
+                <div>
+                  <div class="relative mt-5">
+                    <div
+                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                    >
+                      <img
+                        src="../../../assets/images/contact/phone.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      name="some_phone"
+                      rules="required"
+                      type="text"
+                      id="custom-input"
+                      :placeholder="$t('global.some_number')"
+                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
                   </div>
 
-                  <input
-                    type="text"
-                    id="custom-input"
-                    :placeholder="$t('global.some_number')"
-                    class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                  <ErrorMessage
+                    name="some_phone"
+                    class="text-sm text-red-500 mt-2"
                   />
                 </div>
               </div>
@@ -284,6 +345,7 @@
 
           <!-- confirm donation -->
           <v-btn
+            :disabled="!meta.valid"
             class="text-capitalize rounded-lg w-100 mt-5"
             :ripple="false"
             variant="flat"
@@ -291,7 +353,7 @@
             color="primary"
             >{{ $t("global.donate_now") }} - ${{ amount }}</v-btn
           >
-        </form>
+        </Form>
 
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
@@ -323,13 +385,13 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
+import { Form, Field, ErrorMessage } from "vee-validate";
 
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
 const donationType = ref<string>("onetime");
 const amount = ref<number>(25);
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
-const showTooltip = ref<boolean>(false);
 const customInput = ref<boolean>(false);
 const selectAmount = (item: number): void => {
   amount.value = item;
@@ -339,9 +401,9 @@ const showCustomInput = (): void => {
   customInput.value = !customInput.value;
 };
 
-onMounted(() => {
-  showTooltip.value = true;
-});
+const onSubmit = (values: any) => {
+  console.log("form_submitted", values);
+};
 </script>
 
 <style scoped>

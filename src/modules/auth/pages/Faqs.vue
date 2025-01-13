@@ -13,7 +13,7 @@
       <p class="text-sm">{{ $t("auth.fq_desc") }}</p>
     </div>
 
-    <div class="questions w-[808px]">
+    <div class="questions w-full">
       <v-expansion-panels class="mb-6 mt-6" elevation="0">
         <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">

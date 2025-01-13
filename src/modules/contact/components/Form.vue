@@ -1,5 +1,5 @@
 <template>
-  <div class="contact_form lg:w-[402px] xl:w-[402px] md:w-full w-full">
+  <div class="contact_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="heading mb-5">
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("contact.get_touch") }}

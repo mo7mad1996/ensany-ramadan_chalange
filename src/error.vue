@@ -10,12 +10,11 @@
       </div>
 
       <h1 class="text-4xl font-bold text-center leading-[48px]">
-        We can't find the page you're looking for
+        {{ $t("global.error-msg") }}
       </h1>
 
-      <p class="text-center text-[#12121299] text-sm">
-        The page might have moved, been deleted, or never existed. Don't worry
-        though - we've got some helpful places to go from here.
+      <p class="text-center text-[#12121299] text-sm pt-3">
+        {{ $t("global.error_desc") }}
       </p>
 
       <div class="button flex justify-center mt-sm">
@@ -26,7 +25,7 @@
           size="large"
           color="primary"
           @click="$router.push('/')"
-          >Return Home</v-btn
+          >{{ $t("global.return_home") }}</v-btn
         >
       </div>
     </div>

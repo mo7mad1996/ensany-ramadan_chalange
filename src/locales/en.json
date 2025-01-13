@@ -47,5 +47,9 @@
   "weekly": "Weekly",
   "dialy": "Dialy",
   "onetime": "One time",
-  "name_hidden": "keep your name hidden"
+  "name_hidden": "keep your name hidden",
+
+  "error-msg": "We can't find the page you're looking for",
+  "error_desc": "The page might have moved, been deleted, or never existed. Don't worry though - we've got some helpful places to go from here.",
+  "return_home": "Return Home"
 }

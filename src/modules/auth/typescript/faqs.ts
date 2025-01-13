@@ -8,22 +8,22 @@ export const useFaqs = () => {
   const faqs = computed(() => [
     {
       question: t("auth.q1"),
-      answer: "answer",
+      answer: t("auth.answer3"),
       icon: icon1,
     },
     {
       question: t("auth.q2"),
-      answer: "answer",
+      answer: t("auth.answer1"),
       icon: icon2,
     },
     {
       question: t("auth.q3"),
-      answer: "answer",
+      answer: t("auth.answer2"),
       icon: icon3,
     },
     {
       question: t("auth.q4"),
-      answer: "answer",
+      answer: t("auth.answer3"),
       icon: icon4,
     },
   ]);
