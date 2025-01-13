@@ -243,7 +243,7 @@
           </div>
 
           <div
-            class="flex items-center border border-gray-300 rounded-md shadow-sm w-[400px]"
+            class="flex items-center border border-gray-300 rounded-md shadow-sm xl:w-[400px] lg:w-[400px] md:w-full w-full"
           >
             <label
               for="file-upload"
@@ -271,32 +271,16 @@
         <div class="upload_image mt-5">
           <div class="title flex items-center gap-x-2 mb-3">
             <img src="../../../assets/images/campaign/image.svg" alt="" />
-            <span class="text-2xl"> تحميل فيديو</span>
+            <span class="text-2xl"> رابط فيديو</span>
           </div>
 
-          <div
-            class="flex items-center border border-gray-300 rounded-md shadow-sm w-[400px]"
-          >
-            <label
-              for="file-upload"
-              class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
-            >
-              اختار ملف
-            </label>
-
-            <input
-              id="file-upload"
-              type="file"
-              class="sr-only"
-              @change="handleFileChange"
-            />
-
-            <span
-              class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              {{ selectedFileName || "لا يوجد ملف مختار" }}
-            </span>
-          </div>
+          <Field
+            type="text"
+            name="url"
+            rules="required"
+            placeholder="رابط فديو"
+            class="block xl:w-[400px] lg:w-[400px] md:w-full w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+          />
         </div>
 
         <div
