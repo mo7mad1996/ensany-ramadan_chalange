@@ -12,6 +12,12 @@ const campaignsRoutes = [
     path: "/campaigns/donate/:id",
     file: resolve(__dirname, "../pages/SingleCampaignDonate.vue"), // Adjusted path
   },
+
+  {
+    name: "view-campaign",
+    path: "/campaigns/:id",
+    file: resolve(__dirname, "../pages/ViewCampaign.vue"), // Adjusted path
+  },
 ];
 
 export default campaignsRoutes;

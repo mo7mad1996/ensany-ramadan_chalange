@@ -162,3 +162,20 @@ a {
     border-radius: 8px !important;
   }
 }
+
+.view_details {
+  .v-progress-linear {
+    height: 13px !important;
+  }
+
+  .v-progress-linear__background,
+  .v-progress-linear__buffer {
+    background-color: #fff;
+    opacity: 1;
+  }
+
+  .v-progress-linear__determinate {
+    background-color: #3e7e41;
+    border-radius: 5px;
+  }
+}
