@@ -23,7 +23,7 @@
         :donatebtn="true"
         :route="`/campaigns/donate/${index + 1}`"
       >
-        <template #image @click="$router.push()">
+        <template #image @click="$router.push('/campaigns/1')">
           <img
             src="../../../assets/images/chalenge-img.png"
             class="w-100"
