@@ -1,12 +1,14 @@
 <template>
   <div class="comments pt-sm text-[#121212]">
-    <h1 class="text-2xl leading-[36px] text-[#121212]">Comments</h1>
+    <h1 class="text-2xl leading-[36px] text-[#121212]">
+      {{ $t("campaigns.comments") }}
+    </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">(12) Comments</div>
+      <div class="text-sm">(12) {{ $t("campaigns.comments") }}</div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
-        <span class="text-sm">Sorted by</span>
+        <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
         <v-icon size="small">mdi-sort</v-icon>
       </div>
     </div>
@@ -23,7 +25,7 @@
         type="text"
         name="comment"
         rules="required"
-        placeholder="Write your comment here"
+        :placeholder="$t('campaigns.comment_paceholder')"
         class="block w-full mt-5 ltr:pl-5 rtl:pr-5 pt-3 pb-md outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
       />
 
@@ -35,7 +37,7 @@
           variant="flat"
           size="large"
           color="primary"
-          >Comment</v-btn
+          >{{ $t("campaigns.comment") }}</v-btn
         >
       </div>
 
@@ -61,14 +63,14 @@
             <img src="../../../assets/images/user.svg" alt="" />
             <div>
               <h4 class="text-2xl font-bold">Ali Omar</h4>
-              <p class="text-sm text-[#12121299] pt-1">5 min ago</p>
+              <p class="text-sm text-[#12121299] pt-1">
+                {{ $t("campaigns.time") }}
+              </p>
             </div>
           </div>
 
           <p class="text-sm leading-20 text-justify pt-5">
-            This campaign truly speaks to my heart. It’s inspiring to see so
-            many people coming together for such a meaningful cause. Keep up the
-            amazing work!
+            {{ $t("campaigns.comment_one") }}
           </p>
         </div>
       </div>

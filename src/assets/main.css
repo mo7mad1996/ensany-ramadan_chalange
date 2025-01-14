@@ -115,7 +115,9 @@ a {
   }
 }
 
-[dir="rtl"] .subscribers {
+[dir="rtl"] .subscribers,
+[dir="rtl"] .view_details,
+[dir="rtl"] .doners {
   .v-progress-linear__determinate {
     right: 0 !important;
     left: auto;
@@ -124,7 +126,9 @@ a {
   }
 }
 
-[dir="ltr"] .subscribers {
+[dir="ltr"] .subscribers,
+[dir="ltr"] .view_details,
+[dir="ltr"] .doners {
   .v-progress-linear__determinate {
     left: 0 !important;
     border-top-right-radius: 6px;

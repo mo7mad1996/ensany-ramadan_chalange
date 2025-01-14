@@ -8,11 +8,14 @@
       />
 
       <div class="text absolute bottom-5 p-4 w-full">
-        <h1 class="text-white text-4xl font-bold">Feed a Family for Iftar</h1>
+        <h1 class="text-white text-4xl font-bold">
+          {{ $t("campaigns.campaign_title") }}
+        </h1>
 
         <div class="progress_bar relative flex items-center gap-x-2">
           <v-progress-linear
-            :model-value="progress"
+            v-observe-visibility="onEnterViewport"
+            :model-value="animatedRate"
             class="rounded-lg mt-2"
             :height="10"
           ></v-progress-linear>
@@ -37,23 +40,25 @@
       class="details mt-5 flex flex-wrap gap-y-3 items-center justify-between"
     >
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">Collected:</span>
-        <span class="text-primary">17608 USD</span>
+        <span class="text-[#12121299]">{{ $t("campaigns.collected") }}:</span>
+        <span class="text-primary">17608 {{ $t("campaigns.usd") }}</span>
       </div>
 
       <div class="collected flex items-cener gap-1">
         <v-icon color="red">mdi-heart-outline</v-icon>
-        <span class="text-primary">247 Donate</span>
+        <span class="text-primary">247 {{ $t("campaigns.donater") }}</span>
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">Remaining::</span>
-        <span class="text-primary">13 days</span>
+        <span class="text-[#12121299]">{{ $t("campaigns.remaining") }}:</span>
+        <span class="text-primary">13 {{ $t("campaigns.days") }}</span>
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">Campaign Objective::</span>
-        <span class="text-primary">17608 USD</span>
+        <span class="text-[#12121299]"
+          >{{ $t("campaigns.campaign_objective") }}:</span
+        >
+        <span class="text-primary">17608 {{ $t("campaigns.usd") }}</span>
       </div>
     </div>
 
@@ -66,7 +71,7 @@
     <!-- campain maker -->
     <div class="honor-compan d-flex ga-2 align-center mt-5" v-if="!loading">
       <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
-      <p>Honor Company</p>
+      <p>{{ $t("campaigns.company") }}</p>
     </div>
 
     <!-- tabs -->
@@ -75,10 +80,12 @@
       bg-color="white"
       class="mt-5 v-slide-group v-slide-group--mobile v-tabs v-tabs--horizontal v-tabs--align-tabs-start v-tabs--density-default bg-white"
     >
-      <v-tab value="one" :ripple="false">Description</v-tab>
-      <v-tab value="two" :ripple="false">Gallery</v-tab>
-      <v-tab value="three" :ripple="false">Update</v-tab>
-      <v-tab value="four" :ripple="false">Donors</v-tab>
+      <v-tab value="one" :ripple="false">{{
+        $t("campaigns.description")
+      }}</v-tab>
+      <v-tab value="two" :ripple="false">{{ $t("campaigns.gallery") }}</v-tab>
+      <v-tab value="three" :ripple="false">{{ $t("campaigns.update") }}</v-tab>
+      <v-tab value="four" :ripple="false">{{ $t("campaigns.donors") }}</v-tab>
     </v-tabs>
 
     <v-tabs-window v-model="tab" class="mt-4">
@@ -119,42 +126,9 @@
 </template>
 
 <script setup lang="ts">
-const progress = ref<number>(30);
-const tab = ref<null | string>(null);
-const loading = ref<boolean>(true);
-
-const text = ref<string[]>([
-  "If a woman feeds a thirsty dog, Allah thanks her deed, forgives her, and enters her into Paradise. So what about those who feed and support those who are oppressed by injustice and hardship while they defend Islam and its sanctities, facing the nation's fiercest enemies.Today we spare you the trouble of conveying your feelings to the people of Gaza, as we deliver the basic necessities to them in the north and south.",
-  "When you donate your money to those whom Allah has chosen to be among the martyrs, Your generosity will be multiplied, and leaving them with their invasion and with those behind them as warriors with their families in goodness, they have indeed invaded",
-  "You never know how much your participation in the campaign can benefit the people of Gaza, and perhaps it will be one of the good deeds that will be the reason for your entry into Paradise",
-  "None of our success would be possible without generous donors like you. Thank you again for your commitment and kindness. When you donate your money to the most needy people and those who are surrounded by a visible enemy to Islam and Muslims",
-]);
-
-setTimeout(() => {
-  loading.value = false;
-}, 3000);
-
-const tabs = ref<any>([
-  {
-    value: "one",
-    item: text.value,
-  },
-
-  {
-    value: "two",
-    item: text.value,
-  },
-
-  {
-    value: "three",
-    item: text.value,
-  },
-
-  {
-    value: "four",
-    item: text.value,
-  },
-]);
+import { useViewCampaign } from "../typescript/view-campaign";
+const { onEnterViewport, tab, tabs, loading, animatedRate, progress } =
+  useViewCampaign();
 </script>
 
 <style>

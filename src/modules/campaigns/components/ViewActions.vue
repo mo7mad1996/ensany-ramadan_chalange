@@ -9,19 +9,26 @@
       ></v-skeleton-loader>
 
       <div class="collected-amount flex gap-x-2 items-center" v-if="!loading">
-        <h1 class="text-2xl font-bold text-primary">17608 USD</h1>
-        <span class="text-sm text-[#12121299]">Collected</span>
+        <h1 class="text-2xl font-bold text-primary">
+          17608 {{ $t("campaigns.usd") }}
+        </h1>
+        <span class="text-sm text-[#12121299]">{{
+          $t("campaigns.collected")
+        }}</span>
       </div>
 
-      <!-- subscribers -->
+      <!-- donors -->
       <div class="doners mt-4">
         <div class="total-doners d-flex ga-2 align-center">
-          <span class="text-[#12121299] text-sm">247 Donate</span>
+          <span class="text-[#12121299] text-sm"
+            >247 {{ $t("campaigns.donater") }}</span
+          >
         </div>
 
         <v-progress-linear
+          v-observe-visibility="onEnterViewport"
           color="primary"
-          :model-value="rate"
+          :model-value="animatedRate"
           class="rounded mt-2"
           :height="10"
         ></v-progress-linear>
@@ -37,7 +44,7 @@
           size="default"
           color="primary"
         >
-          Share Now
+          {{ $t("campaigns.share") }}
         </v-btn>
 
         <v-btn
@@ -47,7 +54,7 @@
           size="default"
           color="primary"
         >
-          Make your donation to the one you love
+          {{ $t("campaigns.make_donation") }}
         </v-btn>
 
         <v-btn
@@ -57,7 +64,7 @@
           size="default"
           color="primary"
         >
-          Donate Now
+          {{ $t("campaigns.donate") }}
         </v-btn>
       </div>
 
@@ -65,7 +72,9 @@
       <div class="all-doners mt-5">
         <div class="title flex gap-x-3 items-center">
           <img src="../../../assets/images/increment.svg" width="20" alt="" />
-          <span class="text-2xl font-bold text-primary">247 Donate</span>
+          <span class="text-2xl font-bold text-primary"
+            >247 {{ $t("campaigns.donater") }}</span
+          >
         </div>
 
         <v-skeleton-loader
@@ -88,13 +97,17 @@
               <img src="../../../assets/images/user.svg" alt="" />
               <div>
                 <h4 class="text-2xl font-bold">Ali Omar</h4>
-                <p class="text-sm text-[#121212] pt-1">Highest Donor</p>
+                <p class="text-sm text-[#121212] pt-1">
+                  {{ $t("campaigns.highest_donor") }}
+                </p>
               </div>
             </div>
 
             <div class="donation-amount">
               <h4 class="text-2xl font-bold text-primary">$450</h4>
-              <span class="text-sm text-[#12121299] pt-2">Last Week</span>
+              <span class="text-sm text-[#12121299] pt-2">{{
+                $t("campaigns.last_week")
+              }}</span>
             </div>
           </div>
 
@@ -106,7 +119,7 @@
               size="default"
               color="primary"
             >
-              View All
+              {{ $t("campaigns.view_all") }}
             </v-btn>
 
             <v-btn
@@ -116,7 +129,7 @@
               size="default"
               color="primary"
             >
-              Top Doners
+              {{ $t("campaigns.top_donors") }}
             </v-btn>
           </div>
         </div>
@@ -128,6 +141,8 @@
 <script setup>
 const rate = ref(30);
 const loading = ref(true);
+import { useViewCampaign } from "../typescript/view-campaign";
+const { onEnterViewport, animatedRate } = useViewCampaign();
 
 setTimeout(() => {
   loading.value = false;
