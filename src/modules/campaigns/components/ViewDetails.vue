@@ -24,16 +24,21 @@
       </div>
     </div>
 
+    <!-- skeleton loader for camapin details section -->
+    <v-skeleton-loader
+      v-if="loading"
+      :loading="loading"
+      type="list-item-two-line"
+    ></v-skeleton-loader>
+
     <!-- campaign details -->
-    <div class="details mt-5 flex items-center justify-between">
+    <div
+      v-if="!loading"
+      class="details mt-5 flex flex-wrap gap-y-3 items-center justify-between"
+    >
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">Collected:</span>
         <span class="text-primary">17608 USD</span>
-      </div>
-
-      <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">Remaining::</span>
-        <span class="text-primary">13 days</span>
       </div>
 
       <div class="collected flex items-cener gap-1">
@@ -42,13 +47,24 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
+        <span class="text-[#12121299]">Remaining::</span>
+        <span class="text-primary">13 days</span>
+      </div>
+
+      <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">Campaign Objective::</span>
         <span class="text-primary">17608 USD</span>
       </div>
     </div>
 
+    <v-skeleton-loader
+      v-if="loading"
+      :loading="loading"
+      type="avatar, list-item-two-line"
+    ></v-skeleton-loader>
+
     <!-- campain maker -->
-    <div class="honor-compan d-flex ga-2 align-center mt-5">
+    <div class="honor-compan d-flex ga-2 align-center mt-5" v-if="!loading">
       <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
       <p>Honor Company</p>
     </div>
@@ -97,12 +113,15 @@
         controls
       ></video>
     </div>
+
+    <CampaignsComments />
   </section>
 </template>
 
 <script setup lang="ts">
 const progress = ref<number>(30);
 const tab = ref<null | string>(null);
+const loading = ref<boolean>(true);
 
 const text = ref<string[]>([
   "If a woman feeds a thirsty dog, Allah thanks her deed, forgives her, and enters her into Paradise. So what about those who feed and support those who are oppressed by injustice and hardship while they defend Islam and its sanctities, facing the nation's fiercest enemies.Today we spare you the trouble of conveying your feelings to the people of Gaza, as we deliver the basic necessities to them in the north and south.",
@@ -110,6 +129,10 @@ const text = ref<string[]>([
   "You never know how much your participation in the campaign can benefit the people of Gaza, and perhaps it will be one of the good deeds that will be the reason for your entry into Paradise",
   "None of our success would be possible without generous donors like you. Thank you again for your commitment and kindness. When you donate your money to the most needy people and those who are surrounded by a visible enemy to Islam and Muslims",
 ]);
+
+setTimeout(() => {
+  loading.value = false;
+}, 3000);
 
 const tabs = ref<any>([
   {

@@ -6,11 +6,11 @@
 
   <Container>
     <div class="grid grid-cols-12 gap-5">
-      <div class="col-span-9">
+      <div class="xl:col-span-8 lg:col-span-8 md:col-span-12 col-span-12">
         <CampaignsViewDetails />
       </div>
 
-      <div class="col-span-3">
+      <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
         <CampaignsViewActions />
       </div>
     </div>
