@@ -37,5 +37,32 @@
   "latest_blogs": "Latest Blogs",
 
   "start_banner_title": "Create a Challenge That Inspires Change",
-  "start_banner_desc": "Turn your vision into reality. Start your Ramadan Challenge today to empower communities and make an impact"
+  "start_banner_desc": "Turn your vision into reality. Start your Ramadan Challenge today to empower communities and make an impact",
+
+  "name": "Name",
+  "goal": "Goal",
+  "content": "Content",
+  "name_ar": "name in arabic",
+  "name_en": "name in engish",
+  "goal_ar": "goal in arabic",
+  "goal_en": "goal in english",
+  "content_ar": "content in arabic",
+  "content_en": "content in english",
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "avilable_days": "Avilable Days",
+  "upload_image": "Upload Image",
+  "choose_file": "Choose File",
+  "no_file": "No file choosen",
+  "video_url": "Video Url",
+  "amount": "Amount",
+  "currency": "Currency",
+  "amount_placeholder": "Enter the amount you aim to raise (e.g., 5,000)",
+  "curncy_placeholder": "(e.g., $5,000)",
+  "status": "Status",
+  "status_placeholder": "(e.g.,Active)",
+  "launch_campaign": "Launch Campaign",
+  "english": "English",
+  "active": "Active",
+  "deactive": "Deactive"
 }

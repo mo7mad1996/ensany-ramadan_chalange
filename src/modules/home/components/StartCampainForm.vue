@@ -7,7 +7,7 @@
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">الاسم</label>
+            <label for="">{{ $t("home.name") }}</label>
 
             <div class="lang-switch flex items-center border-b">
               <div
@@ -15,7 +15,7 @@
                 @click="switchName"
                 :class="{ 'bg-[#28A745] text-white': nameSwitch == 'en' }"
               >
-                الانجليزيه
+                {{ $t("home.english") }}
               </div>
               <div
                 class="px-3 py-1 cursor-pointer"
@@ -39,7 +39,7 @@
                 type="text"
                 name="name_ar"
                 rules="required"
-                placeholder="اسم الحمله بالعربي"
+                :placeholder="$t('home.name_ar')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -55,7 +55,7 @@
                 type="text"
                 name="name_en"
                 rules="required"
-                placeholder="اسم الحمله بالانجليزيه"
+                :placeholder="$t('home.name_en')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -65,7 +65,7 @@
         <!--campain goal  -->
         <div class="mt-5">
           <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">الهدف</label>
+            <label for="">{{ $t("home.goal") }}</label>
 
             <div class="lang-switch flex items-center border-b">
               <div
@@ -73,7 +73,7 @@
                 @click="switchGoal"
                 :class="{ 'bg-[#28A745] text-white': goalSwitch == 'en' }"
               >
-                الانجليزيه
+                {{ $t("home.english") }}
               </div>
               <div
                 class="px-3 py-1 cursor-pointer"
@@ -97,7 +97,7 @@
                 type="text"
                 name="goal_ar"
                 rules="required"
-                placeholder="اكتب هدف الحمله بالعربيه"
+                :placeholder="$t('home.goal_ar')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -113,7 +113,7 @@
                 type="text"
                 name="goal_en"
                 rules="required"
-                placeholder="اكتب هدف الحمله بالانجليزيه"
+                :placeholder="$t('home.goal_en')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -123,7 +123,7 @@
         <!-- campain content -->
         <div class="mt-5">
           <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">المحتوى</label>
+            <label for="">{{ $t("home.content") }}</label>
 
             <div class="lang-switch flex items-center border-b">
               <div
@@ -131,7 +131,7 @@
                 @click="switchContent"
                 :class="{ 'bg-[#28A745] text-white': contentSwitch == 'en' }"
               >
-                الانجليزيه
+                {{ $t("home.english") }}
               </div>
               <div
                 class="px-3 py-1 cursor-pointer"
@@ -156,7 +156,7 @@
                 type="text"
                 name="content_ar"
                 rules="required"
-                placeholder="اكتب هدف الحمله بالعربيه"
+                :placeholder="$t('home.content_ar')"
                 class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -173,7 +173,7 @@
                 type="text"
                 name="content_en"
                 rules="required"
-                placeholder="اكتب هدف الحمله بالانجليزيه"
+                :placeholder="$t('home.content_en')"
                 class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -186,35 +186,33 @@
         >
           <div class="w-full">
             <div class="title mb-3">
-              <span class="text-2xl"> تاريخ البدء</span>
+              <span class="text-2xl">{{ $t("home.start_date") }}</span>
             </div>
 
             <Field
               type="date"
               name="start_date"
               rules="required"
-              placeholder="اكتب هدف الحمله بالعربيه"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
 
           <div class="w-full">
             <div class="title mb-3">
-              <span class="text-2xl"> تاريخ الانتهاء </span>
+              <span class="text-2xl"> {{ $t("home.end_date") }} </span>
             </div>
 
             <Field
               type="date"
               name="end_date"
               rules="required"
-              placeholder="اكتب هدف الحمله بالعربيه"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
 
           <div class="w-full">
             <div class="title mb-3">
-              <span class="text-2xl"> الأيام المتاحة </span>
+              <span class="text-2xl"> {{ $t("home.avilable_days") }} </span>
             </div>
 
             <div class="relative w-full">
@@ -228,7 +226,7 @@
                 type="text"
                 name="days"
                 rules="required"
-                placeholder="الايام المتاحه"
+                :placeholder="$t('home.avilable_days')"
                 class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
             </div>
@@ -239,7 +237,7 @@
         <div class="upload_image mt-5">
           <div class="title flex items-center gap-x-2 mb-3">
             <img src="../../../assets/images/campaign/image.svg" alt="" />
-            <span class="text-2xl">تحميل صورة</span>
+            <span class="text-2xl">{{ $t("home.upload_image") }}</span>
           </div>
 
           <div
@@ -249,7 +247,7 @@
               for="file-upload"
               class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
             >
-              اختار ملف
+              {{ $t("home.choose_file") }}
             </label>
 
             <input
@@ -262,23 +260,23 @@
             <span
               class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
             >
-              {{ selectedFileName || "لا يوجد ملف مختار" }}
+              {{ selectedFileName || $t("home.no_file") }}
             </span>
           </div>
         </div>
 
-        <!-- upload video -->
+        <!-- video url -->
         <div class="upload_image mt-5">
           <div class="title flex items-center gap-x-2 mb-3">
             <img src="../../../assets/images/campaign/image.svg" alt="" />
-            <span class="text-2xl"> رابط فيديو</span>
+            <span class="text-2xl">{{ $t("home.video_url") }}</span>
           </div>
 
           <Field
             type="text"
             name="url"
             rules="required"
-            placeholder="رابط فديو"
+            :placeholder="$t('home.video_url')"
             class="block xl:w-[400px] lg:w-[400px] md:w-full w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
@@ -289,14 +287,14 @@
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/amount.svg" alt="" />
-              <span class="text-2xl"> المبلغ</span>
+              <span class="text-2xl"> {{ $t("home.amount") }}</span>
             </div>
 
             <Field
               type="text"
               name="amount"
               rules="required"
-              placeholder="أدخل المبلغ الذي تهدف إلى جمعه (مثل، 5,000)"
+              :placeholder="$t('home.amount_placeholder')"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
@@ -304,17 +302,18 @@
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/currncy.svg" alt="" />
-              <span class="text-2xl"> العملة</span>
+              <span class="text-2xl"> {{ $t("home.currency") }}</span>
             </div>
 
             <Field
               as="select"
               name="curncy"
               rules="required"
-              placeholder="اكتب هدف الحمله بالعربيه"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             >
-              <option selected disabled value="">(مثل، 5,000 دولار)</option>
+              <option selected disabled value="">
+                {{ $t("home.curncy_placeholder") }}
+              </option>
               <option value="1">5,000</option>
               <option value="2">5,000</option>
               <option value="3">5,000</option>
@@ -324,20 +323,20 @@
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/status.svg" alt="" />
-              <span class="text-2xl"> الحالة</span>
+              <span class="text-2xl"> {{ $t("home.status") }}</span>
             </div>
 
             <Field
               as="select"
               name="status"
               rules="required"
-              placeholder="اكتب هدف الحمله بالعربيه"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             >
-              <option selected disabled value="">(مثل, نشط)</option>
-              <option value="1">نشط</option>
-              <option value="2">نشط</option>
-              <option value="3">نشط</option>
+              <option selected disabled value="">
+                {{ $t("home.status_placeholder") }}
+              </option>
+              <option value="1">{{ $t("home.active") }}</option>
+              <option value="2">{{ $t("home.deactive") }}</option>
             </Field>
           </div>
         </div>
@@ -350,7 +349,8 @@
           variant="flat"
           size="large"
           color="primary"
-          >إطلاق الحملة</v-btn
+        >
+          {{ $t("home.launch_campaign") }}</v-btn
         >
       </Form>
     </div>
