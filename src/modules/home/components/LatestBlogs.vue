@@ -12,7 +12,11 @@
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
         <Slide v-for="(item, index) in 5" :key="index">
-          <BlogCard :route="`/blogs/${index + 1}`" class="text-start m-4">
+          <BlogCard
+            :route="`/blogs/${index + 1}`"
+            class="text-start m-4"
+            @click="$router.push(`/blogs/${index + 1}`)"
+          >
             <template #image>
               <img
                 src="../../../assets/images/blogs-img.png"

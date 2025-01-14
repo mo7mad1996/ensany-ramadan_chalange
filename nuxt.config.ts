@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 
   // favicon & fonts
   app: {
+    pageTransition: false, // Completely disables transitions
+    layoutTransition: false,
     head: {
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

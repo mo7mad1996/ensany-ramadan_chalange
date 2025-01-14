@@ -144,6 +144,10 @@ const loading = ref(true);
 import { useViewCampaign } from "../typescript/view-campaign";
 const { onEnterViewport, animatedRate } = useViewCampaign();
 
+onMounted(() => {
+  onEnterViewport(true);
+});
+
 setTimeout(() => {
   loading.value = false;
 }, 3000);

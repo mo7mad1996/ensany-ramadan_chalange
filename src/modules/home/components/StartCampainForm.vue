@@ -62,64 +62,6 @@
           </div>
         </div>
 
-        <!--campain goal  -->
-        <div class="mt-5">
-          <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">{{ $t("home.goal") }}</label>
-
-            <div class="lang-switch flex items-center border-b">
-              <div
-                class="px-3 py-1 cursor-pointer"
-                @click="switchGoal"
-                :class="{ 'bg-[#28A745] text-white': goalSwitch == 'en' }"
-              >
-                {{ $t("home.english") }}
-              </div>
-              <div
-                class="px-3 py-1 cursor-pointer"
-                @click="switchGoal"
-                :class="{ 'bg-[#28A745] text-white': goalSwitch == 'ar' }"
-              >
-                العربيه
-              </div>
-            </div>
-          </div>
-
-          <div class="inputs">
-            <div class="relative" v-show="goalSwitch === 'ar'">
-              <div
-                class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
-              >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
-              </div>
-
-              <Field
-                type="text"
-                name="goal_ar"
-                rules="required"
-                :placeholder="$t('home.goal_ar')"
-                class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-            </div>
-
-            <div class="relative" v-show="goalSwitch === 'en'">
-              <div
-                class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
-              >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
-              </div>
-
-              <Field
-                type="text"
-                name="goal_en"
-                rules="required"
-                :placeholder="$t('home.goal_en')"
-                class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-            </div>
-          </div>
-        </div>
-
         <!-- campain content -->
         <div class="mt-5">
           <div class="lable_switch flex justify-between items-center mb-3">

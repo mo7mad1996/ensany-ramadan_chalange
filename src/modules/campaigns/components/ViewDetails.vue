@@ -129,6 +129,10 @@
 import { useViewCampaign } from "../typescript/view-campaign";
 const { onEnterViewport, tab, tabs, loading, animatedRate, progress } =
   useViewCampaign();
+
+onMounted(() => {
+  onEnterViewport(true);
+});
 </script>
 
 <style>

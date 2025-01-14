@@ -19,6 +19,7 @@
         v-for="(item, index) in 12"
         :key="index"
         :route="`/blogs/${index + 1}`"
+        @click="$router.push(`/blogs/${index + 1}`)"
       >
         <template #image>
           <img

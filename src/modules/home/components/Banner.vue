@@ -21,6 +21,7 @@
             variant="flat"
             size="default"
             color="primary"
+            @click="$router.push('/signup')"
             >{{ $t("global.join_challenge") }}</v-btn
           >
 

@@ -38,6 +38,7 @@
           >
             <template #image>
               <img
+                @click="$router.push(`/campaigns/${index + 1}`)"
                 src="../../../assets/images/chalenge-img.png"
                 class="w-100"
                 alt=""
