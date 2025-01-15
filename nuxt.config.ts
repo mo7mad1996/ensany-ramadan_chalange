@@ -58,12 +58,19 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    optimizeDeps: {
+      include: ["vuetify"],
+    },
     build: {
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
           manualChunks(id) {
-            if (!id.includes("vue")) {
-              return "index";
+            if (id.includes("node_modules")) {
+              if (id.includes("vuetify")) {
+                return "vuetify";
+              }
+              return "vendor";
             }
           },
         },
