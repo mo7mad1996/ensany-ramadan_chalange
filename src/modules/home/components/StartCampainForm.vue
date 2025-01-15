@@ -175,52 +175,54 @@
           </div>
         </div>
 
-        <!-- upload image -->
-        <div class="upload_image mt-5">
-          <div class="title flex items-center gap-x-2 mb-3">
-            <img src="../../../assets/images/campaign/image.svg" alt="" />
-            <span class="text-2xl">{{ $t("home.upload_image") }}</span>
+        <!-- upload image and video url -->
+        <div class="grid gap-3 grid-cols-1 lg:grid-cols-2 md:grid-cols-2">
+          <div class="upload_image mt-5">
+            <div class="title flex items-center gap-x-2 mb-3">
+              <img src="../../../assets/images/campaign/image.svg" alt="" />
+              <span class="text-2xl">{{ $t("home.upload_image") }}</span>
+            </div>
+
+            <div
+              class="flex items-center border border-gray-300 rounded-md shadow-sm w-full"
+            >
+              <label
+                for="file-upload"
+                class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
+              >
+                {{ $t("home.choose_file") }}
+              </label>
+
+              <input
+                id="file-upload"
+                type="file"
+                class="sr-only"
+                @change="handleFileChange"
+              />
+
+              <span
+                class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
+              >
+                {{ selectedFileName || $t("home.no_file") }}
+              </span>
+            </div>
           </div>
 
-          <div
-            class="flex items-center border border-gray-300 rounded-md shadow-sm xl:w-[400px] lg:w-[400px] md:w-full w-full"
-          >
-            <label
-              for="file-upload"
-              class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
-            >
-              {{ $t("home.choose_file") }}
-            </label>
+          <!-- video url -->
+          <div class="upload_image mt-5">
+            <div class="title flex items-center gap-x-2 mb-3">
+              <img src="../../../assets/images/video.svg" alt="" />
+              <span class="text-2xl">{{ $t("home.video_url") }}</span>
+            </div>
 
-            <input
-              id="file-upload"
-              type="file"
-              class="sr-only"
-              @change="handleFileChange"
+            <Field
+              type="text"
+              name="url"
+              rules="required"
+              :placeholder="$t('home.video_url')"
+              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
-
-            <span
-              class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              {{ selectedFileName || $t("home.no_file") }}
-            </span>
           </div>
-        </div>
-
-        <!-- video url -->
-        <div class="upload_image mt-5">
-          <div class="title flex items-center gap-x-2 mb-3">
-            <img src="../../../assets/images/campaign/image.svg" alt="" />
-            <span class="text-2xl">{{ $t("home.video_url") }}</span>
-          </div>
-
-          <Field
-            type="text"
-            name="url"
-            rules="required"
-            :placeholder="$t('home.video_url')"
-            class="block xl:w-[400px] lg:w-[400px] md:w-full w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-          />
         </div>
 
         <div
@@ -241,7 +243,7 @@
             />
           </div>
 
-          <div>
+          <!-- <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/currncy.svg" alt="" />
               <span class="text-2xl"> {{ $t("home.currency") }}</span>
@@ -260,7 +262,7 @@
               <option value="2">5,000</option>
               <option value="3">5,000</option>
             </Field>
-          </div>
+          </div> -->
 
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
@@ -283,7 +285,7 @@
           </div>
         </div>
 
-        <!-- confirm donation -->
+        <!-- confirm campaign -->
         <v-btn
           type="submit"
           class="text-capitalize rounded-lg w-100 mt-5"
