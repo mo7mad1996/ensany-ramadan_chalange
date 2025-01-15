@@ -14,7 +14,6 @@
 
         <div class="progress_bar relative flex items-center gap-x-2">
           <v-progress-linear
-            v-observe-visibility="onEnterViewport"
             :model-value="animatedRate"
             class="rounded-lg mt-2"
             :height="10"

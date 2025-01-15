@@ -26,7 +26,6 @@
         </div>
 
         <v-progress-linear
-          v-observe-visibility="onEnterViewport"
           color="primary"
           :model-value="animatedRate"
           class="rounded mt-2"
@@ -53,6 +52,7 @@
           variant="flat"
           size="default"
           color="primary"
+          @click="$router.push(`/campaigns/donate/${campaignId}`)"
         >
           {{ $t("campaigns.make_donation") }}
         </v-btn>
@@ -63,6 +63,7 @@
           variant="flat"
           size="default"
           color="primary"
+          @click="$router.push(`/campaigns/donate/${campaignId}`)"
         >
           {{ $t("campaigns.donate") }}
         </v-btn>
@@ -138,14 +139,17 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useViewCampaign } from "../typescript/view-campaign";
 const rate = ref(30);
 const loading = ref(true);
-import { useViewCampaign } from "../typescript/view-campaign";
+const campaignId = ref<string | string[]>("");
+const route = useRoute();
 const { onEnterViewport, animatedRate } = useViewCampaign();
 
 onMounted(() => {
   onEnterViewport(true);
+  campaignId.value = route.params.id;
 });
 
 setTimeout(() => {
