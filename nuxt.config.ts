@@ -55,9 +55,23 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ["vuetify"],
-  },
+    transpile: ["vuetify"]
 
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // تقسيم الأكواد بناءً على نوع المكتبة أو الحزمة
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          }
+        }
+      }
+    }
+  },
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
