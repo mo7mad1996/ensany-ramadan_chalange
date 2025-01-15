@@ -49,13 +49,16 @@
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 const { locale } = useI18n();
 
 const page = ref(2);
 const isLoading = ref(true);
 
+const { ramadan_ar, ramadan_en } = useGlobalVar();
+
 useSeoMeta({
-  title: "رمضان | قصص نجاح",
+  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
   ogTitle: "My Amazing Site",
   description: "This is my amazing site, let me tell you all about it.",
   ogDescription: "This is my amazing site, let me tell you all about it.",
@@ -66,7 +69,7 @@ useSeoMeta({
 watch(locale, (newLocale) => {
   const isArabic = newLocale === "ar";
   useSeoMeta({
-    title: isArabic ? "رمضان | قصص نجاح" : "Ramadan | Success Stories",
+    title: isArabic ? ramadan_ar : ramadan_en,
   });
 });
 
