@@ -55,22 +55,22 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ["vuetify"]
-
+    transpile: ["vuetify"],
   },
   vite: {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            // تقسيم الأكواد بناءً على نوع المكتبة أو الحزمة
-            if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          }
-        }
-      }
-    }
+  
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks(id) {
+              if (!id.includes('vue')) {
+                return 'index'
+              }
+            },
+          },
+        },
+      },
+     
   },
   modules: [
     (_options, nuxt) => {
