@@ -88,15 +88,54 @@
       <v-tab value="four" :ripple="false">{{ $t("campaigns.donors") }}</v-tab>
     </v-tabs>
 
-    <v-tabs-window v-model="tab" class="mt-4">
-      <v-tabs-window-item
-        v-for="(item, index) in tabs"
-        :key="index"
-        :value="item.value"
-      >
+    <v-tabs-window v-model="tab" class="mt-4 pb-4">
+      <v-tabs-window-item value="one">
         <p
           class="text-sm pb-5 leading-20 text-[#12121299]"
-          v-for="(text, index) in item.item"
+          v-for="(text, index) in tabs[0].item"
+          :key="index"
+        >
+          {{ text }}
+        </p>
+      </v-tabs-window-item>
+
+      <v-tabs-window-item value="two">
+        <v-row>
+          <v-col v-for="n in 6" :key="n" class="d-flex child-flex" cols="4">
+            <v-img
+              :lazy-src="img"
+              :src="img"
+              aspect-ratio="1"
+              class="bg-grey-lighten-2 rounded-md"
+              cover
+            >
+              <template v-slot:placeholder>
+                <v-row align="center" class="fill-height ma-0" justify="center">
+                  <v-progress-circular
+                    color="grey-lighten-5"
+                    indeterminate
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+          </v-col>
+        </v-row>
+      </v-tabs-window-item>
+
+      <v-tabs-window-item value="three">
+        <p
+          class="text-sm pb-5 leading-20 text-[#12121299]"
+          v-for="(text, index) in tabs[2].item"
+          :key="index"
+        >
+          {{ text }}
+        </p>
+      </v-tabs-window-item>
+
+      <v-tabs-window-item value="four">
+        <p
+          class="text-sm pb-5 leading-20 text-[#12121299]"
+          v-for="(text, index) in tabs[3].item"
           :key="index"
         >
           {{ text }}
@@ -125,7 +164,8 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import img from "../../../assets/images/chalenge-img.png";
 import { useViewCampaign } from "../typescript/view-campaign";
 const { onEnterViewport, tab, tabs, loading, animatedRate, progress } =
   useViewCampaign();
