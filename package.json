@@ -13,10 +13,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "npx nuxi generate"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.23",
     "@mdi/font": "^7.4.47",
     "@nuxtjs/i18n": "^9.1.1",
     "@stripe/stripe-js": "^5.4.0",
@@ -24,7 +24,6 @@
     "@vee-validate/rules": "^4.15.0",
     "@vee-validate/yup": "^4.15.0",
     "axios": "^1.7.9",
-    "date-fns": "^4.1.0",
     "nuxt": "^3.14.1592",
     "vee-validate": "^4.15.0",
     "vite-plugin-vuetify": "^2.0.4",
@@ -36,6 +35,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "fs": "0.0.2",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
   }

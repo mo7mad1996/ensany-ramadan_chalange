@@ -57,6 +57,20 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
 
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes("vue")) {
+              return "index";
+            }
+          },
+        },
+      },
+    },
+  },
+
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {

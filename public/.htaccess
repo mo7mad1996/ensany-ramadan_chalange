@@ -1,0 +1,5 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 443
+RewriteRule ^index.php(.*) https://%{HTTP_HOST}:<port>/$1 [P,L]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}:<port>/$1 [P,L]
