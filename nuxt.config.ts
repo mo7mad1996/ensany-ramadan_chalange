@@ -60,11 +60,12 @@ export default defineNuxtConfig({
   vite: {
   
       build: {
+        chunkSizeWarningLimit: 1000,
         rollupOptions: {
           output: {
             manualChunks(id) {
-              if (!id.includes('vue')) {
-                return 'index'
+              if (id.includes('node_modules')) {
+                return 'vendor'
               }
             },
           },
