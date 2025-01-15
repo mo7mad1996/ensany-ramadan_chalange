@@ -135,6 +135,7 @@
               type="date"
               name="start_date"
               rules="required"
+              v-model="today"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
@@ -147,6 +148,7 @@
             <Field
               type="date"
               name="end_date"
+              v-model="endDate"
               rules="required"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -168,6 +170,7 @@
                 type="text"
                 name="days"
                 rules="required"
+                v-model="availableDays"
                 :placeholder="$t('home.avilable_days')"
                 class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -304,42 +307,21 @@
 <script setup>
 import { Form, Field } from "vee-validate";
 
-const nameSwitch = ref("ar");
-const goalSwitch = ref("ar");
-const contentSwitch = ref("ar");
-const selectedFileName = ref("");
-const selected = ref("");
+import { useStartCampaign } from "../typescript/start-campaign";
 
-const switchName = () => {
-  nameSwitch.value = nameSwitch.value === "ar" ? "en" : "ar";
-};
-
-const switchGoal = () => {
-  goalSwitch.value = goalSwitch.value === "ar" ? "en" : "ar";
-};
-
-const switchContent = () => {
-  contentSwitch.value = contentSwitch.value === "ar" ? "en" : "ar";
-};
-
-const handleFileChange = (event) => {
-  const file = event.target.files[0];
-  selectedFileName.value = file ? file.name : "";
-};
-
-const startCmpaign = (values) => {
-  console.log("form submitted", values);
-};
+const {
+  today,
+  endDate,
+  availableDays,
+  nameSwitch,
+  goalSwitch,
+  contentSwitch,
+  selectedFileName,
+  selected,
+  switchName,
+  switchGoal,
+  switchContent,
+  handleFileChange,
+  startCmpaign,
+} = useStartCampaign();
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

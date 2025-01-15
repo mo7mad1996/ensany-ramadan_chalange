@@ -109,7 +109,7 @@
               class="bg-grey-lighten-2 rounded-md"
               cover
             >
-              <template v-slot:placeholder>
+              <template v-slot:placeholder v-if="isImageLoaded">
                 <v-row align="center" class="fill-height ma-0" justify="center">
                   <v-progress-circular
                     color="grey-lighten-5"
@@ -167,8 +167,15 @@
 <script setup>
 import img from "../../../assets/images/chalenge-img.png";
 import { useViewCampaign } from "../typescript/view-campaign";
-const { onEnterViewport, tab, tabs, loading, animatedRate, progress } =
-  useViewCampaign();
+const {
+  onEnterViewport,
+  tab,
+  tabs,
+  loading,
+  animatedRate,
+  progress,
+  isImageLoaded,
+} = useViewCampaign();
 
 onMounted(() => {
   onEnterViewport(true);
