@@ -131,13 +131,13 @@
               <span class="text-2xl">{{ $t("home.start_date") }}</span>
             </div>
 
-            <Field
-              type="date"
-              name="start_date"
-              rules="required"
-              v-model="today"
-              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            />
+            <div class="date-picker">
+              <Datepicker
+                v-model="today"
+                class="custom-datepicker"
+                date-picker
+              />
+            </div>
           </div>
 
           <div class="w-full">
@@ -145,12 +145,10 @@
               <span class="text-2xl"> {{ $t("home.end_date") }} </span>
             </div>
 
-            <Field
-              type="date"
-              name="end_date"
+            <Datepicker
               v-model="endDate"
-              rules="required"
-              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              class="custom-datepicker"
+              date-picker
             />
           </div>
 
@@ -306,7 +304,8 @@
 
 <script setup>
 import { Form, Field } from "vee-validate";
-
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 import { useStartCampaign } from "../typescript/start-campaign";
 
 const {
@@ -314,14 +313,13 @@ const {
   endDate,
   availableDays,
   nameSwitch,
-  goalSwitch,
   contentSwitch,
   selectedFileName,
-  selected,
   switchName,
-  switchGoal,
   switchContent,
   handleFileChange,
   startCmpaign,
+  formattedDate,
+  handleDateUpdate,
 } = useStartCampaign();
 </script>

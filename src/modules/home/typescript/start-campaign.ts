@@ -1,12 +1,23 @@
+import dayjs from "dayjs";
+
 export const useStartCampaign = () => {
-  const today = ref<string>(new Date().toISOString().split("T")[0]); // Format: YYYY-MM-DD
-  const endDate = ref<string>(""); // For end date
-  const availableDays = ref<string | number>(""); // For the number of days
+  const today = ref<string>(
+    new Date().toISOString().replace("T", " ").split(".")[0]
+  ); //24 houer system
+  const endDate = ref<string>("");
+  const availableDays = ref<string | number>("");
   const nameSwitch = ref<string>("ar");
   const goalSwitch = ref<string>("ar");
   const contentSwitch = ref<string>("ar");
   const selectedFileName = ref<string>("");
   const selected = ref<string>("");
+
+  // to adjust the date formate to send to backend
+  const formattedDate = computed(() => {
+    return today.value
+      ? dayjs(today.value).format("YYYY-MM-DD HH:mm:ss")
+      : null;
+  });
 
   const switchName = (): void => {
     nameSwitch.value = nameSwitch.value === "ar" ? "en" : "ar";
@@ -76,5 +87,6 @@ export const useStartCampaign = () => {
     switchContent,
     handleFileChange,
     startCmpaign,
+    formattedDate,
   };
 };
