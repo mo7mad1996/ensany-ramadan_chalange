@@ -148,6 +148,7 @@
             <Datepicker
               v-model="endDate"
               class="custom-datepicker"
+              placeholder="MM/DD/YY"
               date-picker
             />
           </div>
