@@ -116,6 +116,7 @@
         >{{ $t("auth.signup") }}</v-btn
       >
 
+      {{ user }}
       <!-- do not have account option -->
       <p class="text-sm pt-sm text-center">
         {{ $t("auth.have_account") }}
@@ -132,6 +133,9 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);
+import { useAuth } from "../services/auth";
+
+const { user } = useAuth();
 
 const showPassword = (): void => {
   show1.value = !show1.value;

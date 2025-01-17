@@ -43,6 +43,12 @@
 import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
 import { useI18n } from "vue-i18n";
+import { useAuth } from "~/modules/auth/services/auth";
+
+const { saveUser } = useAuth();
+
+// to intially set user if there
+// saveUser();
 
 const { locale } = useI18n();
 

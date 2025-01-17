@@ -16,14 +16,15 @@
 
           <Field
             type="text"
-            name="name"
+            name="email"
+            v-model="credentials.email"
             rules="required|email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
-        <ErrorMessage class="text-red-500 text-sm" name="name" as="span" />
+        <ErrorMessage class="text-red-500 text-sm" name="email" as="span" />
       </div>
 
       <!-- Password Input -->
@@ -40,6 +41,7 @@
           <Field
             :type="show ? 'text' : 'password'"
             name="password"
+            v-model="credentials.password"
             rules="required|min:6"
             :placeholder="$t('auth.password')"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -63,7 +65,8 @@
       <!-- Submit Button -->
       <v-btn
         type="submit"
-        :disabled="!meta.valid"
+        :disabled="isLoading"
+        :loading="isLoading"
         class="text-capitalize rounded-lg w-full mt-2"
         :ripple="false"
         variant="flat"
@@ -72,6 +75,8 @@
       >
         {{ $t("auth.login") }}
       </v-btn>
+
+      {{ user }}
     </Form>
 
     <!-- Forgot Password -->
@@ -94,17 +99,23 @@
 
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from "vee-validate";
-import { ref } from "vue";
+import { useAuth } from "../services/auth";
+import { type User } from "~/helpers/interfaces";
 
 const show = ref(false);
 const isRemember = ref(true);
+const { login, user, isLoading } = useAuth();
+
+const credentials = ref<User>({
+  email: "",
+  password: "",
+});
 
 const showPassword = (): void => {
   show.value = !show.value;
 };
 
-// test form values
-const onSubmit = (values: any) => {
-  console.log("form submitted", values);
+const onSubmit = () => {
+  login(credentials.value);
 };
 </script>
