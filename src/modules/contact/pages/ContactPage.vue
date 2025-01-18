@@ -14,6 +14,7 @@
 
 <script setup>
 import { useGlobalVar } from "~/helpers/global-var";
+import Container from "~/global/Container.vue";
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { locale } = useI18n();
 

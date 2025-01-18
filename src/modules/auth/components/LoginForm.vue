@@ -75,8 +75,6 @@
       >
         {{ $t("auth.login") }}
       </v-btn>
-
-      {{ user }}
     </Form>
 
     <!-- Forgot Password -->

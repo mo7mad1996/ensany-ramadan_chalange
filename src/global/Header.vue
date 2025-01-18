@@ -102,7 +102,45 @@
         <div
           class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center"
         >
+          <div v-if="user" class="relative">
+            <div
+              @click="openDrop"
+              class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
+            >
+              <img src="../assets/images/user.svg" width="30" alt="" />
+              <span>{{ user?.user?.name }}</span>
+              <v-icon>mdi-menu-down</v-icon>
+            </div>
+
+            <div
+              v-if="isMenue"
+              class="drobdown-menue absolute top-[3.5rem] p-[8px] bg-[#f6fff6] w-full"
+            >
+              <ul class="list-none">
+                <li class="flex gap-2 items-center mb-1 cursor-pointer">
+                  <img
+                    src="../assets/images/dashboard/dashboard.svg"
+                    width="15"
+                    alt=""
+                  />
+                  <nuxt-link class="hover:underline" to="/dashboard"
+                    >Dashboard</nuxt-link
+                  >
+                </li>
+
+                <li
+                  class="flex gap-1 items-center cursor-pointer"
+                  @click="logout"
+                >
+                  <v-icon size="20px">mdi-logout</v-icon>
+                  <span class="hover:underline">Log out</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <v-btn
+            v-else
             class="text-capitalize rounded-lg"
             variant="flat"
             size="default"
@@ -132,12 +170,19 @@
 <script setup lang="ts">
 import Container from "./Container.vue";
 import SwitchLang from "./SwitchLang.vue";
-const { locale } = useI18n();
+import { useAuth } from "~/modules/auth/services/auth";
 
+const { locale } = useI18n();
+const { user, logout } = useAuth();
 const isOpen = ref(false);
+const isMenue = ref(false);
 
 const openMenue = (): void => {
   isOpen.value = !isOpen.value;
+};
+
+const openDrop = (): void => {
+  isMenue.value = !isMenue.value;
 };
 </script>
 

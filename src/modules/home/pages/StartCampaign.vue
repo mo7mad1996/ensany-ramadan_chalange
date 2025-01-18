@@ -27,6 +27,10 @@ import { useGlobalVar } from "~/helpers/global-var";
 const { locale } = useI18n();
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
+definePageMeta({
+  middleware: "require-auth",
+});
+
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
   ogTitle: "My Amazing Site",

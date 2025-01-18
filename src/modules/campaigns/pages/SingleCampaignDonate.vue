@@ -20,6 +20,8 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
+const { locale } = useI18n();
+
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
   ogTitle: "My Amazing Site",

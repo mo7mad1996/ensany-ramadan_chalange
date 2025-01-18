@@ -45,7 +45,7 @@ import AppFooter from "../global/AppFooter.vue";
 import { useI18n } from "vue-i18n";
 import { useAuth } from "~/modules/auth/services/auth";
 
-const { saveUser } = useAuth();
+const { user, loadUser } = useAuth();
 
 // to intially set user if there
 // saveUser();
