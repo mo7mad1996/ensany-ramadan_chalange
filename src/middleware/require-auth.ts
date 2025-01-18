@@ -6,4 +6,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (!token.value) {
     return navigateTo("/login");
   }
+
+  // here i will hit `me` route
 });

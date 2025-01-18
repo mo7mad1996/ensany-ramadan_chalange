@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   // main directory
   srcDir: "src/",
 
-  ssr: false,
+  ssr: true,
 
   // favicon & fonts
   app: {
