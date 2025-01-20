@@ -55,7 +55,6 @@ export function useAuth() {
       useCookie("token").value = "";
       isLoading.value = false;
       navigateTo("/");
-      window.location.reload();
     } catch (error) {
       isLoading.value = false;
       console.log(error);
