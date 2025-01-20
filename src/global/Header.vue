@@ -128,13 +128,28 @@
                   >
                 </li>
 
-                <li
+                <li>
+                  <v-btn
+                    :disabled="isLoading"
+                    :loading="isLoading"
+                    class="text-capitalize rounded-lg w-full mt-2"
+                    :ripple="false"
+                    variant="flat"
+                    size="small"
+                    color="primary"
+                    @click="logout"
+                  >
+                    Log out
+                  </v-btn>
+                </li>
+
+                <!-- <li
                   class="flex gap-1 items-center cursor-pointer"
                   @click="logout"
                 >
                   <v-icon size="20px">mdi-logout</v-icon>
                   <span class="hover:underline">Log out</span>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -173,7 +188,7 @@ import SwitchLang from "./SwitchLang.vue";
 import { useAuth } from "~/modules/auth/services/auth";
 
 const { locale } = useI18n();
-const { token, logout } = useAuth();
+const { token, isLoading, logout } = useAuth();
 const isOpen = ref(false);
 const isMenue = ref(false);
 

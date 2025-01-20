@@ -26,6 +26,8 @@ export function useAuth() {
       const response = await api.post("/login", credentials);
       token.value = response.data.result.token;
       setToken(encryptData(token.value));
+      console.log("user", response.data.result.user);
+
       isLoading.value = false;
       // window.location.reload();
       navigateTo("/dashboard");
@@ -38,20 +40,26 @@ export function useAuth() {
 
   // logout
   const logout = async () => {
-    console.log("token", token.value);
-
-    const response = await api.post(
-      "/logout",
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
-      }
-    );
-    token.value = "";
-    useCookie("token").value = "";
-    window.location.reload();
+    try {
+      isLoading.value = true;
+      const response = await api.post(
+        "/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token.value}`,
+          },
+        }
+      );
+      token.value = "";
+      useCookie("token").value = "";
+      isLoading.value = false;
+      navigateTo("/");
+      window.location.reload();
+    } catch (error) {
+      isLoading.value = false;
+      console.log(error);
+    }
   };
 
   return {

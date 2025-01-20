@@ -102,7 +102,7 @@ import { type User } from "~/helpers/interfaces";
 
 const show = ref(false);
 const isRemember = ref(true);
-const { login, user, isLoading } = useAuth();
+const { login, isLoading } = useAuth();
 
 const credentials = ref<User>({
   email: "",
