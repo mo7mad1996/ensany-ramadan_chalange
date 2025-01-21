@@ -102,13 +102,13 @@
         <div
           class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center"
         >
-          <div v-if="token" class="relative">
+          <div v-if="user" class="relative">
             <div
               @click="openDrop"
               class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
             >
               <img src="../assets/images/user.svg" width="30" alt="" />
-              <span>Ahmed</span>
+              <span>{{ user.name }}</span>
               <v-icon>mdi-menu-down</v-icon>
             </div>
 
@@ -188,7 +188,7 @@ import SwitchLang from "./SwitchLang.vue";
 import { useAuth } from "~/modules/auth/services/auth";
 
 const { locale } = useI18n();
-const { token, isLoading, logout } = useAuth();
+const { isLoading, logout, user } = useAuth();
 const isOpen = ref(false);
 const isMenue = ref(false);
 

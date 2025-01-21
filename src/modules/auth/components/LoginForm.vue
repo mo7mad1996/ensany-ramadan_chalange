@@ -62,13 +62,16 @@
         </template>
       </v-checkbox>
 
+      <!-- error message from backend -->
+      <p class="error-msg text-sm text-red-500 text-center mb-2">{{ error }}</p>
+
       <!-- Submit Button -->
       <v-btn
-        type="submit"
         :disabled="isLoading"
         :loading="isLoading"
-        class="text-capitalize rounded-lg w-full mt-2"
         :ripple="false"
+        type="submit"
+        class="text-capitalize rounded-lg w-full mt-2"
         variant="flat"
         size="large"
         color="primary"
@@ -102,7 +105,7 @@ import { type User } from "~/helpers/interfaces";
 
 const show = ref(false);
 const isRemember = ref(true);
-const { login, isLoading } = useAuth();
+const { login, isLoading, error } = useAuth();
 
 const credentials = ref<User>({
   email: "",

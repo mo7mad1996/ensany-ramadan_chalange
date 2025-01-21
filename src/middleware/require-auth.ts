@@ -18,6 +18,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
       console.log("user verified", response.data.result);
       if (!response.data.status) {
+        stopLoader();
         navigateTo("/login");
       }
       stopLoader();
