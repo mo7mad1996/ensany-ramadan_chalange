@@ -43,13 +43,9 @@
 import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
 import { useI18n } from "vue-i18n";
-import { useAuth } from "~/modules/auth/services/auth";
+import { useCountries } from "~/modules/auth/services/countries";
 
-const { user, loadUser } = useAuth();
-
-// to intially set user if there
-// saveUser();
-
+const { refresh, countries } = useCountries();
 const { locale } = useI18n();
 
 const donate = ref("");
@@ -66,15 +62,5 @@ useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
   },
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-
-  useHead({
-    htmlAttrs: {
-      dir: isArabic ? "rtl" : "ltr",
-    },
-  });
 });
 </script>

@@ -1,31 +1,58 @@
 <template>
-  <div class="login_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
+  <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <h2 class="text-black mb-5 font-bold lg:text-4xl md:text-4xl text-3xl">
       {{ $t("auth.signup") }}
     </h2>
 
     <Form @submit="onSubmit">
-      <!-- name input -->
-      <div>
-        <div class="relative">
-          <div
-            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-          >
-            <img src="../../../assets/images/contact/name.svg" alt="" />
+      <!-- first name and last name -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-3">
+        <div>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+            >
+              <img src="../../../assets/images/contact/name.svg" alt="" />
+            </div>
+
+            <Field
+              type="text"
+              name="register-firstname"
+              rules="required"
+              v-model="newUser.first_name"
+              id="custom-input1"
+              :placeholder="$t('auth.first_name')"
+              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            />
           </div>
 
-          <Field
-            type="text"
-            name="register-name"
-            rules="required"
-            v-model="fullName"
-            id="custom-input1"
-            :placeholder="$t('auth.name')"
-            class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+          <ErrorMessage
+            class="text-sm text-red-500"
+            name="register-firstname"
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-name" />
+        <div>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+            >
+              <img src="../../../assets/images/contact/name.svg" alt="" />
+            </div>
+
+            <Field
+              type="text"
+              name="register-lastname"
+              rules="required"
+              v-model="newUser.last_name"
+              id="custom-input"
+              :placeholder="$t('auth.last_name')"
+              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            />
+          </div>
+
+          <ErrorMessage class="text-sm text-red-500" name="register-lastname" />
+        </div>
       </div>
 
       <!-- email input -->
@@ -51,13 +78,53 @@
         <ErrorMessage class="text-sm text-red-500" name="register-email" />
       </div>
 
+      <!-- phone number -->
+      <div class="mt-4">
+        <Field name="phone" rules="required" v-slot="{ field }">
+          <vue-tel-input
+            v-bind="field"
+            v-model="newUser.mobile"
+            :dropdown-options="{ showSearchBox: true, showFlags: true }"
+            :inputOptions="{
+              showDialCode: true,
+              placeholder: $t('auth.phone'),
+            }"
+          ></vue-tel-input>
+
+          <ErrorMessage class="text-sm text-red-500" name="phone" />
+        </Field>
+      </div>
+
       <!-- country id -->
       <div>
         <div class="relative mt-4">
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <v-icon>mdi-map-marker-multiple-outline</v-icon>
+            <span v-if="status == 'pending'">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#3E7E41"
+                  d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    dur="0.75s"
+                    repeatCount="indefinite"
+                    type="rotate"
+                    values="0 12 12;360 12 12"
+                  />
+                </path>
+              </svg>
+            </span>
+            <v-icon v-if="status == 'success'"
+              >mdi-map-marker-multiple-outline</v-icon
+            >
           </div>
 
           <Field
@@ -69,13 +136,13 @@
             :placeholder="$t('auth.country')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           >
-            <option selected value="">{{ $t("auth.country") }}</option>
+            <option selected disabled value="">{{ $t("auth.country") }}</option>
             <option
               v-for="(country, index) in countries"
               :key="index"
               :value="country.id"
             >
-              {{ country.name }}
+              {{ country.name }} (+{{ country.mob_code }})
             </option>
           </Field>
         </div>
@@ -179,24 +246,27 @@
 
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { VueTelInput } from "vue-tel-input";
+import "vue-tel-input/vue-tel-input.css";
 
 import { useAuth } from "../services/auth";
 import { useCountries } from "../services/countries";
 import { type NewUser } from "~/helpers/interfaces";
 
+const phone = ref("");
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);
 
 const fullName = ref<string>("");
 const { register, isLoading, error } = useAuth();
-const { countries } = useCountries();
+const { countries, status } = useCountries();
 
 const newUser = ref<NewUser>({
-  name: "",
   first_name: "",
   last_name: "",
   email: "",
+  mobile: "",
   password: "",
   password_confirmation: "",
   country_id: "",
@@ -211,9 +281,6 @@ const showConfPassword = (): void => {
 };
 
 const onSubmit = () => {
-  newUser.value.name = fullName.value.split(" ")[0];
-  newUser.value.first_name = fullName.value.split(" ")[1];
-  newUser.value.last_name = fullName.value.split(" ")[2];
   register(newUser.value);
 };
 </script>

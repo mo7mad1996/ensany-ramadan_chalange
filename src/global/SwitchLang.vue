@@ -10,5 +10,26 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+import { startLoader } from "~/helpers/nprogress";
+import { stopLoader } from "~/helpers/nprogress";
+import { useCountries } from "~/modules/auth/services/countries";
 const { locale, setLocale } = useI18n();
+const { refresh, clear } = useCountries();
+
+const recall = async () => {
+  startLoader();
+  clear();
+  refresh();
+  stopLoader();
+};
+
+watch(locale, async (newLocale) => {
+  recall();
+  const isArabic = newLocale === "ar";
+  useHead({
+    htmlAttrs: {
+      dir: isArabic ? "rtl" : "ltr",
+    },
+  });
+});
 </script>

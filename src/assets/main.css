@@ -200,3 +200,31 @@ a {
     box-shadow: 0 0 10px #3e7e41, 0 0 5px #3e7e41 !important;
   }
 }
+
+.register_form {
+  .vti__dropdown {
+    padding: 14px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+
+  .vue-tel-input {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+
+  .vue-tel-input:focus-within {
+    box-shadow: none;
+    border-color: #e0e0e0;
+  }
+
+  .vti__dropdown-list.below {
+    top: 50px;
+  }
+}
+
+[dir="rtl"] .register_form {
+  .vti__dropdown-list {
+    left: -321px;
+  }
+}
