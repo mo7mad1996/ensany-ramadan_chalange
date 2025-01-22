@@ -1,12 +1,13 @@
 import vuetify from "vite-plugin-vuetify";
 
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
   // main directory
   srcDir: "src/",
+
+  ssr: true,
 
   // favicon & fonts
   app: {
@@ -57,7 +58,28 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
- 
+
+  vite: {
+    optimizeDeps: {
+      include: ["vuetify"],
+    },
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (id.includes("vuetify")) {
+                return "vuetify";
+              }
+              return "vendor";
+            }
+          },
+        },
+      },
+    },
+  },
+
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {

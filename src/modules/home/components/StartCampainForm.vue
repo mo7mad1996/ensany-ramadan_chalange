@@ -131,12 +131,13 @@
               <span class="text-2xl">{{ $t("home.start_date") }}</span>
             </div>
 
-            <Field
-              type="date"
-              name="start_date"
-              rules="required"
-              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            />
+            <div class="date-picker">
+              <Datepicker
+                v-model="today"
+                class="custom-datepicker"
+                date-picker
+              />
+            </div>
           </div>
 
           <div class="w-full">
@@ -144,11 +145,11 @@
               <span class="text-2xl"> {{ $t("home.end_date") }} </span>
             </div>
 
-            <Field
-              type="date"
-              name="end_date"
-              rules="required"
-              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            <Datepicker
+              v-model="endDate"
+              class="custom-datepicker"
+              placeholder="MM/DD/YY"
+              date-picker
             />
           </div>
 
@@ -168,6 +169,7 @@
                 type="text"
                 name="days"
                 rules="required"
+                v-model="availableDays"
                 :placeholder="$t('home.avilable_days')"
                 class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -303,43 +305,22 @@
 
 <script setup>
 import { Form, Field } from "vee-validate";
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+import { useStartCampaign } from "../typescript/start-campaign";
 
-const nameSwitch = ref("ar");
-const goalSwitch = ref("ar");
-const contentSwitch = ref("ar");
-const selectedFileName = ref("");
-const selected = ref("");
-
-const switchName = () => {
-  nameSwitch.value = nameSwitch.value === "ar" ? "en" : "ar";
-};
-
-const switchGoal = () => {
-  goalSwitch.value = goalSwitch.value === "ar" ? "en" : "ar";
-};
-
-const switchContent = () => {
-  contentSwitch.value = contentSwitch.value === "ar" ? "en" : "ar";
-};
-
-const handleFileChange = (event) => {
-  const file = event.target.files[0];
-  selectedFileName.value = file ? file.name : "";
-};
-
-const startCmpaign = (values) => {
-  console.log("form submitted", values);
-};
+const {
+  today,
+  endDate,
+  availableDays,
+  nameSwitch,
+  contentSwitch,
+  selectedFileName,
+  switchName,
+  switchContent,
+  handleFileChange,
+  startCmpaign,
+  formattedDate,
+  handleDateUpdate,
+} = useStartCampaign();
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

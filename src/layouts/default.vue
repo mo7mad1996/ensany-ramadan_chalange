@@ -42,13 +42,15 @@
 <script setup>
 import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
-import QuickDonation from "~/global/QuickDonation.vue";
 import { useI18n } from "vue-i18n";
-import { setLocale } from "@vee-validate/i18n";
+import { useAuth } from "~/modules/auth/services/auth";
+
+const { user, loadUser } = useAuth();
+
+// to intially set user if there
+// saveUser();
 
 const { locale } = useI18n();
-
-// setLocale(locale.value == "ar" ? "ar" : "en");
 
 const donate = ref("");
 
@@ -68,8 +70,6 @@ useHead({
 
 watch(locale, (newLocale) => {
   const isArabic = newLocale === "ar";
-
-  // setLocale(isArabic ? "ar" : "en");
 
   useHead({
     htmlAttrs: {

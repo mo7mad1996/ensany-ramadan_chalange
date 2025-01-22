@@ -183,3 +183,20 @@ a {
     border-radius: 5px;
   }
 }
+
+.custom-datepicker .dp__input {
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+#nprogress {
+  .bar {
+    background: #3e7e41 !important;
+  }
+
+  .peg {
+    box-shadow: 0 0 10px #3e7e41, 0 0 5px #3e7e41 !important;
+  }
+}

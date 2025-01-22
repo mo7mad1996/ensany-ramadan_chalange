@@ -2,6 +2,7 @@ export const useViewCampaign = () => {
   const progress = ref<number>(30);
   const tab = ref<null | string>(null);
   const loading = ref<boolean>(true);
+  const isImageLoaded = ref<boolean>(true);
   const { t } = useI18n();
 
   const text = ref<string[]>([
@@ -73,5 +74,6 @@ export const useViewCampaign = () => {
     computedText,
     loading,
     progress,
+    isImageLoaded,
   };
 };

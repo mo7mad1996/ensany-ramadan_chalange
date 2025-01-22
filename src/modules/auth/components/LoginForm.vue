@@ -16,14 +16,15 @@
 
           <Field
             type="text"
-            name="name"
+            name="email"
+            v-model="credentials.email"
             rules="required|email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
-        <ErrorMessage class="text-red-500 text-sm" name="name" as="span" />
+        <ErrorMessage class="text-red-500 text-sm" name="email" as="span" />
       </div>
 
       <!-- Password Input -->
@@ -40,6 +41,7 @@
           <Field
             :type="show ? 'text' : 'password'"
             name="password"
+            v-model="credentials.password"
             rules="required|min:6"
             :placeholder="$t('auth.password')"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -60,12 +62,16 @@
         </template>
       </v-checkbox>
 
+      <!-- error message from backend -->
+      <p class="error-msg text-sm text-red-500 text-center mb-2">{{ error }}</p>
+
       <!-- Submit Button -->
       <v-btn
-        type="submit"
-        :disabled="!meta.valid"
-        class="text-capitalize rounded-lg w-full mt-2"
+        :disabled="isLoading"
+        :loading="isLoading"
         :ripple="false"
+        type="submit"
+        class="text-capitalize rounded-lg w-full mt-2"
         variant="flat"
         size="large"
         color="primary"
@@ -94,17 +100,23 @@
 
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from "vee-validate";
-import { ref } from "vue";
+import { useAuth } from "../services/auth";
+import { type User } from "~/helpers/interfaces";
 
 const show = ref(false);
 const isRemember = ref(true);
+const { login, isLoading, error } = useAuth();
+
+const credentials = ref<User>({
+  email: "",
+  password: "",
+});
 
 const showPassword = (): void => {
   show.value = !show.value;
 };
 
-// test form values
-const onSubmit = (values: any) => {
-  console.log("form submitted", values);
+const onSubmit = () => {
+  login(credentials.value);
 };
 </script>

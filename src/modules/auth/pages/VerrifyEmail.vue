@@ -24,44 +24,6 @@
           <span>{{ formattedTime }}</span>
         </div>
 
-        <!-- password input -->
-        <div class="relative mt-4">
-          <div
-            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
-            @click="showPassword"
-          >
-            <v-icon v-if="show1" size="small">mdi-eye-outline</v-icon>
-            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
-          </div>
-
-          <input
-            :type="show1 ? 'text' : 'password'"
-            id="custom-input"
-            :placeholder="$t('auth.password')"
-            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            required
-          />
-        </div>
-
-        <!-- confirm password  -->
-        <div class="relative mt-4">
-          <div
-            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
-            @click="showConfPassword"
-          >
-            <v-icon v-if="show2" size="small">mdi-eye-outline</v-icon>
-            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
-          </div>
-
-          <input
-            :type="show2 ? 'text' : 'password'"
-            id="custom-input"
-            :placeholder="$t('auth.confirm_password')"
-            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            required
-          />
-        </div>
-
         <v-btn
           class="text-capitalize rounded-lg w-100 mt-5"
           :ripple="false"
