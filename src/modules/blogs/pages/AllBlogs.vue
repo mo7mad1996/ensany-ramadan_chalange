@@ -9,14 +9,14 @@
       {{ $t("blogs.blogs") }}
     </h1>
 
-    <SkeletonLoader :loading="isLoading" />
+    <SkeletonLoader :loading="status" />
 
     <div
-      v-if="!isLoading"
+      v-if="status == 'success'"
       class="campaigns grid gap-sm pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
       <BlogCard
-        v-for="(item, index) in 12"
+        v-for="(blog, index) in blogs"
         :key="index"
         :route="`/blogs/${index + 1}`"
         @click="$router.push(`/blogs/${index + 1}`)"
@@ -29,17 +29,17 @@
           />
         </template>
 
-        <template #title>{{ $t("blogs.blog_title") }}</template>
+        <template #title>{{ blog.title }}</template>
 
-        <template #desc>{{ $t("blogs.blog_desc") }}</template>
+        <template #desc>{{ blog.description }}</template>
       </BlogCard>
     </div>
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
-        v-model="page"
-        :length="15"
-        :total-visible="5"
+        v-model="currentPage"
+        :length="blogsMeta.last_page"
+        @input="fetchBlogs"
       ></v-pagination>
     </div>
   </Container>
@@ -49,6 +49,7 @@
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
+import { useBlogs } from "../services/blogs";
 import { useGlobalVar } from "~/helpers/global-var";
 const { locale } = useI18n();
 
@@ -56,6 +57,15 @@ const page = ref(2);
 const isLoading = ref(true);
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { blogs, blogsMeta, refresh, status, clear, currentPage } = useBlogs();
+
+const fetchBlogs = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchBlogs();
+});
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,

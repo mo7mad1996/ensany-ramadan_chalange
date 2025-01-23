@@ -18,7 +18,7 @@
       <Card
         v-for="(campaign, index) in campaigns"
         :key="index"
-        :rate="20"
+        :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"
         :donatebtn="true"
         :route="`/campaigns/donate/${index + 1}`"
@@ -36,13 +36,13 @@
 
         <template #title>{{ campaign?.name }}</template>
 
-        <template #desc> {{ $t("home.card_desc") }}</template>
+        <template #desc> {{ campaign?.short_desc }}</template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
 
         <template #total_donation>${{ campaign?.price_target }}</template>
 
-        <template #donation>${{ campaign.total_amount }}</template>
+        <template #donation>${{ campaign?.total_amount }}</template>
       </Card>
     </div>
 
@@ -65,6 +65,7 @@ import { useGlobalVar } from "~/helpers/global-var";
 import { useCampaigns } from "../services/api";
 const { locale } = useI18n();
 const isLoading = ref(true);
+const progress = ref(20);
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 const {
