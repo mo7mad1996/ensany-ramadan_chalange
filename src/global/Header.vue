@@ -7,6 +7,8 @@
     color="#F6FFF6"
   >
     <div class="card flex flex-col gap-y-[1.5rem] items-center" v-if="isOpen">
+      <nuxt-link to="/" class="text-black">{{ $t("global.home") }}</nuxt-link>
+
       <nuxt-link to="/campaigns" class="text-black">{{
         $t("global.campaigns")
       }}</nuxt-link>
@@ -26,6 +28,27 @@
 
       <div class="flex flex-col gap-y-[1.5rem]">
         <v-btn
+          v-if="user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push('/dashboard')"
+          >{{ $t("global.dashboard") }}</v-btn
+        >
+
+        <v-btn
+          v-if="user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="logout"
+          >{{ $t("global.logout") }}</v-btn
+        >
+
+        <v-btn
+          v-else
           class="text-capitalize"
           variant="flat"
           size="default"
@@ -148,14 +171,6 @@
                     Log out
                   </v-btn>
                 </li>
-
-                <!-- <li
-                  class="flex gap-1 items-center cursor-pointer"
-                  @click="logout"
-                >
-                  <v-icon size="20px">mdi-logout</v-icon>
-                  <span class="hover:underline">Log out</span>
-                </li> -->
               </ul>
             </div>
           </div>
