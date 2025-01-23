@@ -1,7 +1,7 @@
 import { api } from "~/helpers/axios";
 
 export const useCampaigns = () => {
-  const currentPage = ref(1); // Track the current page
+  const currentPage = ref(1);
   const {
     data: campaignsData,
     error: campaigns_error,
@@ -9,13 +9,10 @@ export const useCampaigns = () => {
     status,
     clear,
   } = useAsyncData(() =>
-    api
-      .get(`/campaigns?page=${currentPage.value}`) // Pass the page as a query param
-      .then((response) => {
-        const { data, meta } = response.data.result;
-        console.log("worked", data);
-        return { data, meta };
-      })
+    api.get(`/campaigns?page=${currentPage.value}`).then((response) => {
+      const { data, meta } = response.data.result;
+      return { data, meta };
+    })
   );
 
   const campaigns = computed(() => campaignsData.value?.data || []);

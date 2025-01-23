@@ -50,7 +50,6 @@
       <v-pagination
         v-model="currentPage"
         :length="campaignsMeta.last_page"
-        :total-visible="5"
         @click="fetchCampaigns"
       ></v-pagination>
     </div>

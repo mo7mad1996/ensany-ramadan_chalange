@@ -16,7 +16,11 @@ import { useCountries } from "~/modules/auth/services/countries";
 import { useCampaigns } from "~/modules/campaigns/services/api";
 const { locale, setLocale } = useI18n();
 const { refresh: refreshCountries, clear: clearCountries } = useCountries();
-const { refresh: refrechCamapaigns } = useCampaigns();
+const {
+  refresh: refrechCamapaigns,
+  clear: clearCampaigns,
+  currentPage,
+} = useCampaigns();
 
 //this function to refresh api calls after switch lang
 const recall = async () => {
