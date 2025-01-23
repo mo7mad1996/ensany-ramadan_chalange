@@ -73,7 +73,13 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center"
         >
           <li>
-            <nuxt-link :to="'/campaigns'" class="text-black">{{
+            <nuxt-link to="/" class="text-black">{{
+              $t("global.home")
+            }}</nuxt-link>
+          </li>
+
+          <li>
+            <nuxt-link to="/campaigns" class="text-black">{{
               $t("global.campaigns")
             }}</nuxt-link>
           </li>

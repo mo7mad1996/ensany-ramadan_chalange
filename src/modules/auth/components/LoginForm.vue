@@ -57,11 +57,14 @@
       <v-checkbox
         v-model="isRemember"
         class="checkbox mb-4"
+        id="checkbox-4"
         color="primary"
         :ripple="false"
       >
         <template v-slot:label>
-          <p class="text-sm">{{ $t("auth.remember_me") }}</p>
+          <label for="checkbox-4" class="text-sm">{{
+            $t("auth.remember_me")
+          }}</label>
         </template>
       </v-checkbox>
 
