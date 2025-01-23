@@ -8,30 +8,47 @@
         <h2
           class="text-black mb-2 text-center font-bold lg:text-4xl md:text-4xl text-3xl rtl:text-2xl"
         >
-          {{ $t("auth.reset_password") }}
+          {{ $t("auth.verrify_email") }}
         </h2>
+
+        <p class="font-bold text-center text-primary mb-2">
+          {{ useCookie("verrification_code") }}
+        </p>
 
         <p class="text-sm text-[#12121299] text-center">
           {{ $t("auth.six_digits") }}
         </p>
 
-        <div class="otp-input">
-          <v-otp-input length="6" model-value=""></v-otp-input>
-        </div>
+        <Form @submit="onSubmit">
+          <Field name="otp-input" rules="required|min:6" v-slot="{ field }">
+            <v-otp-input
+              v-bind="field"
+              length="6"
+              v-model="verification_code"
+            ></v-otp-input>
+          </Field>
+          <ErrorMessage
+            name="otp-input"
+            class="text-sm w-full text-red-500 text-center"
+          />
 
-        <!-- timer for resend code  -->
-        <div class="text-center">
-          <span>{{ formattedTime }}</span>
-        </div>
+          <!-- timer for resend code  -->
+          <div class="text-center">
+            <span>{{ formattedTime }}</span>
+          </div>
 
-        <v-btn
-          class="text-capitalize rounded-lg w-100 mt-5"
-          :ripple="false"
-          variant="flat"
-          size="large"
-          color="primary"
-          >{{ $t("auth.reset_password") }}</v-btn
-        >
+          <v-btn
+            :disabled="isLoading"
+            :loading="isLoading"
+            type="submit"
+            class="text-capitalize rounded-lg w-100 mt-5"
+            :ripple="false"
+            variant="flat"
+            size="large"
+            color="primary"
+            >{{ $t("auth.verrify_email") }}</v-btn
+          >
+        </Form>
 
         <!-- Recend code -->
         <div
@@ -59,22 +76,22 @@
 </template>
 
 <script setup lang="ts">
+import { Form, Field, ErrorMessage } from "vee-validate";
 import Container from "~/global/Container.vue";
 import { useResetPassword } from "../typescript/reset";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useAuth } from "../services/auth";
 const { locale } = useI18n();
-
-const {
-  show1,
-  show2,
-  showPassword,
-  showConfPassword,
-  resendCode,
-  formattedTime,
-  timeLeft,
-} = useResetPassword();
+const verification_code = ref<number | string>("");
+const { resendCode, formattedTime, timeLeft } = useResetPassword();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
+
+const { verrifyEmail, isLoading } = useAuth();
+
+const onSubmit = () => {
+  verrifyEmail(verification_code.value);
+};
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,

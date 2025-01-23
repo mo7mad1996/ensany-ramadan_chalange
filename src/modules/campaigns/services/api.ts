@@ -1,29 +1,30 @@
-import { api } from "../../../helpers/axios";
-import { ref, onMounted } from "vue";
+import { api } from "~/helpers/axios";
 
-// here all apis calls of the module
+export const useCampaigns = () => {
+  const currentPage = ref(1);
+  const {
+    data: campaignsData,
+    error: campaigns_error,
+    refresh,
+    status,
+    clear,
+  } = useAsyncData(() =>
+    api.get(`/campaigns?page=${currentPage.value}`).then((response) => {
+      const { data, meta } = response.data.result;
+      return { data, meta };
+    })
+  );
 
-export function getHeroSection() {
-  const hero = ref(null);
-  const error: any = ref(null);
-
-  const fetchHero = async () => {
-    try {
-      const response = await api.get("/drosat/manasat");
-      hero.value = response.data;
-      console.log("hero", hero.value);
-    } catch (err) {
-      error.value = err;
-      console.error(err);
-    }
-  };
-
-  onMounted(() => {
-    fetchHero();
-  });
+  const campaigns = computed(() => campaignsData.value?.data || []);
+  const campaignsMeta = computed(() => campaignsData.value?.meta || {});
 
   return {
-    hero,
-    error,
+    campaigns,
+    campaignsMeta,
+    campaigns_error,
+    refresh,
+    status,
+    clear,
+    currentPage, // Expose currentPage for two-way binding
   };
-}
+};

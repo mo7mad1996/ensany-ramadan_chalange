@@ -67,14 +67,14 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              if (id.includes("vuetify")) {
-                return "vuetify";
-              }
-              return "vendor";
-            }
-          },
+          // manualChunks(id) {
+          //   if (id.includes("node_modules")) {
+          //     if (id.includes("vuetify")) {
+          //       return "vuetify";
+          //     }
+          //     return "vendor";
+          //   }
+          // },
         },
       },
     },

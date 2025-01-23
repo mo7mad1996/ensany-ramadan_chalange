@@ -10,5 +10,34 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+import { startLoader } from "~/helpers/nprogress";
+import { stopLoader } from "~/helpers/nprogress";
+import { useCountries } from "~/modules/auth/services/countries";
+import { useCampaigns } from "~/modules/campaigns/services/api";
 const { locale, setLocale } = useI18n();
+const { refresh: refreshCountries, clear: clearCountries } = useCountries();
+const {
+  refresh: refrechCamapaigns,
+  clear: clearCampaigns,
+  currentPage,
+} = useCampaigns();
+
+//this function to refresh api calls after switch lang
+const recall = async () => {
+  startLoader();
+  clearCountries();
+  refreshCountries();
+  refrechCamapaigns();
+  stopLoader();
+};
+
+watch(locale, async (newLocale) => {
+  recall();
+  const isArabic = newLocale === "ar";
+  useHead({
+    htmlAttrs: {
+      dir: isArabic ? "rtl" : "ltr",
+    },
+  });
+});
 </script>

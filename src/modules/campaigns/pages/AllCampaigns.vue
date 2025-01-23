@@ -9,14 +9,14 @@
       {{ $t("campaigns.all_campaigns") }}
     </h1>
 
-    <SkeletonLoader :loading="isLoading" />
+    <SkeletonLoader :loading="status" />
 
     <div
-      v-if="!isLoading"
+      v-if="status == 'success'"
       class="campaigns grid gap-6 pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
       <Card
-        v-for="(item, index) in 12"
+        v-for="(campaign, index) in campaigns"
         :key="index"
         :rate="20"
         :shadow="true"
@@ -32,25 +32,25 @@
           />
         </template>
 
-        <template #company> {{ $t("home.honor_company") }}</template>
+        <template #company> {{ campaign?.user?.name }}</template>
 
-        <template #title>{{ $t("home.feed_familly") }}</template>
+        <template #title>{{ campaign?.name }}</template>
 
         <template #desc> {{ $t("home.card_desc") }}</template>
 
-        <template #subscribers>150</template>
+        <template #subscribers>{{ campaign?.total_donors }}</template>
 
-        <template #total_donation>$6000</template>
+        <template #total_donation>${{ campaign?.price_target }}</template>
 
-        <template #donation>$600</template>
+        <template #donation>${{ campaign.total_amount }}</template>
       </Card>
     </div>
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
-        v-model="page"
-        :length="15"
-        :total-visible="5"
+        v-model="currentPage"
+        :length="campaignsMeta.last_page"
+        @click="fetchCampaigns"
       ></v-pagination>
     </div>
   </Container>
@@ -62,12 +62,27 @@ import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useCampaigns } from "../services/api";
 const { locale } = useI18n();
-
-const page = ref(2);
 const isLoading = ref(true);
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
+const {
+  campaigns,
+  campaignsMeta,
+  campaigns_error,
+  refresh,
+  status,
+  currentPage,
+} = useCampaigns();
+
+const fetchCampaigns = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchCampaigns();
+});
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
