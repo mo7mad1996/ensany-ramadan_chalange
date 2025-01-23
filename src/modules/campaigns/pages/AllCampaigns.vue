@@ -34,15 +34,15 @@
 
         <template #company> {{ campaign?.user?.name }}</template>
 
-        <template #title>{{ $t("home.feed_familly") }}</template>
+        <template #title>{{ campaign?.name }}</template>
 
         <template #desc> {{ $t("home.card_desc") }}</template>
 
-        <template #subscribers>150</template>
+        <template #subscribers>{{ campaign?.total_donors }}</template>
 
-        <template #total_donation>$6000</template>
+        <template #total_donation>${{ campaign?.price_target }}</template>
 
-        <template #donation>$600</template>
+        <template #donation>${{ campaign.total_amount }}</template>
       </Card>
     </div>
 
