@@ -13,13 +13,17 @@ import { useI18n } from "vue-i18n";
 import { startLoader } from "~/helpers/nprogress";
 import { stopLoader } from "~/helpers/nprogress";
 import { useCountries } from "~/modules/auth/services/countries";
+import { useCampaigns } from "~/modules/campaigns/services/api";
 const { locale, setLocale } = useI18n();
-const { refresh, clear } = useCountries();
+const { refresh: refreshCountries, clear: clearCountries } = useCountries();
+const { refresh: refrechCamapaigns } = useCampaigns();
 
+//this function to refresh api calls after switch lang
 const recall = async () => {
   startLoader();
-  clear();
-  refresh();
+  clearCountries();
+  refreshCountries();
+  refrechCamapaigns();
   stopLoader();
 };
 
