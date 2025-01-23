@@ -54,7 +54,7 @@
                 name="custom_amount"
                 rules="required|englishNumbersOnly"
                 type="text"
-                id="custom-input"
+                id="custom_amount"
                 v-model="amount"
                 :placeholder="$t('global.custom_amount')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -73,47 +73,64 @@
               {{ $t("global.donation_type") }}
             </h5>
 
-            <v-radio-group v-model="donationType" class="mt-2 checkbox" inline>
+            <v-radio-group
+              v-model="donationType"
+              id="radio-group-9-messages"
+              class="mt-2 checkbox"
+              inline
+            >
               <!-- monthly -->
               <v-radio
                 value="monthly"
+                id="input-12"
+                name="radio-group-9"
                 color="primary"
                 class="me-[2rem]"
                 :ripple="false"
               >
                 <template v-slot:label>
-                  <span>{{ $t("global.monthly") }}</span>
+                  <label for="input-12">{{ $t("global.monthly") }}</label>
                 </template>
               </v-radio>
 
               <!-- weekly -->
               <v-radio
                 value="weekly"
+                name="radio-group-10"
+                id="input-13"
                 color="primary"
                 :ripple="false"
                 class="me-[2rem]"
               >
                 <template v-slot:label>
-                  <span>{{ $t("global.weekly") }}</span>
+                  <label for="input-13">{{ $t("global.weekly") }}</label>
                 </template>
               </v-radio>
 
               <!-- dialy -->
               <v-radio
                 value="dialy"
+                name="radio-group-11"
+                id="input-14"
                 color="primary"
                 :ripple="false"
                 class="me-[2rem]"
               >
                 <template v-slot:label>
-                  <span>{{ $t("global.dialy") }}</span>
+                  <label for="input-14">{{ $t("global.dialy") }}</label>
                 </template>
               </v-radio>
 
               <!-- onetime -->
-              <v-radio value="onetime" color="primary" :ripple="false">
+              <v-radio
+                value="onetime"
+                color="primary"
+                name="radio-group-12"
+                id="input-15"
+                :ripple="false"
+              >
                 <template v-slot:label>
-                  <span>{{ $t("global.onetime") }}</span>
+                  <label for="input-15">{{ $t("global.onetime") }}</label>
                 </template>
               </v-radio>
             </v-radio-group>
@@ -145,7 +162,7 @@
                   name="name"
                   rules="required"
                   type="text"
-                  id="custom-input"
+                  id="name"
                   :placeholder="$t('global.name')"
                   class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                 />
@@ -159,10 +176,13 @@
               v-model="isHidden"
               class="checkbox"
               color="primary"
+              id="checkbox-16"
               :ripple="false"
             >
               <template v-slot:label>
-                <p class="text-sm">{{ $t("global.name_hidden") }}</p>
+                <label for="checkbox-16" class="text-sm">{{
+                  $t("global.name_hidden")
+                }}</label>
               </template>
             </v-checkbox>
 
@@ -179,7 +199,7 @@
                   name="email"
                   type="email"
                   rules="required|email"
-                  id="custom-input"
+                  id="email"
                   :placeholder="$t('global.email')"
                   class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                 />
@@ -201,7 +221,7 @@
                   name="phone"
                   rules="required"
                   type="text"
-                  id="custom-input"
+                  id="phone"
                   :placeholder="$t('global.phone')"
                   class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                 />
@@ -216,6 +236,7 @@
             <v-checkbox
               v-model="gift"
               class="checkbox pt-3 pb-2"
+              id="checkbox-19"
               color="primary"
               :ripple="false"
             >
@@ -242,7 +263,7 @@
                       name="some_name"
                       rules="required"
                       type="text"
-                      id="custom-input"
+                      id="some_name"
                       :placeholder="$t('global.some_name')"
                       class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
@@ -270,7 +291,7 @@
                       name="some_email"
                       type="email"
                       rules="required|email"
-                      id="custom-input"
+                      id="some_email"
                       :placeholder="$t('global.gift_email')"
                       class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
@@ -298,7 +319,7 @@
                       name="some_phone"
                       rules="required"
                       type="text"
-                      id="custom-input"
+                      id="some_phone"
                       :placeholder="$t('global.some_number')"
                       class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
@@ -336,7 +357,8 @@
 
               <textarea
                 type="text"
-                id="custom-input"
+                name="text-eria"
+                id="text-eria"
                 :placeholder="$t('global.comment')"
                 class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />

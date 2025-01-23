@@ -1,6 +1,7 @@
 export interface User {
   account: string;
   password: string;
+  remember_me: string;
 }
 
 export interface NewUser {

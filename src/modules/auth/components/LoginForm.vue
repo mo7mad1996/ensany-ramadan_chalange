@@ -19,6 +19,7 @@
             name="email"
             v-model="credentials.account"
             rules="required"
+            id="login-email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
@@ -43,6 +44,8 @@
             name="password"
             v-model="credentials.password"
             rules="required|min:6"
+            id="login-password"
+            autocomplete="login-password"
             :placeholder="$t('auth.password')"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
@@ -110,6 +113,7 @@ const { login, isLoading, error } = useAuth();
 const credentials = ref<User>({
   account: "",
   password: "",
+  remember_me: "",
 });
 
 const showPassword = (): void => {
@@ -117,6 +121,7 @@ const showPassword = (): void => {
 };
 
 const onSubmit = () => {
+  credentials.value.remember_me = isRemember ? "yes" : "no";
   login(credentials.value);
 };
 </script>
