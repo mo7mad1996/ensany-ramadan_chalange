@@ -8,7 +8,7 @@ export const useCampaigns = () => {
     refresh,
     status,
     clear,
-  } = useAsyncData(() =>
+  } = useAsyncData("campaigns", () =>
     api.get(`/campaigns?page=${currentPage.value}`).then((response) => {
       const { data, meta } = response.data.result;
       return { data, meta };
@@ -25,6 +25,6 @@ export const useCampaigns = () => {
     refresh,
     status,
     clear,
-    currentPage, // Expose currentPage for two-way binding
+    currentPage,
   };
 };

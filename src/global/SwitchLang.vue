@@ -14,13 +14,11 @@ import { startLoader } from "~/helpers/nprogress";
 import { stopLoader } from "~/helpers/nprogress";
 import { useCountries } from "~/modules/auth/services/countries";
 import { useCampaigns } from "~/modules/campaigns/services/api";
+import { useBlogs } from "~/modules/blogs/services/blogs";
 const { locale, setLocale } = useI18n();
 const { refresh: refreshCountries, clear: clearCountries } = useCountries();
-const {
-  refresh: refrechCamapaigns,
-  clear: clearCampaigns,
-  currentPage,
-} = useCampaigns();
+const { refresh: refreshBlogs } = useBlogs();
+const { refresh: refrechCamapaigns } = useCampaigns();
 
 //this function to refresh api calls after switch lang
 const recall = async () => {
@@ -28,6 +26,7 @@ const recall = async () => {
   clearCountries();
   refreshCountries();
   refrechCamapaigns();
+  refreshBlogs();
   stopLoader();
 };
 

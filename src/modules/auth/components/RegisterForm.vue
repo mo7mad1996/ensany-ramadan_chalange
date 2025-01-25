@@ -20,7 +20,7 @@
               name="register-firstname"
               rules="required"
               v-model="newUser.first_name"
-              id="custom-input1"
+              id="register-firstname"
               :placeholder="$t('auth.first_name')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -45,7 +45,7 @@
               name="register-lastname"
               rules="required"
               v-model="newUser.last_name"
-              id="custom-input"
+              id="register-lastname"
               :placeholder="$t('auth.last_name')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -69,7 +69,7 @@
             name="register-email"
             rules="required|email"
             v-model="newUser.email"
-            id="custom-input2"
+            id="register-email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
@@ -84,6 +84,7 @@
           <vue-tel-input
             v-bind="field"
             v-model="newUser.mobile"
+            autocomplet="phone-number"
             :dropdown-options="{ showSearchBox: true, showFlags: true }"
             :inputOptions="{
               showDialCode: true,
@@ -131,7 +132,7 @@
             as="select"
             name="register-country"
             rules="required"
-            id="custom-input3"
+            id="register-country"
             v-model="newUser.country_id"
             :placeholder="$t('auth.country')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -166,8 +167,9 @@
             name="register-password"
             rules="required|min:6"
             v-model="newUser.password"
-            id="custom-input4"
+            id="register-password"
             :placeholder="$t('auth.password')"
+            autocomplete="new-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             required
           />
@@ -192,8 +194,9 @@
             name="register-confirm"
             rules="required|confirmed:@register-password"
             v-model="newUser.password_confirmation"
-            id="custom-input5"
+            id="register-confirm"
             :placeholder="$t('auth.confirm_password')"
+            autocomplete="confirm-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             required
           />
@@ -207,6 +210,7 @@
         v-model="isRemember"
         class="checkbox"
         color="primary"
+        id="checkbox-4"
         :ripple="false"
       >
         <template v-slot:label>

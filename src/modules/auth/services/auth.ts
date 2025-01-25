@@ -30,6 +30,7 @@ export function useAuth() {
   const login = async (credentials: User) => {
     try {
       isLoading.value = true;
+      error.value = null;
       const response = await api.post("/login", credentials);
       token.value = response.data.result.token;
       user.value = response.data.result.user;
@@ -48,6 +49,8 @@ export function useAuth() {
   const register = async (userData: NewUser) => {
     try {
       isLoading.value = true;
+      error.value = null;
+
       const response = await api.post("/register", userData);
 
       token.value = response.data.result.token;

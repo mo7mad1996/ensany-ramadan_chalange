@@ -16,6 +16,8 @@
   "start_campaign": "Start A Campaign",
   "join_challenge": "Join Challenge",
   "home": "Home",
+  "dashboard": "Dashboard",
+  "logout": "Log Out",
 
   "donation_amount": "Donation amount",
   "custom_amount": "Enter Custom Amount",

@@ -16,6 +16,8 @@
   "start_campaign": "ابدأ حملة",
   "join_challenge": "انضم إلى التحدي",
   "home": "الرئيسيه",
+  "dashboard": "لوحة التحكم",
+  "logout": "تسجيل الخروج",
 
   "donation_amount": "مبلغ التبرع",
   "custom_amount": "أدخل مبلغًا مخصصًا",
