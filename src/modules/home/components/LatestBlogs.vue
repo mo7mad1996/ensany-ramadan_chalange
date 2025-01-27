@@ -31,16 +31,12 @@
       >
         <Slide v-for="(blog, index) in blogs" :key="index">
           <BlogCard
-            :route="`/blogs/${index + 1}`"
+            :route="`/blogs/${blog?.id}`"
             class="text-start m-4"
-            @click="$router.push(`/blogs/${blog.id}`)"
+            @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>
-              <img
-                src="../../../assets/images/blogs-img.png"
-                class="w-full"
-                alt=""
-              />
+              <img :src="blog?.image" class="w-full rounded-lg" alt="" />
             </template>
 
             <template #title>{{ blog.title }}</template>

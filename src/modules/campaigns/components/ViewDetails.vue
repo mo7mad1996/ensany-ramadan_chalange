@@ -2,7 +2,7 @@
   <section aria-label="view details section" class="view_details">
     <div class="image relative rounded-lg">
       <img
-        src="../../../assets/images/chalenge-img.png"
+        :src="campaign?.image"
         class="w-full h-[370px] object-cover rounded-lg"
         alt=""
       />

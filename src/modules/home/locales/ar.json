@@ -64,5 +64,11 @@
   "launch_campaign": "إطلاق الحملة",
   "english": "الانجليزيه",
   "active": "نشط",
-  "deactive": "غير نشط"
+  "deactive": "غير نشط",
+
+  "donor": "المتبرع",
+  "donation_amount": "مبلغ التبرع",
+  "donation_time": "وقت التبرع",
+  "donation_campaign": "حملة التبرع",
+  "mins_go": "منذ دقائق"
 }

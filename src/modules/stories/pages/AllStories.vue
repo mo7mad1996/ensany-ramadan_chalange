@@ -18,15 +18,14 @@
       <StoryCard
         v-for="(story, index) in stories"
         :key="index"
-        :route="`/stories/${index + 1}`"
+        :route="`/stories/${story?.id}`"
       >
         <template #video>
-          <video
-            class="rounded-sm object-cover cursor-pointer"
-            src="../../../assets/videos/contribution-vid.mp4"
-            poster="../../../assets/videos/contribution-poster.svg"
-            controls
-          ></video>
+          <img
+            @click="$router.push(`/stories/${story.id}`)"
+            class="w-full max-h-[15rem] object-cover rounded-lg"
+            :src="story?.image"
+          ></img>
         </template>
 
         <template #title>{{ story?.title }}</template>

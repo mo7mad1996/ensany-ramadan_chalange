@@ -64,5 +64,11 @@
   "launch_campaign": "Launch Campaign",
   "english": "English",
   "active": "Active",
-  "deactive": "Deactive"
+  "deactive": "Deactive",
+
+  "donor": "Donor",
+  "donation_amount": "Donation Amount",
+  "donation_time": "Time",
+  "donation_campaign": "Campaign",
+  "mins_go": "mins ago"
 }

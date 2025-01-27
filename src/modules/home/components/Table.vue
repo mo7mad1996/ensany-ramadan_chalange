@@ -5,8 +5,12 @@
   >
     <Container class="flex justify-center">
       <!-- Add a scrollable container -->
-      <div class="overflow-auto w-1/2">
-        <table class="w-full">
+      <div class="overflow-auto w-3/4">
+        <div v-if="status == 'pending'">
+          <v-skeleton-loader type="table" class="w-full"></v-skeleton-loader>
+        </div>
+
+        <table class="w-full" v-if="status == 'success'">
           <thead class="bg-primary">
             <tr>
               <th>
@@ -17,7 +21,7 @@
                     class="filter"
                     alt=""
                   />
-                  <span>Donor</span>
+                  <span>{{ $t("home.donor") }}</span>
                 </div>
               </th>
               <th>
@@ -28,7 +32,7 @@
                     class="filter"
                     alt=""
                   />
-                  <span>Donation Amount</span>
+                  <span>{{ $t("home.donation_amount") }}</span>
                 </div>
               </th>
               <th>
@@ -39,7 +43,7 @@
                     class="filter"
                     alt=""
                   />
-                  <span>Campaign</span>
+                  <span>{{ $t("home.donation_campaign") }}</span>
                 </div>
               </th>
               <th>
@@ -50,13 +54,13 @@
                     class="filter"
                     alt=""
                   />
-                  <span>Time</span>
+                  <span>{{ $t("home.donation_time") }}</span>
                 </div>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in 4" :key="index">
+            <tr v-for="(donor, index) in topTen" :key="index">
               <td>
                 <div class="flex gap-x-2 items-center">
                   <img
@@ -64,16 +68,16 @@
                     width="25"
                     alt=""
                   />
-                  <span>Ahmed Ali</span>
+                  <span>{{ donor?.name }}</span>
                 </div>
               </td>
-              <td class="font-bold text-center">$20k</td>
+              <td class="font-bold">${{ donor?.total_amount }}</td>
               <td>
                 <nuxt-link to="" class="underline cursor-pointer"
                   >Feed a Family for Iftar</nuxt-link
                 >
               </td>
-              <td>2 mins ago</td>
+              <td>2 {{ $t("home.mins_go") }}</td>
             </tr>
           </tbody>
         </table>
@@ -84,6 +88,10 @@
 
 <script setup>
 import Container from "~/global/Container.vue";
+
+import { useDonors } from "../services/top-donors";
+
+const { topTen, status } = useDonors();
 </script>
 
 <style scoped>
@@ -106,8 +114,7 @@ table {
   }
 }
 
-/* Optional: Add max-width to table for better responsiveness */
 table {
-  min-width: 500px; /* Adjust as needed */
+  min-width: 500px;
 }
 </style>

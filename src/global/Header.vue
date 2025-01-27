@@ -137,7 +137,7 @@
               class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
             >
               <img src="../assets/images/user.svg" width="30" alt="" />
-              <span>{{ user.name }}</span>
+              <span>{{ user?.first_name }}</span>
               <v-icon>mdi-menu-down</v-icon>
             </div>
 
@@ -152,9 +152,9 @@
                     width="15"
                     alt=""
                   />
-                  <nuxt-link class="hover:underline" to="/dashboard"
-                    >Dashboard</nuxt-link
-                  >
+                  <nuxt-link class="hover:underline text-sm" to="/dashboard">{{
+                    $t("global.dashboard")
+                  }}</nuxt-link>
                 </li>
 
                 <li>
@@ -168,7 +168,7 @@
                     color="primary"
                     @click="logout"
                   >
-                    Log out
+                    {{ $t("global.logout") }}
                   </v-btn>
                 </li>
               </ul>

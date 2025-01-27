@@ -23,8 +23,8 @@
       >
         <template #image>
           <img
-            src="../../../assets/images/blogs-img.png"
-            class="w-full"
+            :src="blog?.image"
+            class="w-full max-h-[15rem] object-cover rounded-lg"
             alt=""
           />
         </template>

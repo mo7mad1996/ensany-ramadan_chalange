@@ -33,5 +33,10 @@
   "days": "يوم",
   "comment_paceholder": "اكتب تعليقك هنا",
   "time": "منذ 5 دقائق",
-  "no_doners": "لا يوجد متبرعين"
+  "no_doners": "لا يوجد متبرعين",
+
+  "donor": "المتبرع",
+  "amount": "مبلغ التبرع",
+  "donation_time": "الوقت",
+  "campaign": "الحملة"
 }

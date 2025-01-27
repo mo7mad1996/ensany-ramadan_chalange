@@ -229,8 +229,4 @@ const closeDialog = () => {
 onMounted(() => {
   onEnterViewport(true, props.target, props.amount);
 });
-
-setTimeout(() => {
-  loading.value = false;
-}, 2000);
 </script>
