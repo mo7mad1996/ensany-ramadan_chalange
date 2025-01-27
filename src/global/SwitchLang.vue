@@ -21,6 +21,7 @@ import { useParteners } from "~/modules/home/services/parteners";
 import { useStories } from "~/modules/stories/services/stories";
 import { useFaqs } from "~/modules/auth/services/faqs";
 import { useViewCampaign } from "~/modules/campaigns/services/single-campaign";
+import { useSingleBlog } from "~/modules/blogs/services/single-blog";
 const route = useRoute();
 const { locale, setLocale } = useI18n();
 const { refresh: refreshCountries, clear: clearCountries } = useCountries();
@@ -31,6 +32,7 @@ const { refresh: refreshParteners } = useParteners();
 const { refresh: refreshStories } = useStories();
 const { refresh: refreshFaqs } = useFaqs();
 const { refresh: refreshViewCamp } = useViewCampaign(route.params.id);
+const { refresh: refreshBlog } = useSingleBlog(route.params.id);
 
 //this function to refresh api calls after switch lang
 const recall = async () => {
@@ -44,6 +46,7 @@ const recall = async () => {
   refreshStories();
   refreshFaqs();
   refreshViewCamp();
+  refreshBlog();
   stopLoader();
 };
 

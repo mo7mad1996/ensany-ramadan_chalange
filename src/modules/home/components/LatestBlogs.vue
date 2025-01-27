@@ -33,7 +33,7 @@
           <BlogCard
             :route="`/blogs/${index + 1}`"
             class="text-start m-4"
-            @click="$router.push(`/blogs/${index + 1}`)"
+            @click="$router.push(`/blogs/${blog.id}`)"
           >
             <template #image>
               <img

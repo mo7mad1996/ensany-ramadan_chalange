@@ -6,21 +6,25 @@
     </BreadCrumb>
     <div class="content">
       <div class="video">
-        <video
+        <img
           class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
-          src="../../../assets/videos/contribution-vid.mp4"
-          poster="../../../assets/videos/contribution-poster.svg"
-          controls
-        ></video>
+          :src="singleBlog?.image"
+        ></img>
       </div>
 
       <div class="flex justify-center">
         <div class="content_text py-5 w-[792px]">
           <!-- title -->
+          <v-skeleton-loader
+            v-if="status == 'pending'"
+            type="list-item-two-line"
+          ></v-skeleton-loader>
+
           <h1
+            v-if="status == 'success'"
             class="lg:text-4xl text-start xl:text-4xl md:text-3xl text-3xl font-bold leading-[54px]"
           >
-            {{ $t("blogs.single_title") }}
+            {{ singleBlog?.title }}
           </h1>
 
           <div class="flex items-center pt-2 justify-between">
@@ -38,31 +42,25 @@
           </div>
 
           <!-- first text -->
+
+          <v-skeleton-loader
+            v-if="status == 'pending'"
+            v-for="(item, index) in 3"
+            :key="index"
+            type="list-item-two-line"
+          ></v-skeleton-loader>
+
           <p
+            v-if="status == 'success'"
             class="text_one text-justify text-[20px] text-[#121212] leading-[32px] pt-4"
           >
-            {{ $t("blogs.single_para1") }}
+            {{ singleBlog?.description }}
           </p>
 
           <!-- second text -->
-          <div class="pt-4">
-            <h2 class="font-bold text-2xl leading-[36px] mb-3">
-              {{ $t("blogs.title_one") }}
-            </h2>
-
+          <div class="pt-4" v-if="status == 'success'">
             <p class="text-[20px] text-[#121212] leading-[32px] text-justify">
-              {{ $t("blogs.title_one_desc") }}
-            </p>
-          </div>
-
-          <!-- third text -->
-          <div class="pt-4">
-            <h2 class="font-bold text-2xl leading-[36px] mb-3">
-              {{ $t("blogs.title_two") }}
-            </h2>
-
-            <p class="text-[20px] text-[#121212] leading-[32px] text-justify">
-              {{ $t("blogs.title_two_desc") }}
+              {{ singleBlog?.content }}
             </p>
           </div>
         </div>
@@ -77,10 +75,14 @@
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useSingleBlog } from "../services/single-blog";
+import { useRoute } from "vue-router";
 
 const { locale } = useI18n();
+const route = useRoute();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { singleBlog, status } = useSingleBlog(route.params.id);
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
