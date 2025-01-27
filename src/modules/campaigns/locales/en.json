@@ -33,5 +33,6 @@
   "usd": "USD",
   "days": "days",
   "comment_paceholder": "Write your comment here",
-  "time": "5 min ago"
+  "time": "5 min ago",
+  "no_doners": "Ther are no donors yet"
 }

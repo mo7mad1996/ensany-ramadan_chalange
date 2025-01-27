@@ -5,13 +5,31 @@
         {{ $t("home.latest_blogs") }}
       </h1>
 
+      <div
+        class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
+        v-if="status == 'pending'"
+      >
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+      </div>
+
       <Carousel
+        v-if="status == 'success'"
         v-bind="settings"
         :breakpoints="breakpoints1"
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(item, index) in 5" :key="index">
+        <Slide v-for="(blog, index) in blogs" :key="index">
           <BlogCard
             :route="`/blogs/${index + 1}`"
             class="text-start m-4"
@@ -25,9 +43,14 @@
               />
             </template>
 
-            <template #title>{{ $t("blogs.blog_title") }}</template>
+            <template #title>{{ blog.title }}</template>
 
-            <template #desc>{{ $t("blogs.blog_desc") }}</template>
+            <template #desc
+              >{{ blog.description.slice(0, 110) }}.....<span
+                class="underline text-sm font-semibold"
+                >Read More</span
+              >
+            </template>
           </BlogCard>
         </Slide>
 
@@ -43,5 +66,7 @@
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
+import { useBlogs } from "~/modules/blogs/services/blogs";
 const { locale } = useI18n();
+const { blogs, status } = useBlogs();
 </script>

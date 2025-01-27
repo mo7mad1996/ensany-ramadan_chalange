@@ -1,31 +1,44 @@
 import { useAuth } from "~/modules/auth/services/auth";
 import { api } from "~/helpers/axios";
-import { startLoader, stopLoader } from "~/helpers/nprogress";
+import { startLoader } from "~/helpers/nprogress";
+import { stopLoader } from "~/helpers/nprogress";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  const { token }: any = useAuth();
+  const { token } = useAuth();
+  interface MeResponse {
+    status: boolean;
+  }
 
   if (!token.value) {
     return navigateTo("/login");
-  } else {
-    try {
+  }
+
+  try {
+    if (process.client) {
       startLoader();
-      const response = await api.get("/me", {
+    }
+
+    const response = await $fetch<MeResponse>(
+      "https://be.ramadanchallenges.com/api/v1/me",
+      {
         headers: {
           Authorization: `Bearer ${token.value}`,
         },
-      });
-
-      console.log("user verified", response.data.result);
-      if (!response.data.status) {
-        stopLoader();
-        navigateTo("/login");
       }
-      stopLoader();
-    } catch (err) {
-      console.error("Token verification failed:", err);
-      stopLoader();
+    );
+
+    if (!response.status) {
       return navigateTo("/login");
     }
+
+    if (process.client) {
+      stopLoader();
+    }
+  } catch (err) {
+    console.error("Token verification failed:", err);
+    if (process.client) {
+      stopLoader();
+    }
+    return navigateTo("/login");
   }
 });

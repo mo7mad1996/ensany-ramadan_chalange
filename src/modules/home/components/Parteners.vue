@@ -5,24 +5,39 @@
         {{ $t("home.partners") }}
       </h1>
 
-      <Carousel v-bind="settings" :breakpoints="breakpoints2" class="mt-4">
-        <Slide>
-          <img src="../../../assets/images/islamic-institute-logo.png" alt="" />
-        </Slide>
+      <div
+        class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
+        v-if="status == 'pending'"
+      >
+        <v-card
+          class="rounded-lg elevation-0"
+          v-for="(item, index) in 3"
+          :key="index"
+        >
+          <v-skeleton-loader class="" type="image"></v-skeleton-loader>
+        </v-card>
+      </div>
 
-        <Slide>
-          <img
-            src="../../../assets/images/islamic-institutes-logos.png"
-            alt=""
-          />
-        </Slide>
+      <Carousel
+        v-if="status == 'success'"
+        v-bind="settings"
+        :breakpoints="breakpoints2"
+        class="mt-4"
+      >
+        <Slide v-for="(item, index) in Parteners" :key="index">
+          <div class="image overflow-hidden relative">
+            <img
+              :src="item.image"
+              class="cursor-pointer w-100"
+              alt="partenerImage"
+            />
 
-        <Slide>
-          <img src="../../../assets/images/islamic-logos.png" alt="" />
-        </Slide>
-
-        <Slide>
-          <img src="../../../assets/images/logo-islamic.png" alt="" />
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
+              <span class="font-bold">{{ item.name }}</span>
+            </div>
+          </div>
         </Slide>
 
         <template #addons>
@@ -37,4 +52,10 @@
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
+import { useParteners } from "../services/parteners";
+const { Parteners, status } = useParteners();
 </script>
+
+<style scoped>
+@import "../style/famouses.css";
+</style>

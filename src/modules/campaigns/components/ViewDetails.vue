@@ -9,18 +9,18 @@
 
       <div class="text absolute bottom-5 p-4 w-full">
         <h1 class="text-white text-4xl font-bold">
-          {{ $t("campaigns.campaign_title") }}
+          {{ campaign?.name }}
         </h1>
 
         <div class="progress_bar relative flex items-center gap-x-2">
           <v-progress-linear
-            :model-value="animatedRate"
+            :model-value="(amount / target) * 100"
             class="rounded-lg mt-2"
             :height="10"
           ></v-progress-linear>
 
           <span class="pers text-[16px] font-bold text-white"
-            >{{ progress }}%</span
+            >{{ ((amount / target) * 100).toFixed(1) }}%</span
           >
         </div>
       </div>
@@ -28,49 +28,58 @@
 
     <!-- skeleton loader for camapin details section -->
     <v-skeleton-loader
-      v-if="loading"
-      :loading="loading"
+      v-if="status == 'pending'"
       type="list-item-two-line"
     ></v-skeleton-loader>
 
     <!-- campaign details -->
     <div
-      v-if="!loading"
+      v-if="status == 'success'"
       class="details mt-5 flex flex-wrap gap-y-3 items-center justify-between"
     >
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">{{ $t("campaigns.collected") }}:</span>
-        <span class="text-primary">17608 {{ $t("campaigns.usd") }}</span>
+        <span class="text-primary"
+          >{{ campaign?.total_amount }} {{ $t("campaigns.usd") }}</span
+        >
       </div>
 
       <div class="collected flex items-cener gap-1">
         <v-icon color="red">mdi-heart-outline</v-icon>
-        <span class="text-primary">247 {{ $t("campaigns.donater") }}</span>
+        <span class="text-primary"
+          >{{ campaign?.total_donors }} {{ $t("campaigns.donater") }}</span
+        >
       </div>
 
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">{{ $t("campaigns.remaining") }}:</span>
-        <span class="text-primary">13 {{ $t("campaigns.days") }}</span>
+        <span class="text-primary"
+          >{{ campaign?.remaining_days }} {{ $t("campaigns.days") }}</span
+        >
       </div>
 
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]"
           >{{ $t("campaigns.campaign_objective") }}:</span
         >
-        <span class="text-primary">17608 {{ $t("campaigns.usd") }}</span>
+        <span class="text-primary"
+          >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
+        >
       </div>
     </div>
 
     <v-skeleton-loader
-      v-if="loading"
-      :loading="loading"
+      v-if="status == 'pending'"
       type="avatar, list-item-two-line"
     ></v-skeleton-loader>
 
     <!-- campain maker -->
-    <div class="honor-compan d-flex ga-2 align-center mt-5" v-if="!loading">
+    <div
+      class="honor-compan d-flex ga-2 align-center mt-5"
+      v-if="status == 'success'"
+    >
       <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
-      <p>{{ $t("campaigns.company") }}</p>
+      <p>{{ campaign?.user?.name }}</p>
     </div>
 
     <!-- tabs -->
@@ -89,12 +98,8 @@
 
     <v-tabs-window v-model="tab" class="mt-4 pb-4">
       <v-tabs-window-item value="one">
-        <p
-          class="text-sm pb-5 leading-20 text-[#12121299]"
-          v-for="(text, index) in tabs[0].item"
-          :key="index"
-        >
-          {{ text }}
+        <p class="text-sm pb-5 leading-20 text-[#12121299]">
+          {{ campaign?.content }}
         </p>
       </v-tabs-window-item>
 
@@ -132,13 +137,34 @@
       </v-tabs-window-item>
 
       <v-tabs-window-item value="four">
-        <p
-          class="text-sm pb-5 leading-20 text-[#12121299]"
-          v-for="(text, index) in tabs[3].item"
-          :key="index"
-        >
-          {{ text }}
-        </p>
+        <v-row v-if="campaign.latest.length">
+          <v-col
+            v-for="(donor, index) in campaign.latest"
+            :key="index"
+            class="d-flex child-flex"
+            cols="4"
+          >
+            <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
+              <div class="image flex justify-center">
+                <img src="../../../assets/images/user.svg" alt="..." />
+              </div>
+
+              <h6>{{ donor?.name }}</h6>
+
+              <span class="font-bold text-primary"
+                >${{ donor?.total_amount }}</span
+              >
+            </div>
+          </v-col>
+        </v-row>
+
+        <div v-else>
+          <div class="image flex justify-center">
+            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+          </div>
+
+          <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
+        </div>
       </v-tabs-window-item>
     </v-tabs-window>
 
@@ -165,16 +191,31 @@
 
 <script setup>
 import img from "../../../assets/images/chalenge-img.png";
-import { useViewCampaign } from "../typescript/view-campaign";
+import { useCampaign } from "../typescript/view-campaign";
+const props = defineProps({
+  campaign: {
+    required: true,
+  },
+  target: {
+    required: true,
+  },
+  amount: {
+    required: true,
+  },
+  status: {
+    required: true,
+  },
+});
+
 const {
   onEnterViewport,
   tab,
   tabs,
   loading,
   animatedRate,
-  progress,
   isImageLoaded,
-} = useViewCampaign();
+  targetRate,
+} = useCampaign();
 
 onMounted(() => {
   onEnterViewport(true);

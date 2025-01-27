@@ -14,17 +14,41 @@
     </div>
 
     <div class="questions w-full">
-      <v-expansion-panels class="mb-6 mt-6" elevation="0">
+      <div class="mt-6" v-if="status == 'pending'">
+        <v-skeleton-loader
+          class=""
+          v-for="(item, index) in 3"
+          :key="index"
+          type="avatar, list-item-two-line"
+        ></v-skeleton-loader>
+      </div>
+
+      <v-expansion-panels
+        v-if="status == 'success'"
+        class="mb-6 mt-6"
+        elevation="0"
+      >
         <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
-              <img :src="item.icon" alt="" />
+              <img
+                v-if="index % 2 == 0"
+                src="../../../assets/images/dashboard/amount.svg"
+                alt=""
+              />
+
+              <img
+                v-else
+                src="../../../assets/images/dashboard/campaigns.svg"
+                alt=""
+              />
+
               <h2 class="text-[#121212] text-xl font-bold">
-                {{ item.question }}
+                {{ item.title }}
               </h2>
             </div>
           </v-expansion-panel-title>
-          <v-expansion-panel-text>{{ item.answer }}</v-expansion-panel-text>
+          <v-expansion-panel-text>{{ item.content }}</v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -34,10 +58,10 @@
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useFaqs } from "../typescript/faqs";
+import { useFaqs } from "../services/faqs";
 import { useGlobalVar } from "~/helpers/global-var";
 
-const { faqs } = useFaqs();
+const { faqs, status } = useFaqs();
 
 const { locale } = useI18n();
 

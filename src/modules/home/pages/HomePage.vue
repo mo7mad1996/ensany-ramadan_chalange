@@ -4,7 +4,7 @@
   <HomeContriputing />
   <HomeParteners />
   <HomeChallengeHeros />
-  <!-- <HomeTable /> -->
+  <HomeTable />
   <HomeCampaigns />
   <HomeFamouses />
   <HomeSuccessStories />
