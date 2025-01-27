@@ -25,7 +25,7 @@
       >
         <template #image>
           <img
-            @click="$router.push(`/campaigns/${index + 1}`)"
+            @click="$router.push(`/campaigns/${campaign.id}`)"
             src="../../../assets/images/chalenge-img.png"
             class="w-100"
             alt=""
@@ -62,20 +62,13 @@ import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
-import { useCampaigns } from "../services/api";
+import { useCampaigns } from "../services/campaigns";
 const { locale } = useI18n();
 const isLoading = ref(true);
-const progress = ref(20);
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const {
-  campaigns,
-  campaignsMeta,
-  campaigns_error,
-  refresh,
-  status,
-  currentPage,
-} = useCampaigns();
+const { campaigns, campaignsMeta, refresh, status, currentPage } =
+  useCampaigns();
 
 const fetchCampaigns = () => {
   refresh();

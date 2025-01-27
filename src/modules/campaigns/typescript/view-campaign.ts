@@ -1,5 +1,4 @@
-export const useViewCampaign = () => {
-  const progress = ref<number>(30);
+export const useCampaign = () => {
   const tab = ref<null | string>(null);
   const loading = ref<boolean>(true);
   const isImageLoaded = ref<boolean>(true);
@@ -19,10 +18,14 @@ export const useViewCampaign = () => {
   }, 3000);
 
   const animatedRate = ref(0);
-  const targetRate = progress.value;
 
-  const onEnterViewport = (isVisible: boolean) => {
+  const onEnterViewport = (
+    isVisible: boolean,
+    target_test: any,
+    amount_test: any
+  ) => {
     if (isVisible) {
+      const targetRate = (amount_test / target_test) * 100;
       animateProgressBar(targetRate);
     }
   };
@@ -73,7 +76,6 @@ export const useViewCampaign = () => {
     animatedRate,
     computedText,
     loading,
-    progress,
     isImageLoaded,
   };
 };

@@ -1,130 +1,89 @@
-import { api } from "../../../helpers/axios";
-import { AxiosError } from "axios";
-import { encryptData } from "~/helpers/data-encryption";
-import { decryptData } from "~/helpers/data-encryption";
-import { setToken } from "~/helpers/set-cookies";
-import { setUser } from "~/helpers/set-cookies";
-import { setCode } from "~/helpers/set-cookies";
-import { type User } from "~/helpers/interfaces";
-import { type NewUser } from "~/helpers/interfaces";
+import { api } from "~/helpers/axios";
+import { encryptData, decryptData } from "~/helpers/data-encryption";
+import { useApi } from "./handle-apicals";
+import { setToken, setUser, setCode } from "~/helpers/set-cookies";
+import { type User, type NewUser } from "~/helpers/interfaces";
 
 export function useAuth() {
-  const token = ref<string>(
-    useCookie("token").value
-      ? decryptData(useCookie("token").value as string)
-      : null
-  );
+  const token = computed(() => {
+    const cookieValue = useCookie("token").value;
+    return cookieValue ? decryptData(cookieValue as string) : null;
+  });
 
-  const user = ref<any>(
-    useCookie("user").value
-      ? decryptData(useCookie("user").value as string)
-      : null
-  );
+  const user = computed(() => {
+    const cookieValue = useCookie("user").value;
+    return cookieValue ? decryptData(cookieValue as string) : null;
+  });
 
-  const verification_code = ref("");
+  const { handleApiCall, isLoading, error } = useApi();
 
-  const error = ref<AxiosError | null>(null);
-  const isLoading = ref<boolean>(false);
-
-  // Login function
+  // login
   const login = async (credentials: User) => {
-    try {
-      isLoading.value = true;
-      error.value = null;
-      const response = await api.post("/login", credentials);
-      token.value = response.data.result.token;
-      user.value = response.data.result.user;
-      setToken(encryptData(token.value));
-      setUser(encryptData(user.value));
-      isLoading.value = false;
+    const response = await handleApiCall(() => api.post("/login", credentials));
+
+    if (response) {
+      const { token: tokenValue, user: userValue } = response.data.result;
+      setToken(encryptData(tokenValue));
+      setUser(encryptData(userValue));
       navigateTo("/dashboard");
-    } catch (err: any) {
-      error.value = err.response.data.message;
-      isLoading.value = false;
-      console.log(err as AxiosError);
     }
   };
 
-  // register function
+  // register
   const register = async (userData: NewUser) => {
-    try {
-      isLoading.value = true;
-      error.value = null;
+    const response = await handleApiCall(() => api.post("/register", userData));
 
-      const response = await api.post("/register", userData);
-
-      token.value = response.data.result.token;
-      user.value = response.data.result.user;
-      verification_code.value = response.data.result.user.verification_code;
-
-      setToken(encryptData(token.value));
-      setUser(encryptData(user.value));
-      setCode(verification_code.value);
-      isLoading.value = false;
-
+    if (response) {
+      const { token: tokenValue, user: userValue } = response.data.result;
+      setToken(encryptData(tokenValue));
+      setUser(encryptData(userValue));
+      setCode(userValue.verification_code);
       navigateTo("/verrify-email");
-    } catch (err: any) {
-      error.value = err.response.data.message;
-      isLoading.value = false;
-      console.log(err as AxiosError);
     }
   };
 
-  // verrify email function
-  const verrifyEmail = async (verification_code: number | string) => {
-    try {
-      isLoading.value = true;
-      const response = await api.post(
+  // Verify user email
+  const verifyEmail = async (verificationCode: number | string) => {
+    const response = await handleApiCall(() =>
+      api.post(
         "/verify-email",
-        { verification_code },
+        { verification_code: verificationCode },
         {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
+          headers: { Authorization: `Bearer ${token.value}` },
         }
-      );
+      )
+    );
 
-      isLoading.value = false;
-      if (response.data.status) {
-        navigateTo("/dashboard");
-      }
-    } catch (error) {
-      isLoading.value = false;
+    if (response?.data.status) {
+      navigateTo("/dashboard");
     }
   };
 
-  // logout
+  //  Logout the user
   const logout = async () => {
-    try {
-      token.value = "";
-      user.value = "";
-      useCookie("token").value = "";
-      useCookie("user").value = "";
-
-      navigateTo("/");
-
-      const response = await api.post(
+    setUser(null);
+    navigateTo("/");
+    await handleApiCall(() =>
+      api.post(
         "/logout",
         {},
         {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
+          headers: { Authorization: `Bearer ${token.value}` },
         }
-      );
-    } catch (error) {
-      console.log(error);
-    }
+      )
+    );
+
+    setToken(null);
   };
 
   return {
     login,
-    token,
-    error,
-    isLoading,
-    logout,
-    user,
     register,
-    verrifyEmail,
+    verifyEmail,
+    logout,
+    token,
+    user,
+    isLoading,
+    error,
   };
 }

@@ -9,14 +9,14 @@
       {{ $t("story.stories") }}
     </h1>
 
-    <SkeletonLoader :loading="isLoading" />
+    <SkeletonLoader :loading="status" />
 
     <div
-      v-if="!isLoading"
+      v-if="status == 'success'"
       class="campaigns grid gap-x-2 gap-y-sm pt-sm pb-sm grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2"
     >
       <StoryCard
-        v-for="(item, index) in 12"
+        v-for="(story, index) in stories"
         :key="index"
         :route="`/stories/${index + 1}`"
       >
@@ -29,17 +29,17 @@
           ></video>
         </template>
 
-        <template #title>{{ $t("story.title") }}</template>
+        <template #title>{{ story?.title }}</template>
 
-        <template #desc>{{ $t("story.desc") }}</template>
+        <template #desc>{{ story.content }}</template>
       </StoryCard>
     </div>
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
-        v-model="page"
-        :length="15"
-        :total-visible="5"
+        v-model="currentPage"
+        :length="storiesMeta.last_page"
+        @input="fetchStories"
       ></v-pagination>
     </div>
   </Container>
@@ -50,12 +50,19 @@ import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useStories } from "../services/stories";
 const { locale } = useI18n();
 
-const page = ref(2);
-const isLoading = ref(true);
-
 const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { stories, status, currentPage, storiesMeta, refresh } = useStories();
+
+const fetchStories = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchStories();
+});
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
@@ -72,9 +79,4 @@ watch(locale, (newLocale) => {
     title: isArabic ? ramadan_ar : ramadan_en,
   });
 });
-
-// only simulation for test skeleton loader
-setTimeout(() => {
-  isLoading.value = false;
-}, 3000);
 </script>

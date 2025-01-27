@@ -80,6 +80,12 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      backendUrl: process.env.VITE_BACKEND_URL,
+    },
+  },
+
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
