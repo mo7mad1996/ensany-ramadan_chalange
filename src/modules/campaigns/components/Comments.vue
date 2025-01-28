@@ -5,7 +5,9 @@
     </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">(12) {{ $t("campaigns.comments") }}</div>
+      <div class="text-sm">
+        {{ comments?.length }} {{ $t("campaigns.comments") }}
+      </div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
         <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
@@ -44,21 +46,20 @@
       <!-- skeleton loader for comments -->
       <div class="mt-md" v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
-          v-if="loading"
-          :loading="loading"
+          v-for="(item, index) in 2"
+          :key="index"
+          v-if="status == 'pending'"
           type="avatar, list-item-two-line"
-        ></v-skeleton-loader>
-
-        <v-skeleton-loader
-          v-if="loading"
-          :loading="loading"
-          type="list-item-two-line"
         ></v-skeleton-loader>
       </div>
 
       <!-- here display all comments -->
-      <div class="all-comments mt-md" v-if="!loading">
-        <div class="comment mb-md" v-for="(item, index) in 2" :key="index">
+      <div class="all-comments mt-md" v-if="status == 'success'">
+        <div
+          class="comment mb-md"
+          v-for="(comment, index) in comments"
+          :key="index"
+        >
           <div class="flex gap-x-3 items-start">
             <img src="../../../assets/images/user.svg" alt="" />
             <div>
@@ -70,7 +71,7 @@
           </div>
 
           <p class="text-sm leading-20 text-justify pt-5">
-            {{ $t("campaigns.comment_one") }}
+            {{ comment?.love_comment }}
           </p>
         </div>
       </div>
@@ -80,10 +81,9 @@
 
 <script setup lang="ts">
 import { Field } from "vee-validate";
+import { useComments } from "../services/comments";
+import { useRoute } from "vue-router";
+const route = useRoute();
 
-const loading = ref<boolean>(true);
-
-setTimeout(() => {
-  loading.value = false;
-}, 3000);
+const { comments, status } = useComments(route.params.id);
 </script>

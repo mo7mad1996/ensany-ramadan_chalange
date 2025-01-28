@@ -68,7 +68,7 @@
                     width="25"
                     alt=""
                   />
-                  <span>{{ donor?.name }}</span>
+                  <span>{{ donor?.user }}</span>
                 </div>
               </td>
               <td class="font-bold">${{ donor?.total_amount }}</td>
