@@ -63,7 +63,12 @@
           <div class="flex gap-x-3 items-start">
             <img src="../../../assets/images/user.svg" alt="" />
             <div>
-              <h4 class="text-2xl font-bold">Ali Omar</h4>
+              <h4 class="text-2xl font-bold" v-if="comment?.user_name">
+                {{ comment?.user_name }}
+              </h4>
+              <h4 class="text-2xl font-bold" v-if="comment?.user">
+                {{ comment?.user?.name }}
+              </h4>
               <p class="text-sm text-[#12121299] pt-1">
                 {{ $t("campaigns.time") }}
               </p>

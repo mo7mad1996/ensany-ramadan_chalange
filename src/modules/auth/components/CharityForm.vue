@@ -1,63 +1,76 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
-    <div class="flex gap-x-2 items-center mb-5">
-      <img src="../../../assets/images/doner.svg" width="30" alt="" />
+    <div class="flex items-center gap-x-2 mb-5">
+      <img src="../../../assets/images/charity.svg" width="30" alt="" />
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("auth.signup") }}
+        {{ $t("auth.signup_cahrity") }}
       </h2>
     </div>
 
     <Form @submit="onSubmit">
-      <!-- first name and last name -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-3">
-        <div>
-          <div class="relative">
+      <!--charity name -->
+      <div>
+        <div class="lable_switch flex justify-between items-center mb-3">
+          <label for="">{{ $t("auth.charity_name") }}</label>
+
+          <div class="lang-switch flex items-center border-b">
             <div
-              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              class="px-3 py-1 cursor-pointer"
+              @click="switchName"
+              :class="{ 'bg-[#28A745] text-white': nameSwitch == 'en' }"
             >
-              <img src="../../../assets/images/contact/name.svg" alt="" />
+              {{ $t("home.english") }}
             </div>
-
-            <Field
-              type="text"
-              name="register-firstname"
-              rules="required"
-              v-model="newUser.first_name"
-              id="register-firstname"
-              :placeholder="$t('auth.first_name')"
-              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            />
+            <div
+              class="px-3 py-1 cursor-pointer"
+              @click="switchName"
+              :class="{ 'bg-[#28A745] text-white': nameSwitch == 'ar' }"
+            >
+              العربيه
+            </div>
           </div>
-
-          <ErrorMessage
-            class="text-sm text-red-500"
-            name="register-firstname"
-          />
         </div>
 
-        <div>
-          <div class="relative">
+        <div class="inputs">
+          <div class="relative" v-show="nameSwitch === 'ar'">
             <div
-              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
             >
-              <img src="../../../assets/images/contact/name.svg" alt="" />
+              <img src="../../../assets/images/campaign/edit.svg" alt="" />
             </div>
 
             <Field
               type="text"
-              name="register-lastname"
+              name="charity_name_ar"
+              v-model="newCharity['charity_name:ar']"
               rules="required"
-              v-model="newUser.last_name"
-              id="register-lastname"
-              :placeholder="$t('auth.last_name')"
-              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              :placeholder="$t('home.name_ar')"
+              class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
+
+            <ErrorMessage class="text-sm text-red-500" name="charity_name_ar" />
           </div>
 
-          <ErrorMessage class="text-sm text-red-500" name="register-lastname" />
+          <div class="relative" v-show="nameSwitch === 'en'">
+            <div
+              class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
+            >
+              <img src="../../../assets/images/campaign/edit.svg" alt="" />
+            </div>
+
+            <Field
+              type="text"
+              name="charity_name_en"
+              v-model="newCharity['charity_name:en']"
+              rules="required"
+              :placeholder="$t('home.name_en')"
+              class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            />
+
+            <ErrorMessage class="text-sm text-red-500" name="charity_name_en" />
+          </div>
         </div>
       </div>
-
       <!-- email input -->
       <div>
         <div class="relative mt-4">
@@ -71,7 +84,7 @@
             type="email"
             name="register-email"
             rules="required|email"
-            v-model="newUser.email"
+            v-model="newCharity.email"
             id="register-email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -86,7 +99,7 @@
         <Field name="phone" rules="required" v-slot="{ field }">
           <vue-tel-input
             v-bind="field"
-            v-model="newUser.mobile"
+            v-model="newCharity.mobile"
             autocomplet="phone-number"
             :dropdown-options="{ showSearchBox: true, showFlags: true }"
             :inputOptions="{
@@ -136,7 +149,7 @@
             name="register-country"
             rules="required"
             id="register-country"
-            v-model="newUser.country_id"
+            v-model="newCharity.country_id"
             :placeholder="$t('auth.country')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           >
@@ -169,7 +182,7 @@
             :type="show1 ? 'text' : 'password'"
             name="register-password"
             rules="required|min:6"
-            v-model="newUser.password"
+            v-model="newCharity.password"
             id="register-password"
             :placeholder="$t('auth.password')"
             autocomplete="new-password"
@@ -196,7 +209,7 @@
             :type="show2 ? 'text' : 'password'"
             name="register-confirm"
             rules="required|confirmed:@register-password"
-            v-model="newUser.password_confirmation"
+            v-model="newCharity.password_confirmation"
             id="register-confirm"
             :placeholder="$t('auth.confirm_password')"
             autocomplete="confirm-password"
@@ -258,24 +271,31 @@ import "vue-tel-input/vue-tel-input.css";
 
 import { useAuth } from "../services/auth";
 import { useCountries } from "../services/countries";
-import { type NewUser } from "~/helpers/interfaces";
+import { type NewCharity } from "~/helpers/interfaces";
 
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);
+const nameSwitch = ref<string>("ar");
 
 const { register, isLoading } = useAuth();
 const { countries, status } = useCountries();
 
-const newUser = ref<NewUser>({
-  first_name: "",
-  last_name: "",
+const switchName = (): void => {
+  nameSwitch.value = nameSwitch.value === "ar" ? "en" : "ar";
+};
+
+const newCharity = ref<NewCharity>({
+  "charity_name:ar": "",
+  "charity_name:en": "",
   email: "",
   mobile: "",
   password: "",
   password_confirmation: "",
   country_id: "",
-  user_type: "dooner",
+  user_type: "charity",
+  first_name: "omar",
+  last_name: "adel",
 });
 
 const showPassword = (): void => {
@@ -287,6 +307,6 @@ const showConfPassword = (): void => {
 };
 
 const onSubmit = () => {
-  register(newUser.value);
+  register(newCharity.value);
 };
 </script>
