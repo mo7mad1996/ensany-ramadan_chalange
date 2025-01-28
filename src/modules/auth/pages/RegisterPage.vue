@@ -22,6 +22,10 @@
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 
+definePageMeta({
+  middleware: "guest",
+});
+
 const { locale } = useI18n();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();

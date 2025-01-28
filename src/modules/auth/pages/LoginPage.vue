@@ -22,9 +22,9 @@
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 
-// definePageMeta({
-//   middleware: "non-require",
-// });
+definePageMeta({
+  middleware: "guest",
+});
 
 const { locale } = useI18n();
 

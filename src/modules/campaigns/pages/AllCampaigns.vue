@@ -26,8 +26,8 @@
         <template #image>
           <img
             @click="$router.push(`/campaigns/${campaign.id}`)"
-            src="../../../assets/images/chalenge-img.png"
-            class="w-100"
+            :src="campaign?.image"
+            class="w-full max-h-[15rem] object-cover rounded-lg"
             alt=""
           />
         </template>

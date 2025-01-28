@@ -39,20 +39,14 @@
       >
         <Slide v-for="(story, index) in stories" :key="index">
           <div
-            @click="$router.push(`/stories/${index}`)"
+            @click="$router.push(`/stories/${story?.id}`)"
             class="grid gap-4 grid-cols-1 lg:grid-cols-2 md:grid-cols-1 m-[10px] cursor-pointer"
           >
             <div class="image">
-              <!-- <img
+              <img
                 v-if="story?.image"
                 :src="story.image"
                 class="rounded-tr-[60px] rounded-ee-[60px] shadow-xl"
-                alt=""
-              /> -->
-
-              <img
-                src="../../../assets/images/default-img.svg"
-                class="rounded-tr-[60px] rounded-ee-[60px] w-full h-3/4"
                 alt=""
               />
             </div>

@@ -34,13 +34,13 @@
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
-            :route="`/campaigns/donate/${index + 1}`"
+            :route="`/campaigns/donate/${campaign.id}`"
           >
             <template #image>
               <img
-                @click="$router.push(`/campaigns/${index + 1}`)"
-                src="../../../assets/images/chalenge-img.png"
-                class="w-100"
+                @click="$router.push(`/campaigns/${campaign.id}`)"
+                :src="campaign?.image"
+                class="w-full max-h-[15rem] object-cover rounded-lg"
                 alt=""
               />
             </template>

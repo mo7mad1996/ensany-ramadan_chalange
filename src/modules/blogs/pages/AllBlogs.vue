@@ -18,13 +18,13 @@
       <BlogCard
         v-for="(blog, index) in blogs"
         :key="index"
-        :route="`/blogs/${index + 1}`"
-        @click="$router.push(`/blogs/${index + 1}`)"
+        :route="`/blogs/${blog.id}`"
+        @click="$router.push(`/blogs/${blog.id}`)"
       >
         <template #image>
           <img
-            src="../../../assets/images/blogs-img.png"
-            class="w-full"
+            :src="blog?.image"
+            class="w-full max-h-[15rem] object-cover rounded-lg"
             alt=""
           />
         </template>

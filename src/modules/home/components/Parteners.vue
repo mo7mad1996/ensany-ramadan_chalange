@@ -28,12 +28,17 @@
           <div class="image overflow-hidden relative">
             <img
               :src="item.image"
-              class="cursor-pointer w-100"
+              :class="{
+                'w-[17rem]': Parteners.length >= 4,
+                'w-[26rem]': Parteners.length == 2,
+                'w-[22rem]': Parteners.length == 3,
+              }"
+              class="cursor-pointer max-h-[10rem] rounded-lg object-cover"
               alt="partenerImage"
             />
 
             <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+              class="hover_name text-center px-2 py-1 absolute rounded-md w-full"
             >
               <span class="font-bold">{{ item.name }}</span>
             </div>

@@ -23,8 +23,10 @@
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-lg">Aliyah M.</span>
-            <span class="font-bold text-lg">$29k</span>
+            <span class="font-bold text-lg">{{ topDonors[1]?.name }}</span>
+            <span class="font-bold text-lg">{{
+              topDonors[1]?.total_amount
+            }}</span>
           </div>
 
           <p class="text-sm leading-20 pt-[1rem]">
@@ -45,8 +47,10 @@
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-lg">Mohammed M.</span>
-            <span class="font-bold text-lg">$30k</span>
+            <span class="font-bold text-lg">{{ topDonors[0]?.name }}</span>
+            <span class="font-bold text-lg"
+              >${{ topDonors[0]?.total_amount }}</span
+            >
           </div>
 
           <p class="text-sm leading-20 pt-[1rem]">
@@ -67,8 +71,10 @@
           </div>
 
           <div class="flex justify-between items-center pt-[1rem]">
-            <span class="font-bold text-lg">Aref M.</span>
-            <span class="font-bold text-lg">$26k</span>
+            <span class="font-bold text-lg">{{ topDonors[2]?.name }}</span>
+            <span class="font-bold text-lg"
+              >${{ topDonors[2]?.total_amount }}</span
+            >
           </div>
 
           <p class="text-sm leading-20 pt-xs">
@@ -82,6 +88,9 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
+import { useDonors } from "../services/top-donors";
+
+const { topDonors } = useDonors();
 </script>
 
 <style scoped>
