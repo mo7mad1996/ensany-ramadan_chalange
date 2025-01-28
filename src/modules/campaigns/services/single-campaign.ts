@@ -1,6 +1,7 @@
 import { api } from "~/helpers/axios";
 
 export const useViewCampaign = (id: any) => {
+  const { locale } = useI18n();
   const {
     data: viewCampaign,
     error: view_campaign_error,
@@ -8,11 +9,12 @@ export const useViewCampaign = (id: any) => {
     status,
     clear,
   } = useAsyncData(
-    `viewCampaign-${id}`, // Dynamic key to ensure caching by ID
+    `viewCampaign-${id}-${locale.value}`, // Dynamic key to ensure caching by ID
     () =>
       api.get(`/campaigns/${id}`).then((response) => {
         return response.data.result;
-      })
+      }),
+    { watch: [locale] }
   );
 
   const target = computed(() => viewCampaign.value?.price_target || "");
