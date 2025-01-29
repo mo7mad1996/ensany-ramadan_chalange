@@ -62,7 +62,10 @@
       </li>
 
       <li class="cursor-pointer mb-10">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/settings"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/settings.svg"
             width="15px"

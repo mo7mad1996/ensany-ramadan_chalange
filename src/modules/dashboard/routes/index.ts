@@ -21,6 +21,11 @@ const dashbaordRoutes = [
     path: "/dashboard/notification",
     file: resolve(__dirname, "../pages/NotificationPage.vue"),
   },
+  {
+    name: "dash-settings",
+    path: "/dashboard/settings",
+    file: resolve(__dirname, "../pages/SettingsPage.vue"),
+  },
 ];
 
 export default dashbaordRoutes;
