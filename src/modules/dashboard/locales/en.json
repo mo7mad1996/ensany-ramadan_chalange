@@ -27,5 +27,33 @@
   "date": "Date",
   "time": "Time",
   "pm": "pm",
-  "am": "صباحا"
+  "am": "am",
+
+  "select": "Select",
+  "all_notif": "All Notifications",
+  "campaigns_notif": "Campaigns Notifications",
+  "donation_notif": "Donation Notifications",
+  "mark_read": "Mark as read",
+
+  "donation_title": "Donation Confirmed!",
+  "donation_text": "Your contribution of $100 to 'Educate 100 Kids' was successful. Thank you for your generosity!.",
+  "donation_action": "View donation history",
+  "donation_time": "4 min ago",
+
+  "campaign_title": "Campaign Milestone Reached!",
+  "cmpaign_text": "Clean Water for All' has achieved 75% of its funding goal thanks to donors like you!.",
+  "campaign_action": "View campaign history",
+  "campaign_time": "5 min ago",
+
+  "security_title": "Security Alert: Suspicious Activity Detected!",
+  "security_text": "We've detected a login attempt from a new device or location. Location: Riyadh, Saudi Arabia Device: Windows Desktop, Chrome Browser Time: Nov 29, 2024, 3:45 PM.",
+  "security_action": "Secure my account",
+  "security_time": "10 min ago",
+
+  "dashboard": "Dashboard",
+  "campaigns": "Campaigns",
+  "donations": "Donations",
+  "notif": "Notifications",
+  "settings": "Settings",
+  "logout": "Logout"
 }
