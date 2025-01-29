@@ -294,8 +294,6 @@ const newCharity = ref<NewCharity>({
   password_confirmation: "",
   country_id: "",
   user_type: "charity",
-  first_name: "omar",
-  last_name: "adel",
 });
 
 const showPassword = (): void => {

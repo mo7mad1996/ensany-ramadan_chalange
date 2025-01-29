@@ -20,7 +20,10 @@
       </li>
 
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/campaigns"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/campaigns.svg"
             width="15px"

@@ -23,6 +23,4 @@ export interface NewCharity {
   password_confirmation: string;
   country_id: string;
   user_type: string;
-  first_name: string;
-  last_name: string;
 }
