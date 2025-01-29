@@ -6,8 +6,9 @@
   "forget_password": "Forget Password ?",
   "remember_me": "Remember Me",
   "do_not_have_account": "Do not have an account? go to",
-  "signup": "Donor Registration",
+  "signup": "Register",
   "signup_cahrity": "Charity Registration",
+  "signup_doner": "Doner Registration",
   "charity_name": "Charity Name",
   "pending_msg": "Your email is pending",
 

@@ -17,7 +17,7 @@
 
     <!-- commment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
-      <div class="flex gap-x-3 items-center">
+      <!-- <div class="flex gap-x-3 items-center">
         <img src="../../../assets/images/user.svg" alt="" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
@@ -41,7 +41,7 @@
           color="primary"
           >{{ $t("campaigns.comment") }}</v-btn
         >
-      </div>
+      </div> -->
 
       <!-- skeleton loader for comments -->
       <div class="mt-md" v-for="(item, index) in 2" :key="index">

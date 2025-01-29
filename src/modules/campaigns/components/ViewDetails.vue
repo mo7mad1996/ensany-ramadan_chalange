@@ -169,7 +169,7 @@
     </v-tabs-window>
 
     <!-- videos -->
-    <div class="videos mt-5">
+    <!-- <div class="videos mt-5">
       <video
         class="rounded-md object-cover cursor-pointer w-full mb-5 h-[320px]"
         src="../../../assets/videos/contribution-vid.mp4"
@@ -183,7 +183,7 @@
         poster="../../../assets/videos/contribution-poster.svg"
         controls
       ></video>
-    </div>
+    </div> -->
 
     <CampaignsComments />
   </section>

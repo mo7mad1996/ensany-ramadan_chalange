@@ -3,7 +3,7 @@
     <div class="flex gap-x-2 items-center mb-5">
       <img src="../../../assets/images/doner.svg" width="30" alt="" />
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("auth.signup") }}
+        {{ $t("auth.signup_doner") }}
       </h2>
     </div>
 

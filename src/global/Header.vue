@@ -183,12 +183,16 @@
               size="default"
               color="primary"
               @click="$router.push('/login')"
-              >{{ $t("global.signup") }}</v-btn
+              >{{ $t("global.signin") }}</v-btn
             >
 
             <v-menu>
               <template v-slot:activator="{ props }">
-                <v-btn color="primary" class="capitalize border" v-bind="props"
+                <v-btn
+                  color="primary"
+                  class="capitalize border"
+                  style="text-transform: capitalize"
+                  v-bind="props"
                   >{{ $t("global.signup") }}
                 </v-btn>
               </template>

@@ -6,8 +6,9 @@
   "forget_password": "نسيت كلمة المرور؟",
   "remember_me": "تذكرني",
   "do_not_have_account": "ليس لديك حساب؟ انتقل إلى",
-  "signup": "تسجيل الدخول كمتبرع",
-  "signup_cahrity": "تسجيل الدخول كجمعيه",
+  "signup": "انشاء حساب",
+  "signup_cahrity": " انشاء حساب كجمعيه",
+  "signup_doner": "انشاء حساب كمتبرع",
   "charity_name": "اسم الجمعيه",
   "pending_msg": "بريدك الإلكتروني قيد الانتظار",
 
