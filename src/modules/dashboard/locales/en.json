@@ -19,5 +19,13 @@
   "fundraising_history": "Fundraising History",
   "active": "Active",
   "completed": "Completed",
-  "campaigns_overview": "Campaigns Overview"
+  "campaigns_overview": "Campaigns Overview",
+  "donation_overview": "Donation OverView",
+  "donation_history": "Donation history",
+  "add_filter": "Add Filter",
+  "select_status": "Select Status",
+  "date": "Date",
+  "time": "Time",
+  "pm": "pm",
+  "am": "صباحا"
 }

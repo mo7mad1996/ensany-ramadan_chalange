@@ -19,5 +19,12 @@
   "fundraising_history": "تاريخ جمع التبرعات",
   "active": "نشط",
   "completed": "مكتمل",
-  "campaigns_overview": "نظرة عامة على الحملات"
+  "campaigns_overview": "نظرة عامة على الحملات",
+  "donation_overview": "نظرة عامة على التبرعات",
+  "donation_history": "تاريخ التبرعات",
+  "add_filter": "إضافة فلتر",
+  "select_status": "اختر الحالة",
+  "date": "التاريخ",
+  "time": "الوقت",
+  "pm": "مساءا"
 }

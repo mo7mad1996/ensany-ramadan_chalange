@@ -34,7 +34,10 @@
       </li>
 
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/donations"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/donation.svg"
             width="15px"
