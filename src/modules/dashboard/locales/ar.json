@@ -1,3 +1,23 @@
 {
-  "blogs": "مدونات"
+  "blogs": "مدونات",
+  "feed_family": "إطعام عائلة للإفطار",
+  "water_well": "بناء بئر ماء",
+  "medical_aid": "مساعدات طبية للاجئين",
+  "education_orphans": "التعليم للأيتام",
+  "disaster_relief": "صندوق الإغاثة من الكوارث",
+  "rebuild_schools": "إعادة بناء المدارس في أفريقيا",
+  "food_homeless": "طعام للمشردين",
+  "help_war_victims": "مساعدة ضحايا الحرب",
+  "clean_water": "مياه نظيفة للقرى",
+  "mental_health": "دعم برامج الصحة النفسية",
+  "campaign_id": "رقم الحملة",
+  "name": "الاسم",
+  "campaign_goal": "هدف الحملة",
+  "donation_amount": "مبلغ التبرع",
+  "no_doners": "عدد المتبرعين",
+  "campaign_status": "حالة الحملة",
+  "fundraising_history": "تاريخ جمع التبرعات",
+  "active": "نشط",
+  "completed": "مكتمل",
+  "campaigns_overview": "نظرة عامة على الحملات"
 }

@@ -22,6 +22,9 @@ import arBlogs from "../modules/blogs/locales/ar.json";
 import enStories from "../modules/stories/locales/en.json";
 import arStories from "../modules/stories/locales/ar.json";
 
+import enDashboard from "../modules/dashboard/locales/en.json";
+import arDashboard from "../modules/dashboard/locales/ar.json";
+
 export default {
   legacy: false,
   locale: "ar",
@@ -35,6 +38,7 @@ export default {
       auth: enAuth,
       blogs: enBlogs,
       story: enStories,
+      dashboard: enDashboard,
     },
     ar: {
       home: arHome,
@@ -45,6 +49,7 @@ export default {
       auth: arAuth,
       blogs: arBlogs,
       story: arStories,
+      dashboard: arDashboard,
     },
   },
 };
