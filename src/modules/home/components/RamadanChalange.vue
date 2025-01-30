@@ -49,7 +49,11 @@
 
             <template #title>{{ campaign?.name }}</template>
 
-            <template #desc> {{ campaign?.short_desc }}</template>
+            <template #desc>
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span
+            ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>
 
@@ -72,6 +76,7 @@ import Container from "../../../global/Container.vue";
 import Card from "../../../global/Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
+import { stripHtmlTags } from "~/helpers/string";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();
 const { locale } = useI18n();
