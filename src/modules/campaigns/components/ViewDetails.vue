@@ -98,9 +98,10 @@
 
     <v-tabs-window v-model="tab" class="mt-4 pb-4">
       <v-tabs-window-item value="one">
-        <p class="text-sm pb-5 leading-20 text-[#12121299]">
-          {{ campaign?.content }}
-        </p>
+        <p
+          class="text-sm pb-5 leading-20 text-[#12121299]"
+          v-html="campaign?.content"
+        ></p>
       </v-tabs-window-item>
 
       <v-tabs-window-item value="two">

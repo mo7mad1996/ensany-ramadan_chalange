@@ -59,15 +59,13 @@
 
           <!-- second text -->
           <div class="pt-4" v-if="status == 'success'">
-            <p class="text-[20px] text-[#121212] leading-[32px] text-justify">
-              {{ singleBlog?.content }}
-            </p>
+            <p class="text-[20px] text-[#121212] leading-[32px] text-justify" v-html="singleBlog?.content"></p>
           </div>
         </div>
       </div>
     </div>
 
-    <BlogSimilarBlogs />
+    <BlogSimilarBlogs :similar="singleBlog?.similar_blogs" :status="status" />
   </Container>
 </template>
 

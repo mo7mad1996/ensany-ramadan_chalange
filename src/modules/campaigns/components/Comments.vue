@@ -70,7 +70,7 @@
                 {{ comment?.user?.name }}
               </h4>
               <p class="text-sm text-[#12121299] pt-1">
-                {{ $t("campaigns.time") }}
+                {{ comment?.created_at }}
               </p>
             </div>
           </div>

@@ -36,7 +36,11 @@
 
         <template #title>{{ campaign?.name }}</template>
 
-        <template #desc> {{ campaign?.short_desc }}</template>
+        <template #desc>
+          <span
+            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+          ></span>
+        </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
 
@@ -63,6 +67,7 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useCampaigns } from "../services/campaigns";
+import { stripHtmlTags } from "~/helpers/string";
 const { locale } = useI18n();
 const isLoading = ref(true);
 

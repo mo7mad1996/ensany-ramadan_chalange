@@ -48,9 +48,8 @@
           <p
            v-if="status == 'success'"
             class="text_one text-justify text-[20px] text-[#121212] leading-[32px] pt-4"
-          >
-            {{ singleStory?.content }}
-          </p>
+            v-html="singleStory?.content"
+          ></p>
         </div>
       </div>
     </div>
