@@ -48,13 +48,33 @@
         >
 
         <v-btn
-          v-else
+          v-if="!user"
           class="text-capitalize"
           variant="flat"
           size="default"
           color="primary"
           @click="$router.push('/login')"
           >{{ $t("global.signin") }}</v-btn
+        >
+
+        <v-btn
+          v-if="!user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push('/signup')"
+          >{{ $t("global.doner") }}</v-btn
+        >
+
+        <v-btn
+          v-if="!user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push('/signup-charity')"
+          >{{ $t("global.charity2") }}</v-btn
         >
 
         <v-btn
