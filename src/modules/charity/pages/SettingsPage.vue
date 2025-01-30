@@ -265,7 +265,7 @@
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 definePageMeta({
-  layout: "dashboard",
+  layout: "charity",
   middleware: "require-auth",
 });
 

@@ -6,7 +6,7 @@
       <Container>
         <div class="grid grid-cols-12 h-full gap-sm">
           <div class="col-span-2 h-full sticky">
-            <Sidebar />
+            <CharitySidebar />
           </div>
 
           <div class="col-span-10">
@@ -52,9 +52,8 @@
 <script setup>
 import Header from "../global/Header.vue";
 import AppFooter from "../global/AppFooter.vue";
-import QuickDonation from "~/global/QuickDonation.vue";
 import Container from "~/global/Container.vue";
-import Sidebar from "~/global/Sidebar.vue";
+import CharitySidebar from "~/global/CharitySidebar.vue";
 import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();

@@ -9,7 +9,10 @@
     <!-- dashboard links -->
     <ul class="list-none mt-sm">
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/dashboard" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/charity"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/dashboard.svg"
             width="15px"
@@ -21,7 +24,7 @@
 
       <li class="cursor-pointer mb-3">
         <nuxt-link
-          to="/dashboard/campaigns"
+          to="/dashboard/charity/campaigns"
           class="flex items-center gap-x-2 p-2"
         >
           <img
@@ -35,7 +38,7 @@
 
       <li class="cursor-pointer mb-3">
         <nuxt-link
-          to="/dashboard/donations"
+          to="/dashboard/charity/donations"
           class="flex items-center gap-x-2 p-2"
         >
           <img
@@ -49,7 +52,7 @@
 
       <li class="cursor-pointer mb-3">
         <nuxt-link
-          to="/dashboard/notification"
+          to="/dashboard/charity/notification"
           class="flex items-center gap-x-2 p-2"
         >
           <img
@@ -63,7 +66,7 @@
 
       <li class="cursor-pointer mb-10">
         <nuxt-link
-          to="/dashboard/settings"
+          to="/dashboard/charity/settings"
           class="flex items-center gap-x-2 p-2"
         >
           <img
@@ -76,7 +79,7 @@
       </li>
 
       <li class="cursor-pointer">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link to="" class="flex items-center gap-x-2 p-2">
           <img
             src="../assets/images/dashboard/logout.svg"
             width="15px"

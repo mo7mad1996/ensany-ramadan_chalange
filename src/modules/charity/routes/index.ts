@@ -2,28 +2,28 @@ import { resolve } from "pathe";
 
 const dashbaordRoutes = [
   {
-    name: "dashboard",
-    path: "/dashboard",
+    name: "charity",
+    path: "/dashboard/charity",
     file: resolve(__dirname, "../pages/Dashboard.vue"),
   },
   {
-    name: "dash-campaigns",
-    path: "/dashboard/campaigns",
+    name: "charity-campaigns",
+    path: "/dashboard/charity/campaigns",
     file: resolve(__dirname, "../pages/CampaignsPage.vue"),
   },
   {
-    name: "dash-donations",
-    path: "/dashboard/donations",
+    name: "charity-donations",
+    path: "/dashboard/charity/donations",
     file: resolve(__dirname, "../pages/DonationsPage.vue"),
   },
   {
-    name: "dash-notification",
-    path: "/dashboard/notification",
+    name: "charity-notification",
+    path: "/dashboard/charity/notification",
     file: resolve(__dirname, "../pages/NotificationPage.vue"),
   },
   {
-    name: "dash-settings",
-    path: "/dashboard/settings",
+    name: "charity-settings",
+    path: "/dashboard/charity/settings",
     file: resolve(__dirname, "../pages/SettingsPage.vue"),
   },
 ];

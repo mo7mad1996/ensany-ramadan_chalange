@@ -173,9 +173,11 @@
                     width="15"
                     alt=""
                   />
-                  <nuxt-link class="hover:underline text-sm" to="/dashboard">{{
-                    $t("global.dashboard")
-                  }}</nuxt-link>
+                  <nuxt-link
+                    class="hover:underline text-sm"
+                    to="/dashboard/charity"
+                    >{{ $t("global.dashboard") }}</nuxt-link
+                  >
                 </li>
 
                 <li>
