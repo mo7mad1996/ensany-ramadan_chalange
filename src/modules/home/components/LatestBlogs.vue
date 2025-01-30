@@ -36,7 +36,11 @@
             @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>
-              <img :src="blog?.image" class="w-full rounded-lg" alt="" />
+              <img
+                :src="blog?.image"
+                class="w-full max-h-[15rem] object-cover rounded-lg"
+                alt=""
+              />
             </template>
 
             <template #title>{{ blog.title }}</template>

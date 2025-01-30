@@ -48,13 +48,33 @@
         >
 
         <v-btn
-          v-else
+          v-if="!user"
           class="text-capitalize"
           variant="flat"
           size="default"
           color="primary"
           @click="$router.push('/login')"
           >{{ $t("global.signin") }}</v-btn
+        >
+
+        <v-btn
+          v-if="!user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push('/signup')"
+          >{{ $t("global.doner") }}</v-btn
+        >
+
+        <v-btn
+          v-if="!user"
+          class="text-capitalize"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push('/signup-charity')"
+          >{{ $t("global.charity2") }}</v-btn
         >
 
         <v-btn
@@ -137,7 +157,8 @@
               class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
             >
               <img src="../assets/images/user.svg" width="30" alt="" />
-              <span>{{ user?.first_name }}</span>
+              <span v-if="user?.first_name">{{ user?.first_name }}</span>
+              <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
               <v-icon>mdi-menu-down</v-icon>
             </div>
 
@@ -175,15 +196,56 @@
             </div>
           </div>
 
-          <v-btn
-            v-else
-            class="text-capitalize rounded-lg"
-            variant="flat"
-            size="default"
-            color="primary"
-            @click="$router.push('/login')"
-            >{{ $t("global.signin") }}</v-btn
-          >
+          <div class="flex items-center gap-x-3" v-else>
+            <v-btn
+              class="text-capitalize rounded-lg"
+              variant="flat"
+              size="default"
+              color="primary"
+              @click="$router.push('/login')"
+              >{{ $t("global.signin") }}</v-btn
+            >
+
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  color="primary"
+                  class="capitalize border"
+                  style="text-transform: capitalize"
+                  v-bind="props"
+                  >{{ $t("global.signup") }}
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title
+                    class="cursor-pointer"
+                    @click="$router.push('/signup')"
+                  >
+                    <div class="flex gap-x-2 items-center">
+                      <img src="../assets/images/doner.svg" width="15" alt="" />
+                      <span>{{ $t("global.doner") }}</span>
+                    </div>
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title
+                    class="cursor-pointer"
+                    @click="$router.push('/signup-charity')"
+                  >
+                    <div class="flex gap-x-2 items-center">
+                      <img
+                        src="../assets/images/charity.svg"
+                        width="15"
+                        alt=""
+                      />
+                      <span>{{ $t("global.charity2") }}</span>
+                    </div>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
 
           <v-btn
             class="text-capitalize rounded-lg"
@@ -207,9 +269,11 @@
 import Container from "./Container.vue";
 import SwitchLang from "./SwitchLang.vue";
 import { useAuth } from "~/modules/auth/services/auth";
+import { useGlobalVar } from "~/helpers/global-var";
 
 const { locale } = useI18n();
 const { isLoading, logout, user } = useAuth();
+const { user_type } = useGlobalVar();
 const isOpen = ref(false);
 const isMenue = ref(false);
 
@@ -219,6 +283,16 @@ const openMenue = (): void => {
 
 const openDrop = (): void => {
   isMenue.value = !isMenue.value;
+};
+
+const donerAction = (): void => {
+  user_type.value = "donoer";
+  navigateTo("/signup");
+};
+
+const charityAction = (): void => {
+  user_type.value = "donoer";
+  navigateTo("/signup");
 };
 </script>
 

@@ -12,4 +12,15 @@ export interface NewUser {
   password: string;
   password_confirmation: string;
   country_id: string;
+  user_type: string;
+}
+export interface NewCharity {
+  "charity_name:ar": string;
+  "charity_name:en": string;
+  email: string;
+  mobile: string;
+  password: string;
+  password_confirmation: string;
+  country_id: string;
+  user_type: string;
 }

@@ -5,25 +5,47 @@
         {{ $t("blogs.similar_blogs") }}
       </h1>
 
+      <div
+        class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
+        v-if="status == 'pending'"
+      >
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+
+        <v-card class="rounded-lg elevation-0">
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+        </v-card>
+      </div>
+
       <Carousel
+        v-if="status == 'success'"
         v-bind="settings"
         :breakpoints="breakpoints1"
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(item, index) in 5" :key="index">
-          <BlogCard :route="`/blogs/${index + 1}`" class="text-start m-4">
+        <Slide v-for="(blog, index) in similar" :key="index">
+          <BlogCard
+            :route="`/blogs/${blog?.id}`"
+            class="text-start m-4"
+            @click="$router.push(`/blogs/${blog.id}`)"
+          >
             <template #image>
               <img
-                src="../../../assets/images/blogs-img.png"
-                class="w-full"
-                alt=""
+                :src="blog?.image"
+                class="w-full max-h-[15rem] object-cover rounded-lg"
+                alt="...."
               />
             </template>
 
-            <template #title>{{ $t("blogs.blog_title") }}</template>
+            <template #title>{{ blog?.title }}</template>
 
-            <template #desc>{{ $t("blogs.blog_desc") }}</template>
+            <template #desc>{{ blog?.description }}</template>
           </BlogCard>
         </Slide>
 
@@ -35,9 +57,20 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
+
+const props = defineProps({
+  similar: {
+    type: Array,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+});
 </script>

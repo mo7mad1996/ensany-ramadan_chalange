@@ -18,7 +18,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       startLoader();
     }
 
-    const response = await $fetch<MeResponse>(
+    const response: any = await $fetch<MeResponse>(
       "https://be.ramadanchallenges.com/api/v1/me",
       {
         headers: {
@@ -27,8 +27,11 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       }
     );
 
-    if (!response.status) {
-      return navigateTo("/login");
+    if (!response.status && response.errorCode == 301) {
+      if (process.client) {
+        stopLoader();
+      }
+      return navigateTo("/pending");
     }
 
     if (process.client) {
@@ -39,6 +42,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (process.client) {
       stopLoader();
     }
-    return navigateTo("/login");
+    return navigateTo("/");
   }
 });

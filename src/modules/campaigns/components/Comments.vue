@@ -5,7 +5,9 @@
     </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">(12) {{ $t("campaigns.comments") }}</div>
+      <div class="text-sm">
+        {{ comments?.length }} {{ $t("campaigns.comments") }}
+      </div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
         <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
@@ -15,7 +17,7 @@
 
     <!-- commment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
-      <div class="flex gap-x-3 items-center">
+      <!-- <div class="flex gap-x-3 items-center">
         <img src="../../../assets/images/user.svg" alt="" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
@@ -39,38 +41,42 @@
           color="primary"
           >{{ $t("campaigns.comment") }}</v-btn
         >
-      </div>
+      </div> -->
 
       <!-- skeleton loader for comments -->
       <div class="mt-md" v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
-          v-if="loading"
-          :loading="loading"
+          v-for="(item, index) in 2"
+          :key="index"
+          v-if="status == 'pending'"
           type="avatar, list-item-two-line"
-        ></v-skeleton-loader>
-
-        <v-skeleton-loader
-          v-if="loading"
-          :loading="loading"
-          type="list-item-two-line"
         ></v-skeleton-loader>
       </div>
 
       <!-- here display all comments -->
-      <div class="all-comments mt-md" v-if="!loading">
-        <div class="comment mb-md" v-for="(item, index) in 2" :key="index">
+      <div class="all-comments mt-md" v-if="status == 'success'">
+        <div
+          class="comment mb-md"
+          v-for="(comment, index) in comments"
+          :key="index"
+        >
           <div class="flex gap-x-3 items-start">
             <img src="../../../assets/images/user.svg" alt="" />
             <div>
-              <h4 class="text-2xl font-bold">Ali Omar</h4>
+              <h4 class="text-2xl font-bold" v-if="comment?.user_name">
+                {{ comment?.user_name }}
+              </h4>
+              <h4 class="text-2xl font-bold" v-if="comment?.user">
+                {{ comment?.user?.name }}
+              </h4>
               <p class="text-sm text-[#12121299] pt-1">
-                {{ $t("campaigns.time") }}
+                {{ comment?.created_at }}
               </p>
             </div>
           </div>
 
           <p class="text-sm leading-20 text-justify pt-5">
-            {{ $t("campaigns.comment_one") }}
+            {{ comment?.love_comment }}
           </p>
         </div>
       </div>
@@ -80,10 +86,9 @@
 
 <script setup lang="ts">
 import { Field } from "vee-validate";
+import { useComments } from "../services/comments";
+import { useRoute } from "vue-router";
+const route = useRoute();
 
-const loading = ref<boolean>(true);
-
-setTimeout(() => {
-  loading.value = false;
-}, 3000);
+const { comments, status } = useComments(route.params.id);
 </script>

@@ -42,6 +42,18 @@ const authRoutes = [
     path: "/verrify-email",
     file: resolve(__dirname, "../pages/VerrifyEmail.vue"),
   },
+
+  {
+    name: "signup-charity",
+    path: "/signup-charity",
+    file: resolve(__dirname, "../pages/RegisterCharity.vue"),
+  },
+
+  {
+    name: "pending",
+    path: "/pending",
+    file: resolve(__dirname, "../pages/PendingPage.vue"),
+  },
 ];
 
 export default authRoutes;

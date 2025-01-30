@@ -15,51 +15,63 @@
             width="15px"
             alt=""
           />
-          <span>Dashboard</span>
+          <span>{{ $t("dashboard.dashboard") }}</span>
         </nuxt-link>
       </li>
 
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/campaigns"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/campaigns.svg"
             width="15px"
             alt=""
           />
-          <span>Campaigns</span>
+          <span>{{ $t("dashboard.campaigns") }}</span>
         </nuxt-link>
       </li>
 
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/donations"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/donation.svg"
             width="15px"
             alt=""
           />
-          <span>Donation</span>
+          <span>{{ $t("dashboard.donations") }}</span>
         </nuxt-link>
       </li>
 
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/notification"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/notification.svg"
             width="15px"
             alt=""
           />
-          <span>Notifications</span>
+          <span>{{ $t("dashboard.notif") }}</span>
         </nuxt-link>
       </li>
 
       <li class="cursor-pointer mb-10">
-        <nuxt-link to="/" class="flex items-center gap-x-2 p-2">
+        <nuxt-link
+          to="/dashboard/settings"
+          class="flex items-center gap-x-2 p-2"
+        >
           <img
             src="../assets/images/dashboard/settings.svg"
             width="15px"
             alt=""
           />
-          <span>Settings</span>
+          <span>{{ $t("dashboard.settings") }}</span>
         </nuxt-link>
       </li>
 
@@ -70,7 +82,7 @@
             width="15px"
             alt=""
           />
-          <span>Logo out</span>
+          <span>{{ $t("dashboard.logout") }}</span>
         </nuxt-link>
       </li>
     </ul>

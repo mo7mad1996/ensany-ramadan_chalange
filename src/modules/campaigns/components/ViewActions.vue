@@ -57,17 +57,6 @@
           color="primary"
           @click="$router.push(`/campaigns/donate/${campaign?.id}`)"
         >
-          {{ $t("campaigns.make_donation") }}
-        </v-btn>
-
-        <v-btn
-          class="text-capitalize rounded-lg w-100 mt-3"
-          :ripple="false"
-          variant="flat"
-          size="default"
-          color="primary"
-          @click="$router.push(`/campaigns/donate/${campaign?.id}`)"
-        >
           {{ $t("campaigns.donate") }}
         </v-btn>
       </div>

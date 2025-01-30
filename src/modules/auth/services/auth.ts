@@ -2,7 +2,7 @@ import { api } from "~/helpers/axios";
 import { encryptData, decryptData } from "~/helpers/data-encryption";
 import { useApi } from "./handle-apicals";
 import { setToken, setUser, setCode } from "~/helpers/set-cookies";
-import { type User, type NewUser } from "~/helpers/interfaces";
+import { type User, type NewUser, type NewCharity } from "~/helpers/interfaces";
 
 export function useAuth() {
   const token = computed(() => {
@@ -30,7 +30,7 @@ export function useAuth() {
   };
 
   // register
-  const register = async (userData: NewUser) => {
+  const register = async (userData: NewUser | NewCharity) => {
     const response = await handleApiCall(() => api.post("/register", userData));
 
     if (response) {

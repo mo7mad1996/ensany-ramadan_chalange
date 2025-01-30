@@ -87,10 +87,10 @@ const { resendCode, formattedTime, timeLeft } = useResetPassword();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
-const { verrifyEmail, isLoading } = useAuth();
+const { verifyEmail, isLoading } = useAuth();
 
 const onSubmit = () => {
-  verrifyEmail(verification_code.value);
+  verifyEmail(verification_code.value);
 };
 
 useSeoMeta({

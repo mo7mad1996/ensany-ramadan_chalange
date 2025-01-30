@@ -68,7 +68,8 @@
                     width="25"
                     alt=""
                   />
-                  <span>{{ donor?.name }}</span>
+                  <span v-if="donor?.user_name">{{ donor?.user_name }}</span>
+                  <span v-if="donor?.user">{{ donor?.user?.name }}</span>
                 </div>
               </td>
               <td class="font-bold">${{ donor?.total_amount }}</td>

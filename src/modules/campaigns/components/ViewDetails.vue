@@ -98,9 +98,10 @@
 
     <v-tabs-window v-model="tab" class="mt-4 pb-4">
       <v-tabs-window-item value="one">
-        <p class="text-sm pb-5 leading-20 text-[#12121299]">
-          {{ campaign?.content }}
-        </p>
+        <p
+          class="text-sm pb-5 leading-20 text-[#12121299]"
+          v-html="campaign?.content"
+        ></p>
       </v-tabs-window-item>
 
       <v-tabs-window-item value="two">
@@ -169,7 +170,7 @@
     </v-tabs-window>
 
     <!-- videos -->
-    <div class="videos mt-5">
+    <!-- <div class="videos mt-5">
       <video
         class="rounded-md object-cover cursor-pointer w-full mb-5 h-[320px]"
         src="../../../assets/videos/contribution-vid.mp4"
@@ -183,7 +184,7 @@
         poster="../../../assets/videos/contribution-poster.svg"
         controls
       ></video>
-    </div>
+    </div> -->
 
     <CampaignsComments />
   </section>

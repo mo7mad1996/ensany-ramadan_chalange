@@ -4,9 +4,7 @@
       <div
         class="flex lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse justify-between items-center lg:gap-md xl:gap-md md:gap-md gap-sm"
       >
-        <AuthRegisterForm v-if="user_type == 'donoer'" />
-
-        <AuthCharityForm v-if="user_type == 'charity '" />
+        <AuthCharityForm />
 
         <div class="image">
           <img

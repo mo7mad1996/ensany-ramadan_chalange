@@ -6,6 +6,26 @@ const dashbaordRoutes = [
     path: "/dashboard",
     file: resolve(__dirname, "../pages/Dashboard.vue"),
   },
+  {
+    name: "dash-campaigns",
+    path: "/dashboard/campaigns",
+    file: resolve(__dirname, "../pages/CampaignsPage.vue"),
+  },
+  {
+    name: "dash-donations",
+    path: "/dashboard/donations",
+    file: resolve(__dirname, "../pages/DonationsPage.vue"),
+  },
+  {
+    name: "dash-notification",
+    path: "/dashboard/notification",
+    file: resolve(__dirname, "../pages/NotificationPage.vue"),
+  },
+  {
+    name: "dash-settings",
+    path: "/dashboard/settings",
+    file: resolve(__dirname, "../pages/SettingsPage.vue"),
+  },
 ];
 
 export default dashbaordRoutes;

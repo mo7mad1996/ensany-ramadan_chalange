@@ -35,7 +35,7 @@
           class="mb-2"
           alt=""
         />
-        <p>{{ $t("global.signin") }}</p>
+        <p>{{ $t("global.donation") }}</p>
       </v-btn>
     </div>
 
@@ -44,7 +44,7 @@
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
-      <QuickDonation />
+      <CampaignsDonationForm />
     </dialog>
   </v-layout>
 </template>
