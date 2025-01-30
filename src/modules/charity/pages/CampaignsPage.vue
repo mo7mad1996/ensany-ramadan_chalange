@@ -54,7 +54,7 @@
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { useCampaignsPage } from "../typescript/campaigns-page";
 definePageMeta({
-  layout: "dashboard",
+  layout: "charity",
   middleware: "require-auth",
 });
 

@@ -98,7 +98,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { useDonationsPage } from "../typescript/donations-page";
 definePageMeta({
-  layout: "dashboard",
+  layout: "charity",
   middleware: "require-auth",
 });
 

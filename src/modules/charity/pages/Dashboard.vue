@@ -32,7 +32,7 @@
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 
 definePageMeta({
-  layout: "dashboard",
+  layout: "charity",
   middleware: "require-auth",
 });
 </script>
