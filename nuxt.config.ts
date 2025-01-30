@@ -8,7 +8,9 @@ export default defineNuxtConfig({
   srcDir: "src/",
 
   ssr: true,
-
+  routeRules: {
+    '/campaigns/**': { ssr: true }, 
+  },
   // favicon & fonts
   app: {
     pageTransition: false, // Completely disables transitions
@@ -65,6 +67,7 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1000,
+      
       rollupOptions: {
         output: {
           // manualChunks(id) {
