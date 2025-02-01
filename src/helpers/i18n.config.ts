@@ -25,6 +25,9 @@ import arStories from "../modules/stories/locales/ar.json";
 import enCharity from "../modules/charity/locales/en.json";
 import arCharity from "../modules/charity/locales/ar.json";
 
+import enDonor from "../modules/donor/locales/en.json";
+import arDonor from "../modules/donor/locales/ar.json";
+
 export default {
   legacy: false,
   locale: "ar",
@@ -39,6 +42,7 @@ export default {
       blogs: enBlogs,
       story: enStories,
       dashboard: enCharity,
+      donor: enDonor,
     },
     ar: {
       home: arHome,
@@ -50,6 +54,7 @@ export default {
       blogs: arBlogs,
       story: arStories,
       dashboard: arCharity,
+      donor:arDonor,
     },
   },
 };

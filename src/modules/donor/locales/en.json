@@ -1,0 +1,9 @@
+{
+  "dashboard": "Dashboard",
+  "donation_history": "Donation History",
+  "campaigns_history": "Campaign History",
+  "donation_cart": "Donation Cart",
+  "notification": "Notifications",
+  "settings":"Settings",
+  "logout": "Log out"
+}
