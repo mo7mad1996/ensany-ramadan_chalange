@@ -216,7 +216,9 @@
           </div>
 
           <div class="notif-chanels mt-sm">
-            <h2 class="text-xl font-semibold">Notification Channels</h2>
+            <h2 class="text-xl font-semibold">
+              {{ $t("dashboard.notif_chanels") }}
+            </h2>
 
             <v-checkbox
               v-model="Email"
