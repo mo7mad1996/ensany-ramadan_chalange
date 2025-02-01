@@ -1,1 +1,4 @@
-<template></template>
+<template>
+    <div>testtt</div>
+</template>
+<script></script>
