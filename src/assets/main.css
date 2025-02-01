@@ -117,7 +117,8 @@ a {
 
 [dir="rtl"] .subscribers,
 [dir="rtl"] .view_details,
-[dir="rtl"] .doners {
+[dir="rtl"] .doners,
+[dir="rtl"] .current_campaign {
   .v-progress-linear__determinate {
     right: 0 !important;
     left: auto;
@@ -128,7 +129,8 @@ a {
 
 [dir="ltr"] .subscribers,
 [dir="ltr"] .view_details,
-[dir="ltr"] .doners {
+[dir="ltr"] .doners,
+[dir="ltr"] .current_campaign {
   .v-progress-linear__determinate {
     left: 0 !important;
     border-top-right-radius: 6px;

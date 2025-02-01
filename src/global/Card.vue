@@ -14,7 +14,7 @@
     </div>
 
     <!-- chalenge title -->
-    <h2 class="font-bold text-2xl leading-[39px] pt-1">
+    <h2 class="font-bold text-xl leading-[39px] pt-1">
       <slot name="title"></slot>
     </h2>
 

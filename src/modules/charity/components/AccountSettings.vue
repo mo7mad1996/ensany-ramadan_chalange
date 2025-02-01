@@ -157,7 +157,11 @@
                 </p>
               </div>
 
-              <v-switch v-model="model" color="#3E7E41" hide-details></v-switch>
+              <v-switch
+                v-model="model1"
+                color="#3E7E41"
+                hide-details
+              ></v-switch>
             </div>
 
             <div class="flex justify-between items-center mt-4">
@@ -175,7 +179,11 @@
                 </p>
               </div>
 
-              <v-switch v-model="model" color="#3E7E41" hide-details></v-switch>
+              <v-switch
+                v-model="model2"
+                color="#3E7E41"
+                hide-details
+              ></v-switch>
             </div>
 
             <div class="flex justify-between items-center mt-4">
@@ -193,7 +201,11 @@
                 </p>
               </div>
 
-              <v-switch v-model="model" color="#3E7E41" hide-details></v-switch>
+              <v-switch
+                v-model="model3"
+                color="#3E7E41"
+                hide-details
+              ></v-switch>
             </div>
 
             <div class="flex justify-between items-center mt-4">
@@ -211,25 +223,38 @@
                 </p>
               </div>
 
-              <v-switch v-model="model" color="#3E7E41" hide-details></v-switch>
+              <v-switch
+                v-model="model4"
+                color="#3E7E41"
+                hide-details
+              ></v-switch>
             </div>
           </div>
 
           <div class="notif-chanels mt-sm">
-            <h2 class="text-xl font-semibold">Notification Channels</h2>
+            <h2 class="text-xl font-semibold">
+              {{ $t("dashboard.notif_chanels") }}
+            </h2>
 
             <v-checkbox
+              class="checkbox"
               v-model="Email"
               color="#3E7E41"
-              label="Email"
+              :label="$t('dashboard.email')"
             ></v-checkbox>
 
-            <v-checkbox v-model="SMS" color="#3E7E41" label="SMS"></v-checkbox>
+            <v-checkbox
+              class="checkbox"
+              v-model="SMS"
+              color="#3E7E41"
+              :label="$t('dashboard.sms')"
+            ></v-checkbox>
 
             <v-checkbox
+              class="checkbox"
               v-model="push_notif"
               color="#3E7E41"
-              label="Push notifications"
+              :label="$t('dashboard.push_notif')"
             ></v-checkbox>
           </div>
         </div>
@@ -237,30 +262,28 @@
 
       <v-tabs-window-item value="3">
         <div class="privacy-settings pt-sm">
-          <h2 class="text-xl font-bold">Security Settings</h2>
+          <h2 class="text-xl font-bold">{{ $t("dashboard.privacy_title") }}</h2>
           <p class="text-sm text-[#969696]">
-            Manage and strengthen your account's security.
+            {{ $t("dashboard.privacy_desc") }}
           </p>
 
           <div class="header pt-sm">
             <div class="flex justify-between items-center">
-              <h3 class="text-xl">Recent Login Activity</h3>
-              <span class="underline text-primary text-sm cursor-pointer"
-                >Terminate all sessions</span
-              >
+              <h3 class="text-xl">{{ $t("dashboard.resent_login") }}</h3>
+              <span class="underline text-primary text-sm cursor-pointer">{{
+                $t("dashboard.tirminate_sessions")
+              }}</span>
             </div>
             <p class="text-sm text-[#969696] pt-2">
-              Review the devices and locations where your account was accessed.
-              If something doesn’t look right, take action immediately
+              {{ $t("dashboard.resent_desc") }}
             </p>
           </div>
 
           <!-- change password section -->
           <div class="change-password pt-sm">
-            <h2 class="text-xl">Change Password</h2>
+            <h2 class="text-xl">{{ $t("dashboard.change_password") }}</h2>
             <p class="text-sm text-[#969696] pt-2">
-              Update your password to keep your account secure. A strong
-              password includes letters, numbers, and symbols.
+              {{ $t("dashboard.change_desc") }}
             </p>
 
             <Form @submit="onSubmit2">
@@ -361,7 +384,7 @@
                   size="large"
                   color="primary"
                 >
-                  update password
+                  {{ $t("dashboard.update_password") }}
                 </v-btn>
               </div>
             </Form>
@@ -375,7 +398,10 @@
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 
-const model = ref(true);
+const model1 = ref(true);
+const model2 = ref(true);
+const model3 = ref(true);
+const model4 = ref(true);
 const Email = ref(true);
 const SMS = ref(true);
 const push_notif = ref(true);

@@ -3,7 +3,8 @@
     <!-- user name -->
     <div class="user_name flex gap-x-3 items-center">
       <img src="../assets/images/dashboard/avatar.svg" width="30px" alt="" />
-      <span>Sarah M.</span>
+      <span v-if="user?.first_name">{{ user?.first_name }}</span>
+      <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
     </div>
 
     <!-- dashboard links -->
@@ -91,6 +92,12 @@
     </ul>
   </div>
 </template>
+
+<script setup>
+import { useAuth } from "~/modules/auth/services/auth";
+
+const { user } = useAuth();
+</script>
 
 <style scoped>
 .sidebar .router-link-active.router-link-exact-active {
