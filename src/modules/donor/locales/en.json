@@ -5,5 +5,6 @@
   "donation_cart": "Donation Cart",
   "notification": "Notifications",
   "settings":"Settings",
-  "logout": "Log out"
+  "logout": "Log out",
+  "overview":"Overview"
 }

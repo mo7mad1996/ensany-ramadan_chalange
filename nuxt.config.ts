@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
   ssr: true,
   routeRules: {
-    '/campaigns/**': { ssr: true }, 
+    "/campaigns/**": { ssr: true },
   },
   // favicon & fonts
   app: {
@@ -47,6 +47,7 @@ export default defineNuxtConfig({
     { path: "~/modules/blogs/components", prefix: "Blog" },
     { path: "~/modules/stories/components", prefix: "story" },
     { path: "~/modules/charity/components", prefix: "Charity" },
+    { path: "~/modules/donor/components", prefix: "Donor" },
   ],
 
   // main style & tailwid config
@@ -68,7 +69,7 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1000,
-      
+
       rollupOptions: {
         output: {
           // manualChunks(id) {
