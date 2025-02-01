@@ -25,7 +25,13 @@ export function useAuth() {
       const { token: tokenValue, user: userValue } = response.data.result;
       setToken(encryptData(tokenValue));
       setUser(encryptData(userValue));
-      navigateTo("/dashboard/charity");
+
+      if (user.value?.user_type === "charity") {
+        navigateTo("/dashboard/charity");
+      } else {
+        // here will be the dooner link
+        navigateTo("/dashboard/charity");
+      }
     }
   };
 
@@ -55,7 +61,11 @@ export function useAuth() {
     );
 
     if (response?.data.status) {
-      navigateTo("/dashboard/charity");
+      if (user.value?.user_type === "charity") {
+        navigateTo("/dashboard/charity");
+      } else {
+        navigateTo("/");
+      }
     }
   };
 
