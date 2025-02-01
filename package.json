@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/nprogress": "^0.2.3",
-    "@types/vue-tel-input": "^2.1.7",
+    "@types/vue-tel-input": "^2.1.1",
     "autoprefixer": "^10.4.20",
     "fs": "0.0.2",
     "postcss": "^8.4.49",
