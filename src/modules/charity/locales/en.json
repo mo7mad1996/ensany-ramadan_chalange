@@ -89,5 +89,6 @@
   "resent_desc": "Review the devices and locations where your account was accessed. If something doesn’t look right, take action immediately",
   "change_password": "Change Your Password",
   "change_desc": "Update your password to keep your account secure. A strong password includes letters, numbers, and symbols.",
-  "update_password": "Update Password"
+  "update_password": "Update Password",
+  "tirminate_sessions": "Terminate all sessions"
 }
