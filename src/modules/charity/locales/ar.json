@@ -89,5 +89,28 @@
   "change_password": "تغيير كلمة المرور",
   "change_desc": "قم بتحديث كلمة المرور للحفاظ على أمان حسابك. تتضمن كلمة المرور القوية أحرفًا وأرقامًا ورموزًا.",
   "update_password": "تحديث كلمة المرور",
-  "tirminate_sessions": "إنهاء جميع الجلسات"
+  "tirminate_sessions": "إنهاء جميع الجلسات",
+
+  "starting_date": "تاريخ البدء",
+  "ending_date": "تاريخ الانتهاء",
+  "campaign_story": "قصة الحملة",
+  "targeted_location": "الموقع المستهدف",
+  "campaign_image": "صورة الحملة",
+  "actions": "الإجراءات",
+  "edit_campaign": "تعديل الحملة",
+  "delete_campaign": "حذف الحملة",
+
+  "overview": "نظرة عامة",
+  "total_donations": "إجمالي التبرعات",
+  "total_fundraising": "إجمالي جمع التبرعات",
+  "total_donors": "إجمالي المتبرعين",
+  "total_campaigns": "إجمالي الحملات",
+  "number_desc": "زيادة عن يوم أمس",
+  "current_title": "أنت تحدث فرقًا!",
+  "current_desc1": "تهانينا! لقد تبرعت بمبلغ",
+  "current_desc2": "من هدف حملة تعليم طفل.",
+  "continue_donation": "متابعة التبرع",
+  "field_donations": "التبرعات الفاشلة",
+  "success_donations": "التبرعات الناجحة",
+  "total_donations_amount": "إجمالي مبلغ التبرعات"
 }

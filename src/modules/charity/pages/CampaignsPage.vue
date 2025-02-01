@@ -30,19 +30,58 @@
           :items="campaigns"
           :search="search"
         >
+          <!-- Status Button -->
           <template v-slot:item.campaign_status="{ item }">
             <v-btn
+              class="w-full"
               :color="
                 item.campaign_status === $t('dashboard.active') ||
                 item.campaign_status === 'نشط'
-                  ? 'green'
-                  : 'red'
+                  ? '#28A745'
+                  : '#5C7762'
               "
-              variant="tonal"
+              elevation="0"
               size="small"
             >
               {{ item.campaign_status }}
             </v-btn>
+          </template>
+
+          <!-- Campaign Image
+          <template v-slot:item.campaign_image="{ item }">
+            <v-img
+              :src="item.campaign_image"
+              alt="Campaign Image"
+              width="50"
+              height="50"
+              cover
+              class="rounded"
+            />
+          </template> -->
+
+          <!-- Actions -->
+          <template v-slot:item.actions="{ item }">
+            <div class="flex gap-x-2 items-center">
+              <v-btn
+                icon
+                size="x-small"
+                elevation="0"
+                variant="tonal"
+                color="red"
+              >
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+
+              <v-btn
+                icon
+                size="x-small"
+                elevation="0"
+                variant="tonal"
+                color="green"
+              >
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </div>
           </template>
         </v-data-table>
       </v-card>

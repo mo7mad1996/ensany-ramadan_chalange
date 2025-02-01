@@ -90,5 +90,28 @@
   "change_password": "Change Your Password",
   "change_desc": "Update your password to keep your account secure. A strong password includes letters, numbers, and symbols.",
   "update_password": "Update Password",
-  "tirminate_sessions": "Terminate all sessions"
+  "tirminate_sessions": "Terminate all sessions",
+
+  "starting_date": "Starting Date",
+  "ending_date": "Ending Date",
+  "campaign_story": "Campaign Story",
+  "targeted_location": "Targeted Location",
+  "campaign_image": "Campaign Image",
+  "actions": "Actions",
+  "edit_campaign": "Edit Campaign",
+  "delete_campaign": "Delete Campaign",
+
+  "overview": "Overview",
+  "total_donations": "Total donations",
+  "total_fundraising": "Total fundraising",
+  "total_donors": "Total donors",
+  "total_campaigns": "Total Campaign",
+  "number_desc": "Up from yesterday",
+  "current_title": "You’re Making a Difference!",
+  "current_desc1": "Congratulations! You have donated",
+  "current_desc2": "of Educate a child campaign goal.",
+  "continue_donation": "Continue Donation",
+  "field_donations": "Failed Donations",
+  "success_donations": "Successful Donations",
+  "total_donations_amount": "Total Donations Amount"
 }
