@@ -26,11 +26,11 @@ export function useAuth() {
       setToken(encryptData(tokenValue));
       setUser(encryptData(userValue));
 
-      if (user.value?.user_type === "charity") {
+      if (userValue?.user_type === "charity") {
         navigateTo("/dashboard/charity");
       } else {
         // here will be the dooner link
-        navigateTo("/dashboard/charity");
+        navigateTo("/dashboard/donor");
       }
     }
   };
@@ -64,7 +64,7 @@ export function useAuth() {
       if (user.value?.user_type === "charity") {
         navigateTo("/dashboard/charity");
       } else {
-        navigateTo("/");
+        navigateTo("/dashboard/donor");
       }
     }
   };

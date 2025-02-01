@@ -27,15 +27,27 @@
       </nuxt-link> -->
 
       <div class="flex flex-col gap-y-[1.5rem]">
-        <v-btn
-          v-if="user"
-          class="text-capitalize"
-          variant="flat"
-          size="default"
-          color="primary"
-          @click="$router.push('/dashboard/charity')"
-          >{{ $t("global.dashboard") }}</v-btn
-        >
+        <div>
+          <v-btn
+            v-if="user && user?.user_type === 'charity'"
+            class="text-capitalize"
+            variant="flat"
+            size="default"
+            color="primary"
+            @click="$router.push('/dashboard/charity')"
+            >{{ $t("global.dashboard") }}</v-btn
+          >
+
+          <v-btn
+            v-else
+            class="text-capitalize"
+            variant="flat"
+            size="default"
+            color="primary"
+            @click="$router.push('/dashboard/donor')"
+            >{{ $t("global.dashboard") }}</v-btn
+          >
+        </div>
 
         <v-btn
           v-if="user"
@@ -173,16 +185,17 @@
                     width="15"
                     alt=""
                   />
-                  <!-- <nuxt-link
+                  <nuxt-link
                     v-if="user?.user_type === 'charity'"
                     class="hover:underline text-sm"
                     to="/dashboard/charity"
                     >{{ $t("global.dashboard") }}</nuxt-link
-                  > -->
+                  >
 
                   <nuxt-link
+                    v-else
                     class="hover:underline text-sm"
-                    to="/dashboard/charity"
+                    to="/dashboard/donor"
                     >{{ $t("global.dashboard") }}</nuxt-link
                   >
                 </li>
