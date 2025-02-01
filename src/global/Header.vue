@@ -33,7 +33,7 @@
           variant="flat"
           size="default"
           color="primary"
-          @click="$router.push('/dashboard')"
+          @click="$router.push('/dashboard/charity')"
           >{{ $t("global.dashboard") }}</v-btn
         >
 
@@ -177,8 +177,8 @@
                     v-if="user?.user_type === 'charity'"
                     class="hover:underline text-sm"
                     to="/dashboard/charity"
-                    >{{ $t("global.dashboard") }}</nuxt-link -->
-                  >
+                    >{{ $t("global.dashboard") }}</nuxt-link
+                  > -->
 
                   <nuxt-link
                     class="hover:underline text-sm"

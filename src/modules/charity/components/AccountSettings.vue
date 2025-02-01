@@ -13,7 +13,7 @@
     </v-tabs>
 
     <v-tabs-window v-model="tab">
-      <v-tabs-window-item value="1" class="w-1/2">
+      <v-tabs-window-item value="1" class="xl:w-1/2 lg:w-1/2 md:w-full w-full">
         <div class="profile-settings pt-sm">
           <h2 class="text-xl font-semibold">
             {{ $t("dashboard.account_details") }}
@@ -379,7 +379,7 @@
                 <v-btn
                   :ripple="false"
                   type="submit"
-                  class="text-capitalize rounded-lg w-1/4 mt-2"
+                  class="text-capitalize rounded-lg xl:w-1/4 lg:w-1/4 md:w-full w-full mt-2"
                   variant="flat"
                   size="large"
                   color="primary"
