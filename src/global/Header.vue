@@ -173,6 +173,13 @@
                     width="15"
                     alt=""
                   />
+                  <!-- <nuxt-link
+                    v-if="user?.user_type === 'charity'"
+                    class="hover:underline text-sm"
+                    to="/dashboard/charity"
+                    >{{ $t("global.dashboard") }}</nuxt-link -->
+                  >
+
                   <nuxt-link
                     class="hover:underline text-sm"
                     to="/dashboard/charity"
