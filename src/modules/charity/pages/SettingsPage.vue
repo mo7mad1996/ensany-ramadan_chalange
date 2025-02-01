@@ -1,7 +1,9 @@
 <template>
   <div class="dashboard_campaigns pb-sm">
     <div>
-      <h1 class="text-3xl font-bold">{{ $t("dashboard.settings") }}</h1>
+      <h1 class="text-3xl text-start font-bold">
+        {{ $t("dashboard.settings") }}
+      </h1>
       <p>{{ $t("dashboard.settings_desc") }}</p>
     </div>
 

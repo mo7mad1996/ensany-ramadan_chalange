@@ -1,6 +1,8 @@
 <template>
   <div class="bred-crumb flex justify-between items-center">
-    <h1 class="text-3xl font-bold"><slot name="title"></slot></h1>
+    <h1 class="lg:flex xl:flex md:hidden hidden text-3xl font-bold">
+      <slot name="title"></slot>
+    </h1>
 
     <div class="buttons flex gap-x-3 items-center">
       <v-btn
@@ -32,8 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import { required } from "@vee-validate/rules";
-
 const props = defineProps({
   isButtons: {
     type: Boolean,

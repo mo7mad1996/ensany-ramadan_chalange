@@ -1,20 +1,51 @@
 <template>
   <v-layout>
     <Header />
-
     <v-main class="mt-10">
       <Container>
-        <div class="grid grid-cols-12 h-full gap-sm">
-          <div class="col-span-2 h-full sticky">
+        <div class="grid grid-cols-12 gap-4">
+          <!-- Sidebar Toggle Button (Small Screens) -->
+          <div class="lg:hidden col-span-12 flex justify-start mb-4">
+            <v-btn
+              color="primary"
+              size="small"
+              variant="outlined"
+              elevation="0"
+              @click="isSidebarOpen = true"
+              style="text-transform: capitalize"
+            >
+              <v-icon class="mr-2">mdi-menu</v-icon>
+              Menu
+            </v-btn>
+          </div>
+
+          <!-- Sidebar (Large Screens) -->
+          <div
+            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
+          >
             <CharitySidebar />
           </div>
 
-          <div class="col-span-10">
+          <!-- Main Content -->
+          <div class="col-span-12 lg:col-span-9 xl:col-span-10">
             <NuxtPage />
           </div>
         </div>
       </Container>
+
       <AppFooter />
+
+      <!-- Sidebar as a Drawer (Small Screens) -->
+      <v-navigation-drawer
+        v-model="isSidebarOpen"
+        temporary
+        location="left"
+        class="lg:hidden"
+      >
+        <div class="p-4">
+          <CharitySidebar />
+        </div>
+      </v-navigation-drawer>
     </v-main>
 
     <!-- Global donation button -->
@@ -57,6 +88,7 @@ import CharitySidebar from "~/global/CharitySidebar.vue";
 import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();
+const isSidebarOpen = ref(false);
 
 const donate = ref("");
 
