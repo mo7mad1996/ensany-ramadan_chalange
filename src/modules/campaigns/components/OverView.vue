@@ -39,5 +39,9 @@
 import Container from "~/global/Container.vue";
 import Card from "~/global/Card.vue";
 import { useCarousel } from "~/helpers/carousel";
+import { useViewCampaign } from "../services/single-campaign";
+import { useRoute } from "vue-router";
+const route = useRoute();
+
 const { breakpoints4, settings, Carousel, Slide, Pagination } = useCarousel();
 </script>

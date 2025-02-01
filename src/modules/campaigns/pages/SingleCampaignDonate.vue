@@ -1,7 +1,7 @@
 <template>
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ $t("campaigns.donate") }} </template>
+    <template #second_page> {{ name }} / {{ $t("campaigns.donate") }} </template>
   </BreadCrumb>
 
   <div class="flex justify-center">
@@ -15,13 +15,20 @@
   <CampaignsSimilarCampaigns />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useViewCampaign } from "../services/single-campaign";
+import { useRoute } from "vue-router";
+const route = useRoute();
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const { locale } = useI18n();
 
+const { viewCampaign, status, target, amount } = useViewCampaign(
+  route.params.id
+);
+ 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
   ogTitle: "My Amazing Site",
@@ -31,8 +38,13 @@ useSeoMeta({
   twitterCard: "summary_large_image",
 });
 
-watch(locale, (newLocale) => {
+ 
+watch([locale,viewCampaign], (newLocale) => {
+  const name = viewCampaign?.value?.name;
+  
+   
   const isArabic = newLocale === "ar";
+   
   useSeoMeta({
     title: isArabic ? ramadan_ar : ramadan_en,
   });
