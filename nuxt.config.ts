@@ -6,7 +6,9 @@ export default defineNuxtConfig({
   // main directory
   srcDir: "src/",
   ssr: true,
-
+  routeRules: {
+    "/campaigns/**": { ssr: true },
+  },
   // favicon & fonts
   app: {
     pageTransition: false, // Completely disables transitions
@@ -45,6 +47,7 @@ export default defineNuxtConfig({
     { path: "~/modules/blogs/components", prefix: "Blog" },
     { path: "~/modules/stories/components", prefix: "story" },
     { path: "~/modules/charity/components", prefix: "Charity" },
+    { path: "~/modules/donor/components", prefix: "Donor" },
   ],
 
   // main style & tailwid config
