@@ -3,7 +3,11 @@
     <dashbordBreadcrumb :is-buttons="true" :is-link="false">
       <template #title>{{ $t("dashboard.overview") }}</template>
       <template #first_button>{{ $t("global.donate_now") }}</template>
-      <template #second_button>{{ $t("global.start_campaign") }}</template>
+      <template #second_button>
+        <nuxt-link to="/start-campaign">
+          {{ $t("global.start_campaign") }}
+        </nuxt-link>
+      </template>
     </dashbordBreadcrumb>
 
     <div class="content mt-sm">
