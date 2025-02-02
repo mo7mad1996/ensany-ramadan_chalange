@@ -113,5 +113,11 @@
   "continue_donation": "Continue Donation",
   "field_donations": "Failed Donations",
   "success_donations": "Successful Donations",
-  "total_donations_amount": "Total Donations Amount"
+  "total_donations_amount": "Total Donations Amount",
+
+  "donation_transuctions": "Donation Transactions",
+  "donation_growth": "Donation Growth",
+  "success_donations_chart": "Successful Donations",
+  "field_donations_chart": "Failed Donations",
+  "pending_donations": "Pending Donations"
 }
