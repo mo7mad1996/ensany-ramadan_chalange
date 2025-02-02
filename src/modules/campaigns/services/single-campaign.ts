@@ -8,6 +8,7 @@ export const useViewCampaign = (id: any) => {
     refresh,
     status,
     clear,
+    execute,
   } = useAsyncData(
     `viewCampaign-${id}-${locale.value}`, // Dynamic key to ensure caching by ID
     () =>
@@ -22,7 +23,10 @@ export const useViewCampaign = (id: any) => {
   const image = computed(() => viewCampaign.value?.image || {});
   const name = computed(() => viewCampaign.value?.name || {});
   const desc = computed(() => viewCampaign.value?.short_desc || {});
- 
+  const similarCampaigns = computed(
+    () => viewCampaign.value?.similar_campaigns || []
+  );
+
   return {
     viewCampaign,
     view_campaign_error,
@@ -34,5 +38,7 @@ export const useViewCampaign = (id: any) => {
     image,
     name,
     desc,
+    execute,
+    similarCampaigns,
   };
 };

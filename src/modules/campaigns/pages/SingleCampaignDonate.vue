@@ -8,13 +8,13 @@
 
   <div class="flex justify-center">
     <div class="flex xl:flex-row lg:flex-row md:flex-col flex-col gap-3">
-      <CampaignsOverView />
+      <CampaignsOverView :campaignData="viewCampaign" :status="status" />
 
       <CampaignsDonationForm />
     </div>
   </div>
 
-  <CampaignsSimilarCampaigns />
+  <CampaignsSimilarCampaigns :similarCampaigns="similarCampaigns" />
 </template>
 
 <script setup lang="ts">
@@ -27,7 +27,7 @@ const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const { locale } = useI18n();
 
-const { viewCampaign, status, target, amount } = useViewCampaign(
+const { viewCampaign, status, similarCampaigns } = useViewCampaign(
   route.params.id
 );
 
@@ -41,8 +41,6 @@ useSeoMeta({
 });
 
 watch(locale, (newLocale) => {
-  // const name = viewCampaign?.value?.name;
-
   const isArabic = newLocale === "ar";
 
   useSeoMeta({

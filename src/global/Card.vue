@@ -83,6 +83,14 @@ const props = defineProps({
 const animatedRate = ref(0);
 const targetRate = props.rate;
 
+// Watch for changes to rate prop and animate progress bar
+watch(
+  () => props.rate,
+  (newRate) => {
+    animateProgressBar(newRate);
+  }
+);
+
 const onEnterViewport = (isVisible: boolean) => {
   if (isVisible) {
     animateProgressBar(targetRate);

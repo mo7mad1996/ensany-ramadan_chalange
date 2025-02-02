@@ -269,6 +269,8 @@
             </v-menu>
           </div>
 
+          <selectCurruncy />
+
           <v-btn
             class="text-capitalize rounded-lg"
             variant="outlined"
@@ -289,6 +291,7 @@
 
 <script setup lang="ts">
 import Container from "./Container.vue";
+import selectCurruncy from "./select-curruncy.vue";
 import SwitchLang from "./SwitchLang.vue";
 import { useAuth } from "~/modules/auth/services/auth";
 import { useGlobalVar } from "~/helpers/global-var";

@@ -11,32 +11,37 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(item, index) in 5" :key="index">
+        <Slide v-for="(campaign, index) in similarCampaigns" :key="index">
           <Card
-            :rate="20"
+            :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
-            :route="`/campaigns/${index + 1}`"
+            :route="`/campaigns/donate/${campaign.id}`"
           >
             <template #image>
               <img
-                src="../../../assets/images/chalenge-img.png"
-                class="w-100"
-                alt=""
+                @click="$router.push(`/campaigns/${campaign.id}`)"
+                :src="campaign?.image"
+                class="w-full max-h-[15rem] object-cover rounded-lg"
+                alt="....."
               />
             </template>
 
-            <template #company> {{ $t("home.honor_company") }}</template>
+            <template #company> {{ campaign?.user?.name }}</template>
 
-            <template #title>{{ $t("home.feed_familly") }}</template>
+            <template #title>{{ campaign?.name }}</template>
 
-            <template #desc> {{ $t("home.card_desc") }}</template>
+            <template #desc>
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span
+            ></template>
 
-            <template #subscribers>150</template>
+            <template #subscribers>{{ campaign?.total_donors }}</template>
 
-            <template #total_donation>$6000</template>
+            <template #total_donation>${{ campaign?.price_target }}</template>
 
-            <template #donation>$600</template>
+            <template #donation>${{ campaign?.total_amount }}</template>
           </Card>
         </Slide>
 
@@ -48,10 +53,17 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Container from "../../../global/Container.vue";
 import Card from "../../../global/Card.vue";
+import { stripHtmlTags } from "~/helpers/string";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
+
+const props = defineProps({
+  similarCampaigns: {
+    required: true,
+  },
+});
 </script>
