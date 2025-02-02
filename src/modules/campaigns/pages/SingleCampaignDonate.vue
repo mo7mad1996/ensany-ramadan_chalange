@@ -8,7 +8,7 @@
 
   <div class="flex justify-center">
     <div class="flex xl:flex-row lg:flex-row md:flex-col flex-col gap-3">
-      <CampaignsOverView />
+      <CampaignsOverView :campaignData="viewCampaign" :status="status" />
 
       <CampaignsDonationForm />
     </div>
@@ -41,8 +41,6 @@ useSeoMeta({
 });
 
 watch(locale, (newLocale) => {
-  // const name = viewCampaign?.value?.name;
-
   const isArabic = newLocale === "ar";
 
   useSeoMeta({
