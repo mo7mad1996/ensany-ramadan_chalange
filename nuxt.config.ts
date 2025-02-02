@@ -3,19 +3,18 @@ import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-
   // main directory
   srcDir: "src/",
-
   ssr: true,
-  routeRules: {
-    '/campaigns/**': { ssr: true }, 
-  },
+  
   // favicon & fonts
   app: {
+
     pageTransition: false, // Completely disables transitions
     layoutTransition: false,
     head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -68,7 +67,7 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1000,
-      
+
       rollupOptions: {
         output: {
           // manualChunks(id) {

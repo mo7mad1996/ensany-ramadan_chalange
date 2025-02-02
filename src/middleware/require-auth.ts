@@ -1,7 +1,5 @@
+import { startLoader, stopLoader } from "~/helpers/nprogress";
 import { useAuth } from "~/modules/auth/services/auth";
-import { api } from "~/helpers/axios";
-import { startLoader } from "~/helpers/nprogress";
-import { stopLoader } from "~/helpers/nprogress";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const { token } = useAuth();

@@ -19,7 +19,10 @@ export const useViewCampaign = (id: any) => {
 
   const target = computed(() => viewCampaign.value?.price_target || "");
   const amount = computed(() => viewCampaign.value?.total_amount || "");
-
+  const image = computed(() => viewCampaign.value?.image || {});
+  const name = computed(() => viewCampaign.value?.name || {});
+  const desc = computed(() => viewCampaign.value?.short_desc || {});
+ 
   return {
     viewCampaign,
     view_campaign_error,
@@ -28,5 +31,8 @@ export const useViewCampaign = (id: any) => {
     clear,
     target,
     amount,
+    image,
+    name,
+    desc,
   };
 };
