@@ -6,15 +6,14 @@ export default defineNuxtConfig({
   // main directory
   srcDir: "src/",
   ssr: true,
-  
+
   // favicon & fonts
   app: {
-
     pageTransition: false, // Completely disables transitions
     layoutTransition: false,
     head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -98,6 +97,7 @@ export default defineNuxtConfig({
     },
     "./src/router/index",
     "@nuxtjs/i18n",
+    "@pinia/nuxt",
   ],
 
   plugins: [

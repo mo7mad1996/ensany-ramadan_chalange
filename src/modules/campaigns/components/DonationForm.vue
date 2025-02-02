@@ -23,7 +23,7 @@
                 v-for="(item, index) in avilableAmounts"
                 :key="index"
                 class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
-                :class="{ 'bg-[#e8fde8]': amount == item }"
+                :class="{ 'bg-[#e8fde8]': donationData.amount == item }"
                 @click="selectAmount(item)"
               >
                 ${{ item }}</span
@@ -55,7 +55,7 @@
                 rules="required|englishNumbersOnly"
                 type="text"
                 id="custom_amount"
-                v-model="amount"
+                v-model="donationData.amount"
                 :placeholder="$t('global.custom_amount')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -161,6 +161,7 @@
                 <Field
                   name="name"
                   rules="required"
+                  v-model="donationData.name"
                   type="text"
                   id="name"
                   :placeholder="$t('global.name')"
@@ -198,6 +199,7 @@
                 <Field
                   name="email"
                   type="email"
+                  v-model="donationData.email"
                   rules="required|email"
                   id="email"
                   :placeholder="$t('global.email')"
@@ -220,6 +222,7 @@
                 <Field
                   name="phone"
                   rules="required"
+                  v-model="donationData.mobile"
                   type="text"
                   id="phone"
                   :placeholder="$t('global.phone')"
@@ -262,6 +265,7 @@
                     <Field
                       name="some_name"
                       rules="required"
+                      v-model="donationData.love_name"
                       type="text"
                       id="some_name"
                       :placeholder="$t('global.some_name')"
@@ -290,6 +294,7 @@
                     <Field
                       name="some_email"
                       type="email"
+                      v-model="donationData.love_email"
                       rules="required|email"
                       id="some_email"
                       :placeholder="$t('global.gift_email')"
@@ -318,6 +323,7 @@
                     <Field
                       name="some_phone"
                       rules="required"
+                      v-model="donationData.love_mobile"
                       type="text"
                       id="some_phone"
                       :placeholder="$t('global.some_number')"
@@ -330,52 +336,66 @@
                     class="text-sm text-red-500 mt-2"
                   />
                 </div>
+
+                <!-- comments -->
+                <div class="comments pt-5">
+                  <div class="flex gap-x-2">
+                    <img
+                      src="../../../assets/images/campaign/comment.svg"
+                      width="22"
+                      alt="..."
+                    />
+                    <h1 class="font-semibold text-2xl">
+                      {{ $t("global.add_comment") }}
+                    </h1>
+                  </div>
+
+                  <!-- comment -->
+                  <div class="relative mt-5">
+                    <div
+                      class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
+                    >
+                      <img
+                        src="../../../assets/images/campaign/edit.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      as="textarea"
+                      type="text"
+                      rules="required"
+                      name="love_comment"
+                      v-model="donationData.love_comment"
+                      id="text-eria"
+                      :placeholder="$t('global.comment')"
+                      class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    />
+
+                    <ErrorMessage
+                      name="love_comment"
+                      class="text-sm text-red-500 mt-2"
+                    />
+                  </div>
+                </div>
               </div>
             </Transition>
           </div>
 
-          <!-- comments -->
-          <div class="comments pt-5">
-            <div class="flex gap-x-2">
-              <img
-                src="../../../assets/images/campaign/comment.svg"
-                width="22"
-                alt="..."
-              />
-              <h1 class="font-semibold text-2xl">
-                {{ $t("global.add_comment") }}
-              </h1>
-            </div>
-
-            <!-- comment -->
-            <div class="relative mt-5">
-              <div
-                class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
-              >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
-              </div>
-
-              <textarea
-                type="text"
-                name="text-eria"
-                id="text-eria"
-                :placeholder="$t('global.comment')"
-                class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-            </div>
-          </div>
-
           <!-- confirm donation -->
+
           <v-btn
-            :disabled="!meta.valid"
-            type="submit"
-            class="text-capitalize rounded-lg w-100 mt-5"
+            :disabled="isLoading"
+            :loading="isLoading"
             :ripple="false"
+            type="submit"
+            class="text-capitalize rounded-lg w-full mt-2"
             variant="flat"
             size="large"
             color="primary"
-            >{{ $t("global.donate_now") }} - ${{ amount }}</v-btn
           >
+            {{ $t("global.donate_now") }} - ${{ donationData.amount }}
+          </v-btn>
         </Form>
 
         <!-- payment advantages -->
@@ -409,23 +429,73 @@
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { useDonation } from "../services/donation";
+import { useRoute } from "vue-router";
+import { useViewCampaign } from "../services/single-campaign";
+import { useCurrencyStore } from "../store/currancy";
+import { storeToRefs } from "pinia";
 
+const route = useRoute();
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
 const donationType = ref<string>("onetime");
-const amount = ref<number>(25);
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
+const { makeDonation, isLoading, error } = useDonation();
+const currencyStore = useCurrencyStore();
+const { selectedCurrency } = storeToRefs(currencyStore);
+
+const { refresh: refreshCampaign } = useViewCampaign(route.params.id);
+
+const donationData = ref<any>({
+  name: "",
+  email: "",
+  mobile: "",
+  love_donation: "",
+  love_name: "",
+  love_email: "",
+  love_mobile: "",
+  love_comment: "",
+  amount: 50,
+  ongoing_charity: "no",
+  charity_amount: 50,
+  currency_id: "",
+  campaign_id: "",
+});
+
 const selectAmount = (item: number): void => {
-  amount.value = item;
+  donationData.value.amount = item;
 };
 
 const showCustomInput = (): void => {
   customInput.value = !customInput.value;
 };
 
-const onSubmit = (values: any) => {
-  console.log("form_submitted", values);
+const onSubmit = () => {
+  if (
+    donationType.value === "monthly" ||
+    donationType.value === "weekly" ||
+    donationType.value === "dialy"
+  ) {
+    donationData.value.ongoing_charity = "yes";
+    donationData.value.charity_amount = donationData.value.amount;
+  } else {
+    donationData.value.ongoing_charity = "no";
+  }
+
+  if (gift.value) {
+    donationData.value.love_donation = "yes";
+  } else {
+    donationData.value.love_donation = "no";
+  }
+
+  donationData.value.campaign_id = route.params.id;
+
+  donationData.value.currency_id = selectedCurrency.value;
+
+  makeDonation(donationData.value);
+
+  refreshCampaign();
 };
 </script>
 

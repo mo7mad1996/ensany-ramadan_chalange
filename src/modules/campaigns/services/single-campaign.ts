@@ -23,6 +23,9 @@ export const useViewCampaign = (id: any) => {
   const image = computed(() => viewCampaign.value?.image || {});
   const name = computed(() => viewCampaign.value?.name || {});
   const desc = computed(() => viewCampaign.value?.short_desc || {});
+  const similarCampaigns = computed(
+    () => viewCampaign.value?.similar_campaigns || []
+  );
 
   return {
     viewCampaign,
@@ -36,5 +39,6 @@ export const useViewCampaign = (id: any) => {
     name,
     desc,
     execute,
+    similarCampaigns,
   };
 };

@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <CampaignsSimilarCampaigns />
+  <CampaignsSimilarCampaigns :similarCampaigns="similarCampaigns" />
 </template>
 
 <script setup lang="ts">
@@ -27,7 +27,7 @@ const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const { locale } = useI18n();
 
-const { viewCampaign, status, target, amount } = useViewCampaign(
+const { viewCampaign, status, similarCampaigns } = useViewCampaign(
   route.params.id
 );
 
