@@ -31,23 +31,19 @@
         <v-data-table
           class="border"
           :headers="headers"
-          :items="campaigns"
+          :items="charityCampaigns"
           :search="search"
         >
           <!-- Status Button -->
-          <template v-slot:item.campaign_status="{ item }">
+          <template v-slot:item.status="{ item }">
             <v-btn
               class="w-full"
-              :color="
-                item.campaign_status === $t('dashboard.active') ||
-                item.campaign_status === 'نشط'
-                  ? '#28A745'
-                  : '#5C7762'
-              "
+              :color="item.status === 'published' ? '#28A745' : '#5C7762'"
               elevation="0"
               size="small"
+              style="text-transform: capitalize"
             >
-              {{ item.campaign_status }}
+              {{ item.status }}
             </v-btn>
           </template>
 
@@ -95,11 +91,13 @@
 
 <script setup>
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
+import { useCharityCamoaigns } from "../services/charity-campaigns";
 import { useCampaignsPage } from "../typescript/campaigns-page";
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
 
-const { search, campaigns, headers } = useCampaignsPage();
+const { search, headers } = useCampaignsPage();
+const { charityCampMeta, charityCampaigns, status } = useCharityCamoaigns();
 </script>
