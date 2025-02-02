@@ -4,7 +4,13 @@
   "campaigns_history": "Campaign History",
   "donation_cart": "Donation Cart",
   "notification": "Notifications",
-  "settings":"Settings",
+  "settings": "Settings",
   "logout": "Log out",
-  "overview":"Overview"
+  "overview": "Overview",
+  "id": "ID",
+  "name":"Name",
+  "amount":"Amount",
+  "donations":"Donations",
+  "date_time":"Date & Time",
+  "status":"Status"
 }
