@@ -63,7 +63,7 @@ export function useAuth() {
     if (response?.data.status) {
       if (user.value?.user_type === "charity") {
         navigateTo("/dashboard/charity");
-      } else {
+      } else if (user.value?.user_type === "dooner") {
         navigateTo("/dashboard/donor");
       }
     }
