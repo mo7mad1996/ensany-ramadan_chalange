@@ -230,3 +230,9 @@ a {
     left: -321px;
   }
 }
+
+.apexcharts-toolbar {
+  svg {
+    fill: green !important;
+  }
+}

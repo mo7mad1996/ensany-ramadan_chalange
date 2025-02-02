@@ -11,7 +11,6 @@
         variant="flat"
         size="large"
         color="primary"
-        @click="$router.push('/')"
       >
         <slot name="first_button"></slot>
       </v-btn>
@@ -22,7 +21,6 @@
         variant="outlined"
         size="large"
         color="primary"
-        @click="$router.push('/')"
         ><slot name="second_button"></slot
       ></v-btn>
 

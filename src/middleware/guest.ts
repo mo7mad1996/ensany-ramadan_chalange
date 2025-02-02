@@ -1,9 +1,14 @@
 import { useAuth } from "~/modules/auth/services/auth";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  const { token }: any = useAuth();
+  const { token, user }: any = useAuth();
+  if (token.value && user.value) {
+    if (user?.value?.user_type === "charity") {
+      return navigateTo("/dashboard/charity");
+    } else {
+      // here will be the dooner link
+      return navigateTo("/dashboard/donor");
+    }
 
-  if (token.value) {
-    return navigateTo("/");
   }
 });

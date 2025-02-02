@@ -1,26 +1,35 @@
 <template>
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ $t("campaigns.donate") }} </template>
+    <template #second_page>
+      {{ $t("campaigns.donate") }}
+    </template>
   </BreadCrumb>
 
   <div class="flex justify-center">
     <div class="flex xl:flex-row lg:flex-row md:flex-col flex-col gap-3">
-      <CampaignsOverView />
+      <CampaignsOverView :campaignData="viewCampaign" :status="status" />
 
       <CampaignsDonationForm />
     </div>
   </div>
 
-  <CampaignsSimilarCampaigns />
+  <CampaignsSimilarCampaigns :similarCampaigns="similarCampaigns" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useViewCampaign } from "../services/single-campaign";
+import { useRoute } from "vue-router";
+const route = useRoute();
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const { locale } = useI18n();
+
+const { viewCampaign, status, similarCampaigns } = useViewCampaign(
+  route.params.id
+);
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
@@ -33,6 +42,7 @@ useSeoMeta({
 
 watch(locale, (newLocale) => {
   const isArabic = newLocale === "ar";
+
   useSeoMeta({
     title: isArabic ? ramadan_ar : ramadan_en,
   });

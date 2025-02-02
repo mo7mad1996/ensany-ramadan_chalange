@@ -1,7 +1,7 @@
 <template>
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ $t("campaigns.view_campaign") }} </template>
+    <template #second_page> {{ viewCampaign?.name }} </template>
   </BreadCrumb>
 
   <Container class="relative">
