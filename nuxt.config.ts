@@ -6,10 +6,10 @@ export default defineNuxtConfig({
   // main directory
   srcDir: "src/",
   ssr: true,
-  
+
   // favicon & fonts
   app: {
-
+    baseURL: '/',
     pageTransition: false, // Completely disables transitions
     layoutTransition: false,
     head: {
