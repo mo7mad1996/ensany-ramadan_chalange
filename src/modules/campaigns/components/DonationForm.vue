@@ -445,8 +445,6 @@ const { makeDonation, isLoading, error } = useDonation();
 const currencyStore = useCurrencyStore();
 const { selectedCurrency } = storeToRefs(currencyStore);
 
-const { refresh: refreshCampaign } = useViewCampaign(route.params.id);
-
 const donationData = ref<any>({
   name: "",
   email: "",
