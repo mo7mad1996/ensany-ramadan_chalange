@@ -35,5 +35,7 @@
   "comment_paceholder": "Write your comment here",
   "time": "5 min ago",
   "no_doners": "Ther are no donors yet",
-  "wait": "Please Wait Until Your Payment Complete......"
+  "wait": "Please Wait Until Your Payment Complete......",
+  "currency_error": "You must select currency",
+  "success_msg": "Thank you for your kindeness"
 }

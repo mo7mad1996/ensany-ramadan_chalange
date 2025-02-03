@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 export const useDonation = () => {
   const error = ref<string | null>(null);
   const isLoading = ref(false);
+  const { t } = useI18n();
 
   const makeDonation = async (donationData: any) => {
     try {
@@ -20,8 +21,7 @@ export const useDonation = () => {
       if (err.response.data.errors.currency_id) {
         Swal.fire({
           icon: "error",
-          title: "Oops...",
-          text: "you must select currency",
+          title: t("campaigns.currency_error"),
         });
       }
       isLoading.value = false;

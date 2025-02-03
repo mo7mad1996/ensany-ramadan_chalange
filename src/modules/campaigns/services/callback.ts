@@ -8,8 +8,7 @@ export const useCallback = () => {
   const error = ref<string | null>(null);
   const isLoading = ref(false);
   const router = useRouter();
-  const currencyStore = useCurrencyStore();
-  const { isPaymentSuccess } = storeToRefs(currencyStore);
+  const { t } = useI18n();
 
   const callBack = async (razorpay_payment_link_id: any) => {
     try {
@@ -23,7 +22,7 @@ export const useCallback = () => {
         router.push(`/campaigns/donate/${response.data.result.id}`);
 
         Swal.fire({
-          title: "Thank you for your kindeness",
+          title: t("campaigns.success_msg"),
           icon: "success",
           draggable: true,
         });
