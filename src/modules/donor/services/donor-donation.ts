@@ -3,23 +3,23 @@ import { useAuth } from "~/modules/auth/services/auth";
 
 
 
-export const useDonorCamoaigns = () => {
+export const useDonorDonationes = () => {
   const currentPage = ref(1);
   const { locale } = useI18n();
   const { token } = useAuth();
  
   
   const {
-    data: donorCampData,
-    error: donorCamp_error,
+    data: donorDonationData,
+    error: donorDonationerror,
     refresh,
     status,
     clear,
   } = useAsyncData(
-    "donorCampaigns",
+    "donorDonation",
     () =>
       api
-        .get(`donor/campaigns`, {
+        .get(`donor/donations`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
@@ -32,14 +32,14 @@ export const useDonorCamoaigns = () => {
     { watch: [locale] }
   );
 
-  const donorCampaigns = computed(() => donorCampData.value?.data || []);
-  const donorCampMeta = computed(() => donorCampData.value?.meta || {});
+  const donorDonation = computed(() => donorDonationData.value?.data || []);
+  const donorCampMeta = computed(() => donorDonationData.value?.meta || {});
 
 
   return {
-    donorCampaigns,
+    donorDonation,
     donorCampMeta,
-    donorCamp_error ,
+    donorDonationerror ,
     refresh,
     status,
     clear,
