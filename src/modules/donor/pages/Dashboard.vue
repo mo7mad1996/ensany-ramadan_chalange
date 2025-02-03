@@ -11,8 +11,9 @@
 </template>
 
 <script setup lang="ts">
+
 definePageMeta({
   layout: "donor",
-  // middleware: "require-auth",
+  middleware: "require-auth",
 });
 </script>

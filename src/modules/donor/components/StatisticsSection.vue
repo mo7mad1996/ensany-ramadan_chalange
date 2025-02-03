@@ -1,30 +1,60 @@
 <template>
-      <v-row dense class="mt-4">
-      <v-col cols="12" md="4">
-        <v-card class="pa-4 elevation-2">
-          <v-icon class="mb-2" color="success">mdi-currency-usd</v-icon>
-          <p class="text-subtitle-1 font-weight-medium">Total donations this Ramadan</p>
-          <h2 class="font-weight-bold">$250</h2>
-          <span class="text-success">⬆ 8.5% Up from last month</span>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12" md="4">
-        <v-card class="pa-4 elevation-2">
-          <v-icon class="mb-2" color="primary">mdi-cart</v-icon>
-          <p class="text-subtitle-1 font-weight-medium">Active Campaigns in Cart</p>
-          <h2 class="font-weight-bold">30</h2>
-          <span>5 campaigns ready for donation</span>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12" md="4">
-        <v-card class="pa-4 elevation-2">
-          <v-icon class="mb-2" color="success">mdi-calendar-check</v-icon>
-          <p class="text-subtitle-1 font-weight-medium">Upcoming Scheduled Payments</p>
-          <h2 class="font-weight-bold">$40,689</h2>
-          <span>Next donation: $50 on April 5</span>
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-row dense class="mt-4">
+    <v-col v-for="(item, index) in stats" :key="index" cols="12" md="4">
+      <v-card class="pa-4 elevation-2">
+        <v-row class="ma-0">
+          <v-col cols="8">
+            <p class="text-subtitle-1 text-grey-darken-2">
+              {{ $t(item.label) }}
+            </p>
+          </v-col>
+          <v-col cols="4" class="d-flex justify-end">
+            <v-img
+              :src="item.icon"
+              :alt="$t(item.label) + ' icon'"
+              max-width="20"
+              contain
+              class="justify-end"
+            />
+          </v-col>
+        </v-row>
+        <h2 class="font-weight-bold mt-2">{{ item.value }}</h2>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
+
+<script setup>
+import { useDonorOverview } from "../services/overview";
+import total_donations from "../../../assets/images/donor/Frame 17.svg";
+import active_campaigns from "../../../assets/images/donor/Icon.svg";
+import upcoming_payments from "../../../assets/images/donor/Money.svg";
+const { donorOverview } = useDonorOverview();
+console.log(donorOverview.value.data.total_donations);
+
+const stats = computed(() => [
+  {
+    label: "donor.total_donations",
+    value: `$${donorOverview.value?.data?.total_donations ?? "0.00"}`,
+    icon: total_donations,
+  },
+  {
+    label: "donor.active_campaigns",
+    value: donorOverview.value.data.active_campaigns || 0,
+    icon: active_campaigns,
+  },
+  {
+    label: "donor.upcoming_scheduled",
+    value: `$${donorOverview.value?.data?.upcoming_payments ?? "0.00"}`,
+    icon: upcoming_payments,
+  },
+]);
+</script>
+
+<style scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+</style>

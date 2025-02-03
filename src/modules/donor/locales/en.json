@@ -8,11 +8,15 @@
   "logout": "Log out",
   "overview": "Overview",
   "id": "ID",
-  "name":"Name",
-  "amount":"Amount",
-  "donations":"Donations",
-  "date_time":"Date & Time",
-  "status":"Status",
-  "charity_name":"Charity name "
-
+  "name": "Name",
+  "amount": "Amount",
+  "donations": "Donations",
+  "date_time": "Date & Time",
+  "status": "Status",
+  "charity_name": "Charity name ",
+  "welcome": "Welcome",
+  "welcome_sentence": "  Your generosity makes a difference! Track your donations, manage campaigns, and spread kindness this Ramadan",
+  "total_donations":"Total donations this Ramadan",
+  "active_campaigns":"Active Campaigns in Cart",
+  "upcoming_scheduled":"Upcoming Scheduled Payments"
 }
