@@ -12,5 +12,6 @@
   "amount": "الكمية",
   "donations": "التبرعات",
   "date_time": "التاريخ والوقت",
-  "status": "الحالة"
+  "status": "الحالة",
+  "charity_name":"اسم الخيرية"
 }

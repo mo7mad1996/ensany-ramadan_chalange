@@ -12,5 +12,7 @@
   "amount":"Amount",
   "donations":"Donations",
   "date_time":"Date & Time",
-  "status":"Status"
+  "status":"Status",
+  "charity_name":"Charity name "
+
 }
