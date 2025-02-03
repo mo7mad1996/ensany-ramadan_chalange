@@ -494,8 +494,6 @@ const onSubmit = () => {
   donationData.value.currency_id = selectedCurrency.value;
 
   makeDonation(donationData.value);
-
-  refreshCampaign();
 };
 </script>
 

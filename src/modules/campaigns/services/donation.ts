@@ -9,6 +9,11 @@ export const useDonation = () => {
       error.value = "";
       isLoading.value = true;
       const response = await api.post("/donations", donationData);
+
+      if (response.data.status) {
+        window.location.href = `${response.data.result.gateway_url}`;
+      }
+
       isLoading.value = false;
     } catch (err: any) {
       error.value = err;
