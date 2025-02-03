@@ -36,26 +36,56 @@
         </div>
 
         <div
-          class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-4 md:grid-cols-4 py-xd px-0"
+          class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-3 md:grid-cols-3 py-xd px-0"
           v-observe-visibility="onEnterViewport"
         >
-          <div
-            class="statistic_item flex justify-center"
-            v-for="(stat, index) in stats"
-            :key="index"
-          >
+          <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">{{
-                  animatedValues[index]
+                  bannerData.total_collected
                 }}</span>
                 <span>
-                  <img :src="stat.imgSrc" :alt="stat.alt" />
+                  <img src="../../../assets/images/statistics1.svg" alt="" />
                 </span>
               </div>
 
               <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
-                {{ stat.label }}
+                {{ $t("home.raised") }}
+              </h5>
+            </div>
+          </div>
+
+          <div class="statistic_item flex justify-center">
+            <div>
+              <div class="d-flex ga-3 align-center">
+                <span class="amount text-2xl font-bold">{{
+                  bannerData.total_donors
+                }}</span>
+                <span>
+                  <img src="../../../assets/images/doners.svg" alt="..." />
+                </span>
+              </div>
+
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ $t("home.doners") }}
+              </h5>
+            </div>
+          </div>
+
+          <div class="statistic_item flex justify-center">
+            <div>
+              <div class="d-flex ga-3 align-center">
+                <span class="amount text-2xl font-bold">{{
+                  bannerData.total_campaigns
+                }}</span>
+                <span>
+                  <img src="../../../assets/images/campaigns.svg" alt="..." />
+                </span>
+              </div>
+
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ $t("home.campaign") }}
               </h5>
             </div>
           </div>
@@ -68,7 +98,10 @@
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
 import { useBanner } from "../typescript/banner";
+import { useBannerData } from "../services/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
+
+const { bannerData, banner_error } = useBannerData();
 </script>
 
 <style scoped>

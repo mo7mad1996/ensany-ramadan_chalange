@@ -21,12 +21,6 @@ export const useBanner = () => {
     },
     {
       amount: 3085,
-      imgSrc: image3,
-      alt: "funded",
-      label: t("home.funded"),
-    },
-    {
-      amount: 3085,
       imgSrc: image4,
       alt: "campaigns",
       label: t("home.campaign"),

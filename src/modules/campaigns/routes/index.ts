@@ -4,19 +4,24 @@ const campaignsRoutes = [
   {
     name: "campaigns",
     path: "/campaigns",
-    file: resolve(__dirname, "../pages/AllCampaigns.vue"), // Adjusted path
+    file: resolve(__dirname, "../pages/AllCampaigns.vue"),
   },
 
   {
     name: "campaign",
     path: "/campaigns/donate/:id",
-    file: resolve(__dirname, "../pages/SingleCampaignDonate.vue"), // Adjusted path
+    file: resolve(__dirname, "../pages/SingleCampaignDonate.vue"),
   },
 
   {
     name: "view-campaign",
     path: "/campaigns/:id",
-    file: resolve(__dirname, "../pages/ViewCampaign.vue"), // Adjusted path
+    file: resolve(__dirname, "../pages/ViewCampaign.vue"),
+  },
+  {
+    name: "payment-return",
+    path: "/payment/return",
+    file: resolve(__dirname, "../pages/PaymentReturn.vue"),
   },
 ];
 
