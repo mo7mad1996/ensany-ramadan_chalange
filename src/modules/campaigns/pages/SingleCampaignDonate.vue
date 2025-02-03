@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import { useCurrencyStore } from "../store/currancy";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
 import { useRoute } from "vue-router";

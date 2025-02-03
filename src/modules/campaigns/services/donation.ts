@@ -1,4 +1,5 @@
 import { api } from "~/helpers/axios";
+import Swal from "sweetalert2";
 
 export const useDonation = () => {
   const error = ref<string | null>(null);
@@ -16,7 +17,13 @@ export const useDonation = () => {
 
       isLoading.value = false;
     } catch (err: any) {
-      error.value = err;
+      if (err.response.data.errors.currency_id) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "you must select currency",
+        });
+      }
       isLoading.value = false;
     }
   };

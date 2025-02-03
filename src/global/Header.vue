@@ -112,7 +112,9 @@
         </div>
 
         <!-- menue in small screens -->
-        <div class="phone_menue d-flex d-lg-none d-md-flex d-xl-none">
+        <div class="phone_menue d-flex gap-x-3 d-lg-none d-md-flex d-xl-none">
+          <selectCurruncy />
+
           <img
             src="../assets/images/menue.svg"
             class="cursor-pointer"
