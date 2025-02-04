@@ -30,7 +30,6 @@ import total_donations from "../../../assets/images/donor/Frame 17.svg";
 import active_campaigns from "../../../assets/images/donor/Icon.svg";
 import upcoming_payments from "../../../assets/images/donor/Money.svg";
 const { donorOverview } = useDonorOverview();
-console.log(donorOverview.value.data.total_donations);
 
 const stats = computed(() => [
   {
