@@ -7,7 +7,7 @@
   "view_campaign": "View Campaign",
   "campaign_title": "Feed a Family for Iftar",
   "collected:": "Collected",
-  "remaining:": "remaining",
+  "r": "remaining",
   "donater": "Donate",
   "campaign_objective": "Campaign Objective",
   "company": "Honor company",
@@ -34,8 +34,10 @@
   "days": "days",
   "comment_paceholder": "Write your comment here",
   "time": "5 min ago",
-  "no_doners": "Ther are no donors yet",
+  "no_doners": "Ther are no data yet",
   "wait": "Please Wait Until Your Payment Complete......",
   "currency_error": "You must select currency",
-  "success_msg": "Thank you for your kindeness"
+  "success_msg": "Donation confirmed successfully ,Thank you for your kindeness",
+  "ok": "Ok",
+  "faild_msg": "Ther is an error in donation , please try again"
 }

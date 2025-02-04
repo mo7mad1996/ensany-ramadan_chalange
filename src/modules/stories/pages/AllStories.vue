@@ -39,6 +39,7 @@
         v-model="currentPage"
         :length="storiesMeta.last_page"
         @input="fetchStories"
+        :total-visible="5"
       ></v-pagination>
     </div>
   </Container>

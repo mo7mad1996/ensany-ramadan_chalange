@@ -19,6 +19,7 @@
         >
           <template #image>
             <img
+              @click="$router.push(`/campaigns/${campaignData.id}`)"
               :src="campaignData?.image"
               class="w-full max-h-[15rem] object-cover rounded-lg"
               alt=""
@@ -30,8 +31,10 @@
           <template #title>{{ campaignData?.name }}</template>
 
           <template #desc>
-            {{ campaignData?.short_desc.slice(0, 30) }}</template
-          >
+            <span
+              v-html="stripHtmlTags(campaignData?.short_desc)?.slice(0, 30)"
+            ></span
+          ></template>
 
           <template #subscribers>{{ campaignData?.total_donors }}</template>
 
@@ -46,11 +49,14 @@
 
 <script setup>
 import Container from "~/global/Container.vue";
+
 // import { stripHtmlTags } from "~/helpers/string";
 import Card from "~/global/Card.vue";
 // import { useViewCampaign } from "../services/single-campaign";
 import { useRoute } from "vue-router";
 // const route = useRoute();
+
+import { stripHtmlTags } from "~/helpers/string";
 
 const props = defineProps({
   campaignData: {

@@ -29,7 +29,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in publicCampaigns" :key="index">
+        <Slide
+          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
+          :key="index"
+        >
           <Card
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"

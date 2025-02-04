@@ -1,5 +1,5 @@
 <template>
-  <div class="blog_card cursor-pointer">
+  <div class="blog_card cursor-pointer max-w-full">
     <div class="image">
       <slot name="image"></slot>
     </div>
@@ -31,7 +31,7 @@ const props = defineProps({
   position: relative;
 }
 
-[dir="ltr"] .image {
+/* [dir="ltr"] .image {
   &::before {
     content: "";
     position: absolute;
@@ -45,9 +45,9 @@ const props = defineProps({
       rgba(255, 255, 255, 0) 95%
     );
   }
-}
+} */
 
-[dir="rtl"] .image {
+/* [dir="rtl"] .image {
   &::before {
     content: "";
     position: absolute;
@@ -61,8 +61,8 @@ const props = defineProps({
       rgba(255, 255, 255, 0) 95%
     );
   }
-}
-
+} */
+/* 
 @media (max-width: 767px) {
   .image {
     &::before {
@@ -74,5 +74,5 @@ const props = defineProps({
       );
     }
   }
-}
+} */
 </style>

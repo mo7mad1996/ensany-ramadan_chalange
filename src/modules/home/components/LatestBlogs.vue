@@ -32,7 +32,7 @@
         <Slide v-for="(blog, index) in blogs" :key="index">
           <BlogCard
             :route="`/blogs/${blog?.id}`"
-            class="text-start m-4"
+            class="text-start m-4 h-full"
             @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>

@@ -19,6 +19,7 @@
         v-for="(blog, index) in blogs"
         :key="index"
         :route="`/blogs/${blog.id}`"
+        class="h-full"
         @click="$router.push(`/blogs/${blog.id}`)"
       >
         <template #image>
@@ -31,7 +32,12 @@
 
         <template #title>{{ blog.title }}</template>
 
-        <template #desc>{{ blog.description }}</template>
+        <template #desc
+          >{{ blog.description.slice(0, 110) }}.....<span
+            class="underline text-sm font-semibold"
+            >Read More</span
+          >
+        </template>
       </BlogCard>
     </div>
 
@@ -40,6 +46,7 @@
         v-model="currentPage"
         :length="blogsMeta.last_page"
         @input="fetchBlogs"
+        :total-visible="5"
       ></v-pagination>
     </div>
   </Container>

@@ -22,6 +22,11 @@ export const useDonation = () => {
         Swal.fire({
           icon: "error",
           title: t("campaigns.currency_error"),
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
         });
       }
       isLoading.value = false;
