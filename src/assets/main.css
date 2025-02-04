@@ -236,3 +236,11 @@ a {
     fill: green !important;
   }
 }
+
+.my-custom-btn {
+  color: #fff !important;
+}
+
+.swal2-image {
+  object-fit: cover !important;
+}

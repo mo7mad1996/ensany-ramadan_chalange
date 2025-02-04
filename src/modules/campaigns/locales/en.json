@@ -37,5 +37,7 @@
   "no_doners": "Ther are no donors yet",
   "wait": "Please Wait Until Your Payment Complete......",
   "currency_error": "You must select currency",
-  "success_msg": "Thank you for your kindeness"
+  "success_msg": "Donation confirmed successfully ,Thank you for your kindeness",
+  "ok": "Ok",
+  "faild_msg": "Ther is an error in donation , please try again"
 }
