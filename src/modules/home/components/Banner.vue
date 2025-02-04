@@ -43,7 +43,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">{{
-                  bannerData.total_collected
+                  bannerData?.total_collected
                 }}</span>
                 <span>
                   <img src="../../../assets/images/statistics1.svg" alt="" />
@@ -60,7 +60,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">{{
-                  bannerData.total_donors
+                  bannerData?.total_donors
                 }}</span>
                 <span>
                   <img src="../../../assets/images/doners.svg" alt="..." />
@@ -77,7 +77,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">{{
-                  bannerData.total_campaigns
+                  bannerData?.total_campaigns
                 }}</span>
                 <span>
                   <img src="../../../assets/images/campaigns.svg" alt="..." />
