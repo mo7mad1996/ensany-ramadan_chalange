@@ -6,7 +6,7 @@
 
   "view_campaign": "حمله",
   "campaign_title": "إفطار عائلة",
-  "remaining": "المتبقي",
+  "r": "المتبقي",
   "donater": "تبرع",
   "campaign_objective": "هدف الحملة",
   "company": "شركة تكريم",
@@ -33,7 +33,7 @@
   "days": "يوم",
   "comment_paceholder": "اكتب تعليقك هنا",
   "time": "منذ 5 دقائق",
-  "no_doners": "لا يوجد متبرعين",
+  "no_doners": "لا يوجد بيانات",
 
   "donor": "المتبرع",
   "amount": "مبلغ التبرع",

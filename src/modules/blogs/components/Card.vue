@@ -11,9 +11,7 @@
       <slot name="title"></slot>
     </h3>
 
-    <p
-      class="mt-2 text-sm text-justify leading-20 text-[#00000099] flex flex-wrap"
-    >
+    <p class="mt-2 text-sm text-justify leading-20 text-[#00000099]">
       <slot name="desc"></slot>
     </p>
   </div>

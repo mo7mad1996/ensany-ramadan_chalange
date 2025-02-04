@@ -6,7 +6,7 @@
 
     <div class="header flex justify-between items-center mt-4">
       <div class="text-sm">
-        {{ comments?.length }} {{ $t("campaigns.comments") }}
+        {{ commentsMeta?.total }} {{ $t("campaigns.comments") }}
       </div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
@@ -44,40 +44,62 @@
       </div> -->
 
       <!-- skeleton loader for comments -->
-      <div class="mt-md" v-for="(item, index) in 2" :key="index">
+      <div class="" v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
           v-for="(item, index) in 2"
           :key="index"
           v-if="status == 'pending'"
           type="avatar, list-item-two-line"
+          class="mb-sm"
         ></v-skeleton-loader>
       </div>
 
-      <!-- here display all comments -->
-      <div class="all-comments mt-md" v-if="status == 'success'">
+      <!-- here display all comments && comments.length -->
+      <div>
         <div
-          class="comment mb-md"
-          v-for="(comment, index) in comments"
-          :key="index"
+          class="all-comments mt-md"
+          v-if="status == 'success' && comments.length"
         >
-          <div class="flex gap-x-3 items-start">
-            <img src="../../../assets/images/user.svg" alt="" />
-            <div>
-              <h4 class="text-2xl font-bold" v-if="comment?.user_name">
-                {{ comment?.user_name }}
-              </h4>
-              <h4 class="text-2xl font-bold" v-if="comment?.user">
-                {{ comment?.user?.name }}
-              </h4>
-              <p class="text-sm text-[#12121299] pt-1">
-                {{ comment?.created_at }}
-              </p>
+          <div
+            class="comment mb-sm"
+            v-for="(comment, index) in comments"
+            :key="index"
+          >
+            <div class="flex gap-x-3 items-start">
+              <img src="../../../assets/images/user.svg" alt="" />
+              <div>
+                <h4 class="text-2xl font-bold" v-if="comment?.user_name">
+                  {{ comment?.user_name }}
+                </h4>
+                <h4 class="text-2xl font-bold" v-if="comment?.user">
+                  {{ comment?.user?.name }}
+                </h4>
+                <p class="text-sm text-[#12121299] pt-1">
+                  {{ reFormat(comment?.created_at) }}
+                </p>
+              </div>
             </div>
-          </div>
 
-          <p class="text-sm leading-20 text-justify pt-5">
-            {{ comment?.love_comment }}
-          </p>
+            <p class="text-sm leading-20 text-justify pt-5">
+              {{ comment?.love_comment }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="image flex justify-center mt-md"
+          v-if="comments.length == 0 && status == 'error'"
+        >
+          <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+        </div>
+
+        <div class="pagination items-center justify-center pb-sm">
+          <v-pagination
+            v-model="currentPage"
+            :length="commentsMeta.last_page"
+            @imput="fetchComments"
+            :total-visible="5"
+          ></v-pagination>
         </div>
       </div>
     </div>
@@ -86,9 +108,20 @@
 
 <script setup lang="ts">
 import { Field } from "vee-validate";
+import { reFormat } from "~/helpers/format-date";
 import { useComments } from "../services/comments";
 import { useRoute } from "vue-router";
 const route = useRoute();
 
-const { comments, status } = useComments(route.params.id);
+const { comments, status, currentPage, commentsMeta, refresh } = useComments(
+  route.params.id
+);
+
+const fetchComments = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchComments();
+});
 </script>

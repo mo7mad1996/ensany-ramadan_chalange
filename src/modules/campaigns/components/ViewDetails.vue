@@ -52,7 +52,7 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">{{ $t("campaigns.remaining") }}:</span>
+        <span class="text-[#12121299]">{{ $t("campaigns.r") }}:</span>
         <span class="text-primary"
           >{{ campaign?.remaining_days }} {{ $t("campaigns.days") }}</span
         >
@@ -97,6 +97,7 @@
     </v-tabs>
 
     <v-tabs-window v-model="tab" class="mt-4 pb-4">
+      <!-- description tap -->
       <v-tabs-window-item value="one">
         <p
           class="text-sm pb-5 leading-20 text-[#12121299]"
@@ -104,11 +105,17 @@
         ></p>
       </v-tabs-window-item>
 
+      <!-- galary tap -->
       <v-tabs-window-item value="two">
-        <v-row>
-          <v-col v-for="n in 6" :key="n" class="d-flex child-flex" cols="4">
+        <v-row v-if="campaign?.gallery.length">
+          <v-col
+            v-for="(image, index) in campaign?.gallery"
+            :key="n"
+            class="d-flex child-flex"
+            cols="4"
+          >
             <v-img
-              :lazy-src="img"
+              :lazy-src="image?.url"
               :src="img"
               aspect-ratio="1"
               class="bg-grey-lighten-2 rounded-md"
@@ -125,18 +132,53 @@
             </v-img>
           </v-col>
         </v-row>
+
+        <div v-else>
+          <div class="image flex justify-center">
+            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+          </div>
+
+          <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
+        </div>
       </v-tabs-window-item>
 
+      <!-- updates tap -->
       <v-tabs-window-item value="three">
-        <p
-          class="text-sm pb-5 leading-20 text-[#12121299]"
-          v-for="(text, index) in tabs[2].item"
-          :key="index"
-        >
-          {{ text }}
-        </p>
+        <v-row v-if="campaign?.updates?.data.length">
+          <v-col
+            v-for="(update, index) in campaign?.updates?.data"
+            :key="index"
+            class="d-flex child-flex"
+            cols="4"
+          >
+            <div class="card p-2 rounded-lg text-center bg-[#f8f8f8] w-full">
+              <div class="image flex justify-center max-h-[10rem]">
+                <img
+                  :src="update?.image"
+                  class="rounded-lg max-w-full h-[10rem] object-cover"
+                  alt="..."
+                />
+              </div>
+
+              <div class="content pt-2">
+                <h6 class="text-xl">{{ update?.title }}</h6>
+
+                <p class="text-sm">{{ update?.content }}</p>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+
+        <div v-else>
+          <div class="image flex justify-center">
+            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+          </div>
+
+          <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
+        </div>
       </v-tabs-window-item>
 
+      <!-- doners tap -->
       <v-tabs-window-item value="four">
         <v-row v-if="campaign.latest.length">
           <v-col
@@ -168,23 +210,6 @@
         </div>
       </v-tabs-window-item>
     </v-tabs-window>
-
-    <!-- videos -->
-    <!-- <div class="videos mt-5">
-      <video
-        class="rounded-md object-cover cursor-pointer w-full mb-5 h-[320px]"
-        src="../../../assets/videos/contribution-vid.mp4"
-        poster="../../../assets/videos/contribution-poster.svg"
-        controls
-      ></video>
-
-      <video
-        class="rounded-md object-cover cursor-pointer w-full h-[320px]"
-        src="../../../assets/videos/contribution-vid.mp4"
-        poster="../../../assets/videos/contribution-poster.svg"
-        controls
-      ></video>
-    </div> -->
 
     <CampaignsComments />
   </section>

@@ -32,12 +32,4 @@ const { selectedCurrency } = storeToRefs(currencyStore);
 const updateCurrency = () => {
   currencyStore.setCurrency(selectedCurrency.value);
 };
-
-// onMounted(() => {
-//   refresh();
-//   selectedCurrency.value = currenciesData?.value[1]?.id;
-//   currencyStore.setCurrency(selectedCurrency.value);
-// });
-
-// Set default currency when data is loaded
 </script>

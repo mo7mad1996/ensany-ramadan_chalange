@@ -45,6 +45,7 @@
           variant="flat"
           size="default"
           color="primary"
+          @click="sharePage"
         >
           {{ $t("campaigns.share") }}
         </v-btn>
@@ -101,7 +102,7 @@
                 ${{ donor?.total_amount }}
               </h4>
               <span class="text-sm text-[#12121299] pt-2">{{
-                $t("campaigns.last_week")
+                reFormat2(donor?.donated_at)
               }}</span>
             </div>
           </div>
@@ -128,6 +129,7 @@
               variant="flat"
               size="default"
               color="primary"
+              @click="openDialog2"
             >
               {{ $t("campaigns.view_all") }}
             </v-btn>
@@ -144,23 +146,126 @@
             </v-btn>
 
             <!-- top-doners dilaog -->
-            <dialog class="dialog m-auto rounded-[10px]" ref="donate2">
-              <div class="close-icon p-3 w-full flex justify-end">
+            <dialog class="dialog m-auto rounded-[10px]" ref="top_donors">
+              <div class="close-icon p-3 w-full">
                 <v-icon class="cursor-pointer" @click="closeDialog"
                   >mdi-close</v-icon
                 >
 
-                <div class="pt-sm">
+                <!-- firt donor -->
+                <div class="pt-4">
                   <div
-                    v-if="campaign.latest.length"
+                    v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
-                    v-for="(donor, index) in campaign?.latest"
-                    :key="index"
                   >
                     <div class="flex gap-x-3 items-center">
                       <img src="../../../assets/images/user.svg" alt="" />
                       <div>
-                        <h4 class="text-2xl font-bold">{{ donor?.name }}</h4>
+                        <h4 class="text-2xl font-bold">
+                          {{ campaign?.top_doners?.top?.name }}
+                        </h4>
+                        <p class="text-sm text-[#121212] pt-1">
+                          {{ $t("campaigns.highest_donor") }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="donation-amount text-center">
+                      <h4 class="text-2xl font-bold text-primary">
+                        ${{ campaign?.top_doners?.top?.total_amount }}
+                      </h4>
+                      <span class="text-sm text-[#12121299] pt-2">{{
+                        reFormat2(campaign?.top_doners?.top?.donated_at)
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- second donor -->
+                <div class="pt-3">
+                  <div
+                    v-if="campaign?.top_doners"
+                    class="doner mb-5 flex justify-between gap-x-md items-center"
+                  >
+                    <div class="flex gap-x-3 items-center">
+                      <img src="../../../assets/images/user.svg" alt="" />
+                      <div>
+                        <h4 class="text-2xl font-bold">
+                          {{ campaign?.top_doners?.middle?.name }}
+                        </h4>
+                        <p class="text-sm text-[#121212] pt-1">
+                          {{ $t("campaigns.highest_donor") }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="donation-amount text-center">
+                      <h4 class="text-2xl font-bold text-primary">
+                        ${{ campaign?.top_doners?.middle?.total_amount }}
+                      </h4>
+                      <span class="text-sm text-[#12121299] pt-2">
+                        {{
+                          reFormat2(campaign?.top_doners?.middle?.donated_at)
+                        }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- third donor -->
+                <div class="pt-3">
+                  <div
+                    v-if="campaign?.top_doners"
+                    class="doner mb-5 flex justify-between gap-x-md items-center"
+                  >
+                    <div class="flex gap-x-3 items-center">
+                      <img src="../../../assets/images/user.svg" alt="" />
+                      <div>
+                        <h4 class="text-2xl font-bold">
+                          {{ campaign?.top_doners?.first?.name }}
+                        </h4>
+                        <p class="text-sm text-[#121212] pt-1">
+                          {{ $t("campaigns.highest_donor") }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="donation-amount text-center">
+                      <h4 class="text-2xl font-bold text-primary">
+                        ${{ campaign?.top_doners?.first?.total_amount }}
+                      </h4>
+                      <span class="text-sm text-[#12121299] pt-2">
+                        {{ reFormat2(campaign?.top_doners?.first?.donated_at) }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </dialog>
+
+            <!-- view all donors -->
+            <dialog class="dialog m-auto rounded-[10px]" ref="all_donors">
+              <div class="close-icon p-3 w-full">
+                <v-icon class="cursor-pointer" @click="closeDialog2"
+                  >mdi-close</v-icon
+                >
+
+                <!-- firt donor -->
+                <div
+                  class="pt-4"
+                  v-if="campaign?.all_donors"
+                  v-for="(donor, index) in campaign?.all_donors"
+                  :key="index"
+                >
+                  <div
+                    class="doner mb-5 flex justify-between gap-x-md items-center"
+                  >
+                    <div class="flex gap-x-3 items-center">
+                      <img src="../../../assets/images/user.svg" alt="" />
+                      <div>
+                        <h4 class="text-2xl font-bold">
+                          {{ donor?.name }}
+                        </h4>
                         <p class="text-sm text-[#121212] pt-1">
                           {{ $t("campaigns.highest_donor") }}
                         </p>
@@ -172,7 +277,7 @@
                         ${{ donor?.total_amount }}
                       </h4>
                       <span class="text-sm text-[#12121299] pt-2">{{
-                        $t("campaigns.last_week")
+                        reFormat2(donor?.donated_at)
                       }}</span>
                     </div>
                   </div>
@@ -188,6 +293,8 @@
 
 <script setup>
 import { useCampaign } from "../typescript/view-campaign";
+import { reFormat2 } from "~/helpers/format-date";
+import { sharePage } from "~/helpers/share";
 
 const props = defineProps({
   campaign: {
@@ -204,15 +311,25 @@ const props = defineProps({
   },
 });
 
-const donate2 = ref("");
+const top_donors = ref("");
+const all_donors = ref("");
+
 const { onEnterViewport, animatedRate } = useCampaign();
 
 const openDialog = () => {
-  donate2.value.showModal();
+  top_donors.value.showModal();
+};
+
+const openDialog2 = () => {
+  all_donors.value.showModal();
 };
 
 const closeDialog = () => {
-  donate2.value.close();
+  top_donors.value.close();
+};
+
+const closeDialog2 = () => {
+  all_donors.value.close();
 };
 
 onMounted(() => {

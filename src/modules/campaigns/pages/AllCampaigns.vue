@@ -22,6 +22,7 @@
         :shadow="true"
         :donatebtn="true"
         :route="`/campaigns/donate/${campaign?.id}`"
+        class="max-w-full h-full"
       >
         <template #image>
           <img
@@ -54,7 +55,8 @@
       <v-pagination
         v-model="currentPage"
         :length="campaignsMeta.last_page"
-        @click="fetchCampaigns"
+        @input="fetchCampaigns"
+        :total-visible="5"
       ></v-pagination>
     </div>
   </Container>

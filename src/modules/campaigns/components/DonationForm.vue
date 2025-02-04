@@ -456,7 +456,7 @@ const donationData = ref<any>({
   love_comment: "",
   amount: 50,
   ongoing_charity: "no",
-  charity_amount: 50,
+  charity_amount: 0,
   currency_id: "",
   campaign_id: "",
 });
