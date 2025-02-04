@@ -13,5 +13,10 @@
   "donations": "التبرعات",
   "date_time": "التاريخ والوقت",
   "status": "الحالة",
-  "charity_name":"اسم الخيرية"
+  "charity_name": "اسم الخيرية",
+  "welcome": "مرحبا",
+  "welcome_sentence": "كرمك يصنع الفرق! تابع تبرعاتك، وأدِر حملاتك، وانشر الخير في رمضان.",
+  "total_donations":"إجمالي التبرعات في رمضان",
+  "active_campaigns":"الحملات النشطة في السلة",
+  "upcoming_scheduled":"المدفوعات المجدولة القادمة"
 }
