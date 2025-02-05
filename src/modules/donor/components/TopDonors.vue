@@ -27,11 +27,11 @@
             <div class="flex justify-between items-center">
               <img src="../../../assets/images/donor/Rectangle.png" alt="..." />
               <span class="font-semibold text-lg">
-                {{ donorOverview?.data?.top_doners?.middle?.name }}</span
+                {{ donorOverview?.data?.top_doners?.second?.name }}</span
               >
             </div>
             <span class="font-bold text-lg">
-              ${{ donorOverview?.data?.top_doners?.middle?.total_amount }}</span
+              ${{ donorOverview?.data?.top_doners?.second?.total_amount }}</span
             >
           </div>
         </div>
@@ -80,12 +80,12 @@
             <div class="flex justify-between items-center">
               <img src="../../../assets/images/donor/Rectangle.png" alt="..." />
               <span class="font-semibold text-lg">
-                {{ donorOverview?.data?.top_doners?.top?.name }}</span
+                {{ donorOverview?.data?.top_doners?.third?.name }}</span
               >
             </div>
 
             <span class="font-bold text-lg">
-              ${{ donorOverview?.data?.top_doners?.top?.total_amount }}</span
+              ${{ donorOverview?.data?.top_doners?.third?.total_amount }}</span
             >
           </div>
         </div>
@@ -99,7 +99,7 @@ import { useDonorOverview } from "../services/overview";
 
 const { donorOverview } = useDonorOverview();
 const top_doners = donorOverview.value?.data?.top_doners;
-console.log(top_doners);
+
 </script>
 <style scoped>
 @import "../../home/style/challenge-heros.css";
