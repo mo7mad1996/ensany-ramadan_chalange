@@ -29,6 +29,18 @@ const currencyStore = useCurrencyStore();
 
 const { selectedCurrency } = storeToRefs(currencyStore);
 
+// Set default currency when countries are available
+watchEffect(() => {
+  if (currenciesData.value) {
+    const defaultCountry = currenciesData.value.find(
+      (c) => c.is_default === "yes"
+    );
+    if (defaultCountry) {
+      selectedCurrency.value = defaultCountry.id;
+    }
+  }
+});
+
 const updateCurrency = () => {
   currencyStore.setCurrency(selectedCurrency.value);
 };
