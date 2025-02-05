@@ -59,8 +59,6 @@ import DonorSidebar from "~/global/DonorSidebar.vue";
 const { locale } = useI18n();
 const isSidebarOpen = ref(false);
 
-
-
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",

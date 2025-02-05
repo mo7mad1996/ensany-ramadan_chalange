@@ -118,5 +118,11 @@
   "donation_growth": "نمو التبرعات",
   "success_donations_chart": "التبرعات الناجحة",
   "field_donations_chart": "التبرعات الفاشلة",
-  "pending_donations": "التبرعات المعلقة"
+  "pending_donations": "التبرعات المعلقة",
+
+  "delete_msg": "هل تريد حذف هذه الحملة؟",
+  "delete": "حذف",
+  "cancel": "إلغاء",
+  "confirm_delete": "تم حذف الحملة بنجاح",
+  "ok": "حسنًا"
 }
