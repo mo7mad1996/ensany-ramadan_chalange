@@ -13,7 +13,10 @@
         >
           <!-- Image & Name -->
           <template v-slot:item.name="{ item }">
-            <div class="flex items-center space-x-2">
+            <div
+              class="flex items-center space-x-2 cursor-pointer hover:text-blue-600"
+              @click="navigateToCampaign(item.id)"
+            >
               <v-avatar size="40">
                 <img
                   :src="item.image"
@@ -56,15 +59,18 @@
 import dayjs from "dayjs";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
-
+import { useRouter } from "vue-router";
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
-
+const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
 const { donorCampMeta, donorCampaigns, status } = useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
+};
+const navigateToCampaign = (campaignId) => {
+  router.push(`/campaigns/donate/${campaignId}`);
 };
 </script>
