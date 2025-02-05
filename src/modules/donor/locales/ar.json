@@ -49,5 +49,9 @@
   "tirminate_sessions": "إنهاء جميع الجلسات",
   "currant_password": "كلمة المرور الحالية",
   "confirm_password": "تأكيد كلمة المرور",
-  "new_password": "كلمة المرور الجديدة"
+  "new_password": "كلمة المرور الجديدة",
+  "top_donors": "أفضل المتبرعين",
+  "first_donor": "المتبرع الاول",
+  "second_donor": "المتبرع الثاني",
+  "third_donor": "المتبرع الثالث"
 }
