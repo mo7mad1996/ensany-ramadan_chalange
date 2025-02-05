@@ -56,5 +56,16 @@
   "third_donor": "Third Doner",
   "status_donated": "Donated",
   "status_wait": "Wait",
-  "status_rejected": "Rejected"
+  "status_rejected": "Rejected",
+  "confirm_donation": "Confirm Donation",
+  "action": "Action",
+  "description": "Description",
+  "custom_amount": "Custom Amount",
+  "distribute_amount_equally": "Distribute Amount Equally",
+  "customize_per_campaign": "Customize Per Campaign",
+  "how_to_donate": "How would you like to donate?",
+  "pay_full": "Pay in Full - Donate the total amount at once.",
+  "daily_payment": "Daily Payment Reminders - Receive a daily notification to complete your donation.",
+  "save": "Save",
+  "cancel": "Cancel"
 }
