@@ -53,5 +53,19 @@
   "top_donors": "أفضل المتبرعين",
   "first_donor": "المتبرع الاول",
   "second_donor": "المتبرع الثاني",
-  "third_donor": "المتبرع الثالث"
+  "third_donor": "المتبرع الثالث",
+  "status_donated": "تم التبرع",
+  "status_wait": "قيد الانتظار",
+  "status_rejected": "مرفوض",
+  "confirm_donation": "تأكيد التبرع",
+  "action": "الإجراء",
+  "description": "الوصف",
+  "custom_amount": "المبلغ المخصص",
+  "distribute_amount_equally": "توزيع المبلغ بالتساوي",
+  "customize_per_campaign": "تخصيص حسب الحملة",
+  "how_to_donate": "كيف ترغب في التبرع؟",
+  "pay_full": "ادفع بالكامل - تبرع بالمبلغ الإجمالي دفعة واحدة.",
+  "daily_payment": "تذكيرات الدفع اليومية - استلم إشعارًا يوميًا لإكمال تبرعك.",
+  "save": "حفظ",
+  "cancel": "إلغاء"
 }
