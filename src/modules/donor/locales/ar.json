@@ -53,5 +53,8 @@
   "top_donors": "أفضل المتبرعين",
   "first_donor": "المتبرع الاول",
   "second_donor": "المتبرع الثاني",
-  "third_donor": "المتبرع الثالث"
+  "third_donor": "المتبرع الثالث",
+  "status_donated": "تم التبرع",
+  "status_wait": "قيد الانتظار",
+  "status_rejected": "مرفوض"
 }

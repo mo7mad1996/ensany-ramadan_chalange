@@ -157,6 +157,12 @@
               <span>{{ $t("global.search") }}...</span>
             </nuxt-link>
           </li> -->
+          <li v-if="user && user?.user_type === 'dooner'">
+            <nuxt-link to="/" class="text-black d-flex ga-2">
+              <img src="../assets/images/donor/Icon.png" width="20" alt="" />
+              <span> {{ $t("global.cart") }}</span></nuxt-link
+            >
+          </li>
         </ul>
 
         <!-- contact & signin-btn & lang -->
