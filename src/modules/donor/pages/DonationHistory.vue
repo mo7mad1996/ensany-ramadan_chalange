@@ -27,7 +27,7 @@
           <!-- Bold &  Total Amount -->
           <template v-slot:item.amount="{ item }">
             <span class="font-bold text-green-600">
-              {{ parseFloat(item.amount).toLocaleString() }}
+              ${{ parseFloat(item.amount).toLocaleString() }}
             </span>
           </template>
           <template v-slot:item.status="{ item }">

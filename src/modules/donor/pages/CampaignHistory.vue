@@ -14,7 +14,7 @@
           <!-- Image & Name -->
           <template v-slot:item.name="{ item }">
             <div
-              class="flex items-center space-x-2 cursor-pointer hover:text-blue-600"
+              class="flex items-center gap-2 space-x-2 cursor-pointer hover:text-blue-600"
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
@@ -31,20 +31,20 @@
           <!-- Bold &  Total Amount -->
           <template v-slot:item.total_amount="{ item }">
             <span class="font-bold text-green-600">
-              {{ parseFloat(item.total_amount).toLocaleString() }}
+              ${{ parseFloat(item.total_amount).toLocaleString() }}
             </span>
           </template>
 
           <template v-slot:item.status="{ item }">
-            <v-btn
-              class="w-full"
-              :color="item.status === 'published' ? '#bafbc4' : '#5C7762'"
-              elevation="0"
-              size="small"
-              style="text-transform: capitalize"
+            <span
+              class="inline-block w-full text-sm font-medium rounded-md text-center py-2 px-4 capitalize"
+              :class="{
+                'bg-green-200 text-black': item.status === 'published',
+                'bg-gray-600 text-white': item.status !== 'published',
+              }"
             >
               {{ item.status }}
-            </v-btn>
+            </span>
           </template>
           <template v-slot:item.created_at="{ item }">
             {{ formattedDate(item.created_at) }}
