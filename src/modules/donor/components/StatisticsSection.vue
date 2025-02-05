@@ -39,7 +39,7 @@ const stats = computed(() => [
   },
   {
     label: "donor.active_campaigns",
-    value: donorOverview.value.data.active_campaigns || 0,
+    value: donorOverview.value?.data?.active_campaigns || 0,
     icon: active_campaigns,
   },
   {

@@ -11,10 +11,31 @@
           :headers="headers"
           item-value="id"
         >
+          <!-- Image & Name -->
+          <template v-slot:item.name="{ item }">
+            <div class="flex items-center space-x-2">
+              <v-avatar size="40">
+                <img
+                  :src="item.image"
+                  alt="Campaign Image"
+                  class="rounded-lg"
+                />
+              </v-avatar>
+              <span>{{ item.name }}</span>
+            </div>
+          </template>
+
+          <!-- Bold & Green Total Amount -->
+          <template v-slot:item.total_amount="{ item }">
+            <span class="font-bold text-green-600">
+              {{ parseFloat(item.total_amount).toLocaleString() }}
+            </span>
+          </template>
+
           <template v-slot:item.status="{ item }">
             <v-btn
               class="w-full"
-              :color="item.status === 'published' ? '#28A745' : '#5C7762'"
+              :color="item.status === 'published' ? '#bafbc4' : '#5C7762'"
               elevation="0"
               size="small"
               style="text-transform: capitalize"

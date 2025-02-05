@@ -1,7 +1,6 @@
 export const useCampaignsHistoryPage = () => {
   const { t } = useI18n();
   const headers = computed(() => [
-    { key: "id", title: t("donor.id"), align: "start" },
     { key: "name", title: t("donor.name") },
     { key: "total_amount", title: t("donor.amount") },
     { key: "donations", title: t("donor.donations") },
