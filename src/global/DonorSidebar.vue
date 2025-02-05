@@ -80,14 +80,14 @@
       </li>
 
       <li class="cursor-pointer">
-        <nuxt-link to="" class="flex items-center gap-x-2 p-2">
+        <div class="flex items-center gap-x-2 p-2" @click="logout">
           <img
             src="../assets/images/dashboard/logout.svg"
             width="15px"
             alt=""
           />
           <span>{{ $t("donor.logout") }}</span>
-        </nuxt-link>
+        </div>
       </li>
     </ul>
   </div>
@@ -95,7 +95,7 @@
 
 <script setup>
 import { useAuth } from "~/modules/auth/services/auth";
-
+const { logout } = useAuth();
 const { user } = useAuth();
 </script>
 

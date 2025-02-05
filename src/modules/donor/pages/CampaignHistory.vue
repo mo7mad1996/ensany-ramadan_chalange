@@ -11,16 +11,40 @@
           :headers="headers"
           item-value="id"
         >
+          <!-- Image & Name -->
+          <template v-slot:item.name="{ item }">
+            <div
+              class="flex items-center gap-2 space-x-2 cursor-pointer hover:text-blue-600"
+              @click="navigateToCampaign(item.id)"
+            >
+              <v-avatar size="40">
+                <img
+                  :src="item.image"
+                  alt="Campaign Image"
+                  class="rounded-lg"
+                />
+              </v-avatar>
+              <span>{{ item.name }}</span>
+            </div>
+          </template>
+
+          <!-- Bold &  Total Amount -->
+          <template v-slot:item.total_amount="{ item }">
+            <span class="font-bold text-green-600">
+              ${{ parseFloat(item.total_amount).toLocaleString() }}
+            </span>
+          </template>
+
           <template v-slot:item.status="{ item }">
-            <v-btn
-              class="w-full"
-              :color="item.status === 'published' ? '#28A745' : '#5C7762'"
-              elevation="0"
-              size="small"
-              style="text-transform: capitalize"
+            <span
+              class="inline-block w-full text-sm font-medium rounded-md text-center py-2 px-4 capitalize"
+              :class="{
+                'bg-green-200 text-black': item.status === 'published',
+                'bg-gray-600 text-white': item.status !== 'published',
+              }"
             >
               {{ item.status }}
-            </v-btn>
+            </span>
           </template>
           <template v-slot:item.created_at="{ item }">
             {{ formattedDate(item.created_at) }}
@@ -35,15 +59,18 @@
 import dayjs from "dayjs";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
-
+import { useRouter } from "vue-router";
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
-
+const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
 const { donorCampMeta, donorCampaigns, status } = useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
+};
+const navigateToCampaign = (campaignId) => {
+  router.push(`/campaigns/donate/${campaignId}`);
 };
 </script>
