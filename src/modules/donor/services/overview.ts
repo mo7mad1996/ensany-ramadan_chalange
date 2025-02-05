@@ -1,14 +1,11 @@
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 
-
-
 export const useDonorOverview = () => {
   const currentPage = ref(1);
   const { locale } = useI18n();
   const { token } = useAuth();
- 
-  
+
   const {
     data: donorOverviewData,
     error: donorOverviewerror,
@@ -25,7 +22,9 @@ export const useDonorOverview = () => {
           },
         })
         .then((response) => {
-          const data  = response.data.result;   
+          const data = response.data.result;
+          console.log(response.data.result);
+
           return { data };
         }),
     { watch: [locale] }
@@ -35,7 +34,7 @@ export const useDonorOverview = () => {
 
   return {
     donorOverview,
-    donorOverviewerror ,
+    donorOverviewerror,
     refresh,
     status,
     clear,

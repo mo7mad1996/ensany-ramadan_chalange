@@ -49,5 +49,9 @@
   "privacy_desc": "Manage and strengthen your account's security.",
   "currant_password": "Current Password",
   "confirm_password": "Confirm Password",
-  "new_password": "New Password"
+  "new_password": "New Password",
+  "top_donors":"Top Donors",
+  "first_donor": "First Doner",
+  "second_donor": "Second Doner",
+  "third_donor": "Third Doner"
 }
