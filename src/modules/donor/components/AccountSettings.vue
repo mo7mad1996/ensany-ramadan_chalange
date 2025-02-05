@@ -4,9 +4,9 @@
       <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
         $t("donor.profile")
       }}</v-tab>
-      <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
+      <!-- <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
         $t("donor.notification")
-      }}</v-tab>
+      }}</v-tab> -->
       <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
         $t("donor.privacy_security")
       }}</v-tab>
@@ -16,9 +16,9 @@
         <DonorProfile />
       </v-tabs-window-item>
 
-      <v-tabs-window-item value="2">
+      <!-- <v-tabs-window-item value="2">
         <DonorNotification />
-      </v-tabs-window-item>
+      </v-tabs-window-item> -->
 
       <v-tabs-window-item value="3">
         <DonorPrivacy />
