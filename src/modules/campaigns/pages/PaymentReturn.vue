@@ -30,6 +30,7 @@
 
 <script setup>
 import { useCallback } from "../services/callback";
+
 definePageMeta({
   middleware: "navigate",
 });

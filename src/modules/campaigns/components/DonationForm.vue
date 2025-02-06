@@ -346,7 +346,7 @@
                       alt="..."
                     />
                     <h1 class="font-semibold text-2xl">
-                      {{ $t("global.add_comment") }}
+                      {{ $t("global.write_gift") }}
                     </h1>
                   </div>
 

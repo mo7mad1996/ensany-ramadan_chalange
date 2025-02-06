@@ -1,15 +1,18 @@
 <template>
+  <div v-if="status === 'pending'">Loading...</div>
+  <div v-else-if="status === 'error'">{{ currencies_error }}...</div>
   <v-select
+    v-else
     v-model="selectedCurrency"
     @change="updateCurrency"
-    :items="currenciesData"
+    :items="currenciesData || []"
     item-title="currency_name"
     item-value="id"
     label="Currency"
     single-line
     item-props
-    class="min-w-36 px-2 py-2 text-sm"
-    bg-color="transparent"
+    class="capitalize border rounded"
+    bg-color="transparent select"
     flat
     size="sm"
   >
@@ -24,23 +27,37 @@
 </template>
 
 <script setup>
-import { useCurrencies } from "~/modules/campaigns/services/curunces";
-import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
-import { storeToRefs } from "pinia";
+import { ref, onMounted } from "vue";
+import { api } from "~/helpers/axios";
 
-const { currenciesData, refresh } = useCurrencies();
-const currencyStore = useCurrencyStore();
-
-const { selectedCurrency } = storeToRefs(currencyStore);
-
+const selectedCurrency = ref(null);
+const currenciesData = ref(null);
+const currencies_error = ref(null);
+const status = ref("pending");
 
 const updateCurrency = () => {
-  currencyStore.setCurrency(selectedCurrency.value);
+  if (selectedCurrency.value) {
+    console.log("Currency Updated:", selectedCurrency.value);
+  }
 };
 
-onMounted(() => {
-  const defultObj =   currenciesData.value.filter((i)=> {return i.is_default == "yes" }) [0]
-  selectedCurrency.value = defultObj ?  defultObj.id : "" 
-  updateCurrency()
-})
+const loadCurrencies = async () => {
+  try {
+    const response = await api.get("/currencies");
+    currenciesData.value = response.data.result;
+    status.value = "success";
+  } catch (error) {
+    currencies_error.value = error.message;
+    status.value = "error";
+  }
+};
+
+onMounted(async () => {
+  await loadCurrencies();
+  if (currenciesData.value) {
+    const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+    selectedCurrency.value = defaultObj ? defaultObj.id : null;
+    updateCurrency();
+  }
+});
 </script>
