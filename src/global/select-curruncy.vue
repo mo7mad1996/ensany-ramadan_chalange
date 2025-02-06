@@ -33,7 +33,14 @@ const currencyStore = useCurrencyStore();
 
 const { selectedCurrency } = storeToRefs(currencyStore);
 
+
 const updateCurrency = () => {
   currencyStore.setCurrency(selectedCurrency.value);
 };
+
+onMounted(() => {
+  const defultObj =   currenciesData.value.filter((i)=> {return i.is_default == "yes" }) [0]
+  selectedCurrency.value = defultObj ?  defultObj.id : "" 
+  updateCurrency()
+})
 </script>

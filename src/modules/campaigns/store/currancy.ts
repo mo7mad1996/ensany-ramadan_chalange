@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useCurrencyStore = defineStore("currency", (initValue) => {
-  console.log({ initValue });
+export const useCurrencyStore = defineStore("currency", () => {
   const selectedCurrency = ref("");
   const isPaymentSuccess = ref(false);
 
