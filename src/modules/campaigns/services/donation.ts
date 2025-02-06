@@ -15,10 +15,8 @@ export const useDonation = () => {
       if (response.data.status) {
         window.location.href = `${response.data.result.gateway_url}`;
       }
-
-      isLoading.value = false;
     } catch (err: any) {
-      if (err.response.data.errors.currency_id) {
+      if (err.response.data?.errors?.currency_id) {
         Swal.fire({
           icon: "error",
           title: t("campaigns.currency_error"),
@@ -29,6 +27,7 @@ export const useDonation = () => {
           },
         });
       }
+    } finally {
       isLoading.value = false;
     }
   };
