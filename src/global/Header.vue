@@ -157,11 +157,28 @@
               <span>{{ $t("global.search") }}...</span>
             </nuxt-link>
           </li> -->
+
           <li v-if="user && user?.user_type === 'dooner'">
-            <nuxt-link to="/" class="text-black d-flex ga-2">
+            <!-- <nuxt-link to="/" class="text-black d-flex ga-2">
               <img src="../assets/images/donor/Icon.png" width="20" alt="" />
               <span> {{ $t("global.cart") }}</span></nuxt-link
-            >
+            > -->
+            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
+              <div class="relative">
+                <img
+                  src="../assets/images/donor/Icon.png"
+                  width="20"
+                  alt="Cart"
+                />
+                <span
+                  v-if="cartCounter !== undefined"
+                  class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
+                >
+             
+                  {{ cartCounter }}
+                </span>
+              </div>
+            </nuxt-link>
           </li>
         </ul>
 
@@ -301,12 +318,15 @@ import selectCurruncy from "./select-curruncy.vue";
 import SwitchLang from "./SwitchLang.vue";
 import { useAuth } from "~/modules/auth/services/auth";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useCartCounter } from "~/modules/donor/services/cart-counter";
 
 const { locale } = useI18n();
 const { isLoading, logout, user } = useAuth();
 const { user_type } = useGlobalVar();
 const isOpen = ref(false);
 const isMenue = ref(false);
+const { cartCounter } = useCartCounter();
+
 
 const openMenue = (): void => {
   isOpen.value = !isOpen.value;

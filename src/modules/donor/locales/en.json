@@ -67,5 +67,12 @@
   "pay_full": "Pay in Full - Donate the total amount at once.",
   "daily_payment": "Daily Payment Reminders - Receive a daily notification to complete your donation.",
   "save": "Save",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "pending": "Pending",
+  "published": "Published",
+  "paused": "Paused",
+  "ended": "Ended",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+  "rejected": "Rejected"
 }
