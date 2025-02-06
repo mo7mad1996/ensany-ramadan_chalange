@@ -16,13 +16,14 @@ export const useDonorCamoaigns = () => {
     "donorCampaigns",
     () =>
       api
-        .get(`donor/campaigns`, {
+        .get(`/doner/campaigns`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
         })
         .then((response) => {
           const { data, meta } = response.data.result;
+      
 
           return { data, meta };
         }),
