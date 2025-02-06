@@ -27,11 +27,11 @@
             <div class="flex justify-between items-center">
               <img src="../../../assets/images/donor/Rectangle.png" alt="..." />
               <span class="font-semibold text-lg">
-                {{ donorOverview?.data?.top_doners?.second?.name }}</span
+                {{ donorOverview?.data?.top_doners?.socend?.name }}</span
               >
             </div>
             <span class="font-bold text-lg">
-              ${{ donorOverview?.data?.top_doners?.second?.total_amount }}</span
+              ${{ donorOverview?.data?.top_doners?.socend?.total_amount }}</span
             >
           </div>
         </div>

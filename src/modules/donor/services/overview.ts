@@ -16,13 +16,14 @@ export const useDonorOverview = () => {
     "overviewDonation",
     () =>
       api
-        .get(`donor/overview`, {
+        .get(`/doner/statistics`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
         })
         .then((response) => {
           const data = response.data.result;
+console.log(response.data.result);
 
           return { data };
         }),

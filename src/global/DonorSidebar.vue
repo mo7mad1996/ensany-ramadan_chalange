@@ -51,7 +51,7 @@
         </nuxt-link>
       </li>
 
-      <li class="cursor-pointer mb-3">
+      <!-- <li class="cursor-pointer mb-3">
         <nuxt-link
           to="/dashboard/donor/notification"
           class="flex items-center gap-x-2 p-2"
@@ -63,7 +63,7 @@
           />
           <span>{{ $t("donor.notification") }}</span>
         </nuxt-link>
-      </li>
+      </li> -->
 
       <li class="cursor-pointer mb-10">
         <nuxt-link
