@@ -20,9 +20,10 @@ export const useCallback = () => {
       const response = await api.post(
         `/donations/callback?razorpay_payment_link_id=${razorpay_payment_link_id}`
       );
-
       if (response.data.status) {
-        router.push(`/campaigns/donate/${response.data.result.id}`);
+        if (response.data.result.id)
+          router.push(`/campaigns/donate/${response.data.result.id}`);
+        else router.push(`/${response.data.result.id}`);
 
         if (response.data.result.payment_status == "paid") {
           isPaymentSuccess.value = true;

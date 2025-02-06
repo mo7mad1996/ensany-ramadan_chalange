@@ -1,22 +1,26 @@
 <template>
-  <div class="currency-select">
-    <select
-      id="options"
-      name="options"
-      v-model="selectedCurrency"
-      @change="updateCurrency"
-      class="w-full py-[6px] px-[7px] border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
-    >
-      <option selected disabled value="">$ Select</option>
-      <option
-        v-for="(currency, index) in currenciesData"
-        :key="index"
-        :value="currency.id"
-      >
-        {{ currency?.currency_name }} - {{ currency?.currency_symbol }}
-      </option>
-    </select>
-  </div>
+  <v-select
+    v-model="selectedCurrency"
+    @change="updateCurrency"
+    :items="currenciesData"
+    item-title="currency_name"
+    item-value="id"
+    label="Currency"
+    single-line
+    item-props
+    class="min-w-36 px-2 py-2 text-sm"
+    bg-color="transparent"
+    flat
+    size="sm"
+  >
+    <template v-slot:item="{ props }">
+      <v-list-item
+        v-bind="props"
+        :title="props.currency_name"
+        :subtitle="props.currency_symbol"
+      />
+    </template>
+  </v-select>
 </template>
 
 <script setup>
