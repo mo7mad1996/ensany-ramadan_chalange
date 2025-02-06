@@ -5,7 +5,7 @@
   >
     <Container class="flex justify-center">
       <!-- Add a scrollable container -->
-      <div class="overflow-auto w-3/4">
+      <div class="overflow-auto w-full">
         <div v-if="status == 'pending'">
           <v-skeleton-loader type="table" class="w-full"></v-skeleton-loader>
         </div>
@@ -74,11 +74,11 @@
               </td>
               <td class="font-bold">${{ donor?.total_amount }}</td>
               <td>
-                <nuxt-link to="" class="underline cursor-pointer"
-                  >Feed a Family for Iftar</nuxt-link
-                >
+                <nuxt-link to="" class="underline cursor-pointer">{{
+                  donor?.campaign_name
+                }}</nuxt-link>
               </td>
-              <td>2 {{ $t("home.mins_go") }}</td>
+              <td>{{ reFormat(donor?.created_at) }}</td>
             </tr>
           </tbody>
         </table>
@@ -88,8 +88,8 @@
 </template>
 
 <script setup>
+import { reFormat } from "~/helpers/format-date";
 import Container from "~/global/Container.vue";
-
 import { useDonors } from "../services/top-donors";
 
 const { topTen, status } = useDonors();

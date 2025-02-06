@@ -1,17 +1,33 @@
 import { api } from "~/helpers/axios";
+import Swal from "sweetalert2";
 
 export const useDonation = () => {
   const error = ref<string | null>(null);
   const isLoading = ref(false);
+  const { t } = useI18n();
 
   const makeDonation = async (donationData: any) => {
     try {
       error.value = "";
       isLoading.value = true;
       const response = await api.post("/donations", donationData);
-      isLoading.value = false;
+
+      if (response.data.status) {
+        window.location.href = `${response.data.result.gateway_url}`;
+      }
     } catch (err: any) {
-      error.value = err;
+      if (err.response.data?.errors?.currency_id) {
+        Swal.fire({
+          icon: "error",
+          title: t("campaigns.currency_error"),
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
+        });
+      }
+    } finally {
       isLoading.value = false;
     }
   };

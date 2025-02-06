@@ -32,8 +32,7 @@
 
           <!-- reading time and date -->
           <div class="flex items-center justify-end gap-x-sm">
-            <span>{{ $t("story.single_time") }}</span>
-            <span>{{ $t("story.single_date") }}</span>
+            <span>{{ reFormat2(singleStory?.created_at) }}</span>
           </div>
 
           <!-- first text -->
@@ -59,6 +58,7 @@
 </template>
 
 <script setup lang="ts">
+import { reFormat2 } from "~/helpers/format-date";
 import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";

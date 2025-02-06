@@ -32,7 +32,7 @@
         <Slide v-for="(blog, index) in similar" :key="index">
           <BlogCard
             :route="`/blogs/${blog?.id}`"
-            class="text-start m-4"
+            class="text-start m-4 h-full"
             @click="$router.push(`/blogs/${blog.id}`)"
           >
             <template #image>
@@ -45,7 +45,12 @@
 
             <template #title>{{ blog?.title }}</template>
 
-            <template #desc>{{ blog?.description }}</template>
+            <template #desc
+              >{{ blog.description.slice(0, 110) }}.....<span
+                class="underline text-sm font-semibold"
+                >Read More</span
+              >
+            </template>
           </BlogCard>
         </Slide>
 

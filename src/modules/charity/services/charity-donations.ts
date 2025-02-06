@@ -1,7 +1,7 @@
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 
-export const useCharityCamoaigns = () => {
+export const useCharityDonations = () => {
   const currentPage = ref(1);
   const itemsPerPage = ref(5);
   const totalItems = ref(0);
@@ -9,17 +9,17 @@ export const useCharityCamoaigns = () => {
   const { token } = useAuth();
 
   const {
-    data: charityCampData,
-    error: charityCamp_error,
+    data: charityDonations,
+    error: charityDonations_error,
     refresh,
     status,
     clear,
   } = useAsyncData(
-    "charityCampaigns",
+    "charityDonations",
     () =>
       api
         .get(
-          `/charity/campaigns?page=${currentPage.value}&per_page=${itemsPerPage.value}`,
+          `/charity/donations?page=${currentPage.value}&per_page=${itemsPerPage.value}`,
           {
             headers: {
               Authorization: `Bearer ${token.value}`,
@@ -34,13 +34,13 @@ export const useCharityCamoaigns = () => {
     { watch: [locale, currentPage, itemsPerPage] }
   );
 
-  const charityCampaigns = computed(() => charityCampData.value?.data || []);
-  const charityCampMeta = computed(() => charityCampData.value?.meta || {});
+  const charityDonat = computed(() => charityDonations.value?.data || []);
+  const charityDonatMeta = computed(() => charityDonations.value?.meta || {});
 
   return {
-    charityCampaigns,
-    charityCampMeta,
-    charityCamp_error,
+    charityDonat,
+    charityDonatMeta,
+    charityDonations_error,
     refresh,
     status,
     clear,

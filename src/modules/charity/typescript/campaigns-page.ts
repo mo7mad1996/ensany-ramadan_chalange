@@ -11,7 +11,7 @@ export const useCampaignsPage = () => {
     { key: "status", title: t("dashboard.campaign_status") },
     { key: "start_at", title: t("dashboard.starting_date") },
     { key: "end_at", title: t("dashboard.ending_date") },
-    // { key: "campaign_image", title: t("dashboard.campaign_image") },
+    { key: "image", title: t("dashboard.campaign_image") },
     { key: "actions", title: t("dashboard.actions"), sortable: false },
   ]);
 
