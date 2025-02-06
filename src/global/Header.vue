@@ -319,7 +319,7 @@ const { isLoading, logout, user } = useAuth();
 const { user_type } = useGlobalVar();
 const isOpen = ref(false);
 const isMenue = ref(false);
-const { cartCounter } = useCartCounter() || 3;
+const { cartCounter } = useCartCounter() || 0;
 
 const openMenue = (): void => {
   isOpen.value = !isOpen.value;
