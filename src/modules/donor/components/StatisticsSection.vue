@@ -1,10 +1,10 @@
 <template>
-  <v-row dense class="mt-4">
+  <div class="mt-4 flex flex-row">
     <v-col v-for="(item, index) in stats" :key="index" cols="12" md="4">
-      <v-card class="pa-4 elevation-2">
+      <v-card class="px-4 py-4 elevation-1 bg-white">
         <v-row class="ma-0">
           <v-col cols="8">
-            <p class="text-subtitle-1 text-grey-darken-2">
+            <p class=" text-grey-darken-2">
               {{ $t(item.label) }}
             </p>
           </v-col>
@@ -21,7 +21,7 @@
         <h2 class="font-weight-bold mt-2">{{ item.value }}</h2>
       </v-card>
     </v-col>
-  </v-row>
+  </div>
 </template>
 
 <script setup>
@@ -30,7 +30,6 @@ import total_donations from "../../../assets/images/donor/Frame 17.svg";
 import active_campaigns from "../../../assets/images/donor/Icon.png";
 import upcoming_payments from "../../../assets/images/donor/Money.png";
 const { donorOverview } = useDonorOverview();
-
 
 const stats = computed(() => [
   {
@@ -51,10 +50,4 @@ const stats = computed(() => [
 ]);
 </script>
 
-<style scoped>
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-}
-</style>
+<style scoped></style>
