@@ -16,7 +16,7 @@ export const useDonorOverview = () => {
     "overviewDonation",
     () =>
       api
-        .get(`donor/overview`, {
+        .get(`/doner/statistics`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
