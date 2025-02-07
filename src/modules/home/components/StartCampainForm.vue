@@ -3,7 +3,7 @@
     <div
       class="card xl:w-[795px] lg:w-[795px] md:w-[96%] w-[96%] rounded-xl shadow-md p-sm bg-white"
     >
-      <Form @sbmit="startCmpaign">
+      <Form @submit.prevent="startCmpaign">
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">

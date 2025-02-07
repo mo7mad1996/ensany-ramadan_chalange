@@ -4,9 +4,9 @@
       <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.profile")
       }}</v-tab>
-      <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
+      <!-- <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.notif")
-      }}</v-tab>
+      }}</v-tab> -->
       <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.privacy_security")
       }}</v-tab>
@@ -101,6 +101,30 @@
                   class="text-sm text-red-500"
                 />
               </div>
+              <div class="mt-4">
+                <div class="relative">
+                  <div class="flex items-center gap-3 px-3 mb-3">
+                    <v-icon icon="$upload" />
+                    <h2>
+                      {{ $t("dashboard.commercial-register") }}
+                    </h2>
+                  </div>
+
+                  <v-file-upload
+                    clearable
+                    multiple
+                    v-model="files"
+                    density="comfortable"
+                    variant="comfortable"
+                    :title="$t('dashboard.drag-text')"
+                  />
+                </div>
+
+                <ErrorMessage
+                  name="updated_phone"
+                  class="text-sm text-red-500"
+                />
+              </div>
 
               <div
                 class="buttons mt-4 grid gap-x-2 grid-cols-1 lg:grid-cols-2 md:grid-cols-1"
@@ -130,7 +154,7 @@
           </div>
         </div>
       </v-tabs-window-item>
-
+      <!-- 
       <v-tabs-window-item value="2">
         <div class="notif-settings pt-sm">
           <h2 class="text-xl font-semibold">
@@ -141,7 +165,6 @@
           </p>
 
           <div class="options mt-4">
-            <!-- option -->
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-x-3">
@@ -259,10 +282,16 @@
           </div>
         </div>
       </v-tabs-window-item>
+    -->
 
       <v-tabs-window-item value="3">
         <div class="privacy-settings pt-sm">
-          <h2 class="text-xl font-bold">{{ $t("dashboard.privacy_title") }}</h2>
+          <!-- 
+         
+         
+          <h2 class="text-xl font-bold">
+            {{ $t("dashboard.privacy_title") }}
+          </h2>
           <p class="text-sm text-[#969696]">
             {{ $t("dashboard.privacy_desc") }}
           </p>
@@ -278,6 +307,8 @@
               {{ $t("dashboard.resent_desc") }}
             </p>
           </div>
+
+         -->
 
           <!-- change password section -->
           <div class="change-password pt-sm">
@@ -408,6 +439,7 @@ const push_notif = ref(true);
 const show1 = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);
+const files = ref([]);
 
 const onSubmit = () => {
   console.log("form submitted");
