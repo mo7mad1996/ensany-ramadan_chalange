@@ -22,7 +22,7 @@
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
-            :route="`/campaigns/donate/${campaign?.id}`"
+            :route="`/campaigns/donate/${campaign.id}`"
           >
             <template #image>
               <img

@@ -4,20 +4,15 @@
       <!-- loader for amount -->
       <v-skeleton-loader
         v-if="status == 'pending'"
-        :loading="loading"
+        :loading="status == 'pending'"
         type="list-item-two-line"
       ></v-skeleton-loader>
 
-      <div
-        class="collected-amount flex gap-x-2 items-center"
-        v-if="status == 'success'"
-      >
+      <div class="collected-amount flex gap-x-2 items-center" v-if="status == 'success'">
         <h1 class="text-2xl font-bold text-primary">
           {{ campaign?.total_amount }} {{ $t("campaigns.usd") }}
         </h1>
-        <span class="text-sm text-[#12121299]">{{
-          $t("campaigns.collected")
-        }}</span>
+        <span class="text-sm text-[#12121299]">{{ $t("campaigns.collected") }}</span>
       </div>
 
       <!-- donors -->
@@ -75,7 +70,7 @@
           v-for="(item, index) in 3"
           :key="index"
           v-if="status == 'pending'"
-          :loading="loading"
+          :loading="status == 'pending'"
           type="avatar,list-item-two-line"
         ></v-skeleton-loader>
 
@@ -98,9 +93,7 @@
             </div>
 
             <div class="donation-amount text-center">
-              <h4 class="text-2xl font-bold text-primary">
-                ${{ donor?.total_amount }}
-              </h4>
+              <h4 class="text-2xl font-bold text-primary">${{ donor?.total_amount }}</h4>
               <span class="text-sm text-[#12121299] pt-2">{{
                 reFormat2(donor?.donated_at)
               }}</span>
@@ -109,11 +102,7 @@
 
           <div v-else>
             <div class="image flex justify-center">
-              <img
-                src="../../../assets/images/no-data.jpg"
-                width="150"
-                alt=""
-              />
+              <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
             </div>
 
             <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -148,9 +137,7 @@
             <!-- top-doners dilaog -->
             <dialog class="dialog m-auto rounded-[10px]" ref="top_donors">
               <div class="close-icon p-3 w-full">
-                <v-icon class="cursor-pointer" @click="closeDialog"
-                  >mdi-close</v-icon
-                >
+                <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
 
                 <!-- firt donor -->
                 <div class="pt-4">
@@ -204,9 +191,7 @@
                         ${{ campaign?.top_doners?.middle?.total_amount }}
                       </h4>
                       <span class="text-sm text-[#12121299] pt-2">
-                        {{
-                          reFormat2(campaign?.top_doners?.middle?.donated_at)
-                        }}
+                        {{ reFormat2(campaign?.top_doners?.middle?.donated_at) }}
                       </span>
                     </div>
                   </div>
@@ -246,9 +231,7 @@
             <!-- view all donors -->
             <dialog class="dialog m-auto rounded-[10px]" ref="all_donors">
               <div class="close-icon p-3 w-full">
-                <v-icon class="cursor-pointer" @click="closeDialog2"
-                  >mdi-close</v-icon
-                >
+                <v-icon class="cursor-pointer" @click="closeDialog2">mdi-close</v-icon>
 
                 <!-- firt donor -->
                 <div
@@ -257,9 +240,7 @@
                   v-for="(donor, index) in campaign?.all_donors"
                   :key="index"
                 >
-                  <div
-                    class="doner mb-5 flex justify-between gap-x-md items-center"
-                  >
+                  <div class="doner mb-5 flex justify-between gap-x-md items-center">
                     <div class="flex gap-x-3 items-center">
                       <img src="../../../assets/images/user.svg" alt="" />
                       <div>
@@ -292,9 +273,9 @@
 </template>
 
 <script setup>
-import { useCampaign } from "../typescript/view-campaign";
 import { reFormat2 } from "~/helpers/format-date";
 import { sharePage } from "~/helpers/share";
+import { useCampaign } from "../typescript/view-campaign";
 
 const props = defineProps({
   campaign: {
