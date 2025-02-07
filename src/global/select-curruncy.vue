@@ -57,11 +57,18 @@ onMounted(() => {
     if (storedCurrency) {
       selectedCurrency.value = storedCurrency;
     }
+
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === storedCurrency
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    }
   } else {
     refresh()
       .then(() => {
         localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
-        console.log("locale currency is loaded");
+        // console.log("locale currency is loaded");
       })
       .catch((error) => {
         console.error("Failed to fetch currencies data from API", error);
@@ -81,8 +88,6 @@ onMounted(() => {
     );
     if (selectedCurrencyData) {
       selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
-    } else {
-      selectedCurrencyLabel.value = "USD";
     }
   }
 });
