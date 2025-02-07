@@ -53,7 +53,7 @@ onMounted(() => {
   const storedCurrency = localStorage.getItem("selectedCurrency");
 
   if (storedCurrencies) {
-    currenciesData.value = JSON.parse(storedCurrencies);
+    currenciesData.value = localStorage.getItem("currenciesData") || currenciesData.value;
     if (storedCurrency) {
       selectedCurrency.value = storedCurrency;
     }
@@ -61,6 +61,7 @@ onMounted(() => {
     refresh()
       .then(() => {
         localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        console.log("locale currency is loaded");
       })
       .catch((error) => {
         console.error("Failed to fetch currencies data from API", error);
@@ -68,7 +69,7 @@ onMounted(() => {
   }
 
   if (!storedCurrency) {
-    const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+    const defaultObj = currenciesData.value.find((i) => i.is_default == "yes");
     selectedCurrency.value = defaultObj ? defaultObj.id : "";
     updateCurrency(selectedCurrency.value);
   }
