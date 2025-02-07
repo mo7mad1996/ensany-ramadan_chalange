@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="pt-sm pb-sm w-full"
-    aria-label="this table to show highest donors"
-  >
+  <section class="pt-sm pb-sm w-full" aria-label="this table to show highest donors">
     <Container class="flex justify-center">
       <!-- Add a scrollable container -->
       <div class="overflow-auto w-full">
@@ -52,7 +49,7 @@
                     src="../../../assets/images/time.svg"
                     width="15"
                     class="filter"
-                    alt=""
+                    alt=" "
                   />
                   <span>{{ $t("home.donation_time") }}</span>
                 </div>
@@ -63,20 +60,18 @@
             <tr v-for="(donor, index) in topTen" :key="index">
               <td>
                 <div class="flex gap-x-2 items-center">
-                  <img
-                    src="../../../assets/images/user.svg"
-                    width="25"
-                    alt=""
-                  />
+                  <img src="../../../assets/images/user.svg" width="25" alt=" " />
                   <span v-if="donor?.user_name">{{ donor?.user_name }}</span>
                   <span v-if="donor?.user">{{ donor?.user?.name }}</span>
                 </div>
               </td>
               <td class="font-bold">${{ donor?.total_amount }}</td>
               <td>
-                <nuxt-link to="" class="underline cursor-pointer">{{
-                  donor?.campaign_name
-                }}</nuxt-link>
+                <nuxt-link
+                  :to="`campaigns/${donor?.campaign?.id}`"
+                  class="underline cursor-pointer"
+                  >{{ donor?.campaign?.name }}</nuxt-link
+                >
               </td>
               <td>{{ reFormat(donor?.created_at) }}</td>
             </tr>
@@ -88,11 +83,14 @@
 </template>
 
 <script setup>
-import { reFormat } from "~/helpers/format-date";
 import Container from "~/global/Container.vue";
+import { reFormat } from "~/helpers/format-date";
 import { useDonors } from "../services/top-donors";
 
 const { topTen, status } = useDonors();
+watchEffect(() => {
+  // console.log(topTen.value[0].campaign.id);
+});
 </script>
 
 <style scoped>
