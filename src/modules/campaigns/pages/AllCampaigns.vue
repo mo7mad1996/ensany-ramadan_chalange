@@ -85,6 +85,8 @@ watch(currentPage, (newPage) => {
   fetchCampaigns();
 });
 
+
+
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
   ogTitle: "My Amazing Site",

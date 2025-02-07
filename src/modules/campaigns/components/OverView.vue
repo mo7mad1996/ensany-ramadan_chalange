@@ -10,9 +10,8 @@
 
         <Card
           v-if="status === 'success'"
-          :rate="
-            (campaignData?.total_amount / campaignData?.price_target) * 100
-          "
+          :id="campaignData.id"
+          :rate="(campaignData?.total_amount / campaignData?.price_target) * 100"
           :shadow="false"
           :donatebtn="false"
           :route="`/campaigns`"
@@ -31,9 +30,7 @@
           <template #title>{{ campaignData?.name }}</template>
 
           <template #desc>
-            <span
-              v-html="stripHtmlTags(campaignData?.short_desc)?.slice(0, 30)"
-            ></span
+            <span v-html="stripHtmlTags(campaignData?.short_desc)?.slice(0, 30)"></span
           ></template>
 
           <template #subscribers>{{ campaignData?.total_donors }}</template>
@@ -53,7 +50,6 @@ import Container from "~/global/Container.vue";
 // import { stripHtmlTags } from "~/helpers/string";
 import Card from "~/global/Card.vue";
 // import { useViewCampaign } from "../services/single-campaign";
-import { useRoute } from "vue-router";
 // const route = useRoute();
 
 import { stripHtmlTags } from "~/helpers/string";

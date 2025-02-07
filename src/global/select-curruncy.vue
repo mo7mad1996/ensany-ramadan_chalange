@@ -1,29 +1,33 @@
 <template>
-  <div v-if="status === 'pending'">Loading...</div>
-  <div v-else-if="status === 'error'">{{ currencies_error }}...</div>
-  <v-select
-    v-else
-    v-model="selectedCurrency"
-    @update:modelValue="updateCurrency"
-    :items="currenciesData"
-    item-title="currency_symbol"
-    item-value="id"
-    label="Currency"
-    single-line
-    item-props
-    class="capitalize border rounded"
-    bg-color="transparent select"
-    flat
-    size="sm"
-  >
-    <template v-slot:item="{ props }">
-      <v-list-item
+  <!-- <div v-if="status === 'pending'"></div>
+  <div v-else-if="status === 'error'">{{ currencies_error }}</div> -->
+  <v-menu>
+    <template v-slot:activator="{ props }">
+      <v-btn
+        color="default"
+        class="capitalize border"
+        style="text-transform: capitalize"
         v-bind="props"
-        :title="props.currency_name"
-        :subtitle="props.currency_symbol"
-      />
+      >
+        {{ selectedCurrencyLabel }}
+      </v-btn>
     </template>
-  </v-select>
+    <v-list>
+      <v-list-item v-for="(currency, index) in currenciesData">
+        <v-list-item-title class="cursor-pointer">
+          <div
+            class="gap-x-0 border-b p-2 items-center w-200"
+            @click="updateCurrency(currency.id)"
+          >
+            <span :title="currency.currency_name"
+              >{{ currency.currency_symbol }}
+              <!-- <small style="font-size: 10px"> : {{ currency.currency_name }}</small> -->
+            </span>
+          </div>
+        </v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-menu>
 </template>
 
 <script setup>
@@ -42,6 +46,7 @@ function updateCurrency(newValue) {
     const storedCurrencies = localStorage.getItem("currenciesData")
       ? JSON.parse(localStorage.getItem("currenciesData"))
       : currenciesData.value;
+
     const selectedCurrencyData = storedCurrencies.find(
       (currency) => currency.id == newValue
     );
@@ -64,7 +69,9 @@ onMounted(() => {
   } else {
     refresh()
       .then(() => {
-        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        if (currenciesData.value != "") {
+          localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        }
         // console.log("locale currency is loaded");
       })
       .catch((error) => {
