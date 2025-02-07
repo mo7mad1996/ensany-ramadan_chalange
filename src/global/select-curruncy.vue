@@ -1,9 +1,9 @@
 <template>
   <v-select
     v-model="selectedCurrency"
-    @change="updateCurrency"
+    @update:modelValue="updateCurrency"
     :items="currenciesData"
-    item-title="currency_name"
+    item-title="currency_symbol"
     item-value="id"
     label="Currency"
     single-line
@@ -11,6 +11,7 @@
     class="min-w-36 px-2 py-2 text-sm"
     bg-color="transparent"
     flat
+    style="border-bottom: none"
     size="sm"
   >
     <template v-slot:item="{ props }">
@@ -25,32 +26,44 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { useCurrencies } from "~/modules/campaigns/services/curunces";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 
 const { currenciesData, refresh } = useCurrencies();
 const currencyStore = useCurrencyStore();
-
 const { selectedCurrency } = storeToRefs(currencyStore);
 
-const updateCurrency = () => {
-  if (selectedCurrency.value.toString) {
-    currencyStore.setCurrency(selectedCurrency.value);
+function updateCurrency(newValue) {
+  if (newValue) {
+    localStorage.setItem("selectedCurrency", newValue);
+    currencyStore.setCurrency(newValue);
   }
-};
+}
 
 onMounted(() => {
-  if (currenciesData.value && currenciesData.value.length > 0) {
+  const storedCurrencies = localStorage.getItem("currenciesData") || currenciesData.value;
+  const storedCurrency = localStorage.getItem("selectedCurrency");
+
+  if (storedCurrencies) {
+    currenciesData.value = JSON.parse(storedCurrencies);
+    if (storedCurrency) {
+      selectedCurrency.value = storedCurrency;
+    }
+  } else {
+    refresh()
+      .then(() => {
+        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+      })
+      .catch((error) => {
+        console.error("Failed to fetch currencies data from API", error);
+      });
+  }
+
+  if (!storedCurrency) {
     const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
     selectedCurrency.value = defaultObj ? defaultObj.id : "";
-    updateCurrency();
-  } else {
-    console.error("No currencies data available");
+    updateCurrency(selectedCurrency.value);
   }
-  // const defultObj = currenciesData.value.filter((i) => {
-  //   return i.is_default == "yes";
-  // })[0];
-  // selectedCurrency.value = defultObj ? defultObj.id : "";
-  // updateCurrency();
 });
 </script>

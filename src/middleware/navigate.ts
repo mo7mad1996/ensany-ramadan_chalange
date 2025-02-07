@@ -1,6 +1,6 @@
-import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { storeToRefs } from "pinia";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const currencyStore = useCurrencyStore();
@@ -9,6 +9,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const route = useRoute();
 
   if (isPaymentSuccess.value) {
-    router.push(`/campaigns`);
+    navigateTo(`/campaigns`);
   }
 });
