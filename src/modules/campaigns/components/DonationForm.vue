@@ -324,7 +324,7 @@
                       alt="..."
                     />
                     <h1 class="font-semibold text-2xl">
-                      {{ $t("global.add_comment") }}
+                      {{ $t("global.love_comment") }}
                     </h1>
                   </div>
 
@@ -343,7 +343,7 @@
                       name="love_comment"
                       v-model="donationData.love_comment"
                       id="text-eria"
-                      :placeholder="$t('global.comment')"
+                      :placeholder="$t('global.love_comment')"
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
