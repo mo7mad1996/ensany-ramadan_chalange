@@ -30,18 +30,23 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
-import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useGlobalVar } from "~/helpers/global-var";
 import { useRoute } from "vue-router";
+import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
 const { locale } = useI18n();
 const route = useRoute();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { viewCampaign, status, target, amount } = useViewCampaign(
-  route.params.id
-);
+const { viewCampaign, status, target, amount } = useViewCampaign(route.params.id);
+
+watchEffect(() => {
+  if (status.value == "error") {
+    console.log("Campaign not found, redirecting...");
+    navigateTo(`/campaigns`);
+  }
+});
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,

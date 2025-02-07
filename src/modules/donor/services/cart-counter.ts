@@ -32,7 +32,7 @@ export const useCartCounter = () => {
   // Function to increment cart count locally
   const increaseCartCount = (amount = 1) => {
     if (!cartCounterData.value) {
-      cartCounterData.value = 0; 
+      cartCounterData.value = 0;
     }
     cartCounterData.value = Number(cartCounterData.value) + amount;
   };
@@ -40,7 +40,7 @@ export const useCartCounter = () => {
   // Function to Decrease cart count locally
   const DecreaseCartCount = (amount = 1) => {
     if (!cartCounterData.value) {
-      cartCounterData.value = 0; 
+      cartCounterData.value = 0;
     }
     cartCounterData.value = Number(cartCounterData.value) - amount;
   };

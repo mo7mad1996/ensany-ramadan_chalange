@@ -13,13 +13,9 @@
         $t("global.campaigns")
       }}</nuxt-link>
 
-      <nuxt-link to="/blogs" class="text-black">{{
-        $t("global.blogs")
-      }}</nuxt-link>
+      <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
 
-      <nuxt-link to="/about" class="text-black">{{
-        $t("global.about_us")
-      }}</nuxt-link>
+      <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
 
       <!-- <nuxt-link to="/" class="d-flex ga-2 text-black">
         <img src="../assets/images/search.svg" width="15" alt="" />
@@ -34,7 +30,7 @@
             variant="flat"
             size="default"
             color="primary"
-            @click="$router.push('/dashboard/charity')"
+            @click="navigateTo('/dashboard/charity')"
             >{{ $t("global.dashboard") }}</v-btn
           >
 
@@ -44,7 +40,7 @@
             variant="flat"
             size="default"
             color="primary"
-            @click="$router.push('/dashboard/donor')"
+            @click="navigateTo('/dashboard/donor')"
             >{{ $t("global.dashboard") }}</v-btn
           >
         </div>
@@ -65,7 +61,7 @@
           variant="flat"
           size="default"
           color="primary"
-          @click="$router.push('/login')"
+          @click="navigateTo('/login')"
           >{{ $t("global.signin") }}</v-btn
         >
 
@@ -75,7 +71,7 @@
           variant="flat"
           size="default"
           color="primary"
-          @click="$router.push('/signup')"
+          @click="navigateTo('/signup')"
           >{{ $t("global.doner") }}</v-btn
         >
 
@@ -85,7 +81,7 @@
           variant="flat"
           size="default"
           color="primary"
-          @click="$router.push('/signup-charity')"
+          @click="navigateTo('/signup-charity')"
           >{{ $t("global.charity2") }}</v-btn
         >
 
@@ -94,7 +90,7 @@
           variant="outlined"
           size="default"
           color="primary"
-          @click="$router.push('/contact')"
+          @click="navigateTo('/contact')"
           >{{ $t("global.contact_us") }}</v-btn
         >
       </div>
@@ -107,7 +103,7 @@
     <Container class="w-100">
       <div class="d-flex justify-space-between align-center w-100">
         <!-- logo -->
-        <div class="logo cursor-pointer" @click="$router.push('/')">
+        <div class="logo cursor-pointer" @click="navigateTo('/')">
           <img src="../assets/images/logo.svg" width="136" height="48" alt="" />
         </div>
 
@@ -130,9 +126,7 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center"
         >
           <li>
-            <nuxt-link to="/" class="text-black">{{
-              $t("global.home")
-            }}</nuxt-link>
+            <nuxt-link to="/" class="text-black">{{ $t("global.home") }}</nuxt-link>
           </li>
 
           <li>
@@ -142,9 +136,7 @@
           </li>
 
           <li>
-            <nuxt-link to="/blogs" class="text-black">{{
-              $t("global.blogs")
-            }}</nuxt-link>
+            <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
           </li>
 
           <li>
@@ -163,10 +155,7 @@
 
         <!-- contact & signin-btn & lang -->
 
-        <div
-          class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center"
-        >
-          
+        <div class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center">
           <div v-if="user" class="relative">
             <div
               @click="openDrop"
@@ -183,11 +172,7 @@
             >
               <ul class="list-none">
                 <li class="flex gap-2 items-center mb-1 cursor-pointer">
-                  <img
-                    src="../assets/images/dashboard/dashboard.svg"
-                    width="15"
-                    alt=""
-                  />
+                  <img src="../assets/images/dashboard/dashboard.svg" width="15" alt="" />
                   <nuxt-link
                     v-if="user?.user_type === 'charity'"
                     class="hover:underline text-sm"
@@ -223,11 +208,7 @@
           <div v-if="user?.user_type === 'dooner'">
             <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
               <div class="relative">
-                <img
-                  src="../assets/images/donor/Icon.png"
-                  width="20"
-                  alt="Cart"
-                />
+                <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
                 <span
                   v-if="cartCounter !== undefined"
                   class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
@@ -243,7 +224,7 @@
               variant="flat"
               size="default"
               color="primary"
-              @click="$router.push('/login')"
+              @click="navigateTo('/login')"
               >{{ $t("global.signin") }}</v-btn
             >
 
@@ -261,7 +242,7 @@
                 <v-list-item>
                   <v-list-item-title
                     class="cursor-pointer"
-                    @click="$router.push('/signup')"
+                    @click="navigateTo('/signup')"
                   >
                     <div class="flex gap-x-2 items-center">
                       <img src="../assets/images/doner.svg" width="15" alt="" />
@@ -272,14 +253,10 @@
                 <v-list-item>
                   <v-list-item-title
                     class="cursor-pointer"
-                    @click="$router.push('/signup-charity')"
+                    @click="navigateTo('/signup-charity')"
                   >
                     <div class="flex gap-x-2 items-center">
-                      <img
-                        src="../assets/images/charity.svg"
-                        width="15"
-                        alt=""
-                      />
+                      <img src="../assets/images/charity.svg" width="15" alt="" />
                       <span>{{ $t("global.charity2") }}</span>
                     </div>
                   </v-list-item-title>
@@ -295,7 +272,7 @@
             variant="outlined"
             size="default"
             color="primary"
-            @click="$router.push('/contact')"
+            @click="navigateTo('/contact')"
             >{{ $t("global.contact_us") }}</v-btn
           >
 
@@ -309,12 +286,12 @@
 </template>
 
 <script setup lang="ts">
+import { useGlobalVar } from "~/helpers/global-var";
+import { useAuth } from "~/modules/auth/services/auth";
+import { useCartCounter } from "~/modules/donor/services/cart-counter";
 import Container from "./Container.vue";
 import selectCurruncy from "./select-curruncy.vue";
 import SwitchLang from "./SwitchLang.vue";
-import { useAuth } from "~/modules/auth/services/auth";
-import { useGlobalVar } from "~/helpers/global-var";
-import { useCartCounter } from "~/modules/donor/services/cart-counter";
 
 const { locale } = useI18n();
 const { isLoading, logout, user } = useAuth();
