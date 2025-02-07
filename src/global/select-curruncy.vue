@@ -36,9 +36,11 @@ const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 function updateCurrency(newValue) {
   if (newValue) {
     localStorage.setItem("selectedCurrency", newValue);
-    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
+    const storedCurrencies = localStorage.getItem("currenciesData")
+      ? JSON.parse(localStorage.getItem("currenciesData"))
+      : currenciesData.value;
     const selectedCurrencyData = storedCurrencies.find(
-      (currency) => currency.id === newValue
+      (currency) => currency.id == newValue
     );
     if (selectedCurrencyData) {
       selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
@@ -49,21 +51,13 @@ function updateCurrency(newValue) {
 }
 
 onMounted(() => {
-  const storedCurrencies = localStorage.getItem("currenciesData") || currenciesData.value;
+  const storedCurrencies = localStorage.getItem("currenciesData");
   const storedCurrency = localStorage.getItem("selectedCurrency");
 
   if (storedCurrencies) {
-    currenciesData.value = localStorage.getItem("currenciesData") || currenciesData.value;
-    if (storedCurrency) {
-      selectedCurrency.value = storedCurrency;
-    }
-
-    const selectedCurrencyData = storedCurrencies.find(
-      (currency) => currency.id === storedCurrency
-    );
-    if (selectedCurrencyData) {
-      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
-    }
+    currenciesData.value = localStorage.getItem("currenciesData")
+      ? JSON.parse(localStorage.getItem("currenciesData"))
+      : [];
   } else {
     refresh()
       .then(() => {
@@ -79,11 +73,12 @@ onMounted(() => {
     const defaultObj = currenciesData.value.find((i) => i.is_default == "yes");
     selectedCurrency.value = defaultObj ? defaultObj.id : "";
     updateCurrency(selectedCurrency.value);
+  } else {
+    updateCurrency(storedCurrency);
   }
 
-  if (storedCurrencies) {
-    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
-    const selectedCurrencyData = storedCurrencies.find(
+  if (currenciesData.value) {
+    const selectedCurrencyData = currenciesData.value.find(
       (currency) => currency.id === storedCurrency
     );
     if (selectedCurrencyData) {

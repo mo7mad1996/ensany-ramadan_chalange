@@ -11,7 +11,11 @@ export const useCurrencies = () => {
   } = useAsyncData(
     "currencies",
     () =>
-      api.get(`/currencies`).then((response) => {
+      api.get(`/currencies`,{
+        params: {
+          lang: locale.value ?? 'en',   
+        }
+      }).then((response) => {
         return response.data.result;
       }),
     { watch: [locale] }
