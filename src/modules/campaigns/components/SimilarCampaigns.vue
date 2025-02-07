@@ -12,13 +12,13 @@
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
         <Slide
-          v-if="similarCampaigns.length > 0"
           v-for="(campaign, index) in similarCampaigns"
           :key="campaign?.id"
         >
           <!-- Use unique `campaign.id` as the key -->
           <Card
-            :id="campaign?.id"
+            v-if="similarCampaigns.length > 0"
+            :id="campaign?.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
@@ -38,7 +38,9 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span>
             </template>
 
             <template #subscribers>{{ campaign?.total_donors }}</template>

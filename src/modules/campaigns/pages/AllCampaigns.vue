@@ -17,7 +17,7 @@
     >
       <Card
         v-for="(campaign, index) in campaigns"
-        :id="campaign.id"
+        :id="campaign.id || Math.random()"
         :key="index"
         :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"

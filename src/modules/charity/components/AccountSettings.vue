@@ -139,6 +139,7 @@
                   variant="flat"
                   size="large"
                   color="primary"
+                  :loading="personalForm.loading"
                 >
                   {{ $t("dashboard.update_account") }}
                 </v-btn>
@@ -320,7 +321,7 @@
               {{ $t("dashboard.change_desc") }}
             </p>
 
-            <Form @submit="onSubmit2">
+            <form @submit.prevent="onSubmit2">
               <!-- current password input -->
               <div>
                 <div class="relative mt-4">
@@ -341,6 +342,7 @@
                     autocomplete="current-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.current_password"
                   />
                 </div>
 
@@ -370,6 +372,7 @@
                     autocomplete="new-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.password"
                   />
                 </div>
 
@@ -399,6 +402,7 @@
                     autocomplete="resete-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.password_confirmation"
                   />
                 </div>
 
@@ -417,11 +421,12 @@
                   variant="flat"
                   size="large"
                   color="primary"
+                  :loading="passwordForm.loading"
                 >
                   {{ $t("dashboard.update_password") }}
                 </v-btn>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
       </v-tabs-window-item>
@@ -430,8 +435,12 @@
 </template>
 
 <script setup>
+import Swal from "sweetalert2";
 import { Form, Field, ErrorMessage } from "vee-validate";
-import { api } from "~/helpers/axios";
+import { useProfile } from "~/modules/auth/services/profile";
+const { t } = useI18n();
+
+const { update, changePassword } = useProfile();
 
 const model1 = ref(true);
 const model2 = ref(true);
@@ -449,25 +458,38 @@ const personalForm = reactive({
   last_name: "",
   email: "",
   mobile: "",
+  loading: false,
+});
+const passwordForm = reactive({
+  current_password: "",
+  password: "",
+  password_confirmation: "",
+  loading: false,
 });
 
 const onSubmit = async () => {
   try {
-    const formData = new FormData();
+    personalForm.loading = true;
+    const res = await update(personalForm, files.value);
 
-    files.value.forEach((file) => {
-      formData.append("file[]", file, file.name);
+    Swal.fire({
+      icon: "success",
+
+      title: "Good job!",
+      text: "You clicked the button!",
     });
-
-    for (const key in personalForm) {
-      if (personalForm[key]) formData.append(key, personalForm[key]);
-    }
-
-    const res = await api.post("/edit/profile", formData);
-
-    console.log(res);
   } catch (err) {
     console.error(err);
+    Swal.fire({
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.result?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+      icon: "error",
+    });
+  } finally {
+    personalForm.loading = false;
   }
 };
 const tab = ref(null);
@@ -484,7 +506,29 @@ const showConfPassword = () => {
   show2.value = !show2.value;
 };
 
-const onSubmit2 = () => {
-  console.log("form submitted");
+const onSubmit2 = async () => {
+  try {
+    passwordForm.loading = true;
+    const res = await changePassword(passwordForm);
+
+    Swal.fire({
+      icon: "success",
+
+      text: t("auth.password_success"),
+    });
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      icon: "error",
+
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.result?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+    });
+  } finally {
+    passwordForm.loading = false;
+  }
 };
 </script>

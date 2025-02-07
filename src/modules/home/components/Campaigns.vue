@@ -34,6 +34,7 @@
           :key="index"
         >
           <Card
+            :id="campaign.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"

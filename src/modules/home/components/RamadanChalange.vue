@@ -2,7 +2,7 @@
   <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("home.ramadan_challenge") }} 
+        {{ $t("home.ramadan_challenge") }}
       </h1>
 
       <div
@@ -38,7 +38,7 @@
             :shadow="true"
             :donatebtn="true"
             :route="`/campaigns/donate/${campaign.id}`"
-            :id="`${campaign.id}`"
+            :id="campaign.id"
             class="h-full"
           >
             <template #image>

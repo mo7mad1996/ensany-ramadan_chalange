@@ -13,7 +13,7 @@
       </v-btn>
     </template>
     <v-list>
-      <v-list-item v-for="(currency, index) in currenciesData">
+      <v-list-item v-for="(currency, index) in currenciesData" :key="index">
         <v-list-item-title class="cursor-pointer">
           <div
             class="gap-x-0 border-b p-2 items-center w-200"

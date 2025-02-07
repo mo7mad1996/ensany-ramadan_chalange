@@ -10,7 +10,7 @@
 
         <Card
           v-if="status === 'success'"
-          :id="campaignData.id"
+          :id="campaignData.id || Math.random()"
           :rate="(campaignData?.total_amount / campaignData?.price_target) * 100"
           :shadow="false"
           :donatebtn="false"

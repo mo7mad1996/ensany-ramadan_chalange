@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from "sweetalert2";
+import { useAuth } from "~/modules/auth/services/auth";
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -9,20 +11,10 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = useCookie("token");
   const userLanguage = useCookie("i18n_redirected").value;
+  const { token } = useAuth();
 
   config.headers.lang = userLanguage;
   config.headers.Authorization = `Bearer ${token.value}`;
   return config;
 });
-
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      navigateTo("/login");
-    }
-    return Promise.reject(error);
-  }
-);
