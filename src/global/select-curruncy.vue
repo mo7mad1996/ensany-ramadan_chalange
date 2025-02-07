@@ -82,7 +82,7 @@ onMounted(() => {
   } else {
     updateCurrency(storedCurrency);
   }
-
+  ok;
   if (currenciesData.value) {
     const selectedCurrencyData = currenciesData.value.find(
       (currency) => currency.id === storedCurrency
