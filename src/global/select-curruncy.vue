@@ -14,7 +14,6 @@
     class="capitalize border rounded"
     bg-color="transparent select"
     flat
-    style="border-bottom: none"
     size="sm"
   >
     <template v-slot:item="{ props }">
@@ -35,11 +34,19 @@ import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 
 const { currenciesData, refresh } = useCurrencies();
 const currencyStore = useCurrencyStore();
-const { selectedCurrency } = storeToRefs(currencyStore);
+const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
 function updateCurrency(newValue) {
   if (newValue) {
     localStorage.setItem("selectedCurrency", newValue);
+    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === newValue
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    }
+
     currencyStore.setCurrency(newValue);
   }
 }
@@ -71,6 +78,18 @@ onMounted(() => {
     const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
     selectedCurrency.value = defaultObj ? defaultObj.id : "";
     updateCurrency(selectedCurrency.value);
+  }
+
+  if (storedCurrencies) {
+    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === storedCurrency
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    } else {
+      selectedCurrencyLabel.value = "USD";
+    }
   }
 });
 </script>
