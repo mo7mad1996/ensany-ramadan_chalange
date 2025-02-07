@@ -5,7 +5,7 @@
       {{ $t("donor.privacy_desc") }}
     </p>
 
-    <div class="header pt-sm">
+    <!-- <div class="header pt-sm">
       <div class="flex justify-between items-center">
         <h3 class="text-xl">{{ $t("donor.resent_login") }}</h3>
         <span class="underline text-primary text-sm cursor-pointer">{{
@@ -15,7 +15,7 @@
       <p class="text-sm text-[#969696] pt-2">
         {{ $t("donor.resent_desc") }}
       </p>
-    </div>
+    </div> -->
 
     <!-- change password section -->
     <div class="change-password pt-sm">

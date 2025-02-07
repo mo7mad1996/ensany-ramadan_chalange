@@ -1,14 +1,13 @@
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 
-export const useDonorCamoaigns = () => {
-  const currentPage = ref(1);
+export const useCartCounter = () => {
   const { locale } = useI18n();
   const { token } = useAuth();
 
   const {
-    data: donorCampData,
-    error: donorCamp_error,
+    data: cartCounterData,
+    // error: donorCamp_error,
     refresh,
     status,
     clear,
@@ -16,28 +15,24 @@ export const useDonorCamoaigns = () => {
     "donorCampaigns",
     () =>
       api
-        .get(`/doner/campaigns`, {
+        .get(`doner/cart/count`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
         })
         .then((response) => {
-          const { data, meta } = response.data.result;
-          return { data, meta };
+          const data = response.data.result;
+          return data;
         }),
     { watch: [locale] }
   );
 
-  const donorCampaigns = computed(() => donorCampData.value?.data || []);
-  const donorCampMeta = computed(() => donorCampData.value?.meta || {});
+  const cartCounter = computed(() => cartCounterData.value || "");
 
   return {
-    donorCampaigns,
-    donorCampMeta,
-    donorCamp_error,
+    cartCounter,
     refresh,
     status,
     clear,
-    currentPage,
   };
 };

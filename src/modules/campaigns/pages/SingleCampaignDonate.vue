@@ -2,7 +2,7 @@
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
     <template #second_page>
-      {{ $t("campaigns.donate") }}
+      {{ viewCampaign?.name }}
     </template>
   </BreadCrumb>
 

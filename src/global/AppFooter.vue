@@ -28,13 +28,18 @@
         <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
           <p class="flow pb-[.5rem]">{{ $t("global.footer_follow") }}</p>
           <div
-            class="scotila-links cursor-pointer flex lg:gap-x-4 xl:gap-x-4 md:gap-x-[2rem] gap-x-[2rem] pt-[.5rem]"
+            class="scotila-links cursor-pointer flex flex-wrap gap-y-4 lg:gap-x-4 xl:gap-x-4 md:gap-x-[2rem] gap-x-[2rem] pt-[.5rem]"
           >
-            <nuxt-link to="">
-              <img src="../assets/images/facebook.svg" alt="" />
-            </nuxt-link>
+            <a
+              v-for="(link, index) in footer"
+              :key="index"
+              :href="link?.url"
+              target="_blank"
+            >
+              <img :src="link?.icon" alt="footer_icon" />
+            </a>
 
-            <nuxt-link to=""
+            <!-- <nuxt-link to=""
               ><img src="../assets/images/insta.svg" alt=""
             /></nuxt-link>
 
@@ -52,7 +57,7 @@
 
             <nuxt-link to=""
               ><img src="../assets/images/whatsapp.svg" alt=""
-            /></nuxt-link>
+            /></nuxt-link> -->
           </div>
         </div>
       </div>
@@ -66,6 +71,8 @@
 
 <script setup>
 import Container from "./Container.vue";
+import { useFooter } from "~/modules/home/services/footer";
+const { footer, footer_error } = useFooter();
 </script>
 
 <style scoped>

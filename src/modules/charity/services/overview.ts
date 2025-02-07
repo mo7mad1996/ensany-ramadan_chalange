@@ -1,40 +1,40 @@
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 
-export const useDonorCamoaigns = () => {
+export const useCharityOverview = () => {
   const currentPage = ref(1);
   const { locale } = useI18n();
   const { token } = useAuth();
 
   const {
-    data: donorCampData,
-    error: donorCamp_error,
+    data: charityOverviewData,
+    error: charityOverviewerror,
     refresh,
     status,
     clear,
   } = useAsyncData(
-    "donorCampaigns",
+    "overviewCharity",
     () =>
       api
-        .get(`/doner/campaigns`, {
+        .get(`charity/statistics`, {
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
         })
         .then((response) => {
-          const { data, meta } = response.data.result;
-          return { data, meta };
+          const data = response.data.result;
+          console.log(response.data.result);
+
+          return { data };
         }),
     { watch: [locale] }
   );
 
-  const donorCampaigns = computed(() => donorCampData.value?.data || []);
-  const donorCampMeta = computed(() => donorCampData.value?.meta || {});
+  const charityOverview = computed(() => charityOverviewData.value || {});
 
   return {
-    donorCampaigns,
-    donorCampMeta,
-    donorCamp_error,
+    charityOverview,
+    charityOverviewerror,
     refresh,
     status,
     clear,

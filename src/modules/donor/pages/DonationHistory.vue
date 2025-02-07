@@ -37,7 +37,7 @@
                 item.status
               )}; padding: 3px 6px; text-transform: capitalize; min-width: 70px; display: inline-flex; justify-content: center; align-items: center;`"
             >
-              {{ item.status }}
+              {{ getStatusText(item.status) }}
             </span>
           </template>
         </v-data-table>
@@ -50,11 +50,13 @@
 import { useDonationHistoryPage } from "../typescript/donation";
 import { useDonorDonationes } from "../services/donor-donation";
 
+
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
 
+const { t } = useI18n();
 const { headers } = useDonationHistoryPage();
 const { donorCampMeta, donorDonation, status } = useDonorDonationes();
 const getStatusColor = (status) => {
@@ -68,5 +70,13 @@ const getStatusColor = (status) => {
     default:
       return "#5C7762";
   }
+};
+const getStatusText = (status) => {
+  const statusKeys = {
+    donated: "donor.status_donated",
+    wait: "donor.status_wait",
+    rejected: "donor.status_rejected",
+  };
+  return statusKeys[status] ? t(statusKeys[status]) : status;
 };
 </script>

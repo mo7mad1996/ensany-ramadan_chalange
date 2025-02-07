@@ -8,6 +8,11 @@
           {{ $t("global.start_campaign") }}
         </nuxt-link>
       </template>
+      <template #third_button>
+        <nuxt-link to="/start-campaign">
+       Copy Link
+        </nuxt-link>
+      </template>
     </dashbordBreadcrumb>
 
     <div class="content mt-sm">

@@ -6,12 +6,12 @@
     <div class="content mt-sm">
       <DonorWelcomeCard />
       <DonorStatisticsSection />
+      <DonorTopDonors />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",

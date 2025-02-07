@@ -38,12 +38,9 @@
           <template v-slot:item.status="{ item }">
             <span
               class="inline-block w-full text-sm font-medium rounded-md text-center py-2 px-4 capitalize"
-              :class="{
-                'bg-green-200 text-black': item.status === 'published',
-                'bg-gray-600 text-white': item.status !== 'published',
-              }"
+              :class="getStatusClass(item.status)"
             >
-              {{ item.status }}
+              {{ $t(`donor.${item.status}`) }}
             </span>
           </template>
           <template v-slot:item.created_at="{ item }">
@@ -72,5 +69,25 @@ const formattedDate = (dateString) => {
 };
 const navigateToCampaign = (campaignId) => {
   router.push(`/campaigns/donate/${campaignId}`);
+};
+const getStatusClass = (status) => {
+  switch (status) {
+    case "pending":
+      return "bg-yellow-200 text-black";
+    case "published":
+      return "bg-green-200 text-black";
+    case "paused":
+      return "bg-gray-400 text-white";
+    case "ended":
+      return "bg-red-500 text-white";
+    case "completed":
+      return "bg-blue-500 text-white";
+    case "cancelled":
+      return "bg-gray-600 text-white";
+    case "rejected":
+      return "bg-red-700 text-white";
+    default:
+      return "bg-gray-300 text-black";
+  }
 };
 </script>

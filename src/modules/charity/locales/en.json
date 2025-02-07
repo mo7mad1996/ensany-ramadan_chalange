@@ -123,5 +123,6 @@
   "donation_growth": "Donation Growth",
   "success_donations_chart": "Successful Donations",
   "field_donations_chart": "Failed Donations",
-  "pending_donations": "Pending Donations"
+  "pending_donations": "Pending Donations",
+  "active_campaigns":"Active Campaigns"
 }

@@ -4,9 +4,9 @@
   <v-select
     v-else
     v-model="selectedCurrency"
-    @change="updateCurrency"
-    :items="currenciesData || []"
-    item-title="currency_name"
+    @update:modelValue="updateCurrency"
+    :items="currenciesData"
+    item-title="currency_symbol"
     item-value="id"
     label="Currency"
     single-line
@@ -14,6 +14,7 @@
     class="capitalize border rounded"
     bg-color="transparent select"
     flat
+    style="border-bottom: none"
     size="sm"
   >
     <template v-slot:item="{ props }">
@@ -27,37 +28,49 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { api } from "~/helpers/axios";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
+import { useCurrencies } from "~/modules/campaigns/services/curunces";
+import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 
-const selectedCurrency = ref(null);
-const currenciesData = ref(null);
-const currencies_error = ref(null);
-const status = ref("pending");
+const { currenciesData, refresh } = useCurrencies();
+const currencyStore = useCurrencyStore();
+const { selectedCurrency } = storeToRefs(currencyStore);
 
-const updateCurrency = () => {
-  if (selectedCurrency.value) {
-    console.log("Currency Updated:", selectedCurrency.value);
+function updateCurrency(newValue) {
+  if (newValue) {
+    localStorage.setItem("selectedCurrency", newValue);
+    currencyStore.setCurrency(newValue);
   }
-};
+}
 
-const loadCurrencies = async () => {
-  try {
-    const response = await api.get("/currencies");
-    currenciesData.value = response.data.result;
-    status.value = "success";
-  } catch (error) {
-    currencies_error.value = error.message;
-    status.value = "error";
+onMounted(() => {
+  const storedCurrencies =
+    localStorage.getItem("currenciesData") || currenciesData.value;
+  const storedCurrency = localStorage.getItem("selectedCurrency");
+
+  if (storedCurrencies) {
+    currenciesData.value = JSON.parse(storedCurrencies);
+    if (storedCurrency) {
+      selectedCurrency.value = storedCurrency;
+    }
+  } else {
+    refresh()
+      .then(() => {
+        localStorage.setItem(
+          "currenciesData",
+          JSON.stringify(currenciesData.value)
+        );
+      })
+      .catch((error) => {
+        console.error("Failed to fetch currencies data from API", error);
+      });
   }
-};
 
-onMounted(async () => {
-  await loadCurrencies();
-  if (currenciesData.value) {
+  if (!storedCurrency) {
     const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
-    selectedCurrency.value = defaultObj ? defaultObj.id : null;
-    updateCurrency();
+    selectedCurrency.value = defaultObj ? defaultObj.id : "";
+    updateCurrency(selectedCurrency.value);
   }
 });
 </script>
