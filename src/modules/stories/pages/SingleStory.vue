@@ -58,12 +58,12 @@
 </template>
 
 <script setup lang="ts">
-import { reFormat2 } from "~/helpers/format-date";
-import Container from "~/global/Container.vue";
+import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { reFormat2 } from "~/helpers/format-date";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useSingleStory } from "../services/single-story";
-import { useRoute } from "vue-router";
 
 const route = useRoute();
 const { locale } = useI18n();
