@@ -43,7 +43,7 @@ const { viewCampaign, status, target, amount } = useViewCampaign(route.params.id
 
 watchEffect(() => {
   if (status.value == "error") {
-    console.log("Campaign not found, redirecting...");
+    //console.log("Campaign not found, redirecting...");
     navigateTo(`/campaigns`);
   }
 });

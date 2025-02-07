@@ -39,7 +39,7 @@ export const useStartCampaign = () => {
 
   // Start campaign function (values is expected to be of a specific type, can be adjusted later)
   const startCmpaign = (payload: Record<string, any>): void => {
-    console.log("form submitted", payload);
+   // console.log("form submitted", payload);
   };
 
   // Watcher to calculate end_date automatically when availableDays is selected
