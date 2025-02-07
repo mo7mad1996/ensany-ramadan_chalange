@@ -4,7 +4,11 @@
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
         <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
-            <img src="../../../assets/images/campaign/dolar.svg" width="22" alt="..." />
+            <img
+              src="../../../assets/images/campaign/dolar.svg"
+              width="22"
+              alt="..."
+            />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.donation_amount") }}
             </h1>
@@ -40,7 +44,10 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/campaign/custom-amount.svg" alt="" />
+                <img
+                  src="../../../assets/images/campaign/custom-amount.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -252,7 +259,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img src="../../../assets/images/contact/name.svg" alt="" />
+                      <img
+                        src="../../../assets/images/contact/name.svg"
+                        alt=""
+                      />
                     </div>
 
                     <Field
@@ -266,7 +276,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_name" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_name"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!--someone email -->
@@ -275,7 +288,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img src="../../../assets/images/contact/email.svg" alt="" />
+                      <img
+                        src="../../../assets/images/contact/email.svg"
+                        alt=""
+                      />
                     </div>
 
                     <Field
@@ -289,7 +305,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_email" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_email"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!--someone phone -->
@@ -298,7 +317,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img src="../../../assets/images/contact/phone.svg" alt="" />
+                      <img
+                        src="../../../assets/images/contact/phone.svg"
+                        alt=""
+                      />
                     </div>
 
                     <Field
@@ -312,7 +334,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_phone" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_phone"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!-- comments -->
@@ -333,7 +358,10 @@
                     <div
                       class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img src="../../../assets/images/campaign/edit.svg" alt="" />
+                      <img
+                        src="../../../assets/images/campaign/edit.svg"
+                        alt=""
+                      />
                     </div>
 
                     <Field
@@ -347,7 +375,10 @@
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
-                    <ErrorMessage name="love_comment" class="text-sm text-red-500 mt-2" />
+                    <ErrorMessage
+                      name="love_comment"
+                      class="text-sm text-red-500 mt-2"
+                    />
                   </div>
                 </div>
               </div>

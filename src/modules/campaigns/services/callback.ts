@@ -17,13 +17,16 @@ export const useCallback = () => {
     try {
       error.value = "";
       isLoading.value = true;
+
       const response = await api.post(
         `/donations/callback?razorpay_payment_link_id=${razorpay_payment_link_id}`
       );
 
       if (response.data.status) {
-
-        var url = response!.data!.result!.id != null ? `/campaigns/donate/${response.data.result.id}` : `/`;
+        var url =
+          response!.data!.result!.id != null
+            ? `/campaigns/donate/${response.data.result.id}`
+            : `/`;
         navigateTo(url);
 
         if (response.data.result.payment_status == "paid") {
@@ -54,11 +57,9 @@ export const useCallback = () => {
         }
         //
       }
-
-      isLoading.value = false;
     } catch (err: any) {
-      // error.value = err;
-      error.value = err?.message || "An unknown error occurred";
+      error.value = err;
+    } finally {
       isLoading.value = false;
     }
   };

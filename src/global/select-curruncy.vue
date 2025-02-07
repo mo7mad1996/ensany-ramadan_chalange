@@ -1,5 +1,8 @@
 <template>
+  <div v-if="status === 'pending'">Loading...</div>
+  <div v-else-if="status === 'error'">{{ currencies_error }}...</div>
   <v-select
+    v-else
     v-model="selectedCurrency"
     @update:modelValue="updateCurrency"
     :items="currenciesData"
@@ -8,8 +11,8 @@
     label="Currency"
     single-line
     item-props
-    class="min-w-36 px-2 py-2 text-sm"
-    bg-color="transparent"
+    class="capitalize border rounded"
+    bg-color="transparent select"
     flat
     size="sm"
   >
@@ -61,7 +64,10 @@ onMounted(() => {
   } else {
     refresh()
       .then(() => {
-        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        localStorage.setItem(
+          "currenciesData",
+          JSON.stringify(currenciesData.value)
+        );
         // console.log("locale currency is loaded");
       })
       .catch((error) => {
@@ -76,7 +82,7 @@ onMounted(() => {
   } else {
     updateCurrency(storedCurrency);
   }
-
+  ok;
   if (currenciesData.value) {
     const selectedCurrencyData = currenciesData.value.find(
       (currency) => currency.id === storedCurrency

@@ -57,5 +57,7 @@
   "Dashboard": "Dashboard",
   "doner": "Donor",
   "charity2": "Charity",
-  "signup": "Register"
+  "signup": "Register",
+
+  "write_gift": "Write a gift message"
 }
