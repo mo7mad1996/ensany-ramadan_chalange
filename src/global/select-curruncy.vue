@@ -64,10 +64,7 @@ onMounted(() => {
   } else {
     refresh()
       .then(() => {
-        localStorage.setItem(
-          "currenciesData",
-          JSON.stringify(currenciesData.value)
-        );
+        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
         // console.log("locale currency is loaded");
       })
       .catch((error) => {
@@ -82,7 +79,7 @@ onMounted(() => {
   } else {
     updateCurrency(storedCurrency);
   }
-  ok;
+
   if (currenciesData.value) {
     const selectedCurrencyData = currenciesData.value.find(
       (currency) => currency.id === storedCurrency
