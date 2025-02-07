@@ -29,10 +29,28 @@ export const useCartCounter = () => {
 
   const cartCounter = computed(() => cartCounterData.value || "");
 
+  // Function to increment cart count locally
+  const increaseCartCount = (amount = 1) => {
+    if (!cartCounterData.value) {
+      cartCounterData.value = 0; 
+    }
+    cartCounterData.value = Number(cartCounterData.value) + amount;
+  };
+
+  // Function to Decrease cart count locally
+  const DecreaseCartCount = (amount = 1) => {
+    if (!cartCounterData.value) {
+      cartCounterData.value = 0; 
+    }
+    cartCounterData.value = Number(cartCounterData.value) - amount;
+  };
+
   return {
     cartCounter,
     refresh,
     status,
     clear,
+    increaseCartCount,
+    DecreaseCartCount
   };
 };
