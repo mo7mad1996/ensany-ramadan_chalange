@@ -1,14 +1,23 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("story.stories") }} </template>
+      <template #first_page> 
+        <NuxtLink to="/">
+          {{ $t("global.home") }} 
+        </NuxtLink>
+      </template>
+      <template #second_page> 
+      <NuxtLink to="/stories">
+          {{ $t("story.stories") }} 
+        </NuxtLink>
+      </template>
     </BreadCrumb>
 
     <div class="content flex justify-center">
       <div class="w-[792px]">
         <div class="video">
           <img
+              v-if="status == 'success'"
             class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
             :src="singleStory?.image"
 
@@ -53,7 +62,7 @@
       </div>
     </div>
 
-    <StorySimilarStories />
+    <StorySimilarStories :similarStories="singleStory?.similar_stories" />
   </Container>
 </template>
 
@@ -77,6 +86,12 @@ useSeoMeta({
   ogDescription: "This is my amazing site, let me tell you all about it.",
   ogImage: "https://example.com/image.png",
   twitterCard: "summary_large_image",
+});
+
+watchEffect(() => {
+    if(status.value == 'error'){
+    navigateTo('/stories');
+  }
 });
 
 watch(locale, (newLocale) => {

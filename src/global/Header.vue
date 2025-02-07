@@ -14,6 +14,8 @@
       }}</nuxt-link>
 
       <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
+      <nuxt-link to="/stories" class="text-black">{{ $t("global.stories") }}</nuxt-link>
+      <!-- <nuxt-link to="/videos" class="text-black">{{ $t("global.videos") }}</nuxt-link> -->
 
       <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
 
@@ -35,7 +37,7 @@
           >
 
           <v-btn
-            v-else
+            v-else-if="user && user?.user_type === 'dooner'"
             class="text-capitalize"
             variant="flat"
             size="default"
@@ -140,9 +142,64 @@
           </li>
 
           <li>
+            <nuxt-link to="/stories" class="text-black">{{
+              $t("global.stories")
+            }}</nuxt-link>
+          </li>
+          <!-- <li>
+            <nuxt-link to="/videos" class="text-black">{{
+              $t("global.videos")
+            }}</nuxt-link>
+          </li> -->
+
+          <li>
             <nuxt-link to="/about" class="text-black">{{
               $t("global.about_us")
             }}</nuxt-link>
+          </li>
+
+          <li v-if="pages && pages.length > 0">
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <span
+                  class="text-black cursor-pointer flex"
+                  style="text-transform: capitalize"
+                  v-bind="props"
+                >
+                  {{ $t("global.other_links") }}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 mr-2 mt-1 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </span>
+              </template>
+
+              <v-list>
+                <v-list-item v-for="(pagelink, index) in pages" :key="index">
+                  <v-list-item-title
+                    class="cursor-pointer text-right align-self-start"
+                    @click="navigateTo('/page/' + pagelink?.id)"
+                  >
+                    <div
+                      class="flex gap-x-3 mt-2 border-b items-center"
+                      :class="locale === 'ar' ? 'text-right' : 'text-left'"
+                    >
+                      <span class="mb-2">{{ pagelink?.title }}</span>
+                    </div>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </li>
 
           <!-- <li>
@@ -174,14 +231,14 @@
                 <li class="flex gap-2 items-center mb-1 cursor-pointer">
                   <img src="../assets/images/dashboard/dashboard.svg" width="15" alt="" />
                   <nuxt-link
-                    v-if="user?.user_type === 'charity'"
+                    v-if="user && user?.user_type === 'charity'"
                     class="hover:underline text-sm"
                     to="/dashboard/charity"
                     >{{ $t("global.dashboard") }}</nuxt-link
                   >
 
                   <nuxt-link
-                    v-else
+                    v-else-if="user && user?.user_type === 'dooner'"
                     class="hover:underline text-sm"
                     to="/dashboard/donor"
                     >{{ $t("global.dashboard") }}</nuxt-link
@@ -289,6 +346,7 @@
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "~/modules/auth/services/auth";
 import { useCartCounter } from "~/modules/donor/services/cart-counter";
+import { usePages } from "~/modules/home/services/pages";
 import Container from "./Container.vue";
 import selectCurruncy from "./select-curruncy.vue";
 import SwitchLang from "./SwitchLang.vue";
@@ -299,6 +357,7 @@ const { user_type } = useGlobalVar();
 const isOpen = ref(false);
 const isMenue = ref(false);
 const { cartCounter } = useCartCounter() || 0;
+const { pages } = usePages() || 0;
 
 const openMenue = (): void => {
   isOpen.value = !isOpen.value;
