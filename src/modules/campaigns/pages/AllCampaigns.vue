@@ -17,6 +17,7 @@
     >
       <Card
         v-for="(campaign, index) in campaigns"
+        :id="campaign.id"
         :key="index"
         :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"
@@ -38,9 +39,7 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span
-            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-          ></span>
+          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -63,19 +62,18 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
-import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Card from "~/global/Card.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
-import { useCampaigns } from "../services/campaigns";
 import { stripHtmlTags } from "~/helpers/string";
+import { useCampaigns } from "../services/campaigns";
 const { locale } = useI18n();
 const isLoading = ref(true);
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } =
-  useCampaigns();
+const { campaigns, campaignsMeta, refresh, status, currentPage } = useCampaigns();
 
 const fetchCampaigns = () => {
   refresh();
@@ -84,8 +82,6 @@ const fetchCampaigns = () => {
 watch(currentPage, (newPage) => {
   fetchCampaigns();
 });
-
-
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
