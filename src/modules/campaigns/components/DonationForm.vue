@@ -324,7 +324,11 @@
                       alt="..."
                     />
                     <h1 class="font-semibold text-2xl">
+<<<<<<< HEAD
                       {{ $t("global.write_gift") }}
+=======
+                      {{ $t("global.love_comment") }}
+>>>>>>> a8e9e5f48417df183146d8ee6ff37ad5f9d525d6
                     </h1>
                   </div>
 
@@ -343,7 +347,7 @@
                       name="love_comment"
                       v-model="donationData.love_comment"
                       id="text-eria"
-                      :placeholder="$t('global.comment')"
+                      :placeholder="$t('global.love_comment')"
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 

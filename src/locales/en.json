@@ -19,7 +19,6 @@
   "home": "Home",
   "dashboard": "Dashboard",
   "logout": "Log Out",
-
   "donation_amount": "Donation amount",
   "custom_amount": "Enter Custom Amount",
   "custom": "Custom",
@@ -39,19 +38,18 @@
   "transparent": "100% transparent",
   "charity": "Verified charity",
   "dolar": "$",
-
   "make_donation": "Make donation to someone you love",
   "some_name": "Enter someone's name",
   "gift_email": "Gifted mail",
   "some_number": "Enter someone's phone number",
   "add_comment": "Add a comment on your donation",
+  "love_comment": "Write a dedication for someone you love",
   "donation_type": "Donation Type",
   "monthly": "Monthly",
   "weekly": "Weekly",
   "dialy": "Dialy",
   "onetime": "One time",
   "name_hidden": "keep your name hidden",
-
   "error-msg": "We can't find the page you're looking for",
   "error_desc": "The page might have moved, been deleted, or never existed. Don't worry though - we've got some helpful places to go from here.",
   "return_home": "Return Home",
