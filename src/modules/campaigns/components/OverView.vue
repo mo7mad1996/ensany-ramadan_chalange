@@ -4,18 +4,17 @@
       class="gap-sm pt-sm pb-sm flex justify-between lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse items-center"
     >
       <div class="card w-[366px]">
-        <v-card class="rounded-lg elevation-0" v-if="status === 'pending'">
+        <v-card class="rounded-lg elevation-0" v-if="status == 'pending'">
           <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
         </v-card>
 
         <Card
-          v-if="status === 'success'"
+          v-if="status == 'success'"
           :id="campaignData.id"
           :rate="(campaignData?.total_amount / campaignData?.price_target) * 100"
           :shadow="false"
           :donatebtn="false"
           :route="`/campaigns`"
-          :id="`${campaignData.id}`"
         >
           <template #image>
             <img

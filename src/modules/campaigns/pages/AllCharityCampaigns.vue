@@ -1,12 +1,12 @@
 <template>
   <BreadCrumb>
     <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ $t("global.campaigns") }} </template>
+    <template #second_page> {{ charityName }} </template>
   </BreadCrumb>
 
   <Container class="all-campaigns">
     <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-      {{ $t("campaigns.all_campaigns") }} / {{ charityName }}
+      {{ charityName }}
     </h2>
 
     <SkeletonLoader :loading="isLoading.toString()" />
@@ -62,7 +62,6 @@
 </template>
 
 <script setup>
-import { watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Card from "~/global/Card.vue";
@@ -75,10 +74,10 @@ import { useCharityCampaigns } from "../services/charitycampaigns";
 const { locale } = useI18n();
 const isLoading = ref(true);
 const charityName = ref("");
-
+const { t } = useI18n();
 const route = useRoute();
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { siteName } = useGlobalVar();
 const { campaigns, campaignsMeta, refresh, status, currentPage } = useCharityCampaigns(
   route.params.id
 );
@@ -89,29 +88,23 @@ const fetchcharityCampaigns = () => {
 watchEffect(() => {
   if (campaigns.value && campaigns.value.length > 0) {
     nextTick(() => {
+      //   t("campaigns.all_campaigns") + " / " +
       charityName.value = campaigns.value[0]?.user?.name ?? "";
     });
   } else if (!campaigns.value) {
     navigateTo("/");
   }
 });
+
 watch(currentPage, (newPage) => {
   fetchcharityCampaigns();
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
+watch([locale, campaigns], (newLocale, campaigns) => {
+  const siteTitle = siteName(locale.value);
   useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
+    title: siteTitle.value + " / " + charityName.value,
+    ogTitle: siteTitle.value + " / " + charityName.value,
   });
 });
 
