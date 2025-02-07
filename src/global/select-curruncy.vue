@@ -24,23 +24,33 @@
 </template>
 
 <script setup>
+import { storeToRefs } from "pinia";
 import { useCurrencies } from "~/modules/campaigns/services/curunces";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
-import { storeToRefs } from "pinia";
 
 const { currenciesData, refresh } = useCurrencies();
 const currencyStore = useCurrencyStore();
 
 const { selectedCurrency } = storeToRefs(currencyStore);
 
-
 const updateCurrency = () => {
-  currencyStore.setCurrency(selectedCurrency.value);
+  if (selectedCurrency.value) {
+    currencyStore.setCurrency(selectedCurrency.value);
+  }
 };
 
 onMounted(() => {
-  const defultObj =   currenciesData.value.filter((i)=> {return i.is_default == "yes" }) [0]
-  selectedCurrency.value = defultObj ?  defultObj.id : "" 
-  updateCurrency()
-})
+  if (currenciesData.value && currenciesData.value.length > 0) {
+    const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+    selectedCurrency.value = defaultObj ? defaultObj.id : "";
+    updateCurrency();
+  } else {
+    console.error("No currencies data available");
+  }
+  // const defultObj = currenciesData.value.filter((i) => {
+  //   return i.is_default == "yes";
+  // })[0];
+  // selectedCurrency.value = defultObj ? defultObj.id : "";
+  // updateCurrency();
+});
 </script>

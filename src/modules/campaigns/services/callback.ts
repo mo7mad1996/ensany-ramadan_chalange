@@ -1,14 +1,14 @@
-import { api } from "~/helpers/axios";
-import { useRouter } from "vue-router";
-import Swal from "sweetalert2";
-import { useCurrencyStore } from "../store/currancy";
 import { storeToRefs } from "pinia";
+import Swal from "sweetalert2";
+import { useRouter } from "vue-router";
+import { api } from "~/helpers/axios";
 import successIcon from "../../../assets/images/success-icon.gif";
+import { useCurrencyStore } from "../store/currancy";
 
 export const useCallback = () => {
   const error = ref<string | null>(null);
   const isLoading = ref(false);
-  const router = useRouter();
+  // const router = useRouter();
   const { t } = useI18n();
   const currencyStore = useCurrencyStore();
   const { isPaymentSuccess } = storeToRefs(currencyStore);
@@ -20,15 +20,15 @@ export const useCallback = () => {
       const response = await api.post(
         `/donations/callback?razorpay_payment_link_id=${razorpay_payment_link_id}`
       );
+
       if (response.data.status) {
-        if (response.data.result.id)
-          router.push(`/campaigns/donate/${response.data.result.id}`);
-        else router.push(`/${response.data.result.id}`);
+
+        var url = response!.data!.result!.id != null ? `/campaigns/donate/${response.data.result.id}` : `/`;
+        navigateTo(url);
 
         if (response.data.result.payment_status == "paid") {
           isPaymentSuccess.value = true;
           currencyStore.setPaymentStatus(isPaymentSuccess.value);
-
           Swal.fire({
             title: t("campaigns.success_msg"),
             imageUrl: successIcon,
@@ -52,11 +52,13 @@ export const useCallback = () => {
             },
           });
         }
+        //
       }
 
       isLoading.value = false;
     } catch (err: any) {
-      error.value = err;
+      // error.value = err;
+      error.value = err?.message || "An unknown error occurred";
       isLoading.value = false;
     }
   };
