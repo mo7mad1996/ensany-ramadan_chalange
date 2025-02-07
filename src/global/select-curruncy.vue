@@ -5,7 +5,7 @@
     v-else
     v-model="selectedCurrency"
     @update:modelValue="updateCurrency"
-    :items="currenciesData"
+    :items="[]"
     item-title="currency_symbol"
     item-value="id"
     label="Currency"
@@ -64,7 +64,10 @@ onMounted(() => {
   } else {
     refresh()
       .then(() => {
-        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        localStorage.setItem(
+          "currenciesData",
+          JSON.stringify(currenciesData.value)
+        );
         // console.log("locale currency is loaded");
       })
       .catch((error) => {

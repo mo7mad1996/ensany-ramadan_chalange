@@ -20,7 +20,7 @@
           </h2>
 
           <div class="update-form mt-5">
-            <Form @submit="onSubmit">
+            <form @submit.prevent="onSubmit">
               <!-- name -->
               <div>
                 <div class="relative">
@@ -37,6 +37,7 @@
                     id="updated_name"
                     :placeholder="$t('dashboard.update_name')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.last_name"
                   />
                 </div>
 
@@ -65,6 +66,7 @@
                     id="updated_email"
                     :placeholder="$t('dashboard.update_email')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.email"
                   />
                 </div>
 
@@ -93,6 +95,7 @@
                     id="updated_phone"
                     :placeholder="$t('dashboard.update_phone')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.mobile"
                   />
                 </div>
 
@@ -150,7 +153,7 @@
                   {{ $t("dashboard.discard_changes") }}
                 </v-btn>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
       </v-tabs-window-item>
@@ -428,6 +431,7 @@
 
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { api } from "~/helpers/axios";
 
 const model1 = ref(true);
 const model2 = ref(true);
@@ -441,8 +445,30 @@ const show2 = ref(false);
 const show3 = ref(false);
 const files = ref([]);
 
-const onSubmit = () => {
-  console.log("form submitted");
+const personalForm = reactive({
+  last_name: "",
+  email: "",
+  mobile: "",
+});
+
+const onSubmit = async () => {
+  try {
+    const formData = new FormData();
+
+    files.value.forEach((file) => {
+      formData.append("file[]", file, file.name);
+    });
+
+    for (const key in personalForm) {
+      if (personalForm[key]) formData.append(key, personalForm[key]);
+    }
+
+    const res = await api.post("/edit/profile", formData);
+
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  }
 };
 const tab = ref(null);
 
