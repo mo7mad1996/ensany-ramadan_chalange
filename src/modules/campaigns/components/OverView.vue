@@ -16,6 +16,7 @@
           :shadow="false"
           :donatebtn="false"
           :route="`/campaigns`"
+          :id="`${campaignData.id}`"
         >
           <template #image>
             <img

@@ -37,6 +37,7 @@
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
+            :id="`${campaign.id}`"
             :route="`/campaigns/donate/${campaign.id}`"
             class="h-full"
           >
