@@ -79,6 +79,8 @@ onMounted(() => {
     const defaultObj = currenciesData.value.find((i) => i.is_default == "yes");
     selectedCurrency.value = defaultObj ? defaultObj.id : "";
     updateCurrency(selectedCurrency.value);
+  } else {
+    updateCurrency(storedCurrency);
   }
 
   if (currenciesData.value) {
