@@ -1,9 +1,9 @@
 <template>
   <v-select
     v-model="selectedCurrency"
-    @change="updateCurrency"
+    @update:modelValue="updateCurrency"
     :items="currenciesData"
-    item-title="currency_name"
+    item-title="currency_symbol"
     item-value="id"
     label="Currency"
     single-line
@@ -24,23 +24,71 @@
 </template>
 
 <script setup>
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { useCurrencies } from "~/modules/campaigns/services/curunces";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
-import { storeToRefs } from "pinia";
 
 const { currenciesData, refresh } = useCurrencies();
 const currencyStore = useCurrencyStore();
+const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
-const { selectedCurrency } = storeToRefs(currencyStore);
+function updateCurrency(newValue) {
+  if (newValue) {
+    localStorage.setItem("selectedCurrency", newValue);
+    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === newValue
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    }
 
-
-const updateCurrency = () => {
-  currencyStore.setCurrency(selectedCurrency.value);
-};
+    currencyStore.setCurrency(newValue);
+  }
+}
 
 onMounted(() => {
-  const defultObj =   currenciesData.value.filter((i)=> {return i.is_default == "yes" }) [0]
-  selectedCurrency.value = defultObj ?  defultObj.id : "" 
-  updateCurrency()
-})
+  const storedCurrencies = localStorage.getItem("currenciesData") || currenciesData.value;
+  const storedCurrency = localStorage.getItem("selectedCurrency");
+
+  if (storedCurrencies) {
+    currenciesData.value = localStorage.getItem("currenciesData") || currenciesData.value;
+    if (storedCurrency) {
+      selectedCurrency.value = storedCurrency;
+    }
+
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === storedCurrency
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    }
+  } else {
+    refresh()
+      .then(() => {
+        localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+        // console.log("locale currency is loaded");
+      })
+      .catch((error) => {
+        console.error("Failed to fetch currencies data from API", error);
+      });
+  }
+
+  if (!storedCurrency) {
+    const defaultObj = currenciesData.value.find((i) => i.is_default == "yes");
+    selectedCurrency.value = defaultObj ? defaultObj.id : "";
+    updateCurrency(selectedCurrency.value);
+  }
+
+  if (storedCurrencies) {
+    const storedCurrencies = JSON.parse(localStorage.getItem("currenciesData") || "[]");
+    const selectedCurrencyData = storedCurrencies.find(
+      (currency) => currency.id === storedCurrency
+    );
+    if (selectedCurrencyData) {
+      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    }
+  }
+});
 </script>

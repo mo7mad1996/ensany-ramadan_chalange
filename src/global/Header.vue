@@ -159,35 +159,14 @@
               <span>{{ $t("global.search") }}...</span>
             </nuxt-link>
           </li> -->
-
-          <li v-if="user && user?.user_type === 'dooner'">
-            <!-- <nuxt-link to="/" class="text-black d-flex ga-2">
-              <img src="../assets/images/donor/Icon.png" width="20" alt="" />
-              <span> {{ $t("global.cart") }}</span></nuxt-link
-            > -->
-            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
-              <div class="relative">
-                <img
-                  src="../assets/images/donor/Icon.png"
-                  width="20"
-                  alt="Cart"
-                />
-                <span
-                  v-if="cartCounter !== undefined"
-                  class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
-                >
-             
-                  {{ cartCounter }}
-                </span>
-              </div>
-            </nuxt-link>
-          </li>
         </ul>
 
         <!-- contact & signin-btn & lang -->
+
         <div
           class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center"
         >
+          
           <div v-if="user" class="relative">
             <div
               @click="openDrop"
@@ -198,7 +177,6 @@
               <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
               <v-icon>mdi-menu-down</v-icon>
             </div>
-
             <div
               v-if="isMenue"
               class="drobdown-menue absolute top-[3.5rem] p-[8px] bg-[#f6fff6] w-full"
@@ -242,7 +220,23 @@
               </ul>
             </div>
           </div>
-
+          <div v-if="user?.user_type === 'dooner'">
+            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
+              <div class="relative">
+                <img
+                  src="../assets/images/donor/Icon.png"
+                  width="20"
+                  alt="Cart"
+                />
+                <span
+                  v-if="cartCounter !== undefined"
+                  class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
+                >
+                  {{ cartCounter }}
+                </span>
+              </div>
+            </nuxt-link>
+          </div>
           <div class="flex items-center gap-x-3" v-else>
             <v-btn
               class="text-capitalize rounded-lg"
@@ -327,8 +321,7 @@ const { isLoading, logout, user } = useAuth();
 const { user_type } = useGlobalVar();
 const isOpen = ref(false);
 const isMenue = ref(false);
-const { cartCounter } = useCartCounter();
-
+const { cartCounter } = useCartCounter() || 0;
 
 const openMenue = (): void => {
   isOpen.value = !isOpen.value;

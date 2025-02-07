@@ -39,8 +39,8 @@
     >
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">{{ $t("campaigns.collected") }}:</span>
-        <span class="text-primary"
-          >{{ campaign?.total_amount }} {{ $t("campaigns.usd") }}</span
+        <span class="text-primary">
+          {{ campaign?.total_amount }} {{ $t("campaigns.usd") }}</span
         >
       </div>
 
@@ -59,9 +59,7 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]"
-          >{{ $t("campaigns.campaign_objective") }}:</span
-        >
+        <span class="text-[#12121299]">{{ $t("campaigns.campaign_objective") }}:</span>
         <span class="text-primary"
           >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
         >
@@ -74,10 +72,7 @@
     ></v-skeleton-loader>
 
     <!-- campain maker -->
-    <div
-      class="honor-compan d-flex ga-2 align-center mt-5"
-      v-if="status == 'success'"
-    >
+    <div class="honor-compan d-flex ga-2 align-center mt-5" v-if="status == 'success'">
       <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
       <p>{{ campaign?.user?.name }}</p>
     </div>
@@ -88,9 +83,7 @@
       bg-color="white"
       class="mt-5 v-slide-group v-slide-group--mobile v-tabs v-tabs--horizontal v-tabs--align-tabs-start v-tabs--density-default bg-white"
     >
-      <v-tab value="one" :ripple="false">{{
-        $t("campaigns.description")
-      }}</v-tab>
+      <v-tab value="one" :ripple="false">{{ $t("campaigns.description") }}</v-tab>
       <v-tab value="two" :ripple="false">{{ $t("campaigns.gallery") }}</v-tab>
       <v-tab value="three" :ripple="false">{{ $t("campaigns.update") }}</v-tab>
       <v-tab value="four" :ripple="false">{{ $t("campaigns.donors") }}</v-tab>
@@ -194,9 +187,7 @@
 
               <h6>{{ donor?.name }}</h6>
 
-              <span class="font-bold text-primary"
-                >${{ donor?.total_amount }}</span
-              >
+              <span class="font-bold text-primary">${{ donor?.total_amount }}</span>
             </div>
           </v-col>
         </v-row>

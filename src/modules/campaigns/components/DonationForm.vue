@@ -4,11 +4,7 @@
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
         <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
-            <img
-              src="../../../assets/images/campaign/dolar.svg"
-              width="22"
-              alt="..."
-            />
+            <img src="../../../assets/images/campaign/dolar.svg" width="22" alt="..." />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.donation_amount") }}
             </h1>
@@ -16,18 +12,18 @@
 
           <!-- avilable amounts to select  -->
           <div
-            class="amounts flex xl:flex-row lg:flex-row md:flex-row flex-col gap-3 mt-5"
+            class="amounts flex xl:flex-row lg:flex-row md:flex-row flex-col gap-0 mt-5"
           >
             <div class="flex gap-x-3 items-center">
               <span
                 v-for="(item, index) in avilableAmounts"
                 :key="index"
-                class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
+                class="py-[5px] px-[10px] rounded-[5px] cursor-pointer"
                 :class="{ 'bg-[#e8fde8]': donationData.amount == item }"
                 @click="selectAmount(item)"
               >
-                ${{ item }}</span
-              >
+                {{ item }}{{ selectedCurrencyLabel }}
+              </span>
             </div>
 
             <div
@@ -44,10 +40,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
-                  src="../../../assets/images/campaign/custom-amount.svg"
-                  alt=""
-                />
+                <img src="../../../assets/images/campaign/custom-amount.svg" alt="" />
               </div>
 
               <Field
@@ -82,6 +75,7 @@
               <!-- monthly -->
               <v-radio
                 value="monthly"
+                disabled
                 id="input-12"
                 name="radio-group-9"
                 color="primary"
@@ -96,6 +90,7 @@
               <!-- weekly -->
               <v-radio
                 value="weekly"
+                disabled
                 name="radio-group-10"
                 id="input-13"
                 color="primary"
@@ -110,6 +105,7 @@
               <!-- dialy -->
               <v-radio
                 value="dialy"
+                disabled
                 name="radio-group-11"
                 id="input-14"
                 color="primary"
@@ -256,10 +252,7 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/name.svg"
-                        alt=""
-                      />
+                      <img src="../../../assets/images/contact/name.svg" alt="" />
                     </div>
 
                     <Field
@@ -273,10 +266,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_name"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_name" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!--someone email -->
@@ -285,10 +275,7 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/email.svg"
-                        alt=""
-                      />
+                      <img src="../../../assets/images/contact/email.svg" alt="" />
                     </div>
 
                     <Field
@@ -302,10 +289,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_email"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_email" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!--someone phone -->
@@ -314,10 +298,7 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/phone.svg"
-                        alt=""
-                      />
+                      <img src="../../../assets/images/contact/phone.svg" alt="" />
                     </div>
 
                     <Field
@@ -331,10 +312,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_phone"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_phone" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!-- comments -->
@@ -346,7 +324,7 @@
                       alt="..."
                     />
                     <h1 class="font-semibold text-2xl">
-                      {{ $t("global.add_comment") }}
+                      {{ $t("global.love_comment") }}
                     </h1>
                   </div>
 
@@ -355,10 +333,7 @@
                     <div
                       class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
-                        src="../../../assets/images/campaign/edit.svg"
-                        alt=""
-                      />
+                      <img src="../../../assets/images/campaign/edit.svg" alt="" />
                     </div>
 
                     <Field
@@ -368,14 +343,11 @@
                       name="love_comment"
                       v-model="donationData.love_comment"
                       id="text-eria"
-                      :placeholder="$t('global.comment')"
+                      :placeholder="$t('global.love_comment')"
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
-                    <ErrorMessage
-                      name="love_comment"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="love_comment" class="text-sm text-red-500 mt-2" />
                   </div>
                 </div>
               </div>
@@ -427,13 +399,12 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
-import { Form, Field, ErrorMessage } from "vee-validate";
-import { useDonation } from "../services/donation";
-import { useRoute } from "vue-router";
-import { useViewCampaign } from "../services/single-campaign";
-import { useCurrencyStore } from "../store/currancy";
 import { storeToRefs } from "pinia";
+import { ErrorMessage, Field, Form } from "vee-validate";
+import { useRoute } from "vue-router";
+import Container from "~/global/Container.vue";
+import { useDonation } from "../services/donation";
+import { useCurrencyStore } from "../store/currancy";
 
 const route = useRoute();
 const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
@@ -443,7 +414,7 @@ const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
 const { makeDonation, isLoading, error } = useDonation();
 const currencyStore = useCurrencyStore();
-const { selectedCurrency } = storeToRefs(currencyStore);
+const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
 const donationData = ref<any>({
   name: "",

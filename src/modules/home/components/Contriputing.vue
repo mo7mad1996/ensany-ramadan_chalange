@@ -6,9 +6,7 @@
           class="gap-sm flex items-center justify-between lg:flex-row md:flex-col-reverse xl:flex-row flex-col-reverse"
         >
           <div>
-            <h2
-              class="mb-2 font-bold text-2xl lg:text-4xl md:text-4xl xl:text-4xl"
-            >
+            <h2 class="mb-2 font-bold text-2xl lg:text-4xl md:text-4xl xl:text-4xl">
               {{ mainVideo?.title }}
             </h2>
             <p class="mb-2">

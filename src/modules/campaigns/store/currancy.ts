@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 export const useCurrencyStore = defineStore("currency", () => {
   const selectedCurrency = ref("");
+  const selectedCurrencyLabel = ref("");
   const isPaymentSuccess = ref(false);
 
   function setCurrency(currencyId: any) {
@@ -10,8 +11,8 @@ export const useCurrencyStore = defineStore("currency", () => {
   }
 
   function setPaymentStatus(status: any) {
-    selectedCurrency.value = status;
+    isPaymentSuccess.value = status;
   }
 
-  return { selectedCurrency, setCurrency, isPaymentSuccess, setPaymentStatus };
+  return { selectedCurrency, selectedCurrencyLabel, setCurrency, isPaymentSuccess, setPaymentStatus };
 });

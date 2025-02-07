@@ -30,9 +30,9 @@
 
 <script setup>
 import { useCallback } from "../services/callback";
-definePageMeta({
-  middleware: "navigate",
-});
+// definePageMeta({
+//   middleware: "navigate",
+// });
 
 const route = useRoute();
 const razorpay_payment_link_id = route.query.razorpay_payment_link_id;
