@@ -34,7 +34,7 @@ const currencyStore = useCurrencyStore();
 const { selectedCurrency } = storeToRefs(currencyStore);
 
 const updateCurrency = () => {
-  if (selectedCurrency.value) {
+  if (selectedCurrency.value.toString) {
     currencyStore.setCurrency(selectedCurrency.value);
   }
 };

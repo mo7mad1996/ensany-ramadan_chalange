@@ -10,7 +10,7 @@ export const useCurrencyStore = defineStore("currency", () => {
   }
 
   function setPaymentStatus(status: any) {
-    selectedCurrency.value = status;
+    isPaymentSuccess.value = status;
   }
 
   return { selectedCurrency, setCurrency, isPaymentSuccess, setPaymentStatus };
