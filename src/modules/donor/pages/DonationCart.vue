@@ -16,9 +16,7 @@
     </div>
     <div class="grid grid-cols-3 gap-8 mt-6 justify-between">
       <div class="col-span-1">
-        <span class="custom-label text-sm">{{
-          $t("donor.custom_amount")
-        }}</span>
+        <span class="custom-label text-sm">{{ $t("donor.custom_amount") }}</span>
         <v-text-field
           v-model="customAmount"
           variant="outlined"
@@ -64,11 +62,7 @@
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
-                <img
-                  :src="item.image"
-                  alt="Campaign Image"
-                  class="rounded-lg"
-                />
+                <img :src="item.image" alt="Campaign Image" class="rounded-lg" />
               </v-avatar>
               <span>{{ item.name }}</span>
             </div>
@@ -123,7 +117,7 @@
         </v-data-table>
       </v-card>
     </div>
-    <dialog class="dialog m-auto rounded-[10px] h-50 min-w-[500px]" ref="donate" >
+    <dialog class="dialog m-auto rounded-[10px] h-50 min-w-[500px]" ref="donate">
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
@@ -133,9 +127,8 @@
 </template>
 
 <script setup>
-import dayjs from "dayjs";
-import { useDonationCartPage } from "../typescript/donation-cart";
 import { useRouter } from "vue-router";
+import { useDonationCartPage } from "../typescript/donation-cart";
 
 definePageMeta({
   layout: "donor",
