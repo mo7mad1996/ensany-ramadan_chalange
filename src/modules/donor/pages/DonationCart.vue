@@ -51,9 +51,14 @@
       <v-card flat>
         <v-data-table
           class="border rounded-lg"
-          :items="donations"
+          :items="donorCart.data"
           :headers="headers"
           item-value="id"
+          :page="currentPage"
+          :server-items-length="totalItems"
+          :loading="status === 'pending'"
+          @update:page="currentPage = $event"
+          @update:items-per-page="itemsPerPage = $event"
         >
           <!-- Image & Name -->
           <template v-slot:item.name="{ item }">
@@ -62,7 +67,7 @@
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
-                <img :src="item.image" alt="Campaign Image" class="rounded-lg" />
+                <img :src="item.campaign?.image" alt="Campaign Image" class="rounded-lg" />
               </v-avatar>
               <span>{{ item.name }}</span>
             </div>
@@ -129,6 +134,13 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { useDonationCartPage } from "../typescript/donation-cart";
+import { useDonerCart } from "../services/donation-cart";
+
+
+const {donorCart} = useDonerCart()
+
+
+console.log(donorCart)
 
 definePageMeta({
   layout: "donor",
