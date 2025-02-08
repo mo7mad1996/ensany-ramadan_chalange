@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
   // favicon & fonts
   app: {
-    baseURL: '/',
+    baseURL: "/",
     pageTransition: false, // Completely disables transitions
     layoutTransition: false,
     head: {
@@ -68,6 +68,7 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1000,
+      sourcemap: false,
 
       rollupOptions: {
         output: {
@@ -91,7 +92,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    'nuxt-lazytube',
+    "nuxt-lazytube",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
