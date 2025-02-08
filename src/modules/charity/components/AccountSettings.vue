@@ -470,7 +470,7 @@ const passwordForm = reactive({
 const onSubmit = async () => {
   try {
     personalForm.loading = true;
-    const res = await update(personalForm, files.value);
+    const res = await update(personalForm, toRaw(files.value));
 
     Swal.fire({
       icon: "success",

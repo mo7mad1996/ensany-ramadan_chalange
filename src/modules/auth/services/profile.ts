@@ -23,8 +23,11 @@ export const useProfile = () => {
       for (const key in payload) {
         if (payload[key]) formData.append(key, payload[key]);
       }
-
-      return api.post("/edit/profile", formData);
+      return api.post("/edit/profile", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     },
 
     changePassword(payload: any) {
