@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <BlogSimilarBlogs :similar="singleBlog?.similar_blogs" :status="status" />
+    <BlogSimilarBlogs v-if="singleBlog.length > 0" :similar="singleBlog?.similar_blogs" :status="status" />
   </Container>
 </template>
 

@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <form action="">
+    <Form v-slot="{ meta }" @submit="onSubmit">
       <!-- name input -->
       <div class="relative">
         <div
@@ -19,13 +19,17 @@
           <img src="../../../assets/images/contact/name.svg" alt="" />
         </div>
 
-        <input
+        <Field
+          name="name"
+          rules="required"
+          v-model="contactData.name"
           type="text"
-          id="custom-input"
+          id="name"
           :placeholder="$t('contact.name')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
       </div>
+      <ErrorMessage name="name" class="text-sm text-red-500 mt-2" />
 
       <!-- email input -->
       <div class="relative mt-4">
@@ -35,14 +39,17 @@
           <img src="../../../assets/images/contact/email.svg" alt="" />
         </div>
 
-        <input
-          type="email"
-          id="custom-input"
-          :placeholder="$t('auth.email')"
+        <Field
+          name="email"
+          rules="required"
+          v-model="contactData.email"
+          type="text"
+          id="email"
+          :placeholder="$t('contact.email')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
       </div>
-
+      <ErrorMessage name="email" class="text-sm text-red-500 mt-2" />
       <!-- phone number  -->
       <div class="relative mt-4">
         <div
@@ -51,13 +58,17 @@
           <img src="../../../assets/images/contact/phone.svg" alt="" />
         </div>
 
-        <input
+        <Field
+          name="mobile"
+          rules="required"
+          v-model="contactData.mobile"
           type="text"
-          id="custom-input"
-          :placeholder="$t('auth.phone')"
+          id="mobile"
+          :placeholder="$t('contact.phone')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
       </div>
+      <ErrorMessage name="mobile" class="text-sm text-red-500 mt-2" />
 
       <!-- subject -->
       <div class="relative mt-3">
@@ -67,14 +78,17 @@
           <img src="../../../assets/images/campaign/edit.svg" alt="" />
         </div>
 
-        <input
+        <Field
+          name="subject"
+          rules="required"
+          v-model="contactData.subject"
           type="text"
-          id="custom-input"
+          id="subject"
           :placeholder="$t('contact.subject')"
           class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-          required
         />
       </div>
+      <ErrorMessage name="subject" class="text-sm text-red-500 mt-2" />
 
       <!-- comment input -->
       <div class="relative mt-3">
@@ -84,22 +98,63 @@
           <img src="../../../assets/images/campaign/edit.svg" alt="" />
         </div>
 
-        <textarea
+        <Field
+          as="textarea"
           type="text"
-          id="custom-input"
+          rules="required"
+          name="content"
+          v-model="contactData.content"
+          id="text-eria"
           :placeholder="$t('contact.comment')"
           class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
         />
 
+        <ErrorMessage name="content" class="text-sm text-red-500 mt-2" />
+
         <v-btn
-          class="text-capitalize rounded-lg w-100 mt-5"
+          :disabled="isLoading"
+          :loading="isLoading"
           :ripple="false"
+          type="submit"
+          class="text-capitalize rounded-lg w-full mt-2"
           variant="flat"
           size="large"
           color="primary"
           >{{ $t("contact.submit") }}</v-btn
         >
       </div>
-    </form>
+    </Form>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ErrorMessage, Field, Form } from "vee-validate";
+import { useRoute } from "vue-router";
+import { useContact } from "../services/contact_us";
+const route = useRoute();
+const { isLoading, error, makeContact } = useContact();
+
+const contactData = ref<any>({
+  name: "",
+  email: "",
+  mobile: "",
+  subject: "",
+  content: "",
+});
+
+const onSubmit = () => {
+  makeContact(contactData.value);
+};
+</script>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
