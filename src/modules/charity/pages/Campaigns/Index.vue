@@ -102,6 +102,10 @@
                 elevation="0"
                 variant="tonal"
                 color="green"
+                :to="{
+                  name: 'edit-campaign',
+                  params: { id: item.id },
+                }"
               >
                 <v-icon>mdi-pencil</v-icon>
               </v-btn>
@@ -117,20 +121,21 @@
 import Swal from "sweetalert2";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { reFormat2 } from "~/helpers/format-date";
-import { useCharityCamoaigns } from "../services/charity-campaigns";
-import { useDeleteCampaign } from "../services/delete-campaign";
-import { useCampaignsPage } from "../typescript/campaigns-page";
+import { useCharityCamoaigns } from "../../services/charity-campaigns";
+import { useCampaign } from "../../services/campaign";
+import { useCampaignsPage } from "../../typescript/campaigns-page";
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
 
 const { t } = useI18n();
+const router = useRouter();
 const { search, headers } = useCampaignsPage();
 const { charityCampaigns, status, itemsPerPage, totalItems, currentPage } =
   useCharityCamoaigns();
 
-const { deleteCampaign } = useDeleteCampaign();
+const { deleteCampaign } = useCampaign();
 
 const confirmDelete = (id) => {
   if (id) {
