@@ -3,7 +3,11 @@
     <div
       class="card xl:w-[795px] lg:w-[795px] md:w-[96%] w-[96%] rounded-xl shadow-md p-sm bg-white"
     >
-      <Form @submit="submit" v-slot="{ validate }" :initial-values="data">
+      <Form
+        @submit="submit"
+        v-slot="{ validate }"
+        :initial-values="props.initData"
+      >
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -458,17 +462,6 @@ const loading = ref(false);
 const categories = ref([]);
 const currencies = ref([]);
 
-const data = ref(
-  props.initData
-    ? {
-        ...props.initData,
-        category_id: props.initData.category.id,
-        currency_id: props.initData.currency.id,
-        sort: undefined,
-      }
-    : undefined
-);
-
 const formatDate = (date) => {
   return new Date(date).toISOString().replace("T", " ").split(".")[0];
 };
@@ -491,13 +484,12 @@ const submit = async (values) => {
       ...values,
       start_at: formatDate(today.value),
       end_at: formatDate(endDate.value),
-      currency_id: selectedCurrency,
     };
+
     const res = await (props.initData
       ? updateCmpaign(props.initData.id, payload)
       : startCmpaign(payload));
 
-    console.log(res);
     Swal.fire({
       title: res.data?.message,
       icon: "success",

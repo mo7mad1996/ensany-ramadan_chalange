@@ -18,7 +18,7 @@
     </div>
 
     <!-- start campaign form -->
-    <CampaignForm class="relative top-[-130px]" :initData="data" />
+    <CampaignForm class="relative top-[-130px]" :initData="payload" />
   </div>
 </template>
 
@@ -37,9 +37,36 @@ useSeoMeta({
 });
 // data
 const { id } = route.params;
-const { data, error, status } = await useAsyncData("get-campaign", () =>
-  getCampaign(id)
-);
+const { data } = await useAsyncData("get-campaign", () => getCampaign(id));
+
+const payload = computed(() => {
+  const enData = data.value.translations.find((i) => i.locale == "en");
+  const arData = data.value.translations.find((i) => i.locale == "ar");
+
+  // {a: 1}  =>  {"a:ar" : 1}
+  const transformObj = (obj) => {
+    const transformed = {};
+    for (const key in obj) {
+      transformed[`${key}:${obj.locale}`] = obj[key];
+    }
+    return transformed;
+  };
+
+  return {
+    ...data.value,
+
+    //
+    category_id: data.value.category.id,
+    currency_id: data.value.currency.id,
+
+    // multi lang data
+    ...transformObj(enData),
+    ...transformObj(arData),
+
+    // override
+    sort: undefined,
+  };
+});
 </script>
 
 <style scoped>

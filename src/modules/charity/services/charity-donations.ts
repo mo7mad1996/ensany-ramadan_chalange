@@ -19,12 +19,7 @@ export const useCharityDonations = () => {
     () =>
       api
         .get(
-          `/charity/donations?page=${currentPage.value}&per_page=${itemsPerPage.value}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token.value}`,
-            },
-          }
+          `/charity/donations?page=${currentPage.value}&per_page=${itemsPerPage.value}`
         )
         .then((response) => {
           const { data, meta } = response.data.result;
