@@ -1,6 +1,10 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
+    <template #first_page>
+      <NuxtLink to="/">
+        {{ $t("global.home") }}
+      </NuxtLink>
+    </template>
     <template #second_page> {{ $t("global.campaigns") }} </template>
   </BreadCrumb>
 

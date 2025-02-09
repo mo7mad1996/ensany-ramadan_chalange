@@ -1,12 +1,15 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("videos.videos") }} </template>
+      <template #first_page>
+        <a :href="'/'">{{ $t("global.home") }}</a>
+      </template>
+      <template #second_page>
+        <a :href="'/videos'">{{ $t("videos.videos") }}</a>
+      </template>
+      <template #third_page> {{ video?.title }} </template>
     </BreadCrumb>
     <div class="content">
-      <div class="video">Video Is Here</div>
-
       <div class="flex justify-center">
         <div class="content_text py-5 w-[792px]">
           <!-- title -->

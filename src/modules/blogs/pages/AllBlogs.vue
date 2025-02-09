@@ -1,6 +1,8 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
+    <template #first_page>
+      <a :href="'/'">{{ $t("global.home") }}</a>
+    </template>
     <template #second_page> {{ $t("blogs.blogs") }} </template>
   </BreadCrumb>
 
@@ -53,11 +55,11 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
-import { useBlogs } from "../services/blogs";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useBlogs } from "../services/blogs";
 const { locale } = useI18n();
 
 const page = ref(2);

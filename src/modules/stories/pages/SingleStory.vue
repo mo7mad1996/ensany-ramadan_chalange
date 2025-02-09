@@ -11,6 +11,7 @@
           {{ $t("story.stories") }} 
         </NuxtLink>
       </template>
+      <template #third_page> {{ singleStory?.title }} </template>
     </BreadCrumb>
 
     <div class="content flex justify-center">

@@ -17,7 +17,7 @@
               <NuxtLink :to="`/stories/${item.id}`">
                 <img
                   :src="item.image"
-                  alt="{{ item?.title }}"
+                  :alt="item?.title"
                   class="rounded-lg w-full object-cover mx-auto"
                   style="height: 250px"
                 />

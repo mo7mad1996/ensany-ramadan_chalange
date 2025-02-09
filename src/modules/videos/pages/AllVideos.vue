@@ -1,6 +1,8 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
+    <template #first_page>
+      <a :href="'/'">{{ $t("global.home") }}</a>
+    </template>
     <template #second_page> {{ $t("global.videos") }} </template>
   </BreadCrumb>
 
