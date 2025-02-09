@@ -1,7 +1,9 @@
 import { api } from "~/helpers/axios";
 
 export const useStories = () => {
-  const currentPage = ref(1);
+  const route = useRoute();
+  const page = Number(route.query.page) || 1;
+  const currentPage = ref(page);
   const { locale } = useI18n();
   const {
     data: storiesData,

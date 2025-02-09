@@ -1,32 +1,35 @@
-import enGlobal from "../locales/en.json";
 import arGlobal from "../locales/ar.json";
+import enGlobal from "../locales/en.json";
 
-import enHome from "../modules/home/locales/en.json";
 import arHome from "../modules/home/locales/ar.json";
+import enHome from "../modules/home/locales/en.json";
 
-import enAbout from "../modules/about/locales/en.json";
 import arAbout from "../modules/about/locales/ar.json";
+import enAbout from "../modules/about/locales/en.json";
 
-import enContact from "../modules/contact/locales/en.json";
 import arContact from "../modules/contact/locales/ar.json";
+import enContact from "../modules/contact/locales/en.json";
 
-import enCampaigns from "../modules/campaigns/locales/en.json";
 import arCampaigns from "../modules/campaigns/locales/ar.json";
+import enCampaigns from "../modules/campaigns/locales/en.json";
 
-import enAuth from "../modules/auth/locales/en.json";
 import arAuth from "../modules/auth/locales/ar.json";
+import enAuth from "../modules/auth/locales/en.json";
 
-import enBlogs from "../modules/blogs/locales/en.json";
 import arBlogs from "../modules/blogs/locales/ar.json";
+import enBlogs from "../modules/blogs/locales/en.json";
 
-import enStories from "../modules/stories/locales/en.json";
 import arStories from "../modules/stories/locales/ar.json";
+import enStories from "../modules/stories/locales/en.json";
 
-import enCharity from "../modules/charity/locales/en.json";
 import arCharity from "../modules/charity/locales/ar.json";
+import enCharity from "../modules/charity/locales/en.json";
 
-import enDonor from "../modules/donor/locales/en.json";
 import arDonor from "../modules/donor/locales/ar.json";
+import enDonor from "../modules/donor/locales/en.json";
+
+import arVideo from "../modules/videos/locales/ar.json";
+import enVideo from "../modules/videos/locales/en.json";
 
 export default {
   legacy: false,
@@ -43,6 +46,7 @@ export default {
       story: enStories,
       dashboard: enCharity,
       donor: enDonor,
+      videos: enVideo,
     },
     ar: {
       home: arHome,
@@ -55,6 +59,7 @@ export default {
       story: arStories,
       dashboard: arCharity,
       donor:arDonor,
+      videos: arVideo,
     },
   },
 };

@@ -366,7 +366,11 @@
             size="large"
             color="primary"
           >
-            {{ $t("global.donate_now") }} - ${{ donationData.amount }}
+            {{ $t("global.donate_now") }}
+            (<bdi>
+              {{ donationData.amount }}
+              {{ selectedCurrencyLabel }} </bdi
+            >)
           </v-btn>
         </Form>
 

@@ -1,12 +1,25 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("blogs.blog") }} </template>
+ 
+ 
+      <template #first_page> 
+        <NuxtLink to="/">
+          {{ $t("global.home") }} 
+        </NuxtLink>
+      </template>
+      <template #second_page> 
+      <NuxtLink to="/blogs">
+          {{ $t("blogs.blogs") }} 
+        </NuxtLink>
+      </template>
+      <template #third_page> {{ singleBlog?.title }} </template>
+
     </BreadCrumb>
     <div class="content">
       <div class="video">
         <img
+            v-if="status == 'success'"
           class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
           :src="singleBlog?.image"
         ></img>
@@ -31,7 +44,7 @@
             <!-- writer -->
             <div class="flex items-center gap-x-2">
               <img src="../../../assets/images/honor-company.svg " alt="" />
-              <span>{{ $t("blogs.single_writer") }}</span>
+              <span>{{ singleBlog?.user?.full_name }}</span>
             </div>
 
             <!-- reading time and date -->
@@ -64,17 +77,17 @@
       </div>
     </div>
 
-    <BlogSimilarBlogs :similar="singleBlog?.similar_blogs" :status="status" />
+    <BlogSimilarBlogs v-if="singleBlog.length > 0" :similar="singleBlog?.similar_blogs" :status="status" />
   </Container>
 </template>
 
 <script setup lang="ts">
-import { reFormat2 } from "~/helpers/format-date";
-import Container from "~/global/Container.vue";
+import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { reFormat2 } from "~/helpers/format-date";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useSingleBlog } from "../services/single-blog";
-import { useRoute } from "vue-router";
 
 const { locale } = useI18n();
 const route = useRoute();

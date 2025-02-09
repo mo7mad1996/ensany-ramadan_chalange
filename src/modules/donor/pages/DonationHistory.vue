@@ -25,9 +25,9 @@
             </div>
           </template> -->
           <!-- Bold &  Total Amount -->
-          <template v-slot:item.amount="{ item }">
+          <template v-slot:item.total_amount="{ item }">
             <span class="font-bold text-green-600">
-              ${{ parseFloat(item.amount).toLocaleString() }}
+              ${{ parseFloat(item.total_amount).toLocaleString() }}
             </span>
           </template>
           <template v-slot:item.status="{ item }">
@@ -40,6 +40,9 @@
               {{ getStatusText(item.status) }}
             </span>
           </template>
+          <template v-slot:item.created_at="{ item }">
+            {{ formattedDate(item.created_at) }}
+          </template>
         </v-data-table>
       </v-card>
     </div>
@@ -49,7 +52,7 @@
 <script setup>
 import { useDonationHistoryPage } from "../typescript/donation";
 import { useDonorDonationes } from "../services/donor-donation";
-
+import dayjs from "dayjs";
 
 definePageMeta({
   layout: "donor",
@@ -70,6 +73,9 @@ const getStatusColor = (status) => {
     default:
       return "#5C7762";
   }
+};
+const formattedDate = (dateString) => {
+  return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
 };
 const getStatusText = (status) => {
   const statusKeys = {

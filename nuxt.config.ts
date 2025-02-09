@@ -47,6 +47,7 @@ export default defineNuxtConfig({
     { path: "~/modules/stories/components", prefix: "story" },
     { path: "~/modules/charity/components", prefix: "Charity" },
     { path: "~/modules/donor/components", prefix: "Donor" },
+    { path: "~/modules/videos/components", prefix: "Video" },
   ],
 
   // main style & tailwid config

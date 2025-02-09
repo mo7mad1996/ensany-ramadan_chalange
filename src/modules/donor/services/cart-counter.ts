@@ -25,7 +25,7 @@ export const useCartCounter = () => {
     { watch: [locale] }
   );
 
-  const cartCounter = computed(() => cartCounterData.value || "");
+  const cartCounter = computed(() => cartCounterData.value || 0);
 
   // Function to increment cart count locally
   const increaseCartCount = (amount = 1) => {

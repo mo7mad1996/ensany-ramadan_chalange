@@ -1,7 +1,7 @@
 {
   "all_campaigns": "All Campaigns",
   "donate": "Donate Now",
-
+  "campaigns": "Campaigns",
   "similar_campaigns": "Similar Campaigns",
 
   "view_campaign": "View Campaign",
@@ -39,5 +39,11 @@
   "currency_error": "You must select currency",
   "success_msg": "Donation confirmed successfully ,Thank you for your kindeness",
   "ok": "Ok",
-  "faild_msg": "Ther is an error in donation , please try again"
+  "faild_msg": "Ther is an error in donation , please try again",
+  "gift_certificate": "Gift",
+  "gift_to": "Gift to",
+  "on_this_day": "On this day.",
+  "message_gift": "Gift Message",
+  "gift_by": "Gifted by",
+  "gift_message": "A gift as a contribution to the campaign"
 }

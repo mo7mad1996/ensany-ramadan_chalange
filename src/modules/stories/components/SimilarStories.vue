@@ -11,25 +11,25 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(item, index) in 5" :key="index">
-          <StoryCard :route="`/stories/${index + 1}`" class="text-start m-1">
+        <Slide v-for="(item, index) in props.similarStories" :key="index">
+          <StoryCard :route="`/stories/${item.id}`" class="text-start m-1">
             <template #video>
-              <video
-                class="rounded-md object-cover cursor-pointer"
-                src="../../../assets/videos/contribution-vid.mp4"
-                poster="../../../assets/videos/contribution-poster.svg"
-                controls
-              ></video>
+              <NuxtLink :to="`/stories/${item.id}`">
+                <img
+                  :src="item.image"
+                  :alt="item?.title"
+                  class="rounded-lg w-full object-cover mx-auto"
+                  style="height: 250px"
+                />
+              </NuxtLink>
             </template>
-
-            <template #title>{{ $t("story.title") }}</template>
-
-            <template #desc>{{ $t("story.desc") }}</template>
+            <template #title>{{ item.title }}</template>
+            <template #desc>{{ item.content.slice(0, 110) }} </template>
           </StoryCard>
         </Slide>
 
         <template #addons>
-          <pagination />
+          <Pagination />
         </template>
       </Carousel>
     </Container>
@@ -37,9 +37,19 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import Container from "../../../global/Container.vue";
-import Card from "./Card.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
+const props = defineProps<{
+  similarStories: Array<any>;
+}>();
+
+// إعداد متغير للتخزين المؤقت للصور بعد فترة معينة
+const imageTimeout = ref(false);
+
+onMounted(() => {});
+
+watchEffect(() => {});
 </script>

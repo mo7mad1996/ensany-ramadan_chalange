@@ -106,6 +106,7 @@
               showDialCode: true,
               placeholder: $t('auth.phone'),
             }"
+            @input="validatePhoneInput"
           ></vue-tel-input>
 
           <ErrorMessage class="text-sm text-red-500" name="phone" />
@@ -139,9 +140,7 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'"
-              >mdi-map-marker-multiple-outline</v-icon
-            >
+            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
           </div>
 
           <Field
@@ -265,13 +264,13 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import { VueTelInput } from "vue-tel-input";
 import "vue-tel-input/vue-tel-input.css";
 
+import { type NewCharity } from "~/helpers/interfaces";
 import { useAuth } from "../services/auth";
 import { useCountries } from "../services/countries";
-import { type NewCharity } from "~/helpers/interfaces";
 
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
@@ -299,6 +298,10 @@ const newCharity = ref<NewCharity>({
 const showPassword = (): void => {
   show1.value = !show1.value;
 };
+
+const validatePhoneInput = () => {
+  newCharity.value.mobile = newCharity.value.mobile.replace(/[^0-9]/g, "");
+}
 
 const showConfPassword = (): void => {
   show2.value = !show2.value;

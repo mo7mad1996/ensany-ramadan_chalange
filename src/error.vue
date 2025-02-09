@@ -43,7 +43,8 @@
 import Container from "./global/Container.vue";
 import Header from "./global/Header.vue";
 import AppFooter from "./global/AppFooter.vue";
-defineProps(["error"]);
+
+ defineProps(["error"]);
 
 onMounted(() => {
   console.error(props.error);

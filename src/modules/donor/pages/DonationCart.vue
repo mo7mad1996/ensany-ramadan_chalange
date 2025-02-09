@@ -25,6 +25,7 @@
           prepend-inner-icon="mdi-cash"
           placeholder="$0"
           class="custom-amount-input rounded-lg outline-none border-none focus:outline-none focus:border-none"
+          :disabled="distributionOption === 'manual'"
         ></v-text-field>
       </div>
 
@@ -34,13 +35,13 @@
           <v-radio
             :label="$t('donor.distribute_amount_equally')"
             color="primary"
-            value="equal"
+            value="automatic"
             class="custom-radio"
           ></v-radio>
           <v-radio
             :label="$t('donor.customize_per_campaign')"
             color="primary"
-            value="custom"
+            value="manual"
             class="custom-radio"
           ></v-radio>
         </v-radio-group>
@@ -62,12 +63,13 @@
         >
           <!-- Image & Name -->
           <template v-slot:item.name="{ item }">
-            <div
-              class="flex items-center gap-2 space-x-2 cursor-pointer hover:text-blue-600"
-              @click="navigateToCampaign(item.id)"
-            >
+            <div class="flex items-center gap-2 space-x-2">
               <v-avatar size="40">
-                <img :src="item.campaign?.image" alt="Campaign Image" class="rounded-lg" />
+                <img
+                  :src="item.campaign?.image"
+                  alt="Campaign Image"
+                  class="rounded-lg"
+                />
               </v-avatar>
               <span>{{ item.name }}</span>
             </div>
@@ -82,6 +84,7 @@
               density="compact"
               placeholder="Enter amount"
               class="w-100 rounded-lg outline-none border-none focus:border-primary focus:ring focus:ring-opacity-25"
+              :disabled="distributionOption === 'equal'"
             ></v-text-field>
           </template>
           <!-- Action Column -->
@@ -91,7 +94,7 @@
               @click="removeItem(item.id)"
             >
               <v-icon size="20">mdi-close-circle</v-icon>
-              <span>Remove</span>
+              <span>{{ $t("donor.remove") }}</span>
             </div>
           </template>
 
@@ -99,19 +102,6 @@
           <template v-slot:item.total_amount="{ item }">
             <span class="font-bold text-green-600">
               ${{ parseFloat(item.total_amount).toLocaleString() }}
-            </span>
-          </template>
-
-          <!-- Status -->
-          <template v-slot:item.status="{ item }">
-            <span
-              class="inline-block w-full text-sm font-medium rounded-md text-center py-2 px-4 capitalize"
-              :class="{
-                'bg-green-200 text-black': item.status === 'published',
-                'bg-gray-600 text-white': item.status !== 'published',
-              }"
-            >
-              {{ item.status }}
             </span>
           </template>
 
@@ -126,35 +116,171 @@
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
-      <DonorConfirmDonationDialog />
+      <div class="p-4">
+        <div class="flex justify-center items-center flex-col w-full">
+          <img src="../../../assets/images/donor/customdialog.png" alt="custom" />
+          <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
+          <v-radio-group v-model="pay_type" row>
+            <v-radio
+              :label="$t('donor.pay_full')"
+              color="primary"
+              value="full"
+              class="custom-radio"
+            ></v-radio>
+            <v-radio
+              :label="$t('donor.daily_payment')"
+              color="primary"
+              value="daily"
+              class="custom-radio"
+            ></v-radio>
+          </v-radio-group>
+          <div class="flex items-center justify-between gap-6">
+            <v-btn
+              class="text-capitalize rounded-lg"
+              @click="closeDialog"
+              variant="flat"
+              size="default"
+              color="green-lighten-5"
+            >
+              {{ $t("donor.cancel") }}
+            </v-btn>
+            <v-btn
+              class="text-capitalize rounded-lg"
+              @click="submitDonation"
+              variant="flat"
+              size="default"
+              color="primary"
+            >
+              {{ $t("donor.save") }}
+            </v-btn>
+          </div>
+        </div>
+      </div>
     </dialog>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
-import { useDonationCartPage } from "../typescript/donation-cart";
+import Swal from "sweetalert2";
+import { api } from "~/helpers/axios";
+import { useAuth } from "~/modules/auth/services/auth";
 import { useDonerCart } from "../services/donation-cart";
+import { useDonationCartPage } from "../typescript/donation-cart";
 
-
-const {donorCart} = useDonerCart()
-
-
+const { donorCart } = useDonerCart();
 
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
-const router = useRouter();
+
+const { token, user } = useAuth();
 const { headers } = useDonationCartPage();
 const customAmount = ref("");
-const distributionOption = ref("equal");
-// const { donorCampMeta, donorCampaigns, status } = useDonorCamoaigns();
-
-const navigateToCampaign = (campaignId) => {
-  router.push(`/campaigns/donate/${campaignId}`);
-};
+const distributionOption = ref("automatic");
 const donate = ref("");
+const pay_type = ref("full");
+const currenciesData = ref("");
+// debugger
+// console.log(currenciesData);
+
+// Watch for changes in distribution option
+watch(distributionOption, (newOption) => {
+  if (newOption === "automatic" && customAmount.value) {
+    distributeAmountEqually();
+  }
+});
+
+// Watch for changes in customAmount when "equal" option is selected
+watch(customAmount, (newAmount) => {
+  if (distributionOption.value === "automatic") {
+    distributeAmountEqually();
+  }
+});
+watch(
+  () => donorCart.value.data.map((item) => item.amount),
+  () => {
+    if (distributionOption.value === "manual") {
+      calculateCustomTotal();
+    }
+  },
+  { deep: true }
+);
+const distributeAmountEqually = () => {
+  const campaignsCount = donorCart.value.data.length;
+  if (campaignsCount > 0 && customAmount.value) {
+    const equalAmount = (parseFloat(customAmount.value) / campaignsCount).toFixed(2);
+    donorCart.value.data.forEach((item) => {
+      item.amount = equalAmount;
+    });
+  }
+};
+const removeItem = async (id) => {
+  try {
+    const res = await api.post(`/doner/cart/remove/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+      },
+    });
+    if (res?.data?.message === "Cart Element Not Found") {
+      Swal.fire({
+        icon: "info",
+        // title: "Good job!",
+        text: `${res.data.message}`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        // title: "Good job!",
+        text: `${res.data?.message}`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+    await refresh();
+  } catch (error) {
+    console.error("Failed to remove item:", error);
+  }
+};
+const calculateCustomTotal = () => {
+  const total = donorCart.value.data.reduce((sum, item) => {
+    return sum + (parseFloat(item.amount) || 0);
+  }, 0);
+  customAmount.value = total.toFixed(2);
+};
+const submitDonation = async () => {
+  const data = {
+    total_amount: customAmount.value,
+    amount_split_type: distributionOption.value === "manual" ? "manual" : "automatic",
+    pay_type: pay_type.value === "full" ? "full" : "daily",
+    currency_id: currenciesData.value,
+    campaign: donorCart.value.data.map((item) => ({
+      id: item.campaign?.id,
+      amount: parseFloat(item.amount),
+    })),
+  };
+
+  try {
+    await api.post("doner/campaigns/create", data, {
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+      },
+    });
+    closeDialog();
+    Swal.fire({
+      icon: "success",
+      title: "Good job!",
+      text: "Donation submitted successfully!",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+    await refresh();
+  } catch (error) {
+    console.error("Error submitting donation:", error);
+  }
+};
 
 const openDialog = () => {
   donate.value.showModal();
@@ -163,88 +289,10 @@ const openDialog = () => {
 const closeDialog = () => {
   donate.value.close();
 };
-const donations = ref([
-  {
-    id: 1,
-    name: "Feed the Hungry – Iftar 2025",
-    description: "Support the construction of a mosque...",
-    charityName: "Honor company",
-    image: "/path-to-image.jpg",
-    amount: "",
-    action: "",
-  },
-  {
-    id: 2,
-    name: "Provide Clean Water",
-    description: "Help build wells in underserved communities.",
-    charityName: "Water Foundation",
-    image: "/path-to-clean-water-image.jpg",
-    amount: "",
-  },
-  {
-    id: 3,
-    name: "Educate the Orphans",
-    description: "Support orphans with education and daily needs.",
-    charityName: "Education For All",
-    image: "/path-to-education-image.jpg",
-    amount: "",
-  },
-  {
-    id: 4,
-    name: "Emergency Relief Fund",
-    description: "Provide aid to disaster-stricken areas.",
-    charityName: "Relief Alliance",
-    image: "/path-to-relief-image.jpg",
-    amount: "",
-  },
-  {
-    id: 5,
-    name: "Sponsor a Child",
-    description: "Change the life of a child with monthly sponsorship.",
-    charityName: "Child Support Organization",
-    image: "/path-to-child-sponsorship-image.jpg",
-    amount: "",
-  },
-  {
-    id: 6,
-    name: "Medical Aid for Refugees",
-    description: "Provide life-saving healthcare to refugees.",
-    charityName: "Health First NGO",
-    image: "/path-to-medical-aid-image.jpg",
-    amount: "",
-  },
-  {
-    id: 7,
-    name: "Plant a Million Trees",
-    description: "Join us in combating climate change.",
-    charityName: "Green Earth Initiative",
-    image: "/path-to-tree-planting-image.jpg",
-    amount: "",
-  },
-  {
-    id: 8,
-    name: "Feed the Children",
-    description: "Provide nutritious meals to hungry children worldwide.",
-    charityName: "Global Food Aid",
-    image: "/path-to-feeding-children-image.jpg",
-    amount: "",
-  },
-  {
-    id: 9,
-    name: "Build a School",
-    description: "Help construct schools in rural areas.",
-    charityName: "Future Leaders Foundation",
-    image: "/path-to-school-construction-image.jpg",
-    amount: "",
-  },
-  {
-    id: 10,
-    name: "Support the Elderly",
-    description: "Provide care and companionship to the elderly.",
-    charityName: "Care for Seniors",
-    image: "/path-to-elderly-support-image.jpg",
-    amount: "",
-  },
-]);
+onMounted(() => {
+  currenciesData.value = localStorage.getItem("selectedCurrency")
+    ? localStorage.getItem("selectedCurrency")
+    : "";
+});
 </script>
 <style></style>

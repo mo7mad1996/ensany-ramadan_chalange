@@ -19,6 +19,7 @@
           variant="flat"
           size="default"
           color="primary"
+          @click="navigateTo('signup')"
           >{{ $t("global.join_challenge") }}</v-btn
         >
       </div>

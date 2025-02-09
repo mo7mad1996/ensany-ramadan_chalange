@@ -140,7 +140,7 @@
                 <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
 
                 <!-- firt donor -->
-                <div class="pt-4">
+                <div class="pt-4" v-if="campaign?.top_doners?.top?.total_amount > 0">
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
@@ -169,7 +169,7 @@
                 </div>
 
                 <!-- second donor -->
-                <div class="pt-3">
+                <div class="pt-3" v-if="campaign?.top_doners?.middle?.total_amount > 0">
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
@@ -198,7 +198,7 @@
                 </div>
 
                 <!-- third donor -->
-                <div class="pt-3">
+                <div class="pt-3" v-if="campaign?.top_doners?.first?.total_amount > 0">
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"

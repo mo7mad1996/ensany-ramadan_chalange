@@ -20,6 +20,7 @@
           <v-btn
             class="text-capitalize rounded-lg"
             variant="flat"
+            :to="'/signup'"
             size="default"
             color="primary"
             >{{ $t("global.join_challenge") }}</v-btn
@@ -28,6 +29,7 @@
           <v-btn
             class="text-capitalize rounded-lg"
             variant="outlined"
+            :to="'/signup-charity'"
             size="default"
             color="#fff"
             >{{ $t("global.start_campaign") }}</v-btn

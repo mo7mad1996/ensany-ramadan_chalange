@@ -1,6 +1,8 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }}</template>
+    <template #first_page>
+      <a :href="'/'">{{ $t("global.home") }}</a>
+    </template>
     <template #second_page> {{ $t("story.stories") }} </template>
   </BreadCrumb>
 
@@ -46,21 +48,37 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useStories } from "../services/stories";
 const { locale } = useI18n();
-
+const router = useRouter();
+const route = useRoute();
+ 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { stories, status, currentPage, storiesMeta, refresh } = useStories();
 
-const fetchStories = () => {
-  refresh();
+const fetchStories = async () => {
+  handlePageChange(currentPage.value);
+  await refresh({ page: currentPage.value });
 };
 
-watch(currentPage, (newPage) => {
+const handlePageChange = (page) => {
+  if (page > storiesMeta.value.last_page) {
+    lastPage.value = storiesMeta.value.last_page;
+    currentPage.value = 1;
+    router.push({ query: { page: 1 } });
+  } else {
+    currentPage.value = page;
+    router.push({ query: { page: page } });
+  }
+};
+
+
+watch([currentPage], (page) => {
+  handlePageChange(currentPage.value);
   fetchStories();
 });
 
