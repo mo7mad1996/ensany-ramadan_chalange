@@ -51,6 +51,13 @@
           <template v-slot:item.donated_at="{ item }">
             {{ reFormat2(item.donated_at) }}
           </template>
+          <template v-slot:item.campaign="{ item }">
+            <nuxt-link
+              :to="{ name: 'view-campaign', prams: item.campaign.id || '' }"
+            >
+              {{ item.campaign?.name || " " }}
+            </nuxt-link>
+          </template>
         </v-data-table>
       </v-card>
     </div>
