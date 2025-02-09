@@ -287,6 +287,7 @@ const submitDonation = async () => {
       timer: 2000,
       showConfirmButton: false,
     });
+    await refresh();
   } catch (error) {
     console.error("Error submitting donation:", error);
   }
