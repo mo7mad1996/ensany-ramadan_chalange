@@ -3,8 +3,8 @@ export const useDonationsPage = () => {
   const search = ref("");
 
   const headers = computed(() => [
-    // { key: "campaign_id", title: t("dashboard.campaign_id"), align: "start" },
     { key: "name", title: t("dashboard.name") },
+    { key: "campaign", title: t("dashboard.campaign") },
     { key: "donated_at", title: t("dashboard.date") },
     { key: "total_amount", title: t("dashboard.donation_amount") },
     // { key: "time", title: t("dashboard.time") },

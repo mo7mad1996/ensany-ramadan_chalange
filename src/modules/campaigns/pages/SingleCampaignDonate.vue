@@ -1,9 +1,16 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page>
-      {{ viewCampaign?.name }}
+    <template #first_page>
+      <NuxtLink to="/">
+        {{ $t("global.home") }}
+      </NuxtLink>
     </template>
+    <template #second_page>
+      <NuxtLink to="/campaigns">
+        {{ $t("campaigns.campaigns") }}
+      </NuxtLink>
+    </template>
+    <template #third_page> {{ viewCampaign?.name }} </template>
   </BreadCrumb>
 
   <div class="flex justify-center">

@@ -21,7 +21,6 @@ export function useAuth() {
   const login = async (credentials: User) => {
     const response = await handleApiCall(() => api.post("/login", credentials));
 
-    console.log(response);
     if (response) {
       const { token: tokenValue, user: userValue } = response.data.result;
       setToken(encryptData(tokenValue));

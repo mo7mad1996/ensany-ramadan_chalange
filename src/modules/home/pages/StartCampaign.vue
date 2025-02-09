@@ -28,7 +28,7 @@ const { locale } = useI18n();
 const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 definePageMeta({
-  middleware: "require-auth",
+  middleware: ["require-auth", "onlyCharity"],
 });
 
 useSeoMeta({

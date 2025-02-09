@@ -1,8 +1,20 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("blogs.blogs") }} </template>
+ 
+ 
+      <template #first_page> 
+        <NuxtLink to="/">
+          {{ $t("global.home") }} 
+        </NuxtLink>
+      </template>
+      <template #second_page> 
+      <NuxtLink to="/blogs">
+          {{ $t("blogs.blogs") }} 
+        </NuxtLink>
+      </template>
+      <template #third_page> {{ singleBlog?.title }} </template>
+
     </BreadCrumb>
     <div class="content">
       <div class="video">
