@@ -68,68 +68,6 @@
           </div>
         </div>
 
-        <!-- campain content -->
-        <div class="mt-5">
-          <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">{{ $t("home.content") }}</label>
-
-            <div class="lang-switch flex items-center border-b">
-              <div
-                class="px-3 py-1 cursor-pointer"
-                @click="switchContent"
-                :class="{ 'bg-[#28A745] text-white': contentSwitch == 'en' }"
-              >
-                {{ $t("home.english") }}
-              </div>
-              <div
-                class="px-3 py-1 cursor-pointer"
-                @click="switchContent"
-                :class="{ 'bg-[#28A745] text-white': contentSwitch == 'ar' }"
-              >
-                العربيه
-              </div>
-            </div>
-          </div>
-
-          <div class="inputs">
-            <div class="relative" v-show="contentSwitch === 'ar'">
-              <div
-                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
-              >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
-              </div>
-
-              <Field
-                as="textarea"
-                type="text"
-                name="content:ar"
-                rules="required"
-                :placeholder="$t('home.content_ar')"
-                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-              <ErrorMessage name="content:ar" />
-            </div>
-
-            <div class="relative" v-show="contentSwitch === 'en'">
-              <div
-                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
-              >
-                <img src="../../../assets/images/campaign/edit.svg" alt="" />
-              </div>
-
-              <Field
-                as="textarea"
-                type="text"
-                name="content:en"
-                rules="required"
-                :placeholder="$t('home.content_en')"
-                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-              <ErrorMessage name="content:en" />
-            </div>
-          </div>
-        </div>
-
         <!-- campain short_desc -->
         <div class="mt-5">
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -189,6 +127,68 @@
               />
 
               <ErrorMessage name="short_desc:en" />
+            </div>
+          </div>
+        </div>
+
+        <!-- campain content -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("home.content") }}</label>
+
+            <div class="lang-switch flex items-center border-b">
+              <div
+                class="px-3 py-1 cursor-pointer"
+                @click="switchContent"
+                :class="{ 'bg-[#28A745] text-white': contentSwitch == 'en' }"
+              >
+                {{ $t("home.english") }}
+              </div>
+              <div
+                class="px-3 py-1 cursor-pointer"
+                @click="switchContent"
+                :class="{ 'bg-[#28A745] text-white': contentSwitch == 'ar' }"
+              >
+                العربيه
+              </div>
+            </div>
+          </div>
+
+          <div class="inputs">
+            <div class="relative" v-show="contentSwitch === 'ar'">
+              <div
+                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
+              >
+                <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              </div>
+
+              <Field
+                as="textarea"
+                type="text"
+                name="content:ar"
+                rules="required"
+                :placeholder="$t('home.content_ar')"
+                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+              <ErrorMessage name="content:ar" />
+            </div>
+
+            <div class="relative" v-show="contentSwitch === 'en'">
+              <div
+                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
+              >
+                <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              </div>
+
+              <Field
+                as="textarea"
+                type="text"
+                name="content:en"
+                rules="required"
+                :placeholder="$t('home.content_en')"
+                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+              <ErrorMessage name="content:en" />
             </div>
           </div>
         </div>
@@ -274,7 +274,7 @@
                 id="file-upload"
                 class="sr-only"
                 @change="handleFileChange"
-                rules="required"
+                accept="image/*"
                 name="image"
               />
 
@@ -430,8 +430,12 @@
           @click="validate"
           :loading="loading"
         >
-          {{ $t("home.launch_campaign") }}</v-btn
-        >
+          {{
+            props.initData
+              ? $t("home.edit_campaign")
+              : $t("home.launch_campaign")
+          }}
+        </v-btn>
       </Form>
     </div>
   </div>
@@ -445,17 +449,11 @@ import { useStartCampaign } from "../typescript/start-campaign";
 import Swal from "sweetalert2";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { api } from "~/helpers/axios";
+
+const { t } = useI18n();
 const date = ref(new Date());
 const { selectedCurrency } = useCurrencyStore();
-const state = [
-  "pending",
-  "published",
-  "paused",
-  "ended",
-  "completed",
-  "cancelled",
-  "rejected",
-];
+const state = ["published", "paused"];
 
 const props = defineProps(["initData"]);
 const loading = ref(false);
@@ -493,6 +491,7 @@ const submit = async (values) => {
     Swal.fire({
       title: res.data?.message,
       icon: "success",
+      confirmButtonText: t("home.ok"),
     });
   } catch (err) {
     console.error(err);
@@ -504,6 +503,7 @@ const submit = async (values) => {
         .join(" "),
 
       icon: "error",
+      confirmButtonText: t("home.ok"),
     });
   } finally {
     loading.value = false;
@@ -511,7 +511,6 @@ const submit = async (values) => {
 };
 
 onMounted(() => {
-  console.log(props.initData);
   if (props.initData) {
     today.value = new Date(props.initData.start_at);
     endDate.value = new Date(props.initData.end_at);

@@ -14,8 +14,6 @@ export const usePublicCmapaigns = () => {
     { watch: [locale] }
   );
 
-  //console.log(publicCampaigns)
-
   return {
     publicCampaigns,
     publicCampaigns_error,

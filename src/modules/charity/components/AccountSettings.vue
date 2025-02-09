@@ -4,9 +4,11 @@
       <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.profile")
       }}</v-tab>
-      <!-- <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
-        $t("dashboard.notif")
-      }}</v-tab> -->
+      <!--
+       <v-tab value="2" :ripple="false" style="text-transform: capitalize">
+        {{ $t("dashboard.notif") }} 
+      </v-tab> 
+      -->
       <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.privacy_security")
       }}</v-tab>
@@ -20,9 +22,94 @@
           </h2>
 
           <div class="update-form mt-5">
-            <form @submit.prevent="onSubmit">
+            <pre class="text-left" :style="{ direction: 'ltr' }">
+              <!-- {{ defaultValues }} -->
+            </pre>
+
+            <Form
+              @submit="onSubmit"
+              v-slot="{ validate }"
+              :initial-values="defaultValues"
+            >
               <!-- name -->
-              <div>
+
+              <div class="mt-5">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
+                  <label for="">{{ $t("dashboard.charity_name") }}</label>
+
+                  <div class="lang-switch flex items-center border-b">
+                    <div
+                      class="px-3 py-1 cursor-pointer"
+                      @click="toggle('charity_name')"
+                      :class="{
+                        'bg-[#28A745] text-white':
+                          switcher.charity_name == 'en',
+                      }"
+                    >
+                      {{ $t("home.english") }}
+                    </div>
+                    <div
+                      class="px-3 py-1 cursor-pointer"
+                      @click="switchShort_desc"
+                      :class="{
+                        'bg-[#28A745] text-white':
+                          switcher.charity_name == 'ar',
+                      }"
+                    >
+                      العربيه
+                    </div>
+                  </div>
+                </div>
+
+                <div class="inputs" v-if="user.user_type == 'charity'">
+                  <div class="relative" v-show="switcher.charity_name == 'ar'">
+                    <div
+                      class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
+                    >
+                      <img
+                        src="../../../assets/images/campaign/edit.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      type="text"
+                      name="charity_name:ar"
+                      rules="required"
+                      :placeholder="$t('dashboard.charity_name')"
+                      class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    />
+
+                    <ErrorMessage name="charity_name:ar" />
+                  </div>
+
+                  <div class="relative" v-show="switcher.charity_name == 'en'">
+                    <div
+                      class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
+                    >
+                      <img
+                        src="../../../assets/images/campaign/edit.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      type="text"
+                      name="charity_name:en"
+                      rules="required"
+                      :placeholder="$t('dashboard.charity_name')"
+                      class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    />
+
+                    <ErrorMessage name="charity_name_en" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- test -->
+              <div v-if="false">
                 <div class="relative">
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
@@ -37,7 +124,6 @@
                     id="updated_name"
                     :placeholder="$t('dashboard.update_name')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                    v-model="personalForm.last_name"
                   />
                 </div>
 
@@ -48,7 +134,7 @@
               </div>
 
               <!-- email -->
-              <div class="mt-4">
+              <div class="mt-4" v-if="false">
                 <div class="relative">
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
@@ -77,7 +163,7 @@
               </div>
 
               <!-- phone number -->
-              <div class="mt-4">
+              <div class="mt-4" v-if="false">
                 <div class="relative">
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
@@ -104,7 +190,7 @@
                   class="text-sm text-red-500"
                 />
               </div>
-              <div class="mt-4">
+              <div class="mt-4" v-if="false">
                 <div class="relative">
                   <div class="flex items-center gap-3 px-3 mb-3">
                     <v-icon icon="$upload" />
@@ -140,6 +226,7 @@
                   size="large"
                   color="primary"
                   :loading="personalForm.loading"
+                  @click="validate"
                 >
                   {{ $t("dashboard.update_account") }}
                 </v-btn>
@@ -154,7 +241,7 @@
                   {{ $t("dashboard.discard_changes") }}
                 </v-btn>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
       </v-tabs-window-item>
@@ -437,11 +524,14 @@
 <script setup>
 import Swal from "sweetalert2";
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { useAuth } from "~/modules/auth/services/auth";
 import { useProfile } from "~/modules/auth/services/profile";
-const { t } = useI18n();
 
+const { t } = useI18n();
+const { user } = useAuth();
 const { update, changePassword } = useProfile();
 
+// data
 const model1 = ref(true);
 const model2 = ref(true);
 const model3 = ref(true);
@@ -452,7 +542,42 @@ const push_notif = ref(true);
 const show1 = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);
+const tab = ref(null);
 const files = ref([]);
+
+const switcher = reactive({ charity_name: "ar" });
+
+const toggle = (key) => {
+  switcher[key] = switcher[key] == "en" ? "ar" : "en";
+};
+
+const defaultValues = computed(() => {
+  const enData = user.value.charity_name_translations.find(
+    (i) => i.locale == "en"
+  );
+  const arData = user.value.charity_name_translations.find(
+    (i) => i.locale == "ar"
+  );
+
+  // {a: 1}  =>  {"a:ar" : 1}
+  const transformObj = (obj) => {
+    const transformed = {};
+    for (const key in obj) {
+      transformed[`${key}:${obj.locale}`] = obj[key];
+    }
+    return transformed;
+  };
+
+  const payload = {
+    ...user.value,
+
+    ...transformObj(arData),
+    ...transformObj(enData),
+
+    country_id: user.value.country.id,
+  };
+  return payload;
+});
 
 const personalForm = reactive({
   last_name: "",
@@ -467,16 +592,16 @@ const passwordForm = reactive({
   loading: false,
 });
 
-const onSubmit = async () => {
+const onSubmit = async (payload) => {
   try {
     personalForm.loading = true;
-    const res = await update(personalForm, toRaw(files.value));
+    console.log(payload);
+    // const res = await update(payload, toRaw(files.value));
 
     Swal.fire({
       icon: "success",
-
-      title: "Good job!",
-      text: "You clicked the button!",
+      title: t("dashboard.save"),
+      confirmButtonText: t("home.ok"),
     });
   } catch (err) {
     console.error(err);
@@ -487,12 +612,12 @@ const onSubmit = async () => {
         .map((e) => `<li class="text-start">${e}</li>`)
         .join(" "),
       icon: "error",
+      confirmButtonText: t("home.ok"),
     });
   } finally {
     personalForm.loading = false;
   }
 };
-const tab = ref(null);
 
 const showCurrentPassword = () => {
   show3.value = !show3.value;
@@ -513,6 +638,7 @@ const onSubmit2 = async () => {
 
     Swal.fire({
       icon: "success",
+      confirmButtonText: t("home.ok"),
 
       text: t("auth.password_success"),
     });
@@ -520,6 +646,7 @@ const onSubmit2 = async () => {
     console.error(err);
     Swal.fire({
       icon: "error",
+      confirmButtonText: t("home.ok"),
 
       title: err.response?.data?.message || err.message,
       html: Object.values(err.response?.data?.result?.errors)
@@ -532,3 +659,9 @@ const onSubmit2 = async () => {
   }
 };
 </script>
+
+<style scoped>
+a {
+  @apply text-sm text-red-500;
+}
+</style>
