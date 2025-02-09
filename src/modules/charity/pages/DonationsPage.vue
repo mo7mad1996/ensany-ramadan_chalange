@@ -53,9 +53,13 @@
           </template>
           <template v-slot:item.campaign="{ item }">
             <nuxt-link
-              :to="{ name: 'view-campaign', prams: item.campaign.id || '' }"
+              className="text-blue-500 underline"
+              :to="{
+                name: 'view-campaign',
+                params: { id: item.campaign?.id },
+              }"
             >
-              {{ item.campaign?.name || " " }}
+              {{ item.campaign?.name }}
             </nuxt-link>
           </template>
         </v-data-table>
