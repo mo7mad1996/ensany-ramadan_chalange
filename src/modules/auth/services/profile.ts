@@ -12,17 +12,14 @@ export const useProfile = () => {
         if (user.value[key]) formData.append(key, user.value[key]);
       });
 
-      // const name_translations = user.value.charity_name_translations;
-      // console.log(name_translations.find((t: any) => t.locale === "ar"));
+      const translation = user.value.charity_name_translations;
+
+      const arTranslation = translation.find((i: any) => i.locale == "ar");
+      const enTranslation = translation.find((i: any) => i.locale == "en");
+
       formData.append("country_id", user.value.country.id);
-      // formData.append(
-      //   "charity_name:ar",
-      //   name_translations.find((t: any) => t.locale === "ar")?.charity_name
-      // );
-      // formData.append(
-      //   "charity_name:en",
-      //   name_translations.find((t: any) => t.locale === "en")?.charity_name
-      // );
+      formData.append("charity_name:ar", arTranslation.charity_name);
+      formData.append("charity_name:en", enTranslation.charity_name);
 
       files.forEach((file) => {
         formData.append("file[]", file, file.name);
