@@ -24,7 +24,6 @@ export const useDonorDonationes = () => {
         .then((response) => {
           const { data, meta } = response.data.result;
 
-
           return { data, meta };
         }),
     { watch: [locale] }

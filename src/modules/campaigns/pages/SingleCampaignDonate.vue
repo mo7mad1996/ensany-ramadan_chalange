@@ -18,19 +18,21 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useCurrencyStore } from "../store/currancy";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
-import { useRoute } from "vue-router";
 const route = useRoute();
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-
 const { locale } = useI18n();
+const { viewCampaign, status, similarCampaigns } = useViewCampaign(route.params.id);
 
-const { viewCampaign, status, similarCampaigns } = useViewCampaign(
-  route.params.id
-);
+watchEffect(() => {
+  if (status.value == "error") {
+    console.log("Campaign not found, redirecting...");
+    navigateTo(`/campaigns`);
+  }
+});
 
 useSeoMeta({
   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
@@ -42,6 +44,7 @@ useSeoMeta({
 });
 
 watch(locale, (newLocale) => {
+  c;
   const isArabic = newLocale === "ar";
 
   useSeoMeta({

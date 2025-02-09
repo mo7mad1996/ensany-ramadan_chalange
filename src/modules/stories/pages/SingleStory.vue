@@ -1,14 +1,23 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("story.stories") }} </template>
+      <template #first_page> 
+        <NuxtLink to="/">
+          {{ $t("global.home") }} 
+        </NuxtLink>
+      </template>
+      <template #second_page> 
+      <NuxtLink to="/stories">
+          {{ $t("story.stories") }} 
+        </NuxtLink>
+      </template>
     </BreadCrumb>
 
     <div class="content flex justify-center">
       <div class="w-[792px]">
         <div class="video">
           <img
+              v-if="status == 'success'"
             class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
             :src="singleStory?.image"
 
@@ -53,17 +62,17 @@
       </div>
     </div>
 
-    <StorySimilarStories />
+    <StorySimilarStories :similarStories="singleStory?.similar_stories" />
   </Container>
 </template>
 
 <script setup lang="ts">
-import { reFormat2 } from "~/helpers/format-date";
-import Container from "~/global/Container.vue";
+import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { reFormat2 } from "~/helpers/format-date";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useSingleStory } from "../services/single-story";
-import { useRoute } from "vue-router";
 
 const route = useRoute();
 const { locale } = useI18n();
@@ -77,6 +86,12 @@ useSeoMeta({
   ogDescription: "This is my amazing site, let me tell you all about it.",
   ogImage: "https://example.com/image.png",
   twitterCard: "summary_large_image",
+});
+
+watchEffect(() => {
+    if(status.value == 'error'){
+    navigateTo('/stories');
+  }
 });
 
 watch(locale, (newLocale) => {

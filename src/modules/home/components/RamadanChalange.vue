@@ -38,6 +38,7 @@
             :shadow="true"
             :donatebtn="true"
             :route="`/campaigns/donate/${campaign.id}`"
+            :id="campaign.id"
             class="h-full"
           >
             <template #image>

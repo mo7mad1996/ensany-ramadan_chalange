@@ -91,6 +91,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    'nuxt-lazytube',
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error

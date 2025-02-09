@@ -11,8 +11,14 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in similarCampaigns" :key="index">
+        <Slide
+          v-for="(campaign, index) in similarCampaigns"
+          :key="campaign?.id"
+        >
+          <!-- Use unique `campaign.id` as the key -->
           <Card
+            v-if="similarCampaigns.length > 0"
+            :id="campaign?.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
@@ -20,7 +26,7 @@
           >
             <template #image>
               <img
-                @click="$router.push(`/campaigns/${campaign.id}`)"
+                @click="navigateTo(`/campaigns/${campaign?.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
                 alt="....."
@@ -34,8 +40,8 @@
             <template #desc>
               <span
                 v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-              ></span
-            ></template>
+              ></span>
+            </template>
 
             <template #subscribers>{{ campaign?.total_donors }}</template>
 
@@ -54,9 +60,9 @@
 </template>
 
 <script setup>
-import Container from "../../../global/Container.vue";
-import Card from "../../../global/Card.vue";
 import { stripHtmlTags } from "~/helpers/string";
+import Card from "../../../global/Card.vue";
+import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();

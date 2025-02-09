@@ -1,7 +1,7 @@
 import { api } from "~/helpers/axios";
 
-export const useCampaigns = () => {
-  const currentPage = ref(1);
+export const useCampaigns = (page: BigInteger, currentPageValue: BigInteger) => {
+  const currentPage = ref(page > currentPageValue ? 1 : page);
   const { locale } = useI18n();
   const {
     data: campaignsData,

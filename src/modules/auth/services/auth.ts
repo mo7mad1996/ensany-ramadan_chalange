@@ -21,6 +21,7 @@ export function useAuth() {
   const login = async (credentials: User) => {
     const response = await handleApiCall(() => api.post("/login", credentials));
 
+    console.log(response);
     if (response) {
       const { token: tokenValue, user: userValue } = response.data.result;
       setToken(encryptData(tokenValue));
@@ -29,7 +30,6 @@ export function useAuth() {
       if (userValue?.user_type === "charity") {
         navigateTo("/dashboard/charity");
       } else {
-        // here will be the dooner link
         navigateTo("/dashboard/donor");
       }
     }

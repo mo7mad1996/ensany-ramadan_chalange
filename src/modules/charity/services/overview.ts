@@ -23,7 +23,7 @@ export const useCharityOverview = () => {
         })
         .then((response) => {
           const data = response.data.result;
-          console.log(response.data.result);
+          //console.log(response.data.result);
 
           return { data };
         }),

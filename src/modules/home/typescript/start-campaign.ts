@@ -1,14 +1,14 @@
 import dayjs from "dayjs";
+import { api } from "~/helpers/axios";
 
 export const useStartCampaign = () => {
-  const today = ref<string>(
-    new Date().toISOString().replace("T", " ").split(".")[0]
-  ); //24 houer system
+  const today = ref<string>(new Date()); //24 houer system
   const endDate = ref<string>("");
   const availableDays = ref<string | number>("");
   const nameSwitch = ref<string>("ar");
   const goalSwitch = ref<string>("ar");
   const contentSwitch = ref<string>("ar");
+  const short_descSwitch = ref<string>("ar");
   const selectedFileName = ref<string>("");
   const selected = ref<string>("");
 
@@ -30,6 +30,9 @@ export const useStartCampaign = () => {
   const switchContent = (): void => {
     contentSwitch.value = contentSwitch.value === "ar" ? "en" : "ar";
   };
+  const switchShort_desc = (): void => {
+    short_descSwitch.value = short_descSwitch.value === "ar" ? "en" : "ar";
+  };
 
   const handleFileChange = (event: Event): void => {
     const input = event.target as HTMLInputElement;
@@ -38,8 +41,30 @@ export const useStartCampaign = () => {
   };
 
   // Start campaign function (values is expected to be of a specific type, can be adjusted later)
-  const startCmpaign = (values: Record<string, any>): void => {
-    console.log("form submitted", values);
+  const startCmpaign = (payload: Record<string, any>) => {
+    const formData = new FormData();
+
+    for (const key in payload) {
+      formData.append(key, payload[key]);
+    }
+    return api.post(`/charity/campaigns`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  };
+
+  const updateCmpaign = (id: string, payload: Record<string, any>) => {
+    const formData = new FormData();
+
+    for (const key in payload) {
+      formData.append(key, payload[key]);
+    }
+    return api.post(`/charity/campaigns/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   // Watcher to calculate end_date automatically when availableDays is selected
@@ -80,6 +105,8 @@ export const useStartCampaign = () => {
     nameSwitch,
     goalSwitch,
     contentSwitch,
+    short_descSwitch,
+    switchShort_desc,
     selectedFileName,
     selected,
     switchName,
@@ -87,6 +114,7 @@ export const useStartCampaign = () => {
     switchContent,
     handleFileChange,
     startCmpaign,
+    updateCmpaign,
     formattedDate,
   };
 };

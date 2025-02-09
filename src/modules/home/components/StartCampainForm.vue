@@ -3,7 +3,7 @@
     <div
       class="card xl:w-[795px] lg:w-[795px] md:w-[96%] w-[96%] rounded-xl shadow-md p-sm bg-white"
     >
-      <Form @sbmit="startCmpaign">
+      <Form @submit="submit" v-slot="{ validate }" :initial-values="data">
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -37,11 +37,12 @@
 
               <Field
                 type="text"
-                name="name_ar"
+                name="name:ar"
                 rules="required"
                 :placeholder="$t('home.name_ar')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
+              <ErrorMessage name="name:ar" />
             </div>
 
             <div class="relative" v-show="nameSwitch === 'en'">
@@ -53,11 +54,12 @@
 
               <Field
                 type="text"
-                name="name_en"
+                name="name:en"
                 rules="required"
                 :placeholder="$t('home.name_en')"
                 class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
+              <ErrorMessage name="name:en" />
             </div>
           </div>
         </div>
@@ -96,11 +98,12 @@
               <Field
                 as="textarea"
                 type="text"
-                name="content_ar"
+                name="content:ar"
                 rules="required"
                 :placeholder="$t('home.content_ar')"
                 class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
+              <ErrorMessage name="content:ar" />
             </div>
 
             <div class="relative" v-show="contentSwitch === 'en'">
@@ -113,11 +116,75 @@
               <Field
                 as="textarea"
                 type="text"
-                name="content_en"
+                name="content:en"
                 rules="required"
                 :placeholder="$t('home.content_en')"
                 class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
+              <ErrorMessage name="content:en" />
+            </div>
+          </div>
+        </div>
+
+        <!-- campain short_desc -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("home.short_desc") }}</label>
+
+            <div class="lang-switch flex items-center border-b">
+              <div
+                class="px-3 py-1 cursor-pointer"
+                @click="switchShort_desc"
+                :class="{ 'bg-[#28A745] text-white': short_descSwitch == 'en' }"
+              >
+                {{ $t("home.english") }}
+              </div>
+              <div
+                class="px-3 py-1 cursor-pointer"
+                @click="switchShort_desc"
+                :class="{ 'bg-[#28A745] text-white': short_descSwitch == 'ar' }"
+              >
+                العربيه
+              </div>
+            </div>
+          </div>
+
+          <div class="inputs">
+            <div class="relative" v-show="short_descSwitch === 'ar'">
+              <div
+                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
+              >
+                <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              </div>
+
+              <Field
+                as="textarea"
+                type="text"
+                name="short_desc:ar"
+                rules="required"
+                :placeholder="$t('home.short_desc_ar')"
+                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+              <ErrorMessage name="short_desc:ar" />
+            </div>
+
+            <div class="relative" v-show="short_descSwitch === 'en'">
+              <div
+                class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
+              >
+                <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              </div>
+
+              <Field
+                as="textarea"
+                type="text"
+                name="short_desc:en"
+                rules="required"
+                :placeholder="$t('home.short_desc_en')"
+                class="block w-full ltr:pl-5 rtl:pr-5 pt-3 pb-lg outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+
+              <ErrorMessage name="short_desc:en" />
             </div>
           </div>
         </div>
@@ -136,6 +203,7 @@
                 v-model="today"
                 class="custom-datepicker"
                 date-picker
+                :enable-time-picker="true"
               />
             </div>
           </div>
@@ -150,6 +218,7 @@
               class="custom-datepicker"
               placeholder="MM/DD/YY"
               date-picker
+              :enable-time-picker="true"
             />
           </div>
 
@@ -167,12 +236,13 @@
 
               <Field
                 type="text"
-                name="days"
+                name="total_days"
                 rules="required"
                 v-model="availableDays"
                 :placeholder="$t('home.avilable_days')"
                 class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
+              <ErrorMessage name="total_days" />
             </div>
           </div>
         </div>
@@ -195,11 +265,13 @@
                 {{ $t("home.choose_file") }}
               </label>
 
-              <input
-                id="file-upload"
+              <Field
                 type="file"
+                id="file-upload"
                 class="sr-only"
                 @change="handleFileChange"
+                rules="required"
+                name="image"
               />
 
               <span
@@ -208,6 +280,7 @@
                 {{ selectedFileName || $t("home.no_file") }}
               </span>
             </div>
+            <ErrorMessage name="image" />
           </div>
 
           <!-- video url -->
@@ -219,11 +292,12 @@
 
             <Field
               type="text"
-              name="url"
+              name="video_url"
               rules="required"
               :placeholder="$t('home.video_url')"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
+            <ErrorMessage name="video_url" />
           </div>
         </div>
 
@@ -238,11 +312,12 @@
 
             <Field
               type="text"
-              name="amount"
+              name="price_target"
               rules="required"
               :placeholder="$t('home.amount_placeholder')"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
+            <ErrorMessage name="price_target" />
           </div>
 
           <!-- <div>
@@ -269,6 +344,56 @@
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/status.svg" alt="" />
+              <span class="text-2xl"> {{ $t("home.currency") }}</span>
+            </div>
+
+            <Field
+              as="select"
+              name="currency_id"
+              rules="required"
+              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            >
+              <option selected disabled value="">
+                {{ $t("home.currency_placeholder") }}
+              </option>
+
+              <option v-for="c in currencies" :key="c.id" :value="c.id">
+                {{ c.currency_name }}
+              </option>
+            </Field>
+            <ErrorMessage name="currency_id" />
+          </div>
+        </div>
+
+        <div
+          class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5"
+        >
+          <div>
+            <div class="title flex items-center gap-x-2 mb-3">
+              <img src="../../../assets/images/campaign/status.svg" alt="" />
+              <span class="text-2xl"> {{ $t("home.category") }}</span>
+            </div>
+
+            <Field
+              as="select"
+              name="category_id"
+              rules="required"
+              class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+            >
+              <option selected disabled value="">
+                {{ $t("home.category_placeholder") }}
+              </option>
+
+              <option v-for="c in categories" :key="c.id" :value="c.id">
+                {{ c.name }}
+              </option>
+            </Field>
+            <ErrorMessage name="category_id" />
+          </div>
+
+          <div>
+            <div class="title flex items-center gap-x-2 mb-3">
+              <img src="../../../assets/images/campaign/status.svg" alt="" />
               <span class="text-2xl"> {{ $t("home.status") }}</span>
             </div>
 
@@ -281,9 +406,12 @@
               <option selected disabled value="">
                 {{ $t("home.status_placeholder") }}
               </option>
-              <option value="1">{{ $t("home.active") }}</option>
-              <option value="2">{{ $t("home.deactive") }}</option>
+
+              <option v-for="s in state" :key="s" :value="s">
+                {{ $t("home." + s) }}
+              </option>
             </Field>
+            <ErrorMessage name="status" />
           </div>
         </div>
 
@@ -295,6 +423,8 @@
           variant="flat"
           size="large"
           color="primary"
+          @click="validate"
+          :loading="loading"
         >
           {{ $t("home.launch_campaign") }}</v-btn
         >
@@ -304,10 +434,100 @@
 </template>
 
 <script setup>
-import { Form, Field } from "vee-validate";
+import { Form, Field, ErrorMessage } from "vee-validate";
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useStartCampaign } from "../typescript/start-campaign";
+import Swal from "sweetalert2";
+import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
+import { api } from "~/helpers/axios";
+const date = ref(new Date());
+const { selectedCurrency } = useCurrencyStore();
+const state = [
+  "pending",
+  "published",
+  "paused",
+  "ended",
+  "completed",
+  "cancelled",
+  "rejected",
+];
+
+const props = defineProps(["initData"]);
+const loading = ref(false);
+const categories = ref([]);
+const currencies = ref([]);
+
+const data = ref(
+  props.initData
+    ? {
+        ...props.initData,
+        category_id: props.initData.category.id,
+        currency_id: props.initData.currency.id,
+        sort: undefined,
+      }
+    : undefined
+);
+
+const formatDate = (date) => {
+  return new Date(date).toISOString().replace("T", " ").split(".")[0];
+};
+
+const getCategories = async () => {
+  api.get("/categories").then((res) => {
+    categories.value = res.data.result.data;
+  });
+};
+const getCurrencies = async () => {
+  api.get("/currencies").then((res) => {
+    currencies.value = res.data.result;
+  });
+};
+
+const submit = async (values) => {
+  try {
+    loading.value = true;
+    const payload = {
+      ...values,
+      start_at: formatDate(today.value),
+      end_at: formatDate(endDate.value),
+      currency_id: selectedCurrency,
+    };
+    const res = await (props.initData
+      ? updateCmpaign(props.initData.id, payload)
+      : startCmpaign(payload));
+
+    console.log(res);
+    Swal.fire({
+      title: res.data?.message,
+      icon: "success",
+    });
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+
+      icon: "error",
+    });
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  console.log(props.initData);
+  if (props.initData) {
+    today.value = new Date(props.initData.start_at);
+    endDate.value = new Date(props.initData.end_at);
+  }
+
+  getCategories();
+  getCurrencies();
+});
 
 const {
   today,
@@ -315,12 +535,21 @@ const {
   availableDays,
   nameSwitch,
   contentSwitch,
+  short_descSwitch,
   selectedFileName,
   switchName,
   switchContent,
+  switchShort_desc,
   handleFileChange,
   startCmpaign,
+  updateCmpaign,
   formattedDate,
   handleDateUpdate,
 } = useStartCampaign();
 </script>
+
+<style scoped>
+[role="alert"] {
+  @apply text-red-600 text-sm;
+}
+</style>

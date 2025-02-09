@@ -4,7 +4,7 @@
       {{ $t("auth.login") }}
     </h2>
 
-    <Form v-slot="{ meta }" @submit="onSubmit">
+    <form @submit.prevent="onSubmit">
       <!--email Input -->
       <div>
         <div class="relative">
@@ -84,7 +84,7 @@
       >
         {{ $t("auth.login") }}
       </v-btn>
-    </Form>
+    </form>
 
     <!-- Forgot Password -->
     <nuxt-link

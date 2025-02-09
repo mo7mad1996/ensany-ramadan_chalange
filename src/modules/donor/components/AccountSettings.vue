@@ -28,14 +28,8 @@
 </template>
 
 <script setup>
-
-
-
 const onSubmit = () => {
-  console.log("form submitted");
+  //console.log("form submitted");
 };
 const tab = ref(null);
-
-
-
 </script>

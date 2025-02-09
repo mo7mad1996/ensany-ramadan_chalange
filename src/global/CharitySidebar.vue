@@ -51,6 +51,7 @@
         </nuxt-link>
       </li>
 
+      <!-- 
       <li class="cursor-pointer mb-3">
         <nuxt-link
           to="/dashboard/charity/notification"
@@ -63,7 +64,8 @@
           />
           <span>{{ $t("dashboard.notif") }}</span>
         </nuxt-link>
-      </li>
+      </li> 
+      -->
 
       <li class="cursor-pointer mb-10">
         <nuxt-link

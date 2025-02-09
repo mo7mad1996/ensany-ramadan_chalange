@@ -1,6 +1,8 @@
 {
   "campaigns": "Campaigns",
+  "stories": "Stories",
   "search": "Search",
+  "other_links": "More",
   "about_us": "About Us",
   "cart": "Cart",
   "blogs": "Blogs",
@@ -9,6 +11,7 @@
   "donation": "Donate",
   "raised_of": "raised of",
   "donate_now": "Donate Now",
+  "add_to_cart": "Add To Cart",
   "footer": "Every act of kindness makes a difference.",
   "footer_faqs": "FAQs",
   "footer_terms": "Terms and Conditions",
@@ -19,7 +22,6 @@
   "home": "Home",
   "dashboard": "Dashboard",
   "logout": "Log Out",
-
   "donation_amount": "Donation amount",
   "custom_amount": "Enter Custom Amount",
   "custom": "Custom",
@@ -39,24 +41,25 @@
   "transparent": "100% transparent",
   "charity": "Verified charity",
   "dolar": "$",
-
   "make_donation": "Make donation to someone you love",
   "some_name": "Enter someone's name",
   "gift_email": "Gifted mail",
   "some_number": "Enter someone's phone number",
   "add_comment": "Add a comment on your donation",
+  "love_comment": "Write a dedication for someone you love",
   "donation_type": "Donation Type",
   "monthly": "Monthly",
   "weekly": "Weekly",
   "dialy": "Dialy",
   "onetime": "One time",
   "name_hidden": "keep your name hidden",
-
   "error-msg": "We can't find the page you're looking for",
   "error_desc": "The page might have moved, been deleted, or never existed. Don't worry though - we've got some helpful places to go from here.",
   "return_home": "Return Home",
   "Dashboard": "Dashboard",
   "doner": "Donor",
   "charity2": "Charity",
-  "signup": "Register"
+  "signup": "Register",
+  "similar_campaigns": "Similar Campaigns",
+  "write_gift": "Write a gift message"
 }

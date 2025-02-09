@@ -9,7 +9,7 @@
       {{ $t("campaigns.all_campaigns") }}
     </h1>
 
-    <SkeletonLoader :loading="status" />
+    <SkeletonLoader :loading="isLoading ? 'true' : 'false'" />
 
     <div
       v-if="status == 'success'"
@@ -17,6 +17,7 @@
     >
       <Card
         v-for="(campaign, index) in campaigns"
+        :id="campaign?.id"
         :key="index"
         :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"
@@ -38,9 +39,7 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span
-            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-          ></span>
+          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -55,7 +54,7 @@
       <v-pagination
         v-model="currentPage"
         :length="campaignsMeta.last_page"
-        @input="fetchCampaigns"
+        @input="handlePageChange"
         :total-visible="5"
       ></v-pagination>
     </div>
@@ -63,25 +62,57 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
-import Card from "~/global/Card.vue";
+import { onMounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Card from "~/global/Card.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
-import { useCampaigns } from "../services/campaigns";
 import { stripHtmlTags } from "~/helpers/string";
+import { useCampaigns } from "../services/campaigns";
+
 const { locale } = useI18n();
 const isLoading = ref(true);
+const router = useRouter();
+const route = useRoute();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } =
-  useCampaigns();
 
-const fetchCampaigns = () => {
-  refresh();
+const currentPage = ref(Number(route.query.page) || 1);
+const lastPage = ref(1);
+const { campaigns, campaignsMeta, refresh, status } = useCampaigns(
+  currentPage.value,
+  lastPage.value
+);
+
+const fetchCampaigns = async () => {
+  isLoading.value = true;
+  if (currentPage.value > campaignsMeta.value.last_page) {
+    lastPage.value = campaignsMeta.value.last_page;
+    currentPage.value = 1;
+    router.push({ query: { page: 1 } });
+  }
+  // console.log(currentPage.value, campaignsMeta.value.last_page);
+  await refresh({ page: currentPage.value });
+};
+
+const handlePageChange = (newPage) => {
+  if (newPage > campaignsMeta.value.last_page) {
+    lastPage.value = campaignsMeta.value.last_page;
+    currentPage.value = 1;
+    router.push({ query: { page: 1 } });
+  } else {
+    currentPage.value = newPage;
+    router.push({ query: { page: newPage } });
+  }
 };
 
 watch(currentPage, (newPage) => {
+  fetchCampaigns();
+});
+
+onMounted(() => {
   fetchCampaigns();
 });
 
@@ -101,7 +132,6 @@ watch(locale, (newLocale) => {
   });
 });
 
-// only simulation for test skeleton loader
 setTimeout(() => {
   isLoading.value = false;
 }, 3000);

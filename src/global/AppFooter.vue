@@ -9,19 +9,28 @@
 
         <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
           <div
-            class="terms pb-[.5rem] flex rtl:flex-row-reverse justify-center items-center lg:gap-x-[2rem] xl:gap-x-[2rem] md:gap-x-[8rem] gap-x-[8rem]"
+            class="terms pb-[.5rem] flex flex-col sm:flex-row justify-center items-center lg:gap-x-[2rem] xl:gap-x-[2rem] md:gap-x-[8rem] gap-x-[8rem]"
           >
-            <span
+            <!-- <span
               class="cursor-pointer hover:text-primary"
               @click="$router.push('/terms-conditions')"
               >{{ $t("global.footer_terms") }}</span
-            >
+            > -->
 
-            <span
-              @click="$router.push('/faqs')"
+            <p @click="$router.push('/')" class="cursor-pointer hover:text-primary">
+              {{ $t("global.home") }}
+            </p>
+            <p @click="$router.push('/faqs')" class="cursor-pointer hover:text-primary">
+              {{ $t("global.footer_faqs") }}
+            </p>
+
+            <p
+              v-for="(page, index) in pages"
+              @click="$router.push(`/page/${page?.id}`)"
               class="cursor-pointer hover:text-primary"
-              >{{ $t("global.footer_faqs") }}</span
             >
+              {{ page?.title }}
+            </p>
           </div>
         </div>
 
@@ -70,9 +79,11 @@
 </template>
 
 <script setup>
-import Container from "./Container.vue";
 import { useFooter } from "~/modules/home/services/footer";
+import { usePages } from "~/modules/home/services/pages";
+import Container from "./Container.vue";
 const { footer, footer_error } = useFooter();
+const { pages, pages_error } = usePages();
 </script>
 
 <style scoped>

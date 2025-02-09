@@ -9,7 +9,12 @@ const dashbaordRoutes = [
   {
     name: "charity-campaigns",
     path: "/dashboard/charity/campaigns",
-    file: resolve(__dirname, "../pages/CampaignsPage.vue"),
+    file: resolve(__dirname, "../pages/Campaigns/Index.vue"),
+  },
+  {
+    name: "edit-campaign",
+    path: "/dashboard/charity/campaigns/:id/edit",
+    file: resolve(__dirname, "../pages/Campaigns/Edit.vue"),
   },
   {
     name: "charity-donations",

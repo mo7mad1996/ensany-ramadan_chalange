@@ -4,9 +4,9 @@
       <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.profile")
       }}</v-tab>
-      <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
+      <!-- <v-tab value="2" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.notif")
-      }}</v-tab>
+      }}</v-tab> -->
       <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
         $t("dashboard.privacy_security")
       }}</v-tab>
@@ -20,7 +20,7 @@
           </h2>
 
           <div class="update-form mt-5">
-            <Form @submit="onSubmit">
+            <form @submit.prevent="onSubmit">
               <!-- name -->
               <div>
                 <div class="relative">
@@ -37,6 +37,7 @@
                     id="updated_name"
                     :placeholder="$t('dashboard.update_name')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.last_name"
                   />
                 </div>
 
@@ -65,6 +66,7 @@
                     id="updated_email"
                     :placeholder="$t('dashboard.update_email')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.email"
                   />
                 </div>
 
@@ -93,6 +95,31 @@
                     id="updated_phone"
                     :placeholder="$t('dashboard.update_phone')"
                     class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                    v-model="personalForm.mobile"
+                  />
+                </div>
+
+                <ErrorMessage
+                  name="updated_phone"
+                  class="text-sm text-red-500"
+                />
+              </div>
+              <div class="mt-4">
+                <div class="relative">
+                  <div class="flex items-center gap-3 px-3 mb-3">
+                    <v-icon icon="$upload" />
+                    <h2>
+                      {{ $t("dashboard.commercial-register") }}
+                    </h2>
+                  </div>
+
+                  <v-file-upload
+                    clearable
+                    multiple
+                    v-model="files"
+                    density="comfortable"
+                    variant="comfortable"
+                    :title="$t('dashboard.drag-text')"
                   />
                 </div>
 
@@ -112,6 +139,7 @@
                   variant="flat"
                   size="large"
                   color="primary"
+                  :loading="personalForm.loading"
                 >
                   {{ $t("dashboard.update_account") }}
                 </v-btn>
@@ -126,11 +154,11 @@
                   {{ $t("dashboard.discard_changes") }}
                 </v-btn>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
       </v-tabs-window-item>
-
+      <!-- 
       <v-tabs-window-item value="2">
         <div class="notif-settings pt-sm">
           <h2 class="text-xl font-semibold">
@@ -141,7 +169,6 @@
           </p>
 
           <div class="options mt-4">
-            <!-- option -->
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-x-3">
@@ -259,10 +286,16 @@
           </div>
         </div>
       </v-tabs-window-item>
+    -->
 
       <v-tabs-window-item value="3">
         <div class="privacy-settings pt-sm">
-          <h2 class="text-xl font-bold">{{ $t("dashboard.privacy_title") }}</h2>
+          <!-- 
+         
+         
+          <h2 class="text-xl font-bold">
+            {{ $t("dashboard.privacy_title") }}
+          </h2>
           <p class="text-sm text-[#969696]">
             {{ $t("dashboard.privacy_desc") }}
           </p>
@@ -279,6 +312,8 @@
             </p>
           </div>
 
+         -->
+
           <!-- change password section -->
           <div class="change-password pt-sm">
             <h2 class="text-xl">{{ $t("dashboard.change_password") }}</h2>
@@ -286,7 +321,7 @@
               {{ $t("dashboard.change_desc") }}
             </p>
 
-            <Form @submit="onSubmit2">
+            <form @submit.prevent="onSubmit2">
               <!-- current password input -->
               <div>
                 <div class="relative mt-4">
@@ -307,6 +342,7 @@
                     autocomplete="current-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.current_password"
                   />
                 </div>
 
@@ -336,6 +372,7 @@
                     autocomplete="new-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.password"
                   />
                 </div>
 
@@ -365,6 +402,7 @@
                     autocomplete="resete-password"
                     class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     required
+                    v-model="passwordForm.password_confirmation"
                   />
                 </div>
 
@@ -383,11 +421,12 @@
                   variant="flat"
                   size="large"
                   color="primary"
+                  :loading="passwordForm.loading"
                 >
                   {{ $t("dashboard.update_password") }}
                 </v-btn>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
       </v-tabs-window-item>
@@ -396,7 +435,12 @@
 </template>
 
 <script setup>
+import Swal from "sweetalert2";
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { useProfile } from "~/modules/auth/services/profile";
+const { t } = useI18n();
+
+const { update, changePassword } = useProfile();
 
 const model1 = ref(true);
 const model2 = ref(true);
@@ -408,9 +452,45 @@ const push_notif = ref(true);
 const show1 = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);
+const files = ref([]);
 
-const onSubmit = () => {
-  console.log("form submitted");
+const personalForm = reactive({
+  last_name: "",
+  email: "",
+  mobile: "",
+  loading: false,
+});
+const passwordForm = reactive({
+  current_password: "",
+  password: "",
+  password_confirmation: "",
+  loading: false,
+});
+
+const onSubmit = async () => {
+  try {
+    personalForm.loading = true;
+    const res = await update(personalForm, toRaw(files.value));
+
+    Swal.fire({
+      icon: "success",
+
+      title: "Good job!",
+      text: "You clicked the button!",
+    });
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.result?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+      icon: "error",
+    });
+  } finally {
+    personalForm.loading = false;
+  }
 };
 const tab = ref(null);
 
@@ -426,7 +506,29 @@ const showConfPassword = () => {
   show2.value = !show2.value;
 };
 
-const onSubmit2 = () => {
-  console.log("form submitted");
+const onSubmit2 = async () => {
+  try {
+    passwordForm.loading = true;
+    const res = await changePassword(passwordForm);
+
+    Swal.fire({
+      icon: "success",
+
+      text: t("auth.password_success"),
+    });
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      icon: "error",
+
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.result?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+    });
+  } finally {
+    passwordForm.loading = false;
+  }
 };
 </script>

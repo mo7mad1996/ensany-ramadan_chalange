@@ -29,11 +29,9 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide
-          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
-          :key="index"
-        >
+        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
           <Card
+            :id="campaign.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
@@ -54,9 +52,7 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span
-                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-              ></span
+              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>
@@ -76,11 +72,11 @@
 </template>
 
 <script setup lang="ts">
-import Container from "../../../global/Container.vue";
+import { stripHtmlTags } from "~/helpers/string";
 import Card from "../../../global/Card.vue";
+import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
-import { stripHtmlTags } from "~/helpers/string";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();
 const { locale } = useI18n();
