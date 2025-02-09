@@ -270,7 +270,7 @@
             </div>
           </div>
           <div v-if="user?.user_type === 'dooner'">
-            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
+            <nuxt-link to="" class="text-black d-flex align-center gap-1">
               <div class="relative">
                 <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
                 <span

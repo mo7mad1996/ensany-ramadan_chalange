@@ -75,5 +75,6 @@
   "ended": "منتهي",
   "completed": "مكتمل",
   "cancelled": "ملغي",
-  "rejected": "مرفوض"
+  "rejected": "مرفوض",
+  "remove": "حذف"
 }

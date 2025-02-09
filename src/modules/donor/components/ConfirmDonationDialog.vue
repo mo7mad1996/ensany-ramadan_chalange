@@ -3,17 +3,17 @@
     <div class="flex justify-center items-center flex-col w-full">
       <img src="../../../assets/images/donor/customdialog.png" alt="custom" />
       <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
-      <v-radio-group v-model="distributionOption" row>
+      <v-radio-group v-model="pay_type" row>
         <v-radio
           :label="$t('donor.pay_full')"
           color="primary"
-          value="equal"
+          value="full"
           class="custom-radio"
         ></v-radio>
         <v-radio
           :label="$t('donor.daily_payment')"
           color="primary"
-          value="custom"
+          value="daily"
           class="custom-radio"
         ></v-radio>
       </v-radio-group>
@@ -39,5 +39,5 @@
   </div>
 </template>
 <script setup>
-const distributionOption = ref("equal");
+const pay_type = ref("full");
 </script>

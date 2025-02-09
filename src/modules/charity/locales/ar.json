@@ -124,5 +124,11 @@
   "success_donations_chart": "التبرعات الناجحة",
   "field_donations_chart": "التبرعات الفاشلة",
   "pending_donations": "التبرعات المعلقة",
-  "active_campaigns": "الحملات النشطة"
+  "active_campaigns": "الحملات النشطة",
+
+  "delete_msg": "هل تريد حذف هذه الحملة؟",
+  "delete": "حذف",
+  "cancel": "إلغاء",
+  "confirm_delete": "تم حذف الحملة بنجاح",
+  "ok": "حسنًا"
 }

@@ -125,5 +125,11 @@
   "success_donations_chart": "Successful Donations",
   "field_donations_chart": "Failed Donations",
   "pending_donations": "Pending Donations",
-  "active_campaigns": "Active Campaigns"
+  "active_campaigns":"Active Campaigns",
+
+  "delete_msg": "Do you want to  delete this campaign?",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "confirm_delete": "campaign deleted successfully",
+  "ok": "Ok"
 }
