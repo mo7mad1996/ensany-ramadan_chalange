@@ -15,6 +15,7 @@
 
       <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
       <nuxt-link to="/stories" class="text-black">{{ $t("global.stories") }}</nuxt-link>
+      <nuxt-link to="/videos" class="text-black">{{ $t("global.videos") }}</nuxt-link>
       <!-- <nuxt-link to="/videos" class="text-black">{{ $t("global.videos") }}</nuxt-link> -->
 
       <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
@@ -146,6 +147,12 @@
               $t("global.stories")
             }}</nuxt-link>
           </li>
+
+          <li>
+            <nuxt-link to="/videos" class="text-black">{{
+              $t("global.videos")
+            }}</nuxt-link>
+          </li>
           <!-- <li>
             <nuxt-link to="/videos" class="text-black">{{
               $t("global.videos")
@@ -263,7 +270,7 @@
             </div>
           </div>
           <div v-if="user?.user_type === 'dooner'">
-            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
+            <nuxt-link to="" class="text-black d-flex align-center gap-1">
               <div class="relative">
                 <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
                 <span

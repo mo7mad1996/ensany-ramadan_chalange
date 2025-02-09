@@ -3,8 +3,7 @@ import { useAuth } from "~/modules/auth/services/auth";
 
 export const useDonerCart = () => {
   const { locale } = useI18n();
-  const { token, user} = useAuth();
-
+  const { token, user } = useAuth();
 
   const {
     data: donorCartData,
@@ -19,14 +18,12 @@ export const useDonerCart = () => {
           Authorization: `Bearer ${token.value}`,
         },
       });
-
       return response.data.result;
     },
     { watch: [locale] }
   );
 
   const donorCart = computed(() => donorCartData.value || "");
-
 
   return {
     donorCart,

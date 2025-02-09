@@ -173,6 +173,7 @@ import { useDonationCartPage } from "../typescript/donation-cart";
 import { useDonerCart } from "../services/donation-cart";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
+import Swal from "sweetalert2";
 
 const { donorCart, refresh } = useDonerCart();
 
@@ -187,6 +188,9 @@ const customAmount = ref("");
 const distributionOption = ref("automatic");
 const donate = ref("");
 const pay_type = ref("full");
+const currenciesData = ref("");
+// debugger
+// console.log(currenciesData);
 
 // Watch for changes in distribution option
 watch(distributionOption, (newOption) => {
@@ -223,11 +227,28 @@ const distributeAmountEqually = () => {
 };
 const removeItem = async (id) => {
   try {
-    await api.post(`/doner/cart/remove/${id}`, {
+    const res = await api.post(`/doner/cart/remove/${id}`, {
       headers: {
         Authorization: `Bearer ${token.value}`,
       },
     });
+    if (res?.data?.message === "Cart Element Not Found") {
+      Swal.fire({
+        icon: "info",
+        // title: "Good job!",
+        text: `${res.data.message}`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        // title: "Good job!",
+        text: `${res.data?.message}`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
     await refresh();
   } catch (error) {
     console.error("Failed to remove item:", error);
@@ -245,6 +266,7 @@ const submitDonation = async () => {
     amount_split_type:
       distributionOption.value === "manual" ? "manual" : "automatic",
     pay_type: pay_type.value === "full" ? "full" : "daily",
+    currency_id: currenciesData.value,
     campaign: donorCart.value.data.map((item) => ({
       id: item.campaign?.id,
       amount: parseFloat(item.amount),
@@ -257,7 +279,14 @@ const submitDonation = async () => {
         Authorization: `Bearer ${token.value}`,
       },
     });
-    alert("Donation submitted successfully!");
+    closeDialog();
+    Swal.fire({
+      icon: "success",
+      title: "Good job!",
+      text: "Donation submitted successfully!",
+      timer: 2000,
+      showConfirmButton: false,
+    });
   } catch (error) {
     console.error("Error submitting donation:", error);
   }
@@ -270,5 +299,10 @@ const openDialog = () => {
 const closeDialog = () => {
   donate.value.close();
 };
+onMounted(() => {
+  currenciesData.value = localStorage.getItem("selectedCurrency")
+    ? localStorage.getItem("selectedCurrency")
+    : "";
+});
 </script>
 <style></style>
