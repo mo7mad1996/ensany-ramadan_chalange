@@ -65,10 +65,13 @@
   "status": "Status",
   "status_placeholder": "(e.g.,Paused)",
   "launch_campaign": "Launch Campaign",
+  "edit_campaign": "Edit campaign ",
+  "ok": "Ok",
   "english": "English",
   "active": "Active",
   "deactive": "Deactive",
 
+  "toast_copy": "User URL copied to clipboard!'",
   "pending": "Pending",
   "published": "Published",
   "paused": "Paused",

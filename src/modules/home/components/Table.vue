@@ -100,7 +100,7 @@ watchEffect(() => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 table {
   border-collapse: separate;
   border-spacing: 0;

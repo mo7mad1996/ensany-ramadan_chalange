@@ -5,15 +5,7 @@
     </h1>
 
     <div class="buttons flex gap-x-3 items-center">
-      <v-btn
-        v-if="isButtons"
-        class="text-capitalize rounded-lg"
-        variant="flat"
-        size="large"
-        color="primary"
-      >
-        <slot name="first_button"></slot>
-      </v-btn>
+      <slot name="first_button"></slot>
 
       <v-btn
         v-if="isButtons"
@@ -21,8 +13,9 @@
         variant="outlined"
         size="large"
         color="primary"
-        ><slot name="second_button"></slot
-      ></v-btn>
+      >
+        <slot name="second_button" />
+      </v-btn>
 
       <span v-if="isLink" class="underline text-primary">
         <slot name="link"></slot>

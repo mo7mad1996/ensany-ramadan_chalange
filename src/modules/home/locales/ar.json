@@ -63,8 +63,12 @@
   "amount_placeholder": "أدخل المبلغ الذي تهدف إلى جمعه (مثل، 5,000)",
   "curncy_placeholder": "مثل، 5,000 دولار",
   "status": "الحالة",
-  "status_placeholder": "(مثل، ملغي)",
+  "status_placeholder": "(مثل، منشور)",
   "launch_campaign": "إطلاق الحملة",
+  "edit_campaign": "تعديل الحملة",
+  "ok": "حسناً",
+
+  "toast_copy": "تم نسخ رابط المستخدم",
   "english": "الانجليزيه",
   "active": "نشط",
   "deactive": "غير نشط",

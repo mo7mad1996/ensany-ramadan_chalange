@@ -2,15 +2,21 @@
   <div class="dashboard">
     <dashbordBreadcrumb :is-buttons="true" :is-link="false">
       <template #title>{{ $t("dashboard.overview") }}</template>
-      <template #first_button>{{ $t("global.donate_now") }}</template>
+      <template #first_button>
+        <v-btn
+          class="text-capitalize rounded-lg"
+          variant="flat"
+          size="large"
+          prepend-icon="mdi-content-copy"
+          color="primary"
+          @click="copy_url"
+        >
+          {{ $t("dashboard.copy") }}
+        </v-btn>
+      </template>
       <template #second_button>
         <nuxt-link to="/start-campaign">
           {{ $t("global.start_campaign") }}
-        </nuxt-link>
-      </template>
-      <template #third_button>
-        <nuxt-link to="/start-campaign">
-       Copy Link
         </nuxt-link>
       </template>
     </dashbordBreadcrumb>
@@ -56,9 +62,27 @@
 <script setup lang="ts">
 import { CharityLineChart } from "#components";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
-
+import { useAuth } from "~/modules/auth/services/auth";
+const { user } = useAuth();
+const { t } = useI18n();
+const { $toast } = useNuxtApp();
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
+
+const copy_url = () => {
+  const url = `https://ramadanchallenges.com/${user.value.user_type}/${user.value.id}`;
+
+  navigator.clipboard
+    .writeText(url)
+    .then(() => {
+      $toast.success(t("home.toast_copy"));
+    })
+    .catch((err) => {
+      console.error("Failed to copy:", err);
+    });
+
+  console.log(url);
+};
 </script>

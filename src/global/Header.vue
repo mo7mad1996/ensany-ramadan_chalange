@@ -13,9 +13,13 @@
         $t("global.campaigns")
       }}</nuxt-link>
 
-      <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
+      <nuxt-link to="/blogs" class="text-black">{{
+        $t("global.blogs")
+      }}</nuxt-link>
 
-      <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
+      <nuxt-link to="/about" class="text-black">{{
+        $t("global.about_us")
+      }}</nuxt-link>
 
       <!-- <nuxt-link to="/" class="d-flex ga-2 text-black">
         <img src="../assets/images/search.svg" width="15" alt="" />
@@ -126,7 +130,9 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center"
         >
           <li>
-            <nuxt-link to="/" class="text-black">{{ $t("global.home") }}</nuxt-link>
+            <nuxt-link to="/" class="text-black">{{
+              $t("global.home")
+            }}</nuxt-link>
           </li>
 
           <li>
@@ -136,7 +142,9 @@
           </li>
 
           <li>
-            <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
+            <nuxt-link to="/blogs" class="text-black">{{
+              $t("global.blogs")
+            }}</nuxt-link>
           </li>
 
           <li>
@@ -155,69 +163,85 @@
 
         <!-- contact & signin-btn & lang -->
 
-        <div class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center">
-          <div v-if="user" class="relative">
-            <div
-              @click="openDrop"
-              class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
-            >
-              <img src="../assets/images/user.svg" width="30" alt="" />
-              <span v-if="user?.first_name">{{ user?.first_name }}</span>
-              <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
-              <v-icon>mdi-menu-down</v-icon>
-            </div>
-            <div
-              v-if="isMenue"
-              class="drobdown-menue absolute top-[3.5rem] p-[8px] bg-[#f6fff6] w-full"
-            >
-              <ul class="list-none">
-                <li class="flex gap-2 items-center mb-1 cursor-pointer">
-                  <img src="../assets/images/dashboard/dashboard.svg" width="15" alt="" />
-                  <nuxt-link
-                    v-if="user?.user_type === 'charity'"
-                    class="hover:underline text-sm"
-                    to="/dashboard/charity"
-                    >{{ $t("global.dashboard") }}</nuxt-link
-                  >
-
-                  <nuxt-link
-                    v-else
-                    class="hover:underline text-sm"
-                    to="/dashboard/donor"
-                    >{{ $t("global.dashboard") }}</nuxt-link
-                  >
-                </li>
-
-                <li>
-                  <v-btn
-                    :disabled="isLoading"
-                    :loading="isLoading"
-                    class="text-capitalize rounded-lg w-full mt-2"
-                    :ripple="false"
-                    variant="flat"
-                    size="small"
-                    color="primary"
-                    @click="logout"
-                  >
-                    {{ $t("global.logout") }}
-                  </v-btn>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div v-if="user?.user_type === 'dooner'">
-            <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
-              <div class="relative">
-                <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
-                <span
-                  v-if="cartCounter !== undefined"
-                  class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
-                >
-                  {{ cartCounter }}
-                </span>
+        <div
+          class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-3 align-center"
+        >
+          <template v-if="user">
+            <div class="relative">
+              <div
+                @click="openDrop"
+                class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
+              >
+                <img src="../assets/images/user.svg" width="30" alt="" />
+                <span v-if="user?.first_name">{{ user?.first_name }}</span>
+                <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
+                <v-icon>mdi-menu-down</v-icon>
               </div>
-            </nuxt-link>
-          </div>
+              <div
+                v-if="isMenue"
+                class="drobdown-menue absolute top-[3.5rem] p-[8px] bg-[#f6fff6] w-full"
+              >
+                <ul class="list-none">
+                  <li class="flex gap-2 items-center mb-1 cursor-pointer">
+                    <img
+                      src="../assets/images/dashboard/dashboard.svg"
+                      width="15"
+                      alt=""
+                    />
+                    <nuxt-link
+                      v-if="user?.user_type === 'charity'"
+                      class="hover:underline text-sm"
+                      to="/dashboard/charity"
+                      >{{ $t("global.dashboard") }}</nuxt-link
+                    >
+
+                    <nuxt-link
+                      v-else
+                      class="hover:underline text-sm"
+                      to="/dashboard/donor"
+                      >{{ $t("global.dashboard") }}</nuxt-link
+                    >
+                  </li>
+
+                  <li>
+                    <v-btn
+                      :disabled="isLoading"
+                      :loading="isLoading"
+                      class="text-capitalize rounded-lg w-full mt-2"
+                      :ripple="false"
+                      variant="flat"
+                      size="small"
+                      color="primary"
+                      @click="logout"
+                    >
+                      {{ $t("global.logout") }}
+                    </v-btn>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div v-if="user?.user_type === 'dooner'">
+              <nuxt-link
+                to="/cart"
+                class="text-black d-flex align-center gap-1"
+              >
+                <div class="relative">
+                  <img
+                    src="../assets/images/donor/Icon.png"
+                    width="20"
+                    alt="Cart"
+                  />
+                  <span
+                    v-if="cartCounter !== undefined"
+                    class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
+                  >
+                    {{ cartCounter }}
+                  </span>
+                </div>
+              </nuxt-link>
+            </div>
+          </template>
+
           <div class="flex items-center gap-x-3" v-else>
             <v-btn
               class="text-capitalize rounded-lg"
@@ -256,7 +280,11 @@
                     @click="navigateTo('/signup-charity')"
                   >
                     <div class="flex gap-x-2 items-center">
-                      <img src="../assets/images/charity.svg" width="15" alt="" />
+                      <img
+                        src="../assets/images/charity.svg"
+                        width="15"
+                        alt=""
+                      />
                       <span>{{ $t("global.charity2") }}</span>
                     </div>
                   </v-list-item-title>
@@ -319,7 +347,7 @@ const charityAction = (): void => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 ul {
   list-style: none;
   a {

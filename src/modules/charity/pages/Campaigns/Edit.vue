@@ -1,17 +1,21 @@
 <template>
   <div class="start_campaign">
     <!-- start campaign banner -->
-    <div class="start_campaign_banner">
+    <div
+      class="start_campaign_banner"
+      :style="`background-image: url(${data?.image})`"
+    >
       <div
         class="content relative w-full h-full flex items-center justify-center"
       >
         <div class="text-center">
           <h1 class="text-white text-[46px] font-bold">
-            {{ $t("home.start_banner_title") }}
+            {{ data?.name }}
           </h1>
 
+          <pre class="text-sm text-white pt-2 pb-4"></pre>
           <p class="text-sm text-white pt-2 pb-4">
-            {{ $t("home.start_banner_desc") }}
+            {{ data?.short_desc }}
           </p>
         </div>
       </div>
@@ -52,7 +56,7 @@ const payload = computed(() => {
     return transformed;
   };
 
-  return {
+  const payload = {
     ...data.value,
 
     //
@@ -62,10 +66,10 @@ const payload = computed(() => {
     // multi lang data
     ...transformObj(enData),
     ...transformObj(arData),
-
-    // override
-    sort: undefined,
   };
+
+  delete payload.sort;
+  return payload;
 });
 </script>
 

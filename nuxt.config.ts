@@ -107,6 +107,7 @@ export default defineNuxtConfig({
   plugins: [
     "./src/plugins/observe-visibility.ts",
     "./src/plugins/vee-validate.ts",
+    "./src/plugins/toaster.client.ts",
   ],
 
   // localization

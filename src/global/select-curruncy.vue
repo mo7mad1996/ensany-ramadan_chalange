@@ -75,7 +75,6 @@ onMounted(() => {
             JSON.stringify(currenciesData.value)
           );
         }
-        // console.log("locale currency is loaded");
       })
       .catch((error) => {
         console.error("Failed to fetch currencies data from API", error);

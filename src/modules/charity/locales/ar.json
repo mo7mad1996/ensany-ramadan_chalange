@@ -95,6 +95,8 @@
   "change_desc": "قم بتحديث كلمة المرور للحفاظ على أمان حسابك. تتضمن كلمة المرور القوية أحرفًا وأرقامًا ورموزًا.",
   "update_password": "تحديث كلمة المرور",
   "tirminate_sessions": "إنهاء جميع الجلسات",
+  "charity_name": "اسم الجمعيه",
+  "save": "تم الحفظ",
 
   "starting_date": "تاريخ البدء",
   "ending_date": "تاريخ الانتهاء",
@@ -104,6 +106,10 @@
   "actions": "الإجراءات",
   "edit_campaign": "تعديل الحملة",
   "delete_campaign": "حذف الحملة",
+
+  "delete_msg": " ؟هل اننت متاكد من اتمام الحذف",
+  "delete": "تأكيد الحذف",
+  "cancel": "إلغاء",
 
   "overview": "نظرة عامة",
   "total_donations": "إجمالي التبرعات",
@@ -120,6 +126,7 @@
   "total_donations_amount": "إجمالي مبلغ التبرعات",
 
   "donation_transuctions": "معاملات التبرعات",
+  "copy": "نسخ الرابط",
   "donation_growth": "نمو التبرعات",
   "success_donations_chart": "التبرعات الناجحة",
   "field_donations_chart": "التبرعات الفاشلة",
