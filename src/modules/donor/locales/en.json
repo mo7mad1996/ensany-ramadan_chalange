@@ -75,5 +75,6 @@
   "ended": "Ended",
   "completed": "Completed",
   "cancelled": "Cancelled",
-  "rejected": "Rejected"
+  "rejected": "Rejected",
+  "remove":"Remove"
 }

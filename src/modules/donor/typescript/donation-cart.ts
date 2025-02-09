@@ -1,7 +1,7 @@
 export const useDonationCartPage = () => {
   const { t } = useI18n();
   const headers = computed(() => [
-    { key: "id", title: "ID" },
+    // { key: "id", title: "ID" },
     { key: "campaign.name", title: t("donor.name") },
     { key: "campaign.description", title: t("donor.description") },
     { key: "campaign.charity_name", title: t("donor.charity_name") },
