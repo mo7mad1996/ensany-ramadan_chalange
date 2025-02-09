@@ -8,19 +8,6 @@ export const useProfile = () => {
     update(payload: any, files: [File]) {
       const formData = new FormData();
 
-      ["user_type", "mobile", "email", "charity_name"].map((key) => {
-        if (user.value[key]) formData.append(key, user.value[key]);
-      });
-
-      const translation = user.value.charity_name_translations;
-
-      const arTranslation = translation.find((i: any) => i.locale == "ar");
-      const enTranslation = translation.find((i: any) => i.locale == "en");
-
-      formData.append("country_id", user.value.country.id);
-      formData.append("charity_name:ar", arTranslation.charity_name);
-      formData.append("charity_name:en", enTranslation.charity_name);
-
       files.forEach((file) => {
         formData.append("file[]", file, file.name);
       });

@@ -131,5 +131,8 @@
   "success_donations_chart": "التبرعات الناجحة",
   "field_donations_chart": "التبرعات الفاشلة",
   "pending_donations": "التبرعات المعلقة",
-  "active_campaigns": "الحملات النشطة"
+  "active_campaigns": "الحملات النشطة",
+
+  "mobile": "رقم الموبايل",
+  "country": "ادخل بلدك"
 }

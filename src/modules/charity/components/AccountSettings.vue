@@ -22,17 +22,12 @@
           </h2>
 
           <div class="update-form mt-5">
-            <pre class="text-left" :style="{ direction: 'ltr' }">
-              <!-- {{ defaultValues }} -->
-            </pre>
-
             <Form
               @submit="onSubmit"
               v-slot="{ validate }"
               :initial-values="defaultValues"
             >
               <!-- name -->
-
               <div class="mt-5">
                 <div
                   class="lable_switch flex justify-between items-center mb-3"
@@ -52,7 +47,7 @@
                     </div>
                     <div
                       class="px-3 py-1 cursor-pointer"
-                      @click="switchShort_desc"
+                      @click="toggle('charity_name')"
                       :class="{
                         'bg-[#28A745] text-white':
                           switcher.charity_name == 'ar',
@@ -134,63 +129,135 @@
               </div>
 
               <!-- email -->
-              <div class="mt-4" v-if="false">
-                <div class="relative">
-                  <div
-                    class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                  >
-                    <img
-                      src="../../../assets/images/contact/email.svg"
-                      alt=""
+              <div class="mt-5">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
+                  <label for="">{{ $t("dashboard.email") }}</label>
+                </div>
+
+                <div class="mt-4">
+                  <div class="relative">
+                    <div
+                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                    >
+                      <img
+                        src="../../../assets/images/contact/email.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      type="email"
+                      name="email"
+                      rules="required|email"
+                      id="updated_email"
+                      :placeholder="$t('dashboard.update_email')"
+                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
                   </div>
 
-                  <Field
-                    type="text"
-                    name="updated_email"
-                    rules="required|email"
-                    id="updated_email"
-                    :placeholder="$t('dashboard.update_email')"
-                    class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                    v-model="personalForm.email"
-                  />
+                  <ErrorMessage name="email" />
                 </div>
-
-                <ErrorMessage
-                  name="updated_email"
-                  class="text-sm text-red-500"
-                />
               </div>
 
               <!-- phone number -->
-              <div class="mt-4" v-if="false">
-                <div class="relative">
-                  <div
-                    class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                  >
-                    <img
-                      src="../../../assets/images/contact/phone.svg"
-                      alt=""
+              <div class="mt-5">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
+                  <label for="">{{ $t("dashboard.mobile") }}</label>
+                </div>
+
+                <div class="mt-4">
+                  <div class="relative">
+                    <div
+                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+                    >
+                      <img
+                        src="../../../assets/images/contact/phone.svg"
+                        alt=""
+                      />
+                    </div>
+
+                    <Field
+                      type="text"
+                      name="mobile"
+                      rules="required"
+                      id="updated_phone"
+                      :placeholder="$t('dashboard.update_phone')"
+                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
                   </div>
 
-                  <Field
-                    type="text"
-                    name="updated_phone"
-                    rules="required"
-                    id="updated_phone"
-                    :placeholder="$t('dashboard.update_phone')"
-                    class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                    v-model="personalForm.mobile"
-                  />
+                  <ErrorMessage name="mobile" />
+                </div>
+              </div>
+
+              <!-- country -->
+              <div class="my-5">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
+                  <label for="">{{ $t("dashboard.country") }}</label>
                 </div>
 
-                <ErrorMessage
-                  name="updated_phone"
-                  class="text-sm text-red-500"
-                />
+                <Field
+                  as="select"
+                  name="country_id"
+                  rules="required"
+                  class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+                >
+                  <option selected disabled value="">
+                    {{ $t("dashboard.country") }}
+                  </option>
+
+                  <option v-for="c in countries" :key="c.id" :value="c.id">
+                    {{ c.name }}
+                  </option>
+                </Field>
+                <ErrorMessage name="currency_id" />
               </div>
-              <div class="mt-4" v-if="false">
+
+              <!-- image -->
+              <div class="mt-5">
+                <label for="">{{ $t("home.upload_image") }}</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="upload_image col-span-2">
+                    <div
+                      class="flex items-center border border-gray-300 rounded-md shadow-sm w-full"
+                    >
+                      <label
+                        for="file-upload"
+                        class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
+                      >
+                        {{ $t("home.choose_file") }}
+                      </label>
+
+                      <Field
+                        type="file"
+                        id="file-upload"
+                        class="sr-only"
+                        @change="handleFileChange"
+                        accept="image/*"
+                        name="photo"
+                      />
+
+                      <span
+                        class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
+                      >
+                        {{ selectedFileName || $t("home.no_file") }}
+                      </span>
+                    </div>
+                    <ErrorMessage name="image" />
+                  </div>
+
+                  <div><img :src="preview" /></div>
+                </div>
+              </div>
+
+              <!-- file zone -->
+              <div class="mt-5">
                 <div class="relative">
                   <div class="flex items-center gap-3 px-3 mb-3">
                     <v-icon icon="$upload" />
@@ -215,6 +282,7 @@
                 />
               </div>
 
+              <!-- submit Btns -->
               <div
                 class="buttons mt-4 grid gap-x-2 grid-cols-1 lg:grid-cols-2 md:grid-cols-1"
               >
@@ -524,6 +592,7 @@
 <script setup>
 import Swal from "sweetalert2";
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 import { useProfile } from "~/modules/auth/services/profile";
 
@@ -543,12 +612,25 @@ const show1 = ref(false);
 const show2 = ref(false);
 const show3 = ref(false);
 const tab = ref(null);
+const selectedFileName = ref(null);
 const files = ref([]);
+const preview = ref(user.value.image);
+
+const countries = ref([]);
 
 const switcher = reactive({ charity_name: "ar" });
 
 const toggle = (key) => {
   switcher[key] = switcher[key] == "en" ? "ar" : "en";
+};
+
+const handleFileChange = (event) => {
+  const input = event.target;
+  const file = input.files ? input.files[0] : null;
+  selectedFileName.value = file ? file.name : "";
+
+  // preview image
+  preview.value = URL.createObjectURL(file);
 };
 
 const defaultValues = computed(() => {
@@ -576,6 +658,8 @@ const defaultValues = computed(() => {
 
     country_id: user.value.country.id,
   };
+
+  delete payload.image;
   return payload;
 });
 
@@ -592,11 +676,15 @@ const passwordForm = reactive({
   loading: false,
 });
 
+const getCountries = async () => {
+  api.get("/countries").then((res) => {
+    countries.value = res.data.result.data;
+  });
+};
 const onSubmit = async (payload) => {
   try {
     personalForm.loading = true;
-    console.log(payload);
-    // const res = await update(payload, toRaw(files.value));
+    const res = await update(payload, toRaw(files.value));
 
     Swal.fire({
       icon: "success",
@@ -658,10 +746,14 @@ const onSubmit2 = async () => {
     passwordForm.loading = false;
   }
 };
+
+onMounted(() => {
+  getCountries();
+});
 </script>
 
 <style scoped>
-a {
+[role="alert"] {
   @apply text-sm text-red-500;
 }
 </style>
