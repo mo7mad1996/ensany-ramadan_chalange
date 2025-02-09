@@ -39,11 +39,12 @@ const { locale } = useI18n();
 const route = useRoute();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { viewCampaign, status, target, amount } = useViewCampaign(route.params.id);
+const { viewCampaign, status, target, amount } = useViewCampaign(
+  route.params.id
+);
 
 watchEffect(() => {
   if (status.value == "error") {
-    //console.log("Campaign not found, redirecting...");
     navigateTo(`/campaigns`);
   }
 });

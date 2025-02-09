@@ -511,7 +511,6 @@ const submit = async (values) => {
 };
 
 onMounted(() => {
-  console.log(props.initData);
   if (props.initData) {
     today.value = new Date(props.initData.start_at);
     endDate.value = new Date(props.initData.end_at);

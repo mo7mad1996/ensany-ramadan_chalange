@@ -1,5 +1,8 @@
 <template>
-  <section class="pt-sm pb-sm w-full" aria-label="this table to show highest donors">
+  <section
+    class="pt-sm pb-sm w-full"
+    aria-label="this table to show highest donors"
+  >
     <Container class="flex justify-center">
       <!-- Add a scrollable container -->
       <div class="overflow-auto w-full">
@@ -60,7 +63,11 @@
             <tr v-for="(donor, index) in topTen" :key="index">
               <td>
                 <div class="flex gap-x-2 items-center">
-                  <img src="../../../assets/images/user.svg" width="25" alt=" " />
+                  <img
+                    src="../../../assets/images/user.svg"
+                    width="25"
+                    alt=" "
+                  />
                   <span v-if="donor?.user_name">{{ donor?.user_name }}</span>
                   <span v-if="donor?.user">{{ donor?.user?.name }}</span>
                 </div>
