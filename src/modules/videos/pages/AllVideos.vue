@@ -29,7 +29,7 @@
             <img
               :src="video?.thumbnail"
               class="w-full max-h-[15rem] object-cover rounded-lg"
-              alt="{{ video?.title }}"
+              :alt="video?.title"
             />
             <div
               class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl cursor-pointer opacity-75 hover:opacity-100 transition-opacity"

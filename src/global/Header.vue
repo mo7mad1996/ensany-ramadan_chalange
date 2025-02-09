@@ -140,6 +140,23 @@
           </li>
 
           <li>
+            <nuxt-link to="/stories" class="text-black">{{
+              $t("global.stories")
+            }}</nuxt-link>
+          </li>
+
+          <li>
+            <nuxt-link to="/videos" class="text-black">{{
+              $t("global.videos")
+            }}</nuxt-link>
+          </li>
+          <!-- <li>
+            <nuxt-link to="/videos" class="text-black">{{
+              $t("global.videos")
+            }}</nuxt-link>
+          </li> -->
+
+          <li>
             <nuxt-link to="/about" class="text-black">{{
               $t("global.about_us")
             }}</nuxt-link>
