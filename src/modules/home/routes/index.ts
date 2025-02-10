@@ -11,6 +11,7 @@ const homeRoutes = [
     path: "/start-campaign",
     file: resolve(__dirname, "../pages/StartCampaign.vue"), // Adjusted path
   },
+
   {
     name: "show-page",
     path: "/page/:id",

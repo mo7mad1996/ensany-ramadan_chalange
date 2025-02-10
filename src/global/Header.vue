@@ -243,7 +243,8 @@
                 @click="openDrop"
                 class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
               >
-                <img src="../assets/images/user.svg" width="30" alt="" />
+                <pre>{{}}</pre>
+                <img :src="user.photo || '../assets/images/user.svg'" width="30" alt="" />
                 <span v-if="user?.first_name">{{ user?.first_name }}</span>
                 <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
                 <v-icon>mdi-menu-down</v-icon>
@@ -416,6 +417,7 @@ const charityAction = (): void => {
 <style scoped lang="scss">
 ul {
   list-style: none;
+
   a {
     text-decoration: none;
     color: #121212;
@@ -424,6 +426,7 @@ ul {
 
 .phone_menue {
   position: relative;
+
   .card {
     position: absolute;
     z-index: 999999;
