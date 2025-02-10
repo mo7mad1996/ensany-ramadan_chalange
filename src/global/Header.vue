@@ -388,6 +388,57 @@
             </div>
           </template>
 
+          <div class="flex items-center gap-x-3" v-else>
+            <v-btn
+              class="text-capitalize rounded-lg"
+              variant="flat"
+              size="default"
+              color="primary"
+              @click="navigateTo('/login')"
+              >{{ $t("global.signin") }}</v-btn
+            >
+
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  color="primary"
+                  class="capitalize border"
+                  style="text-transform: capitalize"
+                  v-bind="props"
+                  >{{ $t("global.signup") }}
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title
+                    class="cursor-pointer"
+                    @click="navigateTo('/signup')"
+                  >
+                    <div class="flex gap-x-2 items-center">
+                      <img src="../assets/images/doner.svg" width="15" alt="" />
+                      <span>{{ $t("global.doner") }}</span>
+                    </div>
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title
+                    class="cursor-pointer"
+                    @click="navigateTo('/signup-charity')"
+                  >
+                    <div class="flex gap-x-2 items-center">
+                      <img
+                        src="../assets/images/charity.svg"
+                        width="15"
+                        alt=""
+                      />
+                      <span>{{ $t("global.charity2") }}</span>
+                    </div>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
+
           <selectCurruncy />
 
           <v-btn
