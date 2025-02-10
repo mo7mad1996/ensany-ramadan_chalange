@@ -46,6 +46,7 @@
         </v-btn>
 
         <v-btn
+          v-if="campaign?.status != 'ended'"
           class="text-capitalize rounded-lg w-100 mt-3"
           :ripple="false"
           variant="flat"
@@ -54,6 +55,19 @@
           @click="$router.push(`/campaigns/donate/${campaign?.id}`)"
         >
           {{ $t("campaigns.donate") }}
+        </v-btn>
+
+        <v-btn
+          v-if="campaign?.status == 'ended'"
+          :disabled="true"
+          class="text-capitalize rounded-lg w-100 mt-3"
+          :ripple="false"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push(`/campaigns/donate/${campaign?.id}`)"
+        >
+          {{ $t("campaigns.ended") }}
         </v-btn>
       </div>
 

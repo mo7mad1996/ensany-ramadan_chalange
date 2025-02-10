@@ -20,9 +20,7 @@
           </div>
 
           <!-- Sidebar (Large Screens) -->
-          <div
-            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
-          >
+          <div class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0">
             <DonorSidebar />
           </div>
 
@@ -38,6 +36,7 @@
       <!-- Sidebar as a Drawer (Small Screens) -->
       <v-navigation-drawer
         v-model="isSidebarOpen"
+        v-if="isClient"
         temporary
         location="left"
         class="v-navigation-drawer--mobile lg:hidden"
@@ -50,19 +49,25 @@
   </v-layout>
 </template>
 <script setup>
-import Header from "../global/Header.vue";
-import AppFooter from "../global/AppFooter.vue";
-import Container from "~/global/Container.vue";
 import { useI18n } from "vue-i18n";
+import Container from "~/global/Container.vue";
 import DonorSidebar from "~/global/DonorSidebar.vue";
+import AppFooter from "../global/AppFooter.vue";
+import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
+
+const isClient = ref(false);
 const isSidebarOpen = ref(false);
 
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
   },
+});
+
+onMounted(() => {
+  isClient.value = true;
 });
 
 watch(locale, (newLocale) => {
