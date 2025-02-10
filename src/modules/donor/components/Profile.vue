@@ -3,12 +3,111 @@
     <h2 class="text-xl font-bold">
       {{ $t("donor.account_details") }}
     </h2>
+
     <div class="update-form mt-5">
       <Form
         @submit="onSubmit"
         v-slot="{ validate }"
         :initial-values="defaultValues"
       >
+        <!-- image -->
+        <div class="mt-5">
+          <label for="">{{ $t("home.upload_image") }}</label>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="upload_image col-span-2">
+              <div
+                class="flex items-center border border-gray-300 rounded-md shadow-sm w-full"
+              >
+                <label
+                  for="file-upload"
+                  class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
+                >
+                  {{ $t("home.choose_file") }}
+                </label>
+
+                <Field
+                  type="file"
+                  id="file-upload"
+                  class="sr-only"
+                  @change="handleFileChange"
+                  accept="image/*"
+                  name="photo"
+                />
+
+                <span
+                  class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
+                >
+                  {{ selectedFileName || $t("home.no_file") }}
+                </span>
+              </div>
+              <ErrorMessage name="photo" />
+            </div>
+
+            <div>
+              <img
+                :src="preview"
+                class="rounded-full aspect-square object-cover w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- first name -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.first_name") }}</label>
+          </div>
+
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/phone.svg" alt="" />
+              </div>
+
+              <Field
+                type="text"
+                name="first_name"
+                rules="required"
+                id="first_name"
+                :placeholder="$t('dashboard.first_name')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="first_name" />
+          </div>
+        </div>
+
+        <!-- last name -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.last_name") }}</label>
+          </div>
+
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/phone.svg" alt="" />
+              </div>
+
+              <Field
+                type="text"
+                name="last_name"
+                rules="required"
+                id="last_name"
+                :placeholder="$t('dashboard.last_name')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="last_name" />
+          </div>
+        </div>
+
         <!-- email -->
         <div class="mt-5">
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -34,62 +133,6 @@
             </div>
 
             <ErrorMessage name="email" />
-          </div>
-        </div>
-
-        <!-- phone number -->
-        <div class="mt-5">
-          <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">{{ $t("dashboard.first_name") }}</label>
-          </div>
-
-          <div class="mt-4">
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-              >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
-              </div>
-
-              <Field
-                type="text"
-                name="first_name"
-                rules="required|number"
-                id="first_name"
-                :placeholder="$t('dashboard.first_name')"
-                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-            </div>
-
-            <ErrorMessage name="first_name" />
-          </div>
-        </div>
-
-        <!-- phone number -->
-        <div class="mt-5">
-          <div class="lable_switch flex justify-between items-center mb-3">
-            <label for="">{{ $t("dashboard.last_name") }}</label>
-          </div>
-
-          <div class="mt-4">
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-              >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
-              </div>
-
-              <Field
-                type="text"
-                name="last_name"
-                rules="required"
-                id="last_name"
-                :placeholder="$t('dashboard.last_name')"
-                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-              />
-            </div>
-
-            <ErrorMessage name="last_name" />
           </div>
         </div>
 
@@ -155,6 +198,7 @@
             variant="flat"
             size="large"
             color="primary"
+            :loading="personalForm.loading"
             @click="validate"
           >
             {{ $t("donor.update_account") }}
@@ -178,16 +222,26 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
+import Swal from "sweetalert2";
+import { useProfile } from "~/modules/auth/services/profile";
+const { t } = useI18n();
 
 // data
 const { user } = useAuth();
+const { update } = useProfile();
 const countries = ref([]);
+const personalForm = reactive({ loading: false });
+const preview = ref(user.value.photo);
+const selectedFileName = ref(null);
+
 const defaultValues = computed(() => {
   // {a: 1}  =>  {"a:ar" : 1}
   const payload = {
     ...user.value,
     country_id: user.value.country.id,
   };
+
+  delete payload.photo;
 
   return payload;
 });
@@ -196,6 +250,41 @@ const getCountries = async () => {
   api.get("/countries").then((res) => {
     countries.value = res.data.result.data;
   });
+};
+
+const handleFileChange = (event) => {
+  const input = event.target;
+  const file = input.files ? input.files[0] : null;
+  selectedFileName.value = file ? file.name : "";
+
+  // preview image
+  preview.value = URL.createObjectURL(file);
+};
+
+const onSubmit = async (payload) => {
+  try {
+    personalForm.loading = true;
+    const res = await update(payload, []);
+
+    Swal.fire({
+      icon: "success",
+      title: t("dashboard.save"),
+      confirmButtonText: t("home.ok"),
+    });
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      title: err.response?.data?.message || err.message,
+      html: Object.values(err.response?.data?.result?.errors)
+        .flat()
+        .map((e) => `<li class="text-start">${e}</li>`)
+        .join(" "),
+      icon: "error",
+      confirmButtonText: t("home.ok"),
+    });
+  } finally {
+    personalForm.loading = false;
+  }
 };
 
 onMounted(() => {
