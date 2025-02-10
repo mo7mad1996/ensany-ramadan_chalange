@@ -128,7 +128,7 @@
                   alt="Cart"
                 />
                 <span
-                  v-if="cartCounter !== undefined"
+                  v-if="cartCounter !== undefined && cartCounter > 0"
                   class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
                 >
                   {{ cartCounter }}
@@ -323,7 +323,7 @@
                     alt="Cart"
                   />
                   <span
-                    v-if="cartCounter !== undefined"
+                    v-if="cartCounter !== undefined && cartCounter > 0"
                     class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
                   >
                     {{ cartCounter }}
