@@ -76,5 +76,6 @@
   "completed": "Completed",
   "cancelled": "Cancelled",
   "rejected": "Rejected",
+  "cart_saved_redirect_after_5_sec": "Your campaigns have been saved successfully. You will be redirected shortly to make a donation. Please do not close the page.",
   "remove":"Remove"
 }

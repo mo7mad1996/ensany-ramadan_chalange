@@ -77,5 +77,6 @@
   "cancelled": "ملغي",
   "rejected": "مرفوض",
   "campaign_name": "اسم الحملة",
+  "cart_saved_redirect_after_5_sec": "تم حفظ حملاتك بنجاح سيتم توجيهك بعد قليل للقيام بالتبرع رجاء عدم غلق الصفحة ",
   "remove": "حذف"
 }

@@ -1,9 +1,5 @@
 <template>
   <v-layout>
-    <!-- <div class="flex flex-col min-h-screen">
-      <div class="flex-grow">
-      </div>
-    </div> -->
     <Header />
 
     <v-main class="flex flex-col min-h-screen">
