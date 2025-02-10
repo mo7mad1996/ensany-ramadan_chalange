@@ -1,18 +1,21 @@
 <template>
   <section aria-label="account settings section">
-    <v-tabs v-model="tab" align-tabs="start">
-      <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
-        $t("dashboard.profile")
-      }}</v-tab>
-      <!--
+    <ClientOnly>
+      <v-tabs v-model="tab" align-tabs="start" class="v-slide-group--mobile">
+        <v-tab value="1" :ripple="false" style="text-transform: capitalize">{{
+          $t("dashboard.profile")
+        }}</v-tab>
+        <!--
+
        <v-tab value="2" :ripple="false" style="text-transform: capitalize">
         {{ $t("dashboard.notif") }} 
       </v-tab> 
       -->
-      <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
-        $t("dashboard.privacy_security")
-      }}</v-tab>
-    </v-tabs>
+        <v-tab value="3" :ripple="false" style="text-transform: capitalize">{{
+          $t("dashboard.privacy_security")
+        }}</v-tab>
+      </v-tabs>
+    </ClientOnly>
 
     <v-tabs-window v-model="tab">
       <v-tabs-window-item value="1" class="xl:w-1/2 lg:w-1/2 md:w-full w-full">
@@ -445,30 +448,6 @@
 
       <v-tabs-window-item value="3">
         <div class="privacy-settings pt-sm">
-          <!-- 
-         
-         
-          <h2 class="text-xl font-bold">
-            {{ $t("dashboard.privacy_title") }}
-          </h2>
-          <p class="text-sm text-[#969696]">
-            {{ $t("dashboard.privacy_desc") }}
-          </p>
-
-          <div class="header pt-sm">
-            <div class="flex justify-between items-center">
-              <h3 class="text-xl">{{ $t("dashboard.resent_login") }}</h3>
-              <span class="underline text-primary text-sm cursor-pointer">{{
-                $t("dashboard.tirminate_sessions")
-              }}</span>
-            </div>
-            <p class="text-sm text-[#969696] pt-2">
-              {{ $t("dashboard.resent_desc") }}
-            </p>
-          </div>
-
-         -->
-
           <!-- change password section -->
           <div class="change-password pt-sm">
             <h2 class="text-xl">{{ $t("dashboard.change_password") }}</h2>

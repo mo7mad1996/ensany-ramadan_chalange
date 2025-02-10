@@ -15,16 +15,10 @@ export const useDonorCamoaigns = () => {
   } = useAsyncData(
     "donorCampaigns",
     () =>
-      api
-        .get(`/doner/campaigns`, {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
-        })
-        .then((response) => {
-          const { data, meta } = response.data.result;
-          return { data, meta };
-        }),
+      api.get(`/doner/campaigns`).then((response) => {
+        const { data, meta } = response.data.result || {};
+        return { data, meta };
+      }),
     { watch: [locale] }
   );
 

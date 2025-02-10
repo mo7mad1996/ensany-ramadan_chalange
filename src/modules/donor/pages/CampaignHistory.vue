@@ -4,7 +4,8 @@
       {{ $t("donor.campaigns_history") }}
     </h1>
     <div class="content mt-sm">
-      <v-card flat>
+      <div class="loader" v-if="status == 'pending'" />
+      <v-card flat v-else-if="status == 'success'">
         <v-data-table
           class="border rounded-lg"
           :items="donorCampaigns"
@@ -63,7 +64,8 @@ definePageMeta({
 });
 const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
-const { donorCampMeta, donorCampaigns, status } = useDonorCamoaigns();
+const { donorCampMeta, donorCampaigns, status, donorCamp_error } =
+  useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
 };

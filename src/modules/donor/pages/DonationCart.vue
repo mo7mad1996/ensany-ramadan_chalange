@@ -23,6 +23,7 @@
           v-model="customAmount"
           variant="outlined"
           density="compact"
+          id="input-3"
           hide-details
           prepend-inner-icon="mdi-cash"
           placeholder="$0"
@@ -39,20 +40,22 @@
             color="primary"
             value="automatic"
             class="custom-radio"
-          ></v-radio>
+            id="radio-group-10-messages"
+          />
           <v-radio
+            id="radio-group-11-messages"
             :label="$t('donor.customize_per_campaign')"
             color="primary"
             value="manual"
             class="custom-radio"
-          ></v-radio>
+          />
         </v-radio-group>
       </div>
     </div>
 
     <!-- table -->
-
-    <div class="content mt-sm">
+    <div class="loader" v-if="status == 'pending'" />
+    <div v-else-if="status == 'success'" class="content mt-sm">
       <v-card flat>
         <v-data-table
           class="border rounded-lg"
@@ -60,7 +63,6 @@
           :headers="headers"
           item-value="id"
           :page="currentPage"
-          :server-items-length="totalItems"
           :loading="status === 'pending'"
           @update:page="currentPage = $event"
           @update:items-per-page="itemsPerPage = $event"
@@ -134,17 +136,19 @@
           <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
           <v-radio-group v-model="pay_type" row>
             <v-radio
+              id="radio-group-12-messages"
               :label="$t('donor.pay_full')"
               color="primary"
               value="full"
               class="custom-radio"
-            ></v-radio>
+            />
             <v-radio
+              id="radio-group-13-messages"
               :label="$t('donor.daily_payment')"
               color="primary"
               value="daily"
               class="custom-radio"
-            ></v-radio>
+            />
           </v-radio-group>
           <div class="flex items-center justify-between gap-6">
             <v-btn
@@ -179,7 +183,8 @@ import { useAuth } from "~/modules/auth/services/auth";
 import { useDonerCart } from "../services/donation-cart";
 import { useDonationCartPage } from "../typescript/donation-cart";
 
-const { donorCart, refresh } = useDonerCart();
+const { donorCart, refresh, status } = useDonerCart();
+const currentPage = ref(1);
 
 definePageMeta({
   layout: "donor",
