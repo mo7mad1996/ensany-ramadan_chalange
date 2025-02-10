@@ -3,79 +3,125 @@
     <h2 class="text-xl font-bold">
       {{ $t("donor.account_details") }}
     </h2>
-    <pre style="direction: ltr"> {{ defaultValues }}</pre>
     <div class="update-form mt-5">
       <Form
         @submit="onSubmit"
         v-slot="{ validate }"
         :initial-values="defaultValues"
       >
-        <!-- name -->
-        <div>
-          <!-- <div class="relative">
-                    <div
-                      class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-                    >
-                      <img src="../../../assets/images/contact/name.svg" alt="" />
-                    </div>
-  
-                    <Field
-                      type="text"
-                      name="updated_name"
-                      rules="required"
-                      id="updated_name"
-                      :placeholder="$t('dashboard.update_name')"
-                      class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-                    />
-                  </div> -->
-
-          <ErrorMessage name="updated_name" class="text-sm text-red-500" />
-        </div>
-
         <!-- email -->
-        <div class="mt-4">
-          <div class="relative">
-            <div
-              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-            >
-              <img src="../../../assets/images/contact/email.svg" alt="" />
-            </div>
-
-            <Field
-              type="text"
-              name="updated_email"
-              rules="required|email"
-              id="updated_email"
-              :placeholder="$t('dashboard.update_email')"
-              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            />
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.email") }}</label>
           </div>
 
-          <ErrorMessage name="updated_email" class="text-sm text-red-500" />
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/email.svg" alt="" />
+              </div>
+
+              <Field
+                type="email"
+                name="email"
+                rules="required|email"
+                id="updated_email"
+                :placeholder="$t('dashboard.update_email')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="email" />
+          </div>
         </div>
 
         <!-- phone number -->
-        <div class="mt-4">
-          <div class="relative">
-            <div
-              class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
-            >
-              <img src="../../../assets/images/contact/phone.svg" alt="" />
-            </div>
-
-            <Field
-              type="text"
-              name="updated_phone"
-              rules="required"
-              id="updated_phone"
-              :placeholder="$t('dashboard.update_phone')"
-              class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            />
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.first_name") }}</label>
           </div>
 
-          <ErrorMessage name="updated_phone" class="text-sm text-red-500" />
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/phone.svg" alt="" />
+              </div>
+
+              <Field
+                type="text"
+                name="first_name"
+                rules="required|number"
+                id="first_name"
+                :placeholder="$t('dashboard.first_name')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="first_name" />
+          </div>
         </div>
 
+        <!-- phone number -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.last_name") }}</label>
+          </div>
+
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/phone.svg" alt="" />
+              </div>
+
+              <Field
+                type="text"
+                name="last_name"
+                rules="required"
+                id="last_name"
+                :placeholder="$t('dashboard.last_name')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="last_name" />
+          </div>
+        </div>
+
+        <!-- phone number -->
+        <div class="mt-5">
+          <div class="lable_switch flex justify-between items-center mb-3">
+            <label for="">{{ $t("dashboard.mobile") }}</label>
+          </div>
+
+          <div class="mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
+              >
+                <img src="../../../assets/images/contact/phone.svg" alt="" />
+              </div>
+
+              <Field
+                type="text"
+                name="mobile"
+                rules="required"
+                id="updated_phone"
+                :placeholder="$t('dashboard.update_phone')"
+                class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              />
+            </div>
+
+            <ErrorMessage name="mobile" />
+          </div>
+        </div>
+
+        <!--  country -->
         <div class="my-5">
           <div class="lable_switch flex justify-between items-center mb-3">
             <label for="">{{ $t("dashboard.country") }}</label>
@@ -130,6 +176,7 @@
 </template>
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 
 // data
@@ -155,3 +202,9 @@ onMounted(() => {
   getCountries();
 });
 </script>
+
+<style scoped>
+[role="alert"] {
+  @apply text-sm text-red-500;
+}
+</style>
