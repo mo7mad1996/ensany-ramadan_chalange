@@ -35,13 +35,13 @@ export const useCartCounter = () => {
   );
 
   // زيادة العدد في السلة
-  const increaseCartCount = (amount = 1) => {
-    cartStore.increaseCartCount(amount);
+  function increaseCartCount(){
+    cartStore.increaseCartCount(1);
   };
 
    
-  const decreaseCartCount = (amount = 1) => {
-    cartStore.decreaseCartCount(amount);
+  function decreaseCartCount() {
+    cartStore.decreaseCartCount(1);
   };
 
   return {

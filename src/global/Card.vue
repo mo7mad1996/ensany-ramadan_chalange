@@ -114,7 +114,7 @@ import { useAuth } from "~/modules/auth/services/auth";
 import { useCartCounter } from "~/modules/donor/services/cart-counter";
 
 const { token, user } = useAuth();
-const { increaseCartCount, DecreaseCartCount } = useCartCounter();
+const { increaseCartCount, decreaseCartCount } = useCartCounter();
 
 const props = defineProps({
   cart_id: {
@@ -208,7 +208,7 @@ const handleCart = async (method: String) => {
   if (method === "add") {
     cart_id.value = waitcart?.data?.result?.id;
   }
-  method === "add" ? increaseCartCount() : DecreaseCartCount();
+  method === "add" ? increaseCartCount() : decreaseCartCount();
 };
 </script>
 

@@ -25,7 +25,7 @@ export const useCartStore = defineStore('cart', {
       if (this.totalCount === null) {
         this.totalCount = 0;
       }
-      this.totalCount -= amount;
+      this.totalCount = Number(this.totalCount) - Number(amount);
     }
   }
 });
