@@ -81,6 +81,7 @@ import AppFooter from "../global/AppFooter.vue";
 import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
+
 const isSidebarOpen = ref(false);
 
 const donate = ref("");

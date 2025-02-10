@@ -51,7 +51,6 @@ useSeoMeta({
 });
 
 watch(locale, (newLocale) => {
-  c;
   const isArabic = newLocale === "ar";
 
   useSeoMeta({

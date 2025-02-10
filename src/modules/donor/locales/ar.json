@@ -10,11 +10,11 @@
   "overview": "نظرة عامة",
   "id": " الرقم التعريفي",
   "name": "الاسم",
-  "amount": "الكمية",
+  "amount": "المبلغ",
   "donations": "التبرعات",
   "date_time": "التاريخ والوقت",
   "status": "الحالة",
-  "charity_name": "اسم الخيرية",
+  "charity_name": "اسم الجمعية",
   "welcome": "مرحبا",
   "welcome_sentence": "كرمك يصنع الفرق! تابع تبرعاتك، وأدِر حملاتك، وانشر الخير في رمضان.",
   "total_donations": "إجمالي التبرعات في رمضان",
@@ -76,5 +76,6 @@
   "completed": "مكتمل",
   "cancelled": "ملغي",
   "rejected": "مرفوض",
+  "campaign_name": "اسم الحملة",
   "remove": "حذف"
 }

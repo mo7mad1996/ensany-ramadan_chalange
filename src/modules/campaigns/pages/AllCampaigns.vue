@@ -29,6 +29,7 @@
         :status="campaign?.status"
         :route="`/campaigns/donate/${campaign?.id}`"
         :in_cart="campaign?.in_cart || false"
+        :cart_status="campaign?.cart_status || ''"
         :cart_id="campaign?.cart_id || ''"
         class="max-w-full h-full"
       >
@@ -117,11 +118,11 @@ const handlePageChange = (newPage) => {
 };
 
 watch(currentPage, (newPage) => {
-  fetchCampaigns();
+  // fetchCampaigns();
 });
 
 onMounted(() => {
-  fetchCampaigns();
+  // fetchCampaigns();
 });
 
 useSeoMeta({

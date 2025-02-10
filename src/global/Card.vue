@@ -52,7 +52,15 @@
 
     <!-- donation amount -->
     <div class="donation mt-4 d-flex align-center justify-space-between">
-      <div v-if="user && user?.user_type === 'dooner' && !in_cart && status != 'ended'">
+      <div
+        v-if="
+          user &&
+          user?.user_type === 'dooner' &&
+          !in_cart &&
+          status != 'ended' &&
+          (cart_status !== undefined || cart_status == 'wait')
+        "
+      >
         <v-btn
           :disabled="loading"
           :loading="loading"
@@ -68,7 +76,16 @@
         >
       </div>
 
-      <div v-if="user && user?.user_type === 'dooner' && in_cart && status != 'ended'">
+      <div
+        v-if="
+          user &&
+          user?.user_type === 'dooner' &&
+          in_cart &&
+          status != 'ended' &&
+          cart_status !== undefined &&
+          cart_status == 'wait'
+        "
+      >
         <v-btn
           :disabled="loading"
           :loading="loading"
@@ -94,6 +111,9 @@
 
           {{ $t("global.remove_from_cart") }}</v-btn
         >
+      </div>
+      <div v-if="user && user?.user_type === 'dooner' && cart_status == 'donated'">
+        {{ $t("global.already_donated") }}
       </div>
 
       <div class="flex items-cener gap-1" v-if="status == 'completed'">
@@ -154,6 +174,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  cart_status: {
+    type: String,
+    required: true,
+  },
   in_cart: {
     type: Boolean,
     required: true,
@@ -184,6 +208,7 @@ const animatedRate = ref(0);
 const targetRate = props.rate;
 const in_cart = ref(props.in_cart);
 const cart_id = ref(props.cart_id);
+const cart_status = ref(props.cart_status);
 const loading = ref(false);
 
 // Watch for changes to rate prop and animate progress bar
@@ -240,6 +265,7 @@ const handleCart = async (method: String) => {
   loading.value = false;
   if (method === "add") {
     cart_id.value = waitcart?.data?.result?.id;
+    cart_status.value = waitcart?.data?.result?.status;
   }
   method === "add" ? increaseCartCount() : decreaseCartCount();
 };

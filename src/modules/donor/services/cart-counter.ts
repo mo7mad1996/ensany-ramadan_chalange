@@ -17,7 +17,8 @@ export const useCartCounter = () => {
   } = useAsyncData(
     "donorCampaigns",
     async () => {
-      // تحقق من نوع المستخدم قبل إرسال الطلب
+     
+   
       if (user.value.user_type === "dooner" && cartStore.totalCount === null) {
         const response = await api.get(`doner/cart/count`, {
           headers: {
@@ -33,7 +34,7 @@ export const useCartCounter = () => {
     { watch: [locale] }
   );
 
-  // زيادة العدد في السلة
+  // console.log(cartStore.totalCount);
   function increaseCartCount() {
     cartStore.increaseCartCount(1);
   }

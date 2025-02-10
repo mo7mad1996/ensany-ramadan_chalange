@@ -36,6 +36,7 @@
             :donatebtn="true"
             :status="campaign?.status"
             :in_cart="campaign?.in_cart || false"
+            :cart_status="campaign?.cart_status || ''"
             :cart_id="campaign?.cart_id || ''"
             :route="`/campaigns/donate/${campaign.id}`"
             :id="campaign.id"
