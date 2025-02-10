@@ -245,6 +245,12 @@
               >
                 <pre>{{}}</pre>
                 <img :src="user.photo || '../assets/images/user.svg'" width="30" alt="" />
+                <img
+                  :src="user.photo || '../assets/images/user.svg'"
+                  width="30"
+                  class="rounded-full aspect-square object-cover"
+                  alt=""
+                />
                 <span v-if="user?.first_name">{{ user?.first_name }}</span>
                 <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
                 <v-icon>mdi-menu-down</v-icon>

@@ -67,6 +67,10 @@
   "update_name": "تحديث الاسم",
   "update_email": "تحديث البريد الإلكتروني",
   "update_phone": "تحديث الهاتف",
+
+  "first_name": "الاسم الاول",
+  "last_name": "الاسم الاخير",
+
   "commercial-register": "السجل التجاري",
   "drag-text": "اختر ملف",
   "choose": "اختر ملف",

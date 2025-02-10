@@ -5,6 +5,7 @@
       <img
         :src="user.photo || '../assets/images/dashboard/avatar.svg'"
         width="30px"
+        class="rounded-full aspect-square object-cover"
         alt=""
       />
       <span v-if="user?.first_name">{{ user?.first_name }}</span>

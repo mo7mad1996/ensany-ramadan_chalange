@@ -69,6 +69,10 @@
   "account_details": "Your Account Details",
   "update_name": "Update name",
   "update_email": "Update email",
+
+  "first_name": "First name",
+  "last_name": "Last name",
+
   "update_phone": "Update phone",
   "commercial-register": "commercial register",
   "drag-text": "Drag and Drop Here",
