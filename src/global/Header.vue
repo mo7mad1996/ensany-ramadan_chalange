@@ -257,11 +257,10 @@
                 @click="openDrop"
                 class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
               >
-                <pre>{{}}</pre>
                 <img
                   :src="user.photo || '../assets/images/user.svg'"
                   width="30"
-                  class="rounded-full aspect-square object-cover"
+                  class="rounded-full aspect-square objectgit -cover"
                   alt=""
                 />
                 <span v-if="user?.first_name">{{ user?.first_name }}</span>
