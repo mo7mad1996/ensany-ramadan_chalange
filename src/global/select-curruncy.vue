@@ -29,7 +29,6 @@
     </v-list>
   </v-menu>
 </template>
-
 <script setup>
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
@@ -45,13 +44,15 @@ function updateCurrency(newValue) {
     localStorage.setItem("selectedCurrency", newValue);
     const storedCurrencies = localStorage.getItem("currenciesData")
       ? JSON.parse(localStorage.getItem("currenciesData"))
-      : currenciesData.value;
+      : [];
 
-    const selectedCurrencyData = storedCurrencies.find(
-      (currency) => currency.id == newValue
-    );
-    if (selectedCurrencyData) {
-      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+    if (storedCurrencies && storedCurrencies.length > 0) {
+      const selectedCurrencyData = storedCurrencies.find(
+        (currency) => currency.id == newValue
+      );
+      if (selectedCurrencyData) {
+        selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+      }
     }
 
     currencyStore.setCurrency(newValue);
@@ -63,36 +64,38 @@ onMounted(() => {
   const storedCurrency = localStorage.getItem("selectedCurrency");
 
   if (storedCurrencies) {
-    currenciesData.value = localStorage.getItem("currenciesData")
-      ? JSON.parse(localStorage.getItem("currenciesData"))
-      : [];
+    currenciesData.value = JSON.parse(storedCurrencies);
   } else {
     refresh()
       .then(() => {
-        if (currenciesData.value != "") {
+        if (currenciesData.value && currenciesData.value.length > 0) {
           localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
         }
       })
       .catch((error) => {
-        console.error("Failed to fetch currencies data from API", error);
+        // console.error("فشل في جلب بيانات العملات من الـ API", error);
       });
   }
 
-  if (!storedCurrency) {
-    const defaultObj = currenciesData.value.find((i) => i.is_default == "yes");
-    selectedCurrency.value = defaultObj ? defaultObj.id : "";
-    updateCurrency(selectedCurrency.value);
-  } else {
-    updateCurrency(storedCurrency);
-  }
+  const checkCurrencies = setInterval(() => {
+    if (currenciesData.value && currenciesData.value.length > 0) {
+      clearInterval(checkCurrencies);
 
-  if (currenciesData.value) {
-    const selectedCurrencyData = currenciesData.value.find(
-      (currency) => currency.id === storedCurrency
-    );
-    if (selectedCurrencyData) {
-      selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+      if (!storedCurrency) {
+        const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+        selectedCurrency.value = defaultObj ? defaultObj.id : "";
+        updateCurrency(selectedCurrency.value);
+      } else {
+        updateCurrency(storedCurrency);
+      }
+
+      const selectedCurrencyData = currenciesData.value.find(
+        (currency) => currency.id === storedCurrency
+      );
+      if (selectedCurrencyData) {
+        selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
+      }
     }
-  }
+  }, 100);
 });
 </script>
