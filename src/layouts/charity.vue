@@ -20,9 +20,7 @@
           </div>
 
           <!-- Sidebar (Large Screens) -->
-          <div
-            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
-          >
+          <div class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0">
             <CharitySidebar />
           </div>
 
@@ -60,12 +58,7 @@
         size="x-small"
         color="primary"
       >
-        <img
-          src="../assets/images/statistics1.svg"
-          width="15"
-          class="mb-2"
-          alt=""
-        />
+        <img src="../assets/images/statistics1.svg" width="15" class="mb-2" alt="" />
         <p>{{ $t("global.donation") }}</p>
       </v-btn>
     </div>
@@ -81,11 +74,11 @@
 </template>
 
 <script setup>
-import Header from "../global/Header.vue";
-import AppFooter from "../global/AppFooter.vue";
-import Container from "~/global/Container.vue";
-import CharitySidebar from "~/global/CharitySidebar.vue";
 import { useI18n } from "vue-i18n";
+import CharitySidebar from "~/global/CharitySidebar.vue";
+import Container from "~/global/Container.vue";
+import AppFooter from "../global/AppFooter.vue";
+import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
 const isSidebarOpen = ref(false);

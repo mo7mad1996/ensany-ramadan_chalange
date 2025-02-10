@@ -52,7 +52,7 @@
 
     <!-- donation amount -->
     <div class="donation mt-4 d-flex align-center justify-space-between">
-      <div v-if="user && user?.user_type === 'dooner' && !in_cart">
+      <div v-if="user && user?.user_type === 'dooner' && !in_cart && status != 'ended'">
         <v-btn
           :disabled="loading"
           :loading="loading"
@@ -68,7 +68,7 @@
         >
       </div>
 
-      <div v-if="user && user?.user_type === 'dooner' && in_cart">
+      <div v-if="user && user?.user_type === 'dooner' && in_cart && status != 'ended'">
         <v-btn
           :disabled="loading"
           :loading="loading"
@@ -96,13 +96,42 @@
         >
       </div>
 
+      <div class="flex items-cener gap-1" v-if="status == 'completed'">
+        <span class="text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+              clip-rule="evenodd"
+            /></svg
+        ></span>
+        <span class="text-primary">
+          {{ $t("campaigns.completed") }}
+        </span>
+      </div>
+
       <v-btn
-        v-if="donatebtn"
+        v-if="donatebtn && status != 'ended'"
         class="text-capitalize rounded-lg bg-red-500 text-white"
         variant="flat"
         size="default"
         @click="$router.push(route)"
         >{{ $t("global.donate_now") }}</v-btn
+      >
+
+      <v-btn
+        v-if="status == 'ended'"
+        class="text-capitalize rounded-lg bg-red-500 text-white"
+        variant="flat"
+        :disabled="true"
+        size="default"
+        @click="$router.push(route)"
+        >{{ $t("campaigns.ended") }}</v-btn
       >
     </div>
   </div>
@@ -117,6 +146,10 @@ const { token, user } = useAuth();
 const { increaseCartCount, decreaseCartCount } = useCartCounter();
 
 const props = defineProps({
+  status: {
+    type: String,
+    required: true,
+  },
   cart_id: {
     type: String,
     required: true,

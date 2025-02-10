@@ -19,10 +19,10 @@
     >
       <BlogCard
         v-for="(blog, index) in blogs"
-        :key="index"
+        :key="blog?.id"
         :route="`/blogs/${blog.id}`"
         class="h-full"
-        @click="$router.push(`/blogs/${blog.id}`)"
+        :to="`/blogs/${blog.id}`"
       >
         <template #image>
           <img

@@ -87,6 +87,9 @@ const { pages, pages_error } = usePages();
 </script>
 
 <style scoped>
+footer {
+  margin-top: auto;
+}
 .v-row {
   align-items: center !important;
 }

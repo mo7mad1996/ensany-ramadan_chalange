@@ -1,8 +1,12 @@
 <template>
   <v-layout>
+    <!-- <div class="flex flex-col min-h-screen">
+      <div class="flex-grow">
+      </div>
+    </div> -->
     <Header />
 
-    <v-main>
+    <v-main class="flex flex-col min-h-screen">
       <NuxtPage />
       <AppFooter />
     </v-main>
@@ -19,12 +23,7 @@
         size="x-small"
         color="primary"
       >
-        <img
-          src="../assets/images/statistics1.svg"
-          width="15"
-          class="mb-2"
-          alt=""
-        />
+        <img src="../assets/images/statistics1.svg" width="15" class="mb-2" alt="" />
         <p>{{ $t("global.donation") }}</p>
       </v-btn>
     </div>
@@ -40,10 +39,10 @@
 </template>
 
 <script setup>
-import Header from "../global/Header.vue";
-import AppFooter from "../global/AppFooter.vue";
 import { useI18n } from "vue-i18n";
 import { useCountries } from "~/modules/auth/services/countries";
+import AppFooter from "../global/AppFooter.vue";
+import Header from "../global/Header.vue";
 
 const { refresh, countries } = useCountries();
 const { locale } = useI18n();
