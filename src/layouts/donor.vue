@@ -39,7 +39,7 @@
         v-if="isClient"
         temporary
         location="left"
-        class="lg:hidden"
+        class="v-navigation-drawer--mobile lg:hidden"
       >
         <div class="p-4">
           <DonorSidebar />

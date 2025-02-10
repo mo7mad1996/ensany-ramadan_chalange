@@ -4,7 +4,8 @@
       {{ $t("donor.donation_history") }}
     </h1>
     <div class="content mt-sm">
-      <v-card flat>
+      <div class="loader" v-if="status == 'pending'" />
+      <v-card flat v-else-if="status == 'success'">
         <v-data-table
           class="border rounded-lg"
           :items="donorDonation"

@@ -13,42 +13,40 @@
         <!-- image -->
         <div class="mt-5">
           <label for="">{{ $t("home.upload_image") }}</label>
-          <div class="grid grid-cols-3 gap-2">
-            <div class="upload_image col-span-2">
-              <div
-                class="flex items-center border border-gray-300 rounded-md shadow-sm w-full"
+
+          <div class="mb-5">
+            <img
+              :src="preview"
+              class="rounded-full aspect-square object-cover w-24 mx-auto shadow-2xl"
+            />
+          </div>
+          <div class="upload_image col-span-2">
+            <div
+              class="flex items-center border border-gray-300 rounded-md shadow-sm w-full"
+            >
+              <label
+                for="file-upload"
+                class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
               >
-                <label
-                  for="file-upload"
-                  class="px-4 py-3 bg-[#E9ECEF] text-black text-sm font-semibold ltr:rounded-l-md rtl:rounded-r-md cursor-pointer hover:bg-[#b8bbbd]"
-                >
-                  {{ $t("home.choose_file") }}
-                </label>
+                {{ $t("home.choose_file") }}
+              </label>
 
-                <Field
-                  type="file"
-                  id="file-upload"
-                  class="sr-only"
-                  @change="handleFileChange"
-                  accept="image/*"
-                  name="photo"
-                />
-
-                <span
-                  class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
-                >
-                  {{ selectedFileName || $t("home.no_file") }}
-                </span>
-              </div>
-              <ErrorMessage name="photo" />
-            </div>
-
-            <div>
-              <img
-                :src="preview"
-                class="rounded-full aspect-square object-cover w-full"
+              <Field
+                type="file"
+                id="file-upload"
+                class="sr-only"
+                @change="handleFileChange"
+                accept="image/*"
+                name="photo"
               />
+
+              <span
+                class="flex-1 px-3 text-gray-700 text-sm overflow-hidden text-ellipsis whitespace-nowrap"
+              >
+                {{ selectedFileName || $t("home.no_file") }}
+              </span>
             </div>
+            <ErrorMessage name="photo" />
           </div>
         </div>
 
