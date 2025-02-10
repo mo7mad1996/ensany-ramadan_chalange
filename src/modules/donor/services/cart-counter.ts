@@ -3,8 +3,7 @@ import { useAuth } from "~/modules/auth/services/auth";
 
 export const useCartCounter = () => {
   const { locale } = useI18n();
-  const { token, user} = useAuth();
-
+  const { token, user } = useAuth();
 
   const {
     data: cartCounterData,
@@ -14,12 +13,8 @@ export const useCartCounter = () => {
   } = useAsyncData(
     "donorCampaigns",
     async () => {
-      if (user.value.user_type !== 'dooner') return 0; 
-      const response = await api.get(`doner/cart/count`, {
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
-      });
+      if (user.value.user_type !== "dooner") return 0;
+      const response = await api.get(`doner/cart/count`);
       return response.data.result;
     },
     { watch: [locale] }
@@ -49,6 +44,6 @@ export const useCartCounter = () => {
     status,
     clear,
     increaseCartCount,
-    DecreaseCartCount
+    DecreaseCartCount,
   };
 };

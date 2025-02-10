@@ -8,9 +8,11 @@
       {{ $t("auth.pending_msg") }}
     </h1>
 
-    <!-- <p class="text-center text-[#12121299] text-sm pt-3">
+    <!--
+    <p class="text-center text-[#12121299] text-sm pt-3">
       {{ $t("global.error_desc") }}
-    </p> -->
+    </p> 
+    -->
 
     <div class="button flex justify-center mt-sm">
       <v-btn
@@ -20,8 +22,9 @@
         size="large"
         color="primary"
         @click="$router.push('/')"
-        >{{ $t("global.return_home") }}</v-btn
       >
+        {{ $t("global.return_home") }}
+      </v-btn>
     </div>
   </div>
 </template>

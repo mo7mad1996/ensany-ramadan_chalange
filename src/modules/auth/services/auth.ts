@@ -2,6 +2,7 @@ import { api } from "~/helpers/axios";
 import { encryptData, decryptData } from "~/helpers/data-encryption";
 import { useApi } from "./handle-apicals";
 import { setToken, setUser, setCode } from "~/helpers/set-cookies";
+import { startLoader, stopLoader } from "~/helpers/nprogress";
 import { type User, type NewUser, type NewCharity } from "~/helpers/interfaces";
 
 export function useAuth() {
@@ -23,13 +24,34 @@ export function useAuth() {
 
     if (response) {
       const { token: tokenValue, user: userValue } = response.data.result;
-      setToken(encryptData(tokenValue));
-      setUser(encryptData(userValue));
 
-      if (userValue?.user_type === "charity") {
-        navigateTo("/dashboard/charity");
-      } else {
-        navigateTo("/dashboard/donor");
+      setToken(encryptData(tokenValue));
+
+      try {
+        if (process.client) {
+          startLoader();
+        }
+
+        const res: any = await api.get("/me");
+
+        if (!res.status && res.errorCode == 301) {
+          stopLoader();
+          return navigateTo("/pending");
+        }
+
+        setUser(encryptData(userValue));
+
+        if (userValue?.user_type === "charity") {
+          navigateTo("/dashboard/charity");
+        } else {
+          navigateTo("/dashboard/donor");
+        }
+
+        stopLoader();
+      } catch (err) {
+        console.error("Token verification failed:", err);
+        stopLoader();
+        return navigateTo("/");
       }
     }
   };

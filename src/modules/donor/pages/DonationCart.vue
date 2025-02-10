@@ -16,7 +16,9 @@
     </div>
     <div class="grid grid-cols-3 gap-8 mt-6 justify-between">
       <div class="col-span-1">
-        <span class="custom-label text-sm">{{ $t("donor.custom_amount") }}</span>
+        <span class="custom-label text-sm">{{
+          $t("donor.custom_amount")
+        }}</span>
         <v-text-field
           v-model="customAmount"
           variant="outlined"
@@ -48,6 +50,8 @@
       </div>
     </div>
 
+    <!-- table -->
+
     <div class="content mt-sm">
       <v-card flat>
         <v-data-table
@@ -71,6 +75,7 @@
                   class="rounded-lg"
                 />
               </v-avatar>
+
               <span>{{ item.name }}</span>
             </div>
           </template>
@@ -91,7 +96,7 @@
           <template v-slot:item.action="{ item }">
             <div
               class="flex items-center gap-2 cursor-pointer text-red-500"
-              @click="removeItem(item.id)"
+              @click="removeItem(item.campaign.id)"
             >
               <v-icon size="20">mdi-close-circle</v-icon>
               <span>{{ $t("donor.remove") }}</span>
@@ -112,13 +117,20 @@
         </v-data-table>
       </v-card>
     </div>
-    <dialog class="dialog m-auto rounded-[10px] h-50 min-w-[500px]" ref="donate">
+
+    <dialog
+      class="dialog m-auto rounded-[10px] h-50 min-w-[500px]"
+      ref="donate"
+    >
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
       <div class="p-4">
         <div class="flex justify-center items-center flex-col w-full">
-          <img src="../../../assets/images/donor/customdialog.png" alt="custom" />
+          <img
+            src="../../../assets/images/donor/customdialog.png"
+            alt="custom"
+          />
           <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
           <v-radio-group v-model="pay_type" row>
             <v-radio
@@ -167,7 +179,7 @@ import { useAuth } from "~/modules/auth/services/auth";
 import { useDonerCart } from "../services/donation-cart";
 import { useDonationCartPage } from "../typescript/donation-cart";
 
-const { donorCart } = useDonerCart();
+const { donorCart, refresh } = useDonerCart();
 
 definePageMeta({
   layout: "donor",
@@ -198,7 +210,7 @@ watch(customAmount, (newAmount) => {
   }
 });
 watch(
-  () => donorCart.value.data.map((item) => item.amount),
+  () => donorCart.value?.data?.map((item) => item.amount),
   () => {
     if (distributionOption.value === "manual") {
       calculateCustomTotal();
@@ -209,7 +221,9 @@ watch(
 const distributeAmountEqually = () => {
   const campaignsCount = donorCart.value.data.length;
   if (campaignsCount > 0 && customAmount.value) {
-    const equalAmount = (parseFloat(customAmount.value) / campaignsCount).toFixed(2);
+    const equalAmount = (
+      parseFloat(customAmount.value) / campaignsCount
+    ).toFixed(2);
     donorCart.value.data.forEach((item) => {
       item.amount = equalAmount;
     });
@@ -217,31 +231,23 @@ const distributeAmountEqually = () => {
 };
 const removeItem = async (id) => {
   try {
-    const res = await api.post(`/doner/cart/remove/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token.value}`,
-      },
+    const res = await api.post(`/doner/cart/remove/${id}`);
+    Swal.fire({
+      icon: "success",
+      text: `${res.data?.message}`,
+      timer: 2000,
+      showConfirmButton: false,
     });
-    if (res?.data?.message === "Cart Element Not Found") {
-      Swal.fire({
-        icon: "info",
-        // title: "Good job!",
-        text: `${res.data.message}`,
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    } else {
-      Swal.fire({
-        icon: "success",
-        // title: "Good job!",
-        text: `${res.data?.message}`,
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    }
     await refresh();
-  } catch (error) {
-    console.error("Failed to remove item:", error);
+  } catch (err) {
+    console.error("Failed to remove item:", err);
+
+    Swal.fire({
+      icon: "error",
+      text: err.response?.data?.message || err.message,
+      timer: 2000,
+      showConfirmButton: false,
+    });
   }
 };
 const calculateCustomTotal = () => {
@@ -253,7 +259,8 @@ const calculateCustomTotal = () => {
 const submitDonation = async () => {
   const data = {
     total_amount: customAmount.value,
-    amount_split_type: distributionOption.value === "manual" ? "manual" : "automatic",
+    amount_split_type:
+      distributionOption.value === "manual" ? "manual" : "automatic",
     pay_type: pay_type.value === "full" ? "full" : "daily",
     currency_id: currenciesData.value,
     campaign: donorCart.value.data.map((item) => ({
@@ -263,11 +270,7 @@ const submitDonation = async () => {
   };
 
   try {
-    await api.post("doner/campaigns/create", data, {
-      headers: {
-        Authorization: `Bearer ${token.value}`,
-      },
-    });
+    await api.post("doner/campaigns/create", data);
     closeDialog();
     Swal.fire({
       icon: "success",

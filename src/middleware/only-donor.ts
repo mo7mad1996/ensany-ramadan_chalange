@@ -1,9 +1,7 @@
 import { useAuth } from "~/modules/auth/services/auth";
 
 export default defineNuxtRouteMiddleware(() => {
-  const { user } = useAuth();
+  const { user }: any = useAuth();
 
-  if (!user.value) {
-    return navigateTo("/login");
-  }
+  if (user.value.user_type != "dooner") return navigateTo("/");
 });

@@ -11,13 +11,9 @@ export const useDonerCart = () => {
     status,
     clear,
   } = useAsyncData(
-    "donorCart",
+    "donor-cart",
     async () => {
-      const response = await api.get(`/doner/index`, {
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
-      });
+      const response = await api.get(`/doner/index`);
       return response.data.result;
     },
     { watch: [locale] }

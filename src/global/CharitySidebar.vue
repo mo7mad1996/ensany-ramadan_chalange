@@ -2,7 +2,11 @@
   <div class="sidebar">
     <!-- user name -->
     <div class="user_name flex gap-x-3 items-center">
-      <img src="../assets/images/dashboard/avatar.svg" width="30px" alt="" />
+      <img
+        :src="user.photo || '../assets/images/dashboard/avatar.svg'"
+        width="30px"
+        alt=""
+      />
       <span v-if="user?.first_name">{{ user?.first_name }}</span>
       <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
     </div>
