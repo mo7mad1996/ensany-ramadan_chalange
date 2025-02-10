@@ -27,6 +27,8 @@
         :shadow="true"
         :donatebtn="true"
         :route="`/campaigns/donate/${campaign?.id}`"
+        :in_cart="campaign?.in_cart || false"
+        :cart_id="campaign?.cart_id || ''"
         class="max-w-full h-full"
       >
         <template #image>

@@ -22,6 +22,8 @@
         :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"
         :donatebtn="true"
+        :in_cart="campaign?.in_cart || false"
+        :cart_id="campaign?.cart_id || ''"
         :route="`/campaigns/donate/${campaign?.id}`"
         class="max-w-full h-full"
       >
@@ -39,9 +41,7 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span
-            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-          ></span>
+          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -80,8 +80,9 @@ const { t } = useI18n();
 const route = useRoute();
 
 const { siteName } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } =
-  useCharityCampaigns(route.params.id);
+const { campaigns, campaignsMeta, refresh, status, currentPage } = useCharityCampaigns(
+  route.params.id
+);
 
 const fetchcharityCampaigns = () => refresh();
 watchEffect(() => {

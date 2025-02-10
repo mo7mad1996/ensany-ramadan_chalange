@@ -1,5 +1,9 @@
 <template>
-  <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
+  <section
+    v-if="similarCampaigns.length > 0"
+    aria-label="ramadan chalenges"
+    class="pt-sm pb-sm"
+  >
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("campaigns.similar_campaigns") }}
@@ -11,18 +15,16 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide
-          v-for="(campaign, index) in similarCampaigns"
-          :key="campaign?.id"
-        >
+        <Slide v-for="(campaign, index) in similarCampaigns" :key="campaign?.id">
           <!-- Use unique `campaign.id` as the key -->
           <Card
-            v-if="similarCampaigns.length > 0"
-            :id="campaign?.id || Math.random()"
+            :id="campaign?.id"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
             :route="`/campaigns/donate/${campaign.id}`"
+            :in_cart="campaign?.in_cart || false"
+            :cart_id="campaign?.cart_id || ''"
           >
             <template #image>
               <img
@@ -38,9 +40,7 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span
-                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-              ></span>
+              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
             </template>
 
             <template #subscribers>{{ campaign?.total_donors }}</template>

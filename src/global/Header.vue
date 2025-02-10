@@ -109,6 +109,26 @@
 
         <!-- menue in small screens -->
         <div class="phone_menue d-flex gap-x-3 d-lg-none d-md-flex d-xl-none">
+          <div
+            v-if="user && user?.user_type === 'dooner'"
+            class="block md:block sm:block mt-2 me-5"
+          >
+            <nuxt-link
+              to="/dashboard/donor/donations-cart"
+              class="text-black d-flex align-center gap-1"
+            >
+              <div class="relative">
+                <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
+                <span
+                  v-if="cartCounter !== undefined"
+                  class="absolute -top-2 -right-3 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-800"
+                >
+                  {{ cartCounter }}
+                </span>
+              </div>
+            </nuxt-link>
+          </div>
+
           <selectCurruncy />
 
           <img
@@ -271,8 +291,12 @@
                 </ul>
               </div>
             </div>
-            <div v-if="user?.user_type === 'dooner'">
-              <nuxt-link to="/cart" class="text-black d-flex align-center gap-1">
+
+            <div v-if="user && user?.user_type === 'dooner'">
+              <nuxt-link
+                to="/dashboard/donor/donations-cart"
+                class="text-black d-flex align-center gap-1"
+              >
                 <div class="relative">
                   <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
                   <span
@@ -284,54 +308,54 @@
                 </div>
               </nuxt-link>
             </div>
+
+            <div class="flex items-center gap-x-3" v-if="!user">
+              <v-btn
+                class="text-capitalize rounded-lg"
+                variant="flat"
+                size="default"
+                color="primary"
+                @click="navigateTo('/login')"
+                >{{ $t("global.signin") }}</v-btn
+              >
+
+              <v-menu>
+                <template v-slot:activator="{ props }">
+                  <v-btn
+                    color="primary"
+                    class="capitalize border"
+                    style="text-transform: capitalize"
+                    v-bind="props"
+                    >{{ $t("global.signup") }}
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-title
+                      class="cursor-pointer"
+                      @click="navigateTo('/signup')"
+                    >
+                      <div class="flex gap-x-2 items-center">
+                        <img src="../assets/images/doner.svg" width="15" alt="" />
+                        <span>{{ $t("global.doner") }}</span>
+                      </div>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-list-item-title
+                      class="cursor-pointer"
+                      @click="navigateTo('/signup-charity')"
+                    >
+                      <div class="flex gap-x-2 items-center">
+                        <img src="../assets/images/charity.svg" width="15" alt="" />
+                        <span>{{ $t("global.charity2") }}</span>
+                      </div>
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </div>
           </template>
-
-          <div class="flex items-center gap-x-3" v-else>
-            <v-btn
-              class="text-capitalize rounded-lg"
-              variant="flat"
-              size="default"
-              color="primary"
-              @click="navigateTo('/login')"
-              >{{ $t("global.signin") }}</v-btn
-            >
-
-            <v-menu>
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  color="primary"
-                  class="capitalize border"
-                  style="text-transform: capitalize"
-                  v-bind="props"
-                  >{{ $t("global.signup") }}
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item>
-                  <v-list-item-title
-                    class="cursor-pointer"
-                    @click="navigateTo('/signup')"
-                  >
-                    <div class="flex gap-x-2 items-center">
-                      <img src="../assets/images/doner.svg" width="15" alt="" />
-                      <span>{{ $t("global.doner") }}</span>
-                    </div>
-                  </v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-title
-                    class="cursor-pointer"
-                    @click="navigateTo('/signup-charity')"
-                  >
-                    <div class="flex gap-x-2 items-center">
-                      <img src="../assets/images/charity.svg" width="15" alt="" />
-                      <span>{{ $t("global.charity2") }}</span>
-                    </div>
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </div>
 
           <selectCurruncy />
 
