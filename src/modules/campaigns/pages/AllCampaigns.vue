@@ -13,7 +13,7 @@
       {{ $t("campaigns.all_campaigns") }}
     </h1>
 
-    <SkeletonLoader :loading="isLoading ? 'true' : 'false'" />
+    <SkeletonLoader :loading="status" />
 
     <div
       v-if="status == 'success'"
@@ -58,6 +58,7 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="status == 'success'"
         v-model="currentPage"
         :length="campaignsMeta.last_page"
         @input="handlePageChange"
