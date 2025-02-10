@@ -96,7 +96,7 @@
           <template v-slot:item.action="{ item }">
             <div
               class="flex items-center gap-2 cursor-pointer text-red-500"
-              @click="removeItem(item.campaign.id)"
+              @click="removeItem(item.id)"
             >
               <v-icon size="20">mdi-close-circle</v-icon>
               <span>{{ $t("donor.remove") }}</span>

@@ -48,7 +48,7 @@ const { locale } = useI18n();
 const route = useRoute();
 
 const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { viewCampaign, status, target, amount } = useViewCampaign(
+const { viewCampaign, status, target, amount, similarCampaigns } = useViewCampaign(
   route.params.id
 );
 

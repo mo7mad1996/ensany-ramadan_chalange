@@ -5,7 +5,7 @@ const dashbaordDonorRoutes = [
     name: "donor",
     path: "/dashboard/donor",
     file: resolve(__dirname, "../pages/Dashboard.vue"),
-    meta: { middleware: "require-auth" },
+    meta: { middleware: ["require-auth", "only-donor"] },
   },
   {
     name: "donor-cart",

@@ -216,7 +216,7 @@
                     {{ c.name }}
                   </option>
                 </Field>
-                <ErrorMessage name="currency_id" />
+                <ErrorMessage name="country_id" />
               </div>
 
               <!-- image -->
@@ -634,12 +634,9 @@ const handleFileChange = (event) => {
 };
 
 const defaultValues = computed(() => {
-  const enData = user.value.charity_name_translations.find(
-    (i) => i.locale == "en"
-  );
-  const arData = user.value.charity_name_translations.find(
-    (i) => i.locale == "ar"
-  );
+  const translations = user.value.charity_name_translations || [];
+  const enData = translations.find((i) => i.locale == "en") || {};
+  const arData = translations.find((i) => i.locale == "ar") || {};
 
   // {a: 1}  =>  {"a:ar" : 1}
   const transformObj = (obj) => {
