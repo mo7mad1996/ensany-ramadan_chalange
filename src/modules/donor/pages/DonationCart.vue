@@ -9,7 +9,7 @@
         variant="flat"
         size="default"
         color="primary"
-        :disabled="checkIsAmountFilledOut"
+        :disabled="!checkIsAmountFilledOut"
         @click="openDialog"
       >
         {{ $t("donor.confirm_donation") }}
@@ -26,6 +26,7 @@
           v-model="customAmount"
           variant="outlined"
           density="compact"
+          type="number"
           :id="'customAmount'"
           :key="'customAmount'"
           hide-details
@@ -68,19 +69,40 @@
 
     <!-- table -->
     <div class="content mt-sm">
-      <v-card :flat="true">
+      <span v-if="!donorCart">
+        <div role="status">
+          <svg
+            aria-hidden="true"
+            class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-green-600"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="currentColor"
+            />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentFill"
+            />
+          </svg>
+          <span class="sr-only">Loading...</span>
+        </div>
+      </span>
+      <v-card flat>
         <v-data-table
-          v-if="status == 'success'"
-          :id="'datatable'"
-          :name="'datatable'"
+          v-if="donorCart"
+          id="datatable"
+          name="datatable"
           :key="'datatable'"
           class="border rounded-lg"
           :items="donorCart?.data"
           :headers="headers"
-          item-value="id"
-          :page="currentPage"
+          item-value="datatable"
+          :page="currentPage || 1"
           :server-items-length="totalItemsOnCart"
-          :loading="status === 'pending'"
+          :loading="status != 'success'"
           @update:page="currentPage = $event"
           @update:items-per-page="itemsPerPage = $event"
         >
@@ -105,7 +127,7 @@
               v-model="item.amount"
               :id="'input-' + (item?.id || 'default')"
               :key="'input-' + (item?.id || 'default')"
-              :type="'text'"
+              :type="'number'"
               variant="outlined"
               density="compact"
               :placeholder="`${selectedCurrencyLabel} 0`"
@@ -218,6 +240,7 @@ import { useDonationCartPage } from "../typescript/donation-cart";
 const currencyStore = useCurrencyStore();
 const { selectedCurrencyLabel } = storeToRefs(currencyStore);
 
+const { t } = useI18n();
 const { locale } = useI18n();
 const { siteName } = useGlobalVar();
 const { donorCart, status, currentPage, refresh } = useDonerCart();
@@ -230,8 +253,9 @@ definePageMeta({
 const { token, user } = useAuth();
 const { headers } = useDonationCartPage();
 const isLoading = ref(false);
-const checkIsAmountFilledOut = ref(true);
-const customAmount = ref("");
+
+const checkIsAmountFilledOut = ref(false);
+const customAmount = ref(0);
 const distributionOption = ref("automatic");
 const donate = ref("");
 const pay_type = ref("full");
@@ -266,16 +290,12 @@ watch(customAmount, (newAmount) => {
 watch(
   () => donorCart.value?.data?.map((item) => item.amount),
   (newAmounts) => {
-    if (distributionOption.value === "manual") {
-      const allAmountsFilled = newAmounts.every(
-        (amount) => amount !== undefined && amount !== null && amount !== ""
-      );
-
-      checkIsAmountFilledOut.value = allAmountsFilled;
-
-      if (allAmountsFilled) {
-        calculateCustomTotal();
-      }
+    const allAmountsValid = newAmounts.every(
+      (amount) => !isNaN(amount) && amount > 0
+    );
+    checkIsAmountFilledOut.value = allAmountsValid;
+    if (allAmountsValid) {
+      calculateCustomTotal();
     }
   },
   { deep: true }
@@ -317,7 +337,7 @@ const calculateCustomTotal = () => {
   const total = donorCart.value.data.reduce((sum, item) => {
     return sum + (parseFloat(item.amount) || 0);
   }, 0);
-  customAmount.value = total.toFixed(2);
+  customAmount.value = total.toFixed(0);
 };
 
 const submitDonation = async () => {
@@ -335,16 +355,26 @@ const submitDonation = async () => {
 
   try {
     isLoading.value = true;
-    await api.post("doner/campaigns/create", data);
+    const response = await api.post("doner/campaigns/create", data);
     closeDialog();
     isLoading.value = false;
-    Swal.fire({
-      icon: "success",
-      title: "Good job!",
-      text: "Donation submitted successfully!",
-      timer: 2000,
-      showConfirmButton: false,
-    });
+
+    if (response?.data?.result?.url != "") {
+      Swal.fire({
+        icon: "success",
+        title: "",
+        text: t("donor.cart_saved_redirect_after_5_sec"),
+        timer: 6000,
+        showConfirmButton: false,
+      });
+
+      setTimeout(() => {
+        window.location.href = response?.data?.result?.url;
+      }, 5000);
+    } else {
+      console.error("URL not found!");
+    }
+
     await refresh();
   } catch (error) {
     isLoading.value = false;
@@ -360,11 +390,12 @@ const closeDialog = () => {
   donate.value.close();
 };
 
-// onMounted(() => {
-//   currenciesData.value = localStorage.getItem("selectedCurrency")
-//     ? localStorage.getItem("selectedCurrency")
-//     : "";
-// });
+onMounted(() => {
+  currenciesData.value = localStorage.getItem("selectedCurrency")
+    ? localStorage.getItem("selectedCurrency")
+    : "";
+  //console.log(currenciesData.value);
+});
 
 watch([locale], (newLocale) => {
   const siteTitle = siteName(newLocale.value);

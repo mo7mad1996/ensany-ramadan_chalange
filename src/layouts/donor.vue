@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <Header />
-    <v-main class="mt-10">
+    <v-main class="mt-10 flex flex-col min-h-screen">
       <Container>
         <div class="grid grid-cols-12 gap-4">
           <!-- Sidebar Toggle Button (Small Screens) -->
