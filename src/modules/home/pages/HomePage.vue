@@ -2,11 +2,11 @@
   <HomeBanner />
   <HomeRamadanChalange />
   <HomeContriputing />
-  <HomeParteners />
   <HomeChallengeHeros />
   <HomeTable />
   <HomeCampaigns />
-  <HomeFamouses />
+  <HomeParteners />
+  <!-- <HomeFamouses /> -->
   <HomeSuccessStories />
   <HomeLatestBlogs />
   <HomeLastSection />
