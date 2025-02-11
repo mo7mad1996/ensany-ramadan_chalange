@@ -1,6 +1,4 @@
 <template>
-  <!-- <div v-if="status === 'pending'"></div>
-  <div v-else-if="status === 'error'">{{ currencies_error }}</div> -->
   <v-menu>
     <template v-slot:activator="{ props }">
       <v-btn
@@ -31,7 +29,6 @@
 </template>
 <script setup>
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
 import { useCurrencies } from "~/modules/campaigns/services/curunces";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 
@@ -69,7 +66,10 @@ onMounted(() => {
     refresh()
       .then(() => {
         if (currenciesData.value && currenciesData.value.length > 0) {
-          localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+          localStorage.setItem(
+            "currenciesData",
+            JSON.stringify(currenciesData.value)
+          );
         }
       })
       .catch((error) => {
@@ -82,7 +82,9 @@ onMounted(() => {
       clearInterval(checkCurrencies);
 
       if (!storedCurrency) {
-        const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+        const defaultObj = currenciesData.value.find(
+          (i) => i.is_default === "yes"
+        );
         selectedCurrency.value = defaultObj ? defaultObj.id : "";
         updateCurrency(selectedCurrency.value);
       } else {

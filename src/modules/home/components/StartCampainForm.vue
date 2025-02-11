@@ -450,9 +450,11 @@ import Swal from "sweetalert2";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { api } from "~/helpers/axios";
 
+const currencyStore = useCurrencyStore();
+
 const { t } = useI18n();
 const date = ref(new Date());
-const { selectedCurrency } = useCurrencyStore();
+const { selectedCurrency } = storeToRefs(currencyStore);
 const state = ["published", "paused"];
 
 const props = defineProps(["initData"]);
@@ -482,6 +484,7 @@ const submit = async (values) => {
       ...values,
       start_at: formatDate(today.value),
       end_at: formatDate(endDate.value),
+      currency_id: selectedCurrency,
     };
 
     const res = await (props.initData
