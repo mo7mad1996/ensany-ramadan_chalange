@@ -29,7 +29,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
+        <Slide
+          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
+          :key="index"
+        >
           <Card
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
@@ -53,10 +56,20 @@
 
             <template #company> {{ campaign?.user?.name }}</template>
 
-            <template #title>{{ campaign?.name }}</template>
+            <template #title>
+              <!-- <nuxt-link
+                :to="{ name: 'view-campaign', params: { id: campaign.id } }"
+                class="hover:underline"
+                @click.prevent.stop
+              > -->
+              {{ campaign.name }}
+              <!-- </nuxt-link> -->
+            </template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>

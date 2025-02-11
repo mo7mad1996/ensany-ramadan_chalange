@@ -9,6 +9,7 @@ export const useGlobalVar = () => {
     useSeoMeta({
       titleTemplate: (current_title) =>
         current_title ? `%s | ${t("home.site_name")} ` : t("home.site_name"),
+      title: static_title ? static_title : t(title || ""),
     });
 
     watch(locale, () => {

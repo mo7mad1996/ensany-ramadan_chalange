@@ -84,7 +84,9 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">{{ $t("campaigns.campaign_objective") }}:</span>
+        <span class="text-[#12121299]"
+          >{{ $t("campaigns.campaign_objective") }}:</span
+        >
         <span class="text-primary"
           >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
         >
@@ -97,10 +99,14 @@
     ></v-skeleton-loader>
 
     <!-- campain maker -->
-    <div class="honor-compan d-flex ga-2 align-center mt-5" v-if="status == 'success'">
+    <NuxtLink
+      :to="{ name: 'affiliate-charity', params: { id: campaign.user.id } }"
+      class="honor-compan d-flex ga-2 align-center mt-5"
+      v-if="status == 'success'"
+    >
       <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
       <p>{{ campaign?.user?.name }}</p>
-    </div>
+    </NuxtLink>
 
     <!-- tabs -->
     <v-tabs
@@ -108,7 +114,9 @@
       bg-color="white"
       class="mt-5 v-slide-group v-slide-group--mobile v-tabs v-tabs--horizontal v-tabs--align-tabs-start v-tabs--density-default bg-white"
     >
-      <v-tab value="one" :ripple="false">{{ $t("campaigns.description") }}</v-tab>
+      <v-tab value="one" :ripple="false">{{
+        $t("campaigns.description")
+      }}</v-tab>
       <v-tab value="two" :ripple="false">{{ $t("campaigns.gallery") }}</v-tab>
       <v-tab value="three" :ripple="false">{{ $t("campaigns.update") }}</v-tab>
       <v-tab value="four" :ripple="false">{{ $t("campaigns.donors") }}</v-tab>
@@ -127,7 +135,7 @@
       <v-tabs-window-item value="two">
         <v-row v-if="campaign?.gallery.length">
           <v-col
-            v-for="(image, index) in campaign?.gallery"
+            v-for="(image, n) in campaign?.gallery"
             :key="n"
             class="d-flex child-flex"
             cols="4"
@@ -212,7 +220,9 @@
 
               <h6>{{ donor?.name }}</h6>
 
-              <span class="font-bold text-primary">${{ donor?.total_amount }}</span>
+              <span class="font-bold text-primary"
+                >${{ donor?.total_amount }}</span
+              >
             </div>
           </v-col>
         </v-row>

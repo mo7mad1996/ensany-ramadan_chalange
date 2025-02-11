@@ -297,7 +297,6 @@
             <Field
               type="text"
               name="video_url"
-              rules="required"
               :placeholder="$t('home.video_url')"
               class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -306,7 +305,7 @@
         </div>
 
         <div
-          class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5"
+          class="group grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 gap-4 mt-5"
         >
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
@@ -345,7 +344,8 @@
             </Field>
           </div> -->
 
-          <div>
+          <!-- currencies -->
+          <div v-if="false">
             <div class="title flex items-center gap-x-2 mb-3">
               <img src="../../../assets/images/campaign/status.svg" alt="" />
               <span class="text-2xl"> {{ $t("home.currency") }}</span>
@@ -517,7 +517,7 @@ onMounted(() => {
   }
 
   getCategories();
-  getCurrencies();
+  // getCurrencies();
 });
 
 const {

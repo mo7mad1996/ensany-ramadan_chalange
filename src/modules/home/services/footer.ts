@@ -6,19 +6,14 @@ export const useFooter = () => {
     data: footer,
     error: footer_error,
     refresh,
-    status,
-    clear,
-  } = useAsyncData(
-    "footer",
-    () => api.get("/socials").then((response) => response.data.result.data),
-    { watch: [locale] }
-  );
-
+  } = useFetch(() => `/socials`, {
+    baseURL: api.defaults.baseURL,
+    transform: (response) => response.result.data,
+    watch: [locale],
+  });
   return {
     footer,
     footer_error,
     refresh,
-    status,
-    clear,
   };
 };

@@ -7,7 +7,7 @@
           <p class="pt-[.5rem] pb-[.5rem]">{{ $t("global.footer") }}</p>
         </div>
 
-        <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
+        <div class="xl:col-span-5 lg:col-span-8 md:col-span-12 col-span-12">
           <div
             class="terms pb-[.5rem] flex flex-col sm:flex-row justify-center items-center lg:gap-x-[2rem] xl:gap-x-[2rem] md:gap-x-[8rem] gap-x-[8rem]"
           >
@@ -17,15 +17,22 @@
               >{{ $t("global.footer_terms") }}</span
             > -->
 
-            <p @click="$router.push('/')" class="cursor-pointer hover:text-primary">
+            <p
+              @click="$router.push('/')"
+              class="cursor-pointer hover:text-primary"
+            >
               {{ $t("global.home") }}
             </p>
-            <p @click="$router.push('/faqs')" class="cursor-pointer hover:text-primary">
+            <p
+              @click="$router.push('/faqs')"
+              class="cursor-pointer hover:text-primary"
+            >
               {{ $t("global.footer_faqs") }}
             </p>
 
             <p
               v-for="(page, index) in pages"
+              :key="index"
               @click="$router.push(`/page/${page?.id}`)"
               class="cursor-pointer hover:text-primary"
             >
@@ -34,7 +41,7 @@
           </div>
         </div>
 
-        <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
+        <div class="xl:col-span-3 lg:col-span-12 md:col-span-12 col-span-12">
           <p class="flow pb-[.5rem]">{{ $t("global.footer_follow") }}</p>
           <div
             class="scotila-links cursor-pointer flex flex-wrap gap-y-4 lg:gap-x-4 xl:gap-x-4 md:gap-x-[2rem] gap-x-[2rem] pt-[.5rem]"
@@ -47,26 +54,6 @@
             >
               <img :src="link?.icon" alt="footer_icon" />
             </a>
-
-            <!-- <nuxt-link to=""
-              ><img src="../assets/images/insta.svg" alt=""
-            /></nuxt-link>
-
-            <nuxt-link to=""
-              ><img src="../assets/images/twitter.svg" alt=""
-            /></nuxt-link>
-
-            <nuxt-link to=""
-              ><img src="../assets/images/youtube.svg" alt=""
-            /></nuxt-link>
-
-            <nuxt-link to=""
-              ><img src="../assets/images/ticktok.svg" alt=""
-            /></nuxt-link>
-
-            <nuxt-link to=""
-              ><img src="../assets/images/whatsapp.svg" alt=""
-            /></nuxt-link> -->
           </div>
         </div>
       </div>
