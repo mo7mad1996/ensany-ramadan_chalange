@@ -89,5 +89,9 @@
   "donation_amount": "Donation Amount",
   "donation_time": "Time",
   "donation_campaign": "Campaign",
-  "mins_go": "mins ago"
+  "mins_go": "mins ago",
+
+  "site_name": "Ramadan Challenge",
+  "page_title_start_campaign": "Start Campaign",
+  "page_title_home": "Home"
 }

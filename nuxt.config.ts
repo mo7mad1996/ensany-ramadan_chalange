@@ -12,11 +12,12 @@ export default defineNuxtConfig({
     baseURL: "/",
     pageTransition: false, // Completely disables transitions
     layoutTransition: false,
+
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "icon", type: "image/ico", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",

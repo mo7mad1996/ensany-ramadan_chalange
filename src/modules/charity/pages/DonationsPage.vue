@@ -74,6 +74,7 @@ import { reFormat2 } from "~/helpers/format-date";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useCharityDonations } from "../services/charity-donations";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useDonationsPage } from "../typescript/donations-page";
 definePageMeta({
   layout: "charity",
@@ -90,4 +91,7 @@ const { charityDonat, status, totalItems, itemsPerPage, currentPage } =
 const openFilter = () => {
   isFilter.value = !isFilter.value;
 };
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_charity_donations");
 </script>

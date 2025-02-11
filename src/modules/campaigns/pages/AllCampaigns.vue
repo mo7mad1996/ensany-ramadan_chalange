@@ -47,7 +47,9 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+          <span
+            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+          ></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -71,8 +73,6 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Card from "~/global/Card.vue";
 import Container from "~/global/Container.vue";
@@ -81,12 +81,9 @@ import { useGlobalVar } from "~/helpers/global-var";
 import { stripHtmlTags } from "~/helpers/string";
 import { useCampaigns } from "../services/campaigns";
 
-const { locale } = useI18n();
 const isLoading = ref(true);
 const router = useRouter();
 const route = useRoute();
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const currentPage = ref(Number(route.query.page) || 1);
 const lastPage = ref(1);
@@ -117,29 +114,8 @@ const handlePageChange = (newPage) => {
   }
 };
 
-watch(currentPage, (newPage) => {
-  // fetchCampaigns();
-});
-
-onMounted(() => {
-  // fetchCampaigns();
-});
-
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("campaigns.page_title_campaigns");
 
 setTimeout(() => {
   isLoading.value = false;

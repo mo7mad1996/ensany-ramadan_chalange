@@ -29,6 +29,7 @@
 <script setup>
 import { useCampaign } from "../../services/campaign";
 import CampaignForm from "~/modules/home/components/StartCampainForm.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 
 // config
 const route = useRoute();
@@ -71,6 +72,9 @@ const payload = computed(() => {
   delete payload.sort;
   return payload;
 });
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_edit_campaign");
 </script>
 
 <style scoped>

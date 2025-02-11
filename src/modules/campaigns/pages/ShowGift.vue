@@ -94,17 +94,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useRoute, useRouter } from "vue-router";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useFooter } from '~/modules/home/services/footer';
 import { useShowGift } from "../services/showGift";
 
 const router = useRouter(); // استخدام useRouter
-const { locale } = useI18n();
 const route = useRoute();
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { viewGift, status } = useShowGift(route.params.id);
 const { footer, footer_error } = useFooter();
 const isDataLoaded = ref(false);  
@@ -117,25 +113,21 @@ onMounted(() => {
   }
 });
 
-watchEffect(() => {
-  // console.log(viewGift.value);
-});
+const { siteName } = useGlobalVar();
+siteName(viewGift.value.donation?.love_name );
 
 useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
+  description: viewGift.value.donation?.love_comment,
   });
-});
+
+// useSeoMeta({
+//   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
+//   ogTitle: "My Amazing Site",
+//   ogDescription: "This is my amazing site, let me tell you all about it.",
+//   ogImage: "https://example.com/image.png",
+//   twitterCard: "summary_large_image",
+// });
+ 
 
 definePageMeta({
   layout: "empty",

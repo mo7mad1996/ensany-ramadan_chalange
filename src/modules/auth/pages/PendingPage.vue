@@ -29,4 +29,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_pending");
+</script>

@@ -78,5 +78,11 @@
   "rejected": "مرفوض",
   "campaign_name": "اسم الحملة",
   "cart_saved_redirect_after_5_sec": "تم حفظ حملاتك بنجاح سيتم توجيهك بعد قليل للقيام بالتبرع رجاء عدم غلق الصفحة ",
-  "remove": "حذف"
+  "remove": "حذف",
+
+  "page_title_donor_campaigns": "حملات المتبرع",
+  "page_title_dashboard": "لوحة التحكم",
+  "page_title_donor_donations_cart": "سلة تبرعات المتبرع",
+  "page_title_donor_donation_history": "سجل تبرعات المتبرع",
+  "page_title_settings": "الإعدادات"
 }

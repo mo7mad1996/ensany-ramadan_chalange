@@ -43,7 +43,9 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+          <span
+            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+          ></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -82,9 +84,8 @@ const { t } = useI18n();
 const route = useRoute();
 
 const { siteName } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } = useCharityCampaigns(
-  route.params.id
-);
+const { campaigns, campaignsMeta, refresh, status, currentPage } =
+  useCharityCampaigns(route.params.id);
 
 const fetchcharityCampaigns = () => refresh();
 watchEffect(() => {
@@ -102,13 +103,7 @@ watch(currentPage, (newPage) => {
   fetchcharityCampaigns();
 });
 
-watch([locale, campaigns], (newLocale, campaigns) => {
-  const siteTitle = siteName(locale.value);
-  useSeoMeta({
-    title: siteTitle.value + " / " + charityName.value,
-    ogTitle: siteTitle.value + " / " + charityName.value,
-  });
-});
+siteName(charityName.value);
 
 // only simulation for test skeleton loader
 setTimeout(() => {

@@ -68,7 +68,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from "vue-router";
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import { reFormat2 } from "~/helpers/format-date";
@@ -76,18 +75,19 @@ import { useGlobalVar } from "~/helpers/global-var";
 import { useSingleStory } from "../services/single-story";
 
 const route = useRoute();
-const { locale } = useI18n();
 const { siteName } = useGlobalVar();
 const { singleStory, status } = useSingleStory(route.params.id);
 
-// useSeoMeta({
-//   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-//   ogTitle: "My Amazing Site",
-//   description: "This is my amazing site, let me tell you all about it.",
-//   ogDescription: "This is my amazing site, let me tell you all about it.",
-//   ogImage: "https://example.com/image.png",
-//   twitterCard: "summary_large_image",
-// });
+siteName(singleStory.value.title);
+
+useSeoMeta({
+      title: singleStory.value.title,
+      ogTitle: singleStory.value.title,
+      ogImage: singleStory.value.image,
+      twitterCard: singleStory.value.image,
+      description:singleStory.value.content,
+      ogDescription:singleStory.value.content,
+  });
 
 watchEffect(() => {
     if(status.value == 'error'){
@@ -95,11 +95,11 @@ watchEffect(() => {
   }
 });
 
-watch([locale,singleStory], ([newLocale,story]) => {
+watch(singleStory, (story: any) => {
  
   useSeoMeta({
-      title: siteName(newLocale,story?.title),
-      ogTitle: siteName(newLocale,story?.title),
+      title: story?.title,
+      ogTitle: story?.title,
       ogImage: story?.image,
       twitterCard: story?.image,
       description:story?.content,

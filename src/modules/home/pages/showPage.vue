@@ -30,23 +30,10 @@ import { useShowPage } from "../services/page";
 const route = useRoute();
 const { page, status } = useShowPage(route.params.id);
 
-const { locale } = useI18n();
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { siteName } = useGlobalVar();
+siteName(page.value?.title);
 
 useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
+  description: page.value.content,
 });
 </script>

@@ -59,5 +59,15 @@
 
   "password_error": "خطأ اثناء اعادة تعين كلمة المرور",
   "password_success": "تم تغير كلمة المرور",
-  "error": "خطا"
+  "error": "خطا",
+
+  "page_title_verify_email": "تأكيد البريد الإلكتروني",
+  "page_title_terms": "الشروط",
+  "page_title_register_donor": "التسجيل كمتبرع",
+  "page_title_register_charity": "التسجيل كجمعية خيرية",
+  "page_title_pending": "قيد الانتظار",
+  "page_title_reset_password": "إعادة تعيين كلمة المرور",
+  "page_title_faq": "الأسئلة المكررة",
+  "page_title_login": "تسجيل الدخول",
+  "page_title_check_email": "OTP"
 }

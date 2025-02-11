@@ -55,6 +55,11 @@ import { useDonationHistoryPage } from "../typescript/donation";
 import { useDonorDonationes } from "../services/donor-donation";
 import dayjs from "dayjs";
 
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_donor_donation_history");
+
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",

@@ -59,5 +59,15 @@
 
   "password_error": "Error while resetting the password",
   "password_success": "Password changed successfully",
-  "error": "Error"
+  "error": "Error",
+
+  "page_title_verify_email": "Verify Email",
+  "page_title_terms": "Terms",
+  "page_title_register_donor": "Register as a Donor",
+  "page_title_register_charity": "Register as a Charity",
+  "page_title_pending": "Pending",
+  "page_title_reset_password": "Reset Password",
+  "page_title_faq": "FAQ",
+  "page_title_login": "Login",
+  "page_title_check_email": "OTP"
 }

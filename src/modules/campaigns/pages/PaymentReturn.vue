@@ -30,6 +30,8 @@
 
 <script setup>
 import { useCallback } from "../services/callback";
+import { useGlobalVar } from "~/helpers/global-var";
+
 // definePageMeta({
 //   middleware: "navigate",
 // });
@@ -39,4 +41,7 @@ const razorpay_payment_link_id = route.query.razorpay_payment_link_id;
 const { callBack } = useCallback();
 
 callBack(razorpay_payment_link_id);
+
+const { siteName } = useGlobalVar();
+siteName("campaigns.page_title_payment_confirmation");
 </script>

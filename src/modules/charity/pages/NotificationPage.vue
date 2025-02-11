@@ -142,8 +142,13 @@ import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { useDonationsPage } from "../typescript/donations-page";
+import { useGlobalVar } from "~/helpers/global-var";
+
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_notifications");
 </script>

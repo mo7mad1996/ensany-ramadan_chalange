@@ -143,5 +143,12 @@
   "delete_msg": "Do you want to  delete this campaign?",
   "cancel": "Cancel",
   "confirm_delete": "campaign deleted successfully",
-  "ok": "Ok"
+  "ok": "Ok",
+
+  "page_title_dashboard": "Dashboard",
+  "page_title_campaigns": "Campaigns",
+  "page_title_charity_donations": "Charity Donations",
+  "page_title_notifications": "Notifications",
+  "page_title_settings": "Settings",
+  "page_title_edit_campaign": "Edit Campaign"
 }

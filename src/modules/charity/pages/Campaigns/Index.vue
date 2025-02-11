@@ -121,6 +121,7 @@
 import Swal from "sweetalert2";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { reFormat2 } from "~/helpers/format-date";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useCharityCamoaigns } from "../../services/charity-campaigns";
 import { useCampaign } from "../../services/campaign";
 import { useCampaignsPage } from "../../typescript/campaigns-page";
@@ -129,7 +130,6 @@ definePageMeta({
   middleware: "require-auth",
 });
 
-const { t } = useI18n();
 const router = useRouter();
 const { search, headers } = useCampaignsPage();
 const { charityCampaigns, status, itemsPerPage, totalItems, currentPage } =
@@ -167,4 +167,7 @@ const confirmDelete = (id) => {
     });
   }
 };
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_campaigns");
 </script>

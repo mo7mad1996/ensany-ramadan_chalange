@@ -61,7 +61,10 @@
       </VideoCard>
     </div>
 
-    <div v-if="videos.length > 0" class="pagination items-center justify-center pb-sm">
+    <div
+      v-if="videos.length > 0"
+      class="pagination items-center justify-center pb-sm"
+    >
       <v-pagination
         v-model="currentPage"
         :length="videosMeta.last_page"
@@ -81,8 +84,6 @@ import { useVideos } from "../services/videos";
 const { locale } = useI18n();
 
 const isLoading = ref(true);
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { videos, videosMeta, refresh, status, clear, currentPage } = useVideos();
 
 const fetchVideos = () => {
@@ -93,21 +94,8 @@ watch(currentPage, (newPage) => {
   fetchVideos();
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("videos.videos");
 
 // only simulation for test skeleton loader
 setTimeout(() => {

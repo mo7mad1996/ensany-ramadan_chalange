@@ -44,13 +44,9 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
-const { locale } = useI18n();
 const route = useRoute();
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { viewCampaign, status, target, amount, similarCampaigns } = useViewCampaign(
-  route.params.id
-);
+const { viewCampaign, status, target, amount, similarCampaigns } =
+  useViewCampaign(route.params.id);
 
 watchEffect(() => {
   if (status.value == "error") {
@@ -58,19 +54,6 @@ watchEffect(() => {
   }
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName(viewCampaign.value?.name);
 </script>

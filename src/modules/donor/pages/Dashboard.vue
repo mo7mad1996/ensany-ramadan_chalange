@@ -12,6 +12,11 @@
 </template>
 
 <script setup lang="ts">
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_dashboard");
+
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",

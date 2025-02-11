@@ -240,9 +240,11 @@ import { useDonationCartPage } from "../typescript/donation-cart";
 const currencyStore = useCurrencyStore();
 const { selectedCurrencyLabel } = storeToRefs(currencyStore);
 
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_donor_donations_cart");
+
 const { t } = useI18n();
 const { locale } = useI18n();
-const { siteName } = useGlobalVar();
 const { donorCart, status, currentPage, refresh } = useDonerCart();
 const totalItemsOnCart = ref(0);
 definePageMeta({
@@ -395,13 +397,5 @@ onMounted(() => {
     ? localStorage.getItem("selectedCurrency")
     : "";
   //console.log(currenciesData.value);
-});
-
-watch([locale], (newLocale) => {
-  const siteTitle = siteName(newLocale.value);
-  useSeoMeta({
-    title: siteTitle.value,
-    ogTitle: siteTitle.value,
-  });
 });
 </script>

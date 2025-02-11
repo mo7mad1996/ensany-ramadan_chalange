@@ -47,10 +47,12 @@
   "success_msg": "تم التبرع بنجاح، شكرًا لك على لطفك",
   "ok": "حسنا",
   "faild_msg": "حدث خطأ في التبرع، يرجى المحاولة مرة أخرى",
-  "gift_certificate":"اهداء",
+  "gift_certificate": "اهداء",
   "gift_to": "أهدي إلى ",
   "on_this_day": "في هذا اليوم.",
   "message_gift": "رسالة الاهداء",
   "gift_by": "اهداء من",
-   "gift_message": "هدية كإسهام فى حملة"
+  "gift_message": "هدية كإسهام فى حملة",
+  "page_title_payment_confirmation": "تأكيد الدفع",
+  "page_title_campaigns": "الحملات"
 }

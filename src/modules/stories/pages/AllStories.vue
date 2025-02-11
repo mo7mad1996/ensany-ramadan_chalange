@@ -56,8 +56,6 @@ import { useStories } from "../services/stories";
 const { locale } = useI18n();
 const router = useRouter();
 const route = useRoute();
- 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { stories, status, currentPage, storiesMeta, refresh } = useStories();
 
 const fetchStories = async () => {
@@ -82,19 +80,7 @@ watch([currentPage], (page) => {
   fetchStories();
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName('story.page_title_stories');
 </script>

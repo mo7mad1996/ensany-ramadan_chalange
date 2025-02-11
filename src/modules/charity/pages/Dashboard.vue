@@ -66,11 +66,15 @@ import { useAuth } from "~/modules/auth/services/auth";
 const { user } = useAuth();
 const { t } = useI18n();
 const { $toast } = useNuxtApp();
+import { useGlobalVar } from "~/helpers/global-var";
+
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
 
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_dashboard");
 const copy_url = () => {
   const url = `https://ramadanchallenges.com/${user.value.user_type}/${user.value.id}`;
 
@@ -82,7 +86,5 @@ const copy_url = () => {
     .catch((err) => {
       console.error("Failed to copy:", err);
     });
-
-  console.log(url);
 };
 </script>

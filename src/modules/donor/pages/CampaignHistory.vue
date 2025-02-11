@@ -58,6 +58,12 @@ import dayjs from "dayjs";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
 import { useRouter } from "vue-router";
+
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_donor_campaigns");
+
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",

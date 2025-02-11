@@ -89,5 +89,9 @@
   "donation_amount": "مبلغ التبرع",
   "donation_time": "وقت التبرع",
   "donation_campaign": "حملة التبرع",
-  "mins_go": "منذ دقائق"
+  "mins_go": "منذ دقائق",
+
+  "site_name": "التحدى الرمضانى",
+  "page_title_start_campaign": "بدء حملة",
+  "page_title_home": "الرئيسية"
 }
