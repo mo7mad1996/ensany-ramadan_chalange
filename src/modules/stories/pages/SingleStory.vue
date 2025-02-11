@@ -77,17 +77,17 @@ import { useSingleStory } from "../services/single-story";
 
 const route = useRoute();
 const { locale } = useI18n();
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { siteName } = useGlobalVar();
 const { singleStory, status } = useSingleStory(route.params.id);
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
+// useSeoMeta({
+//   title: locale.value == "ar" ? ramadan_ar : ramadan_en,
+//   ogTitle: "My Amazing Site",
+//   description: "This is my amazing site, let me tell you all about it.",
+//   ogDescription: "This is my amazing site, let me tell you all about it.",
+//   ogImage: "https://example.com/image.png",
+//   twitterCard: "summary_large_image",
+// });
 
 watchEffect(() => {
     if(status.value == 'error'){
@@ -95,10 +95,15 @@ watchEffect(() => {
   }
 });
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
+watch([locale,singleStory], ([newLocale,story]) => {
+ 
   useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
+      title: siteName(newLocale,story?.title),
+      ogTitle: siteName(newLocale,story?.title),
+      ogImage: story?.image,
+      twitterCard: story?.image,
+      description:story?.content,
+      ogDescription:story?.content,
   });
 });
 </script>
