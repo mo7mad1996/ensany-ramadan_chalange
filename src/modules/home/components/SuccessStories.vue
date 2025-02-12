@@ -1,5 +1,9 @@
 <template>
-  <section aria-label="success stories section" class="success_stories">
+  <section
+    aria-label="success stories section"
+    class="success_stories"
+    v-if="stories && stories.length > 0"
+  >
     <Container>
       <!-- title -->
       <div class="flex items-center justify-between">
@@ -7,11 +11,9 @@
           {{ $t("home.success_stories") }}
         </h1>
 
-        <nuxt-link
-          to="/stories"
-          class="underline text-primary cursor-pointer"
-          >{{ $t("home.see_more") }}</nuxt-link
-        >
+        <nuxt-link to="/stories" class="underline text-primary cursor-pointer">{{
+          $t("home.see_more")
+        }}</nuxt-link>
       </div>
 
       <div
@@ -51,10 +53,7 @@
               />
             </div>
 
-            <div
-              class="content text-start"
-              :dir="locale == 'ar' ? 'rtl' : 'ltr'"
-            >
+            <div class="content text-start" :dir="locale == 'ar' ? 'rtl' : 'ltr'">
               <h2 class="font-bold mb-sm lg:text-4xl md:text-4xl text-2xl">
                 {{ story?.title }}
               </h2>
@@ -85,8 +84,7 @@ import Container from "../../../global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { useStories } from "~/modules/stories/services/stories";
-const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } =
-  useCarousel();
+const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
 const { stories, status } = useStories();
 </script>

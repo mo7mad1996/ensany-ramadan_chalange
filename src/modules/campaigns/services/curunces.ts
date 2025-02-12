@@ -7,16 +7,24 @@ export const useCurrencies = () => {
     data: currenciesData,
     error: currencies_error,
     refresh,
+    status,
   } = useFetch(() => `/currencies`, {
     baseURL: api.defaults.baseURL,
-    params: { lang: locale.value ?? "en" },
+    params: { lang: locale.value || "en" },
     transform: (response) => response.result,
-    watch: [locale],
+    watch: [locale],  
   });
 
+  
+  if (currencies_error.value) {
+    console.error("Error fetching currencies:", currencies_error.value);
+  }
+
+ 
   return {
     currenciesData,
     currencies_error,
     refresh,
+    status,   
   };
 };

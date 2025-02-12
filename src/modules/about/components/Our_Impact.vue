@@ -5,15 +5,13 @@
         {{ $t("about.impact") }}
       </h1>
 
-      <div
-        class="content pt-sm grid gap-y-sm lg:grid-cols-2 md:grid-cols-1 grid-cols-1"
-      >
-        <video
+      <div class="content pt-sm grid gap-y-sm lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
+        <!-- <video
           class="rounded-md cursor-pointer"
           src="../../../assets/videos/contribution-vid.mp4"
           poster="../../../assets/videos/ramadan-poster.png"
           controls
-        ></video>
+        ></video> -->
 
         <div
           class="statistics grid grid-cols-2 lg:grid-cols-2 md:grid-cols-2 items-center"

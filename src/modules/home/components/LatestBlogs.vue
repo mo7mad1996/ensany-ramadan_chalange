@@ -1,5 +1,5 @@
 <template>
-  <section aria-label="similar blogs" class="pt-sm pb-sm">
+  <section aria-label="similar blogs" class="pt-sm pb-sm" v-if="blogs && blogs.length > 0">
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.latest_blogs") }}

@@ -83,12 +83,7 @@
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field
-          name="phone"
-          rules="required|phone"
-          :validateOnInput="true"
-          v-slot="{ field }"
-        >
+        <Field name="phone" rules="required" :validateOnInput="true" v-slot="{ field }">
           <vue-tel-input
             v-bind="field"
             v-model="newUser.mobile"
@@ -132,9 +127,7 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'"
-              >mdi-map-marker-multiple-outline</v-icon
-            >
+            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
           </div>
 
           <Field
@@ -299,7 +292,7 @@ const showConfPassword = (): void => {
   show2.value = !show2.value;
 };
 
-const onSubmit = (values) => {
+const onSubmit = () => {
   register(newUser.value);
 };
 </script>

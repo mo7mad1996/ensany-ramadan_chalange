@@ -5,6 +5,7 @@ export const useStories = () => {
   const page = Number(route.query.page) || 1;
   const currentPage = ref(page);
   const { locale } = useI18n();
+
   const {
     data: storiesData,
     error: stories_error,
@@ -18,11 +19,14 @@ export const useStories = () => {
         const { data, meta } = response.data.result;
         return { data, meta };
       }),
-    { watch: [locale] }
+    { watch: [locale, currentPage] }  
   );
 
   const stories = computed(() => storiesData.value?.data || []);
   const storiesMeta = computed(() => storiesData.value?.meta || {});
+
+   
+ 
 
   return {
     stories,
