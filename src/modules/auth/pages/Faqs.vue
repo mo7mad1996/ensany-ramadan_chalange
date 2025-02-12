@@ -48,7 +48,9 @@
               </h2>
             </div>
           </v-expansion-panel-title>
-          <v-expansion-panel-text>{{ item.content }}</v-expansion-panel-text>
+          <v-expansion-panel-text>
+            {{ getTextFromHTML(item.content) }}
+          </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -63,6 +65,17 @@ import { useGlobalVar } from "~/helpers/global-var";
 
 const { faqs, status } = useFaqs();
 
+const getTextFromHTML = (htmlString) => {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
+
+  const text = Array.from(tempDiv.childNodes)
+    .map((node) => node.textContent.trim())
+    .filter((text) => text !== "")
+    .join(" ");
+
+  return text;
+};
 const { siteName } = useGlobalVar();
 siteName("auth.page_title_faq");
 </script>
