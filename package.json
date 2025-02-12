@@ -60,7 +60,6 @@
     "fs": "0.0.2",
     "postcss": "^8.4.49",
     "sass-embedded": "^1.83.4",
-    "tailwindcss": "^3.4.17",
-    "vite-bundle-analyzer": "^0.17.0"
+    "tailwindcss": "^3.4.17"
   }
 }
