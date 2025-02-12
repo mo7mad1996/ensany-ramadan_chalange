@@ -1,9 +1,8 @@
-// import { analyzer } from 'vite-bundle-analyzer';
 import vuetify from "vite-plugin-vuetify";
-export default defineNuxtConfig({
 
+export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   // main directory
   srcDir: "src/",
   ssr: true,
@@ -62,46 +61,27 @@ export default defineNuxtConfig({
   },
 
   build: {
-
     transpile: ["vuetify"],
   },
 
   vite: {
-
-    css: {
-      postcss: {
-        plugins: [
-          require('tailwindcss'),
-          // require('autoprefixer'),
-          require('cssnano')({ preset: 'default' }),
-        ],
-      },
-    },
-    plugins: [
-    //  analyzer()
-    ],
     optimizeDeps: {
       include: ["vuetify"],
     },
     build: {
+      chunkSizeWarningLimit: 1000,
       sourcemap: false,
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: true,
-        },
-      },
-      chunkSizeWarningLimit: 500, 
+
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              if (id.includes("vuetify")) {
-                return "vuetify";
-              }
-              return "vendor";
-            }
-          },
+          // manualChunks(id) {
+          //   if (id.includes("node_modules")) {
+          //     if (id.includes("vuetify")) {
+          //       return "vuetify";
+          //     }
+          //     return "vendor";
+          //   }
+          // },
         },
       },
     },
@@ -114,7 +94,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "nuxt-booster",
     "nuxt-lazytube",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
