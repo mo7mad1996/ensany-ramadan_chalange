@@ -20,16 +20,17 @@
 
             <Field
               type="text"
-              name="register-firstname"
+              name="first_name"
               rules="required"
-              v-model="newUser.first_name"
-              id="register-firstname"
-              :placeholder="$t('auth.first_name')"
+              id="first_name"
+              :validateOnInput="true"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              :placeholder="$t('auth.first_name')"
+              v-model="newUser.first_name"
             />
           </div>
 
-          <ErrorMessage class="text-sm text-red-500" name="register-firstname" />
+          <ErrorMessage class="text-sm text-red-500" name="first_name" />
         </div>
 
         <div>
@@ -45,6 +46,7 @@
               name="register-lastname"
               rules="required"
               v-model="newUser.last_name"
+              :validateOnInput="true"
               id="register-lastname"
               :placeholder="$t('auth.last_name')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -68,6 +70,7 @@
             type="email"
             name="register-email"
             rules="required|email"
+            :validateOnInput="true"
             v-model="newUser.email"
             id="register-email"
             :placeholder="$t('auth.email')"
@@ -80,7 +83,12 @@
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field name="phone" rules="required" v-slot="{ field }">
+        <Field
+          name="phone"
+          rules="required|phone"
+          :validateOnInput="true"
+          v-slot="{ field }"
+        >
           <vue-tel-input
             v-bind="field"
             v-model="newUser.mobile"
@@ -124,13 +132,16 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
+            <v-icon v-if="status == 'success'"
+              >mdi-map-marker-multiple-outline</v-icon
+            >
           </div>
 
           <Field
             as="select"
             name="register-country"
             rules="required"
+            :validateOnInput="true"
             id="register-country"
             v-model="newUser.country_id"
             :placeholder="$t('auth.country')"
@@ -165,6 +176,7 @@
             :type="show1 ? 'text' : 'password'"
             name="register-password"
             rules="required|min:6"
+            :validateOnInput="true"
             v-model="newUser.password"
             id="register-password"
             :placeholder="$t('auth.password')"
@@ -192,6 +204,7 @@
             :type="show2 ? 'text' : 'password'"
             name="register-confirm"
             rules="required|confirmed:@register-password"
+            :validateOnInput="true"
             v-model="newUser.password_confirmation"
             id="register-confirm"
             :placeholder="$t('auth.confirm_password')"
@@ -276,7 +289,7 @@ const newUser = ref<NewUser>({
 
 const validatePhoneInput = () => {
   newUser.value.mobile = newUser.value.mobile.replace(/[^0-9]/g, "");
-}
+};
 
 const showPassword = (): void => {
   show1.value = !show1.value;
@@ -286,7 +299,7 @@ const showConfPassword = (): void => {
   show2.value = !show2.value;
 };
 
-const onSubmit = () => {
+const onSubmit = (values) => {
   register(newUser.value);
 };
 </script>

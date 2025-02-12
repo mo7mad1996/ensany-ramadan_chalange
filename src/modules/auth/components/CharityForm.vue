@@ -7,7 +7,7 @@
       </h2>
     </div>
 
-    <Form @submit="onSubmit">
+    <Form @submit="onSubmit" v-slot="{ errors, validate }">
       <!--charity name -->
       <div>
         <div class="lable_switch flex justify-between items-center mb-3">
@@ -19,14 +19,26 @@
               @click="switchName"
               :class="{ 'bg-[#28A745] text-white': nameSwitch == 'en' }"
             >
-              {{ $t("home.english") }}
+              <v-badge
+                dot
+                floating
+                :color="errors.charity_name_en ? 'error' : 'transparent'"
+              >
+                {{ $t("home.english") }}
+              </v-badge>
             </div>
             <div
               class="px-3 py-1 cursor-pointer"
               @click="switchName"
               :class="{ 'bg-[#28A745] text-white': nameSwitch == 'ar' }"
             >
-              العربيه
+              <v-badge
+                dot
+                floating
+                :color="errors.charity_name_ar ? 'error' : 'transparent'"
+              >
+                العربيه
+              </v-badge>
             </div>
           </div>
         </div>
@@ -44,6 +56,7 @@
               name="charity_name_ar"
               v-model="newCharity['charity_name:ar']"
               rules="required"
+              :validateOnInput="true"
               :placeholder="$t('home.name_ar')"
               class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -63,6 +76,7 @@
               name="charity_name_en"
               v-model="newCharity['charity_name:en']"
               rules="required"
+              :validateOnInput="true"
               :placeholder="$t('home.name_en')"
               class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
@@ -83,6 +97,7 @@
           <Field
             type="email"
             name="register-email"
+            :validateOnInput="true"
             rules="required|email"
             v-model="newCharity.email"
             id="register-email"
@@ -96,7 +111,12 @@
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field name="phone" rules="required" v-slot="{ field }">
+        <Field
+          name="phone"
+          rules="required|phone"
+          :validateOnInput="true"
+          v-slot="{ field }"
+        >
           <vue-tel-input
             v-bind="field"
             v-model="newCharity.mobile"
@@ -140,13 +160,16 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
+            <v-icon v-if="status == 'success'"
+              >mdi-map-marker-multiple-outline</v-icon
+            >
           </div>
 
           <Field
             as="select"
             name="register-country"
             rules="required"
+            :validateOnInput="true"
             id="register-country"
             v-model="newCharity.country_id"
             :placeholder="$t('auth.country')"
@@ -181,6 +204,7 @@
             :type="show1 ? 'text' : 'password'"
             name="register-password"
             rules="required|min:6"
+            :validateOnInput="true"
             v-model="newCharity.password"
             id="register-password"
             :placeholder="$t('auth.password')"
@@ -208,6 +232,7 @@
             :type="show2 ? 'text' : 'password'"
             name="register-confirm"
             rules="required|confirmed:@register-password"
+            :validateOnInput="true"
             v-model="newCharity.password_confirmation"
             id="register-confirm"
             :placeholder="$t('auth.confirm_password')"
@@ -224,6 +249,7 @@
       <v-checkbox
         v-model="isRemember"
         class="checkbox"
+        @click="validate"
         color="primary"
         id="checkbox-4"
         :ripple="false"
@@ -301,7 +327,7 @@ const showPassword = (): void => {
 
 const validatePhoneInput = () => {
   newCharity.value.mobile = newCharity.value.mobile.replace(/[^0-9]/g, "");
-}
+};
 
 const showConfPassword = (): void => {
   show2.value = !show2.value;

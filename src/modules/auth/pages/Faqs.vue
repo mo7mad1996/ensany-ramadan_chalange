@@ -65,12 +65,12 @@ import { useGlobalVar } from "~/helpers/global-var";
 
 const { faqs, status } = useFaqs();
 
-const getTextFromHTML = (htmlString) => {
+const getTextFromHTML = (htmlString: string) => {
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlString;
 
   const text = Array.from(tempDiv.childNodes)
-    .map((node) => node.textContent.trim())
+    .map((node: any) => node.textContent.trim())
     .filter((text) => text !== "")
     .join(" ");
 

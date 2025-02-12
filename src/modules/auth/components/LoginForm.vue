@@ -17,6 +17,7 @@
           <Field
             type="text"
             name="email"
+            :validateOnInput="true"
             v-model="credentials.account"
             rules="required"
             id="login-email"
@@ -43,7 +44,8 @@
             :type="show ? 'text' : 'password'"
             name="password"
             v-model="credentials.password"
-            rules="required|min:6"
+            :validateOnInput="true"
+            rules="required"
             id="login-password"
             autocomplete="login-password"
             :placeholder="$t('auth.password')"
@@ -62,9 +64,9 @@
         :ripple="false"
       >
         <template v-slot:label>
-          <label for="checkbox-4" class="text-sm">{{
-            $t("auth.remember_me")
-          }}</label>
+          <label for="checkbox-4" class="text-sm">
+            {{ $t("auth.remember_me") }}
+          </label>
         </template>
       </v-checkbox>
 
@@ -105,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form, Field, ErrorMessage, validate } from "vee-validate";
 import { useAuth } from "../services/auth";
 import { type User } from "~/helpers/interfaces";
 

@@ -69,5 +69,10 @@
   "page_title_reset_password": "إعادة تعيين كلمة المرور",
   "page_title_faq": "الأسئلة المكررة",
   "page_title_login": "تسجيل الدخول",
-  "page_title_check_email": "OTP"
+  "page_title_check_email": "OTP",
+
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "phone": "رقم الهاتف غير صالح"
+  }
 }
