@@ -27,12 +27,18 @@
             @click="$router.push(`/stories/${story.id}`)"
             class="w-full max-h-[15rem] object-cover rounded-lg"
             :src="story?.image"
-          ></img>
+          />
         </template>
 
         <template #title>{{ story?.title }}</template>
 
-        <template #desc>{{ story.content }}</template>
+        <template #desc>
+          <ClientOnly>
+            <div>
+              {{ getTextFromHTML(story.content) }}
+            </div>
+          </ClientOnly>
+        </template>
       </StoryCard>
     </div>
 
@@ -42,7 +48,7 @@
         :length="storiesMeta.last_page"
         @input="fetchStories"
         :total-visible="5"
-      ></v-pagination>
+      />
     </div>
   </Container>
 </template>
@@ -74,13 +80,23 @@ const handlePageChange = (page) => {
   }
 };
 
+const getTextFromHTML = (htmlString) => {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
+
+  const text = Array.from(tempDiv.childNodes)
+    .map((node) => node.textContent.trim())
+    .filter((text) => text !== "")
+    .join(" ");
+
+  return text;
+};
 
 watch([currentPage], (page) => {
   handlePageChange(currentPage.value);
   fetchStories();
 });
 
-
 const { siteName } = useGlobalVar();
-siteName('story.page_title_stories');
+siteName("story.page_title_stories");
 </script>

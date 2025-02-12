@@ -10,23 +10,25 @@ export const useDonation = () => {
     try {
       error.value = "";
       isLoading.value = true;
-      const response = await api.post("/donations", donationData);
+      const res = await api.post("/donations", donationData);
 
-      if (response.data.status) {
-        window.location.href = `${response.data.result.gateway_url}`;
+      const { gateway_url } = res.data.result;
+
+      if (gateway_url) {
+        window.location.href = gateway_url;
+      } else {
+        console.log(res);
       }
     } catch (err: any) {
-      if (err.response.data?.errors?.currency_id) {
-        Swal.fire({
-          icon: "error",
-          title: t("campaigns.currency_error"),
-          confirmButtonText: t("campaigns.ok"),
-          confirmButtonColor: "#3E7E41",
-          customClass: {
-            confirmButton: "my-custom-btn",
-          },
-        });
-      }
+      Swal.fire({
+        title: err.response?.data?.message || err.message,
+        html: Object.values(err.response?.data?.result?.errors)
+          .flat()
+          .map((e) => `<li class="text-start">${e}</li>`)
+          .join(" "),
+        icon: "error",
+        confirmButtonText: t("home.ok"),
+      });
     } finally {
       isLoading.value = false;
     }

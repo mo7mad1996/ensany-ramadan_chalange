@@ -30,6 +30,7 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
 const route = useRoute();
+const { siteName } = useGlobalVar();
 const { viewCampaign, status, similarCampaigns } = useViewCampaign(
   route.params.id
 );
@@ -39,8 +40,8 @@ watchEffect(() => {
     console.log("Campaign not found, redirecting...");
     navigateTo(`/campaigns`);
   }
+  siteName(viewCampaign.value?.name);
 });
 
-const { siteName } = useGlobalVar();
-siteName(viewCampaign.value.name);
+siteName(viewCampaign.value?.name);
 </script>

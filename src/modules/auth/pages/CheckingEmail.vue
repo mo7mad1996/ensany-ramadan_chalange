@@ -112,5 +112,5 @@ const {
 } = useResetPassword();
 
 const { siteName } = useGlobalVar();
-siteName("auth.page_title_faq");
+siteName("auth.page_title_check_email");
 </script>

@@ -484,7 +484,7 @@ const submit = async (values) => {
       ...values,
       start_at: formatDate(today.value),
       end_at: formatDate(endDate.value),
-      currency_id: selectedCurrency,
+      currency_id: selectedCurrency.value,
     };
 
     const res = await (props.initData

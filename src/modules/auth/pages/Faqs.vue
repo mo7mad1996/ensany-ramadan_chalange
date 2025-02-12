@@ -64,5 +64,5 @@ import { useGlobalVar } from "~/helpers/global-var";
 const { faqs, status } = useFaqs();
 
 const { siteName } = useGlobalVar();
-siteName("auth.page_title_check_email");
+siteName("auth.page_title_faq");
 </script>
