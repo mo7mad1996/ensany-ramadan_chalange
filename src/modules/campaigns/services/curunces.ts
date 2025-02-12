@@ -11,7 +11,7 @@ export const useCurrencies = () => {
   } = useFetch(() => `/currencies`, {
     baseURL: api.defaults.baseURL,
     params: { lang: locale.value || "en" },
-    transform: (response) => response.result,
+    transform: (response) =>  response?.result,
     watch: [locale],  
   });
 
