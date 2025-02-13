@@ -67,6 +67,7 @@
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
                         alt=""
                       />
@@ -88,6 +89,7 @@
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
                         alt=""
                       />
@@ -112,7 +114,11 @@
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                   >
-                    <img src="../../../assets/images/contact/name.svg" alt="" />
+                    <img
+                      loading="lazy"
+                      src="../../../assets/images/contact/name.svg"
+                      alt=""
+                    />
                   </div>
 
                   <Field
@@ -145,6 +151,7 @@
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/contact/email.svg"
                         alt=""
                       />
@@ -178,6 +185,7 @@
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/contact/phone.svg"
                         alt=""
                       />
@@ -255,7 +263,7 @@
                     <ErrorMessage name="image" />
                   </div>
 
-                  <div><img :src="preview" /></div>
+                  <div><img loading="lazy" :src="preview" /></div>
                 </div>
               </div>
 
@@ -330,7 +338,7 @@
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy"
                     src="../../../assets/images/dashboard/campaigns.svg"
                     alt=""
                   />
@@ -352,7 +360,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy"
                     src="../../../assets/images/dashboard/donation.svg"
                     alt=""
                   />
@@ -374,7 +382,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy"
                     src="../../../assets/images/dashboard/notification.svg"
                     alt=""
                   />
@@ -396,7 +404,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy"
                     src="../../../assets/images/dashboard/warning.svg"
                     alt=""
                   />

@@ -28,7 +28,7 @@
         class="card donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#FFF8E1]"
       >
         <div class="image">
-          <img src="../../../assets/images/doner.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
         </div>
 
         <div class="text w-full">
@@ -56,7 +56,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/campaigns.svg"
+            alt=""
+          />
         </div>
 
         <div class="text w-full">
@@ -83,7 +87,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start border-2 border-red-700 bg-[#F1E2E2]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/warning.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/warning.svg"
+            alt=""
+          />
         </div>
 
         <div class="text w-full">
@@ -112,7 +120,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/campaigns.svg"
+            alt=""
+          />
         </div>
 
         <div class="text w-full">

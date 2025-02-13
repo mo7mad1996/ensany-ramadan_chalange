@@ -32,12 +32,14 @@
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
               <img
+                loading="lazy"
                 v-if="index % 2 == 0"
                 src="../../../assets/images/dashboard/amount.svg"
                 alt=""
               />
 
               <img
+                loading="lazy"
                 v-else
                 src="../../../assets/images/dashboard/campaigns.svg"
                 alt=""

@@ -18,7 +18,7 @@
     </BreadCrumb>
     <div class="content">
       <div class="video">
-        <img
+        <img loading="lazy"
             v-if="status == 'success'"
           class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
           :src="singleBlog?.image"
@@ -43,7 +43,7 @@
           <div class="flex items-center pt-2 justify-between">
             <!-- writer -->
             <div class="flex items-center gap-x-2">
-              <img src="../../../assets/images/honor-company.svg " alt="" />
+              <img loading="lazy" src="../../../assets/images/honor-company.svg " alt="" />
               <span>{{ singleBlog?.user?.full_name }}</span>
             </div>
 

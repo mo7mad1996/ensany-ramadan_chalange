@@ -27,6 +27,7 @@
         <template #image>
           <div class="relative w-full max-h-[15rem]">
             <img
+              loading="lazy"
               :src="video?.thumbnail"
               class="w-full max-h-[15rem] object-cover rounded-lg"
               :alt="video?.title"

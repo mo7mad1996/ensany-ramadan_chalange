@@ -16,6 +16,7 @@
 
           <div class="mb-5">
             <img
+              loading="lazy"
               :src="preview"
               class="rounded-full aspect-square object-cover w-24 mx-auto shadow-2xl"
             />
@@ -61,7 +62,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/phone.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -89,7 +94,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/phone.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -117,7 +126,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/email.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/email.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -145,7 +158,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img src="../../../assets/images/contact/phone.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/phone.svg"
+                  alt=""
+                />
               </div>
 
               <Field

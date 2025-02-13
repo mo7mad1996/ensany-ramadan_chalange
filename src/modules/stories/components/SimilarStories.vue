@@ -16,6 +16,7 @@
             <template #video>
               <NuxtLink :to="`/stories/${item.id}`">
                 <img
+                  loading="lazy"
                   :src="item.image"
                   :alt="item?.title"
                   class="rounded-lg w-full object-cover mx-auto"

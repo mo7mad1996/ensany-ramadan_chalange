@@ -15,7 +15,11 @@
           class="card card-one p-[1rem] bg-customwhite rounded-md border-[1px] border-gray-100 border-solid"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img src="../../../assets/images/number1.svg" alt="..." />
+            <img
+              loading="lazy"
+              src="../../../assets/images/number1.svg"
+              alt="..."
+            />
 
             <h5 class="font-bold text-3xl text-black">
               {{ $t("home.second_donor") }}
@@ -39,7 +43,11 @@
           class="card p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100 h-fit"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img src="../../../assets/images/number2.svg" alt="..." />
+            <img
+              loading="lazy"
+              src="../../../assets/images/number2.svg"
+              alt="..."
+            />
 
             <h5 class="font-bold text-3xl text-black">
               {{ $t("home.first_donor") }}
@@ -63,7 +71,11 @@
           class="card card-three p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img src="../../../assets/images/number3.svg" alt="..." />
+            <img
+              loading="lazy"
+              src="../../../assets/images/number3.svg"
+              alt="..."
+            />
 
             <h5 class="font-bold text-3xl text-black">
               {{ $t("home.third_donor") }}

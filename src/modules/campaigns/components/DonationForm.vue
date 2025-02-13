@@ -5,6 +5,7 @@
         <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
             <img
+              loading="lazy"
               src="../../../assets/images/campaign/dolar.svg"
               width="22"
               alt="..."
@@ -45,6 +46,7 @@
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
                 <img
+                  loading="lazy"
                   src="../../../assets/images/campaign/custom-amount.svg"
                   alt=""
                 />
@@ -143,6 +145,7 @@
           <div class="personal-info pt-5">
             <div class="flex gap-x-2 items-center">
               <img
+                loading="lazy"
                 src="../../../assets/images/campaign/personal-info.svg"
                 width="22"
                 alt="..."
@@ -158,7 +161,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/name.svg" alt="" />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/contact/name.svg"
+                    alt=""
+                  />
                 </div>
 
                 <Field
@@ -196,7 +203,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/email.svg" alt="" />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/contact/email.svg"
+                    alt=""
+                  />
                 </div>
 
                 <Field
@@ -219,7 +230,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/phone.svg" alt="" />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/contact/phone.svg"
+                    alt=""
+                  />
                 </div>
 
                 <Field
@@ -260,6 +275,7 @@
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/contact/name.svg"
                         alt=""
                       />
@@ -289,6 +305,7 @@
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/contact/email.svg"
                         alt=""
                       />
@@ -318,6 +335,7 @@
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/contact/phone.svg"
                         alt=""
                       />
@@ -344,6 +362,7 @@
                 <div class="comments pt-5">
                   <div class="flex gap-x-2">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/campaign/comment.svg"
                       width="22"
                       alt="..."
@@ -359,6 +378,7 @@
                       class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
                     >
                       <img
+                        loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
                         alt=""
                       />
@@ -408,21 +428,33 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon2.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon2.svg"
+              alt=""
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon3.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon3.svg"
+              alt=""
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon1.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon1.svg"
+              alt=""
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>

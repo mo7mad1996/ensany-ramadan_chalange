@@ -1,7 +1,12 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="flex gap-x-2 items-center mb-5">
-      <img src="../../../assets/images/doner.svg" width="30" alt="" />
+      <img
+        loading="lazy"
+        src="../../../assets/images/doner.svg"
+        width="30"
+        alt=""
+      />
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("auth.signup_doner") }}
       </h2>
@@ -15,7 +20,11 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img src="../../../assets/images/contact/name.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/contact/name.svg"
+                alt=""
+              />
             </div>
 
             <Field
@@ -45,7 +54,11 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img src="../../../assets/images/contact/name.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/contact/name.svg"
+                alt=""
+              />
             </div>
 
             <Field
@@ -76,7 +89,11 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img src="../../../assets/images/contact/email.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/contact/email.svg"
+              alt=""
+            />
           </div>
 
           <Field
@@ -91,7 +108,7 @@
           />
         </div>
 
-        <ErrorMessage class="error" name="register-email" />
+        <ErrorMessage class="error" name="email" />
         <p
           class="error"
           v-for="(err, n) in apiErrors.email"
@@ -216,7 +233,7 @@
           />
         </div>
 
-        <ErrorMessage class="error" name="register-password" />
+        <ErrorMessage class="error" name="password" />
         <p
           class="error"
           v-for="(err, n) in apiErrors.password"

@@ -15,7 +15,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in similarCampaigns" :key="campaign?.id">
+        <Slide
+          v-for="(campaign, index) in similarCampaigns"
+          :key="campaign?.id"
+        >
           <!-- Use unique `campaign.id` as the key -->
           <Card
             :id="campaign?.id"
@@ -30,6 +33,7 @@
           >
             <template #image>
               <img
+                loading="lazy"
                 @click="navigateTo(`/campaigns/${campaign?.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -42,7 +46,9 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span>
             </template>
 
             <template #subscribers>{{ campaign?.total_donors }}</template>

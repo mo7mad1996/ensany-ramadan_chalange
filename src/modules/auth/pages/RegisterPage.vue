@@ -8,6 +8,7 @@
 
         <div class="image">
           <img
+            loading="lazy"
             src="../../../assets/images/auth/login-img.svg"
             class="lg:h-[702px] xl:h-[702px] md:h-full h-full"
             alt=""

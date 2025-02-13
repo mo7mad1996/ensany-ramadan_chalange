@@ -2,6 +2,7 @@
   <section aria-label="view details section" class="view_details">
     <div class="image relative rounded-lg">
       <img
+        loading="lazy"
         :src="campaign?.image"
         class="w-full h-[370px] object-cover rounded-lg"
         alt=""
@@ -104,7 +105,12 @@
       class="honor-compan d-flex ga-2 align-center mt-5"
       v-if="status == 'success'"
     >
-      <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
+      <img
+        loading="lazy"
+        src="../../../assets/images/honor-company.svg"
+        width="35"
+        alt=""
+      />
       <p>{{ campaign?.user?.name }}</p>
     </NuxtLink>
 
@@ -161,7 +167,12 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/no-data.jpg"
+              width="150"
+              alt=""
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -180,6 +191,7 @@
             <div class="card p-2 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center max-h-[10rem]">
                 <img
+                  loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
                   alt="..."
@@ -197,7 +209,12 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/no-data.jpg"
+              width="150"
+              alt=""
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -215,7 +232,11 @@
           >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center">
-                <img src="../../../assets/images/user.svg" alt="..." />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/user.svg"
+                  alt="..."
+                />
               </div>
 
               <h6>{{ donor?.name }}</h6>
@@ -229,7 +250,12 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/no-data.jpg"
+              width="150"
+              alt=""
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>

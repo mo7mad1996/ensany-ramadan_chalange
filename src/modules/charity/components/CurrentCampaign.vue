@@ -39,7 +39,11 @@
       </div>
 
       <div class="image flex justify-end">
-        <img src="../../../assets/images/dashboard/home-image.png" alt="" />
+        <img
+          loading="lazy"
+          src="../../../assets/images/dashboard/home-image.png"
+          alt=""
+        />
       </div>
     </div>
   </section>

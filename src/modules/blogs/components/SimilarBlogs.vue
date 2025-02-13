@@ -37,6 +37,7 @@
           >
             <template #image>
               <img
+                loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
                 alt="...."

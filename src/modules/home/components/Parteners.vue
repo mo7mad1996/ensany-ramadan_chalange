@@ -28,6 +28,7 @@
           <a :href="item.url" target="_blank" rel="noopener noreferrer">
             <div class="image overflow-hidden relative">
               <img
+                loading="lazy"
                 :src="item.image"
                 :class="{
                   'w-[17rem]': Parteners.length >= 4,

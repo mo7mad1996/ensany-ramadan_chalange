@@ -111,6 +111,7 @@
             <div class="flex items-center gap-2 space-x-2">
               <v-avatar size="40">
                 <img
+                  loading="lazy"
                   :src="item?.image"
                   alt="Campaign Image"
                   class="rounded-lg"
@@ -172,6 +173,7 @@
       <div class="p-4">
         <div class="flex justify-center items-center flex-col w-full">
           <img
+            loading="lazy"
             src="../../../assets/images/donor/customdialog.png"
             alt="custom"
           />

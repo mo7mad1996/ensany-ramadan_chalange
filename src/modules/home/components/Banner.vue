@@ -46,7 +46,11 @@
                   bannerData?.total_collected
                 }}</span>
                 <span>
-                  <img src="../../../assets/images/statistics1.svg" alt="" />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/statistics1.svg"
+                    alt=""
+                  />
                 </span>
               </div>
 
@@ -63,7 +67,11 @@
                   bannerData?.total_donors
                 }}</span>
                 <span>
-                  <img src="../../../assets/images/doners.svg" alt="..." />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/doners.svg"
+                    alt="..."
+                  />
                 </span>
               </div>
 
@@ -80,7 +88,11 @@
                   bannerData?.total_campaigns
                 }}</span>
                 <span>
-                  <img src="../../../assets/images/campaigns.svg" alt="..." />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/campaigns.svg"
+                    alt="..."
+                  />
                 </span>
               </div>
 

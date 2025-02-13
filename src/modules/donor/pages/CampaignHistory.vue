@@ -20,6 +20,7 @@
             >
               <v-avatar size="40">
                 <img
+                  loading="lazy"
                   :src="item.image"
                   alt="Campaign Image"
                   class="rounded-lg"

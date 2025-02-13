@@ -3,7 +3,8 @@
     class="pt-sm pb-sm w-full"
     aria-label="this table to show highest donors"
   >
-    <Container>
+    <Container
+      >loading="lazy"
       <!-- Add a scrollable container -->
       <div class="flex justify-center">
         <div class="overflow-auto w-full">
@@ -17,6 +18,7 @@
                 <th>
                   <div class="flex gap-x-2 items-center">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/dashboard/donate.svg"
                       width="15"
                       class="filter"
@@ -28,6 +30,7 @@
                 <th>
                   <div class="flex gap-x-2 items-center">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/donation_amount.svg"
                       width="15"
                       class="filter"
@@ -39,6 +42,7 @@
                 <th>
                   <div class="flex gap-x-2 items-center">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/campaign.svg"
                       width="15"
                       class="filter"
@@ -50,6 +54,7 @@
                 <th>
                   <div class="flex gap-x-2 items-center">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/time.svg"
                       width="15"
                       class="filter"

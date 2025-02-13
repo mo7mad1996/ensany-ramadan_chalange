@@ -5,7 +5,9 @@
         {{ $t("about.impact") }}
       </h1>
 
-      <div class="content pt-sm grid gap-y-sm lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
+      <div
+        class="content pt-sm grid gap-y-sm lg:grid-cols-2 md:grid-cols-1 grid-cols-1"
+      >
         <!-- <video
           class="rounded-md cursor-pointer"
           src="../../../assets/videos/contribution-vid.mp4"
@@ -28,7 +30,7 @@
                   animatedValues[index]
                 }}</span>
                 <span>
-                  <img :src="stat.imgSrc" :alt="stat.alt" />
+                  <img loading="lazy" :src="stat.imgSrc" :alt="stat.alt" />
                 </span>
               </div>
 
