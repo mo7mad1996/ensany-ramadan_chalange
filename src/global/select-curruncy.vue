@@ -1,6 +1,6 @@
 <template>
-  <!-- <div v-if="currenciesData.length == 0">Loading...</div> -->
-  <v-menu v-if="currenciesData.length > 0">
+  <div v-if="!currenciesData">...</div>
+  <v-menu v-else-if="currenciesData?.length > 0">
     <template v-slot:activator="{ props }">
       <v-btn
         color="default"
@@ -44,7 +44,7 @@ function updateCurrency(newValue) {
       ? JSON.parse(localStorage.getItem("currenciesData"))
       : [];
 
-    if (storedCurrencies && storedCurrencies.length > 0) {
+    if (storedCurrencies && storedCurrencies?.length > 0) {
       const selectedCurrencyData = storedCurrencies.find(
         (currency) => currency.id == newValue
       );
@@ -67,7 +67,10 @@ onMounted(() => {
     refresh()
       .then(() => {
         if (currenciesData.value && currenciesData.value.length > 0) {
-          localStorage.setItem("currenciesData", JSON.stringify(currenciesData.value));
+          localStorage.setItem(
+            "currenciesData",
+            JSON.stringify(currenciesData.value)
+          );
         }
       })
       .catch((error) => {
@@ -80,7 +83,9 @@ onMounted(() => {
       clearInterval(checkCurrencies);
 
       if (!storedCurrency) {
-        const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+        const defaultObj = currenciesData.value.find(
+          (i) => i.is_default === "yes"
+        );
         selectedCurrency.value = defaultObj ? defaultObj.id : "";
         updateCurrency(selectedCurrency.value);
       } else {

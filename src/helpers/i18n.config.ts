@@ -38,6 +38,7 @@ export default defineI18nConfig(() => ({
   locale: "ar",
   defaultLocale: "ar",
   fallbackLocale: "ar",
+
   messages: {
     en: {
       home: enHome,

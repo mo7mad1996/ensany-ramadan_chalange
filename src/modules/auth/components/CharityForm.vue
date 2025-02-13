@@ -144,12 +144,22 @@
         </div>
 
         <ErrorMessage class="error" name="email" />
-        <p class="error" v-for="(err, n) in apiErrors.email" :key="n" v-html="err" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.email"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field name="mobile" rules="required" :validateOnInput="true" v-slot="{ field }">
+        <Field
+          name="mobile"
+          rules="required|phone"
+          :validateOnInput="true"
+          v-slot="{ field }"
+        >
           <vue-tel-input
             v-bind="field"
             v-model="newCharity.mobile"
@@ -164,7 +174,12 @@
         </Field>
 
         <ErrorMessage class="error" name="mobile" />
-        <p class="error" v-for="(err, n) in apiErrors.mobile" :key="n" v-html="err" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.mobile"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- country id -->
@@ -194,7 +209,9 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
+            <v-icon v-if="status == 'success'"
+              >mdi-map-marker-multiple-outline</v-icon
+            >
           </div>
 
           <Field
@@ -219,7 +236,12 @@
         </div>
 
         <ErrorMessage class="error" name="country_id" />
-        <p class="error" v-for="(err, n) in apiErrors.country_id" :key="n" v-html="err" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.country_id"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- password input -->
@@ -248,7 +270,12 @@
         </div>
 
         <ErrorMessage class="error" name="password" />
-        <p class="error" v-for="(err, n) in apiErrors.password" :key="n" v-html="err" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.password"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- confirm password  -->

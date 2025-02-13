@@ -3,15 +3,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-01-13",
   nitro: {
     compressPublicAssets: false,
-    minify: true
+    minify: true,
   },
-    
-       
+
   devtools: { enabled: false },
   // main directory
   srcDir: "src/",
   ssr: true,
-  
 
   // favicon & fonts
   app: {
@@ -20,7 +18,6 @@ export default defineNuxtConfig({
     layoutTransition: false,
 
     head: {
-      
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       link: [
@@ -132,12 +129,15 @@ export default defineNuxtConfig({
         language: "en-US",
       },
     ],
+
     defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
-    detectBrowserLanguage: {
-      useCookie: true,
-      alwaysRedirect: false,
-      fallbackLocale: "ar",
-    },
+    // detectBrowserLanguage: {
+    //   useCookie: true,
+    //   alwaysRedirect: false,
+    //   fallbackLocale: "ar",
+    // },
+
+    detectBrowserLanguage: false,
   },
 });
