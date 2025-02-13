@@ -1,5 +1,4 @@
 import vuetify from "vite-plugin-vuetify";
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
@@ -127,10 +126,11 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
-    detectBrowserLanguage: {
-      useCookie: true,
-      alwaysRedirect: true,
-      fallbackLocale: "ar",
-    },
+    detectBrowserLanguage: false,
+    // detectBrowserLanguage: {
+    //   useCookie: true,
+    //   alwaysRedirect: false,
+    //   fallbackLocale: "ar",
+    // },
   },
 });
