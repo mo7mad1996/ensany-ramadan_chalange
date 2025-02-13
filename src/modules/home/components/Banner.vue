@@ -1,5 +1,5 @@
 <template>
-  <section aria-label="banner section" class="banner bg-cover relative" v-if="bannerData">
+  <section aria-label="banner section" class="banner bg-cover relative">
     <Container class="h-100 relative text-white grid items-center">
       <div class="content pt-xd">
         <!-- large text -->
@@ -46,7 +46,11 @@
                   bannerData?.total_collected
                 }}</span>
                 <span>
-                  <img loading="lazy" src="../../../assets/images/statistics1.svg" alt="" />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/statistics1.svg"
+                    alt=""
+                  />
                 </span>
               </div>
 
@@ -80,7 +84,11 @@
                   bannerData?.total_campaigns
                 }}</span>
                 <span>
-                  <img loading="lazy" src="../../../assets/images/campaigns.svg" alt="..." />
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/campaigns.svg"
+                    alt="..."
+                  />
                 </span>
               </div>
 

@@ -10,15 +10,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -29,10 +29,7 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide
-          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
-          :key="index"
-        >
+        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
           <Card
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
@@ -46,7 +43,7 @@
             class="h-full"
           >
             <template #image>
-              <img loading="lazy" 
+              <img
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -67,9 +64,7 @@
             </template>
 
             <template #desc>
-              <span
-                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-              ></span
+              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>
@@ -82,6 +77,7 @@
 
         <template #addons>
           <pagination />
+          <!-- <Navigation /> -->
         </template>
       </Carousel>
     </Container>
@@ -94,7 +90,7 @@ import Card from "../../../global/Card.vue";
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
-const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
+const { breakpoints1, settings, Carousel, Slide, Pagination, Navigation } = useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();
 const { locale } = useI18n();
 const isLoading = ref(true);
