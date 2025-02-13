@@ -104,7 +104,7 @@
       <div class="mt-4">
         <Field
           name="mobile"
-          rules="required"
+          rules="required|phone"
           :validateOnInput="true"
           v-slot="{ field }"
         >
@@ -303,13 +303,21 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, Field, Form } from "vee-validate";
+import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
 import { VueTelInput } from "vue-tel-input";
 import "vue-tel-input/vue-tel-input.css";
 
 import { type NewUser } from "~/helpers/interfaces";
 import { useAuth } from "../services/auth";
 import { useCountries } from "../services/countries";
+
+const { t } = useI18n();
+
+defineRule("phone", (value: string) => {
+  const phoneRegex = /^\+?[\d\s().-]{7,}$/;
+
+  return phoneRegex.test(value) || t("auth.validation.phone");
+});
 
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
