@@ -6,8 +6,10 @@
       <!-- Decorative Lanterns -->
       <div class="absolute left-5 top-5 w-24">
         <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
+        <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
       </div>
       <div class="absolute right-5 top-5 w-24">
+        <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
         <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
       </div>
 

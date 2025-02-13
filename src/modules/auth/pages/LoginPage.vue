@@ -7,7 +7,8 @@
         <AuthLoginForm />
 
         <div class="image">
-          <img loading="lazy" 
+          <img
+            loading="lazy"
             src="../../../assets/images/auth/login-img.svg"
             class="lg:h-[518px] xl:h-[518px] md:h-full h-full"
             alt=""

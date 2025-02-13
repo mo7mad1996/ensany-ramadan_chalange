@@ -17,16 +17,10 @@
               >{{ $t("global.footer_terms") }}</span
             > -->
 
-            <p
-              @click="$router.push('/')"
-              class="cursor-pointer hover:text-primary"
-            >
+            <p @click="$router.push('/')" class="cursor-pointer hover:text-primary">
               {{ $t("global.home") }}
             </p>
-            <p
-              @click="$router.push('/faqs')"
-              class="cursor-pointer hover:text-primary"
-            >
+            <p @click="$router.push('/faqs')" class="cursor-pointer hover:text-primary">
               {{ $t("global.footer_faqs") }}
             </p>
 

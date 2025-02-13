@@ -6,7 +6,7 @@
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
-      <img loading="lazy" src="../assets/images/honor-company.svg " alt="" />
+      <img src="../assets/images/honor-company.svg " alt="" loading="lazy" />
       <p>
         <slot name="company"></slot>
       </p>

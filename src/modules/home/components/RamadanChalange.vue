@@ -44,6 +44,7 @@
           >
             <template #image>
               <img
+                loading="lazy"
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"

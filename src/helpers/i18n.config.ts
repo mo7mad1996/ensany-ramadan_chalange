@@ -1,3 +1,5 @@
+import { createI18n } from "vue-i18n";
+
 import arGlobal from "../locales/ar.json";
 import enGlobal from "../locales/en.json";
 
@@ -31,9 +33,10 @@ import enDonor from "../modules/donor/locales/en.json";
 import arVideo from "../modules/videos/locales/ar.json";
 import enVideo from "../modules/videos/locales/en.json";
 
-export default {
+export default defineI18nConfig(() => ({
   legacy: false,
   locale: "ar",
+  fallbackLocale: "ar",
   messages: {
     en: {
       home: enHome,
@@ -58,8 +61,8 @@ export default {
       blogs: arBlogs,
       story: arStories,
       dashboard: arCharity,
-      donor:arDonor,
+      donor: arDonor,
       videos: arVideo,
     },
   },
-};
+}));

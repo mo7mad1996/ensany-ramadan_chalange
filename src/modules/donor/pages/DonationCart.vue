@@ -19,9 +19,7 @@
     <!-- توزيع المبالغ -->
     <div class="grid grid-cols-3 gap-8 mt-6 justify-between">
       <div class="col-span-1">
-        <span class="custom-label text-sm">{{
-          $t("donor.custom_amount")
-        }}</span>
+        <span class="custom-label text-sm">{{ $t("donor.custom_amount") }}</span>
         <v-text-field
           v-model="customAmount"
           variant="outlined"
@@ -110,7 +108,8 @@
           <template v-slot:item.name="{ item }">
             <div class="flex items-center gap-2 space-x-2">
               <v-avatar size="40">
-                <img loading="lazy" 
+                <img
+                  loading="lazy"
                   :src="item?.image"
                   alt="Campaign Image"
                   class="rounded-lg"
@@ -162,26 +161,19 @@
     </div>
 
     <!-- Dialog -->
-    <dialog
-      class="dialog m-auto rounded-[10px] h-50 min-w-[500px]"
-      ref="donate"
-    >
+    <dialog class="dialog m-auto rounded-[10px] h-50 min-w-[500px]" ref="donate">
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
       <div class="p-4">
         <div class="flex justify-center items-center flex-col w-full">
-          <img loading="lazy" 
+          <img
+            loading="lazy"
             src="../../../assets/images/donor/customdialog.png"
             alt="custom"
           />
           <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
-          <v-radio-group
-            :key="'pay_type'"
-            :id="'pay_type'"
-            v-model="pay_type"
-            row
-          >
+          <v-radio-group :key="'pay_type'" :id="'pay_type'" v-model="pay_type" row>
             <v-radio
               :id="'pay_full'"
               name="payment_type"
@@ -292,9 +284,7 @@ watch(customAmount, (newAmount) => {
 watch(
   () => donorCart.value?.data?.map((item) => item.amount),
   (newAmounts) => {
-    const allAmountsValid = newAmounts.every(
-      (amount) => !isNaN(amount) && amount > 0
-    );
+    const allAmountsValid = newAmounts.every((amount) => !isNaN(amount) && amount > 0);
     checkIsAmountFilledOut.value = allAmountsValid;
     if (allAmountsValid) {
       calculateCustomTotal();
@@ -306,9 +296,7 @@ watch(
 const distributeAmountEqually = () => {
   const campaignsCount = donorCart?.value?.data?.length;
   if (campaignsCount > 0 && customAmount?.value) {
-    const equalAmount = (
-      parseFloat(customAmount.value) / campaignsCount
-    ).toFixed(2);
+    const equalAmount = (parseFloat(customAmount.value) / campaignsCount).toFixed(2);
     donorCart?.value?.data?.forEach((item) => {
       item.amount = equalAmount;
     });
@@ -345,8 +333,7 @@ const calculateCustomTotal = () => {
 const submitDonation = async () => {
   const data = {
     total_amount: customAmount.value,
-    amount_split_type:
-      distributionOption.value === "manual" ? "manual" : "automatic",
+    amount_split_type: distributionOption.value === "manual" ? "manual" : "automatic",
     pay_type: pay_type.value === "full" ? "full" : "daily",
     currency_id: currenciesData.value,
     campaign: donorCart.value.data.map((item) => ({

@@ -1,5 +1,9 @@
 <template>
-  <section aria-label="similar blogs" class="pt-sm pb-sm" v-if="blogs && blogs.length > 0">
+  <section
+    aria-label="similar blogs"
+    class="pt-sm pb-sm"
+    v-if="blogs && blogs.length > 0"
+  >
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.latest_blogs") }}
@@ -10,15 +14,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -36,7 +40,8 @@
             @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>
-              <img loading="lazy" 
+              <img
+                loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
                 alt=""

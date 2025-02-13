@@ -51,10 +51,9 @@
         </Form>
 
         <!-- Recend code -->
-        <div
-          class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
-        >
-          <img loading="lazy" 
+        <div class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer">
+          <img
+            loading="lazy"
             src="../../../assets/images/auth/resent.svg"
             width="22px"
             alt="..."

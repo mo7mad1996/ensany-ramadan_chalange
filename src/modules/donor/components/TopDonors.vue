@@ -5,17 +5,17 @@
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("donor.top_donors") }}
       </h1>
-      <div
-        class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
-      >
+      <div class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         <!-- card one -->
         <div
           class="card card-one p-[1rem] bg-green-50 rounded-lg border-[1px] border-gray-100 border-solid"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img loading="lazy" 
+            <img
+              loading="lazy"
               src="../../../assets/images/donor/Second Donor.png"
               alt="..."
+              loading="lazy"
             />
 
             <h5 class="font-bold text-3xl text-black">
@@ -25,7 +25,11 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img loading="lazy" src="../../../assets/images/donor/Rectangle.png" alt="..." />
+              <img
+                loading="lazy"
+                src="../../../assets/images/donor/Rectangle.png"
+                alt="..."
+              />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.socend?.name }}</span
               >
@@ -41,7 +45,8 @@
           class="card p-[1rem] bg-green-50 rounded-lg border-[1px] border-solid border-gray-100 h-fit"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img loading="lazy" 
+            <img
+              loading="lazy"
               src="../../../assets/images/donor/First Donor .png"
               alt="..."
             />
@@ -53,7 +58,11 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img loading="lazy" src="../../../assets/images/donor/Rectangle.png" alt="..." />
+              <img
+                loading="lazy"
+                src="../../../assets/images/donor/Rectangle.png"
+                alt="..."
+              />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.first?.name }}</span
               >
@@ -69,7 +78,11 @@
           class="card card-three p-[1rem] bg-green-50 rounded-lg border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img loading="lazy" src="../../../assets/images/donor/Third Donor.png" alt="..." />
+            <img
+              loading="lazy"
+              src="../../../assets/images/donor/Third Donor.png"
+              alt="..."
+            />
 
             <h5 class="font-bold text-3xl text-black">
               {{ $t("donor.third_donor") }}
@@ -78,7 +91,11 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img loading="lazy" src="../../../assets/images/donor/Rectangle.png" alt="..." />
+              <img
+                loading="lazy"
+                src="../../../assets/images/donor/Rectangle.png"
+                alt="..."
+              />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.third?.name }}</span
               >
@@ -99,7 +116,6 @@ import { useDonorOverview } from "../services/overview";
 
 const { donorOverview } = useDonorOverview();
 const top_doners = donorOverview.value?.data?.top_doners;
-
 </script>
 <style scoped>
 @import "../../home/style/challenge-heros.css";

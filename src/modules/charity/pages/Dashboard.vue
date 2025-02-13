@@ -29,7 +29,11 @@
         <v-card elevation="0" class="p-4 mt-sm w-full">
           <v-card-title>
             <div class="flex gap-x-2 items-center mb-4">
-              <img loading="lazy" src="../../../assets/images/line-chart.svg" alt="...." />
+              <img
+                loading="lazy"
+                src="../../../assets/images/line-chart.svg"
+                alt="...."
+              />
               <h1 class="font-bold">
                 {{ $t("dashboard.donation_transuctions") }}
               </h1>
@@ -45,7 +49,11 @@
         <v-card elevation="0" class="p-4 mt-sm">
           <v-card-title>
             <div class="flex gap-x-2 items-center mb-4">
-              <img loading="lazy" src="../../../assets/images/line-chart.svg" alt="...." />
+              <img
+                loading="lazy"
+                src="../../../assets/images/line-chart.svg"
+                alt="...."
+              />
               <h1 class="font-bold">
                 {{ $t("dashboard.donation_growth") }}
               </h1>

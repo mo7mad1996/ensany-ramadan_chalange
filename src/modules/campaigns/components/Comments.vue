@@ -5,9 +5,7 @@
     </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">
-        {{ commentsMeta?.total }} {{ $t("campaigns.comments") }}
-      </div>
+      <div class="text-sm">{{ commentsMeta?.total }} {{ $t("campaigns.comments") }}</div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
         <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
@@ -44,7 +42,7 @@
       </div> -->
 
       <!-- skeleton loader for comments -->
-      <div   v-for="(item, index) in 2" :key="index">
+      <div v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
           v-for="(item, index) in 2"
           :key="index"
@@ -56,15 +54,8 @@
 
       <!-- here display all comments && comments.length -->
       <div>
-        <div
-          class="all-comments mt-md"
-          v-if="status == 'success' && comments.length"
-        >
-          <div
-            class="comment mb-sm"
-            v-for="(comment, index) in comments"
-            :key="index"
-          >
+        <div class="all-comments mt-md" v-if="status == 'success' && comments.length">
+          <div class="comment mb-sm" v-for="(comment, index) in comments" :key="index">
             <div class="flex gap-x-3 items-start">
               <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
               <div>

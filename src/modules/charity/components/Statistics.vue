@@ -2,7 +2,7 @@
   <div class="cards grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-3">
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
-        <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.total_donations }}</h4>
+        <h4 class="text-xl font-bold pt-3 pb-3">{{ statisticsData?.total_donations }}</h4>
         <img loading="lazy" src="../../../assets/images/dashboard/donation.svg" alt="" />
       </div>
 
@@ -23,7 +23,7 @@
 
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
-        <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.total_campaigns }}</h4>
+        <h4 class="text-xl font-bold pt-3 pb-3">{{ statisticsData?.total_campaigns }}</h4>
         <img loading="lazy" src="../../../assets/images/dashboard/campaigns.svg" alt="" />
       </div>
 
@@ -32,7 +32,9 @@
 
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
-        <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.active_campaigns }}</h4>
+        <h4 class="text-xl font-bold pt-3 pb-3">
+          {{ statisticsData?.active_campaigns }}
+        </h4>
 
         <img loading="lazy" src="../../../assets/images/dashboard/doners.svg" alt="" />
       </div>
@@ -42,7 +44,7 @@
 
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
-        <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.faild_donations }}</h4>
+        <h4 class="text-xl font-bold pt-3 pb-3">{{ statisticsData?.faild_donations }}</h4>
         <img loading="lazy" src="../../../assets/images/dashboard/warning.svg" alt="" />
       </div>
 
@@ -51,7 +53,9 @@
 
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
-        <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.successful_donations }}</h4>
+        <h4 class="text-xl font-bold pt-3 pb-3">
+          {{ statisticsData?.successful_donations }}
+        </h4>
         <img loading="lazy" src="../../../assets/images/dashboard/doners.svg" alt="" />
       </div>
 
@@ -63,6 +67,5 @@
 import { useCharityOverview } from "../services/overview";
 
 const { charityOverview } = useCharityOverview();
-const statisticsData=charityOverview.value?.data
-
+const statisticsData = charityOverview.value?.data;
 </script>

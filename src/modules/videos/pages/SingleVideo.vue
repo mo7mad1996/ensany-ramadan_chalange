@@ -28,7 +28,11 @@
           <div class="flex items-center pt-2 justify-between">
             <!-- writer -->
             <div class="flex items-center gap-x-2">
-              <img loading="lazy" src="../../../assets/images/honor-company.svg " alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/honor-company.svg "
+                alt=""
+              />
               <span>{{ video?.user?.name }}</span>
             </div>
 

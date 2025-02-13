@@ -19,7 +19,8 @@
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
-                <img loading="lazy" 
+                <img
+                  loading="lazy"
                   :src="item.image"
                   alt="Campaign Image"
                   class="rounded-lg"
@@ -70,8 +71,7 @@ definePageMeta({
 });
 const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
-const { donorCampMeta, donorCampaigns, status, donorCamp_error } =
-  useDonorCamoaigns();
+const { donorCampMeta, donorCampaigns, status, donorCamp_error } = useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
 };

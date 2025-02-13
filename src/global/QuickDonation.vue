@@ -204,14 +204,14 @@
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../assets/images/campaign/icon3.svg" alt="" />
+            <img  loading="lazy" src="../assets/images/campaign/icon3.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../assets/images/campaign/icon1.svg" alt="" />
+            <img loading="lazy"  src="../assets/images/campaign/icon1.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>

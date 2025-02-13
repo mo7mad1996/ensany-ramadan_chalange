@@ -3,11 +3,7 @@
     <div
       class="card xl:w-[795px] lg:w-[795px] md:w-[96%] w-[96%] rounded-xl shadow-md p-sm bg-white"
     >
-      <Form
-        @submit="submit"
-        v-slot="{ validate }"
-        :initial-values="props.initData"
-      >
+      <Form @submit="submit" v-slot="{ validate }" :initial-values="props.initData">
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -36,7 +32,11 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -53,7 +53,11 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -96,7 +100,11 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -114,7 +122,11 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -159,7 +171,11 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -177,7 +193,11 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/edit.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -235,7 +255,11 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../../../assets/images/campaign/days.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/campaign/days.svg"
+                  alt=""
+                />
               </div>
 
               <Field
@@ -255,7 +279,11 @@
         <div class="grid gap-3 grid-cols-1 lg:grid-cols-2 md:grid-cols-2">
           <div class="upload_image mt-5">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/image.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/campaign/image.svg"
+                alt=""
+              />
               <span class="text-2xl">{{ $t("home.upload_image") }}</span>
             </div>
 
@@ -304,12 +332,14 @@
           </div>
         </div>
 
-        <div
-          class="group grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 gap-4 mt-5"
-        >
+        <div class="group grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 gap-4 mt-5">
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/amount.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/campaign/amount.svg"
+                alt=""
+              />
               <span class="text-2xl"> {{ $t("home.amount") }}</span>
             </div>
 
@@ -347,7 +377,11 @@
           <!-- currencies -->
           <div v-if="false">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/status.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/campaign/status.svg"
+                alt=""
+              />
               <span class="text-2xl"> {{ $t("home.currency") }}</span>
             </div>
 
@@ -369,12 +403,14 @@
           </div>
         </div>
 
-        <div
-          class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5"
-        >
+        <div class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5">
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/status.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/campaign/status.svg"
+                alt=""
+              />
               <span class="text-2xl"> {{ $t("home.category") }}</span>
             </div>
 
@@ -397,7 +433,11 @@
 
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/status.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/campaign/status.svg"
+                alt=""
+              />
               <span class="text-2xl"> {{ $t("home.status") }}</span>
             </div>
 
@@ -430,11 +470,7 @@
           @click="validate"
           :loading="loading"
         >
-          {{
-            props.initData
-              ? $t("home.edit_campaign")
-              : $t("home.launch_campaign")
-          }}
+          {{ props.initData ? $t("home.edit_campaign") : $t("home.launch_campaign") }}
         </v-btn>
       </Form>
     </div>

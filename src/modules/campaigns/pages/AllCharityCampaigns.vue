@@ -30,7 +30,8 @@
         class="max-w-full h-full"
       >
         <template #image>
-          <img loading="lazy" 
+          <img
+            loading="lazy"
             @click="$router.push(`/campaigns/${campaign.id}`)"
             :src="campaign?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -43,9 +44,7 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span
-            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-          ></span>
+          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -84,8 +83,9 @@ const { t } = useI18n();
 const route = useRoute();
 
 const { siteName } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } =
-  useCharityCampaigns(route.params.id);
+const { campaigns, campaignsMeta, refresh, status, currentPage } = useCharityCampaigns(
+  route.params.id
+);
 
 const fetchcharityCampaigns = () => refresh();
 watchEffect(() => {

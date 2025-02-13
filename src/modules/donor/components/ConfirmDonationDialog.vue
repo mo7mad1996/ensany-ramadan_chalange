@@ -1,7 +1,11 @@
 <template>
   <div class="p-4">
     <div class="flex justify-center items-center flex-col w-full">
-      <img loading="lazy" src="../../../assets/images/donor/customdialog.png" alt="custom" />
+      <img
+        loading="lazy"
+        src="../../../assets/images/donor/customdialog.png"
+        alt="custom"
+      />
       <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
       <v-radio-group v-model="pay_type" row>
         <v-radio

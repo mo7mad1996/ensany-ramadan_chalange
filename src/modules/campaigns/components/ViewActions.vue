@@ -74,7 +74,12 @@
       <!-- all doners part -->
       <div class="all-doners mt-5">
         <div class="title flex gap-x-3 items-center">
-          <img loading="lazy" src="../../../assets/images/increment.svg" width="20" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/increment.svg"
+            width="20"
+            alt=""
+          />
           <span class="text-2xl font-bold text-primary"
             >{{ campaign?.total_donors }} {{ $t("campaigns.donater") }}</span
           >
@@ -116,7 +121,12 @@
 
           <div v-else>
             <div class="image flex justify-center">
-              <img loading="lazy" src="../../../assets/images/no-data.jpg" width="150" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/no-data.jpg"
+                width="150"
+                alt=""
+              />
             </div>
 
             <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>

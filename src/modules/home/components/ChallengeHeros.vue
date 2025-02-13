@@ -7,9 +7,7 @@
       </h1>
 
       <!-- Heros cards -->
-      <div
-        class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
-      >
+      <div class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         <!-- card one -->
         <div
           class="card card-one p-[1rem] bg-customwhite rounded-md border-[1px] border-gray-100 border-solid"
@@ -24,9 +22,7 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <span class="font-bold text-lg">{{ topDonors[1]?.name }}</span>
-            <span class="font-bold text-lg">{{
-              topDonors[1]?.total_amount
-            }}</span>
+            <span class="font-bold text-lg">{{ topDonors[1]?.total_amount }}</span>
           </div>
 
           <p class="text-sm leading-20 pt-[1rem]">
@@ -48,9 +44,7 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <span class="font-bold text-lg">{{ topDonors[0]?.name }}</span>
-            <span class="font-bold text-lg"
-              >${{ topDonors[0]?.total_amount }}</span
-            >
+            <span class="font-bold text-lg">${{ topDonors[0]?.total_amount }}</span>
           </div>
 
           <p class="text-sm leading-20 pt-[1rem]">
@@ -72,9 +66,7 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <span class="font-bold text-lg">{{ topDonors[2]?.name }}</span>
-            <span class="font-bold text-lg"
-              >${{ topDonors[2]?.total_amount }}</span
-            >
+            <span class="font-bold text-lg">${{ topDonors[2]?.total_amount }}</span>
           </div>
 
           <p class="text-sm leading-20 pt-xs">

@@ -10,15 +10,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -36,7 +36,8 @@
             @click="$router.push(`/blogs/${blog.id}`)"
           >
             <template #image>
-              <img loading="lazy" 
+              <img
+                loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
                 alt="...."

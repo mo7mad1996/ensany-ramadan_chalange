@@ -29,6 +29,7 @@
       >
         <div class="image">
           <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
         </div>
 
         <div class="text w-full">
@@ -56,7 +57,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img loading="lazy" src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/campaigns.svg"
+            alt=""
+          />
         </div>
 
         <div class="text w-full">
@@ -94,11 +99,9 @@
             {{ $t("dashboard.security_text") }}
           </p>
           <div class="w-full flex items-center justify-between">
-            <nuxt-link
-              to=""
-              class="underline text-primary text-sm cursor-pointer"
-              >{{ $t("dashboard.security_action") }}</nuxt-link
-            >
+            <nuxt-link to="" class="underline text-primary text-sm cursor-pointer">{{
+              $t("dashboard.security_action")
+            }}</nuxt-link>
 
             <span class="text-sm text-[#4c4c4c]">{{
               $t("dashboard.security_time")
@@ -112,7 +115,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img loading="lazy" src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/campaigns.svg"
+            alt=""
+          />
         </div>
 
         <div class="text w-full">
@@ -127,9 +134,9 @@
               >{{ $t("dashboard.campaign_action") }}</nuxt-link
             >
 
-            <span class="text-sm text-[#4c4c4c]">{{
+            <divn class="text-sm text-[#4c4c4c]">{{
               $t("dashboard.campaign_time")
-            }}</span>
+            }}</divn>
           </div>
         </div>
       </div>
