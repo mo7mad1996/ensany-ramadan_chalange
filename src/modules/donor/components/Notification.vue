@@ -15,7 +15,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/dashboard/campaigns.svg"
-              alt=""
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op1_title") }}</span>
           </div>
@@ -34,7 +34,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/dashboard/donation.svg"
-              alt=""
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op2_title") }}</span>
           </div>
@@ -53,7 +53,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/dashboard/notification.svg"
-              alt=""
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op3_title") }}</span>
           </div>
@@ -72,7 +72,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/dashboard/warning.svg"
-              alt=""
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op4_title") }}</span>
           </div>

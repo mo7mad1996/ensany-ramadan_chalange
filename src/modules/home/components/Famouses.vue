@@ -13,10 +13,12 @@
               loading="lazy"
               src="../../../assets/images/scholar6.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -29,10 +31,12 @@
               loading="lazy"
               src="../../../assets/images/scholar1.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -45,10 +49,12 @@
               loading="lazy"
               src="../../../assets/images/scholar2.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -61,10 +67,12 @@
               loading="lazy"
               src="../../../assets/images/scholar3.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -77,10 +85,12 @@
               loading="lazy"
               src="../../../assets/images/scholar4.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -93,10 +103,12 @@
               loading="lazy"
               src="../../../assets/images/scholar5.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
-            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
+            <div
+              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
+            >
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>

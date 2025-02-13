@@ -36,7 +36,11 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img loading="lazy" src="../../../assets/images/contact/email.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/contact/email.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <Field
@@ -55,7 +59,11 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img loading="lazy" src="../../../assets/images/contact/phone.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/contact/phone.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <Field
@@ -75,7 +83,11 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/campaign/edit.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <Field
@@ -95,7 +107,11 @@
         <div
           class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
         >
-          <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/campaign/edit.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <Field

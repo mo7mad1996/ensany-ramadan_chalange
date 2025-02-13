@@ -1,5 +1,8 @@
 <template>
-  <section class="pt-sm pb-sm w-full" aria-label="this table to show highest donors">
+  <section
+    class="pt-sm pb-sm w-full"
+    aria-label="this table to show highest donors"
+  >
     <Container
       >loading="lazy"
       <!-- Add a scrollable container -->
@@ -19,7 +22,7 @@
                       src="../../../assets/images/dashboard/donate.svg"
                       width="15"
                       class="filter"
-                      alt=""
+                      alt="ramadanchallenges image"
                     />
                     <span>{{ $t("home.donor") }}</span>
                   </div>
@@ -31,7 +34,7 @@
                       src="../../../assets/images/donation_amount.svg"
                       width="15"
                       class="filter"
-                      alt=""
+                      alt="ramadanchallenges image"
                     />
                     <span>{{ $t("home.donation_amount") }}</span>
                   </div>
@@ -43,7 +46,7 @@
                       src="../../../assets/images/campaign.svg"
                       width="15"
                       class="filter"
-                      alt=""
+                      alt="ramadanchallenges image"
                     />
                     <span>{{ $t("home.donation_campaign") }}</span>
                   </div>

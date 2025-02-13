@@ -11,7 +11,7 @@
             loading="lazy"
             src="../../../assets/images/auth/login-img.svg"
             class="lg:h-[518px] xl:h-[518px] md:h-full h-full"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </div>
       </div>

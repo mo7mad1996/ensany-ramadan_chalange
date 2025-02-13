@@ -31,7 +31,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/honor-company.svg "
-                alt=""
+                alt="ramadanchallenges image"
               />
               <span>{{ video?.user?.name }}</span>
             </div>

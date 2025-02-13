@@ -48,7 +48,7 @@
                 <img
                   loading="lazy"
                   src="../../../assets/images/campaign/custom-amount.svg"
-                  alt=""
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -164,7 +164,7 @@
                   <img
                     loading="lazy"
                     src="../../../assets/images/contact/name.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                 </div>
 
@@ -206,7 +206,7 @@
                   <img
                     loading="lazy"
                     src="../../../assets/images/contact/email.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                 </div>
 
@@ -233,7 +233,7 @@
                   <img
                     loading="lazy"
                     src="../../../assets/images/contact/phone.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                 </div>
 
@@ -277,7 +277,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/contact/name.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -292,7 +292,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_name" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_name"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!--someone email -->
@@ -304,7 +307,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/contact/email.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -319,7 +322,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_email" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_email"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!--someone phone -->
@@ -331,7 +337,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/contact/phone.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -346,7 +352,10 @@
                     />
                   </div>
 
-                  <ErrorMessage name="some_phone" class="text-sm text-red-500 mt-2" />
+                  <ErrorMessage
+                    name="some_phone"
+                    class="text-sm text-red-500 mt-2"
+                  />
                 </div>
 
                 <!-- comments -->
@@ -371,7 +380,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -386,7 +395,10 @@
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
-                    <ErrorMessage name="love_comment" class="text-sm text-red-500 mt-2" />
+                    <ErrorMessage
+                      name="love_comment"
+                      class="text-sm text-red-500 mt-2"
+                    />
                   </div>
                 </div>
               </div>
@@ -416,21 +428,33 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../../../assets/images/campaign/icon2.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon2.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../../../assets/images/campaign/icon3.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon3.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../../../assets/images/campaign/icon1.svg" alt="" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/campaign/icon1.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>

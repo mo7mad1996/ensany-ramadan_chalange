@@ -32,7 +32,9 @@
             >
               <!-- name -->
               <div class="mt-5">
-                <div class="lable_switch flex justify-between items-center mb-3">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
                   <label for="">{{ $t("dashboard.charity_name") }}</label>
 
                   <div class="lang-switch flex items-center border-b">
@@ -40,7 +42,8 @@
                       class="px-3 py-1 cursor-pointer"
                       @click="toggle('charity_name')"
                       :class="{
-                        'bg-[#28A745] text-white': switcher.charity_name == 'en',
+                        'bg-[#28A745] text-white':
+                          switcher.charity_name == 'en',
                       }"
                     >
                       {{ $t("home.english") }}
@@ -49,7 +52,8 @@
                       class="px-3 py-1 cursor-pointer"
                       @click="toggle('charity_name')"
                       :class="{
-                        'bg-[#28A745] text-white': switcher.charity_name == 'ar',
+                        'bg-[#28A745] text-white':
+                          switcher.charity_name == 'ar',
                       }"
                     >
                       العربيه
@@ -65,7 +69,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -87,7 +91,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/campaign/edit.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -113,7 +117,7 @@
                     <img
                       loading="lazy"
                       src="../../../assets/images/contact/name.svg"
-                      alt=""
+                      alt="ramadanchallenges image"
                     />
                   </div>
 
@@ -127,12 +131,17 @@
                   />
                 </div>
 
-                <ErrorMessage name="updated_name" class="text-sm text-red-500" />
+                <ErrorMessage
+                  name="updated_name"
+                  class="text-sm text-red-500"
+                />
               </div>
 
               <!-- email -->
               <div class="mt-5">
-                <div class="lable_switch flex justify-between items-center mb-3">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
                   <label for="">{{ $t("dashboard.email") }}</label>
                 </div>
 
@@ -144,7 +153,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/contact/email.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -164,7 +173,9 @@
 
               <!-- phone number -->
               <div class="mt-5">
-                <div class="lable_switch flex justify-between items-center mb-3">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
                   <label for="">{{ $t("dashboard.mobile") }}</label>
                 </div>
 
@@ -176,7 +187,7 @@
                       <img
                         loading="lazy"
                         src="../../../assets/images/contact/phone.svg"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -196,7 +207,9 @@
 
               <!-- country -->
               <div class="my-5">
-                <div class="lable_switch flex justify-between items-center mb-3">
+                <div
+                  class="lable_switch flex justify-between items-center mb-3"
+                >
                   <label for="">{{ $t("dashboard.country") }}</label>
                 </div>
 
@@ -274,7 +287,10 @@
                   />
                 </div>
 
-                <ErrorMessage name="updated_phone" class="text-sm text-red-500" />
+                <ErrorMessage
+                  name="updated_phone"
+                  class="text-sm text-red-500"
+                />
               </div>
 
               <!-- submit Btns -->
@@ -324,7 +340,7 @@
                 <div class="flex items-center gap-x-3">
                   <img loading="lazy" 
                     src="../../../assets/images/dashboard/campaigns.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op1_title") }}</span>
                 </div>
@@ -346,7 +362,7 @@
                 <div class="flex items-center gap-x-3">
                   <img loading="lazy" 
                     src="../../../assets/images/dashboard/donation.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op2_title") }}</span>
                 </div>
@@ -368,7 +384,7 @@
                 <div class="flex items-center gap-x-3">
                   <img loading="lazy" 
                     src="../../../assets/images/dashboard/notification.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op3_title") }}</span>
                 </div>
@@ -390,7 +406,7 @@
                 <div class="flex items-center gap-x-3">
                   <img loading="lazy" 
                     src="../../../assets/images/dashboard/warning.svg"
-                    alt=""
+                    alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op4_title") }}</span>
                 </div>
@@ -472,7 +488,10 @@
                   />
                 </div>
 
-                <ErrorMessage class="text-sm text-red-500" name="current-password" />
+                <ErrorMessage
+                  class="text-sm text-red-500"
+                  name="current-password"
+                />
               </div>
 
               <!-- password input -->
@@ -499,7 +518,10 @@
                   />
                 </div>
 
-                <ErrorMessage class="text-sm text-red-500" name="resete-password" />
+                <ErrorMessage
+                  class="text-sm text-red-500"
+                  name="resete-password"
+                />
               </div>
 
               <!-- confirm password  -->
@@ -526,7 +548,10 @@
                   />
                 </div>
 
-                <ErrorMessage class="text-sm text-red-500" name="resete-confirm" />
+                <ErrorMessage
+                  class="text-sm text-red-500"
+                  name="resete-confirm"
+                />
               </div>
 
               <!-- Submit Button -->

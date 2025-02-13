@@ -5,7 +5,11 @@
     </h2>
 
     <div class="update-form mt-5">
-      <Form @submit="onSubmit" v-slot="{ validate }" :initial-values="defaultValues">
+      <Form
+        @submit="onSubmit"
+        v-slot="{ validate }"
+        :initial-values="defaultValues"
+      >
         <!-- image -->
         <div class="mt-5">
           <label for="">{{ $t("home.upload_image") }}</label>
@@ -61,7 +65,7 @@
                 <img
                   loading="lazy"
                   src="../../../assets/images/contact/phone.svg"
-                  alt=""
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -93,7 +97,7 @@
                 <img
                   loading="lazy"
                   src="../../../assets/images/contact/phone.svg"
-                  alt=""
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -122,7 +126,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img loading="lazy" src="../../../assets/images/contact/email.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/email.svg"
+                  alt="ramadanchallenges image"
+                />
               </div>
 
               <Field
@@ -150,7 +158,11 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img loading="lazy" src="../../../assets/images/contact/phone.svg" alt="" />
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/contact/phone.svg"
+                  alt="ramadanchallenges image"
+                />
               </div>
 
               <Field
@@ -191,7 +203,9 @@
         </div>
 
         <!-- submit Btns -->
-        <div class="buttons mt-4 grid gap-x-2 grid-cols-1 lg:grid-cols-2 md:grid-cols-1">
+        <div
+          class="buttons mt-4 grid gap-x-2 grid-cols-1 lg:grid-cols-2 md:grid-cols-1"
+        >
           <v-btn
             :ripple="false"
             type="submit"

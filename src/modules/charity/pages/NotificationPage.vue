@@ -28,7 +28,11 @@
         class="card donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#FFF8E1]"
       >
         <div class="image">
-          <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/doner.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -59,7 +63,7 @@
           <img
             loading="lazy"
             src="../../../assets/images/dashboard/campaigns.svg"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </div>
 
@@ -87,7 +91,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start border-2 border-red-700 bg-[#F1E2E2]"
       >
         <div class="image">
-          <img loading="lazy" src="../../../assets/images/dashboard/warning.svg" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/dashboard/warning.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -98,9 +106,11 @@
             {{ $t("dashboard.security_text") }}
           </p>
           <div class="w-full flex items-center justify-between">
-            <nuxt-link to="" class="underline text-primary text-sm cursor-pointer">{{
-              $t("dashboard.security_action")
-            }}</nuxt-link>
+            <nuxt-link
+              to=""
+              class="underline text-primary text-sm cursor-pointer"
+              >{{ $t("dashboard.security_action") }}</nuxt-link
+            >
 
             <span class="text-sm text-[#4c4c4c]">{{
               $t("dashboard.security_time")
@@ -117,7 +127,7 @@
           <img
             loading="lazy"
             src="../../../assets/images/dashboard/campaigns.svg"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </div>
 

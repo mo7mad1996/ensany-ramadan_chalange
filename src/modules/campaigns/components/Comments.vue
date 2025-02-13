@@ -5,7 +5,9 @@
     </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">{{ commentsMeta?.total }} {{ $t("campaigns.comments") }}</div>
+      <div class="text-sm">
+        {{ commentsMeta?.total }} {{ $t("campaigns.comments") }}
+      </div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
         <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
@@ -16,7 +18,7 @@
     <!-- commment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
       <!-- <div class="flex gap-x-3 items-center">
-        <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/user.svg" alt="ramadanchallenges image" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
 
@@ -54,10 +56,21 @@
 
       <!-- here display all comments && comments.length -->
       <div>
-        <div class="all-comments mt-md" v-if="status == 'success' && comments.length">
-          <div class="comment mb-sm" v-for="(comment, index) in comments" :key="index">
+        <div
+          class="all-comments mt-md"
+          v-if="status == 'success' && comments.length"
+        >
+          <div
+            class="comment mb-sm"
+            v-for="(comment, index) in comments"
+            :key="index"
+          >
             <div class="flex gap-x-3 items-start">
-              <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/user.svg"
+                alt="ramadanchallenges image"
+              />
               <div>
                 <h4 class="text-2xl font-bold" v-if="comment?.user_name">
                   {{ comment?.user_name }}
@@ -81,7 +94,12 @@
           class="image flex justify-center mt-md"
           v-if="comments.length == 0 && status == 'error'"
         >
-          <img loading="lazy" src="../../../assets/images/no-data.jpg" width="150" alt="" />
+          <img
+            loading="lazy"
+            src="../../../assets/images/no-data.jpg"
+            width="150"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="pagination items-center justify-center pb-sm">
