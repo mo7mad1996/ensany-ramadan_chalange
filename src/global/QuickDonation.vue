@@ -3,7 +3,7 @@
     <Container>
       <div class="w-[100%]">
         <div class="flex gap-x-2">
-          <img loading="lazy" src="../assets/images/campaign/dolar.svg" width="22" alt="..." />
+          <img loading="lazy" src="../assets/images/campaign/dolar.svg" width="22" alt="ramadanchallenges image" />
           <h1 class="font-semibold text-2xl">
             {{ $t("global.donation_amount") }}
           </h1>
@@ -26,7 +26,7 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img loading="lazy" src="../assets/images/campaign/custom-amount.svg" alt="" />
+            <img loading="lazy" src="../assets/images/campaign/custom-amount.svg" alt="ramadanchallenges image" />
           </div>
 
           <input
@@ -53,7 +53,7 @@
             <img loading="lazy" 
               src="../assets/images/campaign/payment-method.svg"
               width="22"
-              alt="..."
+              alt="ramadanchallenges image"
             />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.payment_method") }}
@@ -77,10 +77,10 @@
                 >
                   <img loading="lazy" 
                     src="../assets/images/campaign/master-card.svg"
-                    alt="..."
+                    alt="ramadanchallenges image"
                   />
                   <span>Master Card or</span>
-                  <img loading="lazy" src="../assets/images/campaign/visa.svg" alt="..." />
+                  <img loading="lazy" src="../assets/images/campaign/visa.svg" alt="ramadanchallenges image" />
                   <span>Visa</span>
                 </div>
               </template>
@@ -95,7 +95,7 @@
                     'bg-primary-light rounded-md': paymentMethod == 'paypal',
                   }"
                 >
-                  <img loading="lazy" src="../assets/images/campaign/paypal.svg" alt="..." />
+                  <img loading="lazy" src="../assets/images/campaign/paypal.svg" alt="ramadanchallenges image" />
 
                   <span>Pypal</span>
                 </div>
@@ -110,7 +110,7 @@
             <img loading="lazy" 
               src="../assets/images/campaign/personal-info.svg"
               width="22"
-              alt="..."
+              alt="ramadanchallenges image"
             />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.personal_info") }}
@@ -123,7 +123,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img loading="lazy" src="../assets/images/contact/name.svg" alt="" />
+                <img loading="lazy" src="../assets/images/contact/name.svg" alt="ramadanchallenges image" />
               </div>
 
               <input
@@ -139,7 +139,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img loading="lazy" src="../assets/images/contact/email.svg" alt="" />
+                <img loading="lazy" src="../assets/images/contact/email.svg" alt="ramadanchallenges image" />
               </div>
 
               <input
@@ -155,7 +155,7 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img loading="lazy" src="../assets/images/contact/phone.svg" alt="" />
+                <img loading="lazy" src="../assets/images/contact/phone.svg" alt="ramadanchallenges image" />
               </div>
 
               <input
@@ -171,7 +171,7 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img loading="lazy" src="../assets/images/campaign/edit.svg" alt="" />
+                <img loading="lazy" src="../assets/images/campaign/edit.svg" alt="ramadanchallenges image" />
               </div>
 
               <textarea
@@ -197,21 +197,21 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy" src="../assets/images/campaign/icon2.svg" alt="" />
+            <img loading="lazy" src="../assets/images/campaign/icon2.svg" alt="ramadanchallenges image" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img  loading="lazy" src="../assets/images/campaign/icon3.svg" alt="" />
+            <img  loading="lazy" src="../assets/images/campaign/icon3.svg" alt="ramadanchallenges image" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img loading="lazy"  src="../assets/images/campaign/icon1.svg" alt="" />
+            <img loading="lazy"  src="../assets/images/campaign/icon1.svg" alt="ramadanchallenges image" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>

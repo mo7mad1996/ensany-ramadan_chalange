@@ -67,7 +67,7 @@
                   bannerData?.total_donors
                 }}</span>
                 <span>
-                  <img loading="lazy" src="../../../assets/images/doners.svg" alt="..." />
+                  <img loading="lazy" src="../../../assets/images/doners.svg" alt="ramadanchallenges image" />
                 </span>
               </div>
 
@@ -87,7 +87,7 @@
                   <img
                     loading="lazy"
                     src="../../../assets/images/campaigns.svg"
-                    alt="..."
+                    alt="ramadanchallenges image"
                   />
                 </span>
               </div>

@@ -7,7 +7,7 @@
         <img loading="lazy" 
           src="../../../assets/images/about/our-mission.png"
           class="ltr:rounded-tr-[60px] rtl:rounded-tl-[60px] ltr:rounded-ee-[60px] rtl:rounded-ee-[60px]"
-          alt=""
+          alt="ramadanchallenges image"
         />
       </div>
 

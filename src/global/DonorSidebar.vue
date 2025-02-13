@@ -6,7 +6,7 @@
         :src="user.photo || '../assets/images/dashboard/avatar.svg'"
         width="30px"
         class="rounded-full aspect-square object-cover"
-        alt=""
+        alt="ramadanchallenges image"
       />
       <span v-if="user?.first_name">{{ user?.first_name }}</span>
       <!-- <span v-if="user?.dooner_name">{{ user?.dooner_name }}</span> -->
@@ -19,7 +19,7 @@
           <img loading="lazy" 
             src="../assets/images/dashboard/dashboard.svg"
             width="15px"
-            alt=""
+            alt="ramadanchallenges image"
           />
           <span>{{ $t("donor.dashboard") }}</span>
         </nuxt-link>
@@ -29,7 +29,7 @@
           to="/dashboard/donor/donations-cart"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy" src="../assets/images/donor/icon.svg" width="15px" alt="" />
+          <img loading="lazy" src="../assets/images/donor/icon.svg" width="15px" alt="ramadanchallenges image" />
           <span>{{ $t("donor.donation_cart") }}</span>
         </nuxt-link>
       </li>
@@ -41,7 +41,7 @@
           <img loading="lazy" 
             src="../assets/images/dashboard/campaigns.svg"
             width="15px"
-            alt=""
+            alt="ramadanchallenges image"
           />
           <span>{{ $t("donor.campaigns_history") }}</span>
         </nuxt-link>
@@ -51,7 +51,7 @@
           to="/dashboard/donor/donation-history"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy" src="../assets/images/donor/Money.svg" width="15px" alt="" />
+          <img loading="lazy" src="../assets/images/donor/Money.svg" width="15px" alt="ramadanchallenges image" />
           <span>{{ $t("donor.donation_history") }}</span>
         </nuxt-link>
       </li>
@@ -64,7 +64,7 @@
           <img loading="lazy" 
             src="../assets/images/dashboard/notification.svg"
             width="15px"
-            alt=""
+            alt="ramadanchallenges image"
           />
           <span>{{ $t("donor.notification") }}</span>
         </nuxt-link>
@@ -78,7 +78,7 @@
           <img loading="lazy" 
             src="../assets/images/dashboard/settings.svg"
             width="15px"
-            alt=""
+            alt="ramadanchallenges image"
           />
           <span>{{ $t("donor.settings") }}</span>
         </nuxt-link>
@@ -89,7 +89,7 @@
           <img loading="lazy" 
             src="../assets/images/dashboard/logout.svg"
             width="15px"
-            alt=""
+            alt="ramadanchallenges image"
           />
           <span>{{ $t("donor.logout") }}</span>
         </div>

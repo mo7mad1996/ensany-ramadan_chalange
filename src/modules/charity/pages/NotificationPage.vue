@@ -29,7 +29,6 @@
       >
         <div class="image">
           <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
-          <img loading="lazy" src="../../../assets/images/doner.svg" alt="" />
         </div>
 
         <div class="text w-full">

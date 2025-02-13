@@ -77,7 +77,7 @@
             loading="lazy"
             src="../../../assets/images/auth/resent.svg"
             width="22px"
-            alt="..."
+            alt="ramadanchallenges image"
           />
           <button :disabled="timeLeft !== 0" @click="resendCode">
             <span

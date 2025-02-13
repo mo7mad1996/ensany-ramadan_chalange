@@ -58,7 +58,7 @@
         size="x-small"
         color="primary"
       >
-        <img loading="lazy" src="../assets/images/statistics1.svg" width="15" class="mb-2" alt="" />
+        <img loading="lazy" src="../assets/images/statistics1.svg" width="15" class="mb-2" alt="ramadanchallenges image" />
         <p>{{ $t("global.donation") }}</p>
       </v-btn>
     </div>

@@ -22,7 +22,7 @@
       }}</nuxt-link>
 
       <!-- <nuxt-link to="/" class="d-flex ga-2 text-black">
-        <img loading="lazy" src="../assets/images/search.svg" width="15" alt="" />
+        <img loading="lazy" src="../assets/images/search.svg" width="15" alt="ramadanchallenges image" />
         <span>{{ $t("global.search") }}</span>
       </nuxt-link> -->
 
@@ -108,7 +108,7 @@
       <div class="d-flex justify-space-between align-center w-100">
         <!-- logo -->
         <div class="logo cursor-pointer" @click="navigateTo('/')">
-          <img loading="lazy" src="../assets/images/logo.svg" width="136" height="48" alt="" />
+          <img loading="lazy" src="../assets/images/logo.svg" width="136" height="48" alt="ramadanchallenges image" />
         </div>
 
         <!-- menue in small screens -->
@@ -143,7 +143,7 @@
             src="../assets/images/menue.svg"
             class="cursor-pointer"
             width="30"
-            alt=""
+            alt="ramadanchallenges image"
             @click="openMenue"
           />
         </div>
@@ -234,7 +234,7 @@
 
           <!-- <li>
             <nuxt-link to="/" class="d-flex ga-2">
-              <img loading="lazy" src="../assets/images/search.svg" width="15" alt="" />
+              <img loading="lazy" src="../assets/images/search.svg" width="15" alt="ramadanchallenges image" />
               <span>{{ $t("global.search") }}...</span>
             </nuxt-link>
           </li> -->
@@ -255,7 +255,7 @@
                   :src="user.photo || '../assets/images/user.svg'"
                   width="30"
                   class="rounded-full aspect-square objectgit -cover"
-                  alt=""
+                  alt="ramadanchallenges image"
                 />
                 <span v-if="user?.first_name">{{ user?.first_name }}</span>
                 <span v-if="user?.charity_name">{{ user?.charity_name }}</span>
@@ -270,7 +270,7 @@
                     <img loading="lazy" 
                       src="../assets/images/dashboard/dashboard.svg"
                       width="15"
-                      alt=""
+                      alt="ramadanchallenges image"
                     />
                     <nuxt-link
                       v-if="user?.user_type === 'charity'"
@@ -356,7 +356,7 @@
                         <img loading="lazy" 
                           src="../assets/images/doner.svg"
                           width="15"
-                          alt=""
+                          alt="ramadanchallenges image"
                         />
                         <span>{{ $t("global.doner") }}</span>
                       </div>
@@ -371,7 +371,7 @@
                         <img loading="lazy" 
                           src="../assets/images/charity.svg"
                           width="15"
-                          alt=""
+                          alt="ramadanchallenges image"
                         />
                         <span>{{ $t("global.charity2") }}</span>
                       </div>
@@ -409,7 +409,7 @@
                     @click="navigateTo('/signup')"
                   >
                     <div class="flex gap-x-2 items-center">
-                      <img loading="lazy" src="../assets/images/doner.svg" width="15" alt="" />
+                      <img loading="lazy" src="../assets/images/doner.svg" width="15" alt="ramadanchallenges image" />
                       <span>{{ $t("global.doner") }}</span>
                     </div>
                   </v-list-item-title>
@@ -423,7 +423,7 @@
                       <img loading="lazy" 
                         src="../assets/images/charity.svg"
                         width="15"
-                        alt=""
+                        alt="ramadanchallenges image"
                       />
                       <span>{{ $t("global.charity2") }}</span>
                     </div>

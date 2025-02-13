@@ -8,7 +8,7 @@
               loading="lazy"
               src="../../../assets/images/campaign/dolar.svg"
               width="22"
-              alt="..."
+              alt="ramadanchallenges image"
             />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.donation_amount") }}
@@ -148,7 +148,7 @@
                 loading="lazy"
                 src="../../../assets/images/campaign/personal-info.svg"
                 width="22"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <h1 class="font-semibold text-2xl">
                 {{ $t("global.personal_info") }}
@@ -356,7 +356,7 @@
                       loading="lazy"
                       src="../../../assets/images/campaign/comment.svg"
                       width="22"
-                      alt="..."
+                      alt="ramadanchallenges image"
                     />
                     <h1 class="font-semibold text-2xl">
                       {{ $t("global.love_comment") }}

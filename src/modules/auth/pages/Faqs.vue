@@ -30,14 +30,14 @@
                 loading="lazy"
                 v-if="index % 2 == 0"
                 src="../../../assets/images/dashboard/amount.svg"
-                alt=""
+                alt="ramadanchallenges image"
               />
 
               <img
                 loading="lazy"
                 v-else
                 src="../../../assets/images/dashboard/campaigns.svg"
-                alt=""
+                alt="ramadanchallenges image"
               />
 
               <h2 class="text-[#121212] text-xl font-bold">

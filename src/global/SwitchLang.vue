@@ -4,7 +4,7 @@
     @click="setLocale(locale == 'ar' ? 'en' : 'ar')"
   >
     <span>{{ locale == "ar" ? "English" : "عربى" }}</span>
-    <img loading="lazy" src="../assets/images/lang.svg" width="15" alt="" />
+    <img loading="lazy" src="../assets/images/lang.svg" width="15" alt="ramadanchallenges image" />
   </NuxtLink>
 </template>
 

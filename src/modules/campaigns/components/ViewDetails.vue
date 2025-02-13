@@ -190,7 +190,7 @@
                   loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
-                  alt="..."
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -228,7 +228,7 @@
           >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center">
-                <img loading="lazy" src="../../../assets/images/user.svg" alt="..." />
+                <img loading="lazy" src="../../../assets/images/user.svg" alt="ramadanchallenges image" />
               </div>
 
               <h6>{{ donor?.name }}</h6>

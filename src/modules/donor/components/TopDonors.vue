@@ -14,7 +14,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/Second Donor.png"
-              alt="..."
+              alt="ramadanchallenges image"
               loading="lazy"
             />
 
@@ -28,7 +28,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.socend?.name }}</span
@@ -48,7 +48,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/First Donor .png"
-              alt="..."
+              alt="ramadanchallenges image"
             />
 
             <h5 class="font-bold text-3xl text-black">
@@ -61,7 +61,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.first?.name }}</span
@@ -81,7 +81,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/Third Donor.png"
-              alt="..."
+              alt="ramadanchallenges image"
             />
 
             <h5 class="font-bold text-3xl text-black">
@@ -94,7 +94,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.third?.name }}</span

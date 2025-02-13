@@ -6,7 +6,7 @@
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
-      <img src="../assets/images/honor-company.svg " alt="" loading="lazy" />
+      <img src="../assets/images/honor-company.svg " alt="ramadanchallenges image" loading="lazy" />
       <p>
         <slot name="company"></slot>
       </p>
@@ -26,7 +26,7 @@
     <div class="subscribers mt-2">
       <div class="flex justify-between">
         <div class="total d-flex ga-2 align-center">
-          <img loading="lazy" src="../assets/images/doners.svg" alt="" />
+          <img loading="lazy" src="../assets/images/doners.svg" alt="ramadanchallenges image" />
           <span>
             <slot name="subscribers"></slot>
           </span>
