@@ -57,7 +57,10 @@ export function useAuth() {
   };
 
   // register
-  const register = async (userData: NewUser | NewCharity) => {
+  const register = async (
+    userData: NewUser | NewCharity,
+    handelError: any = null
+  ) => {
     const response = await handleApiCall(() => api.post("/register", userData));
 
     if (response) {
@@ -67,18 +70,13 @@ export function useAuth() {
       setCode(userValue.verification_code);
       navigateTo("/verrify-email");
     }
+    if (handelError && error.value) handelError(error.value);
   };
 
   // Verify user email
   const verifyEmail = async (verificationCode: number | string) => {
     const response = await handleApiCall(() =>
-      api.post(
-        "/verify-email",
-        { verification_code: verificationCode },
-        {
-          headers: { Authorization: `Bearer ${token.value}` },
-        }
-      )
+      api.post("/verify-email", { verification_code: verificationCode })
     );
 
     if (response?.data.status) {
@@ -94,15 +92,7 @@ export function useAuth() {
   const logout = async () => {
     setUser(null);
     navigateTo("/");
-    await handleApiCall(() =>
-      api.post(
-        "/logout",
-        {},
-        {
-          headers: { Authorization: `Bearer ${token.value}` },
-        }
-      )
-    );
+    await handleApiCall(() => api.post("/logout", {}));
 
     setToken(null);
   };

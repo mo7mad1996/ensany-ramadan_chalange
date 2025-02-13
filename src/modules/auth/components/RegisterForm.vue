@@ -30,9 +30,16 @@
             />
           </div>
 
-          <ErrorMessage class="text-sm text-red-500" name="first_name" />
+          <ErrorMessage class="error" name="first_name" />
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.first_name"
+            :key="n"
+            v-html="err"
+          />
         </div>
 
+        <!-- last name -->
         <div>
           <div class="relative">
             <div
@@ -43,17 +50,23 @@
 
             <Field
               type="text"
-              name="register-lastname"
+              name="last_name"
               rules="required"
               v-model="newUser.last_name"
               :validateOnInput="true"
-              id="register-lastname"
+              id="last_name"
               :placeholder="$t('auth.last_name')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
 
-          <ErrorMessage class="text-sm text-red-500" name="register-lastname" />
+          <ErrorMessage class="error" name="last_name" />
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.last_name"
+            :key="n"
+            v-html="err"
+          />
         </div>
       </div>
 
@@ -68,22 +81,33 @@
 
           <Field
             type="email"
-            name="register-email"
+            name="email"
             rules="required|email"
             :validateOnInput="true"
             v-model="newUser.email"
-            id="register-email"
+            id="email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-email" />
+        <ErrorMessage class="error" name="register-email" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.email"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field name="phone" rules="required" :validateOnInput="true" v-slot="{ field }">
+        <Field
+          name="mobile"
+          rules="required"
+          :validateOnInput="true"
+          v-slot="{ field }"
+        >
           <vue-tel-input
             v-bind="field"
             v-model="newUser.mobile"
@@ -94,10 +118,16 @@
               placeholder: $t('auth.phone'),
             }"
             @input="validatePhoneInput"
-          ></vue-tel-input>
-
-          <ErrorMessage class="text-sm text-red-500" name="phone" />
+          />
         </Field>
+
+        <ErrorMessage class="error" name="mobile" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.mobile"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- country id -->
@@ -127,15 +157,17 @@
                 </path>
               </svg>
             </span>
-            <v-icon v-if="status == 'success'">mdi-map-marker-multiple-outline</v-icon>
+            <v-icon v-if="status == 'success'"
+              >mdi-map-marker-multiple-outline</v-icon
+            >
           </div>
 
           <Field
             as="select"
-            name="register-country"
+            id="country_id"
+            name="country_id"
             rules="required"
             :validateOnInput="true"
-            id="register-country"
             v-model="newUser.country_id"
             :placeholder="$t('auth.country')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -150,8 +182,13 @@
             </option>
           </Field>
         </div>
-
-        <ErrorMessage class="text-sm text-red-500" name="register-country" />
+        <ErrorMessage class="error" name="country_id" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.country_id"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- password input -->
@@ -167,11 +204,11 @@
 
           <Field
             :type="show1 ? 'text' : 'password'"
-            name="register-password"
+            name="password"
             rules="required|min:6"
             :validateOnInput="true"
             v-model="newUser.password"
-            id="register-password"
+            id="password"
             :placeholder="$t('auth.password')"
             autocomplete="new-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -179,7 +216,13 @@
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-password" />
+        <ErrorMessage class="error" name="register-password" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.password"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- confirm password  -->
@@ -195,11 +238,11 @@
 
           <Field
             :type="show2 ? 'text' : 'password'"
-            name="register-confirm"
-            rules="required|confirmed:@register-password"
+            name="password_confirmation"
+            rules="required|confirmed:@password"
             :validateOnInput="true"
             v-model="newUser.password_confirmation"
-            id="register-confirm"
+            id="password_confirmation"
             :placeholder="$t('auth.confirm_password')"
             autocomplete="confirm-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -207,7 +250,13 @@
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-confirm" />
+        <ErrorMessage class="error" name="password_confirmation" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.password_confirmation"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- terms and conditions -->
@@ -229,7 +278,7 @@
       <!-- error message from backend -->
       <!-- <p class="error-msg text-sm text-red-500 text-center mb-2">{{ error }}</p> -->
 
-      <!-- confirm login -->
+      <!-- submit Btns -->
       <v-btn
         :disabled="isLoading"
         :loading="isLoading"
@@ -265,6 +314,7 @@ import { useCountries } from "../services/countries";
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);
+const apiErrors = ref<any>({});
 
 const { register, isLoading } = useAuth();
 const { countries, status } = useCountries();
@@ -293,6 +343,16 @@ const showConfPassword = (): void => {
 };
 
 const onSubmit = () => {
-  register(newUser.value);
+  apiErrors.value = {};
+  register(
+    newUser.value,
+    (err: any) => (apiErrors.value = err.response.data.result.errors)
+  );
 };
 </script>
+
+<style scoped>
+.error {
+  @apply text-sm text-red-500;
+}
+</style>
