@@ -24,7 +24,7 @@
           src="../assets/images/statistics1.svg"
           width="15"
           class="mb-2"
-          alt=""
+          alt="ramadanchallenges image"
         />
         <p>{{ $t("global.donation") }}</p>
       </v-btn>

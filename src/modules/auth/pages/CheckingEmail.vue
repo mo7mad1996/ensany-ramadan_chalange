@@ -72,14 +72,12 @@
         >
 
         <!-- Recend code -->
-        <div
-          class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
-        >
+        <div class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer">
           <img
             loading="lazy"
             src="../../../assets/images/auth/resent.svg"
             width="22px"
-            alt="..."
+            alt="ramadanchallenges image"
           />
           <button :disabled="timeLeft !== 0" @click="resendCode">
             <span
@@ -99,8 +97,8 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
-import { useResetPassword } from "../typescript/reset";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useResetPassword } from "../typescript/reset";
 
 const {
   show1,

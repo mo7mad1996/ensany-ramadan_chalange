@@ -10,15 +10,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 

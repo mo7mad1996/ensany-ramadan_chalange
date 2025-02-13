@@ -45,12 +45,14 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="stories.length > 0"
         v-model="currentPage"
         :length="storiesMeta.last_page"
         @input="fetchStories"
         :total-visible="5"
       />
     </div>
+    <NoData :data="fetchStories" :status="status" />
   </Container>
 </template>
 

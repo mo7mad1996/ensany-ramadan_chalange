@@ -17,7 +17,7 @@
     <div class="content flex justify-center">
       <div class="w-[792px]">
         <div class="video">
-          <img loading="lazy"
+          <img loading="lazy" 
               v-if="status == 'success'"
             class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
             :src="singleStory?.image"

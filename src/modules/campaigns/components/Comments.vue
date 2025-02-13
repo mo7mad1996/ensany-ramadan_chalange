@@ -5,9 +5,7 @@
     </h1>
 
     <div class="header flex justify-between items-center mt-4">
-      <div class="text-sm">
-        {{ commentsMeta?.total }} {{ $t("campaigns.comments") }}
-      </div>
+      <div class="text-sm">{{ commentsMeta?.total }} {{ $t("campaigns.comments") }}</div>
 
       <div class="flex items-center gap-x-2 cursor-pointer">
         <span class="text-sm">{{ $t("campaigns.sorted_by") }}</span>
@@ -44,7 +42,7 @@
       </div> -->
 
       <!-- skeleton loader for comments -->
-      <div class="" v-for="(item, index) in 2" :key="index">
+      <div v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
           v-for="(item, index) in 2"
           :key="index"
@@ -56,21 +54,10 @@
 
       <!-- here display all comments && comments.length -->
       <div>
-        <div
-          class="all-comments mt-md"
-          v-if="status == 'success' && comments.length"
-        >
-          <div
-            class="comment mb-sm"
-            v-for="(comment, index) in comments"
-            :key="index"
-          >
+        <div class="all-comments mt-md" v-if="status == 'success' && comments.length">
+          <div class="comment mb-sm" v-for="(comment, index) in comments" :key="index">
             <div class="flex gap-x-3 items-start">
-              <img
-                loading="lazy"
-                src="../../../assets/images/user.svg"
-                alt=""
-              />
+              <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
               <div>
                 <h4 class="text-2xl font-bold" v-if="comment?.user_name">
                   {{ comment?.user_name }}
@@ -94,12 +81,7 @@
           class="image flex justify-center mt-md"
           v-if="comments.length == 0 && status == 'error'"
         >
-          <img
-            loading="lazy"
-            src="../../../assets/images/no-data.jpg"
-            width="150"
-            alt=""
-          />
+          <img loading="lazy" src="../../../assets/images/no-data.jpg" width="150" alt="" />
         </div>
 
         <div class="pagination items-center justify-center pb-sm">
@@ -116,10 +98,9 @@
 </template>
 
 <script setup lang="ts">
-import { Field } from "vee-validate";
+import { useRoute } from "vue-router";
 import { reFormat } from "~/helpers/format-date";
 import { useComments } from "../services/comments";
-import { useRoute } from "vue-router";
 const route = useRoute();
 
 const { comments, status, currentPage, commentsMeta, refresh } = useComments(

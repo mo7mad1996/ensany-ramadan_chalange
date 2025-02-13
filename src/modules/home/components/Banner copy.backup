@@ -46,11 +46,7 @@
                   bannerData?.total_collected
                 }}</span>
                 <span>
-                  <img
-                    loading="lazy"
-                    src="../../../assets/images/statistics1.svg"
-                    alt=""
-                  />
+                  <img loading="lazy" src="../../../assets/images/statistics1.svg" alt="ramadanchallenges image" />
                 </span>
               </div>
 
@@ -84,11 +80,7 @@
                   bannerData?.total_campaigns
                 }}</span>
                 <span>
-                  <img
-                    loading="lazy"
-                    src="../../../assets/images/campaigns.svg"
-                    alt="ramadanchallenges image"
-                  />
+                  <img loading="lazy" src="../../../assets/images/campaigns.svg" alt="ramadanchallenges image" />
                 </span>
               </div>
 
@@ -105,8 +97,8 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
+import { useBannerData } from "../services/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
 
 const { bannerData, banner_error } = useBannerData();

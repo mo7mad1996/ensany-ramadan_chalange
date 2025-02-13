@@ -3,9 +3,7 @@
     <div class="card grid gap-md grid-cols-1 lg:grid-cols-2 md:grid-cols-1">
       <div class="text">
         <h1 class="text-4xl">
-          <span class="font-light" v-if="user?.first_name">{{
-            user?.first_name
-          }}</span>
+          <span class="font-light" v-if="user?.first_name">{{ user?.first_name }}</span>
 
           <span class="font-light" v-if="user?.charity_name">{{
             user?.charity_name

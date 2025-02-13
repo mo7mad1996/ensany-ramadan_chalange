@@ -56,9 +56,9 @@
 
 <script setup>
 import dayjs from "dayjs";
+import { useRouter } from "vue-router";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
-import { useRouter } from "vue-router";
 
 import { useGlobalVar } from "~/helpers/global-var";
 
@@ -71,8 +71,7 @@ definePageMeta({
 });
 const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
-const { donorCampMeta, donorCampaigns, status, donorCamp_error } =
-  useDonorCamoaigns();
+const { donorCampMeta, donorCampaigns, status, donorCamp_error } = useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
 };

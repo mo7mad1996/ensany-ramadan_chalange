@@ -70,11 +70,11 @@
 <script setup lang="ts">
 import { CharityLineChart } from "#components";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "~/modules/auth/services/auth";
 const { user } = useAuth();
 const { t } = useI18n();
 const { $toast } = useNuxtApp();
-import { useGlobalVar } from "~/helpers/global-var";
 
 definePageMeta({
   layout: "charity",

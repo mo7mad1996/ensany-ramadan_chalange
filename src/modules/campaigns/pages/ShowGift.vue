@@ -6,14 +6,16 @@
       <!-- Decorative Lanterns -->
       <div class="absolute left-5 top-5 w-24">
         <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
+        <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
       </div>
       <div class="absolute right-5 top-5 w-24">
+        <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
         <img loading="lazy" src="../../../assets/images/gift/Group.png" alt="Lantern" />
       </div>
 
       <!-- Arabic Calligraphy -->
       <div class="mt-10">
-        <img loading="lazy"
+        <img loading="lazy" 
           src="../../../assets/images/gift/image_2.png"
           alt="Bismillah"
           class="mx-auto"
@@ -63,7 +65,7 @@
 
       <!-- Golden Ribbon Seal -->
       <div class="mt-10">
-        <img loading="lazy"
+        <img loading="lazy" 
           src="../../../assets/images/gift/Medal.png"
           alt="Seal"
           class="mx-auto w-24"

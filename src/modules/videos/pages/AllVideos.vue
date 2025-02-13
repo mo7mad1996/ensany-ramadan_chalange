@@ -62,17 +62,16 @@
       </VideoCard>
     </div>
 
-    <div
-      v-if="videos.length > 0"
-      class="pagination items-center justify-center pb-sm"
-    >
+    <div v-if="videos.length > 0" class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="status == 'success' && videos.length > 0"
         v-model="currentPage"
         :length="videosMeta.last_page"
         @input="fetchVideos"
         :total-visible="5"
       ></v-pagination>
     </div>
+    <NoData :data="fetchVideos" :status="status" />
   </Container>
 </template>
 

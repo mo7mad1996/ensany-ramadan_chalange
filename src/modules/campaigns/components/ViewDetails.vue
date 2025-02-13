@@ -85,9 +85,7 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]"
-          >{{ $t("campaigns.campaign_objective") }}:</span
-        >
+        <span class="text-[#12121299]">{{ $t("campaigns.campaign_objective") }}:</span>
         <span class="text-primary"
           >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
         >
@@ -120,9 +118,7 @@
       bg-color="white"
       class="mt-5 v-slide-group v-slide-group--mobile v-tabs v-tabs--horizontal v-tabs--align-tabs-start v-tabs--density-default bg-white"
     >
-      <v-tab value="one" :ripple="false">{{
-        $t("campaigns.description")
-      }}</v-tab>
+      <v-tab value="one" :ripple="false">{{ $t("campaigns.description") }}</v-tab>
       <v-tab value="two" :ripple="false">{{ $t("campaigns.gallery") }}</v-tab>
       <v-tab value="three" :ripple="false">{{ $t("campaigns.update") }}</v-tab>
       <v-tab value="four" :ripple="false">{{ $t("campaigns.donors") }}</v-tab>
@@ -194,7 +190,7 @@
                   loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
-                  alt="..."
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -232,18 +228,12 @@
           >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center">
-                <img
-                  loading="lazy"
-                  src="../../../assets/images/user.svg"
-                  alt="..."
-                />
+                <img loading="lazy" src="../../../assets/images/user.svg" alt="ramadanchallenges image" />
               </div>
 
               <h6>{{ donor?.name }}</h6>
 
-              <span class="font-bold text-primary"
-                >${{ donor?.total_amount }}</span
-              >
+              <span class="font-bold text-primary">${{ donor?.total_amount }}</span>
             </div>
           </v-col>
         </v-row>

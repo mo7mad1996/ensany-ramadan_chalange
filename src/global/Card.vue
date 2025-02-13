@@ -1,15 +1,12 @@
 <template>
-  <div
-    :class="{ card: shadow }"
-    class="p-2 cursor-pointer rounded-lg text-start w-100"
-  >
+  <div :class="{ card: shadow }" class="p-2 cursor-pointer rounded-lg text-start w-100">
     <div class="image">
       <slot name="image"></slot>
     </div>
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
-      <img src="../assets/images/honor-company.svg " alt="" loading="lazy" />
+      <img src="../assets/images/honor-company.svg " alt="ramadanchallenges image" loading="lazy" />
       <p>
         <slot name="company"></slot>
       </p>
@@ -29,7 +26,7 @@
     <div class="subscribers mt-2">
       <div class="flex justify-between">
         <div class="total d-flex ga-2 align-center">
-          <img src="../assets/images/doners.svg" alt="" loading="lazy" />
+          <img loading="lazy" src="../assets/images/doners.svg" alt="ramadanchallenges image" />
           <span>
             <slot name="subscribers"></slot>
           </span>
@@ -74,12 +71,7 @@
           color="primary"
           @click="handleCart('add')"
         >
-          <img
-            src="../assets/images/donor/Icon.png"
-            width="20"
-            alt="Cart"
-            loading="lazy"
-          />
+          <img loading="lazy" src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
           {{ $t("global.add_to_cart") }}</v-btn
         >
       </div>
@@ -120,9 +112,7 @@
           {{ $t("global.remove_from_cart") }}</v-btn
         >
       </div>
-      <div
-        v-if="user && user?.user_type === 'dooner' && cart_status == 'donated'"
-      >
+      <div v-if="user && user?.user_type === 'dooner' && cart_status == 'donated'">
         {{ $t("global.already_donated") }}
       </div>
 

@@ -8,7 +8,7 @@
               loading="lazy"
               src="../../../assets/images/campaign/dolar.svg"
               width="22"
-              alt="..."
+              alt="ramadanchallenges image"
             />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.donation_amount") }}
@@ -148,7 +148,7 @@
                 loading="lazy"
                 src="../../../assets/images/campaign/personal-info.svg"
                 width="22"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <h1 class="font-semibold text-2xl">
                 {{ $t("global.personal_info") }}
@@ -292,10 +292,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_name"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_name" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!--someone email -->
@@ -322,10 +319,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_email"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_email" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!--someone phone -->
@@ -352,10 +346,7 @@
                     />
                   </div>
 
-                  <ErrorMessage
-                    name="some_phone"
-                    class="text-sm text-red-500 mt-2"
-                  />
+                  <ErrorMessage name="some_phone" class="text-sm text-red-500 mt-2" />
                 </div>
 
                 <!-- comments -->
@@ -365,7 +356,7 @@
                       loading="lazy"
                       src="../../../assets/images/campaign/comment.svg"
                       width="22"
-                      alt="..."
+                      alt="ramadanchallenges image"
                     />
                     <h1 class="font-semibold text-2xl">
                       {{ $t("global.love_comment") }}
@@ -395,10 +386,7 @@
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
-                    <ErrorMessage
-                      name="love_comment"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="love_comment" class="text-sm text-red-500 mt-2" />
                   </div>
                 </div>
               </div>
@@ -428,33 +416,21 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img
-              loading="lazy"
-              src="../../../assets/images/campaign/icon2.svg"
-              alt=""
-            />
+            <img loading="lazy" src="../../../assets/images/campaign/icon2.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img
-              loading="lazy"
-              src="../../../assets/images/campaign/icon3.svg"
-              alt=""
-            />
+            <img loading="lazy" src="../../../assets/images/campaign/icon3.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img
-              loading="lazy"
-              src="../../../assets/images/campaign/icon1.svg"
-              alt=""
-            />
+            <img loading="lazy" src="../../../assets/images/campaign/icon1.svg" alt="" />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>

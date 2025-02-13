@@ -16,9 +16,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -34,9 +32,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -52,9 +48,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -70,9 +64,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -88,9 +80,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>
@@ -106,9 +96,7 @@
               alt=""
             />
 
-            <div
-              class="hover_name text-start px-2 py-1 absolute rounded-md w-full"
-            >
+            <div class="hover_name text-start px-2 py-1 absolute rounded-md w-full">
               <span class="font-bold">Ali Omar</span>
               <p class="text-sm">Head of Bayinah Institute</p>
             </div>

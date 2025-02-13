@@ -3,7 +3,7 @@
     <Container>
       <div class="row grid grid-cols-12 gap-4 items-center">
         <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
-          <img src="../assets/images/logo.svg" alt="" loading="lazy" />
+          <img loading="lazy" src="../assets/images/logo.svg" alt="ramadanchallenges image" />
           <p class="pt-[.5rem] pb-[.5rem]">{{ $t("global.footer") }}</p>
         </div>
 
@@ -17,16 +17,10 @@
               >{{ $t("global.footer_terms") }}</span
             > -->
 
-            <p
-              @click="$router.push('/')"
-              class="cursor-pointer hover:text-primary"
-            >
+            <p @click="$router.push('/')" class="cursor-pointer hover:text-primary">
               {{ $t("global.home") }}
             </p>
-            <p
-              @click="$router.push('/faqs')"
-              class="cursor-pointer hover:text-primary"
-            >
+            <p @click="$router.push('/faqs')" class="cursor-pointer hover:text-primary">
               {{ $t("global.footer_faqs") }}
             </p>
 
@@ -52,7 +46,7 @@
               :href="link?.url"
               target="_blank"
             >
-              <img :src="link?.icon" alt="footer_icon" loading="lazy" />
+              <img loading="lazy" :src="link?.icon" alt="footer_icon" />
             </a>
           </div>
         </div>

@@ -14,15 +14,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -68,10 +68,10 @@
 </template>
 
 <script setup lang="ts">
+import { useBlogs } from "~/modules/blogs/services/blogs";
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
-import { useBlogs } from "~/modules/blogs/services/blogs";
 const { locale } = useI18n();
 const { blogs, status } = useBlogs();
 </script>

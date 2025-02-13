@@ -5,9 +5,7 @@
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("donor.top_donors") }}
       </h1>
-      <div
-        class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
-      >
+      <div class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         <!-- card one -->
         <div
           class="card card-one p-[1rem] bg-green-50 rounded-lg border-[1px] border-gray-100 border-solid"
@@ -16,7 +14,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/Second Donor.png"
-              alt="..."
+              alt="ramadanchallenges image"
               loading="lazy"
             />
 
@@ -30,7 +28,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.socend?.name }}</span
@@ -50,7 +48,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/First Donor .png"
-              alt="..."
+              alt="ramadanchallenges image"
             />
 
             <h5 class="font-bold text-3xl text-black">
@@ -63,7 +61,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.first?.name }}</span
@@ -83,7 +81,7 @@
             <img
               loading="lazy"
               src="../../../assets/images/donor/Third Donor.png"
-              alt="..."
+              alt="ramadanchallenges image"
             />
 
             <h5 class="font-bold text-3xl text-black">
@@ -96,7 +94,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/donor/Rectangle.png"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
                 {{ donorOverview?.data?.top_doners?.third?.name }}</span

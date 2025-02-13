@@ -20,7 +20,7 @@
               <img
                 loading="lazy"
                 src="../../../assets/images/contact/email.svg"
-                alt=""
+                alt="ramadanchallenges image"
               />
             </div>
 

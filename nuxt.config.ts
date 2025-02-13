@@ -1,11 +1,17 @@
 import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
+  compatibilityDate: "2025-01-13",
+  nitro: {
+    compressPublicAssets: false,
+    minify: true
+  },
+    
+       
   devtools: { enabled: false },
   // main directory
   srcDir: "src/",
   ssr: true,
-  target: "server",
+  
 
   // favicon & fonts
   app: {
@@ -14,6 +20,7 @@ export default defineNuxtConfig({
     layoutTransition: false,
 
     head: {
+      
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       link: [

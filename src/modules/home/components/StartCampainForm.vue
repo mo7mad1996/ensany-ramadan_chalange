@@ -3,11 +3,7 @@
     <div
       class="card xl:w-[795px] lg:w-[795px] md:w-[96%] w-[96%] rounded-xl shadow-md p-sm bg-white"
     >
-      <Form
-        @submit="submit"
-        v-slot="{ validate }"
-        :initial-values="props.initData"
-      >
+      <Form @submit="submit" v-slot="{ validate }" :initial-values="props.initData">
         <!--campain name -->
         <div>
           <div class="lable_switch flex justify-between items-center mb-3">
@@ -322,11 +318,7 @@
           <!-- video url -->
           <div class="upload_image mt-5">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
-                loading="lazy"
-                src="../../../assets/images/video.svg"
-                alt=""
-              />
+              <img loading="lazy" src="../../../assets/images/video.svg" alt="" />
               <span class="text-2xl">{{ $t("home.video_url") }}</span>
             </div>
 
@@ -340,9 +332,7 @@
           </div>
         </div>
 
-        <div
-          class="group grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 gap-4 mt-5"
-        >
+        <div class="group grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 gap-4 mt-5">
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img
@@ -413,9 +403,7 @@
           </div>
         </div>
 
-        <div
-          class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5"
-        >
+        <div class="group grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5">
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
               <img
@@ -482,11 +470,7 @@
           @click="validate"
           :loading="loading"
         >
-          {{
-            props.initData
-              ? $t("home.edit_campaign")
-              : $t("home.launch_campaign")
-          }}
+          {{ props.initData ? $t("home.edit_campaign") : $t("home.launch_campaign") }}
         </v-btn>
       </Form>
     </div>
@@ -494,13 +478,13 @@
 </template>
 
 <script setup>
-import { Form, Field, ErrorMessage } from "vee-validate";
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import { useStartCampaign } from "../typescript/start-campaign";
 import Swal from "sweetalert2";
-import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
+import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
+import { useStartCampaign } from "../typescript/start-campaign";
 
 const currencyStore = useCurrencyStore();
 

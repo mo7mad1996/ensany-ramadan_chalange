@@ -1,10 +1,9 @@
 <template>
   <div class="image rounded-xl">
     <img
-      loading="lazy"
       src="../../../assets/images/banner.png"
       class="rounded-lg xl:w-[644px] lg:w-[644px] md:w-full w-full xl:h-[590px] lg:h-[590px] md:h-full h-full object-cover"
-      alt=""
+      alt="ramadanchallenges image"
     />
   </div>
 </template>

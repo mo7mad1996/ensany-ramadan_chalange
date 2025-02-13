@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="pt-sm pb-sm w-full"
-    aria-label="this table to show highest donors"
-  >
+  <section class="pt-sm pb-sm w-full" aria-label="this table to show highest donors">
     <Container
       >loading="lazy"
       <!-- Add a scrollable container -->
@@ -70,6 +67,7 @@
                 <td>
                   <div class="flex gap-x-2 items-center">
                     <img
+                      loading="lazy"
                       src="../../../assets/images/user.svg"
                       width="25"
                       alt=" "

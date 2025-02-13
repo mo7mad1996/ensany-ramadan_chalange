@@ -8,7 +8,7 @@
       v-for="(item, index) in 6"
       :key="index"
     >
-      <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+      <v-skeleton-loader   type="image, article"></v-skeleton-loader>
     </v-card>
   </div>
 </template>

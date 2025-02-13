@@ -6,7 +6,7 @@
   <Container>
     <div class="error_page pt-xl pb-lg">
       <div class="image flex justify-center">
-        <img src="./assets/images/404.svg" alt="404 error" loading="lazy" />
+        <img loading="lazy" src="./assets/images/404.svg" alt="404 error" />
       </div>
 
       <h1 class="text-4xl font-bold text-center leading-[48px]">
