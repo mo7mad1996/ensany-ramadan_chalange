@@ -1,5 +1,5 @@
 <template>
-  <!-- <HomeBanner /> -->
+  <HomeBanner />
   <HomeRamadanChalange />
   <HomeContriputing />
   <HomeChallengeHeros />

@@ -139,7 +139,7 @@
       <div class="mt-4">
         <Field
           name="mobile"
-          rules="required|phone"
+          rules="required"
           :validateOnInput="true"
           v-slot="{ field }"
         >
