@@ -127,11 +127,10 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "ar",
     vueI18n: "./src/helpers/i18n.config.ts",
-    detectBrowserLanguage: false,
-    // detectBrowserLanguage: {
-    //   useCookie: true,
-    //   alwaysRedirect: false,
-    //   fallbackLocale: "ar",
-    // },
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: false,
+      fallbackLocale: "ar",
+    },
   },
 });

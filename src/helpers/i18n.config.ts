@@ -36,6 +36,7 @@ import enVideo from "../modules/videos/locales/en.json";
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: "ar",
+  defaultLocale: "ar",
   fallbackLocale: "ar",
   messages: {
     en: {

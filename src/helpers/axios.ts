@@ -11,7 +11,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const userLanguage = useCookie("i18n_redirected").value;
+  const userLanguage = useCookie("i18n_redirected").value || "ar";
   const { token } = useAuth();
 
   config.headers.lang = userLanguage;

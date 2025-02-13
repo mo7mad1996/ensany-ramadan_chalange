@@ -19,7 +19,7 @@ export function useAuth() {
   const { handleApiCall, isLoading, error } = useApi();
 
   // login
-  const login = async (credentials: User) => {
+  const login = async (credentials: User, handelError: any = null) => {
     const response = await handleApiCall(() => api.post("/login", credentials));
 
     if (response) {
@@ -54,6 +54,8 @@ export function useAuth() {
         return navigateTo("/");
       }
     }
+
+    if (handelError && error.value) handelError(error.value);
   };
 
   // register
