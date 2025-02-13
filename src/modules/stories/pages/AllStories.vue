@@ -24,6 +24,7 @@
       >
         <template #video>
           <img
+            loading="lazy"
             @click="$router.push(`/stories/${story.id}`)"
             class="w-full max-h-[15rem] object-cover rounded-lg"
             :src="story?.image"
@@ -44,12 +45,14 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="stories.length > 0"
         v-model="currentPage"
         :length="storiesMeta.last_page"
         @input="fetchStories"
         :total-visible="5"
       />
     </div>
+    <NoData :data="fetchStories" :status="status" />
   </Container>
 </template>
 

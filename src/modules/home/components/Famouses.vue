@@ -9,7 +9,7 @@
       <Carousel v-bind="settings" :breakpoints="breakpoints3" class="mt-4">
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar6.png"
               class="cursor-pointer"
               alt=""
@@ -26,7 +26,7 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar1.png"
               class="cursor-pointer"
               alt=""
@@ -43,7 +43,7 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar2.png"
               class="cursor-pointer"
               alt=""
@@ -60,7 +60,7 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar3.png"
               class="cursor-pointer"
               alt=""
@@ -77,7 +77,7 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar4.png"
               class="cursor-pointer"
               alt=""
@@ -94,7 +94,7 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/scholar5.png"
               class="cursor-pointer"
               alt=""

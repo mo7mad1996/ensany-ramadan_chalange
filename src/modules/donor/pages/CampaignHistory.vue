@@ -19,7 +19,7 @@
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
-                <img
+                <img loading="lazy" 
                   :src="item.image"
                   alt="Campaign Image"
                   class="rounded-lg"
@@ -55,9 +55,9 @@
 
 <script setup>
 import dayjs from "dayjs";
+import { useRouter } from "vue-router";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
-import { useRouter } from "vue-router";
 
 import { useGlobalVar } from "~/helpers/global-var";
 

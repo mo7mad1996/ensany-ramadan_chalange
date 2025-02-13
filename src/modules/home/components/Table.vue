@@ -16,7 +16,7 @@
               <tr>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <img loading="lazy" 
                       src="../../../assets/images/dashboard/donate.svg"
                       width="15"
                       class="filter"
@@ -27,7 +27,7 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <img loading="lazy" 
                       src="../../../assets/images/donation_amount.svg"
                       width="15"
                       class="filter"
@@ -38,7 +38,7 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <img loading="lazy" 
                       src="../../../assets/images/campaign.svg"
                       width="15"
                       class="filter"
@@ -49,7 +49,7 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <img loading="lazy" 
                       src="../../../assets/images/time.svg"
                       width="15"
                       class="filter"
@@ -64,7 +64,7 @@
               <tr v-for="(donor, index) in topTen" :key="index">
                 <td>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <img loading="lazy" 
                       src="../../../assets/images/user.svg"
                       width="25"
                       alt=" "

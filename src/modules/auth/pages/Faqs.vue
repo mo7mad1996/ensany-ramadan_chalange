@@ -16,7 +16,7 @@
     <div class="questions w-full">
       <div class="mt-6" v-if="status == 'pending'">
         <v-skeleton-loader
-          class=""
+           
           v-for="(item, index) in 3"
           :key="index"
           type="avatar, list-item-two-line"
@@ -31,13 +31,13 @@
         <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
-              <img
+              <img loading="lazy" 
                 v-if="index % 2 == 0"
                 src="../../../assets/images/dashboard/amount.svg"
                 alt=""
               />
 
-              <img
+              <img loading="lazy" 
                 v-else
                 src="../../../assets/images/dashboard/campaigns.svg"
                 alt=""
@@ -58,10 +58,10 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useFaqs } from "../services/faqs";
+import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useFaqs } from "../services/faqs";
 
 const { faqs, status } = useFaqs();
 

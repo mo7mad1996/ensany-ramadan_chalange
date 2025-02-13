@@ -16,7 +16,7 @@
           <!-- <template v-slot:item.name="{ item }">
             <div class="flex items-center space-x-2">
               <v-avatar size="40">
-                <img
+                <img loading="lazy" 
                   :src="item.image"
                   alt="Donation Image"
                   class="rounded-lg"
@@ -51,9 +51,9 @@
 </template>
 
 <script setup>
-import { useDonationHistoryPage } from "../typescript/donation";
-import { useDonorDonationes } from "../services/donor-donation";
 import dayjs from "dayjs";
+import { useDonorDonationes } from "../services/donor-donation";
+import { useDonationHistoryPage } from "../typescript/donation";
 
 import { useGlobalVar } from "~/helpers/global-var";
 

@@ -22,8 +22,14 @@
             >
           </div>
 
-          <div class="video-container" v-if="mainVideo">
-            <ClientOnly>
+          <div class="video-container">
+            <v-skeleton-loader
+              v-if="status == 'pending'"
+              type="image"
+              class="w-full max-w-lg h-[200px] rounded-lg bg-gray-200"
+            ></v-skeleton-loader>
+
+            <ClientOnly v-if="status == 'success' && mainVideo">
               <LazyYoutube
                 :src="mainVideo?.video_url"
                 max-width="100%"

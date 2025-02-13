@@ -26,6 +26,7 @@
       >
         <template #image>
           <img
+            loading="lazy"
             :src="blog?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"
             alt=""
@@ -45,18 +46,21 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="fetchBlogs.length > 0"
         v-model="currentPage"
         :length="blogsMeta.last_page"
         @input="fetchBlogs"
         :total-visible="5"
       ></v-pagination>
     </div>
+    <NoData :data="fetchBlogs" :status="status" />
   </Container>
 </template>
 
 <script setup>
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
+import NoData from "~/global/NoData.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useBlogs } from "../services/blogs";

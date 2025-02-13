@@ -18,7 +18,7 @@
     <!-- commment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
       <!-- <div class="flex gap-x-3 items-center">
-        <img src="../../../assets/images/user.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
 
@@ -44,7 +44,7 @@
       </div> -->
 
       <!-- skeleton loader for comments -->
-      <div class="" v-for="(item, index) in 2" :key="index">
+      <div   v-for="(item, index) in 2" :key="index">
         <v-skeleton-loader
           v-for="(item, index) in 2"
           :key="index"
@@ -66,7 +66,7 @@
             :key="index"
           >
             <div class="flex gap-x-3 items-start">
-              <img src="../../../assets/images/user.svg" alt="" />
+              <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
               <div>
                 <h4 class="text-2xl font-bold" v-if="comment?.user_name">
                   {{ comment?.user_name }}
@@ -90,7 +90,7 @@
           class="image flex justify-center mt-md"
           v-if="comments.length == 0 && status == 'error'"
         >
-          <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+          <img loading="lazy" src="../../../assets/images/no-data.jpg" width="150" alt="" />
         </div>
 
         <div class="pagination items-center justify-center pb-sm">
@@ -107,10 +107,9 @@
 </template>
 
 <script setup lang="ts">
-import { Field } from "vee-validate";
+import { useRoute } from "vue-router";
 import { reFormat } from "~/helpers/format-date";
 import { useComments } from "../services/comments";
-import { useRoute } from "vue-router";
 const route = useRoute();
 
 const { comments, status, currentPage, commentsMeta, refresh } = useComments(

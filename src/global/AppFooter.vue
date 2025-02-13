@@ -3,7 +3,7 @@
     <Container>
       <div class="row grid grid-cols-12 gap-4 items-center">
         <div class="xl:col-span-4 lg:col-span-4 md:col-span-12 col-span-12">
-          <img src="../assets/images/logo.svg" alt="" />
+          <img loading="lazy" src="../assets/images/logo.svg" alt="" />
           <p class="pt-[.5rem] pb-[.5rem]">{{ $t("global.footer") }}</p>
         </div>
 
@@ -52,7 +52,7 @@
               :href="link?.url"
               target="_blank"
             >
-              <img :src="link?.icon" alt="footer_icon" />
+              <img loading="lazy" :src="link?.icon" alt="footer_icon" />
             </a>
           </div>
         </div>

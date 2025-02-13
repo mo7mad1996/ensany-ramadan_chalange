@@ -11,7 +11,7 @@
       <div class="flex justify-between items-center">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/dashboard/campaigns.svg"
               alt=""
             />
@@ -33,7 +33,7 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/dashboard/donation.svg"
               alt=""
             />
@@ -55,7 +55,7 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/dashboard/notification.svg"
               alt=""
             />
@@ -77,7 +77,7 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <img loading="lazy" 
               src="../../../assets/images/dashboard/warning.svg"
               alt=""
             />

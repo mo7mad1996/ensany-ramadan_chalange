@@ -6,7 +6,7 @@
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
-      <img src="../assets/images/honor-company.svg " alt="" />
+      <img loading="lazy" src="../assets/images/honor-company.svg " alt="" />
       <p>
         <slot name="company"></slot>
       </p>
@@ -26,7 +26,7 @@
     <div class="subscribers mt-2">
       <div class="flex justify-between">
         <div class="total d-flex ga-2 align-center">
-          <img src="../assets/images/doners.svg" alt="" />
+          <img loading="lazy" src="../assets/images/doners.svg" alt="" />
           <span>
             <slot name="subscribers"></slot>
           </span>
@@ -71,7 +71,7 @@
           color="primary"
           @click="handleCart('add')"
         >
-          <img src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
+          <img loading="lazy" src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
           {{ $t("global.add_to_cart") }}</v-btn
         >
       </div>

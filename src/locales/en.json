@@ -64,5 +64,7 @@
   "charity2": "Charity",
   "signup": "Register",
   "similar_campaigns": "Similar Campaigns",
+  "no_data": "No data available",
+  "no_data_": "Sorry, no data was found at the moment",
   "write_gift": "Write a gift message"
 }

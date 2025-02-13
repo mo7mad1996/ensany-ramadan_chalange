@@ -16,7 +16,7 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img src="../../../assets/images/contact/name.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/contact/name.svg" alt="" />
         </div>
 
         <Field
@@ -36,7 +36,7 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img src="../../../assets/images/contact/email.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/contact/email.svg" alt="" />
         </div>
 
         <Field
@@ -55,7 +55,7 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img src="../../../assets/images/contact/phone.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/contact/phone.svg" alt="" />
         </div>
 
         <Field
@@ -75,7 +75,7 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img src="../../../assets/images/campaign/edit.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
         </div>
 
         <Field
@@ -95,7 +95,7 @@
         <div
           class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
         >
-          <img src="../../../assets/images/campaign/edit.svg" alt="" />
+          <img loading="lazy" src="../../../assets/images/campaign/edit.svg" alt="" />
         </div>
 
         <Field

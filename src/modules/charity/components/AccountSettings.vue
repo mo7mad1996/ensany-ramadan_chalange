@@ -66,7 +66,7 @@
                     <div
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
+                      <img loading="lazy" 
                         src="../../../assets/images/campaign/edit.svg"
                         alt=""
                       />
@@ -87,7 +87,7 @@
                     <div
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
+                      <img loading="lazy" 
                         src="../../../assets/images/campaign/edit.svg"
                         alt=""
                       />
@@ -112,7 +112,7 @@
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                   >
-                    <img src="../../../assets/images/contact/name.svg" alt="" />
+                    <img loading="lazy" src="../../../assets/images/contact/name.svg" alt="" />
                   </div>
 
                   <Field
@@ -144,7 +144,7 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <img loading="lazy" 
                         src="../../../assets/images/contact/email.svg"
                         alt=""
                       />
@@ -177,7 +177,7 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <img loading="lazy" 
                         src="../../../assets/images/contact/phone.svg"
                         alt=""
                       />
@@ -255,7 +255,7 @@
                     <ErrorMessage name="image" />
                   </div>
 
-                  <div><img :src="preview" /></div>
+                  <div><img loading="lazy" :src="preview" /></div>
                 </div>
               </div>
 
@@ -330,7 +330,7 @@
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy" 
                     src="../../../assets/images/dashboard/campaigns.svg"
                     alt=""
                   />
@@ -352,7 +352,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy" 
                     src="../../../assets/images/dashboard/donation.svg"
                     alt=""
                   />
@@ -374,7 +374,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy" 
                     src="../../../assets/images/dashboard/notification.svg"
                     alt=""
                   />
@@ -396,7 +396,7 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img
+                  <img loading="lazy" 
                     src="../../../assets/images/dashboard/warning.svg"
                     alt=""
                   />
@@ -570,7 +570,7 @@
 
 <script setup>
 import Swal from "sweetalert2";
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
 import { useProfile } from "~/modules/auth/services/profile";

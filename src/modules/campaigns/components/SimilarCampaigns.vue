@@ -29,7 +29,7 @@
             :cart_id="campaign?.cart_id || ''"
           >
             <template #image>
-              <img
+              <img loading="lazy" 
                 @click="navigateTo(`/campaigns/${campaign?.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"

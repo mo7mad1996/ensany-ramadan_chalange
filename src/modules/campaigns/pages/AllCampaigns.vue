@@ -35,6 +35,7 @@
       >
         <template #image>
           <img
+            loading="lazy"
             @click="$router.push(`/campaigns/${campaign.id}`)"
             :src="campaign?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -47,9 +48,7 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span
-            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-          ></span>
+          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -62,13 +61,14 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
-        v-if="status == 'success'"
+        v-if="status == 'success' && campaigns.length > 0"
         v-model="currentPage"
         :length="campaignsMeta.last_page"
         @input="handlePageChange"
         :total-visible="5"
       ></v-pagination>
     </div>
+    <NoData :data="campaigns" :status="status" />
   </Container>
 </template>
 

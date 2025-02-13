@@ -10,15 +10,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader   type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -46,7 +46,7 @@
             class="h-full"
           >
             <template #image>
-              <img
+              <img loading="lazy" 
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg aspect-square"

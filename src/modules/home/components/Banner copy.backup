@@ -1,5 +1,5 @@
 <template>
-  <section aria-label="banner section" class="banner bg-cover relative" v-if="bannerData">
+  <section aria-label="banner section" class="banner bg-cover relative">
     <Container class="h-100 relative text-white grid items-center">
       <div class="content pt-xd">
         <!-- large text -->
@@ -97,8 +97,8 @@
 
 <script setup lang="ts">
 import Container from "../../../global/Container.vue";
-import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
+import { useBannerData } from "../services/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
 
 const { bannerData, banner_error } = useBannerData();

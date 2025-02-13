@@ -74,7 +74,7 @@
       <!-- all doners part -->
       <div class="all-doners mt-5">
         <div class="title flex gap-x-3 items-center">
-          <img src="../../../assets/images/increment.svg" width="20" alt="" />
+          <img loading="lazy" src="../../../assets/images/increment.svg" width="20" alt="" />
           <span class="text-2xl font-bold text-primary"
             >{{ campaign?.total_donors }} {{ $t("campaigns.donater") }}</span
           >
@@ -97,7 +97,7 @@
             :key="index"
           >
             <div class="flex gap-x-3 items-center">
-              <img src="../../../assets/images/user.svg" alt="" />
+              <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
               <div>
                 <h4 class="text-2xl font-bold">{{ donor?.name }}</h4>
                 <p class="text-sm text-[#121212] pt-1">
@@ -116,7 +116,7 @@
 
           <div v-else>
             <div class="image flex justify-center">
-              <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+              <img loading="lazy" src="../../../assets/images/no-data.jpg" width="150" alt="" />
             </div>
 
             <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -160,7 +160,7 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.top?.name }}
@@ -189,7 +189,7 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.middle?.name }}
@@ -218,7 +218,7 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.first?.name }}
@@ -256,7 +256,7 @@
                 >
                   <div class="doner mb-5 flex justify-between gap-x-md items-center">
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <img loading="lazy" src="../../../assets/images/user.svg" alt="" />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ donor?.name }}

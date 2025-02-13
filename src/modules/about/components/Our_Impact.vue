@@ -28,7 +28,7 @@
                   animatedValues[index]
                 }}</span>
                 <span>
-                  <img :src="stat.imgSrc" :alt="stat.alt" />
+                  <img loading="lazy" :src="stat.imgSrc" :alt="stat.alt" />
                 </span>
               </div>
 

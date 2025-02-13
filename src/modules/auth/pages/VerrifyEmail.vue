@@ -54,7 +54,7 @@
         <div
           class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
         >
-          <img
+          <img loading="lazy" 
             src="../../../assets/images/auth/resent.svg"
             width="22px"
             alt="..."
@@ -76,11 +76,11 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import Container from "~/global/Container.vue";
-import { useResetPassword } from "../typescript/reset";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "../services/auth";
+import { useResetPassword } from "../typescript/reset";
 const { locale } = useI18n();
 const verification_code = ref<number | string>("");
 const { resendCode, formattedTime, timeLeft } = useResetPassword();

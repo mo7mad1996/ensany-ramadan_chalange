@@ -3,7 +3,7 @@
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
         <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.total_donations }}</h4>
-        <img src="../../../assets/images/dashboard/donation.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/dashboard/donation.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.total_donations") }}</span>
@@ -15,7 +15,7 @@
           {{ statisticsData?.total_donations_amount }}
         </h4>
 
-        <img src="../../../assets/images/mony.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/mony.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.total_donations_amount") }}</span>
@@ -24,7 +24,7 @@
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
         <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.total_campaigns }}</h4>
-        <img src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/dashboard/campaigns.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.total_campaigns") }}</span>
@@ -34,7 +34,7 @@
       <div class="flex justify-between items-center">
         <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.active_campaigns }}</h4>
 
-        <img src="../../../assets/images/dashboard/doners.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/dashboard/doners.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.active_campaigns") }}</span>
@@ -43,7 +43,7 @@
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
         <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.faild_donations }}</h4>
-        <img src="../../../assets/images/dashboard/warning.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/dashboard/warning.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.field_donations") }}</span>
@@ -52,7 +52,7 @@
     <div class="card shadow-sm p-5 border rounded-lg">
       <div class="flex justify-between items-center">
         <h4 class="text-xl font-bold pt-3 pb-3">    {{ statisticsData?.successful_donations }}</h4>
-        <img src="../../../assets/images/dashboard/doners.svg" alt="" />
+        <img loading="lazy" src="../../../assets/images/dashboard/doners.svg" alt="" />
       </div>
 
       <span>{{ $t("dashboard.success_donations") }}</span>

@@ -2,7 +2,7 @@
   <div class="sidebar">
     <!-- user name -->
     <div class="user_name flex gap-x-3 items-center">
-      <img
+      <img loading="lazy" 
         :src="user.photo || '../assets/images/dashboard/avatar.svg'"
         width="30px"
         class="rounded-full aspect-square object-cover"
@@ -16,7 +16,7 @@
     <ul class="list-none mt-sm">
       <li class="cursor-pointer mb-3">
         <nuxt-link to="/dashboard/donor" class="flex items-center gap-x-2 p-2">
-          <img
+          <img loading="lazy" 
             src="../assets/images/dashboard/dashboard.svg"
             width="15px"
             alt=""
@@ -29,7 +29,7 @@
           to="/dashboard/donor/donations-cart"
           class="flex items-center gap-x-2 p-2"
         >
-          <img src="../assets/images/donor/icon.svg" width="15px" alt="" />
+          <img loading="lazy" src="../assets/images/donor/icon.svg" width="15px" alt="" />
           <span>{{ $t("donor.donation_cart") }}</span>
         </nuxt-link>
       </li>
@@ -38,7 +38,7 @@
           to="/dashboard/donor/campaigns-history"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <img loading="lazy" 
             src="../assets/images/dashboard/campaigns.svg"
             width="15px"
             alt=""
@@ -51,7 +51,7 @@
           to="/dashboard/donor/donation-history"
           class="flex items-center gap-x-2 p-2"
         >
-          <img src="../assets/images/donor/Money.svg" width="15px" alt="" />
+          <img loading="lazy" src="../assets/images/donor/Money.svg" width="15px" alt="" />
           <span>{{ $t("donor.donation_history") }}</span>
         </nuxt-link>
       </li>
@@ -61,7 +61,7 @@
           to="/dashboard/donor/notification"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <img loading="lazy" 
             src="../assets/images/dashboard/notification.svg"
             width="15px"
             alt=""
@@ -75,7 +75,7 @@
           to="/dashboard/donor/settings"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <img loading="lazy" 
             src="../assets/images/dashboard/settings.svg"
             width="15px"
             alt=""
@@ -86,7 +86,7 @@
 
       <li class="cursor-pointer">
         <div class="flex items-center gap-x-2 p-2" @click="logout">
-          <img
+          <img loading="lazy" 
             src="../assets/images/dashboard/logout.svg"
             width="15px"
             alt=""
