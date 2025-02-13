@@ -15,7 +15,6 @@
               loading="lazy"
               src="../../../assets/images/donor/Second Donor.png"
               alt="ramadanchallenges image"
-              loading="lazy"
             />
 
             <h5 class="font-bold text-3xl text-black">

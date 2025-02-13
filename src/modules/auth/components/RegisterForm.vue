@@ -1,7 +1,12 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="flex gap-x-2 items-center mb-5">
-      <img loading="lazy" src="../../../assets/images/doner.svg" width="30" alt="ramadanchallenges image" />
+      <img
+        loading="lazy"
+        src="../../../assets/images/doner.svg"
+        width="30"
+        alt="ramadanchallenges image"
+      />
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("auth.signup_doner") }}
       </h2>
@@ -15,7 +20,11 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img loading="lazy" src="../../../assets/images/contact/name.svg" alt="ramadanchallenges image" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/contact/name.svg"
+                alt="ramadanchallenges image"
+              />
             </div>
 
             <Field
@@ -45,7 +54,11 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img loading="lazy" src="../../../assets/images/contact/name.svg" alt="ramadanchallenges image" />
+              <img
+                loading="lazy"
+                src="../../../assets/images/contact/name.svg"
+                alt="ramadanchallenges image"
+              />
             </div>
 
             <Field
@@ -76,7 +89,11 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img loading="lazy" src="../../../assets/images/contact/email.svg" alt="ramadanchallenges image" />
+            <img
+              loading="lazy"
+              src="../../../assets/images/contact/email.svg"
+              alt="ramadanchallenges image"
+            />
           </div>
 
           <Field
@@ -94,23 +111,12 @@
         <ErrorMessage class="error" name="register-email" />
         <p class="error" v-for="(err, n) in apiErrors.email" :key="n" v-html="err" />
         <ErrorMessage class="error" name="email" />
-        <p
-          class="error"
-          v-for="(err, n) in apiErrors.email"
-          :key="n"
-          v-html="err"
-        />
+        <p class="error" v-for="(err, n) in apiErrors.email" :key="n" v-html="err" />
       </div>
 
       <!-- phone number -->
       <div class="mt-4">
         <Field name="mobile" rules="required" :validateOnInput="true" v-slot="{ field }">
-        <Field
-          name="mobile"
-          rules="required|phone"
-          :validateOnInput="true"
-          v-slot="{ field }"
-        >
           <vue-tel-input
             v-bind="field"
             v-model="newUser.mobile"
@@ -210,12 +216,7 @@
         <ErrorMessage class="error" name="register-password" />
         <p class="error" v-for="(err, n) in apiErrors.password" :key="n" v-html="err" />
         <ErrorMessage class="error" name="password" />
-        <p
-          class="error"
-          v-for="(err, n) in apiErrors.password"
-          :key="n"
-          v-html="err"
-        />
+        <p class="error" v-for="(err, n) in apiErrors.password" :key="n" v-html="err" />
       </div>
 
       <!-- confirm password  -->
