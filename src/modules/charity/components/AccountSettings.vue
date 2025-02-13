@@ -143,8 +143,6 @@
                     >
                       <img
                         loading="lazy"
-                        <img
-                        loading="lazy"
                         src="../../../assets/images/contact/email.svg"
                         alt=""
                       />
