@@ -6,14 +6,18 @@
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
-      <img src="../assets/images/honor-company.svg " alt="ramadanchallenges image" loading="lazy" />
+      <img
+        src="../assets/images/honor-company.svg "
+        alt="ramadanchallenges image"
+        loading="lazy"
+      />
       <p>
         <slot name="company"></slot>
       </p>
     </div>
 
     <!-- chalenge title -->
-    <h2 class="font-bold text-xl leading-[30px] pt-1">
+    <h2 class="font-bold text-xl leading-[30px] pt-2 pb-2">
       <slot name="title"></slot>
     </h2>
 
@@ -26,7 +30,11 @@
     <div class="subscribers mt-2">
       <div class="flex justify-between">
         <div class="total d-flex ga-2 align-center">
-          <img loading="lazy" src="../assets/images/doners.svg" alt="ramadanchallenges image" />
+          <img
+            loading="lazy"
+            src="../assets/images/doners.svg"
+            alt="ramadanchallenges image"
+          />
           <span>
             <slot name="subscribers"></slot>
           </span>
@@ -71,7 +79,12 @@
           color="primary"
           @click="handleCart('add')"
         >
-          <img loading="lazy" src="../assets/images/donor/Icon.png" width="20" alt="Cart" />
+          <img
+            loading="lazy"
+            src="../assets/images/donor/Icon.png"
+            width="20"
+            alt="Cart"
+          />
           {{ $t("global.add_to_cart") }}</v-btn
         >
       </div>
