@@ -64,11 +64,10 @@
         v-if="status == 'success' && campaigns.length > 0"
         v-model="currentPage"
         :length="campaignsMeta.last_page"
-        @input="handlePageChange"
+        @click="handlePageChange(currentPage)"
         :total-visible="5"
       ></v-pagination>
     </div>
-    <NoData :data="campaigns" :status="status" />
   </Container>
 </template>
 
@@ -85,25 +84,12 @@ const isLoading = ref(true);
 const router = useRouter();
 const route = useRoute();
 
-const currentPage = ref(Number(route.query.page) || 1);
 const lastPage = ref(1);
-const { campaigns, campaignsMeta, refresh, status } = useCampaigns(
-  currentPage.value,
-  lastPage.value
-);
+const { campaigns, currentPage, campaignsMeta, refresh, status } = useCampaigns();
 
-const fetchCampaigns = async () => {
+const handlePageChange = async (newPage) => {
   isLoading.value = true;
-  if (currentPage.value > campaignsMeta.value.last_page) {
-    lastPage.value = campaignsMeta.value.last_page;
-    currentPage.value = 1;
-    router.push({ query: { page: 1 } });
-  }
-  // console.log(currentPage.value, campaignsMeta.value.last_page);
-  await refresh({ page: currentPage.value });
-};
-
-const handlePageChange = (newPage) => {
+  if (isLoading.value) return;
   if (newPage > campaignsMeta.value.last_page) {
     lastPage.value = campaignsMeta.value.last_page;
     currentPage.value = 1;
@@ -112,7 +98,13 @@ const handlePageChange = (newPage) => {
     currentPage.value = newPage;
     router.push({ query: { page: newPage } });
   }
+
+  await refresh({ page: currentPage.value });
 };
+
+watch(currentPage, (page) => {
+  router.push({ query: { page: page } });
+});
 
 const { siteName } = useGlobalVar();
 siteName("campaigns.page_title_campaigns");

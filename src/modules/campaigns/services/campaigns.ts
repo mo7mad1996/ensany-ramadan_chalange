@@ -1,7 +1,7 @@
 import { api } from "~/helpers/axios";
 
-export const useCampaigns = (page: BigInteger, currentPageValue: BigInteger) => {
-  const currentPage = ref(page > currentPageValue ? 1 : page);
+export const useCampaigns = () => {
+  const currentPage = ref(1);
   const { locale } = useI18n();
   const {
     data: campaignsData,
@@ -16,7 +16,7 @@ export const useCampaigns = (page: BigInteger, currentPageValue: BigInteger) => 
         const { data, meta } = response.data.result;
         return { data, meta };
       }),
-    { watch: [locale] }
+    { watch: [locale,currentPage] }
   );
 
   const campaigns = computed(() => campaignsData.value?.data || []);
