@@ -3,8 +3,7 @@
     class="pt-sm pb-sm w-full"
     aria-label="this table to show highest donors"
   >
-    <Container
-      >loading="lazy"
+    <Container>
       <!-- Add a scrollable container -->
       <div class="flex justify-center">
         <div class="overflow-auto w-full">
