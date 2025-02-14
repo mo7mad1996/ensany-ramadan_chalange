@@ -1,11 +1,6 @@
 <template>
   <v-layout>
     <Header />
-    <pre>
-
-  {{ a }}
-</pre
-    >
     <v-main class="mt-10 flex flex-col min-h-screen">
       <Container>
         <div class="grid grid-cols-12 gap-4">
@@ -73,9 +68,6 @@ useHead({
     dir: locale.value === "ar" ? "rtl" : "ltr",
   },
 });
-import { api } from "~/helpers/axios";
-
-const a = useAsyncData("profile", () => api.get("/me"));
 
 onMounted(() => {
   isClient.value = true;

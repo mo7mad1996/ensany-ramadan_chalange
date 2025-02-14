@@ -90,9 +90,6 @@ import Header from "../global/Header.vue";
 import { api } from "~/helpers/axios";
 const router = useRouter();
 
-api.get("/me").catch((err) => {
-  if (err.status == 301) router.push("/verrify-email");
-});
 const { locale } = useI18n();
 
 const isSidebarOpen = ref(false);

@@ -39,7 +39,7 @@ const authRoutes = [
 
   {
     name: "verrifyEmail",
-    path: "/verrify-email",
+    path: "/verify-email",
     file: resolve(__dirname, "../pages/VerrifyEmail.vue"),
   },
 

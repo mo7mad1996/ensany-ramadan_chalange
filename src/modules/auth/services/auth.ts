@@ -35,9 +35,9 @@ export function useAuth() {
         setUser(encryptData(userValue));
 
         if (userValue?.user_type === "charity") {
-          navigateTo("/dashboard/charity");
+          return await navigateTo("/dashboard/charity");
         } else {
-          navigateTo("/dashboard/donor");
+          return await navigateTo("/dashboard/donor");
         }
 
         stopLoader();
@@ -63,7 +63,7 @@ export function useAuth() {
       setToken(encryptData(tokenValue));
       setUser(encryptData(userValue));
       setCode(userValue.verification_code);
-      navigateTo("/verrify-email");
+      navigateTo("/verify-email");
     }
     if (handelError && error.value) handelError(error.value);
   };
