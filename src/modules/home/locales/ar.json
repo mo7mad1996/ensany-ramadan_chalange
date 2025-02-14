@@ -93,5 +93,9 @@
 
   "site_name": "التحدى الرمضانى",
   "page_title_start_campaign": "بدء حملة",
-  "page_title_home": "الرئيسية"
+  "page_title_home": "الرئيسية",
+  "page_donate_all": "قدّم مساهمتك لتُحدث فرقًا",
+
+  "donate-all": "قدّم مساهمتك",
+  "next": "الخطوة الثانية"
 }

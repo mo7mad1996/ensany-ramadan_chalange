@@ -4,7 +4,7 @@
     <div class="user_name flex gap-x-3 items-center">
       <img
         loading="lazy"
-        :src="user.photo || '../assets/images/dashboard/avatar.svg'"
+        :src="user?.photo || '../assets/images/dashboard/avatar.svg'"
         width="30px"
         class="rounded-full aspect-square object-cover"
         alt="ramadanchallenges image"

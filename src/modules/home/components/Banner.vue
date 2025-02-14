@@ -33,6 +33,14 @@
             @click="$router.push('/start-campaign')"
             >{{ $t("global.start_campaign") }}</v-btn
           >
+          <v-btn
+            class="text-capitalize rounded-lg"
+            variant="outlined"
+            size="default"
+            color="#fff"
+            @click="$router.push('/donate/all')"
+            >{{ $t("home.donate-all") }}</v-btn
+          >
         </div>
 
         <div
