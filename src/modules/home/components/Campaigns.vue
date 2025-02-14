@@ -1,9 +1,14 @@
 <template>
   <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
-      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("home.campaigns") }}
-      </h1>
+      <div class="flex items-center justify-between">
+        <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
+          {{ $t("home.campaigns") }}
+        </h1>
+        <nuxt-link to="/campaigns" class="underline text-primary cursor-pointer">{{
+          $t("global.see_more_campaigns")
+        }}</nuxt-link>
+      </div>
 
       <div
         class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
@@ -29,10 +34,7 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide
-          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
-          :key="index"
-        >
+        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
           <Card
             :id="campaign.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
@@ -60,9 +62,7 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span
-                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
-              ></span
+              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>

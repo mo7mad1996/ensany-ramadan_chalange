@@ -1,9 +1,14 @@
 <template>
   <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
-      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("home.ramadan_challenge") }}
-      </h1>
+      <div class="flex items-center justify-between">
+        <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
+          {{ $t("home.ramadan_challenge") }}
+        </h1>
+        <nuxt-link to="/campaigns" class="underline text-primary cursor-pointer">{{
+          $t("global.see_more_campaigns")
+        }}</nuxt-link>
+      </div>
 
       <div
         class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
