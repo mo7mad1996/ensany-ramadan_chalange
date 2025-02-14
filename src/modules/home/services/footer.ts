@@ -8,7 +8,7 @@ export const useFooter = () => {
     refresh,
   } = useFetch(() => `/socials`, {
     baseURL: api.defaults.baseURL,
-    transform: (response) => response.result.data,
+    transform: (response: any) => response.result.data,
     watch: [locale],
   });
   return {

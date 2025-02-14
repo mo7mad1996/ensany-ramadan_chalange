@@ -11,9 +11,9 @@
     </dashbordBreadcrumb>
 
     <div class="content pt-sm">
-      <h2 class="text-xl font-bold">
+      <!-- <h2 class="text-xl font-bold">
         {{ $t("dashboard.fundraising_history") }}
-      </h2>
+      </h2> -->
 
       <v-card flat>
         <v-text-field

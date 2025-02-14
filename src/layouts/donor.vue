@@ -20,7 +20,9 @@
           </div>
 
           <!-- Sidebar (Large Screens) -->
-          <div class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0">
+          <div
+            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
+          >
             <DonorSidebar />
           </div>
 
@@ -56,6 +58,7 @@ import AppFooter from "../global/AppFooter.vue";
 import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
+const router = useRouter();
 
 const isClient = ref(false);
 const isSidebarOpen = ref(false);

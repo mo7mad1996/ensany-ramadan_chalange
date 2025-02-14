@@ -20,7 +20,9 @@
           </div>
 
           <!-- Sidebar (Large Screens) -->
-          <div class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0">
+          <div
+            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
+          >
             <CharitySidebar />
           </div>
 
@@ -58,7 +60,13 @@
         size="x-small"
         color="primary"
       >
-        <img loading="lazy" src="../assets/images/statistics1.svg" width="15" class="mb-2" alt="ramadanchallenges image" />
+        <img
+          loading="lazy"
+          src="../assets/images/statistics1.svg"
+          width="15"
+          class="mb-2"
+          alt="ramadanchallenges image"
+        />
         <p>{{ $t("global.donation") }}</p>
       </v-btn>
     </div>
@@ -79,6 +87,8 @@ import CharitySidebar from "~/global/CharitySidebar.vue";
 import Container from "~/global/Container.vue";
 import AppFooter from "../global/AppFooter.vue";
 import Header from "../global/Header.vue";
+import { api } from "~/helpers/axios";
+const router = useRouter();
 
 const { locale } = useI18n();
 
