@@ -1,6 +1,11 @@
 <template>
   <v-layout>
     <Header />
+    <pre>
+
+  {{ a }}
+</pre
+    >
     <v-main class="mt-10 flex flex-col min-h-screen">
       <Container>
         <div class="grid grid-cols-12 gap-4">
@@ -20,7 +25,9 @@
           </div>
 
           <!-- Sidebar (Large Screens) -->
-          <div class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0">
+          <div
+            class="hidden lg:block lg:col-span-3 xl:col-span-2 h-full sticky top-0"
+          >
             <DonorSidebar />
           </div>
 
@@ -56,6 +63,7 @@ import AppFooter from "../global/AppFooter.vue";
 import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
+const router = useRouter();
 
 const isClient = ref(false);
 const isSidebarOpen = ref(false);
@@ -65,6 +73,9 @@ useHead({
     dir: locale.value === "ar" ? "rtl" : "ltr",
   },
 });
+import { api } from "~/helpers/axios";
+
+const a = useAsyncData("profile", () => api.get("/me"));
 
 onMounted(() => {
   isClient.value = true;

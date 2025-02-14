@@ -32,13 +32,6 @@ export function useAuth() {
           startLoader();
         }
 
-        const res: any = await api.get("/me");
-
-        if (!res.status && res.errorCode == 301) {
-          stopLoader();
-          return navigateTo("/pending");
-        }
-
         setUser(encryptData(userValue));
 
         if (userValue?.user_type === "charity") {
