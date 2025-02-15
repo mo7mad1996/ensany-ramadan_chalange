@@ -5,7 +5,7 @@
         class="flex lg:flex-row md:flex-col-reverse flex-col-reverse justify-between items-start lg:gap-xl xl:gap-xl md:gap-md gap-sm"
       >
         <div class="w-full">
-          <Form @submit="onSubmit">
+          <Form @submit="onSubmit" v-slot="{ validate }">
             <div class="flex gap-x-2">
               <img
                 loading="lazy"
@@ -91,7 +91,6 @@
                 <!-- 
                 <v-radio
                   value="monthly"
-                  disabled
                   id="input-12"
                   name="radio-group-9"
                   color="primary"
@@ -107,7 +106,6 @@
                 <!-- weekly -->
                 <v-radio
                   value="weekly"
-                  disabled
                   name="radio-group-10"
                   id="input-13"
                   color="primary"
@@ -119,10 +117,9 @@
                   </template>
                 </v-radio>
 
-                <!-- dialy -->
+                <!-- daily -->
                 <v-radio
-                  value="dialy"
-                  disabled
+                  value="daily"
                   name="radio-group-11"
                   id="input-14"
                   color="primary"
@@ -136,7 +133,7 @@
 
                 <!-- onetime -->
                 <v-radio
-                  value="onetime"
+                  value="full"
                   color="primary"
                   name="radio-group-12"
                   id="input-15"
@@ -184,6 +181,7 @@
                         v-model="donationData.name"
                         type="text"
                         id="name"
+                        :validate-on-input="true"
                         :placeholder="$t('global.name')"
                         class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                       />
@@ -229,6 +227,7 @@
                         v-model="donationData.email"
                         rules="required|email"
                         id="email"
+                        :validate-on-input="true"
                         :placeholder="$t('global.email')"
                         class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                       />
@@ -255,8 +254,9 @@
 
                       <Field
                         name="phone"
-                        rules="required"
+                        rules="required|phone"
                         v-model="donationData.mobile"
+                        :validate-on-input="true"
                         type="text"
                         id="phone"
                         :placeholder="$t('global.phone')"
@@ -303,6 +303,7 @@
                           <Field
                             name="some_name"
                             rules="required"
+                            :validate-on-input="true"
                             v-model="donationData.love_name"
                             type="text"
                             id="some_name"
@@ -335,6 +336,7 @@
                             type="email"
                             v-model="donationData.love_email"
                             rules="required|email"
+                            :validate-on-input="true"
                             id="some_email"
                             :placeholder="$t('global.gift_email')"
                             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -364,6 +366,7 @@
                             name="some_phone"
                             rules="required"
                             v-model="donationData.love_mobile"
+                            :validate-on-input="true"
                             type="text"
                             id="some_phone"
                             :placeholder="$t('global.some_number')"
@@ -407,6 +410,7 @@
                             as="textarea"
                             type="text"
                             rules="required"
+                            :validate-on-input="true"
                             name="love_comment"
                             v-model="donationData.love_comment"
                             id="text-eria"
@@ -432,7 +436,7 @@
                   variant="flat"
                   size="large"
                   color="primary"
-                  @click="window = 1"
+                  @click="checkIsValid(validate)"
                 >
                   {{ $t("home.next") }}
                 </v-btn>
@@ -490,13 +494,17 @@
                 <v-table density="compact" height="500px">
                   <thead>
                     <tr class="text-center text-bold">
-                      <th>{{ t("donor.campaign_name") }}</th>
+                      <th>{{ $t("donor.campaign_name") }}</th>
                       <th></th>
-                      <th>{{ $t("donation_amount") }}</th>
+                      <th>{{ $t("home.donation_amount") }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="campaign in campaigns" :key="campaign.id">
+                    <tr
+                      v-for="campaign in campaigns"
+                      :key="campaign.id"
+                      class="hover:bg-lime-100"
+                    >
                       <td>{{ campaign.name }}</td>
                       <td>
                         <v-switch
@@ -517,12 +525,9 @@
                       </td>
                     </tr>
                   </tbody>
-                  <div
-                    class="loader mx-auto"
-                    ref="loadingRef"
-                    v-show="!isFinish"
-                  />
                 </v-table>
+
+                <!-- submit -->
                 <v-btn
                   class="text-capitalize rounded-lg block w-full my-4"
                   :loading="isLoading"
@@ -530,8 +535,10 @@
                   variant="flat"
                   size="default"
                   color="primary"
+                  @click="checkIsValid(validate)"
+                  type="submit"
                 >
-                  {{ $t("donor.save") }}
+                  {{ $t("home.donate") }}
                 </v-btn>
               </v-window-item>
             </v-window>
@@ -551,43 +558,58 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, Field, Form } from "vee-validate";
+import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
 
 import { useDonation } from "~/modules/campaigns/services/donation";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { storeToRefs } from "pinia";
 import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useAllCampaigns } from "../services/all-campaigns";
 
 const { siteName } = useGlobalVar();
 siteName("home.page_donate_all");
 
-const route = useRoute();
 const currencyStore = useCurrencyStore();
-const { makeDonation, isLoading, error } = useDonation();
 const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
-const { locale, t } = useI18n();
 
 const window = ref(0);
 const availableAmounts = [5, 10, 50];
-const donationType = ref<string>("onetime");
+const donationType = ref<string>("full");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
-const page = ref(0);
-const isFinish = ref(false);
 
-const loadingRef = ref(null);
-let observer: any = null;
+const {
+  data: campaigns,
+  loading: isLoading,
+  submitAllCampaigns,
+} = useAllCampaigns();
 
-const campaigns: any = ref([]);
-const selectedCampaigns: any = ref([]);
+const selectedCampaigns = computed({
+  // getter
+  get() {
+    if (!campaigns) return [];
+    return campaigns.value
+      .filter((c: any) => !c.selected)
+      .map((c: any) => c.id);
+  },
+
+  set(newValue: [string]) {
+    if (!campaigns) return;
+
+    campaigns.value = campaigns.value.map((c: any) => ({
+      ...c,
+      selected: !newValue.includes(c.id),
+    }));
+  },
+});
 
 const donationData = reactive<any>({
   name: "",
   email: "",
   mobile: "",
-  love_donation: "",
+  love_donation: "no",
   love_name: "",
   love_email: "",
   love_mobile: "",
@@ -599,21 +621,13 @@ const donationData = reactive<any>({
   campaign_id: "",
 });
 
-onMounted(() => {
-  observer = new IntersectionObserver((entries) => {
-    const [entry] = entries;
-    if (entry.isIntersecting) getCampaigns();
-  });
-});
+const { t } = useI18n();
 
-watch(loadingRef, () => {
-  if (loadingRef.value) observer.observe(loadingRef.value);
-});
+defineRule("phone", (value: string) => {
+  const phoneRegex = /^\+?[\d\s().-]{7,}$/;
 
-onUnmounted(() => {
-  if (observer) observer.disconnect();
+  return phoneRegex.test(value) || t("auth.validation.phone");
 });
-
 const selectAmount = (item: number): void => {
   donationData.amount = item;
   customInput.value = false;
@@ -624,51 +638,28 @@ const showCustomInput = (): void => {
 };
 
 const getPayload = () => {
-  if (
-    donationType.value === "monthly" ||
-    donationType.value === "weekly" ||
-    donationType.value === "dialy"
-  ) {
-    donationData.ongoing_charity = "yes";
-    donationData.charity_amount = donationData.amount;
-  } else {
-    donationData.ongoing_charity = "no";
-  }
-
-  if (gift.value) {
-    donationData.love_donation = "yes";
-  } else {
-    donationData.love_donation = "no";
-  }
-
-  donationData.campaign_id = route.params.id;
-
-  donationData.currency_id = selectedCurrency.value;
-
-  return { ...donationData, selectedCampaigns: selectedCampaigns.value };
+  const amount = donationData.amount / selectedCampaigns.value.length;
+  return {
+    ...donationData,
+    total_amount: donationData.amount,
+    pay_type: donationType.value,
+    campaign: selectedCampaigns.value.map((a: stirng) => ({ id: a, amount })),
+    currency_id: selectedCurrency.value,
+  };
 };
 
+const checkIsValid = async (validate: any) => {
+  const { valid } = await validate();
+
+  if (!valid) {
+    window.value = 0;
+  } else {
+    window.value = 1;
+  }
+};
 const onSubmit = () => {
   const payload = getPayload();
-  console.log(getPayload);
-};
-
-watch(locale, () => {
-  isFinish.value = false;
-  campaigns.value = [];
-  page.value = 0;
-});
-
-const getCampaigns = async () => {
-  try {
-    page.value += 1;
-    const res = await api.get("/campaigns", { params: { page: page.value } });
-    const { data: result } = res.data.result;
-    campaigns.value = [...campaigns.value, ...result];
-    if (result.length < 15) isFinish.value = true;
-  } catch (err) {
-    console.error(err);
-  }
+  submitAllCampaigns(payload);
 };
 </script>
 
