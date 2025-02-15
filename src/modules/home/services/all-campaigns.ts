@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import { api } from "~/helpers/axios";
 
 export const useAllCampaigns = () => {
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
   const loading = ref(false);
 
   const { data, error, refresh, status } = useAsyncData(
@@ -29,6 +29,7 @@ export const useAllCampaigns = () => {
       Swal.fire({
         icon: "error",
         title: err.response.data.message || err.message,
+        confirmButtonText: t("campaigns.ok"),
         html: `<ul>${Object.values(err.response.data.errors)
           .flat()
           .map((i) => `<li>${i}</li>`)

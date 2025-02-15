@@ -510,7 +510,18 @@
                       :key="campaign.id"
                       class="hover:bg-lime-100"
                     >
-                      <td>{{ campaign.name }}</td>
+                      <td>
+                        <nuxt-link
+                          :to="{
+                            name: 'view-campaign',
+                            params: { id: campaign.id },
+                          }"
+                          target="_blank"
+                          class="hover:underline"
+                        >
+                          {{ campaign.name }}
+                        </nuxt-link>
+                      </td>
                       <td>
                         <v-switch
                           color="primary"
