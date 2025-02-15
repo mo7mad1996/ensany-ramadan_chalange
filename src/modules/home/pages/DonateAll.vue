@@ -491,7 +491,12 @@
                     <!-- variant="outlined" -->
                   </v-col>
                 </v-row>
-                <v-table density="compact" height="500px">
+                <v-table
+                  density="compact"
+                  height="500px"
+                  fixed-header
+                  class="border rounded"
+                >
                   <thead>
                     <tr class="text-center text-bold">
                       <th>{{ $t("donor.campaign_name") }}</th>
@@ -514,13 +519,13 @@
                         />
                       </td>
                       <td>
-                        {{
+                        ({{
                           selectedCampaigns.indexOf(campaign.id) > -1
                             ? (
                                 donationData.amount / selectedCampaigns.length
                               ).toFixed(2)
                             : "0.00"
-                        }}
+                        }})
                         {{ selectedCurrencyLabel }}
                       </td>
                     </tr>
@@ -538,7 +543,10 @@
                   @click="checkIsValid(validate)"
                   type="submit"
                 >
-                  {{ $t("home.donate") }}
+                  {{ $t("home.donate") }} (
+                  {{ donationData.amount.toFixed(2) }}
+                  {{ selectedCurrencyLabel }}
+                  )
                 </v-btn>
               </v-window-item>
             </v-window>
@@ -574,7 +582,7 @@ const currencyStore = useCurrencyStore();
 const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
 const window = ref(0);
-const availableAmounts = [5, 10, 50];
+const availableAmounts = [5, 10, 50, 100];
 const donationType = ref<string>("full");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
