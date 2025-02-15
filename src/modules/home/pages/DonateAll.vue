@@ -489,10 +489,10 @@
                 </v-row>
                 <v-table density="compact" height="500px">
                   <thead>
-                    <tr class="text-center">
+                    <tr class="text-center text-bold">
                       <th>{{ t("donor.campaign_name") }}</th>
                       <th></th>
-                      <th>Calories</th>
+                      <th>{{ $t("donation_amount") }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -511,7 +511,7 @@
                             ? (
                                 donationData.amount / selectedCampaigns.length
                               ).toFixed(2)
-                            : "0"
+                            : "0.00"
                         }}
                         {{ selectedCurrencyLabel }}
                       </td>
@@ -557,6 +557,10 @@ import { useDonation } from "~/modules/campaigns/services/donation";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { storeToRefs } from "pinia";
 import { api } from "~/helpers/axios";
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("home.page_donate_all");
 
 const route = useRoute();
 const currencyStore = useCurrencyStore();
@@ -619,7 +623,7 @@ const showCustomInput = (): void => {
   customInput.value = !customInput.value;
 };
 
-const onSubmit = () => {
+const getPayload = () => {
   if (
     donationType.value === "monthly" ||
     donationType.value === "weekly" ||
@@ -641,7 +645,12 @@ const onSubmit = () => {
 
   donationData.currency_id = selectedCurrency.value;
 
-  makeDonation(donationData);
+  return { ...donationData, selectedCampaigns: selectedCampaigns.value };
+};
+
+const onSubmit = () => {
+  const payload = getPayload();
+  console.log(getPayload);
 };
 
 watch(locale, () => {
