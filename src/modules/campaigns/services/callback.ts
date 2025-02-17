@@ -42,6 +42,7 @@ export const useCallback = () => {
             customClass: {
               confirmButton: "my-custom-btn",
             },
+
             draggable: true,
           });
         } else {

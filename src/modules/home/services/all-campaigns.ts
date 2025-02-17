@@ -34,6 +34,9 @@ export const useAllCampaigns = () => {
           .flat()
           .map((i) => `<li>${i}</li>`)
           .join(" ")}</ul>`,
+        customClass: {
+          confirmButton: "my-custom-btn",
+        },
       });
     } finally {
       loading.value = false;

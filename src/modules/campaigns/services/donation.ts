@@ -28,6 +28,9 @@ export const useDonation = () => {
           .join(" "),
         icon: "error",
         confirmButtonText: t("home.ok"),
+        customClass: {
+          confirmButton: "my-custom-btn",
+        },
       });
     } finally {
       isLoading.value = false;

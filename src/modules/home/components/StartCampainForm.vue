@@ -546,6 +546,9 @@ const submit = async (values) => {
     Swal.fire({
       title: res.data?.message,
       icon: "success",
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       confirmButtonText: t("home.ok"),
     });
   } catch (err) {
@@ -558,6 +561,9 @@ const submit = async (values) => {
         .join(" "),
 
       icon: "error",
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       confirmButtonText: t("home.ok"),
     });
   } finally {

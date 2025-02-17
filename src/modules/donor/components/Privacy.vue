@@ -144,7 +144,9 @@ const onSubmit2 = async () => {
     Swal.fire({
       icon: "success",
       confirmButtonText: t("home.ok"),
-
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       text: t("auth.password_success"),
     });
   } catch (err) {
@@ -152,7 +154,9 @@ const onSubmit2 = async () => {
     Swal.fire({
       icon: "error",
       confirmButtonText: t("home.ok"),
-
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       title: err.response?.data?.message || err.message,
       html: Object.values(err.response?.data?.result?.errors)
         .flat()

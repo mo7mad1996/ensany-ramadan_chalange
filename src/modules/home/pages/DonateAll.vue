@@ -133,7 +133,7 @@
 
                 <!-- onetime -->
                 <v-radio
-                  value="full"
+                  value="one_time"
                   color="primary"
                   name="radio-group-12"
                   id="input-15"
@@ -594,7 +594,7 @@ const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
 const window = ref(0);
 const availableAmounts = [5, 10, 50, 100];
-const donationType = ref<string>("full");
+const donationType = ref<string>("one_time");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);

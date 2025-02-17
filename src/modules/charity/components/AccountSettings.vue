@@ -674,6 +674,9 @@ const onSubmit = async (payload) => {
       icon: "success",
       title: t("dashboard.save"),
       confirmButtonText: t("home.ok"),
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
     });
   } catch (err) {
     console.error(err);
@@ -685,6 +688,9 @@ const onSubmit = async (payload) => {
         .join(" "),
       icon: "error",
       confirmButtonText: t("home.ok"),
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
     });
   } finally {
     personalForm.loading = false;
@@ -711,7 +717,9 @@ const onSubmit2 = async () => {
     Swal.fire({
       icon: "success",
       confirmButtonText: t("home.ok"),
-
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       text: t("auth.password_success"),
     });
   } catch (err) {
@@ -719,7 +727,9 @@ const onSubmit2 = async () => {
     Swal.fire({
       icon: "error",
       confirmButtonText: t("home.ok"),
-
+      customClass: {
+        confirmButton: "my-custom-btn",
+      },
       title: err.response?.data?.message || err.message,
       html: Object.values(err.response?.data?.result?.errors)
         .flat()
