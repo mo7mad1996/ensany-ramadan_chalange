@@ -1,6 +1,6 @@
 <template>
-  <div v-if="!currenciesData">...</div>
-  <v-menu v-else-if="currenciesData?.length > 0">
+  <!-- <div v-if="!currenciesData">...</div> -->
+  <v-menu v-if="currenciesData?.length > 0">
     <template v-slot:activator="{ props }">
       <v-btn
         color="default"
