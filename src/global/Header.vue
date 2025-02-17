@@ -1,5 +1,5 @@
 <template>
-  <v-naviga
+  <v-navigation-drawer
     class="v-navigation-drawer--mobile p-[2rem]"
     v-model="isOpen"
     :location="locale === 'ar' ? 'left' : 'right'"
@@ -101,7 +101,7 @@
 
       <SwitchLang />
     </div>
-  </v-naviga  tion-drawer>
+  </v-navigation-drawer>
 
   <v-app-bar elevation="0" color="#F6FFF6">
     <Container class="w-100">
