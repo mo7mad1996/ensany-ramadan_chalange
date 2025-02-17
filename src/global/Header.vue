@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer
+  <v-naviga
     class="v-navigation-drawer--mobile p-[2rem]"
     v-model="isOpen"
     :location="locale === 'ar' ? 'left' : 'right'"
@@ -101,7 +101,7 @@
 
       <SwitchLang />
     </div>
-  </v-navigation-drawer>
+  </v-naviga  tion-drawer>
 
   <v-app-bar elevation="0" color="#F6FFF6">
     <Container class="w-100">
@@ -271,7 +271,7 @@
                 <v-icon>mdi-menu-down</v-icon>
               </div>
               <div
-                v-if="isMenue"
+                v-if="isMenu"
                 class="drobdown-menue absolute top-[3.5rem] p-[8px] bg-[#f6fff6] w-full"
               >
                 <ul class="list-none">
@@ -485,7 +485,7 @@ const { locale } = useI18n();
 const { isLoading, logout, user } = useAuth();
 const { user_type } = useGlobalVar();
 const isOpen = ref(false);
-const isMenue = ref(false);
+const isMenu = ref(false);
 const { cartCounter } = useCartCounter() || 0;
 const { pages } = usePages() || 0;
 
@@ -494,10 +494,10 @@ const openMenue = (): void => {
 };
 
 const openDrop = (): void => {
-  isMenue.value = !isMenue.value;
+  isMenu.value = !isMenu.value;
 };
 
-const donerAction = (): void => {
+const donorAction = (): void => {
   user_type.value = "donoer";
   navigateTo("/signup");
 };

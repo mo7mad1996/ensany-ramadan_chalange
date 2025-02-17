@@ -33,6 +33,11 @@ const campaignsRoutes = [
     path: "/payment/return",
     file: resolve(__dirname, "../pages/PaymentReturn.vue"),
   },
+  {
+    name: "payment-visitor-return",
+    path: "/visitor/donations/callback",
+    file: resolve(__dirname, "../pages/PaymentVisitorReturn.vue"),
+  },
 ];
 
 export default campaignsRoutes;

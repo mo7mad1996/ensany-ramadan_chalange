@@ -64,8 +64,54 @@ export const useCallback = () => {
     }
   };
 
+  const visitorGatewayCallback = async (razorpay_payment_link_id: string) => {
+    try {
+      error.value = "";
+      isLoading.value = true;
+
+      const res = await api.post("/visitor/donations/callback", null, {
+        params: { razorpay_payment_link_id },
+      });
+
+      navigateTo("/");
+
+      if (res.data.result.payment_status == "paid") {
+        isPaymentSuccess.value = true;
+        currencyStore.setPaymentStatus(isPaymentSuccess.value);
+        Swal.fire({
+          title: t("campaigns.success_msg"),
+          imageUrl: successIcon,
+          imageWidth: 200,
+          imageHeight: 200,
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
+          draggable: true,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: t("campaigns.faild_msg"),
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
+        });
+      }
+    } catch (err: any) {
+      console.error(err);
+      error.value = err;
+    } finally {
+      isLoading.value = false;
+    }
+  };
+
   return {
     callBack,
+    visitorGatewayCallback,
     isLoading,
     error,
   };
