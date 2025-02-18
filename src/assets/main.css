@@ -78,8 +78,13 @@ a {
   }
 
   .v-btn--stacked.v-btn--size-x-small {
-    max-width: 45px;
-    min-width: 45px;
+    /* max-width: 45px;
+    min-width: 45px; */
+
+    width: 90px;
+    height: 90px;
+    font-size: 0.9em;
+    font-weight: bold;
   }
 }
 

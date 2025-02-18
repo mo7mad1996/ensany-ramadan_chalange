@@ -67,5 +67,7 @@
   "similar_campaigns": "Similar Campaigns",
   "no_data": "No data available",
   "no_data_": "Sorry, no data was found at the moment",
-  "write_gift": "Write a gift message"
+  "write_gift": "Write a gift message",
+
+  "donation-all-btn": "Donate for all campaigns"
 }

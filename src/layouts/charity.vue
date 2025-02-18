@@ -52,8 +52,9 @@
     <div
       class="donate_button fixed top-1/2 left-0 flex justify-center"
       v-if="$route.name !== 'campaign'"
-      @click="openDialog"
+      @click="$router.push({ name: 'donate-all' })"
     >
+      <!-- @click="openDialog" -->
       <v-btn
         class="text-capitalize custom-border-radius"
         stacked
@@ -67,7 +68,9 @@
           class="mb-2"
           alt="ramadanchallenges image"
         />
-        <p>{{ $t("global.donation") }}</p>
+        <!-- <p>{{ $t("global.donation") }}</p> -->
+
+        <p>{{ $t("global.donation-all-btn") }}</p>
       </v-btn>
     </div>
 

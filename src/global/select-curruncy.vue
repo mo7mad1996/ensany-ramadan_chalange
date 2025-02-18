@@ -67,10 +67,7 @@ onMounted(() => {
     refresh()
       .then(() => {
         if (currenciesData.value && currenciesData.value.length > 0) {
-          localStorage.setItem(
-            "currenciesData",
-            JSON.stringify(currenciesData.value)
-          );
+          localStorage.setItem("currenciesData", JSON.stringify(g.value));
         }
       })
       .catch((error) => {
