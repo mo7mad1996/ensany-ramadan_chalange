@@ -51,7 +51,7 @@
     <!-- Global donation button -->
     <div
       class="donate_button fixed top-1/2 left-0 flex justify-center"
-      v-if="$route.name !== 'campaign'"
+      v-if="$route.name !== 'donate-all'"
       @click="$router.push({ name: 'donate-all' })"
     >
       <!-- @click="openDialog" -->
