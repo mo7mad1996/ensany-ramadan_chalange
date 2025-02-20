@@ -7,11 +7,7 @@
         <div class="w-full">
           <Form @submit="onSubmit" v-slot="{ validate }">
             <div class="flex gap-x-2">
-              <img
-                loading="lazy"
-                src="~/assets/images/campaign/dolar.svg"
-                alt="..."
-              />
+              <img loading="lazy" src="~/assets/images/campaign/dolar.svg" alt="..." />
               <h1 class="font-semibold text-2xl">
                 {{ $t("global.donation_amount") }}
               </h1>
@@ -187,10 +183,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="name"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="name" class="text-sm text-red-500 mt-2" />
                   </div>
 
                   <!-- name hidden checkbox -->
@@ -233,10 +226,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="email"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="email" class="text-sm text-red-500 mt-2" />
                   </div>
 
                   <!-- phone -->
@@ -264,10 +254,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="phone"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="phone" class="text-sm text-red-500 mt-2" />
                   </div>
                 </div>
 
@@ -479,25 +466,15 @@
               </v-window-item>
 
               <v-window-item>
-                <v-row class="items-center">
-                  <v-spacer class="ltr:hidden" />
-
-                  <v-col cols="auto">
-                    <v-btn
-                      icon="mdi-arrow-left"
-                      size="small"
-                      class="m-2"
-                      @click="window = 0"
-                    />
-                    <!-- variant="outlined" -->
+                <v-row class="d-flex justify-between">
+                  <v-col class="d-flex justify-start">
+                    <v-btn :icon="icon" size="small" class="m-2" @click="window = 0" />
                   </v-col>
-
-                  <v-col cols="auto">
+                  <v-col class="d-flex justify-end">
                     <v-dialog max-width="500">
                       <template v-slot:activator="{ props: activatorProps }">
                         <v-btn
                           v-bind="activatorProps"
-                          prepend-icon="mdi-information-variant"
                           :text="$t('global.click_here_before_donating')"
                           variant="flat"
                         ></v-btn>
@@ -522,6 +499,7 @@
                     </v-dialog>
                   </v-col>
                 </v-row>
+
                 <v-table
                   density="compact"
                   height="500px"
@@ -563,9 +541,7 @@
                       <td>
                         ({{
                           selectedCampaigns.indexOf(campaign.id) > -1
-                            ? (
-                                donationData.amount / selectedCampaigns.length
-                              ).toFixed(2)
+                            ? (donationData.amount / selectedCampaigns.length).toFixed(2)
                             : "0.00"
                         }})
                         {{ selectedCurrencyLabel }}
@@ -610,11 +586,9 @@
 <script setup lang="ts">
 import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
 
-import { useDonation } from "~/modules/campaigns/services/donation";
-import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { storeToRefs } from "pinia";
-import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { useAllCampaigns } from "../services/all-campaigns";
 
 const { siteName } = useGlobalVar();
@@ -629,20 +603,15 @@ const donationType = ref<string>("one_time");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
+const icon = ref<string>("mdi-arrow-left");
 
-const {
-  data: campaigns,
-  loading: isLoading,
-  submitAllCampaigns,
-} = useAllCampaigns();
+const { data: campaigns, loading: isLoading, submitAllCampaigns } = useAllCampaigns();
 
 const selectedCampaigns = computed({
   // getter
   get() {
     if (!campaigns) return [];
-    return campaigns.value
-      .filter((c: any) => !c.selected)
-      .map((c: any) => c.id);
+    return campaigns.value.filter((c: any) => !c.selected).map((c: any) => c.id);
   },
 
   set(newValue: [string]) {
