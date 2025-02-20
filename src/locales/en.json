@@ -68,6 +68,8 @@
   "no_data": "No data available",
   "no_data_": "Sorry, no data was found at the moment",
   "write_gift": "Write a gift message",
-
+  "click_here_before_donating": "Click here before donating",
+  "close": "Close",
+  "info-text": "When donating once, daily, or weekly, the full amount will be paid and equally distributed automatically",
   "donation-all-btn": "Donate for all campaigns"
 }

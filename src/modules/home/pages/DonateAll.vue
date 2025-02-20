@@ -479,8 +479,9 @@
               </v-window-item>
 
               <v-window-item>
-                <v-row>
+                <v-row class="items-center">
                   <v-spacer class="ltr:hidden" />
+
                   <v-col cols="auto">
                     <v-btn
                       icon="mdi-arrow-left"
@@ -489,6 +490,36 @@
                       @click="window = 0"
                     />
                     <!-- variant="outlined" -->
+                  </v-col>
+
+                  <v-col cols="auto">
+                    <v-dialog max-width="500">
+                      <template v-slot:activator="{ props: activatorProps }">
+                        <v-btn
+                          v-bind="activatorProps"
+                          prepend-icon="mdi-information-variant"
+                          :text="$t('global.click_here_before_donating')"
+                          variant="flat"
+                        ></v-btn>
+                      </template>
+
+                      <template v-slot:default="{ isActive }">
+                        <v-card>
+                          <v-card-text>
+                            {{ $t("global.info-text") }}
+                          </v-card-text>
+
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+
+                            <v-btn
+                              :text="$t('global.close')"
+                              @click="isActive.value = false"
+                            ></v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </template>
+                    </v-dialog>
                   </v-col>
                 </v-row>
                 <v-table
