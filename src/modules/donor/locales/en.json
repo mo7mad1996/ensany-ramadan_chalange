@@ -83,5 +83,7 @@
   "page_title_dashboard": "Dashboard",
   "page_title_donor_donations_cart": "Donor Donations Cart",
   "page_title_donor_donation_history": "Donor Donation History",
-  "page_title_settings": "Settings"
+  "page_title_settings": "Settings",
+
+  "campaign_name": "Campaign name"
 }
