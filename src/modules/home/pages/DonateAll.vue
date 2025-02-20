@@ -482,17 +482,10 @@
                 <v-row class="items-center">
                   <v-spacer class="ltr:hidden" />
 
-                  <v-col cols="auto">
-                    <v-btn
-                      icon="mdi-arrow-left"
-                      size="small"
-                      class="m-2"
-                      @click="window = 0"
-                    />
-                    <!-- variant="outlined" -->
-                  </v-col>
-
-                  <v-col cols="auto">
+                  <v-col
+                    cols="auto"
+                    class="flex ltr:flex-row-reverse items-center"
+                  >
                     <v-dialog max-width="500">
                       <template v-slot:activator="{ props: activatorProps }">
                         <v-btn
@@ -520,8 +513,16 @@
                         </v-card>
                       </template>
                     </v-dialog>
+
+                    <v-btn
+                      icon="mdi-arrow-left"
+                      size="small"
+                      class="m-2"
+                      @click="window = 0"
+                    />
                   </v-col>
                 </v-row>
+
                 <v-table
                   density="compact"
                   height="500px"
@@ -608,10 +609,12 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
-
 import { useDonation } from "~/modules/campaigns/services/donation";
+// @ts-ignore
+import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
+// @ts-nocheck
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
+// @ts-ignore
 import { storeToRefs } from "pinia";
 import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";

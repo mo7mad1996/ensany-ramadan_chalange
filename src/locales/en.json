@@ -70,6 +70,8 @@
   "write_gift": "Write a gift message",
   "click_here_before_donating": "Click here before donating",
   "close": "Close",
+  "dialog": "Dialog!",
+
   "info-text": "When donating once, daily, or weekly, the full amount will be paid and equally distributed automatically",
   "donation-all-btn": "Donate for all campaigns"
 }
