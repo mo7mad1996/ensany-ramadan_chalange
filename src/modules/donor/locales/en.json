@@ -78,12 +78,11 @@
   "rejected": "Rejected",
   "cart_saved_redirect_after_5_sec": "Your campaigns have been saved successfully. You will be redirected shortly to make a donation. Please do not close the page.",
   "remove": "Remove",
+  "campaign_name": "Campaign Name",
 
   "page_title_donor_campaigns": "Donor Campaigns",
   "page_title_dashboard": "Dashboard",
   "page_title_donor_donations_cart": "Donor Donations Cart",
   "page_title_donor_donation_history": "Donor Donation History",
-  "page_title_settings": "Settings",
-
-  "campaign_name": "Campaign name"
+  "page_title_settings": "Settings"
 }

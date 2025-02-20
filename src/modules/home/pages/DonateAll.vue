@@ -479,18 +479,20 @@
               </v-window-item>
 
               <v-window-item>
-                <v-row class="items-center">
-                  <v-spacer class="ltr:hidden" />
-
-                  <v-col
-                    cols="auto"
-                    class="flex ltr:flex-row-reverse items-center"
-                  >
+                <v-row class="d-flex justify-between">
+                  <v-col class="d-flex justify-start">
+                    <v-btn
+                      :icon="icon"
+                      size="small"
+                      class="m-2"
+                      @click="window = 0"
+                    />
+                  </v-col>
+                  <v-col class="d-flex justify-end">
                     <v-dialog max-width="500">
                       <template v-slot:activator="{ props: activatorProps }">
                         <v-btn
                           v-bind="activatorProps"
-                          prepend-icon="mdi-information-variant"
                           :text="$t('global.click_here_before_donating')"
                           variant="flat"
                         ></v-btn>
@@ -609,14 +611,12 @@
 </template>
 
 <script setup lang="ts">
-import { useDonation } from "~/modules/campaigns/services/donation";
 // @ts-ignore
 import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
 // @ts-nocheck
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 // @ts-ignore
 import { storeToRefs } from "pinia";
-import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAllCampaigns } from "../services/all-campaigns";
 
@@ -632,6 +632,7 @@ const donationType = ref<string>("one_time");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
+const icon = ref<string>("mdi-arrow-left");
 
 const {
   data: campaigns,
