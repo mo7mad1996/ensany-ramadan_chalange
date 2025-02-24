@@ -600,7 +600,7 @@
         <div class="image">
           <img
             loading="lazy"
-            src="~/assets/images/donate/donate.webp"
+            src="~/assets/images/donate/donate.jpeg"
             class="w-full rounded-lg"
             alt="ramadanchallenges image"
           />
@@ -697,7 +697,7 @@ const getPayload = () => {
     ...donationData,
     total_amount: donationData.amount,
     pay_type: donationType.value,
-    campaign: selectedCampaigns.value.map((a: stirng) => ({ id: a, amount })),
+    campaign: selectedCampaigns.value.map((a: string) => ({ id: a, amount })),
     currency_id: selectedCurrency.value,
   };
 };
