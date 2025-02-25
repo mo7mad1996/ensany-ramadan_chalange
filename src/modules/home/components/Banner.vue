@@ -21,7 +21,7 @@
             variant="flat"
             size="default"
             color="primary"
-            @click="$router.push('/signup')"
+            @click="$router.push('/donate/all')"
             >{{ $t("global.join_challenge") }}</v-btn
           >
 

@@ -12,12 +12,20 @@
             <p class="mb-2">
               {{ $t("home.contributing_desc") }}
             </p>
-            <v-btn
+            <!-- <v-btn
               class="text-capitalize rounded-lg mt-2"
               variant="flat"
               size="default"
               color="#3E7E41"
               @click="openDialog"
+              >{{ $t("global.donate_now") }}</v-btn
+            > -->
+            <v-btn
+              class="text-capitalize rounded-lg mt-2"
+              variant="flat"
+              size="default"
+              color="#3E7E41"
+              @click="navigateTo('donate/all')"
               >{{ $t("global.donate_now") }}</v-btn
             >
           </div>
