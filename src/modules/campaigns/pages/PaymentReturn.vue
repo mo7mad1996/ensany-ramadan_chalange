@@ -29,18 +29,22 @@
 </template>
 
 <script setup>
-import { useCallback } from "../services/callback";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useCallback } from "../services/callback";
 
 // definePageMeta({
 //   middleware: "navigate",
 // });
 
 const route = useRoute();
-const razorpay_payment_link_id = route.query.razorpay_payment_link_id;
-const { callBack } = useCallback();
 
-callBack(razorpay_payment_link_id);
+const { razorpay_payment_link_id, paymentResponse } = route.query;
+const paymentType = razorpay_payment_link_id ? "curlec" : "2c2p";
+const resId = razorpay_payment_link_id || paymentResponse;
+
+const { callBack } = useCallback();
+console.log(paymentType, resId);
+callBack(paymentType, resId);
 
 const { siteName } = useGlobalVar();
 siteName("campaigns.page_title_payment_confirmation");
