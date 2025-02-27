@@ -11,7 +11,7 @@
           {{ $t("auth.reset_password") }}
         </h2>
 
-        <form action="">
+        <form @submit.prevent="submit">
           <!-- email input -->
           <div class="relative mt-4">
             <div
@@ -26,11 +26,18 @@
 
             <input
               type="email"
+              v-model="data.email"
               id="custom-input"
               :placeholder="$t('auth.email')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.email"
+            :key="n"
+            v-html="err"
+          />
 
           <!-- confirm email -->
           <v-btn
@@ -39,7 +46,8 @@
             variant="flat"
             size="large"
             color="primary"
-            @click="$router.push('/checkemail')"
+            :loading="data.loading"
+            :disabled="!data.email || data.loading"
             >{{ $t("auth.reset_password") }}</v-btn
           >
         </form>
@@ -56,9 +64,47 @@
 </template>
 
 <script setup>
+import { api } from "~/helpers/axios";
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+
+import { useResetPassword } from "../typescript/reset";
+
+const { sendCode } = useResetPassword();
+const router = useRouter();
+
+const apiErrors = ref({});
+const data = reactive({
+  email: "",
+  loading: false,
+});
+
+const email = useCookie("email");
+
+const submit = async () => {
+  try {
+    apiErrors.value = {};
+
+    data.loading = true;
+
+    await sendCode(data);
+
+    router.push("/checkemail");
+  } catch (err) {
+    console.error(err);
+
+    apiErrors.value = err.response.data.result.errors;
+  } finally {
+    data.loading = false;
+  }
+};
 
 const { siteName } = useGlobalVar();
 siteName("auth.page_title_reset_password");
 </script>
+
+<style scoped>
+.error {
+  @apply text-sm text-red-500 text-start;
+}
+</style>

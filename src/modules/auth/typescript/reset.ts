@@ -1,7 +1,10 @@
+import { api } from "~/helpers/axios";
+
 export const useResetPassword = () => {
   const show1 = ref<boolean>(false);
   const show2 = ref<boolean>(false);
   const timeLeft = ref<number>(60);
+  const email = useCookie("email");
 
   const formattedTime = computed<string>(() => {
     const minutes = Math.floor(timeLeft.value / 60);
@@ -30,7 +33,15 @@ export const useResetPassword = () => {
     }
   });
 
-  const resendCode = (): void => {
+  const sendCode = (payload: any) => {
+    email.value = payload.email;
+    return api.post("/forgot-password", payload);
+  };
+  const resetPassword = (payload: any) =>
+    api.post("/reset-password", { email: email.value, ...payload });
+
+  const resendCode = async () => {
+    await sendCode({ email: email.value });
     timeLeft.value = 60;
     startTimer();
   };
@@ -48,6 +59,8 @@ export const useResetPassword = () => {
     show2,
     showPassword,
     showConfPassword,
+    sendCode,
+    resetPassword,
     resendCode,
     timeLeft,
   };
