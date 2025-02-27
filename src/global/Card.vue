@@ -1,16 +1,21 @@
 <template>
-  <div :class="{ card: shadow }" class="p-2 cursor-pointer rounded-lg text-start w-100">
+  <div
+    :class="{ card: shadow }"
+    class="p-2 cursor-pointer rounded-lg text-start w-100"
+  >
     <div class="image">
       <slot name="image"></slot>
     </div>
 
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
+      <!-- 
       <img
         src="../assets/images/honor-company.svg "
         alt="ramadanchallenges image"
         loading="lazy"
       />
+       -->
       <p>
         <slot name="company"></slot>
       </p>
@@ -125,7 +130,9 @@
           {{ $t("global.remove_from_cart") }}</v-btn
         >
       </div>
-      <div v-if="user && user?.user_type === 'dooner' && cart_status == 'donated'">
+      <div
+        v-if="user && user?.user_type === 'dooner' && cart_status == 'donated'"
+      >
         {{ $t("global.already_donated") }}
       </div>
 

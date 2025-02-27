@@ -51,7 +51,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  {{ bannerData?.total_collected }}
+                  {{ animated.total_collected }}
                 </span>
                 <span>
                   <img
@@ -72,7 +72,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  {{ bannerData?.total_donors }}
+                  {{ animated.total_donors }}
                 </span>
                 <span>
                   <img
@@ -93,7 +93,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  {{ bannerData?.total_campaigns }}
+                  {{ animated.total_campaigns }}
                 </span>
                 <span>
                   <img
@@ -121,6 +121,46 @@ import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
 const { bannerData, banner_error } = useBannerData();
+
+const animated = reactive<any>({
+  total_campaigns: 0,
+  total_donors: 0,
+  total_collected: 0,
+});
+const transition = (
+  target: number,
+  key: string,
+  decimals = 0,
+  duration = 3000 // 3s
+) => {
+  const frames = duration / (1000 / 60);
+  const step = (target - animated[key]) / frames;
+
+  const animate = () => {
+    if (animated[key] < target) {
+      animated[key] += step;
+      if (animated[key] > target) animated[key] = target;
+
+      animated[key] = parseFloat(animated[key].toFixed(decimals));
+
+      requestAnimationFrame(animate);
+    }
+  };
+
+  animate();
+};
+
+watch(
+  bannerData,
+  () => {
+    if (bannerData.value) {
+      transition(bannerData.value?.total_donors, "total_donors");
+      transition(bannerData.value?.total_collected, "total_collected", 2);
+      transition(bannerData.value?.total_campaigns, "total_campaigns");
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped>
