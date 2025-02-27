@@ -50,9 +50,9 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">{{
-                  bannerData?.total_collected
-                }}</span>
+                <span class="amount text-2xl font-bold">
+                  {{ bannerData?.total_collected }}
+                </span>
                 <span>
                   <img
                     loading="lazy"
@@ -71,9 +71,9 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">{{
-                  bannerData?.total_donors
-                }}</span>
+                <span class="amount text-2xl font-bold">
+                  {{ bannerData?.total_donors }}
+                </span>
                 <span>
                   <img
                     loading="lazy"
@@ -92,10 +92,9 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">{{
-                  bannerData?.total_campaigns
-                }}</span>
-                ape
+                <span class="amount text-2xl font-bold">
+                  {{ bannerData?.total_campaigns }}
+                </span>
                 <span>
                   <img
                     loading="lazy"
@@ -121,7 +120,6 @@ import Container from "../../../global/Container.vue";
 import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
-
 const { bannerData, banner_error } = useBannerData();
 </script>
 
