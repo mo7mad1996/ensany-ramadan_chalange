@@ -146,7 +146,7 @@ export default defineNuxtConfig({
       },
     ],
 
-    defaultLocale: "ar",
+    defaultLocale: "en",
     vueI18n: "./src/helpers/i18n.config.ts",
     detectBrowserLanguage: {
       useCookie: true,
