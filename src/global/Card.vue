@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ card: shadow }"
-    class="p-2 cursor-pointer rounded-lg text-start w-100"
+    class="p-2 cursor-pointer rounded-lg text-start w-100 flex flex-col h-full"
   >
     <div class="image">
       <slot name="image"></slot>
@@ -30,6 +30,8 @@
     <p class="text-sm">
       <slot name="desc"></slot>
     </p>
+
+    <div class="flex-1"></div>
 
     <!-- subscribers -->
     <div class="subscribers mt-2">
