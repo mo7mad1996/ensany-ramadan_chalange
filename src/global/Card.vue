@@ -48,7 +48,6 @@
           <slot name="total_donation"></slot>
         </p>
       </div>
-
       <v-progress-linear
         v-observe-visibility="onEnterViewport"
         color="primary"
@@ -56,6 +55,7 @@
         class="rounded mt-2"
         :height="10"
       ></v-progress-linear>
+      %{{ targetRate.toFixed(2) }}
     </div>
 
     <!-- donation amount -->
