@@ -600,7 +600,7 @@
         <div class="image">
           <img
             loading="lazy"
-            src="~/assets/images/donate/donate.jpeg"
+            src="~/assets/images/donate/  .jpeg"
             class="w-full rounded-lg"
             alt="ramadanchallenges image"
           />
