@@ -51,9 +51,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_collected }}
-                  </ClientOnly>
+                  {{ bannerData?.total_collected }}
                 </span>
                 <span>
                   <img
@@ -74,9 +72,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_donors }}
-                  </ClientOnly>
+                  {{ bannerData?.total_donors }}
                 </span>
                 <span>
                   <img
@@ -97,9 +93,7 @@
             <div>
               <div class="d-flex ga-3 align-center">
                 <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_campaigns }}
-                  </ClientOnly>
+                  {{ bannerData?.total_campaigns }}
                 </span>
                 <span>
                   <img
@@ -134,40 +128,40 @@ const animated = reactive<any>({
   total_collected: 0,
 });
 
-const transition = (
-  target: number,
-  key: string,
-  decimals = 0,
-  duration = 1000
-) => {
-  const frames = duration / (1000 / 60);
-  const step = (target - animated[key]) / frames;
+// const transition = (
+//   target: number,
+//   key: string,
+//   decimals = 0,
+//   duration = 1000
+// ) => {
+//   const frames = duration / (1000 / 60);
+//   const step = (target - animated[key]) / frames;
 
-  const animate = () => {
-    if (animated[key] < target) {
-      animated[key] += step;
-      if (animated[key] > target) animated[key] = target;
+//   const animate = () => {
+//     if (animated[key] < target) {
+//       animated[key] += step;
+//       if (animated[key] > target) animated[key] = target;
 
-      animated[key] = Number(animated[key].toFixed(decimals));
+//       animated[key] = Number(animated[key].toFixed(decimals));
 
-      requestAnimationFrame(animate);
-    }
-  };
+//       requestAnimationFrame(animate);
+//     }
+//   };
 
-  animate();
-};
+//   animate();
+// };
 
-watch(
-  bannerData,
-  () => {
-    if (bannerData.value) {
-      transition(bannerData.value?.total_donors, "total_donors");
-      transition(bannerData.value?.total_collected, "total_collected", 2);
-      transition(bannerData.value?.total_campaigns, "total_campaigns");
-    }
-  },
-  { immediate: true }
-);
+// watch(
+//   bannerData,
+//   () => {
+//     if (bannerData.value) {
+//       transition(bannerData.value?.total_donors, "total_donors");
+//       transition(bannerData.value?.total_collected, "total_collected", 2);
+//       transition(bannerData.value?.total_campaigns, "total_campaigns");
+//     }
+//   },
+//   { immediate: true }
+// );
 </script>
 
 <style scoped>
