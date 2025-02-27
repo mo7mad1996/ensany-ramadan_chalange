@@ -1,6 +1,5 @@
 import { storeToRefs } from "pinia";
 import Swal from "sweetalert2";
-import { useRouter } from "vue-router";
 import { api } from "~/helpers/axios";
 import successIcon from "../../../assets/images/success-icon.gif";
 import { useCurrencyStore } from "../store/currancy";
@@ -13,13 +12,13 @@ export const useCallback = () => {
   const currencyStore = useCurrencyStore();
   const { isPaymentSuccess } = storeToRefs(currencyStore);
 
-  const callBack = async (razorpay_payment_link_id: any) => {
+  const callBack = async (type: any, response_id: any) => {
     try {
       error.value = "";
       isLoading.value = true;
-
+      const requetType = type == 'curlec' ? `razorpay_payment_link_id=${response_id}` : `paymentResponse=${response_id}`;
       const response = await api.post(
-        `/donations/callback?razorpay_payment_link_id=${razorpay_payment_link_id}`
+        `/donations/callback?${requetType}`
       );
 
       if (response.data.status) {

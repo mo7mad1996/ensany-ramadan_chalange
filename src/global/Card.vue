@@ -60,7 +60,7 @@
         class="rounded mt-2"
         :height="10"
       ></v-progress-linear>
-      %{{ targetRate.toFixed(2) }}
+      %{{ targetRate > 100 ? 100 : targetRate.toFixed(2) }}
     </div>
 
     <!-- donation amount -->
