@@ -50,10 +50,8 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_collected }}
-                  </ClientOnly>
+                <span class="amount text-2xl font-bold" v-if="status == 'success'">
+                  {{ animated?.total_collected }}
                 </span>
                 <span>
                   <img
@@ -73,10 +71,8 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_donors }}
-                  </ClientOnly>
+                <span class="amount text-2xl font-bold" v-if="status == 'success'">
+                  {{ animated?.total_donors }}
                 </span>
                 <span>
                   <img
@@ -96,10 +92,8 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  <ClientOnly>
-                    {{ animated.total_campaigns }}
-                  </ClientOnly>
+                <span class="amount text-2xl font-bold" v-if="status == 'success'">
+                  {{ animated?.total_campaigns }}
                 </span>
                 <span>
                   <img
@@ -126,7 +120,7 @@ import Container from "../../../global/Container.vue";
 import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
-const { bannerData, banner_error } = useBannerData();
+const { bannerData, status, banner_error } = useBannerData();
 
 const animated = reactive<any>({
   total_campaigns: 0,
@@ -134,21 +128,21 @@ const animated = reactive<any>({
   total_collected: 0,
 });
 
-const transition = (
-  target: number,
-  key: string,
-  decimals = 0,
-  duration = 1000
-) => {
+const transition = (target: number, key: string, decimals = 0, duration = 3000) => {
   const frames = duration / (1000 / 60);
   const step = (target - animated[key]) / frames;
+  const roundToDecimals = (num: any, decimals: any) => {
+    const factor = Math.pow(10, decimals);
+    return Math.round(num * factor) / factor;
+  };
 
   const animate = () => {
     if (animated[key] < target) {
       animated[key] += step;
       if (animated[key] > target) animated[key] = target;
 
-      animated[key] = Number(animated[key].toFixed(decimals));
+      // Round to the desired number of decimals
+      animated[key] = roundToDecimals(animated[key], decimals);
 
       requestAnimationFrame(animate);
     }
