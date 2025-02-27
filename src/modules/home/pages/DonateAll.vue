@@ -577,6 +577,40 @@
                   </tbody>
                 </v-table>
 
+                <div>
+                  <h3 class="py-4 text-bold">{{ $t("home.getaway") }}</h3>
+                  <Field
+                    as="div"
+                    name="getaway"
+                    id="getaway"
+                    class="flex gap-2 max-w-[450px] mx-auto"
+                  >
+                    <label
+                      v-for="g in getaways"
+                      :key="g.value"
+                      :for="g.value"
+                      class="item"
+                      :title="g.value"
+                    >
+                      <img
+                        :src="g.img"
+                        :alt="g.value"
+                        class="h-24 aspect-square"
+                      />
+
+                      <v-icon icon="mdi-check-circle-outline" />
+                      <input
+                        type="radio"
+                        name="getaway"
+                        v-model="donationData.getaway"
+                        :value="g.value"
+                        :id="g.value"
+                        class="hidden"
+                      />
+                    </label>
+                  </Field>
+                </div>
+
                 <!-- submit -->
                 <v-btn
                   class="text-capitalize rounded-lg block w-full my-4"
@@ -600,7 +634,7 @@
         <div class="image">
           <img
             loading="lazy"
-            src="~/assets/images/donate/  .jpeg"
+            src="~/assets/images/donate/donate.jpeg"
             class="w-full rounded-lg"
             alt="ramadanchallenges image"
           />
@@ -619,6 +653,15 @@ import { useCurrencyStore } from "~/modules/campaigns/store/currancy";
 import { storeToRefs } from "pinia";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAllCampaigns } from "../services/all-campaigns";
+
+// assets
+import img2c2p from "~/assets/images/donate/2c2p.png";
+import curlec from "~/assets/images/donate/curlec.png";
+
+const getaways = [
+  { img: img2c2p, value: "2c2p" },
+  { img: curlec, value: "curlec" },
+];
 
 const { siteName } = useGlobalVar();
 siteName("home.page_donate_all");
@@ -673,6 +716,7 @@ const donationData = reactive<any>({
   charity_amount: 0,
   currency_id: "",
   campaign_id: "",
+  getaway: "curlec",
 });
 
 const { t } = useI18n();
@@ -717,7 +761,7 @@ const onSubmit = () => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -732,5 +776,23 @@ const onSubmit = () => {
 [dir="rtl"] .v-table,
 [dir="rtl"] .v-container {
   direction: rtl;
+}
+
+.item {
+  @apply flex-1 grid place-content-center rounded-md cursor-pointer relative;
+
+  .v-icon {
+    @apply hidden absolute text-green-600  top-1/2 left-1/2 bg-white rounded-full;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+  }
+
+  &:has(input:checked) {
+    @apply border border-2 border-green-400;
+
+    .v-icon {
+      @apply flex;
+    }
+  }
 }
 </style>

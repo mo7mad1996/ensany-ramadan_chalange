@@ -405,6 +405,32 @@
             </Transition>
           </div>
 
+          <div>
+            <h3 class="py-4 text-bold">{{ $t("home.getaway") }}</h3>
+
+            <Field as="div" name="getaway" id="getaway" class="flex gap-2">
+              <label
+                v-for="g in getaways"
+                :key="g.value"
+                :for="g.value"
+                class="item"
+                :title="g.value"
+              >
+                <img :src="g.img" :alt="g.value" class="h-24 aspect-square" />
+                <v-icon icon="mdi-check-circle-outline" />
+
+                <input
+                  type="radio"
+                  name="getaway"
+                  v-model="donationData.getaway"
+                  :value="g.value"
+                  :id="g.value"
+                  class="hidden"
+                />
+              </label>
+            </Field>
+          </div>
+
           <!-- confirm donation -->
 
           <v-btn
@@ -466,9 +492,22 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import { storeToRefs } from "pinia";
+
+// @ts-ignore
 import { ErrorMessage, Field, Form } from "vee-validate";
 import Container from "~/global/Container.vue";
+
+// assets
+import img2c2p from "~/assets/images/donate/2c2p.png";
+import curlec from "~/assets/images/donate/curlec.png";
+
+const getaways = [
+  { img: img2c2p, value: "2c2p" },
+  { img: curlec, value: "curlec" },
+];
+
 import { useDonation } from "../services/donation";
 import { useCurrencyStore } from "../store/currancy";
 
@@ -496,6 +535,7 @@ const donationData = ref<any>({
   charity_amount: 0,
   currency_id: "",
   campaign_id: "",
+  getaway: "curlec",
 });
 
 const selectAmount = (item: number): void => {
@@ -532,7 +572,7 @@ const onSubmit = () => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -541,5 +581,23 @@ const onSubmit = () => {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+.item {
+  @apply flex-1 grid place-content-center rounded-md cursor-pointer relative;
+
+  .v-icon {
+    @apply hidden absolute text-green-600  top-1/2 left-1/2 bg-white rounded-full;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+  }
+
+  &:has(input:checked) {
+    @apply border border-2 border-green-400;
+
+    .v-icon {
+      @apply flex;
+    }
+  }
 }
 </style>
