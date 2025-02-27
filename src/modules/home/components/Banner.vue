@@ -95,6 +95,7 @@
                 <span class="amount text-2xl font-bold">{{
                   bannerData?.total_campaigns
                 }}</span>
+                ape
                 <span>
                   <img
                     loading="lazy"
