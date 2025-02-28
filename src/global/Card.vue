@@ -26,7 +26,7 @@
       <slot name="title"></slot>
     </h2>
 
-    <!-- chalenge desc -->
+    <!-- chalange desc -->
     <p class="text-sm">
       <slot name="desc"></slot>
     </p>
