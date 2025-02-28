@@ -86,12 +86,12 @@
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]">
-          {{ $t("campaigns.campaign_objective") }}:
-        </span>
-        <span class="text-primary">
-          {{ campaign?.price_target }} {{ $t("campaigns.usd") }}
-        </span>
+        <span class="text-[#12121299]"
+          >{{ $t("campaigns.campaign_objective") }}:</span
+        >
+        <span class="text-primary"
+          >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
+        >
       </div>
     </div>
 
@@ -100,7 +100,7 @@
       type="avatar, list-item-two-line"
     ></v-skeleton-loader>
 
-    <!-- campaign maker -->
+    <!-- campain maker -->
     <NuxtLink
       :to="{ name: 'affiliate-charity', params: { id: campaign.user.id } }"
       class="honor-compan d-flex ga-2 align-center mt-5"
@@ -138,7 +138,7 @@
         ></p>
       </v-tabs-window-item>
 
-      <!-- galary tap -->
+      <!-- glary tap -->
       <v-tabs-window-item value="two">
         <v-row v-if="campaign?.gallery.length">
           <v-col
@@ -172,7 +172,7 @@
               loading="lazy"
               src="../../../assets/images/no-data.jpg"
               width="150"
-              alt="ramadanchallenges image"
+              alt="ramadan challenges image"
             />
           </div>
 
@@ -195,7 +195,7 @@
                   loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
-                  alt="ramadanchallenges image"
+                  alt="ramadan challenges image"
                 />
               </div>
 
@@ -214,7 +214,7 @@
               loading="lazy"
               src="../../../assets/images/no-data.jpg"
               width="150"
-              alt="ramadanchallenges image"
+              alt="ramadan challenges image"
             />
           </div>
 
@@ -224,80 +224,38 @@
 
       <!-- donors tap -->
       <v-tabs-window-item value="four">
-        <!--  -->
-        <v-row v-if="campaign.total_donors > 0">
-          <v-col cols="12" class="flex gap-1">
-            {{ $t("campaigns.total_donors") }}:
-            <div class="bg-yellow-200 text-red-600 px-2 py-1 rounded shadow">
-              {{ campaign.total_donors }}
-            </div>
-            .
-          </v-col>
-
-          <v-col class="d-flex child-flex" cols="4">
+        <v-row v-if="campaign.all_donors.data.length">
+          <v-col
+            v-for="(donor, index) in donors"
+            :key="index"
+            class="d-flex child-flex"
+            cols="4"
+          >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
-              <h3 class="bg-white p-1 rounded-md mb-4">
-                {{ $t("campaigns.first_donor") }}
-              </h3>
-
               <div class="image flex justify-center">
                 <img
                   loading="lazy"
                   src="../../../assets/images/user.svg"
-                  alt="ramadanchallenges image"
+                  alt="ramadan challenges image"
                 />
               </div>
 
-              <h6>{{ campaign.top_doners?.first?.name }}</h6>
+              <h6>{{ donor?.name }}</h6>
 
-              <span class="font-bold text-primary"
-                >{{ campaign.top_doners?.first?.total_amount }}
-                {{ campaign.currency.name }}</span
-              >
+              <span class="font-bold text-primary">
+                {{ donor?.total_amount }} {{ campaign?.currency.name }}
+              </span>
             </div>
           </v-col>
-          <v-col class="d-flex child-flex" cols="4">
-            <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
-              <h3 class="bg-white p-1 rounded-md mb-4">
-                {{ $t("campaigns.top_donor") }}
-              </h3>
 
-              <div class="image flex justify-center">
-                <img
-                  loading="lazy"
-                  src="../../../assets/images/user.svg"
-                  alt="ramadanchallenges image"
-                />
-              </div>
-
-              <h6>{{ campaign.top_doners?.top?.name }}</h6>
-
-              <span class="font-bold text-primary"
-                >{{ campaign.top_doners?.top?.total_amount }}
-                {{ campaign.currency.name }}</span
-              >
-            </div>
-          </v-col>
-          <v-col class="d-flex child-flex" cols="4">
-            <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
-              <h3 class="bg-white p-1 rounded-md mb-4">
-                {{ $t("campaigns.middle_donor") }}
-              </h3>
-
-              <div class="image flex justify-center">
-                <img
-                  loading="lazy"
-                  src="../../../assets/images/user.svg"
-                  alt="ramadanchallenges image"
-                />
-              </div>
-
-              <h6>{{ campaign.top_doners?.middle?.name }}</h6>
-
-              <span class="font-bold text-primary"
-                >{{ campaign.top_doners?.middle?.total_amount }}
-                {{ campaign.currency.name }}</span
-              >
+          <v-col cols="12">
+            <div class="pagination items-center justify-center pb-sm">
+              <v-pagination
+                v-model="currentPage"
+                :length="donorsMeta.last_page"
+                @imput="fetchDonors"
+                :total-visible="5"
+              ></v-pagination>
             </div>
           </v-col>
         </v-row>
@@ -308,7 +266,7 @@
               loading="lazy"
               src="../../../assets/images/no-data.jpg"
               width="150"
-              alt="ramadanchallenges image"
+              alt="ramadan challenges image"
             />
           </div>
 
@@ -351,6 +309,22 @@ const {
 
 onMounted(() => {
   onEnterViewport(true);
+});
+
+import { reFormat } from "~/helpers/format-date";
+import { useDonors } from "../services/donors";
+const route = useRoute();
+
+const { donors, status, currentPage, donorsMeta, refresh } = useDonors(
+  route.params.id
+);
+
+const fetchDonors = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchDonors();
 });
 </script>
 
