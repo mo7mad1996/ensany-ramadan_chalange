@@ -42,7 +42,9 @@ function updateCurrency(newValue) {
     localStorage.setItem("selectedCurrency", newValue);
     const storedCurrencies = localStorage.getItem("currenciesData")
       ? JSON.parse(localStorage.getItem("currenciesData"))
-      : [];
+      : currenciesData.value;
+
+    // console.log(storedCurrencies, newValue);
 
     if (storedCurrencies && storedCurrencies?.length > 0) {
       const selectedCurrencyData = storedCurrencies.find(
@@ -61,13 +63,21 @@ onMounted(() => {
   const storedCurrencies = localStorage.getItem("currenciesData");
   const storedCurrency = localStorage.getItem("selectedCurrency");
 
-  if (storedCurrencies) {
+  if (storedCurrencies !== null) {
     currenciesData.value = JSON.parse(storedCurrencies);
+
+    const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+    selectedCurrency.value = defaultObj ? defaultObj.id : "";
+    updateCurrency(defaultObj.id);
   } else {
     refresh()
       .then(() => {
         if (currenciesData.value && currenciesData.value.length > 0) {
           localStorage.setItem("currenciesData", JSON.stringify(g.value));
+          // set the default currency after load from api do not delete this lines
+          const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+          selectedCurrency.value = defaultObj ? defaultObj.id : "";
+          updateCurrency(defaultObj.id);
         }
       })
       .catch((error) => {
@@ -80,10 +90,9 @@ onMounted(() => {
       clearInterval(checkCurrencies);
 
       if (!storedCurrency) {
-        const defaultObj = currenciesData.value.find(
-          (i) => i.is_default === "yes"
-        );
+        const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
         selectedCurrency.value = defaultObj ? defaultObj.id : "";
+
         updateCurrency(selectedCurrency.value);
       } else {
         updateCurrency(storedCurrency);
@@ -96,6 +105,6 @@ onMounted(() => {
         selectedCurrencyLabel.value = selectedCurrencyData.currency_symbol;
       }
     }
-  }, 100);
+  }, 1000);
 });
 </script>
