@@ -77,20 +77,21 @@
               fill-rule="evenodd"
               d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
               clip-rule="evenodd"
-            /></svg
-        ></span>
+            />
+          </svg>
+        </span>
         <span class="text-primary">
           {{ $t("campaigns.completed") }}
         </span>
       </div>
 
       <div class="collected flex items-cener gap-1">
-        <span class="text-[#12121299]"
-          >{{ $t("campaigns.campaign_objective") }}:</span
-        >
-        <span class="text-primary"
-          >{{ campaign?.price_target }} {{ $t("campaigns.usd") }}</span
-        >
+        <span class="text-[#12121299]">
+          {{ $t("campaigns.campaign_objective") }}:
+        </span>
+        <span class="text-primary">
+          {{ campaign?.price_target }} {{ $t("campaigns.usd") }}
+        </span>
       </div>
     </div>
 
@@ -99,7 +100,7 @@
       type="avatar, list-item-two-line"
     ></v-skeleton-loader>
 
-    <!-- campain maker -->
+    <!-- campaign maker -->
     <NuxtLink
       :to="{ name: 'affiliate-charity', params: { id: campaign.user.id } }"
       class="honor-compan d-flex ga-2 align-center mt-5"
@@ -221,11 +222,16 @@
         </div>
       </v-tabs-window-item>
 
-      <!-- doners tap -->
+      <!-- donors tap -->
       <v-tabs-window-item value="four">
-        <v-row v-if="campaign.latest.length">
+        <!--  -->
+        <v-row v-if="campaign.total_donors > 0">
           <v-col
-            v-for="(donor, index) in campaign.latest"
+            v-for="(donor, index) in [
+              campaign.top_doners.top,
+              campaign.top_doners.middle,
+              campaign.top_doners.first,
+            ]"
             :key="index"
             class="d-flex child-flex"
             cols="4"
@@ -242,7 +248,7 @@
               <h6>{{ donor?.name }}</h6>
 
               <span class="font-bold text-primary"
-                >${{ donor?.total_amount }}</span
+                >{{ donor?.total_amount }} {{ campaign.currency.name }}</span
               >
             </div>
           </v-col>
