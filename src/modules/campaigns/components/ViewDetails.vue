@@ -226,17 +226,20 @@
       <v-tabs-window-item value="four">
         <!--  -->
         <v-row v-if="campaign.total_donors > 0">
-          <v-col
-            v-for="(donor, index) in [
-              campaign.top_doners.top,
-              campaign.top_doners.middle,
-              campaign.top_doners.first,
-            ]"
-            :key="index"
-            class="d-flex child-flex"
-            cols="4"
-          >
+          <v-col cols="12" class="flex gap-1">
+            {{ $t("campaigns.total_donors") }}:
+            <div class="bg-yellow-200 text-red-600 px-2 py-1 rounded shadow">
+              {{ campaign.total_donors }}
+            </div>
+            .
+          </v-col>
+
+          <v-col class="d-flex child-flex" cols="4">
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
+              <h3 class="bg-white p-1 rounded-md mb-4">
+                {{ $t("campaigns.first_donor") }}
+              </h3>
+
               <div class="image flex justify-center">
                 <img
                   loading="lazy"
@@ -245,10 +248,55 @@
                 />
               </div>
 
-              <h6>{{ donor?.name }}</h6>
+              <h6>{{ campaign.top_doners?.first?.name }}</h6>
 
               <span class="font-bold text-primary"
-                >{{ donor?.total_amount }} {{ campaign.currency.name }}</span
+                >{{ campaign.top_doners?.first?.total_amount }}
+                {{ campaign.currency.name }}</span
+              >
+            </div>
+          </v-col>
+          <v-col class="d-flex child-flex" cols="4">
+            <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
+              <h3 class="bg-white p-1 rounded-md mb-4">
+                {{ $t("campaigns.top_donor") }}
+              </h3>
+
+              <div class="image flex justify-center">
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/user.svg"
+                  alt="ramadanchallenges image"
+                />
+              </div>
+
+              <h6>{{ campaign.top_doners?.top?.name }}</h6>
+
+              <span class="font-bold text-primary"
+                >{{ campaign.top_doners?.top?.total_amount }}
+                {{ campaign.currency.name }}</span
+              >
+            </div>
+          </v-col>
+          <v-col class="d-flex child-flex" cols="4">
+            <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
+              <h3 class="bg-white p-1 rounded-md mb-4">
+                {{ $t("campaigns.middle_donor") }}
+              </h3>
+
+              <div class="image flex justify-center">
+                <img
+                  loading="lazy"
+                  src="../../../assets/images/user.svg"
+                  alt="ramadanchallenges image"
+                />
+              </div>
+
+              <h6>{{ campaign.top_doners?.middle?.name }}</h6>
+
+              <span class="font-bold text-primary"
+                >{{ campaign.top_doners?.middle?.total_amount }}
+                {{ campaign.currency.name }}</span
               >
             </div>
           </v-col>

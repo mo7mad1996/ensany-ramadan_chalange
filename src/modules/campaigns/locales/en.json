@@ -48,5 +48,9 @@
   "gift_by": "Gifted by",
   "gift_message": "A gift as a contribution to the campaign",
   "page_title_payment_confirmation": "Payment Confirmation",
-  "page_title_campaigns": "Campaigns"
+  "page_title_campaigns": "Campaigns",
+  "total_donors": "Total Donors",
+  "top_donor": "Top Donor",
+  "middle_donor": "Latest Donor",
+  "first_donor": "First Donor"
 }

@@ -54,5 +54,10 @@
   "gift_by": "اهداء من",
   "gift_message": "هدية كإسهام فى حملة",
   "page_title_payment_confirmation": "تأكيد الدفع",
-  "page_title_campaigns": "الحملات"
+  "page_title_campaigns": "الحملات",
+
+  "total_donors": "إجمالي المتبرعين",
+  "top_donor": "افضل متبرع",
+  "middle_donor": "اخر متبرع",
+  "first_donor": "اول متبرع"
 }
