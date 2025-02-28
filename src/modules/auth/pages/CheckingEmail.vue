@@ -49,6 +49,7 @@
               :type="show1 ? 'text' : 'password'"
               id="custom-input"
               :placeholder="$t('auth.password')"
+              v-model="data.password"
               class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               required
             />
