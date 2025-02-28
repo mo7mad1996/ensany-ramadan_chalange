@@ -66,18 +66,18 @@ onMounted(() => {
   if (storedCurrencies !== null) {
     currenciesData.value = JSON.parse(storedCurrencies);
 
-    const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
-    selectedCurrency.value = defaultObj ? defaultObj.id : "";
-    updateCurrency(defaultObj.id);
+    // const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+    // selectedCurrency.value = defaultObj ? defaultObj.id : "";
+    // updateCurrency(defaultObj.id);
   } else {
     refresh()
       .then(() => {
         if (currenciesData.value && currenciesData.value.length > 0) {
           localStorage.setItem("currenciesData", JSON.stringify(g.value));
           // set the default currency after load from api do not delete this lines
-          const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
-          selectedCurrency.value = defaultObj ? defaultObj.id : "";
-          updateCurrency(defaultObj.id);
+          // const defaultObj = currenciesData.value.find((i) => i.is_default === "yes");
+          // selectedCurrency.value = defaultObj ? defaultObj.id : "";
+          // updateCurrency(defaultObj.id);
         }
       })
       .catch((error) => {
