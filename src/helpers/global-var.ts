@@ -5,16 +5,16 @@ export const useGlobalVar = () => {
 
   const { locale, t } = useI18n();
 
-  function siteName(title: string, static_title: string = "") {
+  function siteName(title: string | null, static_title: string = "") {
     useSeoMeta({
       titleTemplate: (current_title) =>
         current_title ? `%s | ${t("home.site_name")} ` : t("home.site_name"),
-      title: static_title ? static_title : t(title || ""),
+      title: static_title ? static_title : title && t(title),
     });
 
     watch(locale, () => {
       useSeoMeta({
-        title: static_title ? static_title : t(title || ""),
+        title: static_title ? static_title : title && t(title),
       });
     });
   }

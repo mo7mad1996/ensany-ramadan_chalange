@@ -40,8 +40,8 @@ watchEffect(() => {
     console.log("Campaign not found, redirecting...");
     navigateTo(`/campaigns`);
   }
-  siteName(viewCampaign.value?.name);
+  siteName(null, viewCampaign.value?.name);
 });
 
-siteName(viewCampaign.value?.name);
+siteName(null, viewCampaign.value?.name);
 </script>

@@ -44,6 +44,7 @@ import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
+const { siteName } = useGlobalVar();
 const route = useRoute();
 const { viewCampaign, status, target, amount, similarCampaigns } =
   useViewCampaign(route.params.id);
@@ -52,8 +53,6 @@ watchEffect(() => {
   if (status.value == "error") {
     navigateTo(`/campaigns`);
   }
+  siteName(null, viewCampaign.value?.name);
 });
-
-const { siteName } = useGlobalVar();
-siteName(viewCampaign.value?.name);
 </script>

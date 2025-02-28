@@ -104,7 +104,7 @@ watch(currentPage, (newPage) => {
   fetchcharityCampaigns();
 });
 
-siteName(charityName.value);
+siteName(null, charityName.value);
 
 // only simulation for test skeleton loader
 setTimeout(() => {

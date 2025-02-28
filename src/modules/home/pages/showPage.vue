@@ -31,7 +31,7 @@ const route = useRoute();
 const { page, status } = useShowPage(route.params.id);
 
 const { siteName } = useGlobalVar();
-siteName(page.value?.title);
+siteName(null, page.value?.title);
 
 useSeoMeta({
   description: page.value.content,

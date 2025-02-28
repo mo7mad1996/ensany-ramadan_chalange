@@ -116,7 +116,7 @@ onMounted(() => {
 });
 
 const { siteName } = useGlobalVar();
-siteName(viewGift.value.donation?.love_name );
+siteName(null ,viewGift.value.donation?.love_name );
 
 useSeoMeta({
   description: viewGift.value.donation?.love_comment,

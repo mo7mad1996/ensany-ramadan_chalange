@@ -78,7 +78,7 @@ const route = useRoute();
 const { siteName } = useGlobalVar();
 const { singleStory, status } = useSingleStory(route.params.id);
 
-siteName(singleStory.value.title);
+siteName(null, singleStory.value.title);
 
 useSeoMeta({
       title: singleStory.value.title,

@@ -96,5 +96,5 @@ const route = useRoute();
 const { video, status } = useShowVideo(route.params.id);
 
 const { siteName } = useGlobalVar();
-siteName(video.value.title);
+siteName(null, video.value.title);
 </script>

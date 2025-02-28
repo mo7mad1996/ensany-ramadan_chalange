@@ -96,7 +96,7 @@ const { ramadan_ar, ramadan_en } = useGlobalVar();
 const { singleBlog, status } = useSingleBlog(route.params.id);
 
 const { siteName } = useGlobalVar();
-siteName(singleBlog.value.title );
+siteName(null, singleBlog.value.title );
 
 
 </script>
