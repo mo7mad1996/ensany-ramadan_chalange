@@ -406,11 +406,11 @@
           </div>
 
           <div>
-            <h3 class="py-4 text-bold">{{ $t("home.getaway") }}</h3>
+            <h3 class="py-4 text-bold">{{ $t("home.gateway") }}</h3>
 
-            <Field as="div" name="getaway" id="getaway" class="flex gap-2">
+            <Field as="div" name="gateway" id="gateway" class="flex gap-2">
               <label
-                v-for="g in getaways"
+                v-for="g in gateways"
                 :key="g.value"
                 :for="g.value"
                 class="item"
@@ -421,8 +421,8 @@
 
                 <input
                   type="radio"
-                  name="getaway"
-                  v-model="donationData.getaway"
+                  name="gateway"
+                  v-model="donationData.gateway"
                   :value="g.value"
                   :id="g.value"
                   class="hidden"
@@ -503,7 +503,7 @@ import Container from "~/global/Container.vue";
 import img2c2p from "~/assets/images/donate/2c2p.png";
 import curlec from "~/assets/images/donate/curlec.png";
 
-const getaways = [
+const gateways = [
   { img: img2c2p, value: "2c2p" },
   { img: curlec, value: "curlec" },
 ];
@@ -535,7 +535,7 @@ const donationData = ref<any>({
   charity_amount: 0,
   currency_id: "",
   campaign_id: "",
-  getaway: "curlec",
+  gateway: "curlec",
 });
 
 const selectAmount = (item: number): void => {
