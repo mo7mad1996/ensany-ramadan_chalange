@@ -337,10 +337,7 @@
           </div>
 
           <!-- Top donor -->
-          <div
-            class="pt-3"
-            v-if="campaign?.top_doners?.first?.total_amount > 0"
-          >
+          <div class="pt-3" v-if="campaign?.top_doners?.top?.total_amount > 0">
             <div
               v-if="campaign?.top_doners"
               class="doner mb-5 flex justify-between gap-x-md items-center"
@@ -353,7 +350,7 @@
                 />
                 <div>
                   <h4 class="text-2xl font-bold">
-                    {{ campaign?.top_doners?.first?.name }}
+                    {{ campaign?.top_doners?.top?.name }}
                   </h4>
                   <p class="text-sm text-[#121212] pt-1">
                     {{ $t("campaigns.highest_donor") }}
@@ -363,10 +360,10 @@
 
               <div class="donation-amount text-center">
                 <h4 class="text-2xl font-bold text-primary">
-                  ${{ campaign?.top_doners?.first?.total_amount }}
+                  ${{ campaign?.top_doners?.top?.total_amount }}
                 </h4>
                 <span class="text-sm text-[#12121299] pt-2">
-                  {{ reFormat2(campaign?.top_doners?.first?.donated_at) }}
+                  {{ reFormat2(campaign?.top_doners?.top?.donated_at) }}
                 </span>
               </div>
             </div>
