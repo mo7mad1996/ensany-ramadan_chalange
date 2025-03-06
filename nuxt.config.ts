@@ -7,9 +7,27 @@ export default defineNuxtConfig({
     minify: true,
 
   },
+ 
   webpack: {
     extractCSS: true,
     optimization: {
+      checkWasmTypes: false,
+      chunkIds: 'ramadan',
+      emitOnErrors: true,
+      concatenateModules: true,
+      avoidEntryIife: true,
+      flagIncludedChunks: true,
+      innerGraph: false,
+      mangleExports: true,
+      mangleWasmImports: true,
+      mergeDuplicateChunks: false,
+      minimize: false,
+      moduleIds: 'deterministic',
+      nodeEnv: 'production',
+      portableRecords: true,
+      providedExports: false,
+      realContentHash: false,
+      usedExports: false,
       splitChunks: {
         cacheGroups: {
           styles: {
@@ -20,7 +38,8 @@ export default defineNuxtConfig({
           }
         }
       }
-    }
+    },
+    
   },
   devtools: { enabled: false },
   // main directory
@@ -73,7 +92,7 @@ export default defineNuxtConfig({
 
   // custom components prefixes for auto importing
   components: [
-    '@nuxtjs/web-vitals',
+    
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
@@ -88,7 +107,7 @@ export default defineNuxtConfig({
   ],
 
   // main style & tailwid config
-  css: ["./src/assets/main.css", "./src/modules/home/style/banner.css"],
+  css: ["./src/assets/main.min.css", "./src/modules/home/style/banner.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -108,7 +127,7 @@ export default defineNuxtConfig({
     build: {
 
       chunkSizeWarningLimit: 1000,
-      sourcemap: false,
+      sourcemap: true,
 
       rollupOptions: {
         output: {
