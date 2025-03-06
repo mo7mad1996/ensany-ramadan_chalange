@@ -62,7 +62,10 @@
       </VideoCard>
     </div>
 
-    <div v-if="videos.length > 0" class="pagination items-center justify-center pb-sm">
+    <div
+      v-if="videos.length > 0"
+      class="pagination items-center justify-center pb-sm"
+    >
       <v-pagination
         v-if="status == 'success' && videos.length > 0"
         v-model="currentPage"
@@ -71,11 +74,13 @@
         :total-visible="5"
       ></v-pagination>
     </div>
-    <NoData :data="fetchVideos" :status="status" />
+    <NoData :data="videos" :status="status" />
   </Container>
 </template>
 
 <script setup>
+import NoData from "~/global/NoData.vue";
+
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";

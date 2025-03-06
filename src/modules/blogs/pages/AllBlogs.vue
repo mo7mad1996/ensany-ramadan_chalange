@@ -53,7 +53,7 @@
         :total-visible="5"
       ></v-pagination>
     </div>
-    <NoData :data="fetchBlogs" :status="status" />
+    <NoData :data="blogs" :status="status" />
   </Container>
 </template>
 

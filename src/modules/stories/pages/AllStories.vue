@@ -52,11 +52,13 @@
         :total-visible="5"
       />
     </div>
-    <NoData :data="fetchStories" :status="status" />
+    <NoData :data="stories" :status="status" />
   </Container>
 </template>
 
 <script setup>
+import NoData from "~/global/NoData.vue";
+
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";

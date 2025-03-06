@@ -478,7 +478,10 @@ import { useAuth } from "~/modules/auth/services/auth";
 import { useCartCounter } from "~/modules/donor/services/cart-counter";
 import { usePages } from "~/modules/home/services/pages";
 import Container from "./Container.vue";
+
+// @ts-ignore
 import selectCurruncy from "./select-curruncy.vue";
+// @ts-ignore
 import SwitchLang from "./SwitchLang.vue";
 
 const { locale } = useI18n();
