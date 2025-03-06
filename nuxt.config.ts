@@ -127,7 +127,7 @@ export default defineNuxtConfig({
     build: {
 
       chunkSizeWarningLimit: 1000,
-      sourcemap: true,
+      sourcemap: false,
 
       rollupOptions: {
         output: {
