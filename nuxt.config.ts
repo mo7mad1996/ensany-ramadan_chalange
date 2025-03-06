@@ -107,7 +107,7 @@ export default defineNuxtConfig({
   ],
 
   // main style & tailwid config
-  css: ["./src/assets/main.css", "./src/modules/home/style/banner.css"],
+  css: ["./src/assets/main.min.css", "./src/modules/home/style/banner.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
