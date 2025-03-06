@@ -4,8 +4,23 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: false,
     minify: true,
-  },
 
+  },
+  webpack: {
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    }
+  },
   devtools: { enabled: false },
   // main directory
   srcDir: "src/",
@@ -81,6 +96,7 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ["vuetify"],
+
   },
 
   vite: {
@@ -88,6 +104,7 @@ export default defineNuxtConfig({
       include: ["vuetify"],
     },
     build: {
+
       chunkSizeWarningLimit: 1000,
       sourcemap: false,
 
