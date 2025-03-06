@@ -28,7 +28,7 @@
     >
       <!-- @click="openDialog" -->
       <v-btn
-        class="text-capitalize custom-border-radius"
+        class="text-capitalize custom-border-radius py-2 h-auto"
         stacked
         size="x-small"
         color="primary"
