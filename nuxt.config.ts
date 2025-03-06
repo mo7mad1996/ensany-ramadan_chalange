@@ -1,6 +1,7 @@
 import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   compatibilityDate: "2025-01-13",
+
   nitro: {
     compressPublicAssets: false,
     minify: true,
@@ -72,6 +73,7 @@ export default defineNuxtConfig({
 
   // custom components prefixes for auto importing
   components: [
+    '@nuxtjs/web-vitals',
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
