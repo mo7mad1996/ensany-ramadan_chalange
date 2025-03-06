@@ -1,17 +1,22 @@
 <template>
   <ClientOnly>
     <HomeBanner />
-    <HomeRamadanChalange />
-    <HomeContriputing />
-    <HomeChallengeHeros />
-    <HomeTable />
-    <HomeCampaigns />
-    <HomeParteners />
-    <!-- <HomeFamouses /> -->
-    <HomeSuccessStories />
-    <HomeLatestBlogs />
-    <HomeLastSection />
   </ClientOnly>
+  <ClientOnly>
+    <HomeRamadanChalange />
+  </ClientOnly>
+  <HomeContriputing />
+  <HomeChallengeHeros />
+  <ClientOnly>
+    <HomeTable />
+  </ClientOnly>
+
+  <HomeCampaigns />
+  <HomeParteners />
+  <!-- <HomeFamouses /> -->
+  <HomeSuccessStories />
+  <HomeLatestBlogs />
+  <HomeLastSection />
 </template>
 
 <script setup>

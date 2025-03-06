@@ -1,5 +1,15 @@
 <template>
-  <section aria-label="banner section" class="banner bg-cover relative">
+  <v-skeleton-loader
+    type="image,avatar"
+    class="h-400"
+    v-if="status == 'pending'"
+  ></v-skeleton-loader>
+
+  <section
+    aria-label="banner section"
+    class="banner bg-cover relative"
+    v-if="status == 'success'"
+  >
     <Container class="h-100 relative text-white grid items-center">
       <div class="content pt-xd">
         <!-- large text -->
@@ -120,7 +130,7 @@ import Container from "../../../global/Container.vue";
 import { useBannerData } from "../services/banner";
 import { useBanner } from "../typescript/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();
-const { bannerData, banner_error } = useBannerData();
+const { bannerData, banner_error, status } = useBannerData();
 
 const animated = reactive<any>({
   total_campaigns: 0,
@@ -136,12 +146,7 @@ const fixed = computed(() => {
   };
 });
 
-const transition = (
-  target: number,
-  key: string,
-  decimals = 0,
-  duration = 3000
-) => {
+const transition = (target: number, key: string, decimals = 0, duration = 3000) => {
   const frames = duration / (1000 / 60);
   const step = (target - animated[key]) / frames;
 

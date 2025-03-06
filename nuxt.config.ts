@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     extractCSS: true,
     optimization: {
       checkWasmTypes: false,
-      chunkIds: 'ramadan',
+      chunkIds: 'named',
       emitOnErrors: true,
       concatenateModules: true,
       avoidEntryIife: true,
