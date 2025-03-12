@@ -5,14 +5,13 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: false,
     minify: true,
-
   },
- 
+
   webpack: {
     extractCSS: true,
     optimization: {
       checkWasmTypes: false,
-      chunkIds: 'named',
+      chunkIds: "named",
       emitOnErrors: true,
       concatenateModules: true,
       avoidEntryIife: true,
@@ -22,8 +21,8 @@ export default defineNuxtConfig({
       mangleWasmImports: true,
       mergeDuplicateChunks: false,
       minimize: false,
-      moduleIds: 'deterministic',
-      nodeEnv: 'production',
+      moduleIds: "deterministic",
+      nodeEnv: "production",
       portableRecords: true,
       providedExports: false,
       realContentHash: false,
@@ -31,15 +30,14 @@ export default defineNuxtConfig({
       splitChunks: {
         cacheGroups: {
           styles: {
-            name: 'styles',
+            name: "styles",
             test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
+            chunks: "all",
+            enforce: true,
+          },
+        },
+      },
     },
-    
   },
   devtools: { enabled: false },
   // main directory
@@ -58,19 +56,19 @@ export default defineNuxtConfig({
 
       script: [
         {
-          type: 'text/javascript',
+          type: "text/javascript",
           innerHTML: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-PWKGS9VZ');
-          `
+          `,
         },
       ],
 
       link: [
-        { rel: "icon", type: "image/ico", href: "/favicon.ico" },
+        { rel: "icon", type: "image/ico", href: "/_nuxt/assets/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -87,12 +85,10 @@ export default defineNuxtConfig({
         },
       ],
     },
-
   },
 
   // custom components prefixes for auto importing
   components: [
-    
     "~/components",
     { path: "~/modules/home/components", prefix: "Home" },
     { path: "~/modules/about/components", prefix: "About" },
@@ -117,7 +113,6 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ["vuetify"],
-
   },
 
   vite: {
@@ -125,7 +120,6 @@ export default defineNuxtConfig({
       include: ["vuetify"],
     },
     build: {
-
       chunkSizeWarningLimit: 1000,
       sourcemap: false,
 
@@ -151,7 +145,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-
     "nuxt-lazytube",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
