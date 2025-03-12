@@ -1,6 +1,6 @@
 <template>
   <v-skeleton-loader
-    type="image,avatar"
+    type="image"
     class="h-400"
     v-if="status == 'pending'"
   ></v-skeleton-loader>

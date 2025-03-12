@@ -2,20 +2,16 @@
   <ClientOnly>
     <HomeBanner />
   </ClientOnly>
-  <ClientOnly>
-    <HomeRamadanChalange />
-  </ClientOnly>
+  <HomeRamadanChalange />
   <HomeContriputing />
   <HomeChallengeHeros />
-  <ClientOnly>
-    <HomeTable />
-  </ClientOnly>
-
+  <HomeTable />
   <HomeCampaigns />
   <HomeParteners />
   <!-- <HomeFamouses /> -->
   <HomeSuccessStories />
   <HomeLatestBlogs />
+
   <HomeLastSection />
 </template>
 
