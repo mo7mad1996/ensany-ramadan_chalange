@@ -4,9 +4,9 @@
     <div class="user_name flex gap-x-3 items-center">
       <nuxt-img
         loading="lazy"
-        :src="user?.photo || '~/assets/images/dashboard/avatar.svg'"
-        width="30"
-        height="30"
+        :src="user?.photo || '/dashboard/avatar.svg'"
+        width="30px"
+        height="30px"
         fit="cover"
         class="rounded-full"
         alt="ramadanchallenges image"
@@ -22,9 +22,9 @@
           to="/dashboard/charity"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/dashboard/dashboard.svg"
+            src="/dashboard/dashboard.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -37,9 +37,9 @@
           to="/dashboard/charity/campaigns"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/dashboard/campaigns.svg"
+            src="/dashboard/campaigns.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -52,9 +52,9 @@
           to="/dashboard/charity/donations"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/dashboard/donation.svg"
+            src="/dashboard/donation.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -68,8 +68,8 @@
           to="/dashboard/charity/notification"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy" 
-            src="../assets/images/dashboard/notification.svg"
+          <nuxt-img loading="lazy" 
+            src="/dashboard/notification.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -83,9 +83,9 @@
           to="/dashboard/charity/settings"
           class="flex items-center gap-x-2 p-2"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/dashboard/settings.svg"
+            src="/dashboard/settings.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -95,9 +95,9 @@
 
       <li class="cursor-pointer">
         <nuxt-link to="" class="flex items-center gap-x-2 p-2">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/dashboard/logout.svg"
+            src="/dashboard/logout.svg"
             width="15px"
             alt="ramadanchallenges image"
           />

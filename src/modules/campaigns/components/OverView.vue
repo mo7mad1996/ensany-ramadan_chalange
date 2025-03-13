@@ -26,7 +26,7 @@
           :cart_id="campaignData?.cart_id || ''"
         >
           <template #image>
-            <img
+            <nuxt-img
               loading="lazy"
               @click="$router.push(`/campaigns/${campaignData.id}`)"
               :src="campaignData?.image"

@@ -13,12 +13,16 @@
         $t("global.campaigns")
       }}</nuxt-link>
 
-      <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
+      <nuxt-link to="/blogs" class="text-black">{{
+        $t("global.blogs")
+      }}</nuxt-link>
 
-      <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
+      <nuxt-link to="/about" class="text-black">{{
+        $t("global.about_us")
+      }}</nuxt-link>
 
       <!-- <nuxt-link to="/" class="d-flex ga-2 text-black">
-        <img loading="lazy" src="../assets/images/search.svg" width="15" alt="ramadanchallenges image" />
+        <nuxt-img loading="lazy" src="/search.svg" width="15" alt="ramadanchallenges image" />
         <span>{{ $t("global.search") }}</span>
       </nuxt-link> -->
 
@@ -104,9 +108,9 @@
       <div class="d-flex justify-space-between align-center w-100">
         <!-- logo -->
         <div class="logo cursor-pointer" @click="navigateTo('/')">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/logo.svg"
+            src="/logo.svg"
             width="136"
             height="48"
             alt="ramadanchallenges image"
@@ -124,9 +128,9 @@
               class="text-black d-flex align-center gap-1"
             >
               <div class="relative">
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../assets/images/donor/Icon.png"
+                  src="/donor/Icon.png"
                   width="20"
                   alt="Cart"
                 />
@@ -143,9 +147,9 @@
             <selectCurruncy />
           </ClientOnly>
 
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/menue.svg"
+            src="/menue.svg"
             class="cursor-pointer"
             width="30"
             alt="ramadanchallenges image"
@@ -159,7 +163,9 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center lg-text-sm"
         >
           <li>
-            <nuxt-link to="/" class="text-black">{{ $t("global.home") }}</nuxt-link>
+            <nuxt-link to="/" class="text-black">{{
+              $t("global.home")
+            }}</nuxt-link>
           </li>
 
           <li>
@@ -169,7 +175,9 @@
           </li>
 
           <li>
-            <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
+            <nuxt-link to="/blogs" class="text-black">{{
+              $t("global.blogs")
+            }}</nuxt-link>
           </li>
 
           <li>
@@ -235,7 +243,7 @@
 
           <!-- <li>
             <nuxt-link to="/" class="d-flex ga-2">
-              <img loading="lazy" src="../assets/images/search.svg" width="15" alt="ramadanchallenges image" />
+              <nuxt-img loading="lazy" src="/search.svg" width="15" alt="ramadanchallenges image" />
               <span>{{ $t("global.search") }}...</span>
             </nuxt-link>
           </li> -->
@@ -243,16 +251,18 @@
 
         <!-- contact & signin-btn & lang -->
 
-        <div class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-2 align-center">
+        <div
+          class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-2 align-center"
+        >
           <template v-if="user">
             <div class="relative">
               <div
                 @click="openDrop"
                 class="flex gap-2 items-center rounded-md hover:bg-[#407b410f] cursor-pointer p-2"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  :src="user?.photo || '../assets/images/user.svg'"
+                  :src="user?.photo || '/user.svg'"
                   width="30"
                   class="rounded-full aspect-square objectgit -cover"
                   alt="ramadanchallenges image"
@@ -267,9 +277,9 @@
               >
                 <ul class="list-none">
                   <li class="flex gap-2 items-center mb-1 cursor-pointer">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="../assets/images/dashboard/dashboard.svg"
+                      src="/dashboard/dashboard.svg"
                       width="15"
                       alt="ramadanchallenges image"
                     />
@@ -312,9 +322,9 @@
                 class="text-black d-flex align-center gap-1"
               >
                 <div class="relative">
-                  <img
+                  <nuxt-img
                     loading="lazy"
-                    src="../assets/images/donor/Icon.png"
+                    src="/donor/Icon.png"
                     width="20"
                     alt="Cart"
                   />
@@ -355,9 +365,9 @@
                       @click="navigateTo('/signup')"
                     >
                       <div class="flex gap-x-2 items-center">
-                        <img
+                        <nuxt-img
                           loading="lazy"
-                          src="../assets/images/doner.svg"
+                          src="/doner.svg"
                           width="15"
                           alt="ramadanchallenges image"
                         />
@@ -371,9 +381,9 @@
                       @click="navigateTo('/signup-charity')"
                     >
                       <div class="flex gap-x-2 items-center">
-                        <img
+                        <nuxt-img
                           loading="lazy"
-                          src="../assets/images/charity.svg"
+                          src="/charity.svg"
                           width="15"
                           alt="ramadanchallenges image"
                         />
@@ -413,9 +423,9 @@
                     @click="navigateTo('/signup')"
                   >
                     <div class="flex gap-x-2 items-center">
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../assets/images/doner.svg"
+                        src="/doner.svg"
                         width="15"
                         alt="ramadanchallenges image"
                       />
@@ -429,9 +439,9 @@
                     @click="navigateTo('/signup-charity')"
                   >
                     <div class="flex gap-x-2 items-center">
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../assets/images/charity.svg"
+                        src="/charity.svg"
                         width="15"
                         alt="ramadanchallenges image"
                       />

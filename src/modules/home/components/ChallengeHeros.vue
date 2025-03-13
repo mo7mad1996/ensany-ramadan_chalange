@@ -15,9 +15,9 @@
           class="card card-one p-[1rem] bg-customwhite rounded-md border-[1px] border-gray-100 border-solid"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="~/assets/images/number1.svg"
+              src="/number1.svg"
               alt="ramadan challenges image"
             />
 
@@ -43,9 +43,9 @@
           class="card p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100 h-fit"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="~/assets/images/number2.svg"
+              src="/number2.svg"
               alt="ramadan challenges image"
             />
 
@@ -71,9 +71,9 @@
           class="card card-three p-[1rem] bg-customwhite rounded-md border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="~/assets/images/number3.svg"
+              src="/number3.svg"
               alt="ramadanchallenges image"
             />
 

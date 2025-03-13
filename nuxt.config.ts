@@ -45,9 +45,9 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: false },
   // main directory
+  // static: "./public",
   srcDir: "src/",
   ssr: true,
-
   // favicon & fonts
   app: {
     baseURL: "/",
@@ -77,7 +77,7 @@ export default defineNuxtConfig({
         },
       ],
       link: [
-        { rel: "icon", type: "image/ico", href: "/_nuxt/assets/favicon.ico" },
+        { rel: "icon", type: "image/ico", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -110,7 +110,7 @@ export default defineNuxtConfig({
     { path: "~/modules/donor/components", prefix: "Donor" },
     { path: "~/modules/videos/components", prefix: "Video" },
   ],
-
+  sourcemap: { server: false, client: false },
   // main style & tailwind config
   css: [
     "@mdi/font/css/materialdesignicons.css", // Import Material Design Icons
@@ -182,6 +182,11 @@ export default defineNuxtConfig({
 
   image: {
     quality: 80,
+    dir: "assets/images",
+    domains: [
+      // baseURL for API images
+      "be.ramadanchallenges.com",
+    ],
   },
 
   // localization

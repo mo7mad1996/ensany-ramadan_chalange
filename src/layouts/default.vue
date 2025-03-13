@@ -1,50 +1,44 @@
 <template>
   <v-layout>
-    <ClientOnly>
-      <Header />
-    </ClientOnly>
+    <Header />
 
     <v-main class="flex flex-col min-h-screen">
-      <ClientOnly>
-        <NuxtPage />
-        <AppFooter />
-      </ClientOnly>
+      <NuxtPage />
+      <AppFooter />
     </v-main>
 
     <!-- Global donation button -->
-    <ClientOnly>
-      <nuxt-link
-        class="donate_button fixed top-1/2 left-0 flex justify-center"
-        v-if="$route.name !== 'donate-all'"
-        :to="{ name: 'donate-all' }"
+    <nuxt-link
+      class="donate_button fixed top-1/2 left-0 flex justify-center"
+      v-if="$route.name !== 'donate-all'"
+      :to="{ name: 'donate-all' }"
+    >
+      <v-btn
+        class="text-capitalize custom-border-radius py-2 h-auto"
+        stacked
+        size="x-small"
+        color="primary"
       >
         <!-- @click="openDialog" -->
-        <v-btn
-          class="text-capitalize custom-border-radius py-2 h-auto"
-          stacked
-          size="x-small"
-          color="primary"
-        >
-          <img
-            loading="lazy"
-            src="../assets/images/statistics1.svg"
-            width="15"
-            class="mb-2"
-            alt="ramadanchallenges image"
-          />
-          <!-- <p>{{ $t("global.donation") }}</p> -->
-          <p>{{ $t("global.donation-all-btn") }}</p>
-        </v-btn>
-      </nuxt-link>
+        <nuxt-img
+          loading="lazy"
+          src="/statistics1.svg"
+          width="15"
+          class="mb-2"
+          alt="ramadan challenges image"
+        />
+        <!-- <p>{{ $t("global.donation") }}</p> -->
+        <p>{{ $t("global.donation-all-btn") }}</p>
+      </v-btn>
+    </nuxt-link>
 
-      <!-- donation dialog -->
-      <dialog class="dialog m-auto rounded-[10px]" ref="donate">
-        <div class="close-icon p-3 w-full flex justify-end">
-          <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
-        </div>
-        <CampaignsDonationForm />
-      </dialog>
-    </ClientOnly>
+    <!-- donation dialog -->
+    <dialog class="dialog m-auto rounded-[10px]" ref="donate">
+      <div class="close-icon p-3 w-full flex justify-end">
+        <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
+      </div>
+      <CampaignsDonationForm />
+    </dialog>
   </v-layout>
 </template>
 

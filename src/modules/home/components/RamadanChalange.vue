@@ -100,6 +100,8 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import { stripHtmlTags } from "~/helpers/string";
 import Card from "../../../global/Card.vue";
 import Container from "../../../global/Container.vue";

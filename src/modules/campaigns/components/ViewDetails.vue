@@ -1,7 +1,7 @@
 <template>
   <section aria-label="view details section" class="view_details">
     <div class="image relative rounded-lg">
-      <img
+      <nuxt-img
         loading="lazy"
         :src="campaign?.image"
         class="w-full h-[370px] object-cover rounded-lg"
@@ -106,9 +106,9 @@
       class="honor-compan d-flex ga-2 align-center mt-5"
       v-if="status == 'success'"
     >
-      <img
+      <nuxt-img
         loading="lazy"
-        src="../../../assets/images/honor-company.svg"
+        src="/honor-company.svg"
         width="35"
         alt="ramadanchallenges image"
       />
@@ -168,9 +168,9 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/no-data.jpg"
+              src="/no-data.jpg"
               width="150"
               alt="ramadan challenges image"
             />
@@ -191,7 +191,7 @@
           >
             <div class="card p-2 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center max-h-[10rem]">
-                <img
+                <nuxt-img
                   loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
@@ -210,9 +210,9 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/no-data.jpg"
+              src="/no-data.jpg"
               width="150"
               alt="ramadan challenges image"
             />
@@ -233,9 +233,9 @@
           >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center">
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="/user.svg"
                   alt="ramadan challenges image"
                 />
               </div>
@@ -262,9 +262,9 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/no-data.jpg"
+              src="/no-data.jpg"
               width="150"
               alt="ramadan challenges image"
             />
@@ -280,7 +280,7 @@
 </template>
 
 <script setup>
-import img from "../../../assets/images/chalenge-img.png";
+import img from "~/assets/images/chalenge-img.png";
 import { useCampaign } from "../typescript/view-campaign";
 const props = defineProps({
   campaign: {

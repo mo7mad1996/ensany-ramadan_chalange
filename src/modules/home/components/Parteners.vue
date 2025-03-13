@@ -27,7 +27,7 @@
         <Slide v-for="(item, index) in Parteners" :key="index">
           <a :href="item.url || '#'" target="_blank" rel="noopener noreferrer">
             <div class="image overflow-hidden relative">
-              <img
+              <nuxt-img
                 loading="lazy"
                 :src="item.image"
                 :class="{
@@ -58,6 +58,8 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { useParteners } from "../services/parteners";

@@ -57,9 +57,9 @@
                     {{ fixed.total_collected }}
                   </span>
                   <span>
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/statistics1.svg"
+                      src="/statistics1.svg"
                       alt="ramadanchallenges image"
                     />
                   </span>
@@ -78,9 +78,9 @@
                     {{ fixed.total_donors }}
                   </span>
                   <span>
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/doners.svg"
+                      src="/doners.svg"
                       alt="ramadanchallenges image"
                     />
                   </span>
@@ -99,9 +99,9 @@
                     {{ fixed.total_campaigns }}
                   </span>
                   <span>
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/campaigns.svg"
+                      src="/campaigns.svg"
                       alt="ramadanchallenges image"
                     />
                   </span>

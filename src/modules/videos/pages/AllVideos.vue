@@ -26,7 +26,7 @@
       >
         <template #image>
           <div class="relative w-full max-h-[15rem]">
-            <img
+            <nuxt-img
               loading="lazy"
               :src="video?.thumbnail"
               class="w-full max-h-[15rem] object-cover rounded-lg"

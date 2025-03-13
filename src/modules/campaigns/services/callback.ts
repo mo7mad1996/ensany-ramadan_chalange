@@ -1,10 +1,12 @@
 import { storeToRefs } from "pinia";
-import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
+// import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
-import successIcon from "../../../assets/images/success-icon.gif";
+import successIcon from "~/assets/images/success-icon.gif";
 import { useCurrencyStore } from "../store/currancy";
 
 export const useCallback = () => {
+  const { $toast } = useNuxtApp();
+
   const error = ref<string | null>(null);
   const isLoading = ref(false);
   // const router = useRouter();
@@ -32,29 +34,34 @@ export const useCallback = () => {
         if (response.data.result.payment_status == "paid") {
           isPaymentSuccess.value = true;
           currencyStore.setPaymentStatus(isPaymentSuccess.value);
-          Swal.fire({
-            title: t("campaigns.success_msg"),
-            imageUrl: successIcon,
-            imageWidth: 200,
-            imageHeight: 200,
-            confirmButtonText: t("campaigns.ok"),
-            confirmButtonColor: "#3E7E41",
-            customClass: {
-              confirmButton: "my-custom-btn",
-            },
 
-            draggable: true,
-          });
+          $toast.success(t("campaigns.success_msg"));
+
+          // Swal.fire({
+          //   title: t("campaigns.success_msg"),
+          //   imageUrl: successIcon,
+          //   imageWidth: 200,
+          //   imageHeight: 200,
+          //   confirmButtonText: t("campaigns.ok"),
+          //   confirmButtonColor: "#3E7E41",
+          //   customClass: {
+          //     confirmButton: "my-custom-btn",
+          //   },
+
+          //   draggable: true,
+          // });
         } else {
-          Swal.fire({
-            icon: "error",
-            title: t("campaigns.faild_msg"),
-            confirmButtonText: t("campaigns.ok"),
-            confirmButtonColor: "#3E7E41",
-            customClass: {
-              confirmButton: "my-custom-btn",
-            },
-          });
+          $toast.error(t("campaigns.faild_msg"));
+
+          // Swal.fire({
+          //   icon: "error",
+          //   title: t("campaigns.faild_msg"),
+          //   confirmButtonText: t("campaigns.ok"),
+          //   confirmButtonColor: "#3E7E41",
+          //   customClass: {
+          //     confirmButton: "my-custom-btn",
+          //   },
+          // });
         }
         //
       }
@@ -79,28 +86,32 @@ export const useCallback = () => {
       if (res.data.result.payment_status == "paid") {
         isPaymentSuccess.value = true;
         currencyStore.setPaymentStatus(isPaymentSuccess.value);
-        Swal.fire({
-          title: t("campaigns.success_msg"),
-          imageUrl: successIcon,
-          imageWidth: 200,
-          imageHeight: 200,
-          confirmButtonText: t("campaigns.ok"),
-          confirmButtonColor: "#3E7E41",
-          customClass: {
-            confirmButton: "my-custom-btn",
-          },
-          draggable: true,
-        });
+        $toast.success(t("campaigns.success_msg"));
+
+        // Swal.fire({
+        //   title: t("campaigns.success_msg"),
+        //   imageUrl: successIcon,
+        //   imageWidth: 200,
+        //   imageHeight: 200,
+        //   confirmButtonText: t("campaigns.ok"),
+        //   confirmButtonColor: "#3E7E41",
+        //   customClass: {
+        //     confirmButton: "my-custom-btn",
+        //   },
+        //   draggable: true,
+        // });
       } else {
-        Swal.fire({
-          icon: "error",
-          title: t("campaigns.faild_msg"),
-          confirmButtonText: t("campaigns.ok"),
-          confirmButtonColor: "#3E7E41",
-          customClass: {
-            confirmButton: "my-custom-btn",
-          },
-        });
+        $toast.error(t("campaigns.faild_msg"));
+
+        // Swal.fire({
+        //   icon: "error",
+        //   title: t("campaigns.faild_msg"),
+        //   confirmButtonText: t("campaigns.ok"),
+        //   confirmButtonColor: "#3E7E41",
+        //   customClass: {
+        //     confirmButton: "my-custom-btn",
+        //   },
+        // });
       }
     } catch (err: any) {
       console.error(err);

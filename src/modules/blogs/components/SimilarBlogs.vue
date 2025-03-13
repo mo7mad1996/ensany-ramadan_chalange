@@ -36,7 +36,7 @@
             @click="$router.push(`/blogs/${blog.id}`)"
           >
             <template #image>
-              <img
+              <nuxt-img
                 loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -64,6 +64,8 @@
 </template>
 
 <script setup>
+import "vue3-carousel/dist/carousel.css";
+
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();

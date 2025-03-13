@@ -16,9 +16,9 @@
               <tr>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/dashboard/donate.svg"
+                      src="/dashboard/donate.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -28,9 +28,9 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/donation_amount.svg"
+                      src="/donation_amount.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -40,9 +40,9 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/campaign.svg"
+                      src="/campaign.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -52,9 +52,9 @@
                 </th>
                 <th>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/time.svg"
+                      src="/time.svg"
                       width="15"
                       class="filter"
                       alt="time"
@@ -68,9 +68,9 @@
               <tr v-for="(donor, index) in topTen" :key="index">
                 <td>
                   <div class="flex gap-x-2 items-center">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/user.svg"
+                      src="/user.svg"
                       width="25"
                       alt="user"
                     />

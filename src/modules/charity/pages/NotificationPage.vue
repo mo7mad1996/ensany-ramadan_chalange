@@ -28,9 +28,9 @@
         class="card donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#FFF8E1]"
       >
         <div class="image">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/doner.svg"
+            src="/doner.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -60,9 +60,9 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/dashboard/campaigns.svg"
+            src="/dashboard/campaigns.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -91,9 +91,9 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start border-2 border-red-700 bg-[#F1E2E2]"
       >
         <div class="image">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/dashboard/warning.svg"
+            src="/dashboard/warning.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -124,9 +124,9 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/dashboard/campaigns.svg"
+            src="/dashboard/campaigns.svg"
             alt="ramadanchallenges image"
           />
         </div>

@@ -1,15 +1,11 @@
 <template>
   <span
-    class="d-flex align-center ga-3 cursor-pointer"
+    class="d-flex align-center gap-3 cursor-pointer"
     @click="setLocale(locale == 'ar' ? 'en' : 'ar')"
   >
     <span>{{ locale == "ar" ? "English" : "عربى" }}</span>
-    <img
-      loading="lazy"
-      src="../assets/images/lang.svg"
-      width="15"
-      alt="ramadanchallenges image"
-    />
+
+    <nuxt-img loading="lazy" src="/lang.svg" alt="ramadan challenges image" />
   </span>
 </template>
 

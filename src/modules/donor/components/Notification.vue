@@ -12,9 +12,9 @@
       <div class="flex justify-between items-center">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/dashboard/campaigns.svg"
+              src="/dashboard/campaigns.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op1_title") }}</span>
@@ -31,9 +31,9 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/dashboard/donation.svg"
+              src="/dashboard/donation.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op2_title") }}</span>
@@ -50,9 +50,9 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/dashboard/notification.svg"
+              src="/dashboard/notification.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op3_title") }}</span>
@@ -69,9 +69,9 @@
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/dashboard/warning.svg"
+              src="/dashboard/warning.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op4_title") }}</span>

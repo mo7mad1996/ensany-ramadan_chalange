@@ -32,7 +32,11 @@
           <div
             class="image flex lg:justify-end xl:justify-end md:justify-center justify-center"
           >
-            <img loading="lazy" src="../../../assets/images/about/steps.png" alt="ramadanchallenges image" />
+            <nuxt-img
+              loading="lazy"
+              src="/about/steps.png"
+              alt="ramadanchallenges image"
+            />
           </div>
         </div>
 
@@ -43,7 +47,11 @@
           <div
             class="image flex lg:justify-start xl:justify-start md:justify-center justify-center"
           >
-            <img loading="lazy" src="../../../assets/images/about/steps.png" alt="ramadanchallenges image" />
+            <nuxt-img
+              loading="lazy"
+              src="/about/steps.png"
+              alt="ramadanchallenges image"
+            />
           </div>
 
           <div class="text flex flex-col justify-between ms-sm">
@@ -92,7 +100,11 @@
           <div
             class="image flex lg:justify-end xl:justify-end md:justify-center justify-center"
           >
-            <img loading="lazy" src="../../../assets/images/about/steps.png" alt="ramadanchallenges image" />
+            <nuxt-img
+              loading="lazy"
+              src="/about/steps.png"
+              alt="ramadanchallenges image"
+            />
           </div>
         </div>
       </div>

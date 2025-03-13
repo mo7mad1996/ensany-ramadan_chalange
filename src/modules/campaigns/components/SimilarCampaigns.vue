@@ -15,7 +15,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in similarCampaigns" :key="campaign?.id">
+        <Slide
+          v-for="(campaign, index) in similarCampaigns"
+          :key="campaign?.id"
+        >
           <!-- Use unique `campaign.id` as the key -->
           <Card
             :id="campaign?.id"
@@ -29,7 +32,7 @@
             :cart_id="campaign?.cart_id || ''"
           >
             <template #image>
-              <img
+              <nuxt-img
                 loading="lazy"
                 @click="navigateTo(`/campaigns/${campaign?.id}`)"
                 :src="campaign?.image"
@@ -43,7 +46,9 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span>
             </template>
 
             <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -63,6 +68,8 @@
 </template>
 
 <script setup>
+import "vue3-carousel/dist/carousel.css";
+
 import { stripHtmlTags } from "~/helpers/string";
 import Card from "../../../global/Card.vue";
 import Container from "../../../global/Container.vue";

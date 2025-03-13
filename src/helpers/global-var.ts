@@ -17,6 +17,8 @@ export const useGlobalVar = () => {
         title: static_title ? static_title : title && t(title),
       });
     });
+
+    definePageMeta({ lazy: true });
   }
 
   return {

@@ -4,9 +4,9 @@
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
         <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/campaign/dolar.svg"
+              src="/campaign/dolar.svg"
               width="22"
               alt="ramadanchallenges image"
             />
@@ -45,9 +45,9 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/custom-amount.svg"
+                  src="/campaign/custom-amount.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -144,9 +144,9 @@
           <!-- personal info -->
           <div class="personal-info pt-5">
             <div class="flex gap-x-2 items-center">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/personal-info.svg"
+                src="/campaign/personal-info.svg"
                 width="22"
                 alt="ramadanchallenges image"
               />
@@ -161,9 +161,9 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img
+                  <nuxt-img
                     loading="lazy"
-                    src="../../../assets/images/contact/name.svg"
+                    src="/contact/name.svg"
                     alt="ramadanchallenges image"
                   />
                 </div>
@@ -203,9 +203,9 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img
+                  <nuxt-img
                     loading="lazy"
-                    src="../../../assets/images/contact/email.svg"
+                    src="/contact/email.svg"
                     alt="ramadanchallenges image"
                   />
                 </div>
@@ -230,9 +230,9 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img
+                  <nuxt-img
                     loading="lazy"
-                    src="../../../assets/images/contact/phone.svg"
+                    src="/contact/phone.svg"
                     alt="ramadanchallenges image"
                   />
                 </div>
@@ -274,9 +274,9 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/contact/name.svg"
+                        src="/contact/name.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -304,9 +304,9 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/contact/email.svg"
+                        src="/contact/email.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -334,9 +334,9 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/contact/phone.svg"
+                        src="~/assets/images/contact/phone.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -361,9 +361,9 @@
                 <!-- comments -->
                 <div class="comments pt-5">
                   <div class="flex gap-x-2">
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="../../../assets/images/campaign/comment.svg"
+                      src="~/assets/images/campaign/comment.svg"
                       width="22"
                       alt="ramadanchallenges image"
                     />
@@ -377,9 +377,9 @@
                     <div
                       class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/campaign/edit.svg"
+                        src="~/assets/images/campaign/edit.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -416,7 +416,11 @@
                 class="item"
                 :title="g.value"
               >
-                <img :src="g.img" :alt="g.value" class="h-24 aspect-square" />
+                <nuxt-img
+                  :src="g.img"
+                  :alt="g.value"
+                  class="h-24 aspect-square"
+                />
                 <v-icon icon="mdi-check-circle-outline" />
 
                 <input
@@ -454,9 +458,9 @@
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/campaign/icon2.svg"
+              src="~/assets/images/campaign/icon2.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
@@ -465,9 +469,9 @@
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/campaign/icon3.svg"
+              src="~/assets/images/campaign/icon3.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
@@ -476,9 +480,9 @@
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/campaign/icon1.svg"
+              src="~/assets/images/campaign/icon1.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
@@ -499,13 +503,9 @@ import { storeToRefs } from "pinia";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import Container from "~/global/Container.vue";
 
-// assets
-import img2c2p from "~/assets/images/donate/2c2p.png";
-import curlec from "~/assets/images/donate/curlec.png";
-
 const gateways = [
-  { img: img2c2p, value: "2c2p" },
-  { img: curlec, value: "curlec" },
+  { img: "/donate/2c2p.png", value: "2c2p" },
+  { img: "/donate/curlec.png", value: "curlec" },
 ];
 
 import { useDonation } from "../services/donation";

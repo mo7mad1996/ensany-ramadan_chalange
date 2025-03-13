@@ -66,9 +66,9 @@
                     <div
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/campaign/edit.svg"
+                        src="campaign/edit.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -88,9 +88,9 @@
                     <div
                       class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/campaign/edit.svg"
+                        src="/campaign/edit.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -114,9 +114,9 @@
                   <div
                     class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                   >
-                    <img
+                    <nuxt-img
                       loading="lazy"
-                      src="../../../assets/images/contact/name.svg"
+                      src=""
                       alt="ramadanchallenges image"
                     />
                   </div>
@@ -150,9 +150,9 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/contact/email.svg"
+                        src="/contact/email.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -184,9 +184,9 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/contact/phone.svg"
+                        src="/contact/phone.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -263,7 +263,7 @@
                     <ErrorMessage name="image" />
                   </div>
 
-                  <div><img loading="lazy" :src="preview" /></div>
+                  <div><nuxt-img loading="lazy" :src="preview" /></div>
                 </div>
               </div>
 
@@ -338,8 +338,8 @@
             <div class="flex justify-between items-center">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img loading="lazy" 
-                    src="../../../assets/images/dashboard/campaigns.svg"
+                  <nuxt-img loading="lazy" 
+                    src="/dashboard/campaigns.svg"
                     alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op1_title") }}</span>
@@ -360,8 +360,8 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img loading="lazy" 
-                    src="../../../assets/images/dashboard/donation.svg"
+                  <nuxt-img loading="lazy" 
+                    src="/dashboard/donation.svg"
                     alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op2_title") }}</span>
@@ -382,8 +382,8 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img loading="lazy" 
-                    src="../../../assets/images/dashboard/notification.svg"
+                  <nuxt-img loading="lazy" 
+                    src="/dashboard/notification.svg"
                     alt="ramadanchallenges image"
                   />
                   <span class="text-xl">{{ $t("dashboard.op3_title") }}</span>
@@ -404,11 +404,11 @@
             <div class="flex justify-between items-center mt-4">
               <div>
                 <div class="flex items-center gap-x-3">
-                  <img loading="lazy" 
-                    src="../../../assets/images/dashboard/warning.svg"
+                  <nuxt-img loading="lazy" 
+                    src="/dashboard/warning.svg"
                     alt="ramadanchallenges image"
                   />
-                  <span class="text-xl">{{ $t("dashboard.op4_title") }}</span>
+                  <span cxt-xl">{{ $t("dashboard.op4_title") }}</span>
                 </div>
 
                 <p class="text-sm text-[#4a4a4a] pt-2">

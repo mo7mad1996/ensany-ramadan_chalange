@@ -16,7 +16,7 @@
           <!-- <template v-slot:item.name="{ item }">
             <div class="flex items-center space-x-2">
               <v-avatar size="40">
-                <img loading="lazy" 
+                <nuxt-img loading="lazy" 
                   :src="item.image"
                   alt="Donation Image"
                   class="rounded-lg"

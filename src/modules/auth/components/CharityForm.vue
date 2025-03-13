@@ -1,9 +1,9 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="flex items-center gap-x-2 mb-5">
-      <img
+      <nuxt-img
         loading="lazy"
-        src="../../../assets/images/charity.svg"
+        src="/charity.svg"
         width="30"
         alt="ramadanchallenges image"
       />
@@ -61,9 +61,9 @@
             <div
               class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
             >
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/edit.svg"
+                src="/campaign/edit.svg"
                 alt="ramadanchallenges image"
               />
             </div>
@@ -91,9 +91,9 @@
             <div
               class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
             >
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/edit.svg"
+                src="/campaign/edit.svg"
                 alt="ramadanchallenges image"
               />
             </div>
@@ -124,9 +124,9 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/contact/email.svg"
+              src="/contact/email.svg"
               alt="ramadanchallenges image"
             />
           </div>
