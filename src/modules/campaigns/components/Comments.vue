@@ -15,10 +15,10 @@
       </div>
     </div>
 
-    <!-- commment input (write a comment) -->
+    <!-- comment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
       <!-- <div class="flex gap-x-3 items-center">
-        <img loading="lazy" src="../../../assets/images/user.svg" alt="ramadanchallenges image" />
+        <img loading="lazy" src="~/assets/images/user.svg" alt="ramadanchallenges image" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
 
@@ -68,7 +68,7 @@
             <div class="flex gap-x-3 items-start">
               <img
                 loading="lazy"
-                src="../../../assets/images/user.svg"
+                src="~/assets/images/user.svg"
                 alt="ramadanchallenges image"
               />
               <div>
@@ -96,9 +96,9 @@
         >
           <img
             loading="lazy"
-            src="../../../assets/images/no-data.jpg"
+            src="~/assets/images/no-data.jpg"
             width="150"
-            alt="ramadanchallenges image"
+            alt="ramadan challenges image"
           />
         </div>
 

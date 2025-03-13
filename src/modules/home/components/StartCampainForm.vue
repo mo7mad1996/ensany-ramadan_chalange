@@ -496,7 +496,7 @@
 <script setup>
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";

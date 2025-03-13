@@ -18,7 +18,7 @@
                   <div class="flex gap-x-2 items-center">
                     <img
                       loading="lazy"
-                      src="../../../assets/images/dashboard/donate.svg"
+                      src="~/assets/images/dashboard/donate.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -30,7 +30,7 @@
                   <div class="flex gap-x-2 items-center">
                     <img
                       loading="lazy"
-                      src="../../../assets/images/donation_amount.svg"
+                      src="~/assets/images/donation_amount.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -42,7 +42,7 @@
                   <div class="flex gap-x-2 items-center">
                     <img
                       loading="lazy"
-                      src="../../../assets/images/campaign.svg"
+                      src="~/assets/images/campaign.svg"
                       width="15"
                       class="filter"
                       alt="ramadanchallenges image"
@@ -54,10 +54,10 @@
                   <div class="flex gap-x-2 items-center">
                     <img
                       loading="lazy"
-                      src="../../../assets/images/time.svg"
+                      src="~/assets/images/time.svg"
                       width="15"
                       class="filter"
-                      alt=" "
+                      alt="time"
                     />
                     <span>{{ $t("home.donation_time") }}</span>
                   </div>
@@ -70,9 +70,9 @@
                   <div class="flex gap-x-2 items-center">
                     <img
                       loading="lazy"
-                      src="../../../assets/images/user.svg"
+                      src="~/assets/images/user.svg"
                       width="25"
-                      alt=" "
+                      alt="user"
                     />
                     <span v-if="donor?.user_name">{{ donor?.user_name }}</span>
                     <span v-if="donor?.user">{{ donor?.user?.name }}</span>

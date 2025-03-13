@@ -1,5 +1,5 @@
 import { storeToRefs } from "pinia";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
 import successIcon from "../../../assets/images/success-icon.gif";
 import { useCurrencyStore } from "../store/currancy";
@@ -16,10 +16,11 @@ export const useCallback = () => {
     try {
       error.value = "";
       isLoading.value = true;
-      const requetType = type == 'curlec' ? `razorpay_payment_link_id=${response_id}` : `paymentResponse=${response_id}`;
-      const response = await api.post(
-        `/donations/callback?${requetType}`
-      );
+      const requetType =
+        type == "curlec"
+          ? `razorpay_payment_link_id=${response_id}`
+          : `paymentResponse=${response_id}`;
+      const response = await api.post(`/donations/callback?${requetType}`);
 
       if (response.data.status) {
         var url =

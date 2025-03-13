@@ -577,7 +577,7 @@
 </template>
 
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";

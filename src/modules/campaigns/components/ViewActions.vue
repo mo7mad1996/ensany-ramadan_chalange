@@ -80,7 +80,7 @@
         <div class="title flex gap-x-3 items-center">
           <img
             loading="lazy"
-            src="../../../assets/images/increment.svg"
+            src="~/assets/images/increment.svg"
             width="20"
             alt="ramadanchallenges image"
           />
@@ -109,7 +109,7 @@
               <div class="flex gap-x-3 items-center">
                 <img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="~/assets/images/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -135,7 +135,7 @@
             <div class="image flex justify-center">
               <img
                 loading="lazy"
-                src="../../../assets/images/no-data.jpg"
+                src="~/assets/images/no-data.jpg"
                 width="150"
                 alt="ramadanchallenges image"
               />
@@ -188,7 +188,7 @@
                     <div class="flex gap-x-3 items-center">
                       <img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="~/assets/images/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -224,7 +224,7 @@
                     <div class="flex gap-x-3 items-center">
                       <img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="~/assets/images/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -261,7 +261,7 @@
                     <div class="flex gap-x-3 items-center">
                       <img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="~/assets/images/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -308,7 +308,7 @@
                       <div class="flex gap-x-3 items-center">
                         <img
                           loading="lazy"
-                          src="../../../assets/images/user.svg"
+                          src="~/assets/images/user.svg"
                           alt="ramadanchallenges image"
                         />
                         <div>
@@ -345,7 +345,7 @@
               <div class="flex gap-x-3 items-center">
                 <img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="~/assets/images/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -381,7 +381,7 @@
               <div class="flex gap-x-3 items-center">
                 <img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="~/assets/images/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -416,7 +416,7 @@
                 <div class="flex gap-x-3 items-center">
                   <img
                     loading="lazy"
-                    src="../../../assets/images/user.svg"
+                    src="~/assets/images/user.svg"
                     alt="ramadanchallenges image"
                   />
                   <div>

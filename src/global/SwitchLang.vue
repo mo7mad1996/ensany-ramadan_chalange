@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink
+  <span
     class="d-flex align-center ga-3 cursor-pointer"
     @click="setLocale(locale == 'ar' ? 'en' : 'ar')"
   >
@@ -10,7 +10,7 @@
       width="15"
       alt="ramadanchallenges image"
     />
-  </NuxtLink>
+  </span>
 </template>
 
 <script setup lang="ts">

@@ -118,7 +118,7 @@
 </template>
 
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
 import { reFormat2 } from "~/helpers/format-date";
 import { useGlobalVar } from "~/helpers/global-var";

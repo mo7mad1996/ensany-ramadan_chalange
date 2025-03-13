@@ -232,7 +232,7 @@
 </template>
 
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "~/modules/auth/services/auth";

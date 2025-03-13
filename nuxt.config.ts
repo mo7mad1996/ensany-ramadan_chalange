@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-01-13",
 
   nitro: {
-    compressPublicAssets: false,
+    compressPublicAssets: true,
     minify: true,
   },
 
@@ -134,6 +134,8 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 1000,
       sourcemap: true,
 
+      minify: "esbuild",
+
       rollupOptions: {
         output: {
           // manualChunks(id) {
@@ -166,6 +168,7 @@ export default defineNuxtConfig({
     "./src/router/index",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
+    "@nuxt/image",
   ],
 
   plugins: [

@@ -44,11 +44,9 @@
 
 <script setup>
 import { useI18n } from "vue-i18n";
-import { useCountries } from "~/modules/auth/services/countries";
 import AppFooter from "../global/AppFooter.vue";
 import Header from "../global/Header.vue";
 
-const { refresh, countries } = useCountries();
 const { locale } = useI18n();
 
 const donate = ref("");

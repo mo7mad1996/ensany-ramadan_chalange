@@ -9,8 +9,12 @@
         class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
         v-if="status == 'pending'"
       >
-        <v-card class="rounded-lg elevation-0" v-for="(item, index) in 3" :key="index">
-          <v-skeleton-loader   type="image"></v-skeleton-loader>
+        <v-card
+          class="rounded-lg elevation-0"
+          v-for="(item, index) in 3"
+          :key="index"
+        >
+          <v-skeleton-loader type="image"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -21,7 +25,7 @@
         class="mt-4"
       >
         <Slide v-for="(item, index) in Parteners" :key="index">
-          <a :href="item.url" target="_blank" rel="noopener noreferrer">
+          <a :href="item.url || '#'" target="_blank" rel="noopener noreferrer">
             <div class="image overflow-hidden relative">
               <img
                 loading="lazy"
@@ -36,7 +40,9 @@
                 alt="partenerImage"
               />
 
-              <div class="hover_name text-center px-2 py-1 absolute rounded-md w-full">
+              <div
+                class="hover_name text-center px-2 py-1 absolute rounded-md w-full"
+              >
                 <span class="font-bold">{{ item.name }}</span>
               </div>
             </div>

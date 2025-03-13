@@ -1,5 +1,5 @@
 import { api } from "~/helpers/axios";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 
 export const useDonation = () => {
   const error = ref<string | null>(null);

@@ -3,11 +3,11 @@
     <Container class="h-100 relative text-white grid items-center">
       <div class="content pt-xd">
         <!-- large text -->
-        <h2
+        <h1
           class="mb-0 font-bold lg:text-5xl xl:text-5xl md:text-[30px] text-[30px] lg:leading-[64.4px] xl:leading-[64.4px] md:leading-[44.4px] leading-[44.4px] lg:w-[520px] xl:w-[520px] md:w-[326px] w-[326px]"
         >
           {{ $t("home.banner_title") }}
-        </h2>
+        </h1>
 
         <!-- small text -->
         <p class="mb-0 mt-5 font-thin text-sm leading-20">
