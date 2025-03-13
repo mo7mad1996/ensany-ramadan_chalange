@@ -1,6 +1,9 @@
 import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
+  experimental:{
+    sharedPrerenderData:true
+  },
   compatibilityDate: "2025-01-13",
 
   nitro: {
@@ -11,7 +14,7 @@ export default defineNuxtConfig({
   webpack: {
     extractCSS: true,
     optimization: {
-      checkWasmTypes: false,
+      checkWasmTypes: true,
       chunkIds: "named",
       emitOnErrors: true,
       concatenateModules: true,
@@ -21,13 +24,13 @@ export default defineNuxtConfig({
       mangleExports: true,
       mangleWasmImports: true,
       mergeDuplicateChunks: false,
-      minimize: false,
+      minimize: true,
       moduleIds: "deterministic",
       nodeEnv: "production",
       portableRecords: true,
-      providedExports: false,
-      realContentHash: false,
-      usedExports: false,
+      providedExports: true,
+      realContentHash: true,
+      usedExports: true,
       splitChunks: {
         cacheGroups: {
           styles: {
@@ -37,7 +40,7 @@ export default defineNuxtConfig({
             enforce: true,
           },
         },
-      },
+      },      
     },
   },
   devtools: { enabled: false },
@@ -132,7 +135,7 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1000,
-      sourcemap: true,
+      sourcemap: false,
 
       minify: "esbuild",
 

@@ -13,13 +13,9 @@
         $t("global.campaigns")
       }}</nuxt-link>
 
-      <nuxt-link to="/blogs" class="text-black">{{
-        $t("global.blogs")
-      }}</nuxt-link>
+      <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
 
-      <nuxt-link to="/about" class="text-black">{{
-        $t("global.about_us")
-      }}</nuxt-link>
+      <nuxt-link to="/about" class="text-black">{{ $t("global.about_us") }}</nuxt-link>
 
       <!-- <nuxt-link to="/" class="d-flex ga-2 text-black">
         <img loading="lazy" src="../assets/images/search.svg" width="15" alt="ramadanchallenges image" />
@@ -143,8 +139,9 @@
               </div>
             </nuxt-link>
           </div>
-
-          <selectCurruncy />
+          <ClientOnly>
+            <selectCurruncy />
+          </ClientOnly>
 
           <img
             loading="lazy"
@@ -162,9 +159,7 @@
           class="d-none d-lg-flex d-xl-flex d-md-none ga-5 align-center lg-text-sm"
         >
           <li>
-            <nuxt-link to="/" class="text-black">{{
-              $t("global.home")
-            }}</nuxt-link>
+            <nuxt-link to="/" class="text-black">{{ $t("global.home") }}</nuxt-link>
           </li>
 
           <li>
@@ -174,9 +169,7 @@
           </li>
 
           <li>
-            <nuxt-link to="/blogs" class="text-black">{{
-              $t("global.blogs")
-            }}</nuxt-link>
+            <nuxt-link to="/blogs" class="text-black">{{ $t("global.blogs") }}</nuxt-link>
           </li>
 
           <li>
@@ -250,9 +243,7 @@
 
         <!-- contact & signin-btn & lang -->
 
-        <div
-          class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-2 align-center"
-        >
+        <div class="buttons d-none d-lg-flex d-xl-flex d-md-none ga-2 align-center">
           <template v-if="user">
             <div class="relative">
               <div
@@ -451,8 +442,9 @@
               </v-list>
             </v-menu>
           </div>
-
-          <selectCurruncy />
+          <ClientOnly>
+            <selectCurruncy />
+          </ClientOnly>
 
           <v-btn
             class="text-capitalize rounded-lg"
