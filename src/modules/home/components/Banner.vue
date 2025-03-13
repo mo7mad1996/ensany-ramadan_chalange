@@ -1,5 +1,15 @@
 <template>
-  <section aria-label="banner section" class="banner bg-cover relative h-100">
+  <v-skeleton-loader
+    type="image"
+    class="h-400"
+    v-if="status == 'pending'"
+  ></v-skeleton-loader>
+
+  <section
+    aria-label="banner section"
+    class="banner bg-cover relative"
+    v-if="status == 'success'"
+  >
     <Container class="h-100 relative text-white grid items-center">
       <div class="content pt-xd">
         <!-- large text -->
@@ -15,16 +25,15 @@
         </p>
 
         <!-- banner buttons -->
-        <div class="banner_buttons flex flex-wrap gap-3 items-center mt-5">
+        <div class="banner_buttons flex gap-3 items-center mt-5">
           <v-btn
             class="text-capitalize rounded-lg"
             variant="flat"
             size="default"
             color="primary"
             @click="$router.push('/donate/all')"
+            >{{ $t("global.join_challenge") }}</v-btn
           >
-            {{ $t("global.join_challenge") }}
-          </v-btn>
 
           <v-btn
             class="text-capitalize rounded-lg"
@@ -32,87 +41,84 @@
             size="default"
             color="#fff"
             @click="$router.push('/start-campaign')"
+            >{{ $t("global.start_campaign") }}</v-btn
           >
-            {{ $t("global.start_campaign") }}
-          </v-btn>
           <v-btn
             class="text-capitalize rounded-lg"
             variant="outlined"
             size="default"
             color="#fff"
             @click="$router.push('/donate/all')"
+            >{{ $t("home.donate-all") }}</v-btn
           >
-            {{ $t("home.donate-all") }}
-          </v-btn>
         </div>
 
         <div
           class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-3 md:grid-cols-3 py-xd px-0"
+          v-observe-visibility="onEnterViewport"
         >
-          <ClientOnly>
-            <div class="statistic_item flex justify-center">
-              <div>
-                <div class="d-flex ga-3 align-center">
-                  <span class="amount text-2xl font-bold">
-                    {{ fixed.total_collected }}
-                  </span>
-                  <span>
-                    <img
-                      loading="lazy"
-                      src="~/assets/images/statistics1.svg"
-                      alt="ramadanchallenges image"
-                    />
-                  </span>
-                </div>
-
-                <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
-                  {{ $t("home.raised") }}
-                </h5>
+          <div class="statistic_item flex justify-center">
+            <div>
+              <div class="d-flex ga-3 align-center">
+                <span class="amount text-2xl font-bold">
+                  {{ fixed.total_collected }}
+                </span>
+                <span>
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/statistics1.svg"
+                    alt="ramadanchallenges image"
+                  />
+                </span>
               </div>
+
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ $t("home.raised") }}
+              </h5>
             </div>
+          </div>
 
-            <div class="statistic_item flex justify-center">
-              <div>
-                <div class="d-flex ga-3 align-center">
-                  <span class="amount text-2xl font-bold">
-                    {{ fixed.total_donors }}
-                  </span>
-                  <span>
-                    <img
-                      loading="lazy"
-                      src="~/assets/images/doners.svg"
-                      alt="ramadanchallenges image"
-                    />
-                  </span>
-                </div>
-
-                <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
-                  {{ $t("home.doners") }}
-                </h5>
+          <div class="statistic_item flex justify-center">
+            <div>
+              <div class="d-flex ga-3 align-center">
+                <span class="amount text-2xl font-bold">
+                  {{ fixed.total_donors }}
+                </span>
+                <span>
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/doners.svg"
+                    alt="ramadanchallenges image"
+                  />
+                </span>
               </div>
+
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ $t("home.doners") }}
+              </h5>
             </div>
+          </div>
 
-            <div class="statistic_item flex justify-center">
-              <div>
-                <div class="d-flex ga-3 align-center">
-                  <span class="amount text-2xl font-bold">
-                    {{ fixed.total_campaigns }}
-                  </span>
-                  <span>
-                    <img
-                      loading="lazy"
-                      src="~/assets/images/campaigns.svg"
-                      alt="ramadanchallenges image"
-                    />
-                  </span>
-                </div>
-
-                <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
-                  {{ $t("home.campaign") }}
-                </h5>
+          <div class="statistic_item flex justify-center">
+            <div>
+              <div class="d-flex ga-3 align-center">
+                <span class="amount text-2xl font-bold">
+                  {{ fixed.total_campaigns }}
+                </span>
+                <span>
+                  <img
+                    loading="lazy"
+                    src="../../../assets/images/campaigns.svg"
+                    alt="ramadanchallenges image"
+                  />
+                </span>
               </div>
+
+              <h5 class="font-bold text-2xl leading-[39px] text-[#ffffff9e]">
+                {{ $t("home.campaign") }}
+              </h5>
             </div>
-          </ClientOnly>
+          </div>
         </div>
       </div>
     </Container>
@@ -120,15 +126,18 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
+import Container from "../../../global/Container.vue";
 import { useBannerData } from "../services/banner";
+import { useBanner } from "../typescript/banner";
+const { onEnterViewport, stats, animatedValues } = useBanner();
+const { bannerData, banner_error, status } = useBannerData();
 
-const { bannerData } = useBannerData();
 const animated = reactive<any>({
   total_campaigns: 0,
   total_donors: 0,
   total_collected: 0,
 });
+
 const fixed = computed(() => {
   return {
     total_campaigns: animated.total_campaigns.toFixed(0),
@@ -137,8 +146,7 @@ const fixed = computed(() => {
   };
 });
 
-// methods
-const transition = (target: number, key: string, duration = 3000) => {
+const transition = (target: number, key: string, decimals = 0, duration = 3000) => {
   const frames = duration / (1000 / 60);
   const step = (target - animated[key]) / frames;
 
@@ -160,11 +168,15 @@ watch(
   bannerData,
   () => {
     if (bannerData.value) {
-      transition(bannerData.value.total_donors, "total_donors");
-      transition(bannerData.value.total_collected, "total_collected");
-      transition(bannerData.value.total_campaigns, "total_campaigns");
+      transition(bannerData.value?.total_donors, "total_donors");
+      transition(bannerData.value?.total_collected, "total_collected", 2);
+      transition(bannerData.value?.total_campaigns, "total_campaigns");
     }
   },
   { immediate: true }
 );
 </script>
+
+<style scoped>
+/* @import "../style/banner.css"; */
+</style>

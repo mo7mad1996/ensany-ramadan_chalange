@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "nuxt start",
-    "build": "nuxt build --analyze",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

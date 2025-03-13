@@ -66,7 +66,6 @@ const isSidebarOpen = ref(false);
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
-    lang: locale.value,
   },
 });
 
@@ -80,7 +79,6 @@ watch(locale, (newLocale) => {
   useHead({
     htmlAttrs: {
       dir: isArabic ? "rtl" : "ltr",
-      lang: locale.value,
     },
   });
 });

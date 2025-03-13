@@ -1,5 +1,5 @@
 .start_campaign_banner {
-  /* background: url(~/assets/images/campaign/start-campaign.png) no-repeat; */
+  background: url(../../../assets/images/campaign/start-campaign.png) no-repeat;
   background-size: cover;
   height: 60vh;
   position: relative;
