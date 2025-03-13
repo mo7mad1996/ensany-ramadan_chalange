@@ -1,7 +1,7 @@
 <template>
-  <ClientOnly>
-    <HomeBanner />
-  </ClientOnly>
+  <!-- <ClientOnly>
+  </ClientOnly> -->
+  <HomeBanner />
   <HomeRamadanChalange />
   <HomeContriputing />
   <HomeChallengeHeros />

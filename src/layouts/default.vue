@@ -26,10 +26,10 @@
 
     <!-- Global donation button -->
     <ClientOnly>
-      <div
+      <NuxtLink
+        to="donate/all"
         class="donate_button fixed top-1/2 left-0 flex justify-center"
         v-if="$route.name !== 'donate-all'"
-        @click="$router.push({ name: 'donate-all' })"
       >
         <!-- @click="openDialog" -->
         <v-btn
@@ -48,7 +48,7 @@
           <!-- <p>{{ $t("global.donation") }}</p> -->
           <p>{{ $t("global.donation-all-btn") }}</p>
         </v-btn>
-      </div>
+      </NuxtLink>
 
       <!-- donattion dilaog -->
       <dialog class="dialog m-auto rounded-[10px]" ref="donate">
