@@ -1,4 +1,5 @@
 import vuetify from "vite-plugin-vuetify";
+
 export default defineNuxtConfig({
   experimental:{
     sharedPrerenderData:true
@@ -67,9 +68,14 @@ export default defineNuxtConfig({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-PWKGS9VZ');
           `,
+          defer: true,
         },
       ],
-
+      noscript: [
+        {
+          innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWKGS9VZ" height="0" width="0" style="display: none; visibility: hidden" />`,
+        },
+      ],
       link: [
         { rel: "icon", type: "image/ico", href: "/_nuxt/assets/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -105,8 +111,13 @@ export default defineNuxtConfig({
     { path: "~/modules/videos/components", prefix: "Video" },
   ],
 
-  // main style & tailwid config
-  css: ["./src/assets/main.min.css", "./src/modules/home/style/banner.css"],
+  // main style & tailwind config
+  css: [
+    "@mdi/font/css/materialdesignicons.css", // Import Material Design Icons
+    "vuetify/styles",
+    "./src/assets/main.min.css",
+    "./src/modules/home/style/banner.css",
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},

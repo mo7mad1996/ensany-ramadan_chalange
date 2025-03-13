@@ -1,18 +1,16 @@
 <template>
-  <!-- <ClientOnly>
-  </ClientOnly> -->
-  <HomeBanner />
-  <HomeRamadanChalange />
-  <HomeContriputing />
-  <HomeChallengeHeros />
-  <HomeTable />
-  <HomeCampaigns />
-  <HomeParteners />
-  <!-- <HomeFamouses /> -->
-  <HomeSuccessStories />
-  <HomeLatestBlogs />
+  <LazyHomeBanner hydrate-on-visible />
+  <LazyHomeRamadanChalange hydrate-on-visible />
+  <LazyHomeContriputing hydrate-on-visible />
+  <LazyHomeChallengeHeros hydrate-on-visible />
+  <LazyHomeTable hydrate-on-visible />
 
-  <HomeLastSection />
+  <LazyHomeCampaigns hydrate-on-visible />
+  <LazyHomeParteners hydrate-on-visible />
+  <!-- <LazyHomeFamouses  hydrate-on-visible/> -->
+  <LazyHomeSuccessStories hydrate-on-visible />
+  <LazyHomeLatestBlogs hydrate-on-visible />
+  <LazyHomeLastSection hydrate-on-visible />
 </template>
 
 <script setup>
