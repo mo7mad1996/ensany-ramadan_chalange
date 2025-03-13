@@ -1,7 +1,9 @@
 import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-  experimental:{
-    sharedPrerenderData:true
+  experimental: {
+    sharedPrerenderData: true,
+    externalVue: true,
+    treeshakeClientOnly: true
   },
   compatibilityDate: "2025-01-13",
 
@@ -9,7 +11,16 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     minify: true,
   },
-
+  hooks: {
+    'build:manifest': (manifest) => {
+      const css = manifest['node_modules/nuxt/dist/app/entry.js']?.css;
+      if (css) {
+        for (let i = css.length - 1; i >= 0; i--) {
+          if (css[i].startsWith('entry')) css.splice(i, 1);
+        }
+      }
+    },
+  },
   webpack: {
     extractCSS: true,
     optimization: {
@@ -39,7 +50,7 @@ export default defineNuxtConfig({
             enforce: true,
           },
         },
-      },      
+      },
     },
   },
   devtools: { enabled: false },
@@ -71,7 +82,10 @@ export default defineNuxtConfig({
       ],
 
       link: [
-        { rel: "icon", type: "image/ico", href: "/_nuxt/assets/favicon.ico" },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -148,6 +162,8 @@ export default defineNuxtConfig({
   },
 
   modules: [
+
+    "@nuxtjs/robots",
     "nuxt-lazytube",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
