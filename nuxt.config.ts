@@ -1,8 +1,8 @@
 import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
-  experimental:{
-    sharedPrerenderData:true
+  experimental: {
+    sharedPrerenderData: true,
   },
   compatibilityDate: "2025-01-13",
 
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
             enforce: true,
           },
         },
-      },      
+      },
     },
   },
   devtools: { enabled: false },
@@ -179,6 +179,10 @@ export default defineNuxtConfig({
     "./src/plugins/vee-validate.ts",
     "./src/plugins/toaster.client.ts",
   ],
+
+  image: {
+    quality: 80,
+  },
 
   // localization
   i18n: {

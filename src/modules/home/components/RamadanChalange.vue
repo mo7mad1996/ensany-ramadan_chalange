@@ -5,9 +5,11 @@
         <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
           {{ $t("home.ramadan_challenge") }}
         </h1>
-        <nuxt-link to="/campaigns" class="underline text-primary cursor-pointer">{{
-          $t("global.see_more_campaigns")
-        }}</nuxt-link>
+        <nuxt-link
+          to="/campaigns"
+          class="underline text-primary cursor-pointer"
+          >{{ $t("global.see_more_campaigns") }}</nuxt-link
+        >
       </div>
 
       <div
@@ -34,7 +36,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
+        <Slide
+          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
+          :key="index"
+        >
           <Card
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
@@ -48,12 +53,13 @@
             class="h-full"
           >
             <template #image>
-              <img
+              <nuxt-img
                 loading="lazy"
-                style="height: 240px"
+                height="240px"
+                fit="cover"
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
-                class="w-full max-h-[15rem] object-cover rounded-lg aspect-square"
+                class="w-full object-cover h-60 rounded-lg aspect-square"
                 alt="ramadan challenges image"
               />
             </template>
@@ -71,7 +77,9 @@
             </template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>
@@ -97,7 +105,8 @@ import Card from "../../../global/Card.vue";
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
-const { breakpoints1, settings, Carousel, Slide, Pagination, Navigation } = useCarousel();
+const { breakpoints1, settings, Carousel, Slide, Pagination, Navigation } =
+  useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();
 const { locale } = useI18n();
 const isLoading = ref(true);
