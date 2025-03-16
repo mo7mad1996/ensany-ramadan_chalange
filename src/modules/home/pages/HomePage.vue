@@ -1,5 +1,5 @@
 <template>
-  <LazyHomeBanner hydrate-on-visible />
+  <LazyHomeBanner hydrate-never />
   <LazyHomeRamadanChalange hydrate-on-visible />
   <LazyHomeContriputing hydrate-on-visible />
   <LazyHomeChallengeHeros hydrate-on-visible />
@@ -18,8 +18,4 @@ import { useGlobalVar } from "~/helpers/global-var";
 
 const { siteName } = useGlobalVar();
 siteName("home.page_title_home");
-
-definePageMeta({
-  lazy: true,
-});
 </script>

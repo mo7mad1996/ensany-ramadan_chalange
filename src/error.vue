@@ -46,7 +46,7 @@ const AppFooter = defineAsyncComponent(() => import("./global/AppFooter.vue"));
 const Container = defineAsyncComponent(() => import("./global/Container.vue"));
 const Header = defineAsyncComponent(() => import("./global/Header.vue"));
 
-defineProps(["error"]);
+const props = defineProps(["error"]);
 
 onMounted(() => {
   console.error(props.error);

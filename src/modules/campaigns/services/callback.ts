@@ -16,6 +16,7 @@ export const useCallback = () => {
 
   const callBack = async (type: any, response_id: any) => {
     try {
+      const Swal = () => import("sweetalert2");
       error.value = "";
       isLoading.value = true;
       const requetType =
@@ -37,31 +38,31 @@ export const useCallback = () => {
 
           $toast.success(t("campaigns.success_msg"));
 
-          // Swal.fire({
-          //   title: t("campaigns.success_msg"),
-          //   imageUrl: successIcon,
-          //   imageWidth: 200,
-          //   imageHeight: 200,
-          //   confirmButtonText: t("campaigns.ok"),
-          //   confirmButtonColor: "#3E7E41",
-          //   customClass: {
-          //     confirmButton: "my-custom-btn",
-          //   },
+          Swal.fire({
+            title: t("campaigns.success_msg"),
+            imageUrl: successIcon,
+            imageWidth: 200,
+            imageHeight: 200,
+            confirmButtonText: t("campaigns.ok"),
+            confirmButtonColor: "#3E7E41",
+            customClass: {
+              confirmButton: "my-custom-btn",
+            },
 
-          //   draggable: true,
-          // });
+            draggable: true,
+          });
         } else {
           $toast.error(t("campaigns.faild_msg"));
 
-          // Swal.fire({
-          //   icon: "error",
-          //   title: t("campaigns.faild_msg"),
-          //   confirmButtonText: t("campaigns.ok"),
-          //   confirmButtonColor: "#3E7E41",
-          //   customClass: {
-          //     confirmButton: "my-custom-btn",
-          //   },
-          // });
+          Swal.fire({
+            icon: "error",
+            title: t("campaigns.faild_msg"),
+            confirmButtonText: t("campaigns.ok"),
+            confirmButtonColor: "#3E7E41",
+            customClass: {
+              confirmButton: "my-custom-btn",
+            },
+          });
         }
         //
       }
@@ -74,6 +75,8 @@ export const useCallback = () => {
 
   const visitorGatewayCallback = async (razorpay_payment_link_id: string) => {
     try {
+      const Swal = () => import("sweetalert2");
+
       error.value = "";
       isLoading.value = true;
 
@@ -88,30 +91,30 @@ export const useCallback = () => {
         currencyStore.setPaymentStatus(isPaymentSuccess.value);
         $toast.success(t("campaigns.success_msg"));
 
-        // Swal.fire({
-        //   title: t("campaigns.success_msg"),
-        //   imageUrl: successIcon,
-        //   imageWidth: 200,
-        //   imageHeight: 200,
-        //   confirmButtonText: t("campaigns.ok"),
-        //   confirmButtonColor: "#3E7E41",
-        //   customClass: {
-        //     confirmButton: "my-custom-btn",
-        //   },
-        //   draggable: true,
-        // });
+        Swal.fire({
+          title: t("campaigns.success_msg"),
+          imageUrl: successIcon,
+          imageWidth: 200,
+          imageHeight: 200,
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
+          draggable: true,
+        });
       } else {
         $toast.error(t("campaigns.faild_msg"));
 
-        // Swal.fire({
-        //   icon: "error",
-        //   title: t("campaigns.faild_msg"),
-        //   confirmButtonText: t("campaigns.ok"),
-        //   confirmButtonColor: "#3E7E41",
-        //   customClass: {
-        //     confirmButton: "my-custom-btn",
-        //   },
-        // });
+        Swal.fire({
+          icon: "error",
+          title: t("campaigns.faild_msg"),
+          confirmButtonText: t("campaigns.ok"),
+          confirmButtonColor: "#3E7E41",
+          customClass: {
+            confirmButton: "my-custom-btn",
+          },
+        });
       }
     } catch (err: any) {
       console.error(err);

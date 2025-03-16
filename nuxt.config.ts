@@ -127,6 +127,12 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ["vuetify"],
+    analyze: false,
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true,
+    },
   },
 
   vite: {

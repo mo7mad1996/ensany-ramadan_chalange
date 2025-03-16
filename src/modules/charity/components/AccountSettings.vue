@@ -577,7 +577,7 @@
 </template>
 
 <script setup>
-import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
+// import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";
@@ -666,6 +666,8 @@ const getCountries = async () => {
   });
 };
 const onSubmit = async (payload) => {
+  const Swal = () => import("sweetalert2");
+
   try {
     personalForm.loading = true;
     const res = await update(payload, toRaw(files.value));
@@ -710,6 +712,8 @@ const showConfPassword = () => {
 };
 
 const onSubmit2 = async () => {
+  const Swal = () => import("sweetalert2");
+
   try {
     passwordForm.loading = true;
     const res = await changePassword(passwordForm);

@@ -13,20 +13,25 @@ body {
   font-weight: 400;
 }
 
-htm,
+html,
 body {
   width: 100%;
   overflow: hidden;
-}
-
-.v-toolbar__content {
-  overflow: visible !important;
 }
 
 a {
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  h1 {
+    text-align: center;
+  }
+}
+
+.v-toolbar__content {
+  overflow: visible !important;
+}
 .carousel__pagination-button::after {
   display: block;
   content: "";
@@ -58,12 +63,6 @@ a {
 
 .v-navigation-drawer__scrim {
   position: fixed !important;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    text-align: center;
-  }
 }
 
 .donate_button {

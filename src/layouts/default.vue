@@ -23,7 +23,7 @@
         <nuxt-img
           loading="lazy"
           src="/statistics1.svg"
-          width="15"
+          width="15px"
           class="mb-2"
           alt="ramadan challenges image"
         />
@@ -33,12 +33,12 @@
     </nuxt-link>
 
     <!-- donation dialog -->
-    <dialog class="dialog m-auto rounded-[10px]" ref="donate">
+    <!-- <dialog class="dialog m-auto rounded-[10px]" ref="donate">
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
       <CampaignsDonationForm />
-    </dialog>
+    </dialog> -->
   </v-layout>
 </template>
 
@@ -49,15 +49,15 @@ import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
 
-const donate = ref("");
+// const donate = ref("");
 
-const openDialog = () => {
-  donate.value.showModal();
-};
+// const openDialog = () => {
+//   donate.value.showModal();
+// };
 
-const closeDialog = () => {
-  donate.value.close();
-};
+// const closeDialog = () => {
+//   donate.value.close();
+// };
 
 useHead({
   htmlAttrs: {
