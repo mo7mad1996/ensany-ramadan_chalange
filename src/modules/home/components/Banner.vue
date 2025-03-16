@@ -1,5 +1,12 @@
 <template>
+  <v-skeleton-loader
+    type="image"
+    class="h-400"
+    v-if="status == 'pending'"
+  />
+
   <section
+  v-else
     aria-label="banner section"
     class="bg-black banner bg-cover relative"
   >
@@ -9,6 +16,7 @@
 
         <div
           class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-3 md:grid-cols-3 py-xd px-0"
+          v-observe-visibility="onEnterViewport"
         >
           <div class="statistic_item flex justify-center">
             <div>
@@ -82,15 +90,18 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
+import Container from "../../../global/Container.vue";
 import { useBannerData } from "../services/banner";
+import { useBanner } from "../typescript/banner";
+const { onEnterViewport, stats, animatedValues } = useBanner();
+const { bannerData, banner_error, status } = useBannerData();
 
-const { bannerData } = useBannerData();
 const animated = reactive<any>({
   total_campaigns: 0,
   total_donors: 0,
   total_collected: 0,
 });
+
 const fixed = computed(() => {
   return {
     total_campaigns: animated.total_campaigns.toFixed(0),
@@ -99,8 +110,7 @@ const fixed = computed(() => {
   };
 });
 
-// methods
-const transition = (target: number, key: string, duration = 3000) => {
+const transition = (target: number, key: string, decimals = 0, duration = 3000) => {
   const frames = duration / (1000 / 60);
   const step = (target - animated[key]) / frames;
 
@@ -122,11 +132,15 @@ watch(
   bannerData,
   () => {
     if (bannerData.value) {
-      transition(bannerData.value.total_donors, "total_donors");
-      transition(bannerData.value.total_collected, "total_collected");
-      transition(bannerData.value.total_campaigns, "total_campaigns");
+      transition(bannerData.value?.total_donors, "total_donors");
+      transition(bannerData.value?.total_collected, "total_collected", 2);
+      transition(bannerData.value?.total_campaigns, "total_campaigns");
     }
   },
   { immediate: true }
 );
 </script>
+
+<style scoped>
+/* @import "../style/banner.css"; */
+</style>

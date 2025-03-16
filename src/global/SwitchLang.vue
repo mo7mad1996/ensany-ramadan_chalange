@@ -27,7 +27,6 @@ watch(locale, async (newLocale: string) => {
   useHead({
     htmlAttrs: {
       dir: isArabic ? "rtl" : "ltr",
-      lang: locale.value,
     },
   });
 });

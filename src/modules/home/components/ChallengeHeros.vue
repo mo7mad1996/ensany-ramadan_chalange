@@ -1,12 +1,12 @@
 <template>
-  <section aria-label="ramadan heroes" class="pt-sm pb-sm">
+  <section aria-label="ramadan heros" class="pt-sm pb-sm">
     <Container>
       <!-- Title -->
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.heroes") }}
       </h1>
 
-      <!-- Hero cards -->
+      <!-- Heros cards -->
       <div
         class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
       >
@@ -84,9 +84,9 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <span class="font-bold text-lg">{{ topDonors[2]?.name }}</span>
-            <span class="font-bold text-lg">
-              ${{ topDonors[2]?.total_amount }}
-            </span>
+            <span class="font-bold text-lg"
+              >${{ topDonors[2]?.total_amount }}</span
+            >
           </div>
 
           <p class="text-sm leading-20 pt-xs">
@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
+import Container from "../../../global/Container.vue";
 import { useDonors } from "../services/top-donors";
 
 const { topDonors } = useDonors();
