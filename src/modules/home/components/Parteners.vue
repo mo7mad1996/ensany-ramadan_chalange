@@ -60,8 +60,8 @@
 <script setup lang="ts">
 import "vue3-carousel/dist/carousel.css";
 
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 import { useParteners } from "../services/parteners";
 const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
 const { Parteners, status } = useParteners();

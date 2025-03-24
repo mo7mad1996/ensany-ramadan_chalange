@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import Container from "../../../global/Container.vue";
+import Container from "~/global/Container.vue";
 import { useDonors } from "../services/top-donors";
 
 const { topDonors } = useDonors();

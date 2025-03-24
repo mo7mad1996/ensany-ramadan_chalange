@@ -89,8 +89,8 @@
 import "vue3-carousel/dist/carousel.css";
 
 import { useStories } from "~/modules/stories/services/stories";
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } =
   useCarousel();
 const { locale } = useI18n();

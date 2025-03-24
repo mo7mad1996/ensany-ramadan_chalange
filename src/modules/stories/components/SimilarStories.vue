@@ -39,8 +39,8 @@
 
 <script setup lang="ts">
 import "vue3-carousel/dist/carousel.css";
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
 const props = defineProps<{

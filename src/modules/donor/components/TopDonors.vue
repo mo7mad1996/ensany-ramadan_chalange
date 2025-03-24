@@ -112,7 +112,7 @@
   </section>
 </template>
 <script setup>
-import Container from "../../../global/Container.vue";
+import Container from "~/global/Container.vue";
 import { useDonorOverview } from "../services/overview";
 
 const { donorOverview } = useDonorOverview();

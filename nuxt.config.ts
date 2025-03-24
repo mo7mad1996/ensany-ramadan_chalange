@@ -97,7 +97,9 @@ export default defineNuxtConfig({
     bundle: {
       optimizeTranslationDirective: false,
     },
+
   },
+  
 
   robots: {
     disallow: "/dashboard/",
