@@ -1,10 +1,8 @@
 import { ref } from "vue";
 import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
-import "vue3-carousel/dist/carousel.css";
 
 export const useCarousel = () => {
   const settings = ref({
- 
     snapAlign: "start",
     autoplay: 5000,
     wrapAround: true,

@@ -4,8 +4,9 @@
       class="grid gap-y-sm grid-cols-1 lg:grid-cols-2 md:grid-cols-1 items-center gap-x-xm"
     >
       <div class="image">
-        <img loading="lazy" 
-          src="../../../assets/images/about/our-mission.png"
+        <nuxt-img
+          loading="lazy"
+          src="/about/our-mission.png"
           class="ltr:rounded-tr-[60px] rtl:rounded-tl-[60px] ltr:rounded-ee-[60px] rtl:rounded-ee-[60px]"
           alt="ramadanchallenges image"
         />

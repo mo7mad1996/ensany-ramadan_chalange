@@ -51,10 +51,12 @@
         </Form>
 
         <!-- Recend code -->
-        <div class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer">
-          <img
+        <div
+          class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
+        >
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/auth/resent.svg"
+            src="/auth/resent.svg"
             width="22px"
             alt="ramadanchallenges image"
           />

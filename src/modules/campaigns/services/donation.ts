@@ -1,5 +1,5 @@
 import { api } from "~/helpers/axios";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 
 export const useDonation = () => {
   const error = ref<string | null>(null);
@@ -20,6 +20,8 @@ export const useDonation = () => {
         console.log(res);
       }
     } catch (err: any) {
+      const Swal = () => import("sweetalert2");
+
       Swal.fire({
         title: err.response?.data?.message || err.message,
         html: Object.values(err.response?.data?.result?.errors)

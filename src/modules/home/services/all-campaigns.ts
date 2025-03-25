@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
 
 export const useAllCampaigns = () => {

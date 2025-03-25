@@ -1,16 +1,16 @@
-// Encryption secret key
-import CryptoJS from "crypto-js";
+import AES from "crypto-js/aes";
+import Utf8 from "crypto-js/enc-utf8";
 
-const secretKey = "<u1@*B47J8}-";
+const secretKey = import.meta.env.VITE_SECRET_KEY || "<u1@*B47J8}-";
 
 export const encryptData = (data: any) => {
-  return CryptoJS.AES.encrypt(JSON.stringify(data), secretKey).toString();
+  return AES.encrypt(JSON.stringify(data), secretKey).toString();
 };
 
 export const decryptData = (cipherText: any) => {
   try {
-    const bytes = CryptoJS.AES.decrypt(cipherText, secretKey);
-    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    const bytes = AES.decrypt(cipherText, secretKey);
+    return JSON.parse(bytes.toString(Utf8));
   } catch (e) {
     console.error("Failed to decrypt data:", e);
     return null;

@@ -6,6 +6,8 @@ export const useGlobalVar = () => {
   const { locale, t } = useI18n();
 
   function siteName(title: string | null, static_title: string = "") {
+    definePageMeta({ lazy: true, keepalive: false });
+
     useSeoMeta({
       titleTemplate: (current_title) =>
         current_title ? `%s | ${t("home.site_name")} ` : t("home.site_name"),

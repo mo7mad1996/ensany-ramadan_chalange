@@ -5,15 +5,17 @@
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("donor.top_donors") }}
       </h1>
-      <div class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+      <div
+        class="cards mt-[2rem] grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
+      >
         <!-- card one -->
         <div
           class="card card-one p-[1rem] bg-green-50 rounded-lg border-[1px] border-gray-100 border-solid"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/donor/Second Donor.png"
+              src="/donor/Second Donor.png"
               alt="ramadanchallenges image"
             />
 
@@ -24,9 +26,9 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/donor/Rectangle.png"
+                src="/donor/Rectangle.png"
                 alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
@@ -44,9 +46,9 @@
           class="card p-[1rem] bg-green-50 rounded-lg border-[1px] border-solid border-gray-100 h-fit"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/donor/First Donor .png"
+              src="/donor/First Donor .png"
               alt="ramadanchallenges image"
             />
 
@@ -57,9 +59,9 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/donor/Rectangle.png"
+                src="/donor/Rectangle.png"
                 alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
@@ -77,9 +79,9 @@
           class="card card-three p-[1rem] bg-green-50 rounded-lg border-[1px] border-solid border-gray-100"
         >
           <div class="flex flex-col gap-y-2 items-center">
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/donor/Third Donor.png"
+              src="/donor/Third Donor.png"
               alt="ramadanchallenges image"
             />
 
@@ -90,9 +92,9 @@
 
           <div class="flex justify-between items-center pt-[1rem]">
             <div class="flex justify-between items-center">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/donor/Rectangle.png"
+                src="/donor/Rectangle.png"
                 alt="ramadanchallenges image"
               />
               <span class="font-semibold text-lg">
@@ -110,7 +112,7 @@
   </section>
 </template>
 <script setup>
-import Container from "../../../global/Container.vue";
+import Container from "~/global/Container.vue";
 import { useDonorOverview } from "../services/overview";
 
 const { donorOverview } = useDonorOverview();

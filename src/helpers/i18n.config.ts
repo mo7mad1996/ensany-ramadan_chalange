@@ -1,5 +1,4 @@
-// import { createI18n } from "vue-i18n";
-
+//import { createI18n } from 'vue-i18n'
 import arGlobal from "../locales/ar.json";
 import enGlobal from "../locales/en.json";
 
@@ -33,6 +32,9 @@ import enDonor from "../modules/donor/locales/en.json";
 import arVideo from "../modules/videos/locales/ar.json";
 import enVideo from "../modules/videos/locales/en.json";
 
+import arVuetify from "../locales/vuetify/ar.json";
+import enVuetify from "../locales/vuetify/en.json";
+
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: "ar",
@@ -52,6 +54,7 @@ export default defineI18nConfig(() => ({
       dashboard: enCharity,
       donor: enDonor,
       videos: enVideo,
+      $vuetify: enVuetify,
     },
     ar: {
       home: arHome,
@@ -65,6 +68,7 @@ export default defineI18nConfig(() => ({
       dashboard: arCharity,
       donor: arDonor,
       videos: arVideo,
+      $vuetify: arVuetify,
     },
   },
 }));

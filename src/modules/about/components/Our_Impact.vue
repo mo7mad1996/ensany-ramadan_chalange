@@ -10,8 +10,8 @@
       >
         <!-- <video
           class="rounded-md cursor-pointer"
-          src="../../../assets/videos/contribution-vid.mp4"
-          poster="../../../assets/videos/ramadan-poster.png"
+          src="/videos/contribution-vid.mp4"
+          poster="~/assets/videos/ramadan-poster.png"
           controls
         ></video> -->
 
@@ -30,7 +30,7 @@
                   animatedValues[index]
                 }}</span>
                 <span>
-                  <img loading="lazy" :src="stat.imgSrc" :alt="stat.alt" />
+                  <nuxt-img loading="lazy" :src="stat.imgSrc" :alt="stat.alt" />
                 </span>
               </div>
 

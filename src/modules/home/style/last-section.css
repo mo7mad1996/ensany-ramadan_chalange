@@ -1,5 +1,5 @@
 .ready {
-  background: url(../../../assets/images/ready-img.png) no-repeat;
+  background: url(~/assets/images/ready-img.png) no-repeat;
   background-size: cover;
   height: 400px;
   border-radius: 10px;

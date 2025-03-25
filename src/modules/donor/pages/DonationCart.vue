@@ -110,7 +110,7 @@
           <template v-slot:item.name="{ item }">
             <div class="flex items-center gap-2 space-x-2">
               <v-avatar size="40">
-                <img
+                <nuxt-img
                   loading="lazy"
                   :src="item?.image"
                   alt="Campaign Image"
@@ -172,11 +172,7 @@
       </div>
       <div class="p-4">
         <div class="flex justify-center items-center flex-col w-full">
-          <img
-            loading="lazy"
-            src="../../../assets/images/donor/customdialog.png"
-            alt="custom"
-          />
+          <nuxt-img loading="lazy" src="/donor/customdialog.png" alt="custom" />
           <h1 class="font-bold text-xl">{{ $t("donor.how_to_donate") }}</h1>
           <v-radio-group
             :key="'pay_type'"
@@ -232,7 +228,7 @@
 </template>
 
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "~/modules/auth/services/auth";

@@ -1,0 +1,99 @@
+.faqs {
+  border-bottom-right-radius: 8px !important;
+}
+.peg {
+  box-shadow: 0 0 10px #3e7e41, 0 0 5px #3e7e41 !important;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  margin: auto;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #99c9aa;
+  animation: 1s linear infinite l15;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: 2s infinite l15;
+}
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+@keyframes l15 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.banner {
+  background: url(~/assets/images/banner.png) no-repeat;
+  background-size: cover;
+
+  .donate_button {
+    position: fixed;
+    bottom: 50%;
+    z-index: 100000000;
+    left: 0;
+    color: #fff;
+    cursor: pointer;
+    img {
+      filter: brightness(4.5);
+    }
+  }
+}
+
+[dir="ltr"] .banner {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+[dir="rtl"] .banner {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.9164478291316527) 11%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    &::before {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8324142156862745) 43%,
+        rgba(255, 255, 255, 0) 95%
+      );
+    }
+
+    .statistics {
+      padding: 2rem 0rem 5rem 0;
+    }
+  }
+}

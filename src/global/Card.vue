@@ -10,8 +10,8 @@
     <!-- honor company  -->
     <div class="honor-compan d-flex ga-2 align-center pt-2">
       <!-- 
-      <img
-        src="../assets/images/honor-company.svg "
+      <nuxt-img
+        src="/honor-company.svg "
         alt="ramadanchallenges image"
         loading="lazy"
       />
@@ -37,10 +37,10 @@
     <div class="subscribers mt-2">
       <div class="flex justify-between">
         <div class="total d-flex ga-2 align-center">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/doners.svg"
-            alt="ramadanchallenges image"
+            src="/doners.svg"
+            alt="ramadan challenges image"
           />
           <span>
             <slot name="subscribers"></slot>
@@ -86,9 +86,9 @@
           color="primary"
           @click="handleCart('add')"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../assets/images/donor/Icon.png"
+            src="/donor/Icon.png"
             width="20"
             alt="Cart"
           />

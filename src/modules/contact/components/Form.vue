@@ -10,13 +10,13 @@
       </p>
     </div>
 
-    <Form v-slot="{ meta }" @submit="onSubmit">
+    <Form @submit="onSubmit">
       <!-- name input -->
       <div class="relative">
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img loading="lazy" src="../../../assets/images/contact/name.svg" />
+          <nuxt-img loading="lazy" src="/contact/name.svg" />
         </div>
 
         <Field
@@ -36,9 +36,9 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/contact/email.svg"
+            src="/contact/email.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -59,9 +59,9 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/contact/phone.svg"
+            src="/contact/phone.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -83,9 +83,9 @@
         <div
           class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/campaign/edit.svg"
+            src="/campaign/edit.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -107,9 +107,9 @@
         <div
           class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/campaign/edit.svg"
+            src="/campaign/edit.svg"
             alt="ramadanchallenges image"
           />
         </div>
@@ -144,9 +144,10 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import { ErrorMessage, Field, Form } from "vee-validate";
-import { useRoute } from "vue-router";
 import { useContact } from "../services/contact_us";
+
 const route = useRoute();
 const { isLoading, error, makeContact } = useContact();
 

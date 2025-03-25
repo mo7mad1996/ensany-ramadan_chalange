@@ -108,7 +108,7 @@
   </div>
 </template>
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { useProfile } from "~/modules/auth/services/profile";
 

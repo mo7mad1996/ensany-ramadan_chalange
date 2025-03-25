@@ -5,9 +5,11 @@
         <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
           {{ $t("home.campaigns") }}
         </h1>
-        <nuxt-link to="/campaigns" class="underline text-primary cursor-pointer">{{
-          $t("global.see_more_campaigns")
-        }}</nuxt-link>
+        <nuxt-link
+          to="/campaigns"
+          class="underline text-primary cursor-pointer"
+          >{{ $t("global.see_more_campaigns") }}</nuxt-link
+        >
       </div>
 
       <div
@@ -34,7 +36,10 @@
         class="mt-4"
         :dir="locale == 'ar' ? 'rtl' : 'ltr'"
       >
-        <Slide v-for="(campaign, index) in publicCampaigns.slice(0, 10)" :key="index">
+        <Slide
+          v-for="(campaign, index) in publicCampaigns.slice(0, 10)"
+          :key="index"
+        >
           <Card
             :id="campaign.id || Math.random()"
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
@@ -48,7 +53,7 @@
             class="h-full"
           >
             <template #image>
-              <img
+              <nuxt-img
                 loading="lazy"
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
@@ -62,7 +67,9 @@
             <template #title>{{ campaign?.name }}</template>
 
             <template #desc>
-              <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span
+              <span
+                v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+              ></span
             ></template>
 
             <template #subscribers>{{ campaign.total_donors }}</template>
@@ -82,10 +89,12 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import { stripHtmlTags } from "~/helpers/string";
-import Card from "../../../global/Card.vue";
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import Card from "~/global/Card.vue";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();

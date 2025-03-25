@@ -1,5 +1,5 @@
 import { defineNuxtModule, extendPages } from "@nuxt/kit";
-import routes from "./routes";
+import routes from "./routes/index";
 
 export default defineNuxtModule({
   meta: {

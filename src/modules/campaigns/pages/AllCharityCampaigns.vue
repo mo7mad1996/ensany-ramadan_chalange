@@ -30,7 +30,7 @@
         class="max-w-full h-full"
       >
         <template #image>
-          <img
+          <nuxt-img
             loading="lazy"
             @click="$router.push(`/campaigns/${campaign.id}`)"
             :src="campaign?.image"

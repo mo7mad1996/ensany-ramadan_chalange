@@ -1,9 +1,9 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="flex gap-x-2 items-center mb-5">
-      <img
+      <nuxt-img
         loading="lazy"
-        src="../../../assets/images/doner.svg"
+        src="/doner.svg"
         width="30"
         alt="ramadanchallenges image"
       />
@@ -20,9 +20,9 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/contact/name.svg"
+                src="/contact/name.svg"
                 alt="ramadanchallenges image"
               />
             </div>
@@ -54,9 +54,9 @@
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/contact/name.svg"
+                src="/contact/name.svg"
                 alt="ramadanchallenges image"
               />
             </div>
@@ -89,9 +89,9 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img
+            <nuxt-img
               loading="lazy"
-              src="../../../assets/images/contact/email.svg"
+              src="/contact/email.svg"
               alt="ramadanchallenges image"
             />
           </div>
@@ -328,8 +328,10 @@
 
 <script setup lang="ts">
 import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
-import { VueTelInput } from "vue-tel-input";
-import "vue-tel-input/vue-tel-input.css";
+import  VueTelInput  from "vue3-tel-input";
+import "vue3-tel-input/dist/vue3-tel-input.css";
+
+
 
 import { type NewUser } from "~/helpers/interfaces";
 import { useAuth } from "../services/auth";

@@ -1,7 +1,7 @@
-import icon1 from "../../../assets/images/dashboard/amount.svg";
-import icon2 from "../../../assets/images/dashboard/campaigns.svg";
-import icon3 from "../../../assets/images/dashboard/donation.svg";
-import icon4 from "../../../assets/images/dashboard/campaigns.svg";
+import icon1 from "~/assets/images/dashboard/amount.svg";
+import icon2 from "~/assets/images/dashboard/campaigns.svg";
+import icon3 from "~/assets/images/dashboard/donation.svg";
+import icon4 from "~/assets/images/dashboard/campaigns.svg";
 
 export const useFaqs = () => {
   const { t } = useI18n();

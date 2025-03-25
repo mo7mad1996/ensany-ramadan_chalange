@@ -1,6 +1,5 @@
 .ready {
-  background: url(../../../assets/images/about/why-ramadan2.png) no-repeat
-    center;
+  background: url(~/assets/images/about/why-ramadan2.png) no-repeat center;
   background-size: cover;
   object-fit: cover;
   height: 400px;

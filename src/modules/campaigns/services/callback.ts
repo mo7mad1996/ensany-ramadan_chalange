@@ -1,10 +1,12 @@
 import { storeToRefs } from "pinia";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
-import successIcon from "../../../assets/images/success-icon.gif";
+import successIcon from "~/assets/images/success-icon.gif";
 import { useCurrencyStore } from "../store/currancy";
 
 export const useCallback = () => {
+  const { $toast } = useNuxtApp();
+
   const error = ref<string | null>(null);
   const isLoading = ref(false);
   // const router = useRouter();
@@ -14,12 +16,14 @@ export const useCallback = () => {
 
   const callBack = async (type: any, response_id: any) => {
     try {
+      const Swal = () => import("sweetalert2");
       error.value = "";
       isLoading.value = true;
-      const requetType = type == 'curlec' ? `razorpay_payment_link_id=${response_id}` : `paymentResponse=${response_id}`;
-      const response = await api.post(
-        `/donations/callback?${requetType}`
-      );
+      const requetType =
+        type == "curlec"
+          ? `razorpay_payment_link_id=${response_id}`
+          : `paymentResponse=${response_id}`;
+      const response = await api.post(`/donations/callback?${requetType}`);
 
       if (response.data.status) {
         var url =
@@ -31,6 +35,9 @@ export const useCallback = () => {
         if (response.data.result.payment_status == "paid") {
           isPaymentSuccess.value = true;
           currencyStore.setPaymentStatus(isPaymentSuccess.value);
+
+          $toast.success(t("campaigns.success_msg"));
+
           Swal.fire({
             title: t("campaigns.success_msg"),
             imageUrl: successIcon,
@@ -45,6 +52,8 @@ export const useCallback = () => {
             draggable: true,
           });
         } else {
+          $toast.error(t("campaigns.faild_msg"));
+
           Swal.fire({
             icon: "error",
             title: t("campaigns.faild_msg"),
@@ -66,6 +75,8 @@ export const useCallback = () => {
 
   const visitorGatewayCallback = async (razorpay_payment_link_id: string) => {
     try {
+      const Swal = () => import("sweetalert2");
+
       error.value = "";
       isLoading.value = true;
 
@@ -78,6 +89,8 @@ export const useCallback = () => {
       if (res.data.result.payment_status == "paid") {
         isPaymentSuccess.value = true;
         currencyStore.setPaymentStatus(isPaymentSuccess.value);
+        $toast.success(t("campaigns.success_msg"));
+
         Swal.fire({
           title: t("campaigns.success_msg"),
           imageUrl: successIcon,
@@ -91,6 +104,8 @@ export const useCallback = () => {
           draggable: true,
         });
       } else {
+        $toast.error(t("campaigns.faild_msg"));
+
         Swal.fire({
           icon: "error",
           title: t("campaigns.faild_msg"),

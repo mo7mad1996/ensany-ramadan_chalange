@@ -15,7 +15,7 @@
           <StoryCard :route="`/stories/${item.id}`" class="text-start m-1">
             <template #video>
               <NuxtLink :to="`/stories/${item.id}`">
-                <img
+                <nuxt-img
                   loading="lazy"
                   :src="item.image"
                   :alt="item?.title"
@@ -38,9 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import "vue3-carousel/dist/carousel.css";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
 const props = defineProps<{

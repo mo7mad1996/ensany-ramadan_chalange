@@ -5,9 +5,9 @@
         <h4 class="text-xl font-bold pt-3 pb-3">
           {{ statisticsData?.total_donations }}
         </h4>
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/dashboard/donation.svg"
+          src="/dashboard/donation.svg"
           alt="ramadanchallenges image"
         />
       </div>
@@ -21,9 +21,9 @@
           {{ statisticsData?.total_donations_amount }}
         </h4>
 
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/mony.svg"
+          src="/mony.svg"
           alt="ramadanchallenges image"
         />
       </div>
@@ -36,9 +36,9 @@
         <h4 class="text-xl font-bold pt-3 pb-3">
           {{ statisticsData?.total_campaigns }}
         </h4>
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/dashboard/campaigns.svg"
+          src="/dashboard/campaigns.svg"
           alt="ramadanchallenges image"
         />
       </div>
@@ -52,9 +52,9 @@
           {{ statisticsData?.active_campaigns }}
         </h4>
 
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/dashboard/doners.svg"
+          src="/dashboard/doners.svg"
           alt="ramadanchallenges image"
         />
       </div>
@@ -67,9 +67,9 @@
         <h4 class="text-xl font-bold pt-3 pb-3">
           {{ statisticsData?.faild_donations }}
         </h4>
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/dashboard/warning.svg"
+          src="/dashboard/warning.svg"
           alt="ramadanchallenges image"
         />
       </div>
@@ -82,9 +82,9 @@
         <h4 class="text-xl font-bold pt-3 pb-3">
           {{ statisticsData?.successful_donations }}
         </h4>
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../../../assets/images/dashboard/doners.svg"
+          src="/dashboard/doners.svg"
           alt="ramadanchallenges image"
         />
       </div>

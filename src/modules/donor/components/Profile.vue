@@ -15,7 +15,7 @@
           <label for="">{{ $t("home.upload_image") }}</label>
 
           <div class="mb-5">
-            <img
+            <nuxt-img
               loading="lazy"
               :src="preview"
               class="rounded-full aspect-square object-cover w-24 mx-auto shadow-2xl"
@@ -62,9 +62,9 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/contact/phone.svg"
+                  src="/contact/phone.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -94,9 +94,9 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/contact/phone.svg"
+                  src="/contact/phone.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -126,9 +126,9 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/contact/email.svg"
+                  src="/contact/email.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -158,9 +158,9 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/contact/phone.svg"
+                  src="/contact/phone.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -234,7 +234,7 @@
   </div>
 </template>
 <script setup>
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useAuth } from "~/modules/auth/services/auth";

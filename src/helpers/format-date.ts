@@ -1,7 +1,8 @@
 import { format, formatDistanceToNow, parseISO, isValid } from "date-fns";
-import { ar, enAU } from "date-fns/locale";
+import { ar } from "date-fns/locale/ar";
+import { enAU } from "date-fns/locale/en-AU";
 
-// formte => '3 houres ago'
+// format => '3 hours ago'
 export const reFormat = (date: any) => {
   if (!date) return "Invalid Date";
 
@@ -19,7 +20,7 @@ export const reFormat = (date: any) => {
     : "Invalid Date";
 };
 
-// formate => '3 February 2025'
+// format => '3 February 2025'
 export const reFormat2 = (date: any) => {
   if (!date) return "تاريخ غير صالح";
 

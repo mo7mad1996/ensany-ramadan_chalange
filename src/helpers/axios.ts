@@ -1,6 +1,5 @@
-import axios from "axios";
-import Swal from "sweetalert2";
 import { useAuth } from "~/modules/auth/services/auth";
+import axios from "axios";
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,

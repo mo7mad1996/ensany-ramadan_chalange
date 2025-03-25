@@ -1,8 +1,8 @@
 import { ref } from "vue";
-import image2 from "../../../assets/images/doners.svg";
-import image1 from "../../../assets/images/statistics1.svg";
-// import image3 from "../../../assets/images/funded.svg";
-import image4 from "../../../assets/images/campaigns.svg";
+import image2 from "~/assets/images/doners.svg";
+import image1 from "~/assets/images/statistics1.svg";
+// import image3 from "~/assets/images/funded.svg";
+import image4 from "~/assets/images/campaigns.svg";
 
 export const useBanner = () => {
   const { t } = useI18n();
