@@ -358,9 +358,8 @@
 
 <script setup lang="ts">
 import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
-
-import VueTelInput from "vue3-tel-input";
-import "vue3-tel-input/dist/vue3-tel-input.css";
+import  VueTelInput  from "vue3-tel-input";
+import 'vue3-tel-input/dist/vue3-tel-input.css'
 
 import { type NewCharity } from "~/helpers/interfaces";
 import { useAuth } from "../services/auth";

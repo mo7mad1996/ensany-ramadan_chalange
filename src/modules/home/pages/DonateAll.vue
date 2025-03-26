@@ -183,10 +183,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="name"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="name" class="text-sm text-red-500 mt-2" />
                   </div>
 
                   <!-- name hidden checkbox -->
@@ -229,10 +226,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="email"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="email" class="text-sm text-red-500 mt-2" />
                   </div>
 
                   <!-- phone -->
@@ -260,10 +254,7 @@
                       />
                     </div>
 
-                    <ErrorMessage
-                      name="phone"
-                      class="text-sm text-red-500 mt-2"
-                    />
+                    <ErrorMessage name="phone" class="text-sm text-red-500 mt-2" />
                   </div>
                 </div>
 
@@ -477,12 +468,7 @@
               <v-window-item>
                 <v-row class="d-flex justify-between">
                   <v-col class="d-flex justify-start">
-                    <v-btn
-                      :icon="icon"
-                      size="small"
-                      class="m-2"
-                      @click="window = 0"
-                    />
+                    <v-btn :icon="icon" size="small" class="m-2" @click="window = 0" />
                   </v-col>
                   <v-col class="d-flex justify-end">
                     <v-dialog max-width="500">
@@ -562,9 +548,7 @@
                       <td>
                         ({{
                           selectedCampaigns.indexOf(campaign.id) > -1
-                            ? (
-                                donationData.amount / selectedCampaigns.length
-                              ).toFixed(2)
+                            ? (donationData.amount / selectedCampaigns.length).toFixed(2)
                             : "0.00"
                         }})
                         {{ selectedCurrencyLabel }}
@@ -588,11 +572,7 @@
                       class="item"
                       :title="g.value"
                     >
-                      <nuxt-img
-                        :src="g.img"
-                        :alt="g.value"
-                        class="h-24 aspect-square"
-                      />
+                      <nuxt-img :src="g.img" :alt="g.value" class="h-24 aspect-square" />
 
                       <v-icon icon="mdi-check-circle-outline" />
                       <input
@@ -669,19 +649,13 @@ const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
 const icon = ref<string>("mdi-arrow-left");
 
-const {
-  data: campaigns,
-  loading: isLoading,
-  submitAllCampaigns,
-} = useAllCampaigns();
+const { data: campaigns, loading: isLoading, submitAllCampaigns } = useAllCampaigns();
 
 const selectedCampaigns = computed({
   // getter
   get() {
     if (!campaigns) return [];
-    return campaigns.value
-      .filter((c: any) => !c.selected)
-      .map((c: any) => c.id);
+    return campaigns.value.filter((c: any) => !c.selected).map((c: any) => c.id);
   },
 
   set(newValue: [string]) {
