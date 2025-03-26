@@ -1,14 +1,14 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> 
+      <template #first_page>
         <NuxtLink to="/">
-          {{ $t("global.home") }} 
+          {{ $t("global.home") }}
         </NuxtLink>
       </template>
-      <template #second_page> 
-      <NuxtLink to="/stories">
-          {{ $t("story.stories") }} 
+      <template #second_page>
+        <NuxtLink to="/stories">
+          {{ $t("story.stories") }}
         </NuxtLink>
       </template>
       <template #third_page> {{ singleStory?.title }} </template>
@@ -17,12 +17,12 @@
     <div class="content flex justify-center">
       <div class="w-[792px]">
         <div class="video">
-          <img loading="lazy" 
-              v-if="status == 'success'"
+          <nuxt-img
+            loading="lazy"
+            v-if="status == 'success'"
             class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
             :src="singleStory?.image"
-
-          ></img>
+          />
         </div>
 
         <div class="content_text py-5">
@@ -53,9 +53,8 @@
             type="list-item-two-line"
           ></v-skeleton-loader>
 
-
           <p
-           v-if="status == 'success'"
+            v-if="status == 'success'"
             class="text_one text-justify text-[20px] text-[#121212] leading-[32px] pt-4"
             v-html="singleStory?.content"
           ></p>
@@ -81,29 +80,28 @@ const { singleStory, status } = useSingleStory(route.params.id);
 siteName(null, singleStory.value.title);
 
 useSeoMeta({
-      title: singleStory.value.title,
-      ogTitle: singleStory.value.title,
-      ogImage: singleStory.value.image,
-      twitterCard: singleStory.value.image,
-      description:singleStory.value.content,
-      ogDescription:singleStory.value.content,
-  });
+  title: singleStory.value.title,
+  ogTitle: singleStory.value.title,
+  ogImage: singleStory.value.image,
+  twitterCard: singleStory.value.image,
+  description: singleStory.value.content,
+  ogDescription: singleStory.value.content,
+});
 
 watchEffect(() => {
-    if(status.value == 'error'){
-    navigateTo('/stories');
+  if (status.value == "error") {
+    navigateTo("/stories");
   }
 });
 
 watch(singleStory, (story: any) => {
- 
   useSeoMeta({
-      title: story?.title,
-      ogTitle: story?.title,
-      ogImage: story?.image,
-      twitterCard: story?.image,
-      description:story?.content,
-      ogDescription:story?.content,
+    title: story?.title,
+    ogTitle: story?.title,
+    ogImage: story?.image,
+    twitterCard: story?.image,
+    description: story?.content,
+    ogDescription: story?.content,
   });
 });
 </script>

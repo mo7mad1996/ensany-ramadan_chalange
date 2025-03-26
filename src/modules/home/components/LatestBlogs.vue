@@ -40,7 +40,7 @@
             @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>
-              <img
+              <nuxt-img
                 loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
@@ -68,9 +68,11 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import { useBlogs } from "~/modules/blogs/services/blogs";
-import Container from "../../../global/Container.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import Container from "~/global/Container.vue";
+import { useCarousel } from "~/helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
 const { blogs, status } = useBlogs();

@@ -34,7 +34,7 @@
         class="max-w-full h-full"
       >
         <template #image>
-          <img
+          <nuxt-img
             loading="lazy"
             style="height: 240px"
             @click="$router.push(`/campaigns/${campaign.id}`)"
@@ -49,7 +49,9 @@
         <template #title>{{ campaign?.name }}</template>
 
         <template #desc>
-          <span v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"></span>
+          <span
+            v-html="stripHtmlTags(campaign?.short_desc)?.slice(0, 30)"
+          ></span>
         </template>
 
         <template #subscribers>{{ campaign?.total_donors }}</template>
@@ -86,7 +88,8 @@ const router = useRouter();
 const route = useRoute();
 
 const lastPage = ref(1);
-const { campaigns, currentPage, campaignsMeta, refresh, status } = useCampaigns();
+const { campaigns, currentPage, campaignsMeta, refresh, status } =
+  useCampaigns();
 
 const handlePageChange = async (newPage) => {
   isLoading.value = true;

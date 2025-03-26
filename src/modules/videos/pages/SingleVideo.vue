@@ -28,10 +28,10 @@
           <div class="flex items-center pt-2 justify-between">
             <!-- writer -->
             <div class="flex items-center gap-x-2">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/honor-company.svg "
-                alt="ramadanchallenges image"
+                src="/honor-company.svg"
+                alt="ramadan challenges image"
               />
               <span>{{ video?.user?.name }}</span>
             </div>
@@ -84,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from "vue-router";
+// @ts-ignore
 import BreadCrumb from "~/global/BreadCrumb.vue";
 import Container from "~/global/Container.vue";
 import { reFormat2 } from "~/helpers/format-date";

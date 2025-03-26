@@ -1,14 +1,13 @@
 <template>
-  <ClientOnly>
-    <HomeBanner />
-  </ClientOnly>
+  <HomeBanner />
   <HomeRamadanChalange />
   <HomeContriputing />
   <HomeChallengeHeros />
   <HomeTable />
+
   <HomeCampaigns />
   <HomeParteners />
-  <!-- <HomeFamouses /> -->
+  <!-- <HomeFamouses  /> -->
   <HomeSuccessStories />
   <HomeLatestBlogs />
   <HomeLastSection />

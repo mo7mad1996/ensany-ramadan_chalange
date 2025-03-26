@@ -2,11 +2,13 @@
   <div class="sidebar">
     <!-- user name -->
     <div class="user_name flex gap-x-3 items-center">
-      <img
+      <nuxt-img
         loading="lazy"
-        :src="user?.photo || '../assets/images/dashboard/avatar.svg'"
+        :src="user?.photo || '/dashboard/avatar.svg'"
         width="30px"
-        class="rounded-full aspect-square object-cover"
+        height="30px"
+        fit="cover"
+        class="rounded-full"
         alt="ramadanchallenges image"
       />
       <span v-if="user?.first_name">{{ user?.first_name }}</span>
@@ -16,8 +18,16 @@
     <!-- dashboard links -->
     <ul class="list-none mt-sm">
       <li class="cursor-pointer mb-3">
-        <nuxt-link to="/dashboard/charity" class="flex items-center gap-x-2 p-2">
-          <img loading="lazy"  src="../assets/images/dashboard/dashboard.svg" width="15px" alt="ramadanchallenges image" />
+        <nuxt-link
+          to="/dashboard/charity"
+          class="flex items-center gap-x-2 p-2"
+        >
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/dashboard.svg"
+            width="15px"
+            alt="ramadanchallenges image"
+          />
           <span>{{ $t("dashboard.dashboard") }}</span>
         </nuxt-link>
       </li>
@@ -27,7 +37,12 @@
           to="/dashboard/charity/campaigns"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy"  src="../assets/images/dashboard/campaigns.svg" width="15px" alt="ramadanchallenges image" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/campaigns.svg"
+            width="15px"
+            alt="ramadanchallenges image"
+          />
           <span>{{ $t("dashboard.campaigns") }}</span>
         </nuxt-link>
       </li>
@@ -37,7 +52,12 @@
           to="/dashboard/charity/donations"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy"  src="../assets/images/dashboard/donation.svg" width="15px" alt="ramadanchallenges image" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/donation.svg"
+            width="15px"
+            alt="ramadanchallenges image"
+          />
           <span>{{ $t("dashboard.donations") }}</span>
         </nuxt-link>
       </li>
@@ -48,8 +68,8 @@
           to="/dashboard/charity/notification"
           class="flex items-center gap-x-2 p-2"
         >
-          <img loading="lazy" 
-            src="../assets/images/dashboard/notification.svg"
+          <nuxt-img loading="lazy" 
+            src="/dashboard/notification.svg"
             width="15px"
             alt="ramadanchallenges image"
           />
@@ -59,15 +79,28 @@
       -->
 
       <li class="cursor-pointer mb-10">
-        <nuxt-link to="/dashboard/charity/settings" class="flex items-center gap-x-2 p-2">
-          <img loading="lazy"  src="../assets/images/dashboard/settings.svg" width="15px" alt="ramadanchallenges image" />
+        <nuxt-link
+          to="/dashboard/charity/settings"
+          class="flex items-center gap-x-2 p-2"
+        >
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/settings.svg"
+            width="15px"
+            alt="ramadanchallenges image"
+          />
           <span>{{ $t("dashboard.settings") }}</span>
         </nuxt-link>
       </li>
 
       <li class="cursor-pointer">
         <nuxt-link to="" class="flex items-center gap-x-2 p-2">
-          <img loading="lazy"  src="../assets/images/dashboard/logout.svg" width="15px" alt="ramadanchallenges image" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/logout.svg"
+            width="15px"
+            alt="ramadanchallenges image"
+          />
           <span>{{ $t("dashboard.logout") }}</span>
         </nuxt-link>
       </li>

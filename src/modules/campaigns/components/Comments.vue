@@ -15,10 +15,10 @@
       </div>
     </div>
 
-    <!-- commment input (write a comment) -->
+    <!-- comment input (write a comment) -->
     <div class="comment-part mt-5 py-0 px-5">
       <!-- <div class="flex gap-x-3 items-center">
-        <img loading="lazy" src="../../../assets/images/user.svg" alt="ramadanchallenges image" />
+        <nuxt-img loading="lazy" src="/user.svg" alt="ramadanchallenges image" />
         <h4 class="text-2xl font-bold">Ali Omar</h4>
       </div>
 
@@ -66,9 +66,9 @@
             :key="index"
           >
             <div class="flex gap-x-3 items-start">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/user.svg"
+                src="/user.svg"
                 alt="ramadanchallenges image"
               />
               <div>
@@ -94,11 +94,11 @@
           class="image flex justify-center mt-md"
           v-if="comments.length == 0 && status == 'error'"
         >
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/no-data.jpg"
+            src="/no-data.jpg"
             width="150"
-            alt="ramadanchallenges image"
+            alt="ramadan challenges image"
           />
         </div>
 

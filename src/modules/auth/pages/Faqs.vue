@@ -22,21 +22,25 @@
         ></v-skeleton-loader>
       </div>
 
-      <v-expansion-panels v-if="status == 'success'" class="mb-6 mt-6" elevation="0">
+      <v-expansion-panels
+        v-if="status == 'success'"
+        class="mb-6 mt-6"
+        elevation="0"
+      >
         <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
-              <img
+              <nuxt-img
                 loading="lazy"
                 v-if="index % 2 == 0"
-                src="../../../assets/images/dashboard/amount.svg"
+                src="/dashboard/amount.svg"
                 alt="ramadanchallenges image"
               />
 
-              <img
+              <nuxt-img
                 loading="lazy"
                 v-else
-                src="../../../assets/images/dashboard/campaigns.svg"
+                src="/dashboard/campaigns.svg"
                 alt="ramadanchallenges image"
               />
 

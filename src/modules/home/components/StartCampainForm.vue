@@ -36,9 +36,9 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -57,9 +57,9 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -104,9 +104,9 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -126,9 +126,9 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -175,9 +175,9 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -197,9 +197,9 @@
               <div
                 class="absolute ltr:right-0 rtl:left-0 flex items-center pt-3 ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/edit.svg"
+                  src="/campaign/edit.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -259,9 +259,9 @@
               <div
                 class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
               >
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/campaign/days.svg"
+                  src="/campaign/days.svg"
                   alt="ramadanchallenges image"
                 />
               </div>
@@ -283,9 +283,9 @@
         <div class="grid gap-3 grid-cols-1 lg:grid-cols-2 md:grid-cols-2">
           <div class="upload_image mt-5">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/image.svg"
+                src="/campaign/image.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl">{{ $t("home.upload_image") }}</span>
@@ -322,9 +322,9 @@
           <!-- video url -->
           <div class="upload_image mt-5">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/video.svg"
+                src="/video.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl">{{ $t("home.video_url") }}</span>
@@ -345,9 +345,9 @@
         >
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/amount.svg"
+                src="/campaign/amount.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl"> {{ $t("home.amount") }}</span>
@@ -365,7 +365,7 @@
 
           <!-- <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img loading="lazy" src="../../../assets/images/campaign/currncy.svg" alt="ramadanchallenges image" />
+              <nuxt-img loading="lazy" src="/campaign/currncy.svg" alt="ramadanchallenges image" />
               <span class="text-2xl"> {{ $t("home.currency") }}</span>
             </div>
 
@@ -387,9 +387,9 @@
           <!-- currencies -->
           <div v-if="false">
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/status.svg"
+                src="/campaign/status.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl"> {{ $t("home.currency") }}</span>
@@ -418,9 +418,9 @@
         >
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/status.svg"
+                src="/campaign/status.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl"> {{ $t("home.category") }}</span>
@@ -445,9 +445,9 @@
 
           <div>
             <div class="title flex items-center gap-x-2 mb-3">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/campaign/status.svg"
+                src="/campaign/status.svg"
                 alt="ramadanchallenges image"
               />
               <span class="text-2xl"> {{ $t("home.status") }}</span>
@@ -496,7 +496,7 @@
 <script setup>
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { api } from "~/helpers/axios";
 import { useCurrencyStore } from "~/modules/campaigns/store/currancy";

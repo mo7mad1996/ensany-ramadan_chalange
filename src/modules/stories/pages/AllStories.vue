@@ -23,7 +23,7 @@
         :route="`/stories/${story?.id}`"
       >
         <template #video>
-          <img
+          <nuxt-img
             loading="lazy"
             @click="$router.push(`/stories/${story.id}`)"
             class="w-full max-h-[15rem] object-cover rounded-lg"

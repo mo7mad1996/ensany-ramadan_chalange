@@ -61,9 +61,9 @@
         size="x-small"
         color="primary"
       >
-        <img
+        <nuxt-img
           loading="lazy"
-          src="../assets/images/statistics1.svg"
+          src="/statistics1.svg"
           width="15"
           class="mb-2"
           alt="ramadanchallenges image"

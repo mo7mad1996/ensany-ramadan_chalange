@@ -78,9 +78,9 @@
       <!-- all donors part -->
       <div class="all-doners mt-5">
         <div class="title flex gap-x-3 items-center">
-          <img
+          <nuxt-img
             loading="lazy"
-            src="../../../assets/images/increment.svg"
+            src="/increment.svg"
             width="20"
             alt="ramadanchallenges image"
           />
@@ -107,9 +107,9 @@
               :key="index"
             >
               <div class="flex gap-x-3 items-center">
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -133,9 +133,9 @@
 
           <!-- <div v-else>
             <div class="image flex justify-center">
-              <img
+              <nuxt-img
                 loading="lazy"
-                src="../../../assets/images/no-data.jpg"
+                src="/no-data.jpg"
                 width="150"
                 alt="ramadanchallenges image"
               />
@@ -186,9 +186,9 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -222,9 +222,9 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -259,9 +259,9 @@
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img
+                      <nuxt-img
                         loading="lazy"
-                        src="../../../assets/images/user.svg"
+                        src="/user.svg"
                         alt="ramadanchallenges image"
                       />
                       <div>
@@ -306,9 +306,9 @@
                       class="doner mb-5 flex justify-between gap-x-md items-center"
                     >
                       <div class="flex gap-x-3 items-center">
-                        <img
+                        <nuxt-img
                           loading="lazy"
-                          src="../../../assets/images/user.svg"
+                          src="/user.svg"
                           alt="ramadanchallenges image"
                         />
                         <div>
@@ -343,9 +343,9 @@
               class="doner mb-5 flex justify-between gap-x-md items-center"
             >
               <div class="flex gap-x-3 items-center">
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -379,9 +379,9 @@
               class="doner mb-5 flex justify-between gap-x-md items-center"
             >
               <div class="flex gap-x-3 items-center">
-                <img
+                <nuxt-img
                   loading="lazy"
-                  src="../../../assets/images/user.svg"
+                  src="/user.svg"
                   alt="ramadanchallenges image"
                 />
                 <div>
@@ -414,9 +414,9 @@
                 class="doner mb-5 flex justify-between gap-x-md items-center"
               >
                 <div class="flex gap-x-3 items-center">
-                  <img
+                  <nuxt-img
                     loading="lazy"
-                    src="../../../assets/images/user.svg"
+                    src="/user.svg"
                     alt="ramadanchallenges image"
                   />
                   <div>

@@ -4,7 +4,7 @@
       <v-card class="px-4 py-4 elevation-1 bg-white">
         <v-row class="ma-0">
           <v-col cols="8">
-            <p class=" text-grey-darken-2">
+            <p class="text-grey-darken-2">
               {{ $t(item.label) }}
             </p>
           </v-col>
@@ -26,9 +26,9 @@
 
 <script setup>
 import { useDonorOverview } from "../services/overview";
-import total_donations from "../../../assets/images/donor/Frame 17.svg";
-import active_campaigns from "../../../assets/images/donor/Icon.png";
-import upcoming_payments from "../../../assets/images/donor/Money.png";
+import total_donations from "~/assets/images/donor/Frame 17.svg";
+import active_campaigns from "~/assets/images/donor/Icon.png";
+import upcoming_payments from "~/assets/images/donor/Money.png";
 const { donorOverview } = useDonorOverview();
 
 const stats = computed(() => [

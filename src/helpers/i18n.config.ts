@@ -1,4 +1,4 @@
-import { createI18n } from "vue-i18n";
+// import { createI18n } from "vue-i18n";
 
 import arGlobal from "../locales/ar.json";
 import enGlobal from "../locales/en.json";

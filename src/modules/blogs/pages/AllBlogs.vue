@@ -25,7 +25,7 @@
         :to="`/blogs/${blog.id}`"
       >
         <template #image>
-          <img
+          <nuxt-img
             loading="lazy"
             :src="blog?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"

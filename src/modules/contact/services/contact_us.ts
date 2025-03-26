@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import { api } from "~/helpers/axios";
 
 export const useContact = () => {
@@ -27,10 +27,9 @@ export const useContact = () => {
         },
       });
 
-      Object.keys(contactData).forEach(key => (contactData[key] = ""));  
-      resetForm(); 
+      Object.keys(contactData).forEach((key) => (contactData[key] = ""));
+      resetForm();
     } catch (err: any) {
- 
       Swal.fire({
         icon: "error",
         title: err.response.data?.message,
@@ -40,7 +39,6 @@ export const useContact = () => {
           confirmButton: "my-custom-btn",
         },
       });
-
     }
 
     isLoading.value = false;
