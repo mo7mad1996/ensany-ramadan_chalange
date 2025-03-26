@@ -8,7 +8,7 @@
   >
     <Container class="h-full relative text-white grid items-center">
       <div class="content pt-xd">
-        <LazyHomeBannerContent />
+        <HomeBannerContent />
 
         <div
           class="statistics grid gap-y-sm grid-cols-2 lg:grid-cols-3 md:grid-cols-3 py-xd px-0"
