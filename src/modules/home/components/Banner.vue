@@ -13,9 +13,18 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  {{ fixed.total_collected }}
-                </span>
+                <ClientOnly fallbackTag="span">
+                  <span class="amount text-2xl font-bold">
+                    {{ fixed.total_collected }}
+                  </span>
+
+                  <template #fallback>
+                    <span class="amount text-2xl font-bold">{{
+                      bannerData.total_collected
+                    }}</span>
+                  </template>
+                </ClientOnly>
+
                 <span>
                   <nuxt-img
                     loading="lazy"
@@ -35,9 +44,17 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  {{ fixed.total_donors }}
-                </span>
+                <ClientOnly fallbackTag="span">
+                  <span class="amount text-2xl font-bold">
+                    {{ fixed.total_donors }}
+                  </span>
+
+                  <template #fallback>
+                    <span class="amount text-2xl font-bold">{{
+                      bannerData.total_donors
+                    }}</span>
+                  </template>
+                </ClientOnly>
                 <span>
                   <nuxt-img
                     loading="lazy"
@@ -57,9 +74,18 @@
           <div class="statistic_item flex justify-center">
             <div>
               <div class="d-flex ga-3 align-center">
-                <span class="amount text-2xl font-bold">
-                  {{ fixed.total_campaigns }}
-                </span>
+                <ClientOnly fallbackTag="span">
+                  <span class="amount text-2xl font-bold">
+                    {{ fixed.total_campaigns }}
+                  </span>
+
+                  <template #fallback>
+                    <span class="amount text-2xl font-bold">{{
+                      bannerData.total_campaigns
+                    }}</span>
+                  </template>
+                </ClientOnly>
+
                 <span>
                   <nuxt-img
                     loading="lazy"

@@ -1,12 +1,12 @@
 <template>
-  <LazyHomeBanner hydrate-never />
-  <LazyHomeRamadanChalange hydrate-on-visible />
-  <LazyHomeContriputing hydrate-on-visible />
-  <LazyHomeChallengeHeros hydrate-on-visible />
-  <LazyHomeTable hydrate-on-visible />
+  <LazyHomeBanner />
+  <LazyHomeRamadanChalange />
+  <LazyHomeContriputing />
+  <LazyHomeChallengeHeros />
+  <LazyHomeTable hydrate-never />
 
-  <LazyHomeCampaigns hydrate-on-visible />
-  <LazyHomeParteners hydrate-on-visible />
+  <LazyHomeCampaigns hydrate-never />
+  <LazyHomeParteners hydrate-never />
   <!-- <LazyHomeFamouses  hydrate-on-visible/> -->
   <LazyHomeSuccessStories hydrate-on-visible />
   <LazyHomeLatestBlogs hydrate-on-visible />

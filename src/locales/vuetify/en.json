@@ -1,11 +1,14 @@
 {
   "badge": "",
+  "loading": "loading",
   "pagination": {
     "ariaLabel": {
       "root": "Pagination Navigation",
       "previous": "Previous Page",
       "next": "Next Page",
-      "currentPage": "Current Page"
+      "currentPage": "Current Page",
+      "page": "Page",
+      "loading": "loading"
     }
   }
 }
