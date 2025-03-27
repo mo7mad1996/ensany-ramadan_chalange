@@ -280,7 +280,7 @@
 </template>
 
 <script setup>
-import img from "~/assets/images/chalenge-img.png";
+import img from "/chalenge-img.png";
 import { useCampaign } from "../typescript/view-campaign";
 const props = defineProps({
   campaign: {

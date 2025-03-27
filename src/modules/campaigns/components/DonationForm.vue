@@ -336,7 +336,7 @@
                     >
                       <nuxt-img
                         loading="lazy"
-                        src="~/assets/images/contact/phone.svg"
+                        src="/contact/phone.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -363,7 +363,7 @@
                   <div class="flex gap-x-2">
                     <nuxt-img
                       loading="lazy"
-                      src="~/assets/images/campaign/comment.svg"
+                      src="/campaign/comment.svg"
                       width="22"
                       alt="ramadanchallenges image"
                     />
@@ -379,7 +379,7 @@
                     >
                       <nuxt-img
                         loading="lazy"
-                        src="~/assets/images/campaign/edit.svg"
+                        src="/campaign/edit.svg"
                         alt="ramadanchallenges image"
                       />
                     </div>
@@ -460,7 +460,7 @@
           <div class="flex gap-x-2 items-center">
             <nuxt-img
               loading="lazy"
-              src="~/assets/images/campaign/icon2.svg"
+              src="/campaign/icon2.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
@@ -471,7 +471,7 @@
           <div class="flex gap-x-2 items-center">
             <nuxt-img
               loading="lazy"
-              src="~/assets/images/campaign/icon3.svg"
+              src="/campaign/icon3.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
@@ -482,7 +482,7 @@
           <div class="flex gap-x-2 items-center">
             <nuxt-img
               loading="lazy"
-              src="~/assets/images/campaign/icon1.svg"
+              src="/campaign/icon1.svg"
               alt="ramadanchallenges image"
             />
             <span class="text-sm leading-20 text-[#12121299]">{{
