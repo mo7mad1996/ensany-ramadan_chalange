@@ -19,9 +19,7 @@
                   </span>
 
                   <template #fallback>
-                    <span class="amount text-2xl font-bold">{{
-                      bannerData.total_collected
-                    }}</span>
+                    <span class="amount text-2xl font-bold">0.00</span>
                   </template>
                 </ClientOnly>
 
@@ -50,9 +48,7 @@
                   </span>
 
                   <template #fallback>
-                    <span class="amount text-2xl font-bold">{{
-                      bannerData.total_donors
-                    }}</span>
+                    <span class="amount text-2xl font-bold">0</span>
                   </template>
                 </ClientOnly>
                 <span>
@@ -80,9 +76,7 @@
                   </span>
 
                   <template #fallback>
-                    <span class="amount text-2xl font-bold">{{
-                      bannerData.total_campaigns
-                    }}</span>
+                    <span class="amount text-2xl font-bold">0</span>
                   </template>
                 </ClientOnly>
 
