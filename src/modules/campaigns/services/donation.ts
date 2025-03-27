@@ -21,7 +21,7 @@ export const useDonation = () => {
       }
     } catch (err: any) {
       const Swal = () => import("sweetalert2");
-
+      a;
       Swal.fire({
         title: err.response?.data?.message || err.message,
         html: Object.values(err.response?.data?.result?.errors)

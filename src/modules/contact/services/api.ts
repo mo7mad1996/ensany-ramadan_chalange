@@ -1,4 +1,4 @@
-import { api } from "~/helpers/axios";
+import { api } from "../../../helpers/axios";
 import { ref, onMounted } from "vue";
 
 // here all apis calls of the module

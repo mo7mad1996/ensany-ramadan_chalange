@@ -96,7 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
+import Container from "../../../global/Container.vue";
 import { useBanner } from "../typescript/banner";
 import { useBannerData } from "../services/banner";
 const { onEnterViewport, stats, animatedValues } = useBanner();

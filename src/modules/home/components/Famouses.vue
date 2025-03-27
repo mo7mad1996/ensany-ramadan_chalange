@@ -126,8 +126,8 @@
 <script setup lang="ts">
 import "vue3-carousel/dist/carousel.css";
 
-import Container from "~/global/Container.vue";
-import { useCarousel } from "~/helpers/carousel";
+import Container from "../../../global/Container.vue";
+import { useCarousel } from "../../../helpers/carousel";
 const { settings, breakpoints3, Navigation, Carousel, Slide } = useCarousel();
 </script>
 

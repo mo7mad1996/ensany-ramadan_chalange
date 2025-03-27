@@ -103,9 +103,9 @@
 import "vue3-carousel/dist/carousel.css";
 
 import { stripHtmlTags } from "~/helpers/string";
-import Card from "~/global/Card.vue";
-import Container from "~/global/Container.vue";
-import { useCarousel } from "~/helpers/carousel";
+import Card from "../../../global/Card.vue";
+import Container from "../../../global/Container.vue";
+import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
 const { breakpoints1, settings, Carousel, Slide, Pagination, Navigation } =
   useCarousel();

@@ -17,6 +17,7 @@ export const useCallback = () => {
   const callBack = async (type: any, response_id: any) => {
     try {
       const Swal = () => import("sweetalert2");
+
       error.value = "";
       isLoading.value = true;
       const requetType =

@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
+import Container from "../../../global/Container.vue";
 </script>
 
 <style scoped>

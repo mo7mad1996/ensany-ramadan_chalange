@@ -667,7 +667,6 @@ const getCountries = async () => {
 };
 const onSubmit = async (payload) => {
   const Swal = () => import("sweetalert2");
-
   try {
     personalForm.loading = true;
     const res = await update(payload, toRaw(files.value));
@@ -713,7 +712,6 @@ const showConfPassword = () => {
 
 const onSubmit2 = async () => {
   const Swal = () => import("sweetalert2");
-
   try {
     passwordForm.loading = true;
     const res = await changePassword(passwordForm);

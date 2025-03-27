@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /dashboard/          
-User-agent: Googlebot
-User-agent: Bingbot

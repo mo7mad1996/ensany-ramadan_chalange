@@ -71,8 +71,8 @@
 import "vue3-carousel/dist/carousel.css";
 
 import { useBlogs } from "~/modules/blogs/services/blogs";
-import Container from "~/global/Container.vue";
-import { useCarousel } from "~/helpers/carousel";
+import Container from "../../../global/Container.vue";
+import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
 const { locale } = useI18n();
 const { blogs, status } = useBlogs();

@@ -1,17 +1,4 @@
 <template>
-  <!-- Google Tag Manager (noscript) -->
-  <ClientOnly>
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-PWKGS9VZ"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-  </ClientOnly>
-
-  <!-- End Google Tag Manager (noscript) -->
   <v-layout>
     <Header />
 
@@ -62,7 +49,7 @@ import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
 
-// const donate = ref("");
+// const donate = ref("");c
 
 // const openDialog = () => {
 //   donate.value.showModal();
@@ -75,6 +62,7 @@ const { locale } = useI18n();
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
+    lang: locale.value,
   },
 });
 </script>

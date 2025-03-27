@@ -11,7 +11,7 @@ export const useBannerData = () => {
     method: "GET",
     baseURL: api.defaults.baseURL,
     watch: [locale],
-    transform: (response: any) => response.data.result,
+    transform: (response: any) => response.result,
   });
 
   return {

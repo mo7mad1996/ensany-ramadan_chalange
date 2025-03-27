@@ -5,7 +5,11 @@ export default defineNuxtConfig({
   srcDir: "src/",
 
   // styles => [css, scss]
-  css: ["~/assets/css/main.scss", "~/assets/css/sass-setup.scss"],
+  css: [
+    "~/assets/css/main.scss",
+    "~/assets/css/sass-setup.scss",
+    "@vuepic/vue-datepicker/dist/main.css",
+  ],
 
   app: {
     head: {
