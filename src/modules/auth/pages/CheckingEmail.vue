@@ -16,7 +16,17 @@
         </p>
 
         <div class="otp-input">
-          <v-otp-input length="6" model-value=""></v-otp-input>
+          <v-otp-input
+            length="6"
+            model-value=""
+            v-model="data.code"
+          ></v-otp-input>
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.code"
+            :key="n"
+            v-html="err"
+          />
         </div>
 
         <!-- timer for resend code  -->
@@ -25,60 +35,78 @@
         </div>
 
         <!-- password input -->
-        <div class="relative mt-4">
-          <div
-            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
-            @click="showPassword"
-          >
-            <v-icon v-if="show1" size="small">mdi-eye-outline</v-icon>
-            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+        <form @submit.prevent="submit">
+          <div class="relative mt-4">
+            <div
+              class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
+              @click="showPassword"
+            >
+              <v-icon v-if="show1" size="small">mdi-eye-outline</v-icon>
+              <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+            </div>
+
+            <input
+              :type="show1 ? 'text' : 'password'"
+              id="custom-input"
+              :placeholder="$t('auth.password')"
+              v-model="data.password"
+              class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              required
+            />
+            <p
+              class="error"
+              v-for="(err, n) in apiErrors.password"
+              :key="n"
+              v-html="err"
+            />
           </div>
 
-          <input
-            :type="show1 ? 'text' : 'password'"
-            id="custom-input"
-            :placeholder="$t('auth.password')"
-            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            required
-          />
-        </div>
+          <!-- confirm password  -->
+          <div class="relative mt-4">
+            <div
+              class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
+              @click="showConfPassword"
+            >
+              <v-icon v-if="show2" size="small">mdi-eye-outline</v-icon>
+              <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+            </div>
 
-        <!-- confirm password  -->
-        <div class="relative mt-4">
-          <div
-            class="absolute ltr:right-0 rtl:left-0 inset-y-0 flex items-center ltr:pr-3 rtl:pl-3 cursor-pointer"
-            @click="showConfPassword"
-          >
-            <v-icon v-if="show2" size="small">mdi-eye-outline</v-icon>
-            <v-icon v-else size="small">mdi-eye-off-outline</v-icon>
+            <input
+              :type="show2 ? 'text' : 'password'"
+              id="custom-input"
+              :placeholder="$t('auth.confirm_password')"
+              class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
+              required
+              v-model="data.password_confirmation"
+            />
           </div>
-
-          <input
-            :type="show2 ? 'text' : 'password'"
-            id="custom-input"
-            :placeholder="$t('auth.confirm_password')"
-            class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-            required
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.password_confirmation"
+            :key="n"
+            v-html="err"
           />
-        </div>
+          <v-btn
+            class="text-capitalize rounded-lg w-100 mt-5"
+            :ripple="false"
+            variant="flat"
+            size="large"
+            type="submit"
+            :loading="data.loading"
+            color="primary"
+            >{{ $t("auth.reset_password") }}</v-btn
+          >
+        </form>
 
-        <v-btn
-          class="text-capitalize rounded-lg w-100 mt-5"
-          :ripple="false"
-          variant="flat"
-          size="large"
-          color="primary"
-          >{{ $t("auth.reset_password") }}</v-btn
-        >
-
-        <!-- Recend code -->
+        <!-- Resend code -->
         <div
           class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
         >
-          <img
-            src="../../../assets/images/auth/resent.svg"
+          <nuxt-img
+            loading="lazy"
+            src="/auth/resent.svg"
             width="22px"
-            alt="..."
+            alt="ramadanchallenges image"
           />
           <button :disabled="timeLeft !== 0" @click="resendCode">
             <span
@@ -98,10 +126,19 @@
 
 <script setup lang="ts">
 import Container from "~/global/Container.vue";
-import { useResetPassword } from "../typescript/reset";
 import { useGlobalVar } from "~/helpers/global-var";
-const { locale } = useI18n();
+import { useResetPassword } from "../typescript/reset";
+const { t } = useI18n();
 
+const apiErrors = ref({});
+const { $toast } = useNuxtApp();
+
+const data = reactive({
+  loading: false,
+  code: "",
+  password: "",
+  password_confirmation: "",
+});
 const {
   show1,
   show2,
@@ -110,23 +147,33 @@ const {
   resendCode,
   formattedTime,
   timeLeft,
+  resetPassword,
 } = useResetPassword();
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const submit = async () => {
+  try {
+    apiErrors.value = {};
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
+    data.loading = true;
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+    const res = await resetPassword(data);
+
+    $toast.success(t("auth.rest_password_success"));
+  } catch (err: any) {
+    console.error(err);
+
+    apiErrors.value = err.response?.data?.result?.errors;
+  } finally {
+    data.loading = false;
+  }
+};
+
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_check_email");
 </script>
+
+<style scoped>
+.error {
+  @apply text-sm text-red-500;
+}
+</style>

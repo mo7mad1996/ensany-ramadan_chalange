@@ -1,0 +1,86 @@
+.v-toolbar__content {
+  overflow: visible !important;
+}
+.carousel__pagination-button::after {
+  display: block;
+  content: "";
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #c0bfbf !important;
+}
+.carousel__pagination-button--active::after {
+  background-color: #3e7e41 !important;
+  width: 20px !important;
+  border-radius: 10px !important;
+}
+.carousel__pagination {
+  bottom: -35px !important;
+}
+@media (min-width: 992px) {
+  .carousel__prev {
+    left: -54px !important;
+  }
+  .carousel__next {
+    right: -54px !important;
+  }
+}
+.v-navigation-drawer__scrim {
+  position: fixed !important;
+}
+@media (max-width: 768px) {
+  h1 {
+    text-align: center;
+  }
+}
+.custom-border-radius {
+  border-radius: 0 6px 6px 0;
+}
+.v-btn--stacked.v-btn--size-x-small {
+  width: 90px;
+  height: 90px;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.v-pagination__item--is-active .v-btn__overlay {
+  opacity: 0;
+}
+
+.v-input__details {
+  display: none !important;
+}
+.custom-tooltip .v-overlay__content {
+  background-color: #e8fde8 !important;
+  color: #000 !important;
+}
+
+.v-expansion-panel {
+  border-radius: 8px !important;
+}
+.v-progress-linear__background,
+.v-progress-linear__buffer {
+  background-color: #fff;
+  opacity: 1;
+}
+.v-progress-linear__determinate {
+  background-color: #3e7e41;
+  border-radius: 5px;
+}
+.vue-tel-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+.vue-tel-input:focus-within {
+  box-shadow: none;
+  border-color: #e0e0e0;
+}
+.vti__dropdown-list.below {
+  top: 50px;
+}
+.swal2-image {
+  object-fit: cover !important;
+}
+.swal2-confirm {
+  background-color: #a5dc86;
+}

@@ -1,6 +1,10 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
+    <template #first_page>
+      <NuxtLink to="/">
+        {{ $t("global.home") }}
+      </NuxtLink>
+    </template>
     <template #second_page> {{ $t("global.campaigns") }} </template>
   </BreadCrumb>
 
@@ -17,19 +21,26 @@
     >
       <Card
         v-for="(campaign, index) in campaigns"
+        :id="campaign?.id"
         :key="index"
         :rate="(campaign?.total_amount / campaign?.price_target) * 100"
         :shadow="true"
         :donatebtn="true"
+        :status="campaign?.status"
         :route="`/campaigns/donate/${campaign?.id}`"
+        :in_cart="campaign?.in_cart || false"
+        :cart_status="campaign?.cart_status || ''"
+        :cart_id="campaign?.cart_id || ''"
         class="max-w-full h-full"
       >
         <template #image>
-          <img
+          <nuxt-img
+            loading="lazy"
+            style="height: 240px"
             @click="$router.push(`/campaigns/${campaign.id}`)"
             :src="campaign?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </template>
 
@@ -53,9 +64,10 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="status == 'success' && campaigns.length > 0"
         v-model="currentPage"
         :length="campaignsMeta.last_page"
-        @input="fetchCampaigns"
+        @click="handlePageChange(currentPage)"
         :total-visible="5"
       ></v-pagination>
     </div>
@@ -63,45 +75,44 @@
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
-import Card from "~/global/Card.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Card from "~/global/Card.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
-import { useCampaigns } from "../services/campaigns";
 import { stripHtmlTags } from "~/helpers/string";
-const { locale } = useI18n();
-const isLoading = ref(true);
+import { useCampaigns } from "../services/campaigns";
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { campaigns, campaignsMeta, refresh, status, currentPage } =
+const isLoading = ref(true);
+const router = useRouter();
+const route = useRoute();
+
+const lastPage = ref(1);
+const { campaigns, currentPage, campaignsMeta, refresh, status } =
   useCampaigns();
 
-const fetchCampaigns = () => {
-  refresh();
+const handlePageChange = async (newPage) => {
+  isLoading.value = true;
+  if (isLoading.value) return;
+  if (newPage > campaignsMeta.value.last_page) {
+    lastPage.value = campaignsMeta.value.last_page;
+    currentPage.value = 1;
+    router.push({ query: { page: 1 } });
+  } else {
+    currentPage.value = newPage;
+    router.push({ query: { page: newPage } });
+  }
+
+  await refresh({ page: currentPage.value });
 };
 
-watch(currentPage, (newPage) => {
-  fetchCampaigns();
+watch(currentPage, (page) => {
+  router.push({ query: { page: page } });
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
+const { siteName } = useGlobalVar();
+siteName("campaigns.page_title_campaigns");
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
-
-// only simulation for test skeleton loader
 setTimeout(() => {
   isLoading.value = false;
 }, 3000);

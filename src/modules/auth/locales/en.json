@@ -54,5 +54,25 @@
   "q4": "What happens if my campaign goal isn’t met?",
   "answer1": "We accept all major credit cards, bank transfers, and digital wallets.",
   "answer2": "You can view real-time donation details in your campaign dashboard under the 'Donations' tab.",
-  "answer3": "If the goal isn’t met, the funds raised will still be transferred to the campaign unless otherwise stated."
+  "answer3": "If the goal isn’t met, the funds raised will still be transferred to the campaign unless otherwise stated.",
+  "auth_error": "Please log in again to ensure uninterrupted access to your account. Thank you!",
+
+  "password_error": "Error while resetting the password",
+  "password_success": "Password changed successfully",
+  "error": "Error",
+
+  "page_title_verify_email": "Verify Email",
+  "page_title_terms": "Terms",
+  "page_title_register_donor": "Register as a Donor",
+  "page_title_register_charity": "Register as a Charity",
+  "page_title_pending": "Pending",
+  "page_title_reset_password": "Reset Password",
+  "page_title_faq": "FAQ",
+  "page_title_login": "Login",
+  "page_title_check_email": "Reset Password",
+  "rest_password_success": "Password reset successfully",
+  "validation": {
+    "required": "This field is required",
+    "phone": "Invalid phone number format."
+  }
 }

@@ -11,7 +11,6 @@ export function getHeroSection() {
     try {
       const response = await api.get("/drosat/manasat");
       hero.value = response.data;
-      console.log("hero", hero.value);
     } catch (err) {
       error.value = err;
       console.error(err);

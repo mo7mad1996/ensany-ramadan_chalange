@@ -16,6 +16,11 @@
 <script setup>
 import { CharityAccountSettings } from "#components";
 
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_settings");
+
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",

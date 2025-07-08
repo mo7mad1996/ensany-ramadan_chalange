@@ -11,10 +11,11 @@ export const useViewCampaign = (id: any) => {
     execute,
   } = useAsyncData(
     `viewCampaign-${id}-${locale.value}`, // Dynamic key to ensure caching by ID
-    () =>
-      api.get(`/campaigns/${id}`).then((response) => {
-        return response.data.result;
-      }),
+    async () => {
+      const response = await api.get(`/campaigns/${id}`);
+   
+      return response.data.result;
+    },
     { watch: [locale] }
   );
 
@@ -23,9 +24,7 @@ export const useViewCampaign = (id: any) => {
   const image = computed(() => viewCampaign.value?.image || {});
   const name = computed(() => viewCampaign.value?.name || {});
   const desc = computed(() => viewCampaign.value?.short_desc || {});
-  const similarCampaigns = computed(
-    () => viewCampaign.value?.similar_campaigns || []
-  );
+  const similarCampaigns = computed(() => viewCampaign.value?.similar_campaigns || []);
 
   return {
     viewCampaign,

@@ -1,9 +1,9 @@
 {
   "banner_title": "Your donations make a difference. Participate in our challenge today!",
   "banner_desc": "Create your fundraising page, set your goal, and inspire others to donate!",
-  "campaign": "Campaign",
+  "campaign": "Campaigns",
   "funded": "Funded",
-  "doners": "Doners",
+  "doners": "Donors",
   "raised": "Raised",
 
   "ramadan_challenge": "Ramadan Chalenges",
@@ -25,7 +25,7 @@
   "campaigns": "Other Platform Campaigns",
 
   "famouses": "Trusted by those you trust",
-
+  "gateway": "Select gateway.",
   "success_stories": "Success Stories",
   "stories_title": "Your Contribution, Real Impact",
   "see_more": "See more stories",
@@ -48,6 +48,9 @@
   "goal_en": "goal in english",
   "content_ar": "content in arabic",
   "content_en": "content in english",
+  "short_desc": "Short description",
+  "short_desc_ar": "A short description of the campaign in Arabic",
+  "short_desc_en": "A short description of the campaign in English",
   "start_date": "Start Date",
   "end_date": "End Date",
   "avilable_days": "Avilable Days",
@@ -60,15 +63,40 @@
   "amount_placeholder": "Enter the amount you aim to raise (e.g., 5,000)",
   "curncy_placeholder": "(e.g., $5,000)",
   "status": "Status",
-  "status_placeholder": "(e.g.,Active)",
+  "status_placeholder": "(e.g.,Paused)",
   "launch_campaign": "Launch Campaign",
+  "edit_campaign": "Edit campaign ",
+  "ok": "Ok",
   "english": "English",
   "active": "Active",
   "deactive": "Deactive",
+
+  "toast_copy": "User URL copied to clipboard!'",
+  "pending": "Pending",
+  "published": "Published",
+  "paused": "Paused",
+  "ended": "Ended",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+  "rejected": "Rejected",
+
+  "category": "Category",
+  "category_placeholder": "Select a category",
+
+  "currency_placeholder": "Select a currency",
 
   "donor": "Donor",
   "donation_amount": "Donation Amount",
   "donation_time": "Time",
   "donation_campaign": "Campaign",
-  "mins_go": "mins ago"
+  "mins_go": "mins ago",
+
+  "site_name": "Ramadan Challenge",
+  "page_title_start_campaign": "Start Campaign",
+  "page_title_home": "Home",
+  "page_donate_all": "Give Back",
+
+  "donate-all": "Give Back",
+  "donate": "Donate Now",
+  "next": "Next step"
 }

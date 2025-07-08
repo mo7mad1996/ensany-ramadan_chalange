@@ -2,10 +2,14 @@
   <section aria-label="contact us page" class="pt-sm pb-sm">
     <Container>
       <div
-        class="flex lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse justify-between items-center lg:gap-xl xl:gap-xl md:gap-md gap-sm"
+        :class="{
+          'flex-row-reverse': locale.value === 'ar',
+          'flex-row': locale.value === 'en',
+          'lg:flex-row xl:flex-row md:flex-col-reverse flex-col-reverse': true,
+        }"
+        class="flex justify-between items-center lg:gap-xl xl:gap-xl md:gap-md gap-sm"
       >
         <ContactForm />
-
         <ContactVideo />
       </div>
     </Container>
@@ -13,24 +17,10 @@
 </template>
 
 <script setup>
-import { useGlobalVar } from "~/helpers/global-var";
 import Container from "~/global/Container.vue";
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+import { useGlobalVar } from "~/helpers/global-var";
+
 const { locale } = useI18n();
-
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("contact.page_title_contact_page");
 </script>

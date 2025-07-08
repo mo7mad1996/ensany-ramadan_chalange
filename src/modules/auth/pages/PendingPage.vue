@@ -8,9 +8,11 @@
       {{ $t("auth.pending_msg") }}
     </h1>
 
-    <!-- <p class="text-center text-[#12121299] text-sm pt-3">
+    <!--
+    <p class="text-center text-[#12121299] text-sm pt-3">
       {{ $t("global.error_desc") }}
-    </p> -->
+    </p> 
+    -->
 
     <div class="button flex justify-center mt-sm">
       <v-btn
@@ -20,10 +22,16 @@
         size="large"
         color="primary"
         @click="$router.push('/')"
-        >{{ $t("global.return_home") }}</v-btn
       >
+        {{ $t("global.return_home") }}
+      </v-btn>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_pending");
+</script>

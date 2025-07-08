@@ -14,7 +14,7 @@
           v-for="(item, index) in 3"
           :key="index"
         >
-          <v-skeleton-loader class="" type="image"></v-skeleton-loader>
+          <v-skeleton-loader type="image"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -25,16 +25,18 @@
         class="mt-4"
       >
         <Slide v-for="(item, index) in Parteners" :key="index">
-          <a :href="item.url" target="_blank" rel="noopener noreferrer">
+          <a :href="item.url || '#'" target="_blank" rel="noopener noreferrer">
             <div class="image overflow-hidden relative">
-              <img
+              <nuxt-img
+                loading="lazy"
                 :src="item.image"
                 :class="{
                   'w-[17rem]': Parteners.length >= 4,
                   'w-[26rem]': Parteners.length == 2,
                   'w-[22rem]': Parteners.length == 3,
                 }"
-                class="cursor-pointer max-h-[10rem] rounded-lg object-cover"
+                class="cursor-pointer rounded-lg m-1 border"
+                style="height: 272px"
                 alt="partenerImage"
               />
 
@@ -56,10 +58,12 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
-const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
 import { useParteners } from "../services/parteners";
+const { breakpoints2, settings, Carousel, Slide, Navigation } = useCarousel();
 const { Parteners, status } = useParteners();
 </script>
 

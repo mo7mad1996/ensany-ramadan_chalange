@@ -54,10 +54,11 @@
         <div
           class="flex gap-x-1 items-center justify-center mt-sm cursor-pointer"
         >
-          <img
-            src="../../../assets/images/auth/resent.svg"
+          <nuxt-img
+            loading="lazy"
+            src="/auth/resent.svg"
             width="22px"
-            alt="..."
+            alt="ramadanchallenges image"
           />
           <button :disabled="timeLeft !== 0" @click="resendCode">
             <span
@@ -76,16 +77,14 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import Container from "~/global/Container.vue";
-import { useResetPassword } from "../typescript/reset";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useAuth } from "../services/auth";
+import { useResetPassword } from "../typescript/reset";
 const { locale } = useI18n();
 const verification_code = ref<number | string>("");
 const { resendCode, formattedTime, timeLeft } = useResetPassword();
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
 
 const { verifyEmail, isLoading } = useAuth();
 
@@ -93,19 +92,6 @@ const onSubmit = () => {
   verifyEmail(verification_code.value);
 };
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_verify_email");
 </script>

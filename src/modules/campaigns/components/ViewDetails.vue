@@ -1,10 +1,11 @@
 <template>
   <section aria-label="view details section" class="view_details">
     <div class="image relative rounded-lg">
-      <img
+      <nuxt-img
+        loading="lazy"
         :src="campaign?.image"
         class="w-full h-[370px] object-cover rounded-lg"
-        alt=""
+        alt="ramadanchallenges image"
       />
 
       <div class="text absolute bottom-5 p-4 w-full">
@@ -20,7 +21,11 @@
           ></v-progress-linear>
 
           <span class="pers text-[16px] font-bold text-white"
-            >{{ ((amount / target) * 100).toFixed(1) }}%</span
+            >{{
+              ((amount / target) * 100).toFixed(1) > 100
+                ? 100
+                : ((amount / target) * 100).toFixed(1)
+            }}%</span
           >
         </div>
       </div>
@@ -39,8 +44,8 @@
     >
       <div class="collected flex items-cener gap-1">
         <span class="text-[#12121299]">{{ $t("campaigns.collected") }}:</span>
-        <span class="text-primary"
-          >{{ campaign?.total_amount }} {{ $t("campaigns.usd") }}</span
+        <span class="text-primary">
+          {{ campaign?.total_amount }} {{ $t("campaigns.usd") }}</span
         >
       </div>
 
@@ -56,6 +61,28 @@
         <span class="text-primary"
           >{{ campaign?.remaining_days }} {{ $t("campaigns.days") }}</span
         >
+      </div>
+      <div
+        class="collected flex items-cener gap-1"
+        v-if="campaign?.status == 'completed'"
+      >
+        <span class="text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <span class="text-primary">
+          {{ $t("campaigns.completed") }}
+        </span>
       </div>
 
       <div class="collected flex items-cener gap-1">
@@ -74,13 +101,19 @@
     ></v-skeleton-loader>
 
     <!-- campain maker -->
-    <div
+    <NuxtLink
+      :to="{ name: 'affiliate-charity', params: { id: campaign.user.id } }"
       class="honor-compan d-flex ga-2 align-center mt-5"
       v-if="status == 'success'"
     >
-      <img src="../../../assets/images/honor-company.svg" width="35" alt="" />
+      <nuxt-img
+        loading="lazy"
+        src="/honor-company.svg"
+        width="35"
+        alt="ramadanchallenges image"
+      />
       <p>{{ campaign?.user?.name }}</p>
-    </div>
+    </NuxtLink>
 
     <!-- tabs -->
     <v-tabs
@@ -105,11 +138,11 @@
         ></p>
       </v-tabs-window-item>
 
-      <!-- galary tap -->
+      <!-- glary tap -->
       <v-tabs-window-item value="two">
         <v-row v-if="campaign?.gallery.length">
           <v-col
-            v-for="(image, index) in campaign?.gallery"
+            v-for="(image, n) in campaign?.gallery"
             :key="n"
             class="d-flex child-flex"
             cols="4"
@@ -135,7 +168,12 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/no-data.jpg"
+              width="150"
+              alt="ramadan challenges image"
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -153,10 +191,11 @@
           >
             <div class="card p-2 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center max-h-[10rem]">
-                <img
+                <nuxt-img
+                  loading="lazy"
                   :src="update?.image"
                   class="rounded-lg max-w-full h-[10rem] object-cover"
-                  alt="..."
+                  alt="ramadan challenges image"
                 />
               </div>
 
@@ -171,39 +210,64 @@
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/no-data.jpg"
+              width="150"
+              alt="ramadan challenges image"
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
         </div>
       </v-tabs-window-item>
 
-      <!-- doners tap -->
+      <!-- donors tap -->
       <v-tabs-window-item value="four">
-        <v-row v-if="campaign.latest.length">
+        <v-row v-if="campaign.all_donors.data.length">
           <v-col
-            v-for="(donor, index) in campaign.latest"
+            v-for="(donor, index) in donors"
             :key="index"
             class="d-flex child-flex"
             cols="4"
           >
             <div class="card p-3 rounded-lg text-center bg-[#f8f8f8] w-full">
               <div class="image flex justify-center">
-                <img src="../../../assets/images/user.svg" alt="..." />
+                <nuxt-img
+                  loading="lazy"
+                  src="/user.svg"
+                  alt="ramadan challenges image"
+                />
               </div>
 
               <h6>{{ donor?.name }}</h6>
 
-              <span class="font-bold text-primary"
-                >${{ donor?.total_amount }}</span
-              >
+              <span class="font-bold text-primary">
+                {{ donor?.total_amount }} {{ campaign?.currency.name }}
+              </span>
+            </div>
+          </v-col>
+
+          <v-col cols="12">
+            <div class="pagination items-center justify-center pb-sm">
+              <v-pagination
+                v-model="currentPage"
+                :length="donorsMeta.last_page"
+                @imput="fetchDonors"
+                :total-visible="5"
+              ></v-pagination>
             </div>
           </v-col>
         </v-row>
 
         <div v-else>
           <div class="image flex justify-center">
-            <img src="../../../assets/images/no-data.jpg" width="150" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/no-data.jpg"
+              width="150"
+              alt="ramadan challenges image"
+            />
           </div>
 
           <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
@@ -216,7 +280,7 @@
 </template>
 
 <script setup>
-import img from "../../../assets/images/chalenge-img.png";
+import img from "/chalenge-img.png";
 import { useCampaign } from "../typescript/view-campaign";
 const props = defineProps({
   campaign: {
@@ -245,6 +309,22 @@ const {
 
 onMounted(() => {
   onEnterViewport(true);
+});
+
+import { reFormat } from "~/helpers/format-date";
+import { useDonors } from "../services/donors";
+const route = useRoute();
+
+const { donors, status, currentPage, donorsMeta, refresh } = useDonors(
+  route.params.id
+);
+
+const fetchDonors = () => {
+  refresh();
+};
+
+watch(currentPage, (newPage) => {
+  fetchDonors();
 });
 </script>
 

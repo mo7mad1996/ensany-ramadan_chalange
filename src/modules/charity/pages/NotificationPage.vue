@@ -28,7 +28,11 @@
         class="card donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#FFF8E1]"
       >
         <div class="image">
-          <img src="../../../assets/images/doner.svg" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="/doner.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -56,7 +60,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/campaigns.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -83,7 +91,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start border-2 border-red-700 bg-[#F1E2E2]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/warning.svg" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/warning.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -112,7 +124,11 @@
         class="card mt-5 donation-notify p-3 rounded-lg flex gap-x-3 items-start bg-[#F5F5F5]"
       >
         <div class="image">
-          <img src="../../../assets/images/dashboard/campaigns.svg" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="/dashboard/campaigns.svg"
+            alt="ramadanchallenges image"
+          />
         </div>
 
         <div class="text w-full">
@@ -127,9 +143,9 @@
               >{{ $t("dashboard.campaign_action") }}</nuxt-link
             >
 
-            <span class="text-sm text-[#4c4c4c]">{{
+            <divn class="text-sm text-[#4c4c4c]">{{
               $t("dashboard.campaign_time")
-            }}</span>
+            }}</divn>
           </div>
         </div>
       </div>
@@ -138,12 +154,14 @@
 </template>
 
 <script setup>
-import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
-import { useDonationsPage } from "../typescript/donations-page";
+import { useGlobalVar } from "~/helpers/global-var";
+
 definePageMeta({
   layout: "charity",
   middleware: "require-auth",
 });
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_notifications");
 </script>

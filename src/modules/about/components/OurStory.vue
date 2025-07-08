@@ -20,10 +20,11 @@
         </div>
 
         <div class="image">
-          <img
-            src="../../../assets/images/about/our-story.png"
+          <nuxt-img
+            loading="lazy"
+            src="/about/our-story.png"
             class="rounded-tr-[60px] ltr:rounded-ee-[60px] rtl:rounded-es-[60px]"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </div>
       </div>

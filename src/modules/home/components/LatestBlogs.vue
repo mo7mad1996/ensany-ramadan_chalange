@@ -1,5 +1,9 @@
 <template>
-  <section aria-label="similar blogs" class="pt-sm pb-sm">
+  <section
+    aria-label="similar blogs"
+    class="pt-sm pb-sm"
+    v-if="blogs && blogs.length > 0"
+  >
     <Container>
       <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("home.latest_blogs") }}
@@ -10,15 +14,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -36,10 +40,11 @@
             @click="$router.push(`/blogs/${blog?.id}`)"
           >
             <template #image>
-              <img
+              <nuxt-img
+                loading="lazy"
                 :src="blog?.image"
                 class="w-full max-h-[15rem] object-cover rounded-lg"
-                alt=""
+                alt="ramadanchallenges image"
               />
             </template>
 
@@ -63,10 +68,12 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
+import { useBlogs } from "~/modules/blogs/services/blogs";
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
-import { useBlogs } from "~/modules/blogs/services/blogs";
 const { locale } = useI18n();
 const { blogs, status } = useBlogs();
 </script>

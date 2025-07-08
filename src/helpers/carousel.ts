@@ -1,11 +1,12 @@
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Pagination, Slide, Navigation } from "vue3-carousel";
 import { ref } from "vue";
+import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
 
 export const useCarousel = () => {
   const settings = ref({
-    itemsToShow: 3,
-    snapAlign: "center",
+    snapAlign: "start",
+    autoplay: 5000,
+    wrapAround: true,
+    pauseAutoplayOnHover: true,
   });
 
   //   this for Ramadan chalenge component
@@ -15,48 +16,45 @@ export const useCarousel = () => {
       itemsToShow: 1,
       itemsToScroll: 1,
       snapAlign: "center",
-      autoplay: false,
-      autoplayTimeout: 3000,
-      transition: 200,
-      loop: true,
+      autoplay: 5000,
+      wrapAround: true,
+      pauseAutoplayOnHover: true,
     },
     // For screens 480px and up
     480: {
-      itemsToShow: 1,
+      itemsToShow: 2,
       itemsToScroll: 1,
       snapAlign: "center",
-      autoplay: false,
-      autoplayTimeout: 3000,
-      transition: 200,
-      loop: true,
+      autoplay: 5000,
+      wrapAround: true,
+      pauseAutoplayOnHover: true,
     },
     // For screens 768px and up
     768: {
-      itemsToShow: 2,
+      itemsToShow: 1,
       itemsToScroll: 1,
-      snapAlign: "start",
-      autoplay: false,
-      autoplayTimeout: 3000,
-      transition: 200,
-      loop: true,
+      snapAlign: "center",
+      autoplay: 5000,
+      wrapAround: true,
+      pauseAutoplayOnHover: true,
     },
     // For screens 1024px and up
     1024: {
       itemsToShow: 3,
-      itemsToScroll: 1,
+      itemsToScroll: 3,
       snapAlign: "center",
-      autoplay: false,
-      transition: 200,
-      loop: true,
+      autoplay: 5000,
+      wrapAround: true,
+      pauseAutoplayOnHover: true,
     },
     // For screens 1440px and up
     1440: {
       itemsToShow: 3,
-      itemsToScroll: 1,
-      snapAlign: "",
-      autoplay: false,
-      transition: 200,
-      loop: true,
+      itemsToScroll: 3,
+      snapAlign: "center",
+      autoplay: 5000,
+      wrapAround: true,
+      pauseAutoplayOnHover: true,
     },
   });
 

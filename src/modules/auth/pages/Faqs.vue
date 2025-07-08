@@ -16,7 +16,6 @@
     <div class="questions w-full">
       <div class="mt-6" v-if="status == 'pending'">
         <v-skeleton-loader
-          class=""
           v-for="(item, index) in 3"
           :key="index"
           type="avatar, list-item-two-line"
@@ -31,16 +30,18 @@
         <v-expansion-panel v-for="(item, index) in faqs" :key="index">
           <v-expansion-panel-title expand-icon="mdi-menu-down">
             <div class="flex items-center gap-x-3">
-              <img
+              <nuxt-img
+                loading="lazy"
                 v-if="index % 2 == 0"
-                src="../../../assets/images/dashboard/amount.svg"
-                alt=""
+                src="/dashboard/amount.svg"
+                alt="ramadanchallenges image"
               />
 
-              <img
+              <nuxt-img
+                loading="lazy"
                 v-else
-                src="../../../assets/images/dashboard/campaigns.svg"
-                alt=""
+                src="/dashboard/campaigns.svg"
+                alt="ramadanchallenges image"
               />
 
               <h2 class="text-[#121212] text-xl font-bold">
@@ -48,7 +49,9 @@
               </h2>
             </div>
           </v-expansion-panel-title>
-          <v-expansion-panel-text>{{ item.content }}</v-expansion-panel-text>
+          <v-expansion-panel-text>
+            {{ getTextFromHTML(item.content) }}
+          </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -56,30 +59,24 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useFaqs } from "../services/faqs";
+import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useFaqs } from "../services/faqs";
 
 const { faqs, status } = useFaqs();
 
-const { locale } = useI18n();
+const getTextFromHTML = (htmlString: string) => {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+  const text = Array.from(tempDiv.childNodes)
+    .map((node: any) => node.textContent.trim())
+    .filter((text) => text !== "")
+    .join(" ");
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+  return text;
+};
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_faq");
 </script>

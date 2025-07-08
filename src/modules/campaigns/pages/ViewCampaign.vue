@@ -1,7 +1,16 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
-    <template #second_page> {{ viewCampaign?.name }} </template>
+    <template #first_page>
+      <NuxtLink to="/">
+        {{ $t("global.home") }}
+      </NuxtLink>
+    </template>
+    <template #second_page>
+      <NuxtLink to="/campaigns">
+        {{ $t("campaigns.campaigns") }}
+      </NuxtLink>
+    </template>
+    <template #third_page> {{ viewCampaign?.name }} </template>
   </BreadCrumb>
 
   <Container class="relative">
@@ -30,32 +39,20 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
-import BreadCrumb from "~/global/BreadCrumb.vue";
-import { useGlobalVar } from "~/helpers/global-var";
 import { useRoute } from "vue-router";
+import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useViewCampaign } from "../services/single-campaign";
-const { locale } = useI18n();
+const { siteName } = useGlobalVar();
 const route = useRoute();
+const { viewCampaign, status, target, amount, similarCampaigns } =
+  useViewCampaign(route.params.id);
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
-const { viewCampaign, status, target, amount } = useViewCampaign(
-  route.params.id
-);
-
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
+watchEffect(() => {
+  if (status.value == "error") {
+    navigateTo(`/campaigns`);
+  }
+  siteName(null, viewCampaign.value?.name);
 });
 </script>

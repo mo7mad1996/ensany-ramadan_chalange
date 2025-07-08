@@ -30,65 +30,37 @@
               class="pb-4 pt-4 rounded-lg w-1/4"
             ></v-text-field>
           </div>
-          <v-btn
-            prepend-icon="mdi-filter-outline"
-            style="text-transform: capitalize"
-            elevation="0"
-            variant="outlined"
-            @click="openFilter"
-            >{{ $t("dashboard.add_filter") }}</v-btn
-          >
-        </div>
-
-        <div
-          class="filter-inputs flex items-center gap-x-3 pb-3"
-          v-if="isFilter"
-        >
-          <select
-            id="filter_status"
-            class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-          >
-            <option value="" disabled selected>
-              {{ $t("dashboard.select_status") }}
-            </option>
-            <option value="active">{{ $t("dashboard.active") }}</option>
-            <option value="active">{{ $t("dashboard.completed") }}</option>
-          </select>
-
-          <Datepicker
-            v-model="filter_date"
-            class="custom-datepicker"
-            date-picker
-            placeholder="MM/DD/YY"
-          />
-          <input
-            type="text"
-            id="filter_status"
-            v-model="amount"
-            placeholder="$0"
-            class="block w-full px-3 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
-          />
         </div>
 
         <v-data-table
           class="border"
-          :headers="headers"
-          :items="donations"
+          :items="charityDonat"
           :search="search"
+          :headers="headers"
+          :items-per-page="itemsPerPage"
+          :page="currentPage"
+          :server-items-length="totalItems"
+          :loading="status === 'pending'"
+          @update:page="currentPage = $event"
+          @update:items-per-page="itemsPerPage = $event"
         >
-          <template v-slot:item.campaign_status="{ item }">
-            <v-btn
-              :color="
-                item.campaign_status === $t('dashboard.active') ||
-                item.campaign_status === 'نشط'
-                  ? 'green'
-                  : 'red'
-              "
-              variant="tonal"
-              size="small"
+          <template v-slot:item.total_amount="{ item }">
+            <p class="mb-0 font-bold text-primary">${{ item.total_amount }}</p>
+          </template>
+
+          <template v-slot:item.donated_at="{ item }">
+            {{ reFormat2(item.donated_at) }}
+          </template>
+          <template v-slot:item.campaign="{ item }">
+            <nuxt-link
+              className="text-blue-500 underline"
+              :to="{
+                name: 'view-campaign',
+                params: { id: item.campaign?.id },
+              }"
             >
-              {{ item.campaign_status }}
-            </v-btn>
+              {{ item.campaign?.name }}
+            </nuxt-link>
           </template>
         </v-data-table>
       </v-card>
@@ -98,8 +70,11 @@
 
 <script setup>
 import Datepicker from "@vuepic/vue-datepicker";
+import { reFormat2 } from "~/helpers/format-date";
 import "@vuepic/vue-datepicker/dist/main.css";
+import { useCharityDonations } from "../services/charity-donations";
 import dashbordBreadcrumb from "~/global/dashbord-breadcrumb.vue";
+import { useGlobalVar } from "~/helpers/global-var";
 import { useDonationsPage } from "../typescript/donations-page";
 definePageMeta({
   layout: "charity",
@@ -109,9 +84,14 @@ definePageMeta({
 const isFilter = ref(false);
 const filter_date = ref("");
 const amount = ref("");
-const { search, donations, headers } = useDonationsPage();
+const { search, headers } = useDonationsPage();
+const { charityDonat, status, totalItems, itemsPerPage, currentPage } =
+  useCharityDonations();
 
 const openFilter = () => {
   isFilter.value = !isFilter.value;
 };
+
+const { siteName } = useGlobalVar();
+siteName("dashboard.page_title_charity_donations");
 </script>

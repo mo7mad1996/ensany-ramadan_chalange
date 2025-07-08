@@ -1,6 +1,8 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }}</template>
+    <template #first_page>
+      <a :href="'/'">{{ $t("global.home") }}</a>
+    </template>
     <template #second_page> {{ $t("story.stories") }} </template>
   </BreadCrumb>
 
@@ -21,62 +23,85 @@
         :route="`/stories/${story?.id}`"
       >
         <template #video>
-          <img
+          <nuxt-img
+            loading="lazy"
             @click="$router.push(`/stories/${story.id}`)"
             class="w-full max-h-[15rem] object-cover rounded-lg"
             :src="story?.image"
-          ></img>
+          />
         </template>
 
         <template #title>{{ story?.title }}</template>
 
-        <template #desc>{{ story.content }}</template>
+        <template #desc>
+          <ClientOnly>
+            <div>
+              {{ getTextFromHTML(story.content) }}
+            </div>
+          </ClientOnly>
+        </template>
       </StoryCard>
     </div>
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="stories.length > 0"
         v-model="currentPage"
         :length="storiesMeta.last_page"
         @input="fetchStories"
         :total-visible="5"
-      ></v-pagination>
+      />
     </div>
+    <NoData :data="stories" :status="status" />
   </Container>
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
+import NoData from "~/global/NoData.vue";
+
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useStories } from "../services/stories";
 const { locale } = useI18n();
-
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const router = useRouter();
+const route = useRoute();
 const { stories, status, currentPage, storiesMeta, refresh } = useStories();
 
-const fetchStories = () => {
-  refresh();
+const fetchStories = async () => {
+  handlePageChange(currentPage.value);
+  await refresh({ page: currentPage.value });
 };
 
-watch(currentPage, (newPage) => {
+const handlePageChange = (page) => {
+  if (page > storiesMeta.value.last_page) {
+    lastPage.value = storiesMeta.value.last_page;
+    currentPage.value = 1;
+    router.push({ query: { page: 1 } });
+  } else {
+    currentPage.value = page;
+    router.push({ query: { page: page } });
+  }
+};
+
+const getTextFromHTML = (htmlString) => {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
+
+  const text = Array.from(tempDiv.childNodes)
+    .map((node) => node.textContent.trim())
+    .filter((text) => text !== "")
+    .join(" ");
+
+  return text;
+};
+
+watch([currentPage], (page) => {
+  handlePageChange(currentPage.value);
   fetchStories();
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("story.page_title_stories");
 </script>

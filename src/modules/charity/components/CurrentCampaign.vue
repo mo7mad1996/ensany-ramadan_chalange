@@ -39,7 +39,11 @@
       </div>
 
       <div class="image flex justify-end">
-        <img src="../../../assets/images/dashboard/home-image.png" alt="" />
+        <nuxt-img
+          loading="lazy"
+          src="/dashboard/home-image.png"
+          alt="ramadanchallenges image"
+        />
       </div>
     </div>
   </section>

@@ -6,11 +6,21 @@ const homeRoutes = [
     path: "/",
     file: resolve(__dirname, "../pages/HomePage.vue"), // Adjusted path
   },
-
   {
     name: "start-campaign",
     path: "/start-campaign",
     file: resolve(__dirname, "../pages/StartCampaign.vue"), // Adjusted path
+  },
+
+  {
+    name: "donate-all",
+    path: "/donate/all",
+    file: resolve(__dirname, "../pages/DonateAll.vue"), // Adjusted path
+  },
+  {
+    name: "show-page",
+    path: "/page/:id",
+    file: resolve(__dirname, "../pages/showPage.vue"), // Adjusted path
   },
 ];
 

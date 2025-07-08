@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <Header />
-    <v-main class="mt-10">
+    <v-main class="mt-10 flex flex-col min-h-screen">
       <Container>
         <div class="grid grid-cols-12 gap-4">
           <!-- Sidebar Toggle Button (Small Screens) -->
@@ -38,9 +38,10 @@
       <!-- Sidebar as a Drawer (Small Screens) -->
       <v-navigation-drawer
         v-model="isSidebarOpen"
+        v-if="isClient"
         temporary
         location="left"
-        class="lg:hidden"
+        class="v-navigation-drawer--mobile lg:hidden"
       >
         <div class="p-4">
           <DonorSidebar />
@@ -50,21 +51,27 @@
   </v-layout>
 </template>
 <script setup>
-import Header from "../global/Header.vue";
-import AppFooter from "../global/AppFooter.vue";
-import Container from "~/global/Container.vue";
 import { useI18n } from "vue-i18n";
+import Container from "~/global/Container.vue";
 import DonorSidebar from "~/global/DonorSidebar.vue";
+import AppFooter from "../global/AppFooter.vue";
+import Header from "../global/Header.vue";
 
 const { locale } = useI18n();
+const router = useRouter();
+
+const isClient = ref(false);
 const isSidebarOpen = ref(false);
-
-
 
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
+    lang: locale.value,
   },
+});
+
+onMounted(() => {
+  isClient.value = true;
 });
 
 watch(locale, (newLocale) => {
@@ -73,6 +80,7 @@ watch(locale, (newLocale) => {
   useHead({
     htmlAttrs: {
       dir: isArabic ? "rtl" : "ltr",
+      lang: locale.value,
     },
   });
 });

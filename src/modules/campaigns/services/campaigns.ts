@@ -16,7 +16,7 @@ export const useCampaigns = () => {
         const { data, meta } = response.data.result;
         return { data, meta };
       }),
-    { watch: [locale] }
+    { watch: [locale,currentPage] }
   );
 
   const campaigns = computed(() => campaignsData.value?.data || []);

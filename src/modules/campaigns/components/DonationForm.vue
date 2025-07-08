@@ -4,30 +4,31 @@
       <div class="lg:w-[466px] xl:w-[466px] md:w-[343px] w-[100%]">
         <Form v-slot="{ meta }" @submit="onSubmit">
           <div class="flex gap-x-2">
-            <img
-              src="../../../assets/images/campaign/dolar.svg"
+            <nuxt-img
+              loading="lazy"
+              src="/campaign/dolar.svg"
               width="22"
-              alt="..."
+              alt="ramadanchallenges image"
             />
             <h1 class="font-semibold text-2xl">
               {{ $t("global.donation_amount") }}
             </h1>
           </div>
 
-          <!-- avilable amounts to select  -->
+          <!-- available amounts to select  -->
           <div
-            class="amounts flex xl:flex-row lg:flex-row md:flex-row flex-col gap-3 mt-5"
+            class="amounts flex xl:flex-row lg:flex-row md:flex-row flex-col gap-0 mt-5"
           >
             <div class="flex gap-x-3 items-center">
               <span
                 v-for="(item, index) in avilableAmounts"
                 :key="index"
-                class="py-[5px] px-[15px] rounded-[5px] cursor-pointer"
+                class="py-[5px] px-[10px] rounded-[5px] cursor-pointer"
                 :class="{ 'bg-[#e8fde8]': donationData.amount == item }"
                 @click="selectAmount(item)"
               >
-                ${{ item }}</span
-              >
+                <bdi>{{ item }} {{ selectedCurrencyLabel }}</bdi>
+              </span>
             </div>
 
             <div
@@ -44,9 +45,10 @@
               <div
                 class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
               >
-                <img
-                  src="../../../assets/images/campaign/custom-amount.svg"
-                  alt=""
+                <nuxt-img
+                  loading="lazy"
+                  src="/campaign/custom-amount.svg"
+                  alt="ramadanchallenges image"
                 />
               </div>
 
@@ -55,7 +57,7 @@
                 rules="required|englishNumbersOnly"
                 type="text"
                 id="custom_amount"
-                v-model="donationData.amount"
+                v-model.number="donationData.amount"
                 :placeholder="$t('global.custom_amount')"
                 class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
               />
@@ -82,6 +84,7 @@
               <!-- monthly -->
               <v-radio
                 value="monthly"
+                disabled
                 id="input-12"
                 name="radio-group-9"
                 color="primary"
@@ -96,6 +99,7 @@
               <!-- weekly -->
               <v-radio
                 value="weekly"
+                disabled
                 name="radio-group-10"
                 id="input-13"
                 color="primary"
@@ -110,6 +114,7 @@
               <!-- dialy -->
               <v-radio
                 value="dialy"
+                disabled
                 name="radio-group-11"
                 id="input-14"
                 color="primary"
@@ -139,10 +144,11 @@
           <!-- personal info -->
           <div class="personal-info pt-5">
             <div class="flex gap-x-2 items-center">
-              <img
-                src="../../../assets/images/campaign/personal-info.svg"
+              <nuxt-img
+                loading="lazy"
+                src="/campaign/personal-info.svg"
                 width="22"
-                alt="..."
+                alt="ramadanchallenges image"
               />
               <h1 class="font-semibold text-2xl">
                 {{ $t("global.personal_info") }}
@@ -155,7 +161,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/name.svg" alt="" />
+                  <nuxt-img
+                    loading="lazy"
+                    src="/contact/name.svg"
+                    alt="ramadanchallenges image"
+                  />
                 </div>
 
                 <Field
@@ -193,7 +203,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/email.svg" alt="" />
+                  <nuxt-img
+                    loading="lazy"
+                    src="/contact/email.svg"
+                    alt="ramadanchallenges image"
+                  />
                 </div>
 
                 <Field
@@ -216,7 +230,11 @@
                 <div
                   class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                 >
-                  <img src="../../../assets/images/contact/phone.svg" alt="" />
+                  <nuxt-img
+                    loading="lazy"
+                    src="/contact/phone.svg"
+                    alt="ramadanchallenges image"
+                  />
                 </div>
 
                 <Field
@@ -256,9 +274,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/name.svg"
-                        alt=""
+                      <nuxt-img
+                        loading="lazy"
+                        src="/contact/name.svg"
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -285,9 +304,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/email.svg"
-                        alt=""
+                      <nuxt-img
+                        loading="lazy"
+                        src="/contact/email.svg"
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -314,9 +334,10 @@
                     <div
                       class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
                     >
-                      <img
-                        src="../../../assets/images/contact/phone.svg"
-                        alt=""
+                      <nuxt-img
+                        loading="lazy"
+                        src="/contact/phone.svg"
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -340,13 +361,14 @@
                 <!-- comments -->
                 <div class="comments pt-5">
                   <div class="flex gap-x-2">
-                    <img
-                      src="../../../assets/images/campaign/comment.svg"
+                    <nuxt-img
+                      loading="lazy"
+                      src="/campaign/comment.svg"
                       width="22"
-                      alt="..."
+                      alt="ramadanchallenges image"
                     />
                     <h1 class="font-semibold text-2xl">
-                      {{ $t("global.add_comment") }}
+                      {{ $t("global.love_comment") }}
                     </h1>
                   </div>
 
@@ -355,9 +377,10 @@
                     <div
                       class="absolute ltr:right-0 rtl:left-0 top-3 flex items-center ltr:pr-3 rtl:pl-3"
                     >
-                      <img
-                        src="../../../assets/images/campaign/edit.svg"
-                        alt=""
+                      <nuxt-img
+                        loading="lazy"
+                        src="/campaign/edit.svg"
+                        alt="ramadanchallenges image"
                       />
                     </div>
 
@@ -368,7 +391,7 @@
                       name="love_comment"
                       v-model="donationData.love_comment"
                       id="text-eria"
-                      :placeholder="$t('global.comment')"
+                      :placeholder="$t('global.love_comment')"
                       class="block w-full px-4 pb-md pt-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
                     />
 
@@ -380,6 +403,36 @@
                 </div>
               </div>
             </Transition>
+          </div>
+
+          <div>
+            <h3 class="py-4 text-bold">{{ $t("home.gateway") }}</h3>
+
+            <Field as="div" name="gateway" id="gateway" class="flex gap-2">
+              <label
+                v-for="g in gateways"
+                :key="g.value"
+                :for="g.value"
+                class="item"
+                :title="g.value"
+              >
+                <nuxt-img
+                  :src="g.img"
+                  :alt="g.value"
+                  class="h-24 aspect-square"
+                />
+                <v-icon icon="mdi-check-circle-outline" />
+
+                <input
+                  type="radio"
+                  name="gateway"
+                  v-model="donationData.gateway"
+                  :value="g.value"
+                  :id="g.value"
+                  class="hidden"
+                />
+              </label>
+            </Field>
           </div>
 
           <!-- confirm donation -->
@@ -394,28 +447,44 @@
             size="large"
             color="primary"
           >
-            {{ $t("global.donate_now") }} - ${{ donationData.amount }}
+            {{ $t("global.donate_now") }}
+            (<bdi>
+              {{ donationData.amount }}
+              {{ selectedCurrencyLabel }} </bdi
+            >)
           </v-btn>
         </Form>
 
         <!-- payment advantages -->
         <div class="mt-3 flex justify-between items-center">
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon2.svg" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/campaign/icon2.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.secure_payment")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon3.svg" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/campaign/icon3.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.transparent")
             }}</span>
           </div>
 
           <div class="flex gap-x-2 items-center">
-            <img src="../../../assets/images/campaign/icon1.svg" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/campaign/icon1.svg"
+              alt="ramadanchallenges image"
+            />
             <span class="text-sm leading-20 text-[#12121299]">{{
               $t("global.charity")
             }}</span>
@@ -427,23 +496,30 @@
 </template>
 
 <script setup lang="ts">
-import Container from "~/global/Container.vue";
-import { Form, Field, ErrorMessage } from "vee-validate";
-import { useDonation } from "../services/donation";
-import { useRoute } from "vue-router";
-import { useViewCampaign } from "../services/single-campaign";
-import { useCurrencyStore } from "../store/currancy";
+// @ts-ignore
 import { storeToRefs } from "pinia";
 
+// @ts-ignore
+import { ErrorMessage, Field, Form } from "vee-validate";
+import Container from "~/global/Container.vue";
+
+const gateways = [
+  { img: "/donate/2c2p.png", value: "2c2p" },
+  { img: "/donate/curlec.png", value: "curlec" },
+];
+
+import { useDonation } from "../services/donation";
+import { useCurrencyStore } from "../store/currancy";
+
 const route = useRoute();
-const avilableAmounts = ref<number[]>([25, 50, 100, 250]);
+const avilableAmounts = [25, 50, 100, 250];
 const donationType = ref<string>("onetime");
 const gift = ref<boolean>(false);
 const isHidden = ref<boolean>(false);
 const customInput = ref<boolean>(false);
 const { makeDonation, isLoading, error } = useDonation();
 const currencyStore = useCurrencyStore();
-const { selectedCurrency } = storeToRefs(currencyStore);
+const { selectedCurrency, selectedCurrencyLabel } = storeToRefs(currencyStore);
 
 const donationData = ref<any>({
   name: "",
@@ -459,6 +535,7 @@ const donationData = ref<any>({
   charity_amount: 0,
   currency_id: "",
   campaign_id: "",
+  gateway: "curlec",
 });
 
 const selectAmount = (item: number): void => {
@@ -495,7 +572,7 @@ const onSubmit = () => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -504,5 +581,23 @@ const onSubmit = () => {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+.item {
+  @apply flex-1 grid place-content-center rounded-md cursor-pointer relative;
+
+  .v-icon {
+    @apply hidden absolute text-green-600  top-1/2 left-1/2 bg-white rounded-full;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+  }
+
+  &:has(input:checked) {
+    @apply border border-2 border-green-400;
+
+    .v-icon {
+      @apply flex;
+    }
+  }
 }
 </style>

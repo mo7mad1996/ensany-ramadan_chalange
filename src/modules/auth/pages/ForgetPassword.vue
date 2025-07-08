@@ -11,22 +11,33 @@
           {{ $t("auth.reset_password") }}
         </h2>
 
-        <form action="">
+        <form @submit.prevent="submit">
           <!-- email input -->
           <div class="relative mt-4">
             <div
               class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
             >
-              <img src="../../../assets/images/contact/email.svg" alt="" />
+              <nuxt-img
+                loading="lazy"
+                src="/contact/email.svg"
+                alt="ramadanchallenges image"
+              />
             </div>
 
             <input
               type="email"
+              v-model="data.email"
               id="custom-input"
               :placeholder="$t('auth.email')"
               class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
           </div>
+          <p
+            class="error"
+            v-for="(err, n) in apiErrors.email"
+            :key="n"
+            v-html="err"
+          />
 
           <!-- confirm email -->
           <v-btn
@@ -35,7 +46,8 @@
             variant="flat"
             size="large"
             color="primary"
-            @click="$router.push('/checkemail')"
+            :loading="data.loading"
+            :disabled="!data.email || data.loading"
             >{{ $t("auth.reset_password") }}</v-btn
           >
         </form>
@@ -52,26 +64,47 @@
 </template>
 
 <script setup>
+import { api } from "~/helpers/axios";
 import Container from "~/global/Container.vue";
 import { useGlobalVar } from "~/helpers/global-var";
 
-const { locale } = useI18n();
+import { useResetPassword } from "../typescript/reset";
 
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { sendCode } = useResetPassword();
+const router = useRouter();
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
+const apiErrors = ref({});
+const data = reactive({
+  email: "",
+  loading: false,
 });
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const email = useCookie("email");
+
+const submit = async () => {
+  try {
+    apiErrors.value = {};
+
+    data.loading = true;
+
+    await sendCode(data);
+
+    router.push("/checkemail");
+  } catch (err) {
+    console.error(err);
+
+    apiErrors.value = err.response.data.result.errors;
+  } finally {
+    data.loading = false;
+  }
+};
+
+const { siteName } = useGlobalVar();
+siteName("auth.page_title_reset_password");
 </script>
+
+<style scoped>
+.error {
+  @apply text-sm text-red-500 text-start;
+}
+</style>

@@ -1,5 +1,9 @@
 <template>
-  <section aria-label="success stories section" class="success_stories">
+  <section
+    aria-label="success stories section"
+    class="success_stories"
+    v-if="stories && stories.length > 0"
+  >
     <Container>
       <!-- title -->
       <div class="flex items-center justify-between">
@@ -19,15 +23,15 @@
         v-if="status == 'pending'"
       >
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
 
         <v-card class="rounded-lg elevation-0">
-          <v-skeleton-loader class="" type="image, article"></v-skeleton-loader>
+          <v-skeleton-loader type="image, article"></v-skeleton-loader>
         </v-card>
       </div>
 
@@ -43,11 +47,12 @@
             class="grid gap-4 grid-cols-1 lg:grid-cols-2 md:grid-cols-1 m-[10px] cursor-pointer"
           >
             <div class="image">
-              <img
+              <nuxt-img
+                loading="lazy"
                 v-if="story?.image"
                 :src="story.image"
                 class="rounded-tr-[60px] rounded-ee-[60px] shadow-xl"
-                alt=""
+                alt="ramadanchallenges image"
               />
             </div>
 
@@ -81,10 +86,11 @@
 </template>
 
 <script setup lang="ts">
-import Container from "../../../global/Container.vue";
-import SkeletonLoader from "~/global/SkeletonLoader.vue";
-import { useCarousel } from "../../../helpers/carousel";
+import "vue3-carousel/dist/carousel.css";
+
 import { useStories } from "~/modules/stories/services/stories";
+import Container from "../../../global/Container.vue";
+import { useCarousel } from "../../../helpers/carousel";
 const { settings, breakpoints4, Navigation, Carousel, Slide, Pagination } =
   useCarousel();
 const { locale } = useI18n();

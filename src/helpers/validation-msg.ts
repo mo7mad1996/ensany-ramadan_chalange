@@ -16,7 +16,7 @@ const dictionary: Dictionary = {
     default: "this field  is invalid.",
   },
   ar: {
-    required: "هذا حقل مطلوب",
+    required: "هذا الحقل مطلوب",
     email: "هذا الحقل يجب ان يكون بريدا صالحا",
     min: "هذا الحقل قصير جدا",
     englishNumbersOnly: "الارقام الانجليزيه فقط",

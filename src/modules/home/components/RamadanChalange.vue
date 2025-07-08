@@ -1,9 +1,16 @@
 <template>
   <section aria-label="ramadan chalenges" class="pt-sm pb-sm">
     <Container>
-      <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
-        {{ $t("home.ramadan_challenge") }}
-      </h1>
+      <div class="flex items-center justify-between">
+        <h1 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
+          {{ $t("home.ramadan_challenge") }}
+        </h1>
+        <nuxt-link
+          to="/campaigns"
+          class="underline text-primary cursor-pointer"
+          >{{ $t("global.see_more_campaigns") }}</nuxt-link
+        >
+      </div>
 
       <div
         class="grid pt-sm pb-sm gap-sm lg:grid-cols-3 md:grid-cols-1 grid-cols-1"
@@ -37,21 +44,37 @@
             :rate="(campaign?.total_amount / campaign?.price_target) * 100"
             :shadow="true"
             :donatebtn="true"
+            :status="campaign?.status"
+            :in_cart="campaign?.in_cart || false"
+            :cart_status="campaign?.cart_status || ''"
+            :cart_id="campaign?.cart_id || ''"
             :route="`/campaigns/donate/${campaign.id}`"
+            :id="campaign.id"
             class="h-full"
           >
             <template #image>
-              <img
+              <nuxt-img
+                loading="lazy"
+                height="240px"
+                fit="cover"
                 @click="$router.push(`/campaigns/${campaign.id}`)"
                 :src="campaign?.image"
-                class="w-full max-h-[15rem] object-cover rounded-lg"
-                alt=""
+                class="w-full object-cover h-60 rounded-lg aspect-square"
+                alt="ramadan challenges image"
               />
             </template>
 
             <template #company> {{ campaign?.user?.name }}</template>
 
-            <template #title>{{ campaign?.name }}</template>
+            <template #title>
+              <!-- <nuxt-link
+                :to="{ name: 'view-campaign', params: { id: campaign.id } }"
+                class="hover:underline"
+                @click.prevent.stop
+              > -->
+              {{ campaign.name }}
+              <!-- </nuxt-link> -->
+            </template>
 
             <template #desc>
               <span
@@ -69,6 +92,7 @@
 
         <template #addons>
           <pagination />
+          <!-- <Navigation /> -->
         </template>
       </Carousel>
     </Container>
@@ -76,12 +100,15 @@
 </template>
 
 <script setup lang="ts">
-import Container from "../../../global/Container.vue";
+import "vue3-carousel/dist/carousel.css";
+
+import { stripHtmlTags } from "~/helpers/string";
 import Card from "../../../global/Card.vue";
+import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 import { usePublicCmapaigns } from "../services/public-campaigns";
-import { stripHtmlTags } from "~/helpers/string";
-const { breakpoints1, settings, Carousel, Slide, Pagination } = useCarousel();
+const { breakpoints1, settings, Carousel, Slide, Pagination, Navigation } =
+  useCarousel();
 const { publicCampaigns, status } = usePublicCmapaigns();
 const { locale } = useI18n();
 const isLoading = ref(true);

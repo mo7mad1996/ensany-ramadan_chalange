@@ -9,6 +9,5 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       // here will be the dooner link
       return navigateTo("/dashboard/donor");
     }
-
   }
 });

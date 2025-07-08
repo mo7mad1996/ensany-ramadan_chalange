@@ -2,65 +2,67 @@
   <v-layout>
     <Header />
 
-    <v-main>
+    <v-main class="flex flex-col min-h-screen">
       <NuxtPage />
       <AppFooter />
     </v-main>
 
     <!-- Global donation button -->
-    <div
+    <nuxt-link
       class="donate_button fixed top-1/2 left-0 flex justify-center"
-      v-if="$route.name !== 'campaign'"
-      @click="openDialog"
+      v-if="$route.name !== 'donate-all'"
+      :to="{ name: 'donate-all' }"
     >
       <v-btn
-        class="text-capitalize custom-border-radius"
+        class="text-capitalize custom-border-radius py-2 h-auto"
         stacked
         size="x-small"
         color="primary"
       >
-        <img
-          src="../assets/images/statistics1.svg"
-          width="15"
+        <!-- @click="openDialog" -->
+        <nuxt-img
+          loading="lazy"
+          src="/statistics1.svg"
+          width="15px"
           class="mb-2"
-          alt=""
+          alt="ramadan challenges image"
         />
-        <p>{{ $t("global.donation") }}</p>
+        <!-- <p>{{ $t("global.donation") }}</p> -->
+        <p>{{ $t("global.donation-all-btn") }}</p>
       </v-btn>
-    </div>
+    </nuxt-link>
 
-    <!-- donattion dilaog -->
-    <dialog class="dialog m-auto rounded-[10px]" ref="donate">
+    <!-- donation dialog -->
+    <!-- <dialog class="dialog m-auto rounded-[10px]" ref="donate">
       <div class="close-icon p-3 w-full flex justify-end">
         <v-icon class="cursor-pointer" @click="closeDialog">mdi-close</v-icon>
       </div>
       <CampaignsDonationForm />
-    </dialog>
+    </dialog> -->
   </v-layout>
 </template>
 
 <script setup>
-import Header from "../global/Header.vue";
-import AppFooter from "../global/AppFooter.vue";
 import { useI18n } from "vue-i18n";
-import { useCountries } from "~/modules/auth/services/countries";
+import AppFooter from "../global/AppFooter.vue";
+import Header from "../global/Header.vue";
 
-const { refresh, countries } = useCountries();
 const { locale } = useI18n();
 
-const donate = ref("");
+// const donate = ref("");c
 
-const openDialog = () => {
-  donate.value.showModal();
-};
+// const openDialog = () => {
+//   donate.value.showModal();
+// };
 
-const closeDialog = () => {
-  donate.value.close();
-};
+// const closeDialog = () => {
+//   donate.value.close();
+// };
 
 useHead({
   htmlAttrs: {
     dir: locale.value === "ar" ? "rtl" : "ltr",
+    lang: locale.value,
   },
 });
 </script>

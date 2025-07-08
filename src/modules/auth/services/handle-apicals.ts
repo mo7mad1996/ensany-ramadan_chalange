@@ -10,9 +10,10 @@ export const useApi = () => {
     error.value = null;
 
     try {
+      isLoading.value = true;
       return await callback();
     } catch (err: any) {
-      error.value = err.response?.data?.message || "An error occurred";
+      error.value = err;
       return null;
     } finally {
       isLoading.value = false;

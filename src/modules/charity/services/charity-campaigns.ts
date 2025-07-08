@@ -3,8 +3,11 @@ import { useAuth } from "~/modules/auth/services/auth";
 
 export const useCharityCamoaigns = () => {
   const currentPage = ref(1);
+  const itemsPerPage = ref(5);
+  const totalItems = ref(0);
   const { locale } = useI18n();
   const { token } = useAuth();
+
   const {
     data: charityCampData,
     error: charityCamp_error,
@@ -15,16 +18,20 @@ export const useCharityCamoaigns = () => {
     "charityCampaigns",
     () =>
       api
-        .get(`/user/campaigns?page=${currentPage.value}`, {
-          headers: {
-            Authorization: `Bearer ${token.value}`,
-          },
-        })
+        .get(
+          `/charity/campaigns?page=${currentPage.value}&per_page=${itemsPerPage.value}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token.value}`,
+            },
+          }
+        )
         .then((response) => {
           const { data, meta } = response.data.result;
+          totalItems.value = meta.total; // Store total items from API
           return { data, meta };
         }),
-    { watch: [locale] }
+    { watch: [locale, currentPage, itemsPerPage] }
   );
 
   const charityCampaigns = computed(() => charityCampData.value?.data || []);
@@ -38,5 +45,7 @@ export const useCharityCamoaigns = () => {
     status,
     clear,
     currentPage,
+    itemsPerPage,
+    totalItems,
   };
 };

@@ -1,18 +1,28 @@
 <template>
   <Container>
     <BreadCrumb>
-      <template #first_page> {{ $t("global.home") }} </template>
-      <template #second_page> {{ $t("story.stories") }} </template>
+      <template #first_page>
+        <NuxtLink to="/">
+          {{ $t("global.home") }}
+        </NuxtLink>
+      </template>
+      <template #second_page>
+        <NuxtLink to="/stories">
+          {{ $t("story.stories") }}
+        </NuxtLink>
+      </template>
+      <template #third_page> {{ singleStory?.title }} </template>
     </BreadCrumb>
 
     <div class="content flex justify-center">
       <div class="w-[792px]">
         <div class="video">
-          <img
+          <nuxt-img
+            loading="lazy"
+            v-if="status == 'success'"
             class="rounded-md object-cover cursor-pointer w-full lg:h-[500px] xl:h-[500px] md:h-full h-full"
             :src="singleStory?.image"
-
-          ></img>
+          />
         </div>
 
         <div class="content_text py-5">
@@ -43,9 +53,8 @@
             type="list-item-two-line"
           ></v-skeleton-loader>
 
-
           <p
-           v-if="status == 'success'"
+            v-if="status == 'success'"
             class="text_one text-justify text-[20px] text-[#121212] leading-[32px] pt-4"
             v-html="singleStory?.content"
           ></p>
@@ -53,36 +62,46 @@
       </div>
     </div>
 
-    <StorySimilarStories />
+    <StorySimilarStories :similarStories="singleStory?.similar_stories" />
   </Container>
 </template>
 
 <script setup lang="ts">
-import { reFormat2 } from "~/helpers/format-date";
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import { reFormat2 } from "~/helpers/format-date";
 import { useGlobalVar } from "~/helpers/global-var";
 import { useSingleStory } from "../services/single-story";
-import { useRoute } from "vue-router";
 
 const route = useRoute();
-const { locale } = useI18n();
-const { ramadan_ar, ramadan_en } = useGlobalVar();
+const { siteName } = useGlobalVar();
 const { singleStory, status } = useSingleStory(route.params.id);
 
+siteName(null, singleStory.value.title);
+
 useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
+  title: singleStory.value.title,
+  ogTitle: singleStory.value.title,
+  ogImage: singleStory.value.image,
+  twitterCard: singleStory.value.image,
+  description: singleStory.value.content,
+  ogDescription: singleStory.value.content,
 });
 
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
+watchEffect(() => {
+  if (status.value == "error") {
+    navigateTo("/stories");
+  }
+});
+
+watch(singleStory, (story: any) => {
   useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
+    title: story?.title,
+    ogTitle: story?.title,
+    ogImage: story?.image,
+    twitterCard: story?.image,
+    description: story?.content,
+    ogDescription: story?.content,
   });
 });
 </script>

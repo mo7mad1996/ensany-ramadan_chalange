@@ -4,7 +4,7 @@
       <!-- loader for amount -->
       <v-skeleton-loader
         v-if="status == 'pending'"
-        :loading="loading"
+        :loading="status == 'pending'"
         type="list-item-two-line"
       ></v-skeleton-loader>
 
@@ -51,6 +51,7 @@
         </v-btn>
 
         <v-btn
+          v-if="campaign?.status != 'ended'"
           class="text-capitalize rounded-lg w-100 mt-3"
           :ripple="false"
           variant="flat"
@@ -60,65 +61,88 @@
         >
           {{ $t("campaigns.donate") }}
         </v-btn>
-      </div>
 
-      <!-- all doners part -->
+        <v-btn
+          v-if="campaign?.status == 'ended'"
+          :disabled="true"
+          class="text-capitalize rounded-lg w-100 mt-3"
+          :ripple="false"
+          variant="flat"
+          size="default"
+          color="primary"
+          @click="$router.push(`/campaigns/donate/${campaign?.id}`)"
+        >
+          {{ $t("campaigns.ended") }}
+        </v-btn>
+      </div>
+      <!-- all donors part -->
       <div class="all-doners mt-5">
         <div class="title flex gap-x-3 items-center">
-          <img src="../../../assets/images/increment.svg" width="20" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="/increment.svg"
+            width="20"
+            alt="ramadanchallenges image"
+          />
           <span class="text-2xl font-bold text-primary"
             >{{ campaign?.total_donors }} {{ $t("campaigns.donater") }}</span
           >
         </div>
 
-        <v-skeleton-loader
-          v-for="(item, index) in 3"
-          :key="index"
-          v-if="status == 'pending'"
-          :loading="loading"
-          type="avatar,list-item-two-line"
-        ></v-skeleton-loader>
-
-        <!-- list of doners -->
-        <div class="doners-list mt-5" v-if="status == 'success'">
-          <div
-            v-if="campaign.latest.length"
-            class="doner mb-5 flex justify-between items-center"
-            v-for="(donor, index) in campaign?.latest"
+        <template v-if="status == 'pending'">
+          <v-skeleton-loader
+            v-for="(item, index) in 3"
             :key="index"
-          >
-            <div class="flex gap-x-3 items-center">
-              <img src="../../../assets/images/user.svg" alt="" />
-              <div>
-                <h4 class="text-2xl font-bold">{{ donor?.name }}</h4>
-                <p class="text-sm text-[#121212] pt-1">
-                  {{ $t("campaigns.highest_donor") }}
-                </p>
+            :loading="status == 'pending'"
+            type="avatar,list-item-two-line"
+          ></v-skeleton-loader>
+        </template>
+
+        <!-- list of donors -->
+        <div class="donors-list mt-5" v-if="status == 'success'">
+          <template v-if="campaign.all_donors.length">
+            <div
+              class="donor mb-5 flex justify-between items-center"
+              v-for="(donor, index) in campaign?.latest"
+              :key="index"
+            >
+              <div class="flex gap-x-3 items-center">
+                <nuxt-img
+                  loading="lazy"
+                  src="/user.svg"
+                  alt="ramadanchallenges image"
+                />
+                <div>
+                  <h4 class="text-2xl font-bold">{{ donor?.name }}</h4>
+                  <p class="text-sm text-[#121212] pt-1">
+                    {{ $t("campaigns.highest_donor") }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="donation-amount text-center">
+                <h4 class="text-2xl font-bold text-primary">
+                  ${{ donor?.total_amount }}
+                </h4>
+                <span class="text-sm text-[#12121299] pt-2">{{
+                  reFormat2(donor?.donated_at)
+                }}</span>
               </div>
             </div>
+          </template>
 
-            <div class="donation-amount text-center">
-              <h4 class="text-2xl font-bold text-primary">
-                ${{ donor?.total_amount }}
-              </h4>
-              <span class="text-sm text-[#12121299] pt-2">{{
-                reFormat2(donor?.donated_at)
-              }}</span>
-            </div>
-          </div>
-
-          <div v-else>
+          <!-- <div v-else>
             <div class="image flex justify-center">
-              <img
-                src="../../../assets/images/no-data.jpg"
+              <nuxt-img
+                loading="lazy"
+                src="/no-data.jpg"
                 width="150"
-                alt=""
+                alt="ramadanchallenges image"
               />
             </div>
 
             <h6 class="text-center">{{ $t("campaigns.no_doners") }}</h6>
-          </div>
-
+          </div> -->
           <div
             v-if="campaign.latest.length"
             class="flex justify-between items-center gap-x-2 w-full mt-5"
@@ -145,21 +169,28 @@
               {{ $t("campaigns.top_donors") }}
             </v-btn>
 
-            <!-- top-doners dilaog -->
+            <!-- top-donors dilaog -->
             <dialog class="dialog m-auto rounded-[10px]" ref="top_donors">
               <div class="close-icon p-3 w-full">
                 <v-icon class="cursor-pointer" @click="closeDialog"
                   >mdi-close</v-icon
                 >
 
-                <!-- firt donor -->
-                <div class="pt-4">
+                <!-- first donor -->
+                <div
+                  class="pt-4"
+                  v-if="campaign?.top_doners?.top?.total_amount > 0"
+                >
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <nuxt-img
+                        loading="lazy"
+                        src="/user.svg"
+                        alt="ramadanchallenges image"
+                      />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.top?.name }}
@@ -182,13 +213,20 @@
                 </div>
 
                 <!-- second donor -->
-                <div class="pt-3">
+                <div
+                  class="pt-3"
+                  v-if="campaign?.top_doners?.middle?.total_amount > 0"
+                >
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <nuxt-img
+                        loading="lazy"
+                        src="/user.svg"
+                        alt="ramadanchallenges image"
+                      />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.middle?.name }}
@@ -211,15 +249,21 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- third donor -->
-                <div class="pt-3">
+                <div
+                  class="pt-3"
+                  v-if="campaign?.top_doners?.first?.total_amount > 0"
+                >
                   <div
                     v-if="campaign?.top_doners"
                     class="doner mb-5 flex justify-between gap-x-md items-center"
                   >
                     <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
+                      <nuxt-img
+                        loading="lazy"
+                        src="/user.svg"
+                        alt="ramadanchallenges image"
+                      />
                       <div>
                         <h4 class="text-2xl font-bold">
                           {{ campaign?.top_doners?.first?.name }}
@@ -250,40 +294,151 @@
                   >mdi-close</v-icon
                 >
 
-                <!-- firt donor -->
-                <div
-                  class="pt-4"
-                  v-if="campaign?.all_donors"
-                  v-for="(donor, index) in campaign?.all_donors"
-                  :key="index"
-                >
+                <!-- first donor -->
+
+                <template v-if="campaign?.all_donors">
                   <div
-                    class="doner mb-5 flex justify-between gap-x-md items-center"
+                    class="pt-4"
+                    v-for="(donor, index) in campaign?.all_donors"
+                    :key="index"
                   >
-                    <div class="flex gap-x-3 items-center">
-                      <img src="../../../assets/images/user.svg" alt="" />
-                      <div>
-                        <h4 class="text-2xl font-bold">
-                          {{ donor?.name }}
+                    <div
+                      class="doner mb-5 flex justify-between gap-x-md items-center"
+                    >
+                      <div class="flex gap-x-3 items-center">
+                        <nuxt-img
+                          loading="lazy"
+                          src="/user.svg"
+                          alt="ramadanchallenges image"
+                        />
+                        <div>
+                          <h4 class="text-2xl font-bold">
+                            {{ donor?.name }}
+                          </h4>
+                          <p class="text-sm text-[#121212] pt-1">
+                            {{ $t("campaigns.highest_donor") }}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="donation-amount text-center">
+                        <h4 class="text-2xl font-bold text-primary">
+                          ${{ donor?.total_amount }}
                         </h4>
-                        <p class="text-sm text-[#121212] pt-1">
-                          {{ $t("campaigns.highest_donor") }}
-                        </p>
+                        <span class="text-sm text-[#12121299] pt-2">{{
+                          reFormat2(donor?.donated_at)
+                        }}</span>
                       </div>
                     </div>
-
-                    <div class="donation-amount text-center">
-                      <h4 class="text-2xl font-bold text-primary">
-                        ${{ donor?.total_amount }}
-                      </h4>
-                      <span class="text-sm text-[#12121299] pt-2">{{
-                        reFormat2(donor?.donated_at)
-                      }}</span>
-                    </div>
                   </div>
-                </div>
+                </template>
               </div>
             </dialog>
+          </div>
+
+          <!-- Top donor -->
+          <div class="pt-3" v-if="campaign?.top_doners?.top?.total_amount > 0">
+            <div
+              v-if="campaign?.top_doners"
+              class="doner mb-5 flex justify-between gap-x-md items-center"
+            >
+              <div class="flex gap-x-3 items-center">
+                <nuxt-img
+                  loading="lazy"
+                  src="/user.svg"
+                  alt="ramadanchallenges image"
+                />
+                <div>
+                  <h4 class="text-2xl font-bold">
+                    {{ campaign?.top_doners?.top?.name }}
+                  </h4>
+                  <p class="text-sm text-[#121212] pt-1">
+                    {{ $t("campaigns.highest_donor") }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="donation-amount text-center">
+                <h4 class="text-2xl font-bold text-primary">
+                  ${{ campaign?.top_doners?.top?.total_amount }}
+                </h4>
+                <span class="text-sm text-[#12121299] pt-2">
+                  {{ reFormat2(campaign?.top_doners?.top?.donated_at) }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- First donor -->
+          <div
+            class="pt-3"
+            v-if="campaign?.top_doners?.first?.total_amount > 0"
+          >
+            <div
+              v-if="campaign?.top_doners"
+              class="doner mb-5 flex justify-between gap-x-md items-center"
+            >
+              <div class="flex gap-x-3 items-center">
+                <nuxt-img
+                  loading="lazy"
+                  src="/user.svg"
+                  alt="ramadanchallenges image"
+                />
+                <div>
+                  <h4 class="text-2xl font-bold">
+                    {{ campaign?.top_doners?.first?.name }}
+                  </h4>
+                  <p class="text-sm text-[#121212] pt-1">
+                    {{ $t("campaigns.first_donor") }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="donation-amount text-center">
+                <h4 class="text-2xl font-bold text-primary">
+                  ${{ campaign?.top_doners?.first?.total_amount }}
+                </h4>
+                <span class="text-sm text-[#12121299] pt-2">
+                  {{ reFormat2(campaign?.top_doners?.first?.donated_at) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- second donor -->
+            <div
+              class="pt-3"
+              v-if="campaign?.top_doners?.middle?.total_amount > 0"
+            >
+              <div
+                v-if="campaign?.top_doners"
+                class="doner mb-5 flex justify-between gap-x-md items-center"
+              >
+                <div class="flex gap-x-3 items-center">
+                  <nuxt-img
+                    loading="lazy"
+                    src="/user.svg"
+                    alt="ramadanchallenges image"
+                  />
+                  <div>
+                    <h4 class="text-2xl font-bold">
+                      {{ campaign?.top_doners?.middle?.name }}
+                    </h4>
+                    <p class="text-sm text-[#121212] pt-1">
+                      {{ $t("campaigns.middle_donor") }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="donation-amount text-center">
+                  <h4 class="text-2xl font-bold text-primary">
+                    ${{ campaign?.top_doners?.middle?.total_amount }}
+                  </h4>
+                  <span class="text-sm text-[#12121299] pt-2">
+                    {{ reFormat2(campaign?.top_doners?.middle?.donated_at) }}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -292,9 +447,9 @@
 </template>
 
 <script setup>
-import { useCampaign } from "../typescript/view-campaign";
 import { reFormat2 } from "~/helpers/format-date";
 import { sharePage } from "~/helpers/share";
+import { useCampaign } from "../typescript/view-campaign";
 
 const props = defineProps({
   campaign: {

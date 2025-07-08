@@ -1,13 +1,18 @@
 <template>
   <div class="register_form lg:w-1/2 xl:w-1/2 md:w-full w-full">
     <div class="flex items-center gap-x-2 mb-5">
-      <img src="../../../assets/images/charity.svg" width="30" alt="" />
+      <nuxt-img
+        loading="lazy"
+        src="/charity.svg"
+        width="30"
+        alt="ramadanchallenges image"
+      />
       <h2 class="text-black font-bold lg:text-4xl md:text-4xl text-3xl">
         {{ $t("auth.signup_cahrity") }}
       </h2>
     </div>
 
-    <Form @submit="onSubmit">
+    <Form @submit="onSubmit" v-slot="{ errors, validate }">
       <!--charity name -->
       <div>
         <div class="lable_switch flex justify-between items-center mb-3">
@@ -19,14 +24,34 @@
               @click="switchName"
               :class="{ 'bg-[#28A745] text-white': nameSwitch == 'en' }"
             >
-              {{ $t("home.english") }}
+              <v-badge
+                dot
+                floating
+                :color="
+                  errors['charity_name:en'] || apiErrors['charity_name:en']
+                    ? 'error'
+                    : 'transparent'
+                "
+              >
+                {{ $t("home.english") }}
+              </v-badge>
             </div>
             <div
               class="px-3 py-1 cursor-pointer"
               @click="switchName"
               :class="{ 'bg-[#28A745] text-white': nameSwitch == 'ar' }"
             >
-              العربيه
+              <v-badge
+                dot
+                floating
+                :color="
+                  errors['charity_name:ar'] || apiErrors['charity_name:ar']
+                    ? 'error'
+                    : 'transparent'
+                "
+              >
+                العربيه
+              </v-badge>
             </div>
           </div>
         </div>
@@ -36,38 +61,60 @@
             <div
               class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
             >
-              <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              <nuxt-img
+                loading="lazy"
+                src="/campaign/edit.svg"
+                alt="ramadanchallenges image"
+              />
             </div>
 
             <Field
               type="text"
-              name="charity_name_ar"
+              name="charity_name:ar"
               v-model="newCharity['charity_name:ar']"
               rules="required"
+              :validateOnInput="true"
               :placeholder="$t('home.name_ar')"
               class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
 
-            <ErrorMessage class="text-sm text-red-500" name="charity_name_ar" />
+            <ErrorMessage class="error" name="charity_name:ar" />
+            <p
+              class="error"
+              v-for="(err, n) in apiErrors['charity_name:ar']"
+              :key="n"
+              v-html="err"
+            />
           </div>
 
           <div class="relative" v-show="nameSwitch === 'en'">
             <div
               class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3"
             >
-              <img src="../../../assets/images/campaign/edit.svg" alt="" />
+              <nuxt-img
+                loading="lazy"
+                src="/campaign/edit.svg"
+                alt="ramadanchallenges image"
+              />
             </div>
 
             <Field
               type="text"
-              name="charity_name_en"
+              name="charity_name:en"
               v-model="newCharity['charity_name:en']"
               rules="required"
+              :validateOnInput="true"
               :placeholder="$t('home.name_en')"
               class="block w-full ltr:pl-5 rtl:pr-5 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
             />
 
-            <ErrorMessage class="text-sm text-red-500" name="charity_name_en" />
+            <ErrorMessage class="error" name="charity_name:en" />
+            <p
+              class="error"
+              v-for="(err, n) in apiErrors['charity_name:en']"
+              :key="n"
+              v-html="err"
+            />
           </div>
         </div>
       </div>
@@ -77,26 +124,42 @@
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img src="../../../assets/images/contact/email.svg" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/contact/email.svg"
+              alt="ramadanchallenges image"
+            />
           </div>
 
           <Field
             type="email"
-            name="register-email"
+            name="email"
+            :validateOnInput="true"
             rules="required|email"
             v-model="newCharity.email"
-            id="register-email"
+            id="email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-email" />
+        <ErrorMessage class="error" name="email" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.email"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- phone number -->
       <div class="mt-4">
-        <Field name="phone" rules="required" v-slot="{ field }">
+        <Field
+          name="mobile"
+          rules="required|phone"
+          :validateOnInput="true"
+          v-slot="{ field }"
+        >
           <vue-tel-input
             v-bind="field"
             v-model="newCharity.mobile"
@@ -106,10 +169,17 @@
               showDialCode: true,
               placeholder: $t('auth.phone'),
             }"
-          ></vue-tel-input>
-
-          <ErrorMessage class="text-sm text-red-500" name="phone" />
+            @input="validatePhoneInput"
+          />
         </Field>
+
+        <ErrorMessage class="error" name="mobile" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.mobile"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- country id -->
@@ -146,9 +216,10 @@
 
           <Field
             as="select"
-            name="register-country"
+            name="country_id"
             rules="required"
-            id="register-country"
+            :validateOnInput="true"
+            id="country_id"
             v-model="newCharity.country_id"
             :placeholder="$t('auth.country')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -164,7 +235,13 @@
           </Field>
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-country" />
+        <ErrorMessage class="error" name="country_id" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.country_id"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- password input -->
@@ -180,10 +257,11 @@
 
           <Field
             :type="show1 ? 'text' : 'password'"
-            name="register-password"
+            name="password"
             rules="required|min:6"
+            :validateOnInput="true"
             v-model="newCharity.password"
-            id="register-password"
+            id="password"
             :placeholder="$t('auth.password')"
             autocomplete="new-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -191,7 +269,13 @@
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-password" />
+        <ErrorMessage class="error" name="password" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.password"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- confirm password  -->
@@ -207,10 +291,11 @@
 
           <Field
             :type="show2 ? 'text' : 'password'"
-            name="register-confirm"
-            rules="required|confirmed:@register-password"
+            name="password_confirmation"
+            rules="required|confirmed:@password"
+            :validateOnInput="true"
             v-model="newCharity.password_confirmation"
-            id="register-confirm"
+            id="password_confirmation"
             :placeholder="$t('auth.confirm_password')"
             autocomplete="confirm-password"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -218,13 +303,20 @@
           />
         </div>
 
-        <ErrorMessage class="text-sm text-red-500" name="register-confirm" />
+        <ErrorMessage class="error" name="password_confirmation" />
+        <p
+          class="error"
+          v-for="(err, n) in apiErrors.password_confirmation"
+          :key="n"
+          v-html="err"
+        />
       </div>
 
       <!-- terms and conditions -->
       <v-checkbox
         v-model="isRemember"
         class="checkbox"
+        @click="validate"
         color="primary"
         id="checkbox-4"
         :ripple="false"
@@ -265,18 +357,27 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
-import { VueTelInput } from "vue-tel-input";
-import "vue-tel-input/vue-tel-input.css";
+import { ErrorMessage, Field, Form, defineRule } from "vee-validate";
+import VueTelInput from "vue3-tel-input";
+import "vue3-tel-input/dist/vue3-tel-input.css";
 
+import { type NewCharity } from "~/helpers/interfaces";
 import { useAuth } from "../services/auth";
 import { useCountries } from "../services/countries";
-import { type NewCharity } from "~/helpers/interfaces";
+
+const { t } = useI18n();
+
+defineRule("phone", (value: string) => {
+  const phoneRegex = /^\+?[\d\s().-]{7,}$/;
+
+  return phoneRegex.test(value) || t("auth.validation.phone");
+});
 
 const show1 = ref<boolean>(false);
 const show2 = ref<boolean>(false);
 const isRemember = ref<boolean>(true);
 const nameSwitch = ref<string>("ar");
+const apiErrors = ref<any>({});
 
 const { register, isLoading } = useAuth();
 const { countries, status } = useCountries();
@@ -300,11 +401,26 @@ const showPassword = (): void => {
   show1.value = !show1.value;
 };
 
+const validatePhoneInput = () => {
+  newCharity.value.mobile = newCharity.value.mobile.replace(/[^0-9]/g, "");
+};
+
 const showConfPassword = (): void => {
   show2.value = !show2.value;
 };
 
 const onSubmit = () => {
-  register(newCharity.value);
+  apiErrors.value = {};
+
+  register(
+    newCharity.value,
+    (err: any) => (apiErrors.value = err.response.data.result.errors)
+  );
 };
 </script>
+
+<style scoped>
+.error {
+  @apply text-sm text-red-500;
+}
+</style>

@@ -10,6 +10,7 @@
   "help_war_victims": "مساعدة ضحايا الحرب",
   "clean_water": "مياه نظيفة للقرى",
   "mental_health": "دعم برامج الصحة النفسية",
+  "campaign": " الحملة",
   "campaign_id": "رقم الحملة",
   "name": "الاسم",
   "campaign_goal": "هدف الحملة",
@@ -66,6 +67,14 @@
   "update_name": "تحديث الاسم",
   "update_email": "تحديث البريد الإلكتروني",
   "update_phone": "تحديث الهاتف",
+
+  "first_name": "الاسم الاول",
+  "last_name": "الاسم الاخير",
+
+  "commercial-register": "السجل التجاري",
+  "drag-text": "اختر ملف",
+  "choose": "اختر ملف",
+  "local-filesystem": "من الجهاز",
   "update_account": "تحديث الحساب",
   "discard_changes": "إلغاء التغييرات",
   "notif_title": "تفضيلات الإشعارات",
@@ -90,6 +99,8 @@
   "change_desc": "قم بتحديث كلمة المرور للحفاظ على أمان حسابك. تتضمن كلمة المرور القوية أحرفًا وأرقامًا ورموزًا.",
   "update_password": "تحديث كلمة المرور",
   "tirminate_sessions": "إنهاء جميع الجلسات",
+  "charity_name": "اسم الجمعيه",
+  "save": "تم الحفظ",
 
   "starting_date": "تاريخ البدء",
   "ending_date": "تاريخ الانتهاء",
@@ -99,6 +110,9 @@
   "actions": "الإجراءات",
   "edit_campaign": "تعديل الحملة",
   "delete_campaign": "حذف الحملة",
+
+  "delete": "تأكيد الحذف",
+  "cancel": "إلغاء",
 
   "overview": "نظرة عامة",
   "total_donations": "إجمالي التبرعات",
@@ -115,8 +129,24 @@
   "total_donations_amount": "إجمالي مبلغ التبرعات",
 
   "donation_transuctions": "معاملات التبرعات",
+  "copy": "نسخ الرابط",
   "donation_growth": "نمو التبرعات",
   "success_donations_chart": "التبرعات الناجحة",
   "field_donations_chart": "التبرعات الفاشلة",
-  "pending_donations": "التبرعات المعلقة"
+  "pending_donations": "التبرعات المعلقة",
+  "active_campaigns": "الحملات النشطة",
+
+  "mobile": "رقم الموبايل",
+  "country": "ادخل بلدك",
+
+  "delete_msg": "هل تريد حذف هذه الحملة؟",
+  "confirm_delete": "تم حذف الحملة بنجاح",
+  "ok": "حسنًا",
+
+  "page_title_dashboard": "لوحة التحكم",
+  "page_title_campaigns": "الحملات",
+  "page_title_charity_donations": "تبرعات الجمعية الخيرية",
+  "page_title_notifications": "الإشعارات",
+  "page_title_settings": "الإعدادات",
+  "page_title_edit_campaign": "تعديل الحملة"
 }

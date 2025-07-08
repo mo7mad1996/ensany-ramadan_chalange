@@ -7,19 +7,17 @@ export const useBannerData = () => {
     error: banner_error,
     refresh,
     status,
-    clear,
-  } = useAsyncData(
-    "bannerData",
-    () =>
-      api.get("/banner/statistics").then((response) => response.data.result),
-    { watch: [locale] }
-  );
+  } = useFetch("/banner/statistics", {
+    method: "GET",
+    baseURL: api.defaults.baseURL,
+    watch: [locale],
+    transform: (response: any) => response.result,
+  });
 
   return {
     bannerData,
     banner_error,
     refresh,
     status,
-    clear,
   };
 };

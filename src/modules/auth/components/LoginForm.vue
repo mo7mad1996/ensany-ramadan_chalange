@@ -3,23 +3,27 @@
     <h2 class="text-black mb-5 font-bold lg:text-4xl md:text-4xl text-3xl">
       {{ $t("auth.login") }}
     </h2>
-
-    <Form v-slot="{ meta }" @submit="onSubmit">
+    <Form @submit="onSubmit" v-slot="{ validate }">
       <!--email Input -->
       <div>
         <div class="relative">
           <div
             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3"
           >
-            <img src="../../../assets/images/contact/name.svg" alt="" />
+            <nuxt-img
+              loading="lazy"
+              src="/contact/name.svg"
+              alt="ramadanchallenges image"
+            />
           </div>
 
           <Field
             type="text"
             name="email"
+            :validateOnInput="true"
             v-model="credentials.account"
             rules="required"
-            id="login-email"
+            id="email"
             :placeholder="$t('auth.email')"
             class="block w-full ltr:pl-10 rtl:pr-10 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
           />
@@ -43,8 +47,9 @@
             :type="show ? 'text' : 'password'"
             name="password"
             v-model="credentials.password"
-            rules="required|min:6"
-            id="login-password"
+            :validateOnInput="true"
+            rules="required"
+            id="password"
             autocomplete="login-password"
             :placeholder="$t('auth.password')"
             class="block w-full px-4 py-3 outline-none text-gray-700 border border-gray-300 rounded-lg shadow-sm sm:text-sm"
@@ -62,14 +67,16 @@
         :ripple="false"
       >
         <template v-slot:label>
-          <label for="checkbox-4" class="text-sm">{{
-            $t("auth.remember_me")
-          }}</label>
+          <label for="checkbox-4" class="text-sm">
+            {{ $t("auth.remember_me") }}
+          </label>
         </template>
       </v-checkbox>
 
       <!-- error message from backend -->
-      <p class="error-msg text-sm text-red-500 text-center mb-2">{{ error }}</p>
+      <p class="error-msg text-sm text-red-500 text-center mb-2">
+        {{ apiError }}
+      </p>
 
       <!-- Submit Button -->
       <v-btn
@@ -81,6 +88,7 @@
         variant="flat"
         size="large"
         color="primary"
+        @click="validate"
       >
         {{ $t("auth.login") }}
       </v-btn>
@@ -105,13 +113,14 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage } from "vee-validate";
-import { useAuth } from "../services/auth";
+import { ErrorMessage, Field, Form } from "vee-validate";
 import { type User } from "~/helpers/interfaces";
+import { useAuth } from "../services/auth";
 
 const show = ref(false);
 const isRemember = ref(true);
-const { login, isLoading, error } = useAuth();
+const { login, isLoading } = useAuth();
+const apiError = ref(null);
 
 const credentials = ref<User>({
   account: "",
@@ -125,6 +134,9 @@ const showPassword = (): void => {
 
 const onSubmit = () => {
   credentials.value.remember_me = isRemember ? "yes" : "no";
-  login(credentials.value);
+  login(
+    credentials.value,
+    (err: any) => (apiError.value = err.response?.data?.message || err.message)
+  );
 };
 </script>

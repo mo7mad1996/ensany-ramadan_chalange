@@ -4,7 +4,8 @@
       {{ $t("donor.campaigns_history") }}
     </h1>
     <div class="content mt-sm">
-      <v-card flat>
+      <div class="loader" v-if="status == 'pending'" />
+      <v-card flat v-else-if="status == 'success'">
         <v-data-table
           class="border rounded-lg"
           :items="donorCampaigns"
@@ -18,7 +19,8 @@
               @click="navigateToCampaign(item.id)"
             >
               <v-avatar size="40">
-                <img
+                <nuxt-img
+                  loading="lazy"
                   :src="item.image"
                   alt="Campaign Image"
                   class="rounded-lg"
@@ -29,21 +31,18 @@
           </template>
 
           <!-- Bold &  Total Amount -->
-          <template v-slot:item.total_amount="{ item }">
+          <template v-slot:item.amount="{ item }">
             <span class="font-bold text-green-600">
-              ${{ parseFloat(item.total_amount).toLocaleString() }}
+              ${{ parseFloat(item.amount).toLocaleString() }}
             </span>
           </template>
 
           <template v-slot:item.status="{ item }">
             <span
               class="inline-block w-full text-sm font-medium rounded-md text-center py-2 px-4 capitalize"
-              :class="{
-                'bg-green-200 text-black': item.status === 'published',
-                'bg-gray-600 text-white': item.status !== 'published',
-              }"
+              :class="getStatusClass(item.status)"
             >
-              {{ item.status }}
+              {{ $t(`donor.${item.status}`) }}
             </span>
           </template>
           <template v-slot:item.created_at="{ item }">
@@ -57,20 +56,47 @@
 
 <script setup>
 import dayjs from "dayjs";
+import { useRouter } from "vue-router";
 import { useDonorCamoaigns } from "../services/donor-campaign";
 import { useCampaignsHistoryPage } from "../typescript/campaign-history-page";
-import { useRouter } from "vue-router";
+
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_donor_campaigns");
+
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
 const router = useRouter();
 const { headers } = useCampaignsHistoryPage();
-const { donorCampMeta, donorCampaigns, status } = useDonorCamoaigns();
+const { donorCampMeta, donorCampaigns, status, donorCamp_error } =
+  useDonorCamoaigns();
 const formattedDate = (dateString) => {
   return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
 };
 const navigateToCampaign = (campaignId) => {
   router.push(`/campaigns/donate/${campaignId}`);
+};
+const getStatusClass = (status) => {
+  switch (status) {
+    case "pending":
+      return "bg-yellow-200 text-black";
+    case "published":
+      return "bg-green-200 text-black";
+    case "paused":
+      return "bg-gray-400 text-white";
+    case "ended":
+      return "bg-red-500 text-white";
+    case "completed":
+      return "bg-blue-500 text-white";
+    case "cancelled":
+      return "bg-gray-600 text-white";
+    case "rejected":
+      return "bg-red-700 text-white";
+    default:
+      return "bg-gray-300 text-black";
+  }
 };
 </script>

@@ -1,4 +1,5 @@
-<template> <div class="notif-settings pt-sm">
+<template>
+  <div class="notif-settings pt-sm">
     <h2 class="text-xl font-bold">
       {{ $t("donor.notif_title") }}
     </h2>
@@ -11,9 +12,10 @@
       <div class="flex justify-between items-center">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
-              src="../../../assets/images/dashboard/campaigns.svg"
-              alt=""
+            <nuxt-img
+              loading="lazy"
+              src="/dashboard/campaigns.svg"
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op1_title") }}</span>
           </div>
@@ -23,19 +25,16 @@
           </p>
         </div>
 
-        <v-switch
-          v-model="model1"
-          color="#3E7E41"
-          hide-details
-        ></v-switch>
+        <v-switch v-model="model1" color="#3E7E41" hide-details></v-switch>
       </div>
 
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
-              src="../../../assets/images/dashboard/donation.svg"
-              alt=""
+            <nuxt-img
+              loading="lazy"
+              src="/dashboard/donation.svg"
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op2_title") }}</span>
           </div>
@@ -45,19 +44,16 @@
           </p>
         </div>
 
-        <v-switch
-          v-model="model2"
-          color="#3E7E41"
-          hide-details
-        ></v-switch>
+        <v-switch v-model="model2" color="#3E7E41" hide-details></v-switch>
       </div>
 
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
-              src="../../../assets/images/dashboard/notification.svg"
-              alt=""
+            <nuxt-img
+              loading="lazy"
+              src="/dashboard/notification.svg"
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op3_title") }}</span>
           </div>
@@ -67,19 +63,16 @@
           </p>
         </div>
 
-        <v-switch
-          v-model="model3"
-          color="#3E7E41"
-          hide-details
-        ></v-switch>
+        <v-switch v-model="model3" color="#3E7E41" hide-details></v-switch>
       </div>
 
       <div class="flex justify-between items-center mt-4">
         <div>
           <div class="flex items-center gap-x-3">
-            <img
-              src="../../../assets/images/dashboard/warning.svg"
-              alt=""
+            <nuxt-img
+              loading="lazy"
+              src="/dashboard/warning.svg"
+              alt="ramadanchallenges image"
             />
             <span class="text-xl">{{ $t("donor.op4_title") }}</span>
           </div>
@@ -89,11 +82,7 @@
           </p>
         </div>
 
-        <v-switch
-          v-model="model4"
-          color="#3E7E41"
-          hide-details
-        ></v-switch>
+        <v-switch v-model="model4" color="#3E7E41" hide-details></v-switch>
       </div>
     </div>
 
@@ -123,9 +112,9 @@
         :label="$t('donor.push_notif')"
       ></v-checkbox>
     </div>
-  </div></template>
+  </div>
+</template>
 <script setup>
-
 const model1 = ref(true);
 const model2 = ref(true);
 const model3 = ref(true);

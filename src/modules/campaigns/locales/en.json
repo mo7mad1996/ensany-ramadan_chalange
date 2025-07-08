@@ -1,9 +1,10 @@
 {
   "all_campaigns": "All Campaigns",
   "donate": "Donate Now",
-
+  "campaigns": "Campaigns",
   "similar_campaigns": "Similar Campaigns",
-
+  "ended": "Ended",
+  "completed": "Completed",
   "view_campaign": "View Campaign",
   "campaign_title": "Feed a Family for Iftar",
   "collected:": "Collected",
@@ -39,5 +40,17 @@
   "currency_error": "You must select currency",
   "success_msg": "Donation confirmed successfully ,Thank you for your kindeness",
   "ok": "Ok",
-  "faild_msg": "Ther is an error in donation , please try again"
+  "faild_msg": "Ther is an error in donation , please try again",
+  "gift_certificate": "Gift",
+  "gift_to": "Gift to",
+  "on_this_day": "On this day.",
+  "message_gift": "Gift Message",
+  "gift_by": "Gifted by",
+  "gift_message": "A gift as a contribution to the campaign",
+  "page_title_payment_confirmation": "Payment Confirmation",
+  "page_title_campaigns": "Campaigns",
+  "total_donors": "Total Donors",
+  "top_donor": "Top Donor",
+  "middle_donor": "Latest Donor",
+  "first_donor": "First Donor"
 }

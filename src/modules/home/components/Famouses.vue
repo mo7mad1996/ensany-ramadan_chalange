@@ -9,10 +9,11 @@
       <Carousel v-bind="settings" :breakpoints="breakpoints3" class="mt-4">
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar6.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar6.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -26,10 +27,11 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar1.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar1.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -43,10 +45,11 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar2.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar2.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -60,10 +63,11 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar3.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar3.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -77,10 +81,11 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar4.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar4.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -94,10 +99,11 @@
 
         <Slide>
           <div class="image overflow-hidden relative">
-            <img
-              src="../../../assets/images/scholar5.png"
+            <nuxt-img
+              loading="lazy"
+              src="/scholar5.png"
               class="cursor-pointer"
-              alt=""
+              alt="ramadanchallenges image"
             />
 
             <div
@@ -118,6 +124,8 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import Container from "../../../global/Container.vue";
 import { useCarousel } from "../../../helpers/carousel";
 const { settings, breakpoints3, Navigation, Carousel, Slide } = useCarousel();

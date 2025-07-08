@@ -4,7 +4,8 @@
       {{ $t("donor.donation_history") }}
     </h1>
     <div class="content mt-sm">
-      <v-card flat>
+      <div class="loader" v-if="status == 'pending'" />
+      <v-card flat v-else-if="status == 'success'">
         <v-data-table
           class="border rounded-lg"
           :items="donorDonation"
@@ -15,7 +16,7 @@
           <!-- <template v-slot:item.name="{ item }">
             <div class="flex items-center space-x-2">
               <v-avatar size="40">
-                <img
+                <nuxt-img loading="lazy" 
                   :src="item.image"
                   alt="Donation Image"
                   class="rounded-lg"
@@ -25,9 +26,9 @@
             </div>
           </template> -->
           <!-- Bold &  Total Amount -->
-          <template v-slot:item.amount="{ item }">
+          <template v-slot:item.total_amount="{ item }">
             <span class="font-bold text-green-600">
-              ${{ parseFloat(item.amount).toLocaleString() }}
+              ${{ parseFloat(item.total_amount).toLocaleString() }}
             </span>
           </template>
           <template v-slot:item.status="{ item }">
@@ -37,8 +38,11 @@
                 item.status
               )}; padding: 3px 6px; text-transform: capitalize; min-width: 70px; display: inline-flex; justify-content: center; align-items: center;`"
             >
-              {{ item.status }}
+              {{ getStatusText(item.status) }}
             </span>
+          </template>
+          <template v-slot:item.created_at="{ item }">
+            {{ formattedDate(item.created_at) }}
           </template>
         </v-data-table>
       </v-card>
@@ -47,14 +51,21 @@
 </template>
 
 <script setup>
-import { useDonationHistoryPage } from "../typescript/donation";
+import dayjs from "dayjs";
 import { useDonorDonationes } from "../services/donor-donation";
+import { useDonationHistoryPage } from "../typescript/donation";
+
+import { useGlobalVar } from "~/helpers/global-var";
+
+const { siteName } = useGlobalVar();
+siteName("donor.page_title_donor_donation_history");
 
 definePageMeta({
   layout: "donor",
   middleware: "require-auth",
 });
 
+const { t } = useI18n();
 const { headers } = useDonationHistoryPage();
 const { donorCampMeta, donorDonation, status } = useDonorDonationes();
 const getStatusColor = (status) => {
@@ -68,5 +79,16 @@ const getStatusColor = (status) => {
     default:
       return "#5C7762";
   }
+};
+const formattedDate = (dateString) => {
+  return dateString ? dayjs(dateString).format("YYYY-MM-DD HH:mm") : null;
+};
+const getStatusText = (status) => {
+  const statusKeys = {
+    donated: "donor.status_donated",
+    wait: "donor.status_wait",
+    rejected: "donor.status_rejected",
+  };
+  return statusKeys[status] ? t(statusKeys[status]) : status;
 };
 </script>

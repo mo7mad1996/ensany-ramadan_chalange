@@ -1,6 +1,8 @@
 <template>
   <BreadCrumb>
-    <template #first_page> {{ $t("global.home") }} </template>
+    <template #first_page>
+      <a :href="'/'">{{ $t("global.home") }}</a>
+    </template>
     <template #second_page> {{ $t("blogs.blogs") }} </template>
   </BreadCrumb>
 
@@ -17,16 +19,17 @@
     >
       <BlogCard
         v-for="(blog, index) in blogs"
-        :key="index"
+        :key="blog?.id"
         :route="`/blogs/${blog.id}`"
         class="h-full"
-        @click="$router.push(`/blogs/${blog.id}`)"
+        :to="`/blogs/${blog.id}`"
       >
         <template #image>
-          <img
+          <nuxt-img
+            loading="lazy"
             :src="blog?.image"
             class="w-full max-h-[15rem] object-cover rounded-lg"
-            alt=""
+            alt="ramadanchallenges image"
           />
         </template>
 
@@ -43,21 +46,24 @@
 
     <div class="pagination items-center justify-center pb-sm">
       <v-pagination
+        v-if="fetchBlogs.length > 0"
         v-model="currentPage"
         :length="blogsMeta.last_page"
         @input="fetchBlogs"
         :total-visible="5"
       ></v-pagination>
     </div>
+    <NoData :data="blogs" :status="status" />
   </Container>
 </template>
 
 <script setup>
-import Container from "~/global/Container.vue";
 import BreadCrumb from "~/global/BreadCrumb.vue";
+import Container from "~/global/Container.vue";
+import NoData from "~/global/NoData.vue";
 import SkeletonLoader from "~/global/SkeletonLoader.vue";
-import { useBlogs } from "../services/blogs";
 import { useGlobalVar } from "~/helpers/global-var";
+import { useBlogs } from "../services/blogs";
 const { locale } = useI18n();
 
 const page = ref(2);
@@ -74,21 +80,8 @@ watch(currentPage, (newPage) => {
   fetchBlogs();
 });
 
-useSeoMeta({
-  title: locale.value == "ar" ? ramadan_ar : ramadan_en,
-  ogTitle: "My Amazing Site",
-  description: "This is my amazing site, let me tell you all about it.",
-  ogDescription: "This is my amazing site, let me tell you all about it.",
-  ogImage: "https://example.com/image.png",
-  twitterCard: "summary_large_image",
-});
-
-watch(locale, (newLocale) => {
-  const isArabic = newLocale === "ar";
-  useSeoMeta({
-    title: isArabic ? ramadan_ar : ramadan_en,
-  });
-});
+const { siteName } = useGlobalVar();
+siteName("blogs.page_title_blogs");
 
 // only simulation for test skeleton loader
 setTimeout(() => {
